@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/levels/level2/level2.tmx" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Levels/level2.gd" type="Script" id=2]
+
+[node name="Level" index="0" instance=ExtResource( 1 )]
+script = ExtResource( 2 )

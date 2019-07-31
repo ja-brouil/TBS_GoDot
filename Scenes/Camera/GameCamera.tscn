@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/Camera/Camera2D.gd" type="Script" id=1]
+
+[node name="GameCamera" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
+limit_left = 0
+limit_top = 0
+limit_smoothed = true
+script = ExtResource( 1 )

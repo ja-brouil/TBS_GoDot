@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/Player_Units/PlayerUnit.gd" type="Script" id=1]
+[ext_resource path="res://assets/units/eirika/eirika copy.png" type="Texture" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "idle"
+loop = true
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("e_sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 3, 81, 16, 15 ), Rect2( 35, 81, 16, 15 ), Rect2( 67, 81, 16, 15 ), Rect2( 99, 81, 16, 15 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "left"
+loop = true
+step = 0.25
+
+[node name="PlayerUnit" type="Node2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="e_sprite" type="Sprite" parent="."]
+position = Vector2( 5, -3.912 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 35, 81, 16, 15 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="anim" type="AnimationPlayer" parent="."]
+anims/idle = SubResource( 1 )
+anims/left = SubResource( 2 )
+next/idle = "idle"
+next/left = "idle"

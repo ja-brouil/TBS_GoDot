@@ -1,0 +1,3716 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.0" orientation="orthogonal" renderorder="right-down" width="20" height="22" tilewidth="16" tileheight="16" infinite="0" nextobjectid="2289">
+ <tileset firstgid="1" source="level2tileset.tsx"/>
+ <layer name="Background" width="20" height="22" locked="1">
+  <data encoding="csv">
+1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,
+21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,
+41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,
+61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,
+81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,
+101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,
+121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,
+141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,
+161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,
+181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,
+201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,
+221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,
+241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,260,
+261,262,263,264,265,266,267,268,269,270,271,272,273,274,275,276,277,278,279,280,
+281,282,283,284,285,286,287,288,289,290,291,292,293,294,295,296,297,298,299,300,
+301,302,303,304,305,306,307,308,309,310,311,312,313,314,315,316,317,318,319,320,
+321,322,323,324,325,326,327,328,329,330,331,332,333,334,335,336,337,338,339,340,
+341,342,343,344,345,346,347,348,349,350,351,352,353,354,355,356,357,358,359,360,
+361,362,363,364,365,366,367,368,369,370,371,372,373,374,375,376,377,378,379,380,
+381,382,383,384,385,386,387,388,389,390,391,392,393,394,395,396,397,398,399,400,
+401,402,403,404,405,406,407,408,409,410,411,412,413,414,415,416,417,418,419,420,
+421,422,423,424,425,426,427,428,429,430,431,432,433,434,435,436,437,438,439,440
+</data>
+ </layer>
+ <objectgroup name="CellInfo">
+  <object id="1794" x="0" y="256" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1795" x="32" y="256" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1796" x="16" y="256" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1797" x="64" y="256" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1798" x="80" y="256" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1799" x="48" y="256" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1800" x="48" y="272" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1801" x="80" y="272" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1802" x="64" y="272" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1803" x="16" y="272" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1804" x="32" y="272" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1805" x="0" y="272" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1806" x="48" y="288" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1807" x="80" y="288" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1808" x="64" y="288" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1809" x="16" y="288" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1810" x="32" y="288" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1811" x="0" y="288" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1812" x="0" y="304" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1813" x="32" y="304" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1814" x="16" y="304" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1815" x="128" y="272" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1816" x="144" y="272" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1821" x="144" y="288" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1822" x="160" y="288" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1823" x="128" y="288" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1824" x="240" y="304" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1826" x="256" y="304" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1827" x="208" y="304" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1829" x="192" y="304" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1830" x="0" y="320" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1831" x="64" y="240" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1832" x="80" y="240" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1833" x="112" y="256" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1834" x="208" y="192" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1835" x="176" y="256" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1838" x="208" y="272" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1839" x="224" y="288" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1840" x="208" y="320" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1841" x="240" y="320" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1842" x="256" y="320" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1843" x="272" y="320" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1848" x="288" y="336" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1849" x="304" y="336" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1850" x="304" y="288" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1854" x="304" y="224" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1855" x="288" y="224" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1856" x="256" y="224" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Road"/>
+   </properties>
+  </object>
+  <object id="1857" x="272" y="224" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1862" x="192" y="224" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Road"/>
+   </properties>
+  </object>
+  <object id="1863" x="208" y="224" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Road"/>
+   </properties>
+  </object>
+  <object id="1864" x="224" y="224" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Road"/>
+   </properties>
+  </object>
+  <object id="1865" x="240" y="224" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Road"/>
+   </properties>
+  </object>
+  <object id="1866" x="112" y="272" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Road"/>
+   </properties>
+  </object>
+  <object id="1867" x="160" y="272" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Road"/>
+   </properties>
+  </object>
+  <object id="1868" x="176" y="272" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Road"/>
+   </properties>
+  </object>
+  <object id="1869" x="192" y="272" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Road"/>
+   </properties>
+  </object>
+  <object id="1870" x="192" y="288" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Road"/>
+   </properties>
+  </object>
+  <object id="1872" x="208" y="288" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Road"/>
+   </properties>
+  </object>
+  <object id="1873" x="224" y="304" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Road"/>
+   </properties>
+  </object>
+  <object id="1874" x="272" y="288" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Road"/>
+   </properties>
+  </object>
+  <object id="1875" x="272" y="272" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Road"/>
+   </properties>
+  </object>
+  <object id="1876" x="288" y="288" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Road"/>
+   </properties>
+  </object>
+  <object id="1877" x="256" y="288" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Road"/>
+   </properties>
+  </object>
+  <object id="1878" x="272" y="304" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Road"/>
+   </properties>
+  </object>
+  <object id="1879" x="288" y="304" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Road"/>
+   </properties>
+  </object>
+  <object id="1880" x="304" y="304" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Road"/>
+   </properties>
+  </object>
+  <object id="1881" x="304" y="320" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Road"/>
+   </properties>
+  </object>
+  <object id="1882" x="288" y="320" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Road"/>
+   </properties>
+  </object>
+  <object id="1883" x="144" y="192" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Road"/>
+   </properties>
+  </object>
+  <object id="1884" x="128" y="192" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Road"/>
+   </properties>
+  </object>
+  <object id="1885" x="112" y="192" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Road"/>
+   </properties>
+  </object>
+  <object id="1886" x="96" y="192" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Road"/>
+   </properties>
+  </object>
+  <object id="1887" x="160" y="192" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Road"/>
+   </properties>
+  </object>
+  <object id="1888" x="144" y="208" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Road"/>
+   </properties>
+  </object>
+  <object id="1889" x="128" y="208" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Road"/>
+   </properties>
+  </object>
+  <object id="1890" x="112" y="208" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Road"/>
+   </properties>
+  </object>
+  <object id="1891" x="96" y="208" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Road"/>
+   </properties>
+  </object>
+  <object id="1892" x="160" y="208" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Road"/>
+   </properties>
+  </object>
+  <object id="1893" x="224" y="208" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Road"/>
+   </properties>
+  </object>
+  <object id="1894" x="208" y="208" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Road"/>
+   </properties>
+  </object>
+  <object id="1895" x="192" y="208" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Road"/>
+   </properties>
+  </object>
+  <object id="1896" x="176" y="208" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Road"/>
+   </properties>
+  </object>
+  <object id="1903" x="96" y="176" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Road"/>
+   </properties>
+  </object>
+  <object id="1904" x="112" y="176" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Road"/>
+   </properties>
+  </object>
+  <object id="1905" x="128" y="176" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Road"/>
+   </properties>
+  </object>
+  <object id="1906" x="144" y="176" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Road"/>
+   </properties>
+  </object>
+  <object id="1907" x="128" y="144" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Road"/>
+   </properties>
+  </object>
+  <object id="1908" x="144" y="144" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Road"/>
+   </properties>
+  </object>
+  <object id="1909" x="128" y="112" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Road"/>
+   </properties>
+  </object>
+  <object id="1910" x="144" y="112" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Road"/>
+   </properties>
+  </object>
+  <object id="1911" x="128" y="96" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Road"/>
+   </properties>
+  </object>
+  <object id="1912" x="144" y="96" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Road"/>
+   </properties>
+  </object>
+  <object id="1913" x="144" y="80" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Road"/>
+   </properties>
+  </object>
+  <object id="1914" x="176" y="192" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1915" x="192" y="192" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1916" x="240" y="192" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1917" x="240" y="176" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1918" x="240" y="208" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1919" x="272" y="192" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1920" x="288" y="176" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1921" x="304" y="176" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1922" x="288" y="192" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1923" x="272" y="176" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1924" x="256" y="176" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1925" x="256" y="160" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1926" x="288" y="160" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1927" x="304" y="160" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1928" x="304" y="208" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1929" x="272" y="240" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1930" x="288" y="240" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1931" x="304" y="240" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1932" x="256" y="256" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1933" x="272" y="256" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1934" x="288" y="256" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1936" x="32" y="176" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1937" x="48" y="176" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1938" x="32" y="208" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1939" x="32" y="192" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1940" x="32" y="160" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1941" x="0" y="112" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1942" x="0" y="96" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1943" x="16" y="128" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1944" x="16" y="48" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1945" x="112" y="48" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1946" x="32" y="64" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1947" x="160" y="96" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1948" x="112" y="96" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1949" x="112" y="64" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1950" x="128" y="80" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1951" x="160" y="80" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1952" x="176" y="96" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1953" x="256" y="128" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1954" x="272" y="144" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1955" x="176" y="48" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1956" x="288" y="112" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1957" x="272" y="112" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1958" x="272" y="128" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1959" x="304" y="80" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1960" x="304" y="96" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1961" x="288" y="96" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="1962" x="160" y="64" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="30"/>
+    <property name="Def" type="int" value="30"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Castle"/>
+   </properties>
+  </object>
+  <object id="1963" x="160" y="48" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="30"/>
+    <property name="Def" type="int" value="30"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Castle"/>
+   </properties>
+  </object>
+  <object id="1964" x="160" y="32" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="30"/>
+    <property name="Def" type="int" value="30"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Castle"/>
+   </properties>
+  </object>
+  <object id="1965" x="144" y="32" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="30"/>
+    <property name="Def" type="int" value="30"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Castle"/>
+   </properties>
+  </object>
+  <object id="1966" x="128" y="32" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="30"/>
+    <property name="Def" type="int" value="30"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Castle"/>
+   </properties>
+  </object>
+  <object id="1967" x="128" y="48" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="30"/>
+    <property name="Def" type="int" value="30"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Castle"/>
+   </properties>
+  </object>
+  <object id="1968" x="128" y="64" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="30"/>
+    <property name="Def" type="int" value="30"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Castle"/>
+   </properties>
+  </object>
+  <object id="1969" x="144" y="48" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="30"/>
+    <property name="Def" type="int" value="30"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Castle"/>
+   </properties>
+  </object>
+  <object id="1971" x="144" y="64" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="30"/>
+    <property name="Def" type="int" value="3"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Throne"/>
+   </properties>
+  </object>
+  <object id="1972" x="0" y="32" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="1973" x="32" y="48" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="1974" x="0" y="80" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="1975" x="16" y="112" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="1976" x="0" y="128" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="1977" x="32" y="144" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="1978" x="48" y="160" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="1979" x="16" y="192" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="1980" x="48" y="192" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="1981" x="48" y="208" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="1982" x="48" y="224" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="1983" x="32" y="224" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="1984" x="32" y="240" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="1985" x="0" y="240" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="1986" x="160" y="256" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="1987" x="224" y="320" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="1988" x="240" y="288" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="1989" x="240" y="272" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="1990" x="256" y="272" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="1991" x="256" y="240" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="1992" x="240" y="240" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="1993" x="224" y="240" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="1994" x="224" y="256" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="1995" x="240" y="256" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="1996" x="288" y="272" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="1997" x="304" y="272" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="1998" x="304" y="256" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="1999" x="256" y="208" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="2000" x="224" y="192" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="2001" x="224" y="176" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="2002" x="240" y="160" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="2003" x="240" y="144" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="2004" x="240" y="128" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="2005" x="256" y="144" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="2006" x="272" y="160" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="2007" x="288" y="128" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="2008" x="288" y="144" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="2009" x="304" y="144" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="2010" x="304" y="128" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="2011" x="304" y="112" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="2012" x="256" y="112" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="2013" x="256" y="96" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="2014" x="272" y="96" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="2015" x="272" y="80" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="2016" x="256" y="80" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="2017" x="256" y="64" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="2018" x="240" y="48" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="2019" x="176" y="64" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="2020" x="176" y="80" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="2021" x="112" y="80" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="2022" x="112" y="32" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="Forest"/>
+   </properties>
+  </object>
+  <object id="2023" x="80" y="16" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2024" x="96" y="16" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2025" x="64" y="32" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2026" x="80" y="32" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2027" x="80" y="64" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2028" x="80" y="48" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2029" x="80" y="128" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2030" x="80" y="112" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2031" x="80" y="96" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2032" x="80" y="80" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2033" x="64" y="96" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2034" x="64" y="80" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2035" x="64" y="64" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2036" x="64" y="48" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2037" x="208" y="112" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2038" x="208" y="96" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2039" x="208" y="80" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2040" x="208" y="64" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2041" x="224" y="112" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2042" x="224" y="96" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2043" x="224" y="80" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2044" x="224" y="64" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2045" x="208" y="128" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2046" x="208" y="144" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2047" x="192" y="144" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2048" x="192" y="128" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2050" x="176" y="144" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2051" x="160" y="128" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2052" x="176" y="128" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2057" x="176" y="160" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2058" x="160" y="160" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2059" x="192" y="160" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2060" x="208" y="160" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2061" x="208" y="32" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2062" x="208" y="48" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2063" x="96" y="112" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2064" x="96" y="128" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2065" x="112" y="128" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2066" x="96" y="144" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2067" x="80" y="144" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2068" x="80" y="160" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2069" x="64" y="144" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2070" x="64" y="128" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2071" x="64" y="112" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2072" x="48" y="112" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2073" x="48" y="128" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2074" x="48" y="96" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2075" x="48" y="80" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2076" x="144" y="0" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2077" x="160" y="0" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2078" x="176" y="0" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2079" x="176" y="16" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2080" x="192" y="16" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2081" x="192" y="32" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Sea"/>
+   </properties>
+  </object>
+  <object id="2082" x="64" y="16" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2083" x="48" y="32" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2084" x="80" y="0" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2085" x="96" y="0" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2086" x="112" y="0" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2087" x="128" y="0" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2088" x="112" y="16" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2089" x="128" y="16" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2090" x="144" y="16" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2091" x="160" y="16" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2092" x="176" y="32" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2093" x="192" y="48" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2094" x="192" y="64" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2095" x="192" y="80" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2096" x="192" y="96" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2097" x="160" y="112" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2098" x="176" y="112" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2099" x="192" y="112" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2100" x="112" y="112" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2101" x="96" y="96" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2102" x="96" y="80" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2103" x="96" y="64" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2104" x="96" y="48" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2105" x="96" y="32" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2106" x="192" y="0" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2107" x="224" y="16" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2108" x="208" y="16" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2109" x="240" y="16" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2110" x="224" y="32" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2111" x="224" y="48" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2112" x="240" y="32" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2113" x="256" y="32" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2114" x="272" y="48" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2115" x="256" y="192" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2116" x="272" y="208" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2117" x="304" y="192" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2118" x="288" y="208" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2119" x="160" y="240" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2120" x="176" y="240" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2121" x="192" y="256" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2122" x="224" y="272" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2123" x="208" y="256" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2124" x="48" y="240" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2125" x="64" y="224" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2126" x="32" y="80" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2127" x="32" y="96" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2128" x="32" y="112" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2129" x="32" y="128" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2130" x="224" y="128" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2131" x="224" y="144" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2132" x="224" y="160" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2133" x="208" y="176" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2134" x="192" y="176" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2135" x="176" y="176" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2136" x="160" y="176" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2137" x="240" y="64" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2138" x="240" y="80" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2139" x="240" y="96" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2140" x="240" y="112" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2141" x="0" y="0" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2142" x="32" y="0" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2143" x="16" y="0" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2144" x="64" y="0" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2145" x="48" y="0" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2146" x="48" y="16" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2147" x="32" y="16" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2148" x="16" y="16" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2149" x="0" y="16" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2150" x="16" y="32" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2151" x="32" y="32" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2152" x="240" y="0" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2153" x="256" y="0" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2154" x="272" y="0" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2155" x="288" y="0" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2156" x="304" y="0" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2157" x="272" y="16" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2158" x="256" y="16" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2159" x="288" y="16" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2160" x="304" y="32" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2161" x="304" y="16" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2162" x="288" y="32" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2163" x="272" y="32" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2164" x="288" y="48" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2165" x="304" y="48" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2166" x="0" y="48" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="15"/>
+    <property name="Def" type="int" value="4"/>
+    <property name="MovementCost" type="int" value="3"/>
+    <property name="TileType" value="Hill"/>
+   </properties>
+  </object>
+  <object id="2167" x="16" y="64" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="15"/>
+    <property name="Def" type="int" value="4"/>
+    <property name="MovementCost" type="int" value="3"/>
+    <property name="TileType" value="Hill"/>
+   </properties>
+  </object>
+  <object id="2168" x="0" y="64" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="15"/>
+    <property name="Def" type="int" value="4"/>
+    <property name="MovementCost" type="int" value="3"/>
+    <property name="TileType" value="Hill"/>
+   </properties>
+  </object>
+  <object id="2169" x="16" y="80" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="15"/>
+    <property name="Def" type="int" value="4"/>
+    <property name="MovementCost" type="int" value="3"/>
+    <property name="TileType" value="Hill"/>
+   </properties>
+  </object>
+  <object id="2170" x="16" y="96" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="15"/>
+    <property name="Def" type="int" value="4"/>
+    <property name="MovementCost" type="int" value="3"/>
+    <property name="TileType" value="Hill"/>
+   </properties>
+  </object>
+  <object id="2171" x="208" y="0" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="15"/>
+    <property name="Def" type="int" value="4"/>
+    <property name="MovementCost" type="int" value="3"/>
+    <property name="TileType" value="Hill"/>
+   </properties>
+  </object>
+  <object id="2172" x="224" y="0" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="15"/>
+    <property name="Def" type="int" value="4"/>
+    <property name="MovementCost" type="int" value="3"/>
+    <property name="TileType" value="Hill"/>
+   </properties>
+  </object>
+  <object id="2173" x="304" y="64" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="15"/>
+    <property name="Def" type="int" value="4"/>
+    <property name="MovementCost" type="int" value="3"/>
+    <property name="TileType" value="Hill"/>
+   </properties>
+  </object>
+  <object id="2174" x="288" y="64" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="15"/>
+    <property name="Def" type="int" value="4"/>
+    <property name="MovementCost" type="int" value="3"/>
+    <property name="TileType" value="Hill"/>
+   </properties>
+  </object>
+  <object id="2175" x="272" y="64" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="15"/>
+    <property name="Def" type="int" value="4"/>
+    <property name="MovementCost" type="int" value="3"/>
+    <property name="TileType" value="Hill"/>
+   </properties>
+  </object>
+  <object id="2176" x="256" y="48" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="River"/>
+   </properties>
+  </object>
+  <object id="2177" x="288" y="80" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="15"/>
+    <property name="Def" type="int" value="4"/>
+    <property name="MovementCost" type="int" value="3"/>
+    <property name="TileType" value="Hill"/>
+   </properties>
+  </object>
+  <object id="2178" x="240" y="336" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="15"/>
+    <property name="Def" type="int" value="4"/>
+    <property name="MovementCost" type="int" value="3"/>
+    <property name="TileType" value="Hill"/>
+   </properties>
+  </object>
+  <object id="2179" x="256" y="336" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="15"/>
+    <property name="Def" type="int" value="4"/>
+    <property name="MovementCost" type="int" value="3"/>
+    <property name="TileType" value="Hill"/>
+   </properties>
+  </object>
+  <object id="2180" x="176" y="224" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="15"/>
+    <property name="Def" type="int" value="4"/>
+    <property name="MovementCost" type="int" value="3"/>
+    <property name="TileType" value="Hill"/>
+   </properties>
+  </object>
+  <object id="2181" x="192" y="240" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="15"/>
+    <property name="Def" type="int" value="4"/>
+    <property name="MovementCost" type="int" value="3"/>
+    <property name="TileType" value="Hill"/>
+   </properties>
+  </object>
+  <object id="2182" x="112" y="224" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="15"/>
+    <property name="Def" type="int" value="4"/>
+    <property name="MovementCost" type="int" value="3"/>
+    <property name="TileType" value="Hill"/>
+   </properties>
+  </object>
+  <object id="2183" x="208" y="240" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Plain"/>
+   </properties>
+  </object>
+  <object id="2184" x="128" y="224" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2185" x="144" y="224" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2186" x="144" y="240" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2187" x="128" y="240" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2188" x="128" y="256" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="15"/>
+    <property name="Def" type="int" value="4"/>
+    <property name="MovementCost" type="int" value="3"/>
+    <property name="TileType" value="Hill"/>
+   </properties>
+  </object>
+  <object id="2189" x="144" y="256" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="15"/>
+    <property name="Def" type="int" value="4"/>
+    <property name="MovementCost" type="int" value="3"/>
+    <property name="TileType" value="Hill"/>
+   </properties>
+  </object>
+  <object id="2190" x="112" y="240" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2191" x="0" y="160" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="15"/>
+    <property name="Def" type="int" value="4"/>
+    <property name="MovementCost" type="int" value="3"/>
+    <property name="TileType" value="Hill"/>
+   </properties>
+  </object>
+  <object id="2192" x="16" y="160" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="15"/>
+    <property name="Def" type="int" value="4"/>
+    <property name="MovementCost" type="int" value="3"/>
+    <property name="TileType" value="Hill"/>
+   </properties>
+  </object>
+  <object id="2193" x="16" y="144" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="15"/>
+    <property name="Def" type="int" value="4"/>
+    <property name="MovementCost" type="int" value="3"/>
+    <property name="TileType" value="Hill"/>
+   </properties>
+  </object>
+  <object id="2194" x="0" y="144" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="15"/>
+    <property name="Def" type="int" value="4"/>
+    <property name="MovementCost" type="int" value="3"/>
+    <property name="TileType" value="Hill"/>
+   </properties>
+  </object>
+  <object id="2195" x="96" y="304" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="15"/>
+    <property name="Def" type="int" value="4"/>
+    <property name="MovementCost" type="int" value="3"/>
+    <property name="TileType" value="Hill"/>
+   </properties>
+  </object>
+  <object id="2196" x="0" y="336" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2197" x="16" y="336" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2198" x="32" y="336" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2199" x="48" y="336" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2200" x="64" y="336" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2201" x="80" y="336" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2202" x="80" y="320" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2203" x="80" y="304" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2204" x="96" y="320" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2205" x="64" y="304" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2206" x="48" y="304" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2207" x="48" y="320" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2208" x="64" y="320" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2209" x="32" y="320" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2210" x="16" y="320" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2211" x="192" y="336" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2212" x="176" y="336" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2213" x="160" y="336" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2214" x="144" y="336" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2215" x="144" y="320" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2216" x="176" y="320" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2217" x="160" y="320" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2218" x="192" y="320" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2219" x="208" y="336" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2220" x="144" y="304" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2221" x="128" y="320" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2223" x="128" y="304" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2224" x="176" y="304" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2225" x="160" y="304" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2226" x="224" y="336" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2227" x="48" y="144" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2228" x="64" y="160" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2229" x="80" y="176" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="River"/>
+   </properties>
+  </object>
+  <object id="2230" x="80" y="192" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="River"/>
+   </properties>
+  </object>
+  <object id="2231" x="64" y="192" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="River"/>
+   </properties>
+  </object>
+  <object id="2232" x="64" y="176" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="River"/>
+   </properties>
+  </object>
+  <object id="2233" x="64" y="208" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="River"/>
+   </properties>
+  </object>
+  <object id="2234" x="80" y="208" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="River"/>
+   </properties>
+  </object>
+  <object id="2235" x="80" y="224" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="River"/>
+   </properties>
+  </object>
+  <object id="2236" x="96" y="224" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="River"/>
+   </properties>
+  </object>
+  <object id="2237" x="96" y="240" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="River"/>
+   </properties>
+  </object>
+  <object id="2238" x="96" y="256" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="River"/>
+   </properties>
+  </object>
+  <object id="2239" x="96" y="288" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="River"/>
+   </properties>
+  </object>
+  <object id="2240" x="112" y="288" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="River"/>
+   </properties>
+  </object>
+  <object id="2241" x="112" y="304" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="River"/>
+   </properties>
+  </object>
+  <object id="2242" x="112" y="320" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="River"/>
+   </properties>
+  </object>
+  <object id="2243" x="112" y="336" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="River"/>
+   </properties>
+  </object>
+  <object id="2244" x="128" y="336" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="River"/>
+   </properties>
+  </object>
+  <object id="2245" x="96" y="336" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="River"/>
+   </properties>
+  </object>
+  <object id="2246" x="96" y="272" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Bridge"/>
+   </properties>
+  </object>
+  <object id="2247" x="128" y="160" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Bridge"/>
+   </properties>
+  </object>
+  <object id="2248" x="144" y="160" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Bridge"/>
+   </properties>
+  </object>
+  <object id="2249" x="128" y="128" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Bridge"/>
+   </properties>
+  </object>
+  <object id="2250" x="144" y="128" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Bridge"/>
+   </properties>
+  </object>
+  <object id="2251" x="0" y="192" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2252" x="0" y="176" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2253" x="16" y="176" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="15"/>
+    <property name="Def" type="int" value="4"/>
+    <property name="MovementCost" type="int" value="3"/>
+    <property name="TileType" value="Hill"/>
+   </properties>
+  </object>
+  <object id="2254" x="0" y="208" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2255" x="16" y="224" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2256" x="0" y="224" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2257" x="16" y="208" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="20"/>
+    <property name="Def" type="int" value="2"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
+   </properties>
+  </object>
+  <object id="2258" x="16" y="240" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Village"/>
+   </properties>
+  </object>
+  <object id="2259" x="272" y="336" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="10"/>
+    <property name="Def" type="int" value="1"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Village"/>
+   </properties>
+  </object>
+  <object id="2260" x="112" y="144" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2261" x="112" y="160" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2262" x="96" y="160" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2263" x="160" y="144" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2264" x="48" y="48" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2265" x="48" y="64" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Cliff"/>
+   </properties>
+  </object>
+  <object id="2266" x="176" y="288" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Road"/>
+   </properties>
+  </object>
+  <object id="2267" x="160" y="224" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="15"/>
+    <property name="Def" type="int" value="4"/>
+    <property name="MovementCost" type="int" value="3"/>
+    <property name="TileType" value="Hill"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="Allies">
+  <object id="2281" x="32" y="288" width="16" height="16">
+   <properties>
+    <property name="BonusCrit" type="int" value="1"/>
+    <property name="BonusDodge" type="int" value="1"/>
+    <property name="BonusHit" type="int" value="2"/>
+    <property name="Class" value="Paladin"/>
+    <property name="Consti" type="int" value="11"/>
+    <property name="Defense" type="int" value="11"/>
+    <property name="Health" type="int" value="20"/>
+    <property name="Luck" type="int" value="13"/>
+    <property name="Magic" type="int" value="3"/>
+    <property name="MaxHealth" type="int" value="20"/>
+    <property name="Move" type="int" value="8"/>
+    <property name="Name" value="Seth"/>
+    <property name="Res" type="int" value="8"/>
+    <property name="Skill" type="int" value="13"/>
+    <property name="Speed" type="int" value="12"/>
+    <property name="Str" type="int" value="14"/>
+    <property name="Weapon" value="Iron Axe"/>
+    <property name="buildingPenalty" type="int" value="0"/>
+    <property name="constiChance" type="int" value="70"/>
+    <property name="defChance" type="int" value="60"/>
+    <property name="defaultPenalty" type="int" value="0"/>
+    <property name="forestPenalty" type="int" value="0"/>
+    <property name="fortressPenalty" type="int" value="0"/>
+    <property name="hillPenalty" type="int" value="4"/>
+    <property name="isAlly" type="bool" value="true"/>
+    <property name="luckChance" type="int" value="15"/>
+    <property name="magicChance" type="int" value="10"/>
+    <property name="maxHPChance" type="int" value="70"/>
+    <property name="mountainPenalty" type="int" value="0"/>
+    <property name="resChance" type="int" value="15"/>
+    <property name="riverPenalty" type="int" value="5"/>
+    <property name="seaPenalty" type="int" value="0"/>
+    <property name="skillChance" type="int" value="20"/>
+    <property name="speedChance" type="int" value="50"/>
+    <property name="strChance" type="int" value="80"/>
+   </properties>
+  </object>
+  <object id="2282" x="16" y="272" width="16" height="16">
+   <properties>
+    <property name="Class" value="Lord"/>
+    <property name="Name" value="Eirika"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="Enemies">
+  <object id="2276" x="80" y="256" width="16" height="16">
+   <properties>
+    <property name="BonusCrit" type="int" value="0"/>
+    <property name="BonusDodge" type="int" value="0"/>
+    <property name="BonusHit" type="int" value="0"/>
+    <property name="Class" value="Bandit"/>
+    <property name="Consti" type="int" value="8"/>
+    <property name="Defense" type="int" value="2"/>
+    <property name="Health" type="int" value="15"/>
+    <property name="Luck" type="int" value="0"/>
+    <property name="Magic" type="int" value="3"/>
+    <property name="MaxHealth" type="int" value="15"/>
+    <property name="Move" type="int" value="3"/>
+    <property name="Name" value="Bandit"/>
+    <property name="Res" type="int" value="1"/>
+    <property name="Skill" type="int" value="3"/>
+    <property name="Speed" type="int" value="2"/>
+    <property name="Str" type="int" value="6"/>
+    <property name="Weapon" value="Iron Axe"/>
+    <property name="aiType" type="bool" value="true"/>
+    <property name="isAlly" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="2277" x="224" y="208" width="16" height="16">
+   <properties>
+    <property name="BonusCrit" type="int" value="0"/>
+    <property name="BonusDodge" type="int" value="0"/>
+    <property name="BonusHit" type="int" value="0"/>
+    <property name="Class" value="Bandit"/>
+    <property name="Consti" type="int" value="8"/>
+    <property name="Defense" type="int" value="2"/>
+    <property name="Health" type="int" value="15"/>
+    <property name="Luck" type="int" value="0"/>
+    <property name="Magic" type="int" value="3"/>
+    <property name="MaxHealth" type="int" value="15"/>
+    <property name="Move" type="int" value="3"/>
+    <property name="Name" value="Bandit"/>
+    <property name="Res" type="int" value="1"/>
+    <property name="Skill" type="int" value="3"/>
+    <property name="Speed" type="int" value="2"/>
+    <property name="Str" type="int" value="6"/>
+    <property name="Weapon" value="Iron Axe"/>
+    <property name="aiType" type="bool" value="true"/>
+    <property name="isAlly" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="2278" x="16" y="112" width="16" height="16">
+   <properties>
+    <property name="BonusCrit" type="int" value="0"/>
+    <property name="BonusDodge" type="int" value="0"/>
+    <property name="BonusHit" type="int" value="0"/>
+    <property name="Class" value="Bandit"/>
+    <property name="Consti" type="int" value="8"/>
+    <property name="Defense" type="int" value="2"/>
+    <property name="Health" type="int" value="12"/>
+    <property name="Luck" type="int" value="0"/>
+    <property name="Magic" type="int" value="3"/>
+    <property name="MaxHealth" type="int" value="12"/>
+    <property name="Move" type="int" value="3"/>
+    <property name="Name" value="Bandit"/>
+    <property name="Res" type="int" value="1"/>
+    <property name="Skill" type="int" value="3"/>
+    <property name="Speed" type="int" value="2"/>
+    <property name="Str" type="int" value="6"/>
+    <property name="Weapon" value="Iron Axe"/>
+    <property name="aiType" type="bool" value="true"/>
+    <property name="isAlly" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="2279" x="272" y="128" width="16" height="16">
+   <properties>
+    <property name="BonusCrit" type="int" value="0"/>
+    <property name="BonusDodge" type="int" value="0"/>
+    <property name="BonusHit" type="int" value="0"/>
+    <property name="Class" value="Bandit"/>
+    <property name="Consti" type="int" value="8"/>
+    <property name="Defense" type="int" value="2"/>
+    <property name="Health" type="int" value="14"/>
+    <property name="Luck" type="int" value="0"/>
+    <property name="Magic" type="int" value="3"/>
+    <property name="MaxHealth" type="int" value="14"/>
+    <property name="Move" type="int" value="3"/>
+    <property name="Name" value="Bandit"/>
+    <property name="Res" type="int" value="1"/>
+    <property name="Skill" type="int" value="3"/>
+    <property name="Speed" type="int" value="3"/>
+    <property name="Str" type="int" value="5"/>
+    <property name="Weapon" value="Iron Axe"/>
+    <property name="aiType" type="bool" value="true"/>
+    <property name="isAlly" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="2280" x="144" y="64" width="16" height="16">
+   <properties>
+    <property name="BonusCrit" type="int" value="0"/>
+    <property name="BonusDodge" type="int" value="0"/>
+    <property name="BonusHit" type="int" value="0"/>
+    <property name="Class" value="Bandit"/>
+    <property name="Consti" type="int" value="8"/>
+    <property name="Defense" type="int" value="2"/>
+    <property name="Health" type="int" value="20"/>
+    <property name="Luck" type="int" value="0"/>
+    <property name="Magic" type="int" value="3"/>
+    <property name="MaxHealth" type="int" value="20"/>
+    <property name="Move" type="int" value="0"/>
+    <property name="Name" value="Thuggus"/>
+    <property name="Res" type="int" value="1"/>
+    <property name="Skill" type="int" value="3"/>
+    <property name="Speed" type="int" value="2"/>
+    <property name="Str" type="int" value="6"/>
+    <property name="Weapon" value="Iron Axe"/>
+    <property name="aiType" type="bool" value="false"/>
+    <property name="isAlly" type="bool" value="false"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

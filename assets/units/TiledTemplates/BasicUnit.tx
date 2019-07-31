@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template>
+ <object width="16" height="16">
+  <properties>
+   <property name="BonusCrit" type="int" value="0"/>
+   <property name="BonusDodge" type="int" value="0"/>
+   <property name="BonusHit" type="int" value="0"/>
+   <property name="Class" value="Bandit"/>
+   <property name="Consti" type="int" value="9"/>
+   <property name="Defense" type="int" value="2"/>
+   <property name="Health" type="int" value="20"/>
+   <property name="Luck" type="int" value="0"/>
+   <property name="Magic" type="int" value="3"/>
+   <property name="MaxHealth" type="int" value="20"/>
+   <property name="Move" type="int" value="5"/>
+   <property name="Name" value="Thuggus"/>
+   <property name="Res" type="int" value="1"/>
+   <property name="Skill" type="int" value="3"/>
+   <property name="Speed" type="int" value="4"/>
+   <property name="Str" type="int" value="5"/>
+   <property name="aiType" type="bool" value="false"/>
+   <property name="isAlly" type="bool" value="false"/>
+  </properties>
+ </object>
+</template>
