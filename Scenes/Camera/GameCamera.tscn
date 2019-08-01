@@ -10,4 +10,5 @@ current = true
 limit_left = 0
 limit_top = 0
 limit_smoothed = true
+smoothing_enabled = true
 script = ExtResource( 1 )

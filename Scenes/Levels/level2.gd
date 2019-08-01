@@ -1,9 +1,12 @@
 extends Node2D
 
 # Map information
-export var map_height = 0
-export var map_width = 0
+export var map_height: int 
+export var map_width: int
 export var all_map_cell_info = []
+
+# Map information has been loaded
+signal mapInformationLoaded
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,5 +21,5 @@ func _ready():
 		all_map_cell_info.append(Cell.new(Vector2(cellInfo.position.x / Cell.CELL_SIZE, cellInfo.position.y / Cell.CELL_SIZE), \
 		cellInfo.get_meta("Avd"), cellInfo.get_meta("Def"), cellInfo.get_meta("MovementCost"), cellInfo.get_meta(("TileType"))))
 		
-#	for cellData in all_map_cell_info:
-#		print(cellData.toString())
+	# Load the information for the map into the camera
+	emit_signal("mapInformationLoaded")
