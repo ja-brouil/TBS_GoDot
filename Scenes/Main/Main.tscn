@@ -13,7 +13,7 @@
 [node name="Cursor" parent="." instance=ExtResource( 2 )]
 
 [node name="PlayerUnit" parent="." instance=ExtResource( 3 )]
-position = Vector2( 19.8874, 283.493 )
+position = Vector2( 32.0641, 271.316 )
 
 [node name="GameCamera" parent="." instance=ExtResource( 4 )]
 script = ExtResource( 5 )

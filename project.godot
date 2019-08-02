@@ -9,10 +9,10 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node",
+"base": "Node2D",
 "class": "Cell",
 "language": "GDScript",
-"path": "res://Cell.gd"
+"path": "res://Scripts/Cell.gd"
 } ]
 _global_script_class_icons={
 "Cell": ""
@@ -34,7 +34,7 @@ window/stretch/mode="2d"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "vnen.tiled_importer" )
+enabled=PoolStringArray( "pixijs_spritesheet_importer", "vnen.tiled_importer" )
 
 [importer_defaults]
 

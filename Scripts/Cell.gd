@@ -1,5 +1,4 @@
-extends Node
-
+extends Node2D
 # Class to represent tiles in the game and all the information that is needed
 class_name Cell
 
@@ -7,7 +6,7 @@ class_name Cell
 const CELL_SIZE = 16
 
 # Cell info
-var position = Vector2(0,0)
+var cellPosition = Vector2(0,0)
 var avoidanceBonus = 0
 var defenseBonus = 0
 var movementCost = 1
@@ -21,8 +20,8 @@ var adjCells = []
 # UI information
 var tileName = "DEFAULT"
 
-func _init(position, avoidanceBonus, defenseBonus, movementCost, tileName):
-	self.position = position
+func _init(cellPosition, avoidanceBonus, defenseBonus, movementCost, tileName):
+	self.cellPosition = cellPosition 
 	self.avoidanceBonus = avoidanceBonus
 	self.defenseBonus = defenseBonus
 	self.movementCost = movementCost
@@ -35,5 +34,5 @@ func getOccupyingUnit():
 	return occupyingUnit	
 
 func toString():
-	return "Cell data: {position} Avoidance: {avd} DefBonus: {def} MoveCost: {mvd} OccuypingUnit: {oUnit}" \
-	.format({"position":str(position), "avd": avoidanceBonus, "def": defenseBonus, "mvd" : movementCost, "oUnit" : getOccupyingUnit()})
+	return "Cell data: {position} TileName: {tileName} Avoidance: {avd} DefBonus: {def} MoveCost: {mvd} OccuypingUnit: {oUnit}" \
+	.format({"position":str(cellPosition),"tileName": tileName, "avd": avoidanceBonus, "def": defenseBonus, "mvd" : movementCost, "oUnit" : getOccupyingUnit()})

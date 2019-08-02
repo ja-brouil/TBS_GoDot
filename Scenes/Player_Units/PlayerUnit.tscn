@@ -1,47 +1,66 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Scenes/Player_Units/PlayerUnit.gd" type="Script" id=1]
-[ext_resource path="res://assets/units/eirika/eirika copy.png" type="Texture" id=2]
+[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField13.png" type="Texture" id=2]
+[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField14.png" type="Texture" id=3]
+[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField15.png" type="Texture" id=4]
+[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField16.png" type="Texture" id=5]
+[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField9.png" type="Texture" id=6]
+[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField10.png" type="Texture" id=7]
+[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField11.png" type="Texture" id=8]
+[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField12.png" type="Texture" id=9]
+[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField17.png" type="Texture" id=10]
+[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField18.png" type="Texture" id=11]
+[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField19.png" type="Texture" id=12]
+[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField20.png" type="Texture" id=13]
+[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField5.png" type="Texture" id=14]
+[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField6.png" type="Texture" id=15]
+[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField7.png" type="Texture" id=16]
+[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField8.png" type="Texture" id=17]
+[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField1.png" type="Texture" id=18]
+[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField2.png" type="Texture" id=19]
+[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField3.png" type="Texture" id=20]
+[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField4.png" type="Texture" id=21]
 
-[sub_resource type="Animation" id=1]
-resource_name = "idle"
-loop = true
-step = 0.25
-tracks/0/type = "value"
-tracks/0/path = NodePath("e_sprite:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ Rect2( 3, 81, 16, 15 ), Rect2( 35, 81, 16, 15 ), Rect2( 67, 81, 16, 15 ), Rect2( 99, 81, 16, 15 ) ]
-}
-
-[sub_resource type="Animation" id=2]
-resource_name = "left"
-loop = true
-step = 0.25
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "Down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "Up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ) ],
+"loop": true,
+"name": "Left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "Selected",
+"speed": 5.0
+} ]
 
 [node name="PlayerUnit" type="Node2D"]
+position = Vector2( 1.46791, 13.6357 )
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_group_": true
+"_edit_group_": true,
+"_edit_horizontal_guides_": [ 1.92194 ],
+"_edit_vertical_guides_": [  ]
 }
 
-[node name="e_sprite" type="Sprite" parent="."]
-position = Vector2( 5, -3.912 )
-texture = ExtResource( 2 )
-region_enabled = true
-region_rect = Rect2( 35, 81, 16, 15 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="anim" type="AnimationPlayer" parent="."]
-anims/idle = SubResource( 1 )
-anims/left = SubResource( 2 )
-next/idle = "idle"
-next/left = "idle"
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "Idle"
+frame = 2
+playing = true
