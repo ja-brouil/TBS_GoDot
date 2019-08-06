@@ -51,7 +51,6 @@ animations = [ {
 } ]
 
 [node name="PlayerUnit" type="Node2D"]
-position = Vector2( 1.46791, 13.6357 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true,
@@ -62,5 +61,6 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "Idle"
-frame = 2
+frame = 3
 playing = true
+centered = false

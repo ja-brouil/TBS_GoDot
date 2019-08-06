@@ -30,18 +30,21 @@ func _input(event):
 	
 	if event is InputEventKey:
 		pass
-		#debug()
+#		debug()
 
 func updateCursorData():
 	# Clamp the cursor
 	self.position.x = clamp(self.position.x, 0, (get_parent().get_node("Level").map_height * Cell.CELL_SIZE) - (Cell.CELL_SIZE * 3))
 	self.position.y = clamp(self.position.y, 0, (get_parent().get_node("Level").map_width * Cell.CELL_SIZE) - Cell.CELL_SIZE)
 	
-	# check the cursor data against the cell data
-	for cellData in get_parent().get_node("Level").all_map_cell_info:
-		if cellData.cellPosition.x == self.position.x / Cell.CELL_SIZE:
-			if cellData.cellPosition.y == self.position.y / Cell.CELL_SIZE:
-				print(cellData.toString())
+#	# check the cursor data against the cell data
+	for celldata in get_parent().get_node("Level").all_map_cell_info:
+		if celldata.getPosition().x == self.position.x / Cell.CELL_SIZE:
+			if celldata.getPosition().y == self.position.y / Cell.CELL_SIZE:
+				#print(celldata.toString())
+				if celldata.occupyingUnit:
+					print("Occupied")
+
 
 func debug():
 	print("Cursor is at: ", self.position)

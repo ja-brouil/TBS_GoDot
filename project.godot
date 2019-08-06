@@ -9,7 +9,7 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node2D",
+"base": "Node",
 "class": "Cell",
 "language": "GDScript",
 "path": "res://Scripts/Cell.gd"

@@ -1,4 +1,5 @@
-extends Node2D
+extends Node
+
 # Class to represent tiles in the game and all the information that is needed
 class_name Cell
 
@@ -10,7 +11,7 @@ var cellPosition = Vector2(0,0)
 var avoidanceBonus = 0
 var defenseBonus = 0
 var movementCost = 1
-var occupyingUnit setget setNewUnit, getOccupyingUnit
+var occupyingUnit = false
 
 # Pathfinding information
 var hCost = 0
@@ -27,12 +28,10 @@ func _init(cellPosition, avoidanceBonus, defenseBonus, movementCost, tileName):
 	self.movementCost = movementCost
 	self.tileName = tileName
 
-func setNewUnit(newUnit):
-	occupyingUnit = newUnit
-
-func getOccupyingUnit():
-	return occupyingUnit	
+func getPosition() -> Vector2:
+	return cellPosition
+	
 
 func toString():
 	return "Cell data: {position} TileName: {tileName} Avoidance: {avd} DefBonus: {def} MoveCost: {mvd} OccuypingUnit: {oUnit}" \
-	.format({"position":str(cellPosition),"tileName": tileName, "avd": avoidanceBonus, "def": defenseBonus, "mvd" : movementCost, "oUnit" : getOccupyingUnit()})
+	.format({"position":str(cellPosition),"tileName": tileName, "avd": avoidanceBonus, "def": defenseBonus, "mvd" : movementCost, "oUnit" : self.occupyingUnit})
