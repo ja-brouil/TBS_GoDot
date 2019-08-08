@@ -37,13 +37,10 @@ func updateCursorData():
 	self.position.x = clamp(self.position.x, 0, (get_parent().get_node("Level").map_height * Cell.CELL_SIZE) - (Cell.CELL_SIZE * 3))
 	self.position.y = clamp(self.position.y, 0, (get_parent().get_node("Level").map_width * Cell.CELL_SIZE) - Cell.CELL_SIZE)
 	
-#	# check the cursor data against the cell data
-	for celldata in get_parent().get_node("Level").all_map_cell_info:
-		if celldata.getPosition().x == self.position.x / Cell.CELL_SIZE:
-			if celldata.getPosition().y == self.position.y / Cell.CELL_SIZE:
-				#print(celldata.toString())
-				if celldata.occupyingUnit:
-					print("Occupied")
+	# check if the cell if occupied
+	if get_parent().get_node("Level").grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE].occupyingUnit != null:
+		print(get_parent().get_node("Level").grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE].occupyingUnit)
+
 
 
 func debug():

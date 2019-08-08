@@ -3,9 +3,9 @@ extends Node2D
 # Map information
 export var map_height: int 
 export var map_width: int
-var all_map_cell_info = []
-var all_allies_location = []
-var all_enemies_location = []
+var all_allies_location = [] # Holds all ally info
+var all_enemies_location = [] # holds all enemy info
+var grid = [] # Holds all cell data
 
 # Map information has been loaded
 signal mapInformationLoaded
@@ -16,12 +16,34 @@ func _ready():
 	map_height = self.get_meta("height")
 	map_width = self.get_meta("width")
 	
+	# Start 2D Array
+	for i in map_width:
+		grid.append([])
+		for j in map_height:
+			grid[i].append(0)
+	
 	# Cell information
 	# [height, type, visible, width, Avd, Def, MovementCost, TileType] -> Tile String Names
 	var cellInfoLayer = $"CellInfo"
 	for cellInfo in cellInfoLayer.get_children():
-		all_map_cell_info.append(Cell.new(Vector2(cellInfo.position.x / Cell.CELL_SIZE, cellInfo.position.y / Cell.CELL_SIZE), \
-		cellInfo.get_meta("Avd"), cellInfo.get_meta("Def"), cellInfo.get_meta("MovementCost"), cellInfo.get_meta(("TileType"))))
+		grid[cellInfo.position.x / Cell.CELL_SIZE][cellInfo.position.y / Cell.CELL_SIZE] = Cell.new(Vector2(cellInfo.position.x / Cell.CELL_SIZE, cellInfo.position.y / Cell.CELL_SIZE), \
+		cellInfo.get_meta("Avd"), cellInfo.get_meta("Def"), cellInfo.get_meta("MovementCost"), cellInfo.get_meta(("TileType")))
+		
+	# Set Adj Cells
+	for cellArray in grid:
+		for cell in cellArray:
+			# Left
+			if cell.getPosition().x - 1 >= 0:
+				cell.adjCells.append(grid[cell.getPosition().x - 1][cell.getPosition().y])
+			# Right
+			if cell.getPosition().x + 1 < map_width / Cell.CELL_SIZE:
+				cell.adjCells.append(grid[cell.getPosition().x + 1][cell.getPosition().y])
+			# Up
+			if cell.getPosition().y - 1 >= 0:
+				cell.adjCells.append(grid[cell.getPosition().x][cell.getPosition().y - 1])
+			# Down
+			if cell.getPosition().y + 1 < map_height / Cell.CELL_SIZE:
+				cell.adjCells.append(grid[cell.getPosition().x][cell.getPosition().y + 1])
 	
 	# Load Units Information
 	var allyInfoLayer = $"Allies"
@@ -38,17 +60,15 @@ func _ready():
 	for allyCellInfo in allyInfoLayer.get_children():
 		if (allyCellInfo.get_meta("Name")) == "Eirika":
 			$"PlayerUnit".position.x = allyCellInfo.position.x
-			$"PlayerUnit".position.y = allyCellInfo.position.y -16
+			$"PlayerUnit".position.y = allyCellInfo.position.y
 	
 	all_allies_location.append($"PlayerUnit")
 	
 	for allyUnit in all_allies_location:
-		for cellData in all_map_cell_info:
-			if $"PlayerUnit".position.x / Cell.CELL_SIZE == cellData.cellPosition.x && $"PlayerUnit".position.y / Cell.CELL_SIZE == cellData.cellPosition.y:
-				cellData.occupyingUnit = true
+		grid[allyUnit.position.x / Cell.CELL_SIZE][allyUnit.position.y / Cell.CELL_SIZE].occupyingUnit = $"PlayerUnit"
 
-	
 	# TO DO Create all the enemies units
+			
 	
 	# Load the information for the map into the camera
 	emit_signal("mapInformationLoaded")

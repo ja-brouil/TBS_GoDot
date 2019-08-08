@@ -1,4 +1,4 @@
+# Represents all the units in the game
 extends Node2D
 
-func _ready():
-	pass
+var UnitMovementStats

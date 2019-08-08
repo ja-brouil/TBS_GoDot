@@ -11,7 +11,7 @@ var cellPosition = Vector2(0,0)
 var avoidanceBonus = 0
 var defenseBonus = 0
 var movementCost = 1
-var occupyingUnit = false
+var occupyingUnit = null
 
 # Pathfinding information
 var hCost = 0
