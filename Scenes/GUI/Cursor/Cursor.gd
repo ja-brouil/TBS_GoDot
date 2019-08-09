@@ -27,6 +27,8 @@ func _input(event):
 		self.position.y -= Cell.CELL_SIZE
 		updateCursorData()
 		emit_signal("cursorMoved", "up", self.position)
+	elif Input.is_action_just_released("ui_accept"):
+		acceptButton()
 	
 	if event is InputEventKey:
 		pass
@@ -40,7 +42,14 @@ func updateCursorData():
 	# check if the cell if occupied
 	if get_parent().get_node("Level").grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE].occupyingUnit != null:
 		print(get_parent().get_node("Level").grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE].occupyingUnit)
+		
 
+func acceptButton():
+	
+	print(get_parent().get_node("Level").grid[0][1].visible)
+	get_parent().get_node("Level").grid[0][1].visible = true
+	# Highlight blue, just as a test
+	#MovementCalculator.calculatePossibleMoves(get_parent().get_node("Level").grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE].occupyingUnit, get_parent().get_node("Level").grid)
 
 
 func debug():

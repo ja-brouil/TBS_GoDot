@@ -1,6 +1,18 @@
 # Contains all the statistics needed for movement for the units on the battlefield
 class_name Unit_Movement
 
+# Current Tile
+var currentTile
+
+# Tiles that you can move to
+var allowedMovement = []
+
+# Tiles that you can attack
+var allowedAttackRange = []
+
+# Tiles that you can heal
+var allowedHealRange = []
+
 # Movement variables
 var movementSteps
 
@@ -14,9 +26,13 @@ var buildingPenalty
 var riverPenalty
 var seaPenalty
 
-# Default Constructor
+# Constructor
 func _init(movementSteps, defaultPenalty, hillPenalty, forestPenalty, fortressPenalty, buildingPenalty, riverPenalty, seaPenalty):
-	pass
-
-func createEmptyUnitMovement() -> Unit_Movement:
-	return _init(5,0,0,0,0,0,0,0)
+	self.movementSteps = movementSteps
+	self.defaultPenalty = defaultPenalty
+	self.hillPenalty = hillPenalty
+	self.forestPenalty = forestPenalty
+	self.fortressPenalty = fortressPenalty
+	self.buildingPenalty = buildingPenalty
+	self.riverPenalty = riverPenalty
+	self.seaPenalty = seaPenalty

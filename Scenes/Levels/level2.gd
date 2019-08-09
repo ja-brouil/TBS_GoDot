@@ -1,11 +1,12 @@
 extends Node2D
 
 # Map information
-export var map_height: int 
-export var map_width: int
+export var map_height: int # cell size
+export var map_width: int # cell size
 var all_allies_location = [] # Holds all ally info
 var all_enemies_location = [] # holds all enemy info
 var grid = [] # Holds all cell data
+var cell = load("res://Scenes/GUI/Cell/Cell.tscn")
 
 # Map information has been loaded
 signal mapInformationLoaded
@@ -26,8 +27,12 @@ func _ready():
 	# [height, type, visible, width, Avd, Def, MovementCost, TileType] -> Tile String Names
 	var cellInfoLayer = $"CellInfo"
 	for cellInfo in cellInfoLayer.get_children():
-		grid[cellInfo.position.x / Cell.CELL_SIZE][cellInfo.position.y / Cell.CELL_SIZE] = Cell.new(Vector2(cellInfo.position.x / Cell.CELL_SIZE, cellInfo.position.y / Cell.CELL_SIZE), \
+		var map_cell_info = cell.instance()
+		map_cell_info.init(Vector2(cellInfo.position.x / Cell.CELL_SIZE, cellInfo.position.y / Cell.CELL_SIZE), \
 		cellInfo.get_meta("Avd"), cellInfo.get_meta("Def"), cellInfo.get_meta("MovementCost"), cellInfo.get_meta(("TileType")))
+		map_cell_info.set_name("map_cell")
+		add_child(map_cell_info)
+		grid[cellInfo.position.x / Cell.CELL_SIZE][cellInfo.position.y / Cell.CELL_SIZE] = map_cell_info
 		
 	# Set Adj Cells
 	for cellArray in grid:
@@ -36,33 +41,41 @@ func _ready():
 			if cell.getPosition().x - 1 >= 0:
 				cell.adjCells.append(grid[cell.getPosition().x - 1][cell.getPosition().y])
 			# Right
-			if cell.getPosition().x + 1 < map_width / Cell.CELL_SIZE:
+			if cell.getPosition().x + 1 < map_width:
 				cell.adjCells.append(grid[cell.getPosition().x + 1][cell.getPosition().y])
 			# Up
 			if cell.getPosition().y - 1 >= 0:
-				cell.adjCells.append(grid[cell.getPosition().x][cell.getPosition().y - 1])
+				var cellToAdd = grid[cell.getPosition().x][cell.getPosition().y - 1]
+				cell.adjCells.append(cellToAdd)
 			# Down
-			if cell.getPosition().y + 1 < map_height / Cell.CELL_SIZE:
+			if cell.getPosition().y + 1 < map_height:
 				cell.adjCells.append(grid[cell.getPosition().x][cell.getPosition().y + 1])
+		
+			# Add these cells to the scene
+			cell.set_name("Cell_Map")
+			add_child(cell)
+	
 	
 	# Load Units Information
+	all_allies_location.clear()
+	all_enemies_location.clear()
 	var allyInfoLayer = $"Allies"
 	var enemyInfoLayer = $"Enemies"
 	
 	# This should create all the player units -> For now, this will just move the one player unit that I have to the correct location
-	#  All Strings available
+	# All Strings available
 	#[height, type, visible, width, BonusCrit, BonusDodge, BonusHit, Class, 
 #	Consti, Defense, Health, Luck, Magic, MaxHealth, Move, Name, Res, Skill, 
 #	Speed, Str, Weapon, buildingPenalty, constiChance, defChance, defaultPenalty, forestPenalty, 
 #	fortressPenalty, hillPenalty, isAlly, luckChance, magicChance, maxHPChance, mountainPenalty, 
 #	resChance, riverPenalty, seaPenalty, skillChance, speedChance, strChance]
-
+	
 	for allyCellInfo in allyInfoLayer.get_children():
 		if (allyCellInfo.get_meta("Name")) == "Eirika":
 			$"PlayerUnit".position.x = allyCellInfo.position.x
 			$"PlayerUnit".position.y = allyCellInfo.position.y
-	
-	all_allies_location.append($"PlayerUnit")
+			all_allies_location.append($"PlayerUnit")
+			$"PlayerUnit".UnitMovementStats.currentTile = grid[$"PlayerUnit".position.x / Cell.CELL_SIZE][$"PlayerUnit".position.y / Cell.CELL_SIZE]
 	
 	for allyUnit in all_allies_location:
 		grid[allyUnit.position.x / Cell.CELL_SIZE][allyUnit.position.y / Cell.CELL_SIZE].occupyingUnit = $"PlayerUnit"

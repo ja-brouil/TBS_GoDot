@@ -1,18 +1,13 @@
-extends Control
+extends Node2D
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	# Set them to off
-	$"Blue".visible = false
-	$"Red".visible = false
-	$"Green".visible = false
+class_name MovementRangeRect
 
-func turnOn(color):
-	if color == "Red":
+func turnOn(colorName):
+	if colorName == "Red":
 		$"Red".visible = true
-	elif color == "Blue":
+	elif colorName == "Blue":
 		$"Blue".visible = true
-	elif color == "Green":
+	elif colorName == "Green":
 		$"Green".visible = true
 
 func turnOff(color):
