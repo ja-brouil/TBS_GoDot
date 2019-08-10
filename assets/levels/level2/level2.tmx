@@ -80,8 +80,8 @@
    <properties>
     <property name="Avd" type="int" value="0"/>
     <property name="Def" type="int" value="0"/>
-    <property name="MovementCost" type="int" value="1"/>
-    <property name="TileType" value="Plain"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
    </properties>
   </object>
   <object id="1801" x="80" y="272" width="16" height="16">
@@ -128,8 +128,8 @@
    <properties>
     <property name="Avd" type="int" value="0"/>
     <property name="Def" type="int" value="0"/>
-    <property name="MovementCost" type="int" value="1"/>
-    <property name="TileType" value="Plain"/>
+    <property name="MovementCost" type="int" value="100"/>
+    <property name="TileType" value="Mountain"/>
    </properties>
   </object>
   <object id="1807" x="80" y="288" width="16" height="16">
@@ -3549,7 +3549,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="Allies">
+ <objectgroup name="Allies" visible="0">
   <object id="2281" x="32" y="288" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="1"/>
@@ -3596,7 +3596,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="Enemies">
+ <objectgroup name="Enemies" visible="0">
   <object id="2276" x="80" y="256" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>

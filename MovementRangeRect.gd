@@ -10,10 +10,16 @@ func turnOn(colorName):
 	elif colorName == "Green":
 		$"Green".visible = true
 
-func turnOff(color):
-	if color == "Red":
+func turnOff(colorName):
+	if colorName == "Red":
 		$"Red".visible = false
-	elif color == "Blue":
+	elif colorName == "Blue":
 		$"Blue".visible = false
-	elif color == "Green":
+	elif colorName == "Green":
 		$"Green".visible = false
+		
+
+func turnEverythingOff():
+	$"Red".visible = false
+	$"Blue".visible = false
+	$"Green".visible = false

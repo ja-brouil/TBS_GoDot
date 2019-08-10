@@ -16,6 +16,9 @@ var allowedHealRange = []
 # Movement variables
 var movementSteps
 
+# Movement Path Queue
+var movement_queue = []
+
 # Movement Penalties
 var defaultPenalty
 var mountainPenalty
@@ -27,7 +30,7 @@ var riverPenalty
 var seaPenalty
 
 # Constructor
-func _init(movementSteps, defaultPenalty, hillPenalty, forestPenalty, fortressPenalty, buildingPenalty, riverPenalty, seaPenalty):
+func _init(movementSteps, defaultPenalty, hillPenalty, forestPenalty, fortressPenalty, buildingPenalty, riverPenalty, seaPenalty, mountainPenalty):
 	self.movementSteps = movementSteps
 	self.defaultPenalty = defaultPenalty
 	self.hillPenalty = hillPenalty
@@ -36,3 +39,4 @@ func _init(movementSteps, defaultPenalty, hillPenalty, forestPenalty, fortressPe
 	self.buildingPenalty = buildingPenalty
 	self.riverPenalty = riverPenalty
 	self.seaPenalty = seaPenalty
+	self.mountainPenalty = mountainPenalty

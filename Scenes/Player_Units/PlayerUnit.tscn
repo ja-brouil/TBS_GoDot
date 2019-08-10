@@ -1,14 +1,14 @@
 [gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Scenes/Player_Units/PlayerUnit.gd" type="Script" id=1]
-[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField5.png" type="Texture" id=2]
-[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField6.png" type="Texture" id=3]
-[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField7.png" type="Texture" id=4]
-[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField8.png" type="Texture" id=5]
-[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField1.png" type="Texture" id=6]
-[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField2.png" type="Texture" id=7]
-[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField3.png" type="Texture" id=8]
-[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField4.png" type="Texture" id=9]
+[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField1.png" type="Texture" id=2]
+[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField2.png" type="Texture" id=3]
+[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField3.png" type="Texture" id=4]
+[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField4.png" type="Texture" id=5]
+[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField5.png" type="Texture" id=6]
+[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField6.png" type="Texture" id=7]
+[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField7.png" type="Texture" id=8]
+[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField8.png" type="Texture" id=9]
 [ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField13.png" type="Texture" id=10]
 [ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField14.png" type="Texture" id=11]
 [ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField15.png" type="Texture" id=12]
@@ -26,12 +26,12 @@
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": true,
-"name": "Left",
+"name": "Selected",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
 "loop": true,
-"name": "Selected",
+"name": "Left",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
@@ -48,9 +48,15 @@ animations = [ {
 "loop": true,
 "name": "Idle",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "Highlighted",
+"speed": 5.0
 } ]
 
 [node name="PlayerUnit" type="Node2D"]
+z_index = 5
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true,
@@ -58,10 +64,10 @@ __meta__ = {
 "_edit_vertical_guides_": [  ]
 }
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+[node name="Animation" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "Idle"
-frame = 2
+frame = 1
 playing = true
 centered = false
 offset = Vector2( 0, -16 )

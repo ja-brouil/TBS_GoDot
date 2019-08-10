@@ -50,10 +50,6 @@ func _ready():
 			# Down
 			if cell.getPosition().y + 1 < map_height:
 				cell.adjCells.append(grid[cell.getPosition().x][cell.getPosition().y + 1])
-		
-			# Add these cells to the scene
-			cell.set_name("Cell_Map")
-			add_child(cell)
 	
 	
 	# Load Units Information
@@ -85,13 +81,3 @@ func _ready():
 	
 	# Load the information for the map into the camera
 	emit_signal("mapInformationLoaded")
-
-# Creates a 2D array for the map to start
-func createMap(width, height):
-	var map = []
-	
-	for x in width:
-		var col = []
-		col.resize(height)
-		map.append(col)
-	return map

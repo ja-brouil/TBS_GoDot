@@ -6,6 +6,9 @@ class_name Cell
 # Cell size constant
 const CELL_SIZE = 16
 
+# Color cell
+var color_cell_scene = load("res://Scenes/GUI/CellColors/MovementRangeRect.tscn")
+
 # Cell info
 var cellPosition = Vector2(0,0)
 var avoidanceBonus = 0
@@ -23,7 +26,7 @@ var parentTile = null
 var tileName = "DEFAULT"
 
 # Start the scene after it's been done
-func init(cellPosition, avoidanceBonus, defenseBonus, movementCost, tileName):
+func init(cellPosition, avoidanceBonus, defenseBonus, movementCost, tileName) -> void:
 	self.cellPosition = cellPosition 
 	self.avoidanceBonus = avoidanceBonus
 	self.defenseBonus = defenseBonus
@@ -33,12 +36,14 @@ func init(cellPosition, avoidanceBonus, defenseBonus, movementCost, tileName):
 	# Position
 	self.position.x = cellPosition.x * CELL_SIZE
 	self.position.y = cellPosition.y * CELL_SIZE
-	
+
+# Heuristic costs
+func get_fCost() -> int:
+	return hCost + gCost
 
 func getPosition() -> Vector2:
 	return cellPosition
 
-
-func toString():
+func toString() -> String:
 	return "Cell data: {position} TileName: {tileName} Avoidance: {avd} DefBonus: {def} MoveCost: {mvd} OccuypingUnit: {oUnit}" \
 	.format({"position":str(cellPosition),"tileName": tileName, "avd": avoidanceBonus, "def": defenseBonus, "mvd" : movementCost, "oUnit" : self.occupyingUnit})

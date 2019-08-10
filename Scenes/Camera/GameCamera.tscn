@@ -13,5 +13,6 @@ limit_right = 320
 limit_bottom = 350
 limit_smoothed = true
 smoothing_enabled = true
+smoothing_speed = 3.0
 editor_draw_limits = true
 script = ExtResource( 1 )

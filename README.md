@@ -1,30 +1,15 @@
-# PixiJS Spritesheet Importer
+# Fire Emblem GoDot 
 
-This is a plugin for [Godot Engine](https://godotengine.org) to import `AtlasTexture`s from a spritesheet made for PixiJS.
-
-These sheets can be generated using [ShoeBox](http://renderhjs.net/shoebox/) or [SpriteSheet Packer](https://amakaseev.github.io/sprite-sheet-packer/).
-
-**Note: This is compatible only with Godot 3.0 or later.**
+This is a clone of the GameBoy Advance Fire Emblem games written for Godot. This is purely for educational purposes to learn how to code using A* algorithms, building UIs and creating simple artificial intelligence.
 
 
 ## Installation
 
-Simply download it from [Godot Asset Library](https://godotengine.org/asset-library/asset/275)
+Download/pull the code locally and scan the project using GoDot. Simply hit run after
 
-Alternatively, download or clone this repository and copy the contents of the
-`addons` folder to your own project's `addons` folder.
-
-Important: Enable the plugin on the Project Settings.
-
-## Features
-
-* Import sprite sheets as AtlasTextures
-
-## Usage (once the plugin is enabled)
-1. Select the proper pixi.js settings in ShoeBox or Spritesheet Packer then save/publish the spritesheet.
-2. Copy the 2 generated files (.png and .js / .json) to your project folder
-3. Watch Godot import it automatically.
-
-## License
-
-[MIT License](LICENSE). Copyright (c) 2018 Andreas Loew / CodeAndWeb GmbH
+## To do list
+1. Finish movement algorithm
+2. Implement enemies
+3. Implement statistics
+4. Implement UI
+5. Optimize/clean up code

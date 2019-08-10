@@ -4,8 +4,8 @@
 [ext_resource path="res://Scenes/GUI/CellColors/MovementRangeRect.tscn" type="PackedScene" id=2]
 
 [node name="Cell" type="Node2D"]
-visible = false
+z_index = 2
 script = ExtResource( 1 )
 
 [node name="MovementRangeRect" parent="." instance=ExtResource( 2 )]
-visible = true
+z_index = 0

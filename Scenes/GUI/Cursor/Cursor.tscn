@@ -24,5 +24,8 @@ anims/Moving = ExtResource( 3 )
 
 [node name="StaticCursor" type="Sprite" parent="."]
 visible = false
+scale = Vector2( 1.5, 1.5 )
 z_index = 1
 texture = ExtResource( 4 )
+centered = false
+offset = Vector2( -2, -3 )
