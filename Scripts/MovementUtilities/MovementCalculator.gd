@@ -98,9 +98,8 @@ static func get_path_to_destination(Unit, target_destination, AllTiles):
 		
 		# Process Adj Tiles
 		for adjCell in current_tile.adjCells:
-			
-			# Do not process unwalkable tiles
-			if adjCell.movementCost >= 50 || closed_list.contains(adjCell):
+			# Do not process unwalkable tiles or we can't go there
+			if adjCell.movementCost >= 50 || closed_list.contains(adjCell) || !Unit.UnitMovementStats.allowedMovement.has(adjCell):
 				continue
 			
 			# Calculate Heuristic costs
@@ -111,7 +110,8 @@ static func get_path_to_destination(Unit, target_destination, AllTiles):
 				adjCell.parentTile = current_tile
 				
 				# Add to the open List
-				open_list.add_first(adjCell)
+				if !open_list.contains(adjCell):
+					open_list.add_first(adjCell)
 	
 	# Create the Pathfinding Queue
 	create_pathfinding_queue(target_destination, Unit)
@@ -126,12 +126,13 @@ static func calculate_hCost(initial_tile, destination_tile, unit, all_tiles) -> 
 	var total_horizontal_cost = 0
 	
 	# Which direction has more tiles to traverse to the destination
+	# Pick the side that is longer first
 	if starting_NodeX > starting_NodeY:
 		# North South
 		var vertical_movement = 1
-		if destination_tile.getPosition().y - destination_tile.getPosition().y < 0:
+		if initial_tile.getPosition().y - destination_tile.getPosition().y < 0:
 			vertical_movement = -1
-		elif destination_tile.getPosition().y - destination_tile.getPosition().y == 0:
+		elif initial_tile.getPosition().y - destination_tile.getPosition().y == 0:
 			vertical_movement = 0
 		
 		# Calculate the difference 
@@ -140,9 +141,9 @@ static func calculate_hCost(initial_tile, destination_tile, unit, all_tiles) -> 
 		
 		# West East
 		var horizontal_movement = 1
-		if destination_tile.getPosition().x - destination_tile.getPosition().x < 0:
+		if initial_tile.getPosition().x - destination_tile.getPosition().x < 0:
 			horizontal_movement = -1
-		elif destination_tile.getPosition().x - destination_tile.getPosition().x == 0:
+		elif initial_tile.getPosition().x - destination_tile.getPosition().x == 0:
 			horizontal_movement = 0
 		
 		# Calculate the differences
@@ -152,19 +153,19 @@ static func calculate_hCost(initial_tile, destination_tile, unit, all_tiles) -> 
 	else:
 		# West East
 		var horizontal_movement = 1
-		if destination_tile.getPosition().x - destination_tile.getPosition().x < 0:
+		if initial_tile.getPosition().x - destination_tile.getPosition().x < 0:
 			horizontal_movement = -1
-		elif destination_tile.getPosition().x - destination_tile.getPosition().x == 0:
+		elif initial_tile.getPosition().x - destination_tile.getPosition().x == 0:
 			horizontal_movement = 0
 		
 		# Calculate the differences
 		for i in range(horizontal_tile_amount(initial_tile, destination_tile)):
 			total_horizontal_cost += all_tiles[starting_NodeX + horizontal_movement][starting_NodeY].movementCost + getPenaltyCost(unit.UnitMovementStats, all_tiles[starting_NodeX + horizontal_movement][starting_NodeY].tileName)
-	# North South
+		# North South
 		var vertical_movement = 1
-		if destination_tile.getPosition().y - destination_tile.getPosition().y < 0:
+		if initial_tile.getPosition().y - destination_tile.getPosition().y < 0:
 			vertical_movement = -1
-		elif destination_tile.getPosition().y - destination_tile.getPosition().y == 0:
+		elif initial_tile.getPosition().y - destination_tile.getPosition().y == 0:
 			vertical_movement = 0
 		
 		# Calculate the difference 
@@ -186,21 +187,14 @@ static func create_pathfinding_queue(destination_cell, unit) -> void:
 	# Get the Queue
 	var MovementStatsQueue = unit.UnitMovementStats.movement_queue
 	
+	# Set next cell
 	var next_cell = destination_cell
 	var starting_cell = unit.UnitMovementStats.currentTile
 	
-	
-	for i in range(5):
+	# Work backwards until we find the destination cell
+	while next_cell != starting_cell:
 		MovementStatsQueue.push_front(next_cell)
 		next_cell = next_cell.parentTile
-	
-#	while next_cell != starting_cell:
-#		MovementStatsQueue.push_front(next_cell)
-#		next_cell = next_cell.parentTile
-	
-	# Print Path
-	for tile in MovementStatsQueue:
-		print(tile.toString())
 
 # Check if move is valid
 static func check_if_move_is_valid(destination_cell, unit) -> bool:

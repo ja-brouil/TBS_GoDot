@@ -6,7 +6,7 @@ class_name HashSet
 var array = []
 
 func add(value) -> bool:
-	if !contains(value):
+	if contains(value):
 		return false
 	array.append(value)
 	return true

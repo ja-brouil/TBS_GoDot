@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "Cell",
 "language": "GDScript",
-"path": "res://Scripts/Cell.gd"
+"path": "res://Scenes/GUI/Cell/Cell.gd"
 }, {
 "base": "Reference",
 "class": "HashSet",
@@ -27,7 +27,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "MovementRangeRect",
 "language": "GDScript",
-"path": "res://MovementRangeRect.gd"
+"path": "res://Scenes/GUI/Cell/MovementRangeRect.gd"
 }, {
 "base": "Reference",
 "class": "PriorityQueue",
@@ -37,7 +37,7 @@ _global_script_classes=[ {
 "base": "Reference",
 "class": "Unit_Movement",
 "language": "GDScript",
-"path": "res://Unit_Movement.gd"
+"path": "res://Scenes/Player_Units/Unit_Movement.gd"
 } ]
 _global_script_class_icons={
 "Cell": "",

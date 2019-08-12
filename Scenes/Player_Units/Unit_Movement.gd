@@ -18,6 +18,7 @@ var movementSteps
 
 # Movement Path Queue
 var movement_queue = []
+var is_moving = false
 
 # Movement Penalties
 var defaultPenalty
@@ -40,3 +41,9 @@ func _init(movementSteps, defaultPenalty, hillPenalty, forestPenalty, fortressPe
 	self.riverPenalty = riverPenalty
 	self.seaPenalty = seaPenalty
 	self.mountainPenalty = mountainPenalty
+
+# Get which direction you are facing for moving
+func get_direction_to_animate(current_tile, next_tile):
+	# Left
+	if (current_tile.getPosition().x - next_tile.getPosition().x > 0) && (current_tile.getPosition().y - next_tile.getPosition().y == 0):
+		pass
