@@ -38,6 +38,11 @@ _global_script_classes=[ {
 "class": "Unit_Movement",
 "language": "GDScript",
 "path": "res://Scenes/Player_Units/Unit_Movement.gd"
+}, {
+"base": "Reference",
+"class": "Unit_Movement_System",
+"language": "GDScript",
+"path": "res://Scripts/Systems/Unit_Movement_System.gd"
 } ]
 _global_script_class_icons={
 "Cell": "",
@@ -45,13 +50,14 @@ _global_script_class_icons={
 "MovementCalculator": "",
 "MovementRangeRect": "",
 "PriorityQueue": "",
-"Unit_Movement": ""
+"Unit_Movement": "",
+"Unit_Movement_System": ""
 }
 
 [application]
 
 config/name="Fire Emblem"
-run/main_scene="res://Scenes/Main/Main.tscn"
+run/main_scene="res://Scenes/Battlefield/Battlefield.tscn"
 config/icon="res://icon.png"
 
 [debug]

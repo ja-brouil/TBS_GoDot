@@ -3,7 +3,7 @@ extends Node2D
 
 # Movement
 var UnitMovementStats
-var AnimationMovement
+var animation_movement
 
 # Unit Stats
 var UnitStats
@@ -11,11 +11,9 @@ var UnitStats
 # Inventory
 var UnitInventory
 
-
 func _ready():
-	UnitMovementStats = Unit_Movement.new(5,0,0,0,0,0,0,0,0)
-
-func _process(delta):
-	# Set the movement of the unit
-	if UnitMovementStats.is_moving:
-		pass
+	# Movement Stats
+	UnitMovementStats = Unit_Movement.new(15,0,0,0,0,0,0,0,0)
+	
+	# Movement Animation
+	animation_movement = $"Animation"

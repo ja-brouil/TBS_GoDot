@@ -78,6 +78,10 @@ func _ready():
 
 	# TO DO Create all the enemies units
 			
+	# Send cell and grid information to the battlefield main so it is easily accessible
+	get_parent().grid = self.grid
+	get_parent().map_height = self.map_height
+	get_parent().map_width = self.map_width
 	
 	# Load the information for the map into the camera
 	emit_signal("mapInformationLoaded")

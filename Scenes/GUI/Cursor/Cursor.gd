@@ -57,6 +57,9 @@ func updateCursorData() -> void:
 			if get_parent().get_node("Level").grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE].occupyingUnit != null:
 				currentUnit = get_parent().get_node("Level").grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE].occupyingUnit
 				
+				# Set Global Variable
+				get_parent().set_Current_Unit_Selected(get_parent().get_node("Level").grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE].occupyingUnit)
+				
 				# Set highlight animation
 				currentUnit.get_node("Animation").animation = "Selected"
 				
@@ -67,6 +70,9 @@ func updateCursorData() -> void:
 				if currentUnit != null:
 					currentUnit.get_node("Animation").animation = "Idle"
 					currentUnit = null
+					
+					# Remove Global Unit
+					get_parent().set_Current_Unit_Selected(null)
 					
 					# Start animation of the cursor again
 					set_animation_status(true)
@@ -88,7 +94,7 @@ func acceptButton() -> void:
 			currentUnit.get_node("Animation").animation = "Highlighted"
 			
 			# Highlight ranges
-			MovementCalculator.calculatePossibleMoves(get_parent().get_node("Level").grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE].occupyingUnit, get_parent().get_node("Level").grid)
+			get_parent().movement_calculator.calculatePossibleMoves(get_parent().get_node("Level").grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE].occupyingUnit, get_parent().get_node("Level").grid)
 			
 			# Set Cursor to the move status
 			cursor_state = SELECT_MOVE_TILE
@@ -97,8 +103,8 @@ func acceptButton() -> void:
 			set_animation_status(true)
 		SELECT_MOVE_TILE:
 			# Validate if tile is in the list
-			if MovementCalculator.check_if_move_is_valid(get_parent().get_node("Level").grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE], currentUnit):
-				MovementCalculator.get_path_to_destination(currentUnit, get_parent().get_node("Level").grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE], get_parent().get_node("Level").grid)
+			if get_parent().movement_calculator.check_if_move_is_valid(get_parent().get_node("Level").grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE], currentUnit):
+				get_parent().movement_calculator.get_path_to_destination(currentUnit, get_parent().get_node("Level").grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE], get_parent().get_node("Level").grid)
 			else:
 				print("not a valid move")
 
@@ -107,7 +113,7 @@ func cancel_Button() -> void:
 	match cursor_state:
 		SELECT_MOVE_TILE:
 			# Clear all highlighted tiles
-			MovementCalculator.turn_off_all_tiles(currentUnit, get_parent().get_node("Level").grid)
+			get_parent().movement_calculator.turn_off_all_tiles(currentUnit, get_parent().get_node("Level").grid)
 			
 			# Set Cursor back to Move status and clear current unit if needed
 			cursor_state = MOVE

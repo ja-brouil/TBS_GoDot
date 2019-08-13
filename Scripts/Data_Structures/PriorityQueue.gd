@@ -19,7 +19,7 @@ func pop_last():
 	return array.pop_back()
 
 func is_empty():
-	return array.size() > 0
+	return array.size() == 0
 
 func get_size():
 	return array.size()

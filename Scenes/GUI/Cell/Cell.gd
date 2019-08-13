@@ -9,6 +9,9 @@ const CELL_SIZE = 16
 # Color cell
 var color_cell_scene = load("res://Scenes/GUI/CellColors/MovementRangeRect.tscn")
 
+# BFS Search
+var movement_processed = false
+
 # Cell info
 var cellPosition = Vector2(0,0)
 var avoidanceBonus = 0

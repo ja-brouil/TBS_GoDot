@@ -1,8 +1,17 @@
 # Movement Calculator for units
+# Calculates which tiles you can move, attack and heal
+# Calculates using A* which is the shortest path to the target cell
 class_name MovementCalculator
 
+# Reference 
+var battlefield
+
+# Constructor
+func _init(battlefield):
+	self.battlefield = battlefield
+
 # Calculate Movement Blue Squares
-static func calculatePossibleMoves(Unit, AllTiles) -> void:
+func calculatePossibleMoves(Unit, AllTiles) -> void:
 	# Clear the allowed tiles before calculation
 	Unit.UnitMovementStats.allowedMovement.clear()
 	Unit.UnitMovementStats.allowedAttackRange.clear()
@@ -16,7 +25,7 @@ static func calculatePossibleMoves(Unit, AllTiles) -> void:
 		AllTiles[blueTile.getPosition().x][blueTile.getPosition().y].get_node("MovementRangeRect").turnOn("Blue")
 
 # Recursive function to find all movement tiles
-static func processTile(initialTile, unit_movement, moveSteps, unit) -> void:
+func processTile(initialTile, unit_movement, moveSteps, unit) -> void:
 	# Add initial tile
 	unit_movement.allowedMovement.append(initialTile)
 	
@@ -31,7 +40,7 @@ static func processTile(initialTile, unit_movement, moveSteps, unit) -> void:
 			processTile(adjTile, unit_movement, next_Move_Cost, unit)
 
 # Returns the penalty cost associated with the unit's class for moving across different tiles
-static func getPenaltyCost(Unit_Movement, Cell_Type) -> int:
+func getPenaltyCost(Unit_Movement, Cell_Type) -> int:
 	match Cell_Type:
 		"Plain" || "Road" || "Bridge" || "Throne":
 			return Unit_Movement.defaultPenalty
@@ -54,7 +63,7 @@ static func getPenaltyCost(Unit_Movement, Cell_Type) -> int:
 			return 0
 
 # Turn on or off all tiles
-static func turn_off_all_tiles(Unit, AllTiles) -> void:
+func turn_off_all_tiles(Unit, AllTiles) -> void:
 	# Turn off blue
 	for blueTile in Unit.UnitMovementStats.allowedMovement:
 		AllTiles[blueTile.getPosition().x][blueTile.getPosition().y].get_node("MovementRangeRect").turnOff("Blue")
@@ -63,7 +72,7 @@ static func turn_off_all_tiles(Unit, AllTiles) -> void:
 	# Turn off Green -> TO DO
 
 # Find the shortest path to the target destination | This uses the A* algorithm
-static func get_path_to_destination(Unit, target_destination, AllTiles):
+func get_path_to_destination(Unit, target_destination, AllTiles):
 	# Clear Tile statistics first
 	for tile_array in AllTiles:
 		for tile in tile_array:
@@ -85,7 +94,7 @@ static func get_path_to_destination(Unit, target_destination, AllTiles):
 	open_list.add_first(Unit.UnitMovementStats.currentTile)
 	
 	# Process Tiles until the open list is empty
-	while open_list.get_size() > 0:
+	while !open_list.is_empty():
 		# Remove the first tile in the list and add it to the closed list
 		current_tile = open_list.pop_front()
 		closed_list.add(current_tile)
@@ -116,9 +125,8 @@ static func get_path_to_destination(Unit, target_destination, AllTiles):
 	# Create the Pathfinding Queue
 	create_pathfinding_queue(target_destination, Unit)
 
-
 # Calculates the H Costs based on how far you need to go
-static func calculate_hCost(initial_tile, destination_tile, unit, all_tiles) -> int:
+func calculate_hCost(initial_tile, destination_tile, unit, all_tiles) -> int:
 	var MovementStats = unit.UnitMovementStats
 	var starting_NodeX = initial_tile.getPosition().x
 	var starting_NodeY = initial_tile.getPosition().y
@@ -161,6 +169,7 @@ static func calculate_hCost(initial_tile, destination_tile, unit, all_tiles) -> 
 		# Calculate the differences
 		for i in range(horizontal_tile_amount(initial_tile, destination_tile)):
 			total_horizontal_cost += all_tiles[starting_NodeX + horizontal_movement][starting_NodeY].movementCost + getPenaltyCost(unit.UnitMovementStats, all_tiles[starting_NodeX + horizontal_movement][starting_NodeY].tileName)
+		
 		# North South
 		var vertical_movement = 1
 		if initial_tile.getPosition().y - destination_tile.getPosition().y < 0:
@@ -175,15 +184,15 @@ static func calculate_hCost(initial_tile, destination_tile, unit, all_tiles) -> 
 	return total_horizontal_cost + total_vertical_cost
 
 # Returns how many tiles are between the target and initial for vertical amount
-static func vertical_tile_amount(initial_cell, destination_cell) -> int:
+func vertical_tile_amount(initial_cell, destination_cell) -> int:
 	return abs(initial_cell.getPosition().y - destination_cell.getPosition().y) as int
 
 # Returns how many tiles are between the target and initial for horizontal amount
-static func horizontal_tile_amount(initial_cell, destination_cell) -> int:
+func horizontal_tile_amount(initial_cell, destination_cell) -> int:
 	return abs(initial_cell.getPosition().x - destination_cell.getPosition().x) as int
 
 # Create the pathfinding queue needed for the unit to move there
-static func create_pathfinding_queue(destination_cell, unit) -> void:
+func create_pathfinding_queue(destination_cell, unit) -> void:
 	# Get the Queue
 	var MovementStatsQueue = unit.UnitMovementStats.movement_queue
 	
@@ -195,7 +204,10 @@ static func create_pathfinding_queue(destination_cell, unit) -> void:
 	while next_cell != starting_cell:
 		MovementStatsQueue.push_front(next_cell)
 		next_cell = next_cell.parentTile
+		
+	# Start the unit movement
+	battlefield.unit_movement_system.is_moving = true
 
 # Check if move is valid
-static func check_if_move_is_valid(destination_cell, unit) -> bool:
+func check_if_move_is_valid(destination_cell, unit) -> bool:
 	return unit.UnitMovementStats.allowedMovement.has(destination_cell)
