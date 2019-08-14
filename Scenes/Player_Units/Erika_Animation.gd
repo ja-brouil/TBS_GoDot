@@ -3,6 +3,15 @@ extends AnimatedSprite
 # This class controls which direction the unit should be facing based on the first and next cell
 export var movement_animation_speed = 5
 
+func _process(delta):
+	# Fix Selected offset
+	if animation == "Selected":
+		flip_h = false
+		offset.x = -2
+	elif animation == "Idle":
+		flip_h = false
+		offset.x = 0
+
 # Returns the direction that the unit should be facing
 func get_direction_to_face(starting_cell, destination_cell):
 	# Right

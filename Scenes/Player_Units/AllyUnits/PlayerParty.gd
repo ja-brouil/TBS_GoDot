@@ -1,6 +1,7 @@
 extends Node2D
 
-# Controls who is currently in the party of the player
+# Controls who is currently in the party of the playe
+var player_units = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

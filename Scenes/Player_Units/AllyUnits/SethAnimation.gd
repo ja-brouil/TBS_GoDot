@@ -7,6 +7,9 @@ func _process(delta):
 	if animation == "Highlighted":
 		flip_h = true
 		offset.x = -14
+	elif animation == "Idle":
+		flip_h = false
+		offset.x = -2.5
 
 # Returns the direction that the unit should be facing
 func get_direction_to_face(starting_cell, destination_cell):

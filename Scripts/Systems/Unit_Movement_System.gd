@@ -45,8 +45,8 @@ func update(delta):
 		# Stop moving
 		is_moving = false
 		
-		# Set the new current tile
-		unit.UnitMovementStats.currentTile.occupyingUnit = null
+		# Set the new current tile and update the world tiles
 		unit.UnitMovementStats.currentTile = destination_cell
 		unit.UnitMovementStats.currentTile.occupyingUnit = unit
 		
+		emit_signal("unit_finished_moving")

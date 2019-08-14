@@ -19,6 +19,9 @@ var movementSteps
 # Movement Path Queue
 var movement_queue = []
 
+# Allow Ally Movement
+var is_ally
+
 # Movement Penalties
 var defaultPenalty
 var mountainPenalty
@@ -40,3 +43,4 @@ func _init(movementSteps, defaultPenalty, hillPenalty, forestPenalty, fortressPe
 	self.riverPenalty = riverPenalty
 	self.seaPenalty = seaPenalty
 	self.mountainPenalty = mountainPenalty
+	is_ally = true

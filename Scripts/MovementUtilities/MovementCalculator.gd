@@ -32,23 +32,31 @@ func calculatePossibleMoves(Unit, AllTiles) -> void:
 
 # Process all the tiles to find what is movable to
 func processTile(initialTile, unit_movement, moveSteps, unit):
+	# Add first tile to the queue
 	queue.append([moveSteps, initialTile])
-
+	
+	# Process queue until it is empty
 	while !queue.empty():
 		# Pop the first tile
 		var tile_to_check = queue.pop_front()
-
+	
 		# Add tile to allowed movement and set visited status to true
 		unit_movement.allowedMovement.append(tile_to_check[1])
 		tile_to_check[1].isVisited = true
-
+	
 		# Get the next cost
 		for adjTile in tile_to_check[1].adjCells:
 			var next_cost = tile_to_check[0] - adjTile.movementCost - getPenaltyCost(unit_movement, adjTile.tileName)
 			
-			# Do not process tiles that we have already seen
+			# Do not process tiles that we have already seen or if we cannot get there
 			if next_cost >= 0 && !adjTile.isVisited:
-				queue.append([next_cost, adjTile])
+				# Is the tile occupied? -> Tile is not occupied, process right away
+				if adjTile.occupyingUnit == null:
+					queue.append([next_cost, adjTile])
+				else:
+					# Tile is occupied -> Check if it's an ally (or enemy for enemy)
+					if adjTile.occupyingUnit.UnitMovementStats.is_ally == unit_movement.is_ally:
+						queue.append([next_cost, adjTile])
 
 # Returns the penalty cost associated with the unit's class for moving across different tiles
 func getPenaltyCost(Unit_Movement, Cell_Type) -> int:
@@ -112,7 +120,6 @@ func get_path_to_destination(Unit, target_destination, AllTiles):
 
 		# Check if we have reached our destination
 		if current_tile == target_destination:
-			print("Destination has been found")
 			break
 		
 		# Process Adj Tiles
@@ -131,7 +138,7 @@ func get_path_to_destination(Unit, target_destination, AllTiles):
 				# Add to the open List
 				if !open_list.contains(adjCell):
 					open_list.add_first(adjCell)
-	
+					
 	# Create the Pathfinding Queue
 	create_pathfinding_queue(target_destination, Unit)
 
@@ -144,7 +151,6 @@ func calculate_hCost(initial_tile, destination_tile, unit, all_tiles) -> int:
 	var total_horizontal_cost = 0
 	
 	# Caculate all the tiles using manhattan distance how far you need to go to get to the target destination
-	
 	# North South
 	var vertical_movement
 	if initial_tile.getPosition().y - destination_tile.getPosition().y < 0:
@@ -186,11 +192,16 @@ func create_pathfinding_queue(destination_cell, unit) -> void:
 	while next_cell != starting_cell:
 		MovementStatsQueue.push_front(next_cell)
 		next_cell = next_cell.parentTile
-	
 
 # Check if move is valid
 func check_if_move_is_valid(destination_cell, unit) -> bool:
-	return unit.UnitMovementStats.allowedMovement.has(destination_cell)
+	# Cell is not part of the allowed moveset
+	if !unit.UnitMovementStats.allowedMovement.has(destination_cell):
+		return false
+	# Is the cell not occupied by yourself?
+	if destination_cell.occupyingUnit != null && destination_cell.occupyingUnit != unit:
+		return false
+	return true
 
 # Reset grid values
 func reset_grid_values():

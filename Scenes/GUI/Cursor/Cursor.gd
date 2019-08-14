@@ -53,6 +53,12 @@ func updateCursorData() -> void:
 	# Move Mode
 	match cursor_state:
 		MOVE:
+			# Set Animation status of unit if not null -> This is if you go from one cell to another and both are adj and occupied
+			if currentUnit != null:
+					currentUnit.get_node("Animation").animation = "Idle"
+					currentUnit = null
+					set_animation_status(true)
+			
 			# check if the cell if occupied
 			if get_parent().get_node("Level").grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE].occupyingUnit != null:
 				currentUnit = get_parent().get_node("Level").grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE].occupyingUnit
@@ -104,7 +110,18 @@ func acceptButton() -> void:
 		SELECT_MOVE_TILE:
 			# Validate if tile is in the list
 			if get_parent().movement_calculator.check_if_move_is_valid(get_parent().get_node("Level").grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE], currentUnit):
+				
+				# Get the path to the tile
 				get_parent().movement_calculator.get_path_to_destination(currentUnit, get_parent().get_node("Level").grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE], get_parent().get_node("Level").grid)
+				
+				# Check if we are going to the same tile
+				if get_parent().get_node("Level").grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE] == currentUnit.UnitMovementStats.currentTile:
+					currentUnit.UnitMovementStats.movement_queue.push_front(get_parent().get_node("Level").grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE])
+				
+				# Remove the unit's occupied status on the grid
+				currentUnit.UnitMovementStats.currentTile.occupyingUnit = null
+				
+				# Start moving the unit
 				get_parent().unit_movement_system.is_moving = true
 			else:
 				print("not a valid move")
