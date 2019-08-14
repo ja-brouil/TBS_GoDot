@@ -6,6 +6,9 @@ class_name MovementCalculator
 # Reference 
 var battlefield
 
+# BFS
+var queue = []
+
 # Constructor
 func _init(battlefield):
 	self.battlefield = battlefield
@@ -17,27 +20,35 @@ func calculatePossibleMoves(Unit, AllTiles) -> void:
 	Unit.UnitMovementStats.allowedAttackRange.clear()
 	Unit.UnitMovementStats.allowedHealRange.clear()
 	
+	# Reset Grid values
+	reset_grid_values()
+	
 	# Process Tiles
 	processTile(Unit.UnitMovementStats.currentTile, Unit.UnitMovementStats, Unit.UnitMovementStats.movementSteps, Unit)
-#
+	
 	# Light all the blue tiles -> Change this later to check if the unit has a healing ability and turn on green tiles
 	for blueTile in Unit.UnitMovementStats.allowedMovement:
 		AllTiles[blueTile.getPosition().x][blueTile.getPosition().y].get_node("MovementRangeRect").turnOn("Blue")
 
-# Recursive function to find all movement tiles
-func processTile(initialTile, unit_movement, moveSteps, unit) -> void:
-	# Add initial tile
-	unit_movement.allowedMovement.append(initialTile)
-	
-	# Process the adj tiles
-	for adjTile in initialTile.adjCells:
-		# Calculate the cost of moving to the next tile
-		var next_Move_Cost = moveSteps - adjTile.movementCost - getPenaltyCost(unit_movement, adjTile.tileName)
-		
-		# Do we have enough move to reach the next tile?
-		if next_Move_Cost >= 0:
-			# Allow passage through allied units # Add this later
-			processTile(adjTile, unit_movement, next_Move_Cost, unit)
+# Process all the tiles to find what is movable to
+func processTile(initialTile, unit_movement, moveSteps, unit):
+	queue.append([moveSteps, initialTile])
+
+	while !queue.empty():
+		# Pop the first tile
+		var tile_to_check = queue.pop_front()
+
+		# Add tile to allowed movement and set visited status to true
+		unit_movement.allowedMovement.append(tile_to_check[1])
+		tile_to_check[1].isVisited = true
+
+		# Get the next cost
+		for adjTile in tile_to_check[1].adjCells:
+			var next_cost = tile_to_check[0] - adjTile.movementCost - getPenaltyCost(unit_movement, adjTile.tileName)
+			
+			# Do not process tiles that we have already seen
+			if next_cost >= 0 && !adjTile.isVisited:
+				queue.append([next_cost, adjTile])
 
 # Returns the penalty cost associated with the unit's class for moving across different tiles
 func getPenaltyCost(Unit_Movement, Cell_Type) -> int:
@@ -98,8 +109,7 @@ func get_path_to_destination(Unit, target_destination, AllTiles):
 		# Remove the first tile in the list and add it to the closed list
 		current_tile = open_list.pop_front()
 		closed_list.add(current_tile)
-		
-		
+
 		# Check if we have reached our destination
 		if current_tile == target_destination:
 			print("Destination has been found")
@@ -133,63 +143,35 @@ func calculate_hCost(initial_tile, destination_tile, unit, all_tiles) -> int:
 	var total_vertical_cost = 0
 	var total_horizontal_cost = 0
 	
-	# Which direction has more tiles to traverse to the destination
-	# Pick the side that is longer first
-	if starting_NodeX > starting_NodeY:
-		# North South
-		var vertical_movement = 1
-		if initial_tile.getPosition().y - destination_tile.getPosition().y < 0:
-			vertical_movement = -1
-		elif initial_tile.getPosition().y - destination_tile.getPosition().y == 0:
-			vertical_movement = 0
-		
-		# Calculate the difference 
-		for i in range(vertical_tile_amount(initial_tile, destination_tile)):
-			total_vertical_cost += all_tiles[starting_NodeX][starting_NodeY + vertical_movement].movementCost + getPenaltyCost(MovementStats, all_tiles[starting_NodeX][starting_NodeY + vertical_movement].tileName)
-		
-		# West East
-		var horizontal_movement = 1
-		if initial_tile.getPosition().x - destination_tile.getPosition().x < 0:
-			horizontal_movement = -1
-		elif initial_tile.getPosition().x - destination_tile.getPosition().x == 0:
-			horizontal_movement = 0
-		
-		# Calculate the differences
-		for i in range(horizontal_tile_amount(initial_tile, destination_tile)):
-			total_horizontal_cost += all_tiles[starting_NodeX + horizontal_movement][starting_NodeY].movementCost + getPenaltyCost(MovementStats, all_tiles[starting_NodeX + horizontal_movement][starting_NodeY].tileName)
-		
-	else:
-		# West East
-		var horizontal_movement = 1
-		if initial_tile.getPosition().x - destination_tile.getPosition().x < 0:
-			horizontal_movement = -1
-		elif initial_tile.getPosition().x - destination_tile.getPosition().x == 0:
-			horizontal_movement = 0
-		
-		# Calculate the differences
-		for i in range(horizontal_tile_amount(initial_tile, destination_tile)):
-			total_horizontal_cost += all_tiles[starting_NodeX + horizontal_movement][starting_NodeY].movementCost + getPenaltyCost(unit.UnitMovementStats, all_tiles[starting_NodeX + horizontal_movement][starting_NodeY].tileName)
-		
-		# North South
-		var vertical_movement = 1
-		if initial_tile.getPosition().y - destination_tile.getPosition().y < 0:
-			vertical_movement = -1
-		elif initial_tile.getPosition().y - destination_tile.getPosition().y == 0:
-			vertical_movement = 0
-		
-		# Calculate the difference 
-		for i in range(vertical_tile_amount(initial_tile, destination_tile)):
-			total_vertical_cost += all_tiles[starting_NodeX][starting_NodeY + vertical_movement].movementCost + getPenaltyCost(unit.UnitMovementStats, all_tiles[starting_NodeX][starting_NodeY + vertical_movement].tileName)
+	# Caculate all the tiles using manhattan distance how far you need to go to get to the target destination
+	
+	# North South
+	var vertical_movement
+	if initial_tile.getPosition().y - destination_tile.getPosition().y < 0:
+		vertical_movement = -1
+		for i in range(initial_tile.getPosition().y, destination_tile.getPosition().y, vertical_movement):
+			total_vertical_cost += all_tiles[starting_NodeX][i].movementCost + getPenaltyCost(MovementStats, all_tiles[starting_NodeX][i].tileName)
+	elif initial_tile.getPosition().y - destination_tile.getPosition().y > 0:
+		vertical_movement = 1
+		for i in range(initial_tile.getPosition().y, destination_tile.getPosition().y, vertical_movement):
+			total_vertical_cost += all_tiles[starting_NodeX][i].movementCost + getPenaltyCost(MovementStats, all_tiles[starting_NodeX][i].tileName)
+	elif initial_tile.getPosition().y - destination_tile.getPosition().y == 0:
+		total_vertical_cost = 0
+	
+	# West East
+	var horizontal_movement
+	if initial_tile.getPosition().x - destination_tile.getPosition().x < 0:
+		horizontal_movement = -1
+		for i in range(initial_tile.getPosition().x, destination_tile.getPosition().x, horizontal_movement):
+			total_horizontal_cost += all_tiles[i][starting_NodeY].movementCost + getPenaltyCost(MovementStats, all_tiles[i][starting_NodeY].tileName)
+	elif initial_tile.getPosition().x - destination_tile.getPosition().y > 0:
+		horizontal_movement = 1
+		for i in range(initial_tile.getPosition().x, destination_tile.getPosition().x, horizontal_movement):
+			total_horizontal_cost += all_tiles[i][starting_NodeY].movementCost + getPenaltyCost(MovementStats, all_tiles[i][starting_NodeY].tileName)
+	elif initial_tile.getPosition().x - destination_tile.getPosition().x == 0:
+		total_horizontal_cost = 0
 	
 	return total_horizontal_cost + total_vertical_cost
-
-# Returns how many tiles are between the target and initial for vertical amount
-func vertical_tile_amount(initial_cell, destination_cell) -> int:
-	return abs(initial_cell.getPosition().y - destination_cell.getPosition().y) as int
-
-# Returns how many tiles are between the target and initial for horizontal amount
-func horizontal_tile_amount(initial_cell, destination_cell) -> int:
-	return abs(initial_cell.getPosition().x - destination_cell.getPosition().x) as int
 
 # Create the pathfinding queue needed for the unit to move there
 func create_pathfinding_queue(destination_cell, unit) -> void:
@@ -204,10 +186,16 @@ func create_pathfinding_queue(destination_cell, unit) -> void:
 	while next_cell != starting_cell:
 		MovementStatsQueue.push_front(next_cell)
 		next_cell = next_cell.parentTile
-		
-	# Start the unit movement
-	battlefield.unit_movement_system.is_moving = true
+	
 
 # Check if move is valid
 func check_if_move_is_valid(destination_cell, unit) -> bool:
 	return unit.UnitMovementStats.allowedMovement.has(destination_cell)
+
+# Reset grid values
+func reset_grid_values():
+	# Reset the Grid Values
+	for tile_array in battlefield.grid:
+		for tile in tile_array:
+			tile.parentTile = null
+			tile.isVisited = false

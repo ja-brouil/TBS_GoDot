@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node2D",
+"class": "Battlefield_Unit",
+"language": "GDScript",
+"path": "res://Scenes/Player_Units/PlayerUnit.gd"
+}, {
+"base": "Node2D",
 "class": "Cell",
 "language": "GDScript",
 "path": "res://Scenes/GUI/Cell/Cell.gd"
@@ -45,6 +50,7 @@ _global_script_classes=[ {
 "path": "res://Scripts/Systems/Unit_Movement_System.gd"
 } ]
 _global_script_class_icons={
+"Battlefield_Unit": "",
 "Cell": "",
 "HashSet": "",
 "MovementCalculator": "",
@@ -62,6 +68,7 @@ config/icon="res://icon.png"
 
 [debug]
 
+settings/fps/force_fps=60
 gdscript/warnings/enable=false
 
 [display]
@@ -74,7 +81,7 @@ window/stretch/mode="2d"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "pixijs_spritesheet_importer", "vnen.tiled_importer" )
+enabled=PoolStringArray( "vnen.tiled_importer" )
 
 [importer_defaults]
 

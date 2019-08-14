@@ -68,13 +68,20 @@ func _ready():
 	
 	for allyCellInfo in allyInfoLayer.get_children():
 		if (allyCellInfo.get_meta("Name")) == "Eirika":
-			$"PlayerUnit".position.x = allyCellInfo.position.x
-			$"PlayerUnit".position.y = allyCellInfo.position.y
-			all_allies_location.append($"PlayerUnit")
-			$"PlayerUnit".UnitMovementStats.currentTile = grid[$"PlayerUnit".position.x / Cell.CELL_SIZE][$"PlayerUnit".position.y / Cell.CELL_SIZE]
+			$"PlayerParty".get_node("Eirika").position.x = allyCellInfo.position.x
+			$"PlayerParty".get_node("Eirika").position.y = allyCellInfo.position.y
+			all_allies_location.append($"PlayerParty".get_node("Eirika"))
+			$"PlayerParty".get_node("Eirika").UnitMovementStats.currentTile = grid[$"PlayerParty".get_node("Eirika").position.x / Cell.CELL_SIZE][$"PlayerParty".get_node("Eirika").position.y / Cell.CELL_SIZE]
+		
+		if (allyCellInfo.get_meta("Name")) == "Seth":
+			$"PlayerParty".get_node("Seth").position.x = allyCellInfo.position.x
+			$"PlayerParty".get_node("Seth").position.y = allyCellInfo.position.y
+			all_allies_location.append($"PlayerParty".get_node("Seth"))
+			$"PlayerParty".get_node("Seth").UnitMovementStats.currentTile = grid[$"PlayerParty".get_node("Seth").position.x / Cell.CELL_SIZE][$"PlayerParty".get_node("Seth").position.y / Cell.CELL_SIZE]
 	
-	for allyUnit in all_allies_location:
-		grid[allyUnit.position.x / Cell.CELL_SIZE][allyUnit.position.y / Cell.CELL_SIZE].occupyingUnit = $"PlayerUnit"
+	# Set the occuyping units to the correct cells
+	grid[$"PlayerParty".get_node("Eirika").position.x / Cell.CELL_SIZE][$"PlayerParty".get_node("Eirika").position.y / Cell.CELL_SIZE].occupyingUnit = $"PlayerParty".get_node("Eirika")
+	grid[$"PlayerParty".get_node("Seth").position.x / Cell.CELL_SIZE][$"PlayerParty".get_node("Seth").position.y / Cell.CELL_SIZE].occupyingUnit = $"PlayerParty".get_node("Seth")
 
 	# TO DO Create all the enemies units
 			

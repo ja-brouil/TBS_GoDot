@@ -105,6 +105,7 @@ func acceptButton() -> void:
 			# Validate if tile is in the list
 			if get_parent().movement_calculator.check_if_move_is_valid(get_parent().get_node("Level").grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE], currentUnit):
 				get_parent().movement_calculator.get_path_to_destination(currentUnit, get_parent().get_node("Level").grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE], get_parent().get_node("Level").grid)
+				get_parent().unit_movement_system.is_moving = true
 			else:
 				print("not a valid move")
 

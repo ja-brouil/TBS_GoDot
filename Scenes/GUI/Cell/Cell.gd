@@ -24,6 +24,7 @@ var hCost = 0
 var gCost = 0
 var adjCells = []
 var parentTile = null
+var isVisited = false
 
 # UI information
 var tileName = "DEFAULT"
