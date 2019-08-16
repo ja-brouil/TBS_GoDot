@@ -1,26 +1,20 @@
- # Controls the movement system for the units
+extends Node
+
+# Controls the movement system for the units
 class_name Unit_Movement_System
 
 # On/off
-var is_moving
-var battlefield
-
-# Signal for camera update
-signal unit_moved
+var is_moving = false
 
 # Update the world info
 signal unit_finished_moving
 
-func _init(battlefield):
-	is_moving = false
-	self.battlefield = battlefield
-
-func update(delta):
+func _process(delta):
 	if !is_moving:
 		return
 	
 	# Variables needed to move the units
-	var unit = battlefield.get_Current_Unit_Selected()
+	var unit = get_parent().get_parent().get_Current_Unit_Selected()
 	var starting_cell = unit.UnitMovementStats.currentTile
 	var destination_cell = unit.UnitMovementStats.movement_queue.front()
 	

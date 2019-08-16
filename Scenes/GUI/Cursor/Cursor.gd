@@ -3,6 +3,9 @@ extends Node2D
 # Signal for camera and other UI elements to update
 signal cursorMoved
 
+# Turn off UI elements when the unit starts moving
+signal unit_started_moving
+
 # Holds current unit selected
 var currentUnit
 
@@ -58,6 +61,8 @@ func updateCursorData() -> void:
 					currentUnit.get_node("Animation").animation = "Idle"
 					currentUnit = null
 					set_animation_status(true)
+					# Remove Global Unit
+					get_parent().set_Current_Unit_Selected(null)
 			
 			# check if the cell if occupied
 			if get_parent().get_node("Level").grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE].occupyingUnit != null:
@@ -122,9 +127,12 @@ func acceptButton() -> void:
 				currentUnit.UnitMovementStats.currentTile.occupyingUnit = null
 				
 				# Start moving the unit
-				get_parent().unit_movement_system.is_moving = true
+				get_parent().get_node("Battle_Systems/Unit_Movement_System").is_moving = true
+				
+				# Emit Signal to turn off Battlefield UI
+				emit_signal("unit_started_moving")
 			else:
-				print("not a valid move")
+				print("Not a valid move")
 
 # Cancel Button
 func cancel_Button() -> void:

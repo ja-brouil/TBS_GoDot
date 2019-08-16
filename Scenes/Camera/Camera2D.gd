@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name MainCamera
+
 const CAMERA_CURSOR_DIFFERENTIAL_FACTOR = 3
 const CAMERA_WIDTH = 240
 const CAMERA_HEIGTH = 160
@@ -7,7 +9,7 @@ var cameraNode
 
 # Update the camera on cursor movement
 func _on_Cursor_cursorMoved(direction, cursor_position):
-	cameraNode = $"Camera2D"
+	cameraNode = $"MainCamera"
 	match direction:
 		"up":
 			if abs(cameraNode.position.y - cursor_position.y) <= (Cell.CELL_SIZE * CAMERA_CURSOR_DIFFERENTIAL_FACTOR):
@@ -30,7 +32,7 @@ func _on_Cursor_cursorMoved(direction, cursor_position):
 
 # Sets the parameters for the maximum camera movement once the level is loaded
 func _on_Level_mapInformationLoaded():
-	cameraNode = $"Camera2D"
+	cameraNode = $"MainCamera"
 	cameraNode.limit_bottom = get_parent().get_node("Level").map_width * Cell.CELL_SIZE
 	cameraNode.limit_right = get_parent().get_node("Level").map_height * Cell.CELL_SIZE - 32
 	

@@ -11,12 +11,11 @@ var turn_manager
 
 # Start battlefield game
 func _ready():
-	unit_movement_system = Unit_Movement_System.new(self)
 	movement_calculator = MovementCalculator.new(self)
 
 # Run Systems
 func _process(delta):
-	unit_movement_system.update(delta)
+	pass
 
 #######################
 #BATTLEFIELD VARIABLES#

@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Data_Structures/HashSet.gd"
 }, {
+"base": "Node2D",
+"class": "MainCamera",
+"language": "GDScript",
+"path": "res://Scenes/Camera/Camera2D.gd"
+}, {
 "base": "Reference",
 "class": "MovementCalculator",
 "language": "GDScript",
@@ -44,7 +49,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scenes/Player_Units/Unit_Movement.gd"
 }, {
-"base": "Reference",
+"base": "Node",
 "class": "Unit_Movement_System",
 "language": "GDScript",
 "path": "res://Scripts/Systems/Unit_Movement_System.gd"
@@ -53,6 +58,7 @@ _global_script_class_icons={
 "Battlefield_Unit": "",
 "Cell": "",
 "HashSet": "",
+"MainCamera": "",
 "MovementCalculator": "",
 "MovementRangeRect": "",
 "PriorityQueue": "",
