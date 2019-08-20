@@ -68,8 +68,8 @@ func _ready():
 	
 	for allyCellInfo in allyInfoLayer.get_children():
 		if (allyCellInfo.get_meta("Name")) == "Eirika":
-			$"PlayerParty".get_node("Eirika").position.x = allyCellInfo.position.x
-			$"PlayerParty".get_node("Eirika").position.y = allyCellInfo.position.y
+			$"PlayerParty/Eirika".position.x = allyCellInfo.position.x
+			$"PlayerParty/Eirika".position.y = allyCellInfo.position.y
 			all_allies_location.append($"PlayerParty".get_node("Eirika"))
 			$"PlayerParty".get_node("Eirika").UnitMovementStats.currentTile = grid[$"PlayerParty".get_node("Eirika").position.x / Cell.CELL_SIZE][$"PlayerParty".get_node("Eirika").position.y / Cell.CELL_SIZE]
 		
@@ -83,7 +83,14 @@ func _ready():
 	grid[$"PlayerParty".get_node("Eirika").position.x / Cell.CELL_SIZE][$"PlayerParty".get_node("Eirika").position.y / Cell.CELL_SIZE].occupyingUnit = $"PlayerParty".get_node("Eirika")
 	grid[$"PlayerParty".get_node("Seth").position.x / Cell.CELL_SIZE][$"PlayerParty".get_node("Seth").position.y / Cell.CELL_SIZE].occupyingUnit = $"PlayerParty".get_node("Seth")
 
-	# TO DO Create all the enemies units
+	# Create Enemy Units -> Rewrite this area later
+	var enemyList = enemyInfoLayer.get_children()
+	$"EnemyParty/Bandit".position.x = enemyList[1].position.x
+	$"EnemyParty/Bandit".position.y = enemyList[1].position.y
+	$"EnemyParty/Bandit2".position.x = enemyList[2].position.x
+	$"EnemyParty/Bandit2".position.y = enemyList[2].position.y
+	
+	
 			
 	# Send cell and grid information to the battlefield main so it is easily accessible
 	get_parent().grid = self.grid

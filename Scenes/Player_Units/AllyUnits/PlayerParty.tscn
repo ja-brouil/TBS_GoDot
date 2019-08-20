@@ -16,7 +16,6 @@ position = Vector2( 20.0932, 20.615 )
 [node name="Animation" type="AnimatedSprite" parent="Eirika"]
 frames = ExtResource( 3 )
 animation = "Idle"
-frame = 1
 playing = true
 centered = false
 offset = Vector2( 0, -16 )
@@ -28,7 +27,6 @@ position = Vector2( 42.0969, 6.76008 )
 [node name="Animation" type="AnimatedSprite" parent="Seth"]
 frames = ExtResource( 5 )
 animation = "Idle"
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -2.5, -16 )
