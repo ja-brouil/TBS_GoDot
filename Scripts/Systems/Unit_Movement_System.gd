@@ -25,7 +25,18 @@ func _process(delta):
 	if abs(unit.position.x - destination_cell.position.x) >= 0.75 || abs(unit.position.y - destination_cell.position.y) >= 0.75:
 		unit.position.x += (destination_cell.position.x - starting_cell.position.x) * unit.get_node("Animation").movement_animation_speed * delta
 		unit.position.y += (destination_cell.position.y - starting_cell.position.y) * unit.get_node("Animation").movement_animation_speed * delta
+		unit.get_node("Sound_Movement").play()
 	else:
+		# Finalize movement to prevent rounding errors
+		unit.position.x = destination_cell.position.x
+		unit.position.y = destination_cell.position.y
+		unit.UnitMovementStats.currentTile = destination_cell
+		
+		# Remove the tile in the queue
+		unit.UnitMovementStats.movement_queue.pop_front()
+	
+	# Prevent weird bug when the FPS drops or game is paused
+	if abs(unit.position.x - destination_cell.position.x) >= 16 || abs(unit.position.y - destination_cell.position.y) >= 16:
 		# Finalize movement to prevent rounding errors
 		unit.position.x = destination_cell.position.x
 		unit.position.y = destination_cell.position.y
@@ -43,4 +54,9 @@ func _process(delta):
 		unit.UnitMovementStats.currentTile = destination_cell
 		unit.UnitMovementStats.currentTile.occupyingUnit = unit
 		
+		# Set unit's status to action state -> For now set this to done and greyscale
+		unit.UnitActionStatus.set_current_action(Unit_Action_Status.DONE)
+		unit.turn_greyscale_on()
+		
+		# Emit signal to update the cells
 		emit_signal("unit_finished_moving")

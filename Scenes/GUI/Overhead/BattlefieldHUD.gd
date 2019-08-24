@@ -15,7 +15,8 @@ func _ready():
 	
 	# Connect the cursor movement signal and turning off
 	battlefield.get_node("Cursor").connect("cursorMoved", self, "update_battlefield_ui")
-	battlefield.get_node("Cursor").connect("unit_started_moving", self, "turn_off_battlefield_ui")
+	battlefield.get_node("Cursor").connect("turn_off_ui", self, "turn_off_battlefield_ui")
+	battlefield.get_node("Cursor").connect("turn_on_ui", self, "turn_on_battlefield_ui")
 	
 	# Connect to unit movement system
 	battlefield.get_node("Battle_Systems/Unit_Movement_System").connect("unit_finished_moving", self, "turn_on_battlefield_ui")

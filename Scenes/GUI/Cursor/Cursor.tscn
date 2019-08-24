@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/GUI/Cursor/Cursor.gd" type="Script" id=1]
 [ext_resource path="res://assets/UI/Cursor/cursor.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/GUI/Cursor/Cursor.tres.res" type="Animation" id=3]
 [ext_resource path="res://assets/UI/Cursor/staticCursor.png" type="Texture" id=4]
+[ext_resource path="res://assets/sound/cursor/cursorMovement.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/sound/cursor/accept.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/sound/cursor/selectUnit.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/sound/cursor/Not Allowed.wav" type="AudioStream" id=8]
+[ext_resource path="res://assets/sound/cursor/backSound.wav" type="AudioStream" id=9]
 
 [node name="Cursor" type="Node2D"]
 scale = Vector2( 0.58, 0.58 )
@@ -29,3 +34,24 @@ z_index = 1
 texture = ExtResource( 4 )
 centered = false
 offset = Vector2( -2, -3 )
+
+[node name="MoveSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+bus = "Cursor"
+
+[node name="AcceptSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+bus = "Cursor"
+
+[node name="SelectUnitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+bus = "Cursor"
+
+[node name="InvalidSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = 10.0
+bus = "Cursor"
+
+[node name="BackSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+bus = "Cursor"

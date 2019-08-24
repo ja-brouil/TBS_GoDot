@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Heavy Foot Steps 3.wav-d628538ab69ffaf9c910d71ecd1e7735.sample"
+
+[deps]
+
+source_file="res://assets/sound/unitMovement/Heavy Foot Steps 3.wav"
+dest_files=[ "res://.import/Heavy Foot Steps 3.wav-d628538ab69ffaf9c910d71ecd1e7735.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

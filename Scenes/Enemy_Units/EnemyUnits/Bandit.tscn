@@ -1,61 +1,70 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Scenes/Player_Units/PlayerUnit.gd" type="Script" id=1]
-[ext_resource path="res://assets/units/bandit/split/tile008.png" type="Texture" id=2]
-[ext_resource path="res://assets/units/bandit/split/tile009.png" type="Texture" id=3]
-[ext_resource path="res://assets/units/bandit/split/tile010.png" type="Texture" id=4]
-[ext_resource path="res://assets/units/bandit/split/tile011.png" type="Texture" id=5]
-[ext_resource path="res://assets/units/bandit/split/tile004.png" type="Texture" id=6]
-[ext_resource path="res://assets/units/bandit/split/tile005.png" type="Texture" id=7]
-[ext_resource path="res://assets/units/bandit/split/tile006.png" type="Texture" id=8]
-[ext_resource path="res://assets/units/bandit/split/tile007.png" type="Texture" id=9]
-[ext_resource path="res://assets/units/bandit/split/tile016.png" type="Texture" id=10]
-[ext_resource path="res://assets/units/bandit/split/tile017.png" type="Texture" id=11]
-[ext_resource path="res://assets/units/bandit/split/tile018.png" type="Texture" id=12]
-[ext_resource path="res://assets/units/bandit/split/tile019.png" type="Texture" id=13]
+[ext_resource path="res://assets/units/bandit/split/tile012.png" type="Texture" id=2]
+[ext_resource path="res://assets/units/bandit/split/tile013.png" type="Texture" id=3]
+[ext_resource path="res://assets/units/bandit/split/tile014.png" type="Texture" id=4]
+[ext_resource path="res://assets/units/bandit/split/tile015.png" type="Texture" id=5]
+[ext_resource path="res://assets/units/bandit/split/tile000.png" type="Texture" id=6]
+[ext_resource path="res://assets/units/bandit/split/tile001.png" type="Texture" id=7]
+[ext_resource path="res://assets/units/bandit/split/tile002.png" type="Texture" id=8]
+[ext_resource path="res://assets/units/bandit/split/tile003.png" type="Texture" id=9]
+[ext_resource path="res://assets/units/bandit/split/tile008.png" type="Texture" id=10]
+[ext_resource path="res://assets/units/bandit/split/tile009.png" type="Texture" id=11]
+[ext_resource path="res://assets/units/bandit/split/tile010.png" type="Texture" id=12]
+[ext_resource path="res://assets/units/bandit/split/tile011.png" type="Texture" id=13]
+[ext_resource path="res://assets/units/bandit/split/tile004.png" type="Texture" id=14]
+[ext_resource path="res://assets/units/bandit/split/tile005.png" type="Texture" id=15]
+[ext_resource path="res://assets/units/bandit/split/tile006.png" type="Texture" id=16]
+[ext_resource path="res://assets/units/bandit/split/tile007.png" type="Texture" id=17]
+[ext_resource path="res://assets/units/bandit/split/tile016.png" type="Texture" id=18]
+[ext_resource path="res://assets/units/bandit/split/tile017.png" type="Texture" id=19]
+[ext_resource path="res://assets/units/bandit/split/tile018.png" type="Texture" id=20]
+[ext_resource path="res://assets/units/bandit/split/tile019.png" type="Texture" id=21]
+[ext_resource path="res://Scenes/Enemy_Units/EnemyUnits/BanditAnimation.gd" type="Script" id=22]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [  ],
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "Down",
 "speed": 5.0
 }, {
-"frames": [  ],
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 4 ) ],
 "loop": true,
 "name": "Selected",
 "speed": 5.0
 }, {
-"frames": [  ],
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
 "loop": true,
 "name": "Highlighted",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
 "loop": true,
 "name": "Idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"frames": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ) ],
 "loop": true,
 "name": "Left",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
+"frames": [ ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ) ],
 "loop": true,
 "name": "Up",
 "speed": 5.0
 } ]
 
 [node name="Bandit" type="Node2D"]
-
-[node name="Bandit_Stats" type="Node2D" parent="."]
 script = ExtResource( 1 )
 
-[node name="Animation" type="AnimatedSprite" parent="Bandit_Stats"]
+[node name="Animation" type="AnimatedSprite" parent="."]
+z_index = 5
 frames = SubResource( 1 )
 animation = "Idle"
 frame = 2
 playing = true
 centered = false
 offset = Vector2( -7, -15 )
+script = ExtResource( 22 )

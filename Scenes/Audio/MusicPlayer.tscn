@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/music/FE Level1 SD.wav" type="AudioStream" id=1]
+
+[node name="MusicPlayer" type="Node"]
+
+[node name="AllyLevel" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+autoplay = true
+
+[node name="Transition" type="AudioStreamPlayer" parent="."]

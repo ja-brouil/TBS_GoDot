@@ -89,9 +89,11 @@ func _ready():
 	$"EnemyParty/Bandit".position.y = enemyList[1].position.y
 	$"EnemyParty/Bandit2".position.x = enemyList[2].position.x
 	$"EnemyParty/Bandit2".position.y = enemyList[2].position.y
+	$"EnemyParty/Bandit2".UnitMovementStats.currentTile = grid[$"EnemyParty/Bandit2".position.x / Cell.CELL_SIZE][$"EnemyParty/Bandit2".position.y / Cell.CELL_SIZE]
+	$"EnemyParty/Bandit".UnitMovementStats.currentTile = grid[$"EnemyParty/Bandit".position.x / Cell.CELL_SIZE][$"EnemyParty/Bandit".position.y / Cell.CELL_SIZE]
+	grid[$"EnemyParty/Bandit".position.x / Cell.CELL_SIZE][$"EnemyParty/Bandit".position.y / Cell.CELL_SIZE].occupyingUnit = $"EnemyParty/Bandit"
+	grid[$"EnemyParty/Bandit2".position.x / Cell.CELL_SIZE][$"EnemyParty/Bandit2".position.y / Cell.CELL_SIZE].occupyingUnit = $"EnemyParty/Bandit2"
 	
-	
-			
 	# Send cell and grid information to the battlefield main so it is easily accessible
 	get_parent().grid = self.grid
 	get_parent().map_height = self.map_height

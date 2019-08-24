@@ -4,7 +4,8 @@ extends Node2D
 signal cursorMoved
 
 # Turn off UI elements when the unit starts moving
-signal unit_started_moving
+signal turn_off_ui
+signal turn_on_ui
 
 # Holds current unit selected
 var currentUnit
@@ -26,18 +27,22 @@ func _input(event):
 	if Input.is_action_pressed("ui_left"):
 		self.position.x -= Cell.CELL_SIZE
 		updateCursorData()
+		$"MoveSound".play()
 		emit_signal("cursorMoved", "left", self.position)
 	elif Input.is_action_pressed("ui_right"):
 		self.position.x += Cell.CELL_SIZE
 		updateCursorData()
+		$"MoveSound".play()
 		emit_signal("cursorMoved", "right", self.position)
 	elif Input.is_action_pressed("ui_down"):
 		self.position.y += Cell.CELL_SIZE
 		updateCursorData()
+		$"MoveSound".play()
 		emit_signal("cursorMoved", "down", self.position)
 	elif Input.is_action_pressed("ui_up"):
 		self.position.y -= Cell.CELL_SIZE
 		updateCursorData()
+		$"MoveSound".play()
 		emit_signal("cursorMoved", "up", self.position)
 	elif Input.is_action_just_pressed("ui_accept"):
 		acceptButton()
@@ -71,8 +76,9 @@ func updateCursorData() -> void:
 				# Set Global Variable
 				get_parent().set_Current_Unit_Selected(get_parent().get_node("Level").grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE].occupyingUnit)
 				
-				# Set highlight animation
-				currentUnit.get_node("Animation").animation = "Selected"
+				# Check if this unit is an ally
+				if currentUnit.UnitMovementStats.is_ally && currentUnit.UnitActionStatus.get_current_action() != Unit_Action_Status.DONE:
+					currentUnit.get_node("Animation").animation = "Selected"
 				
 				# Stop Cursor animation
 				set_animation_status(false)
@@ -93,16 +99,17 @@ func updateCursorData() -> void:
 func acceptButton() -> void:
 	match cursor_state:
 		MOVE:
-		# Open end turn window # Send a signal out here
-			if get_parent().get_node("Level").grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE].occupyingUnit == null:
-				print("end turn menu was pressed")
+		# Open end turn window # Send a signal out here -> Or if you pressed a unit that is done
+			if get_parent().get_node("Level").grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE].occupyingUnit == null || currentUnit.UnitActionStatus.get_current_action() == Unit_Action_Status.DONE:
+				print("End turn menu was pressed")
 				return
 			
 			# Set current unit to the global unit selector
 			get_parent().set_Current_Unit_Selected(currentUnit)
 			
 			# Set Selected Animation to current unit
-			currentUnit.get_node("Animation").animation = "Highlighted"
+			if currentUnit.UnitMovementStats.is_ally:
+				currentUnit.get_node("Animation").animation = "Highlighted"
 			
 			# Highlight ranges
 			get_parent().movement_calculator.calculatePossibleMoves(get_parent().get_node("Level").grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE].occupyingUnit, get_parent().get_node("Level").grid)
@@ -112,7 +119,19 @@ func acceptButton() -> void:
 			
 			# Set animation back to true
 			set_animation_status(true)
+			
+			# Sound
+			$"SelectUnitSound".play()
+			
+			# Turn off UI
+			emit_signal("turn_off_ui")
+			
 		SELECT_MOVE_TILE:
+			# Validate that this is an ally
+			if !currentUnit.UnitMovementStats.is_ally:
+				cancel_Button()
+				return
+			
 			# Validate if tile is in the list
 			if get_parent().movement_calculator.check_if_move_is_valid(get_parent().get_node("Level").grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE], currentUnit):
 				
@@ -126,13 +145,14 @@ func acceptButton() -> void:
 				# Remove the unit's occupied status on the grid
 				currentUnit.UnitMovementStats.currentTile.occupyingUnit = null
 				
+				# Play Accept
+				$"AcceptSound".play()
+				
 				# Start moving the unit
 				get_parent().get_node("Battle_Systems/Unit_Movement_System").is_moving = true
 				
-				# Emit Signal to turn off Battlefield UI
-				emit_signal("unit_started_moving")
 			else:
-				print("Not a valid move")
+				$"InvalidSound".play()
 
 # Cancel Button
 func cancel_Button() -> void:
@@ -144,6 +164,12 @@ func cancel_Button() -> void:
 			# Set Cursor back to Move status and clear current unit if needed
 			cursor_state = MOVE
 			updateCursorData()
+			
+			# Play Cancel sound
+			$"BackSound".play()
+			
+			# Turn on the UI if not on
+			emit_signal("turn_on_ui")
 
 func set_animation_status(State: bool):
 	if State:
