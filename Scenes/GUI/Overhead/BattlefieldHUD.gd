@@ -29,8 +29,6 @@ func update_battlefield_ui(cursor_direction, cursor_position):
 	# Get cursor location and set it to the location quandrant so that we can move all the other boxes accordingly
 	get_cursor_quandrant(cursor_position)
 	
-	# Move all the boxes to the correct spots
-	
 	# Update Unit Box
 	update_unit_box()
 	
@@ -74,22 +72,21 @@ func get_cursor_quandrant(cursor_position):
 	# We are on top
 	var cam_x = get_parent().get_node("GameCamera/MainCamera").position.x
 	var cam_y = get_parent().get_node("GameCamera/MainCamera").position.y
-	print(cursor_position.x - cam_x, " " , cursor_position.y - cam_y)
-	if cursor_position.x - cam_x  < (MainCamera.CAMERA_WIDTH / 2):
+	print(cursor_position, " " , get_parent().get_node("GameCamera/MainCamera").position)
+	if cursor_position.x < (MainCamera.CAMERA_WIDTH / 2) + cam_x:
 		# Left or Right Check
-		if cursor_position.y - cam_y < (MainCamera.CAMERA_HEIGTH / 2):
+		if cursor_position.y < (MainCamera.CAMERA_HEIGTH / 2) + cam_y:
 			cursor_quadrant = TOP_LEFT
 		else:
 			cursor_quadrant = BOTTOM_LEFT
 	else:
 		# We are on the bottom and on the left
-		if cursor_position.y - cam_y < (MainCamera.CAMERA_HEIGTH / 2):
+		if cursor_position.y < (MainCamera.CAMERA_HEIGTH / 2) + cam_y:
 			cursor_quadrant = TOP_RIGHT
 		else:
 			cursor_quadrant = BOTTOM_RIGHT
 			
 	# Adjust the boxes accordingly
-#	if previous_quadrant != cursor_quadrant:
 	move_gui_boxes()
 
 # Moves all the boxes to the correct spot -> Fix box detection
