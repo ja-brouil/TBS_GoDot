@@ -1,21 +1,21 @@
 [gd_resource type="SpriteFrames" load_steps=21 format=2]
 
-[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField13.png" type="Texture" id=1]
-[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField14.png" type="Texture" id=2]
-[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField15.png" type="Texture" id=3]
-[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField16.png" type="Texture" id=4]
-[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField1.png" type="Texture" id=5]
-[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField2.png" type="Texture" id=6]
-[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField3.png" type="Texture" id=7]
-[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField4.png" type="Texture" id=8]
-[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField9.png" type="Texture" id=9]
-[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField10.png" type="Texture" id=10]
-[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField11.png" type="Texture" id=11]
-[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField12.png" type="Texture" id=12]
-[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField5.png" type="Texture" id=13]
-[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField6.png" type="Texture" id=14]
-[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField7.png" type="Texture" id=15]
-[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField8.png" type="Texture" id=16]
+[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField1.png" type="Texture" id=1]
+[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField2.png" type="Texture" id=2]
+[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField3.png" type="Texture" id=3]
+[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField4.png" type="Texture" id=4]
+[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField13.png" type="Texture" id=5]
+[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField14.png" type="Texture" id=6]
+[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField15.png" type="Texture" id=7]
+[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField16.png" type="Texture" id=8]
+[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField5.png" type="Texture" id=9]
+[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField6.png" type="Texture" id=10]
+[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField7.png" type="Texture" id=11]
+[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField8.png" type="Texture" id=12]
+[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField9.png" type="Texture" id=13]
+[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField10.png" type="Texture" id=14]
+[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField11.png" type="Texture" id=15]
+[ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField12.png" type="Texture" id=16]
 [ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField17.png" type="Texture" id=17]
 [ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField18.png" type="Texture" id=18]
 [ext_resource path="res://assets/units/eirika/Erika Spliced/ErikaField19.png" type="Texture" id=19]
@@ -25,27 +25,27 @@
 animations = [ {
 "frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
 "loop": true,
-"name": "Down",
+"name": "Selected",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
 "loop": true,
-"name": "Selected",
+"name": "Down",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
 "loop": true,
 "name": "Highlighted",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
 "loop": true,
-"name": "Idle",
+"name": "Left",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ],
 "loop": true,
-"name": "Left",
+"name": "Idle",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ) ],

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/GUI/Cursor/Cursor.gd" type="Script" id=1]
 [ext_resource path="res://assets/UI/Cursor/cursor.png" type="Texture" id=2]
@@ -9,6 +9,9 @@
 [ext_resource path="res://assets/sound/cursor/selectUnit.wav" type="AudioStream" id=7]
 [ext_resource path="res://assets/sound/cursor/Not Allowed.wav" type="AudioStream" id=8]
 [ext_resource path="res://assets/sound/cursor/backSound.wav" type="AudioStream" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16, 16 )
 
 [node name="Cursor" type="Node2D"]
 scale = Vector2( 0.58, 0.58 )
@@ -21,7 +24,7 @@ z_index = 1
 texture = ExtResource( 2 )
 offset = Vector2( -3, -2 )
 region_enabled = true
-region_rect = Rect2( 284, 4, 32, 34 )
+region_rect = Rect2( 244, 4, 32, 34 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedCursor"]
 playback_speed = 3.0
@@ -55,3 +58,9 @@ bus = "Cursor"
 [node name="BackSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
 bus = "Cursor"
+
+[node name="Bounds" type="Area2D" parent="."]
+
+[node name="Bound" type="CollisionShape2D" parent="Bounds"]
+position = Vector2( 13.8543, 14.0777 )
+shape = SubResource( 1 )

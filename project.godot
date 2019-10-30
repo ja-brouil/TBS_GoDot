@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node2D",
+"class": "BattlefieldInfo",
+"language": "GDScript",
+"path": "res://Scenes/Battlefield/Battlefield.gd"
+}, {
+"base": "Node2D",
 "class": "Battlefield_Unit",
 "language": "GDScript",
 "path": "res://Scenes/Player_Units/PlayerUnit.gd"
@@ -60,6 +65,7 @@ _global_script_classes=[ {
 "path": "res://Scripts/Systems/Unit_Movement_System.gd"
 } ]
 _global_script_class_icons={
+"BattlefieldInfo": "",
 "Battlefield_Unit": "",
 "Cell": "",
 "HashSet": "",
@@ -77,6 +83,10 @@ _global_script_class_icons={
 config/name="Fire Emblem"
 run/main_scene="res://Scenes/Battlefield/Battlefield.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Battlefield="*res://Scenes/Battlefield/Battlefield.gd"
 
 [debug]
 

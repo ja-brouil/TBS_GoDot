@@ -22,7 +22,6 @@ z_index = 1
 [node name="PlayerParty" parent="Level" instance=ExtResource( 3 )]
 
 [node name="EnemyParty" parent="Level" instance=ExtResource( 4 )]
-editor/display_folded = true
 
 [node name="Bandit" parent="Level/EnemyParty" instance=ExtResource( 5 )]
 

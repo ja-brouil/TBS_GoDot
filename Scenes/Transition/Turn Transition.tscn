@@ -9,3 +9,8 @@ script = ExtResource( 1 )
 [node name="Player Turn" type="Sprite" parent="."]
 position = Vector2( 120.568, 79.8519 )
 texture = ExtResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

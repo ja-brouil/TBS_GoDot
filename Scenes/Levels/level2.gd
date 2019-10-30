@@ -51,7 +51,6 @@ func _ready():
 			if cell.getPosition().y + 1 < map_height:
 				cell.adjCells.append(grid[cell.getPosition().x][cell.getPosition().y + 1])
 	
-	
 	# Load Units Information
 	all_allies_location.clear()
 	all_enemies_location.clear()
@@ -98,6 +97,7 @@ func _ready():
 	get_parent().grid = self.grid
 	get_parent().map_height = self.map_height
 	get_parent().map_width = self.map_width
+	
 	
 	# Load the information for the map into the camera
 	emit_signal("mapInformationLoaded")
