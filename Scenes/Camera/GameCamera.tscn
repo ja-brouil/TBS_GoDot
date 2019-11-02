@@ -1,13 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://Scenes/Camera/Camera2D.gd" type="Script" id=1]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 60, 40 )
-
-[node name="GameCamera" type="Node2D"]
-
-[node name="MainCamera" type="Camera2D" parent="."]
+[node name="MainCamera" type="Camera2D"]
 anchor_mode = 0
 current = true
 limit_left = 0
@@ -15,31 +10,9 @@ limit_top = 0
 limit_right = 320
 limit_bottom = 350
 limit_smoothed = true
+drag_margin_h_enabled = false
+drag_margin_v_enabled = false
 smoothing_enabled = true
-smoothing_speed = 3.0
+smoothing_speed = 8.0
 editor_draw_limits = true
 script = ExtResource( 1 )
-
-[node name="TopLeft" type="Area2D" parent="."]
-
-[node name="TopLeft" type="CollisionShape2D" parent="TopLeft"]
-position = Vector2( 60, 40 )
-shape = SubResource( 1 )
-
-[node name="TopRight" type="Area2D" parent="."]
-
-[node name="TopRight" type="CollisionShape2D" parent="TopRight"]
-position = Vector2( 180, 40 )
-shape = SubResource( 1 )
-
-[node name="BottomLeft" type="Area2D" parent="."]
-
-[node name="BottomLeft" type="CollisionShape2D" parent="BottomLeft"]
-position = Vector2( 60, 120 )
-shape = SubResource( 1 )
-
-[node name="BottomRight" type="Area2D" parent="."]
-
-[node name="BottomRight" type="CollisionShape2D" parent="BottomRight"]
-position = Vector2( 180, 120 )
-shape = SubResource( 1 )

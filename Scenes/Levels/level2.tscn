@@ -7,7 +7,7 @@
 script = ExtResource( 2 )
 
 [node name="CellInfo" parent="." index="1"]
-editor/display_folded = false
+visible = false
 
 [node name="2076" parent="CellInfo" index="0"]
 editor/display_folded = false

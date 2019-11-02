@@ -1,5 +1,4 @@
 extends Node2D
-class_name BattlefieldInfo
 
 #########
 #SYSTEMS#
@@ -12,11 +11,15 @@ var turn_manager
 
 # Start battlefield game
 func _ready():
+	# Movement Calculator
 	movement_calculator = MovementCalculator.new(self)
+	
+	# Movement System
+	unit_movement_system = Unit_Movement_System.new()
 
 # Run Systems
 func _process(delta):
-	pass
+	unit_movement_system.process_movement(delta)
 
 #######################
 #BATTLEFIELD VARIABLES#
@@ -30,15 +33,10 @@ var grid = []
 var map_height
 var map_width
 
+# Camera Values
+var camera_limit_bottom
+var camera_limit_
+
 # Battlefield Unit Info
 var ally_units = {}
 var enemy_units = {}
-
-#########
-#GET/SET#
-#########
-func get_Current_Unit_Selected() -> Node2D:
-	return current_Unit_Selected
-
-func set_Current_Unit_Selected(Current_Unit_Selected: Node2D) -> void:
-	self.current_Unit_Selected = Current_Unit_Selected

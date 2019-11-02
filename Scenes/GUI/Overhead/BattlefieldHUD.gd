@@ -18,30 +18,37 @@ func _ready():
 	battlefield.get_node("Cursor").connect("turn_off_ui", self, "turn_off_battlefield_ui")
 	battlefield.get_node("Cursor").connect("turn_on_ui", self, "turn_on_battlefield_ui")
 	
+	# Connect Area to the Camera movement
+	battlefield.get_node("GameCamera").connect("camera_moved", $Areas, "move_areas")
+	
+	# Connect cursor to the Area
+	$Areas/BottomLeft.connect("body_entered", self, "bottom_left")
+	$Areas/BottomRight.connect("body_entered", self, "bottom_right")
+	$Areas/TopLeft.connect("body_entered", self, "top_left")
+	$Areas/TopRight.connect("body_entered", self, "top_right")
+	
 	# Connect to unit movement system
-	battlefield.get_node("Battle_Systems/Unit_Movement_System").connect("unit_finished_moving", self, "turn_on_battlefield_ui")
+	BattlefieldInfo.unit_movement_system.connect("unit_finished_moving", self, "turn_on_battlefield_ui")
 	
 	# Initial Quandrant and previous
 	cursor_quadrant = TOP_LEFT
 	previous_quadrant = TOP_LEFT
 
 func update_battlefield_ui(cursor_direction, cursor_position):
-	# Get cursor location and set it to the location quandrant so that we can move all the other boxes accordingly
-	get_cursor_quandrant(cursor_position)
-	
 	# Update Unit Box
 	update_unit_box()
 	
+	# Move Boxes
+	move_gui_boxes()
+	
 	# Update Terrain info tile
 	update_terrain_box(cursor_position)
-	
-	# print("Cursor moved, updating UI ", cursor_position)
 
 # Update Unit info box
 func update_unit_box():
 	# Check if there is a unit and display information
-	if battlefield.get_Current_Unit_Selected() != null:
-		print(battlefield.get_Current_Unit_Selected()) # Set appropriate unit stats here
+	if BattlefieldInfo.current_Unit_Selected != null:
+		print(BattlefieldInfo.current_Unit_Selected) # Set appropriate unit stats here
 #		$"Battlefield HUD/Unit Info/FadeAnimU".play("Fade") # play the animation for the ui
 		$"Battlefield HUD/Unit Info".visible = true
 	else:
@@ -49,12 +56,11 @@ func update_unit_box():
 #		if !$"Battlefield HUD/Unit Info/FadeAnimU".is_playing() && $"Battlefield HUD/Unit Info".modulate.a != 0:
 #			$"Battlefield HUD/Unit Info/FadeAnimU".play("FadeOut")
 #		else:
-		
 
 # Update Terrain
 func update_terrain_box(cursor_position):
 	# Get the cell where the cursor currently is
-	var cursor_cell = battlefield.grid[cursor_position.x / Cell.CELL_SIZE][cursor_position.y / Cell.CELL_SIZE]
+	var cursor_cell = BattlefieldInfo.grid[cursor_position.x / Cell.CELL_SIZE][cursor_position.y / Cell.CELL_SIZE]
 	
 	# Set Tile Name
 	$"Battlefield HUD/Terrain Info/T Name".text = cursor_cell.tileName
@@ -64,30 +70,17 @@ func update_terrain_box(cursor_position):
 	$"Battlefield HUD/Terrain Info/Def/Def_Value".text = str(cursor_cell.defenseBonus)
 
 # Determine which quandrant of the screen the cursor is in
-func get_cursor_quandrant(cursor_position):
-	# Set Previous quadrant
-	previous_quadrant = cursor_quadrant
-	
-	# Top or Bottom Check
-	# We are on top
-	var cam_x = get_parent().get_node("GameCamera/MainCamera").position.x
-	var cam_y = get_parent().get_node("GameCamera/MainCamera").position.y
-	print(cursor_position, " " , get_parent().get_node("GameCamera/MainCamera").position)
-	if cursor_position.x < (MainCamera.CAMERA_WIDTH / 2) + cam_x:
-		# Left or Right Check
-		if cursor_position.y < (MainCamera.CAMERA_HEIGTH / 2) + cam_y:
-			cursor_quadrant = TOP_LEFT
-		else:
-			cursor_quadrant = BOTTOM_LEFT
-	else:
-		# We are on the bottom and on the left
-		if cursor_position.y < (MainCamera.CAMERA_HEIGTH / 2) + cam_y:
-			cursor_quadrant = TOP_RIGHT
-		else:
-			cursor_quadrant = BOTTOM_RIGHT
-			
-	# Adjust the boxes accordingly
-	move_gui_boxes()
+func bottom_left(body) -> void:
+	cursor_quadrant = BOTTOM_LEFT
+
+func bottom_right(body) -> void:
+	cursor_quadrant = BOTTOM_RIGHT
+
+func top_left(body) -> void:
+	cursor_quadrant = TOP_LEFT
+
+func top_right(body) -> void:
+	cursor_quadrant = TOP_RIGHT
 
 # Moves all the boxes to the correct spot -> Fix box detection
 func move_gui_boxes():

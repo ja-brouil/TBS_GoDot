@@ -10,14 +10,9 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node2D",
-"class": "BattlefieldInfo",
-"language": "GDScript",
-"path": "res://Scenes/Battlefield/Battlefield.gd"
-}, {
-"base": "Node2D",
 "class": "Battlefield_Unit",
 "language": "GDScript",
-"path": "res://Scenes/Player_Units/PlayerUnit.gd"
+"path": "res://Scenes/Units/Unit_Scripts/Battlefield_Unit.gd"
 }, {
 "base": "Node2D",
 "class": "Cell",
@@ -27,9 +22,9 @@ _global_script_classes=[ {
 "base": "Reference",
 "class": "HashSet",
 "language": "GDScript",
-"path": "res://Scripts/Data_Structures/HashSet.gd"
+"path": "res://Engine/Data_Structures/HashSet.gd"
 }, {
-"base": "Node2D",
+"base": "Camera2D",
 "class": "MainCamera",
 "language": "GDScript",
 "path": "res://Scenes/Camera/Camera2D.gd"
@@ -37,7 +32,7 @@ _global_script_classes=[ {
 "base": "Reference",
 "class": "MovementCalculator",
 "language": "GDScript",
-"path": "res://Scripts/MovementUtilities/MovementCalculator.gd"
+"path": "res://Engine/MovementUtilities/MovementCalculator.gd"
 }, {
 "base": "Node2D",
 "class": "MovementRangeRect",
@@ -47,25 +42,24 @@ _global_script_classes=[ {
 "base": "Reference",
 "class": "PriorityQueue",
 "language": "GDScript",
-"path": "res://Scripts/Data_Structures/PriorityQueue.gd"
+"path": "res://Engine/Data_Structures/PriorityQueue.gd"
 }, {
 "base": "Node",
 "class": "Unit_Action_Status",
 "language": "GDScript",
-"path": "res://Scripts/Unit Scripts/Unit Action Status.gd"
+"path": "res://Scenes/Units/Unit_Scripts/Unit_Action_Status.gd"
 }, {
 "base": "Reference",
 "class": "Unit_Movement",
 "language": "GDScript",
-"path": "res://Scenes/Player_Units/Unit_Movement.gd"
+"path": "res://Scenes/Units/Unit_Scripts/Unit_Movement.gd"
 }, {
-"base": "Node",
+"base": "Reference",
 "class": "Unit_Movement_System",
 "language": "GDScript",
-"path": "res://Scripts/Systems/Unit_Movement_System.gd"
+"path": "res://Engine/Systems/Unit_Movement_System.gd"
 } ]
 _global_script_class_icons={
-"BattlefieldInfo": "",
 "Battlefield_Unit": "",
 "Cell": "",
 "HashSet": "",
@@ -86,7 +80,8 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Battlefield="*res://Scenes/Battlefield/Battlefield.gd"
+MusicPlayer="*res://Scenes/Audio/MusicPlayer.gd"
+BattlefieldInfo="*res://Scenes/Battlefield/Battlefield.gd"
 
 [debug]
 

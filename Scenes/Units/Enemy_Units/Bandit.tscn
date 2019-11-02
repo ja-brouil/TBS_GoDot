@@ -1,6 +1,6 @@
 [gd_scene load_steps=24 format=2]
 
-[ext_resource path="res://Scenes/Player_Units/PlayerUnit.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Units/Unit_Scripts/Battlefield_Unit.gd" type="Script" id=1]
 [ext_resource path="res://assets/units/bandit/split/tile000.png" type="Texture" id=2]
 [ext_resource path="res://assets/units/bandit/split/tile001.png" type="Texture" id=3]
 [ext_resource path="res://assets/units/bandit/split/tile002.png" type="Texture" id=4]
@@ -21,7 +21,13 @@
 [ext_resource path="res://assets/units/bandit/split/tile009.png" type="Texture" id=19]
 [ext_resource path="res://assets/units/bandit/split/tile010.png" type="Texture" id=20]
 [ext_resource path="res://assets/units/bandit/split/tile011.png" type="Texture" id=21]
-[ext_resource path="res://Scenes/Enemy_Units/EnemyUnits/BanditAnimation.gd" type="Script" id=22]
+[ext_resource path="res://Scenes/Units/Enemy_Units/BanditAnimation.gd" type="Script" id=22]
+
+
+
+
+
+
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {

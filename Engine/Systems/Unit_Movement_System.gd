@@ -1,5 +1,3 @@
-extends Node
-
 # Controls the movement system for the units
 class_name Unit_Movement_System
 
@@ -9,22 +7,22 @@ var is_moving = false
 # Update the world info
 signal unit_finished_moving
 
-func _process(delta):
+func process_movement(delta):
 	if !is_moving:
 		return
 	
 	# Variables needed to move the units
-	var unit = get_parent().get_parent().get_Current_Unit_Selected()
+	var unit = BattlefieldInfo.current_Unit_Selected
 	var starting_cell = unit.UnitMovementStats.currentTile
 	var destination_cell = unit.UnitMovementStats.movement_queue.front()
 	
 	# Set correct animation for unit moving
-	unit.animation_movement.get_direction_to_face(starting_cell, destination_cell)
+	unit.get_node("Animation").current_animation = unit.get_direction_to_face(starting_cell, destination_cell)
 	
 	# Move Unit and smooth it out over time
 	if abs(unit.position.x - destination_cell.position.x) >= 0.75 || abs(unit.position.y - destination_cell.position.y) >= 0.75:
-		unit.position.x += (destination_cell.position.x - starting_cell.position.x) * unit.get_node("Animation").movement_animation_speed * delta
-		unit.position.y += (destination_cell.position.y - starting_cell.position.y) * unit.get_node("Animation").movement_animation_speed * delta
+		unit.position.x += (destination_cell.position.x - starting_cell.position.x) * unit.animation_movement_speed * delta
+		unit.position.y += (destination_cell.position.y - starting_cell.position.y) * unit.animation_movement_speed * delta
 		# unit.get_node("Sound_Movement").play()
 	else:
 		# Finalize movement to prevent rounding errors
@@ -57,6 +55,7 @@ func _process(delta):
 		# Set unit's status to action state -> For now set this to done and greyscale
 		unit.UnitActionStatus.set_current_action(Unit_Action_Status.DONE)
 		unit.turn_greyscale_on()
+		unit.get_node("Animation").current_animation = "Idle"
 		
 		# Emit signal to update the cells
 		emit_signal("unit_finished_moving")

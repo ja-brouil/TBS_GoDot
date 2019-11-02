@@ -11,7 +11,7 @@
 [ext_resource path="res://assets/sound/cursor/backSound.wav" type="AudioStream" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16, 16 )
+extents = Vector2( 11.7785, 12.033 )
 
 [node name="Cursor" type="Node2D"]
 scale = Vector2( 0.58, 0.58 )
@@ -59,8 +59,10 @@ bus = "Cursor"
 stream = ExtResource( 9 )
 bus = "Cursor"
 
-[node name="Bounds" type="Area2D" parent="."]
+[node name="Bounds" type="KinematicBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
 
 [node name="Bound" type="CollisionShape2D" parent="Bounds"]
-position = Vector2( 13.8543, 14.0777 )
+position = Vector2( 13.4888, 14.2604 )
 shape = SubResource( 1 )
