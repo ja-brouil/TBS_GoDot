@@ -68,6 +68,8 @@ func processTile(initialTile, unit_movement, moveSteps, unit):
 					# Tile is occupied -> Check if it's an ally (or enemy for enemy)
 					if adjTile.occupyingUnit.UnitMovementStats.is_ally == unit_movement.is_ally:
 						queue.append([next_cost, adjTile])
+		else:
+			break
 
 # Process Attackable Range
 func processAttackTile(Unit):
