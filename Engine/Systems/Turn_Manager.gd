@@ -1,8 +1,35 @@
-# This class controls the system needed to pass between enemies and allies
 extends Node
+# This class controls the system needed to pass between enemies and allies
+class_name Turn_Manager
 
-enum {PLAYER_TURN, ENEMY_TURN}
+# States
+enum {PLAYER_TURN, ENEMY_TURN, WAIT}
 var turn
+
+# Signal to play graphic
+signal play_transition
+
+func _init():
+	turn = PLAYER_TURN
+
+func _process(delta):
+	check_end_of_turn()
+
+# Ally
+func reset_allys():
+	for ally_unit in BattlefieldInfo.ally_units:
+		ally_unit.UnitActionStatus.set_current_action(Unit_Action_Status.MOVE)
+
+# Not really a fan of checking this every frame but it will do for now. Optimize this later.
+func check_end_of_turn():
+	match turn:
+		PLAYER_TURN:
+			for ally_unit in BattlefieldInfo.ally_units:
+				if ally_unit.UnitActionStatus.get_current_action() != Unit_Action_Status.DONE:
+					return
+			
+			# All Units have moved and are done
+			emit_signal("play_transition", "Enemy")
 
 # Ally turn
 # reset all allies to active

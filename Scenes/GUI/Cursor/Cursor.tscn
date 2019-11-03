@@ -11,9 +11,10 @@
 [ext_resource path="res://assets/sound/cursor/backSound.wav" type="AudioStream" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 11.7785, 12.033 )
+extents = Vector2( 4.40652, 13.0471 )
 
 [node name="Cursor" type="Node2D"]
+editor/display_folded = true
 scale = Vector2( 0.58, 0.58 )
 script = ExtResource( 1 )
 
@@ -64,5 +65,5 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="Bound" type="CollisionShape2D" parent="Bounds"]
-position = Vector2( 13.4888, 14.2604 )
+position = Vector2( 5.32986, 13.7505 )
 shape = SubResource( 1 )

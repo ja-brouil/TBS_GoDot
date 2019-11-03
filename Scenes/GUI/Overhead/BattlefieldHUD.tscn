@@ -1,15 +1,14 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scenes/GUI/Overhead/BattlefieldHUD.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/GUI/Overhead/GUI Areas.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/UI/Panels/unitInfoBox.png" type="Texture" id=3]
-[ext_resource path="res://assets/font/Font_Resource.tres" type="DynamicFont" id=4]
-[ext_resource path="res://assets/UI/Panels/victoryConditionBox.png" type="Texture" id=5]
-[ext_resource path="res://assets/font/Main Font.ttf" type="DynamicFontData" id=6]
-[ext_resource path="res://assets/UI/Panels/terrainInfoBox.png" type="Texture" id=7]
+[ext_resource path="res://assets/UI/Panels/unitInfoBox.png" type="Texture" id=2]
+[ext_resource path="res://assets/font/Font_Resource.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/UI/Panels/victoryConditionBox.png" type="Texture" id=4]
+[ext_resource path="res://assets/font/Main Font.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://assets/UI/Panels/terrainInfoBox.png" type="Texture" id=6]
 
 [sub_resource type="StyleBoxTexture" id=1]
-texture = ExtResource( 3 )
+texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 98, 44 )
 
 [sub_resource type="Animation" id=2]
@@ -45,9 +44,23 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.501961 ), Color( 1, 1, 1, 0 ) ]
 }
+tracks/1/type = "method"
+tracks/1/path = NodePath("../..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_on_unit_box_fade"
+} ]
+}
 
 [sub_resource type="StyleBoxTexture" id=4]
-texture = ExtResource( 5 )
+texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 77, 27 )
 
 [sub_resource type="Animation" id=5]
@@ -69,10 +82,10 @@ tracks/0/keys = {
 
 [sub_resource type="DynamicFont" id=6]
 size = 20
-font_data = ExtResource( 6 )
+font_data = ExtResource( 5 )
 
 [sub_resource type="StyleBoxTexture" id=7]
-texture = ExtResource( 7 )
+texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 44, 43 )
 
 [sub_resource type="Animation" id=8]
@@ -98,14 +111,13 @@ __meta__ = {
 "_edit_vertical_guides_": [ 45.0, -55.0 ]
 }
 
-[node name="Areas" parent="." instance=ExtResource( 2 )]
-
 [node name="Battlefield HUD" type="Control" parent="."]
 margin_right = 240.0
 margin_bottom = 160.0
 
 [node name="Unit Info" type="Panel" parent="Battlefield HUD"]
 visible = false
+modulate = Color( 1, 1, 1, 0 )
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_top = -45.0
@@ -122,7 +134,7 @@ margin_top = 11.3632
 margin_right = 142.0
 margin_bottom = 44.3632
 rect_scale = Vector2( 0.25, 0.25 )
-custom_fonts/font = ExtResource( 4 )
+custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 text = "Name"
@@ -173,7 +185,7 @@ margin_top = 5.0
 margin_right = 180.0
 margin_bottom = 65.0
 rect_scale = Vector2( 0.25, 0.25 )
-custom_fonts/font = ExtResource( 4 )
+custom_fonts/font = ExtResource( 3 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Plains"
@@ -186,14 +198,14 @@ margin_top = 26.0
 margin_right = 125.0
 margin_bottom = 67.0
 rect_scale = Vector2( 0.125, 0.125 )
-custom_fonts/font = ExtResource( 4 )
+custom_fonts/font = ExtResource( 3 )
 text = "DEF:"
 
 [node name="Def_Value" type="Label" parent="Battlefield HUD/Terrain Info/Def"]
 margin_left = 98.0
 margin_right = 142.0
 margin_bottom = 42.0
-custom_fonts/font = ExtResource( 4 )
+custom_fonts/font = ExtResource( 3 )
 text = "1"
 
 [node name="Avd" type="Label" parent="Battlefield HUD/Terrain Info"]
@@ -202,14 +214,14 @@ margin_top = 20.0
 margin_right = 107.0
 margin_bottom = 64.0
 rect_scale = Vector2( 0.125, 0.125 )
-custom_fonts/font = ExtResource( 4 )
+custom_fonts/font = ExtResource( 3 )
 text = "AVD:"
 
 [node name="Avd_Value" type="Label" parent="Battlefield HUD/Terrain Info/Avd"]
 margin_left = 96.0
 margin_right = 142.0
 margin_bottom = 42.0
-custom_fonts/font = ExtResource( 4 )
+custom_fonts/font = ExtResource( 3 )
 text = "20"
 
 [node name="FadeAnimT" type="AnimationPlayer" parent="Battlefield HUD/Terrain Info"]

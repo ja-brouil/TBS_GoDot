@@ -66,37 +66,31 @@ func _ready():
 #	resChance, riverPenalty, seaPenalty, skillChance, speedChance, strChance]
 	
 	for allyCellInfo in allyInfoLayer.get_children():
-		if (allyCellInfo.get_meta("Name")) == "Eirika":
-			$"Eirika".position.x = allyCellInfo.position.x
-			$"Eirika".position.y = allyCellInfo.position.y
-			all_allies_location.append($"Eirika")
-			$"Eirika".UnitMovementStats.currentTile = grid[$"Eirika".position.x / Cell.CELL_SIZE][$"Eirika".position.y / Cell.CELL_SIZE]
-#
-#		if (allyCellInfo.get_meta("Name")) == "Seth":
-#			$"PlayerParty".get_node("Seth").position.x = allyCellInfo.position.x
-#			$"PlayerParty".get_node("Seth").position.y = allyCellInfo.position.y
-#			all_allies_location.append($"PlayerParty".get_node("Seth"))
-#			$"PlayerParty".get_node("Seth").UnitMovementStats.currentTile = grid[$"PlayerParty".get_node("Seth").position.x / Cell.CELL_SIZE][$"PlayerParty".get_node("Seth").position.y / Cell.CELL_SIZE]
-#
-#	# Set the occuyping units to the correct cells
-	grid[$"Eirika".position.x / Cell.CELL_SIZE][$"Eirika".position.y / Cell.CELL_SIZE].occupyingUnit = $"Eirika"
-#	grid[$"PlayerParty".get_node("Seth").position.x / Cell.CELL_SIZE][$"PlayerParty".get_node("Seth").position.y / Cell.CELL_SIZE].occupyingUnit = $"PlayerParty".get_node("Seth")
-#
-#	# Create Enemy Units -> Rewrite this area later
-#	var enemyList = enemyInfoLayer.get_children()
-#	$"EnemyParty/Bandit".position.x = enemyList[1].position.x
-#	$"EnemyParty/Bandit".position.y = enemyList[1].position.y
-#	$"EnemyParty/Bandit2".position.x = enemyList[2].position.x
-#	$"EnemyParty/Bandit2".position.y = enemyList[2].position.y
-#	$"EnemyParty/Bandit2".UnitMovementStats.currentTile = grid[$"EnemyParty/Bandit2".position.x / Cell.CELL_SIZE][$"EnemyParty/Bandit2".position.y / Cell.CELL_SIZE]
-#	$"EnemyParty/Bandit".UnitMovementStats.currentTile = grid[$"EnemyParty/Bandit".position.x / Cell.CELL_SIZE][$"EnemyParty/Bandit".position.y / Cell.CELL_SIZE]
-#	grid[$"EnemyParty/Bandit".position.x / Cell.CELL_SIZE][$"EnemyParty/Bandit".position.y / Cell.CELL_SIZE].occupyingUnit = $"EnemyParty/Bandit"
-#	grid[$"EnemyParty/Bandit2".position.x / Cell.CELL_SIZE][$"EnemyParty/Bandit2".position.y / Cell.CELL_SIZE].occupyingUnit = $"EnemyParty/Bandit2"
+		var path = str("res://Scenes/Units/Player_Units/AllyUnits/", allyCellInfo.get_meta("Name"),".tscn")
+		var new_ally = load(path).instance()
+		add_child(new_ally)
+		new_ally.position.x = allyCellInfo.position.x
+		new_ally.position.y = allyCellInfo.position.y
+		all_allies_location.append(new_ally)
+		new_ally.UnitMovementStats.currentTile = grid[new_ally.position.x / Cell.CELL_SIZE][new_ally.position.y / Cell.CELL_SIZE]
+		grid[new_ally.position.x / Cell.CELL_SIZE][new_ally.position.y / Cell.CELL_SIZE].occupyingUnit = new_ally
+	
+	# Create Enemy Units
+	for enemy in enemyInfoLayer.get_children():
+		var path = str("res://Scenes/Units/Enemy_Units/", enemy.get_meta("Class"),".tscn")
+		var newEnemy = load(path).instance()
+		add_child(newEnemy)
+		newEnemy.position = Vector2(enemy.position.x, enemy.position.y)
+		newEnemy.UnitMovementStats.currentTile = grid[newEnemy.position.x / Cell.CELL_SIZE][newEnemy.position.y / Cell.CELL_SIZE]
+		grid[newEnemy.position.x / Cell.CELL_SIZE][newEnemy.position.y / Cell.CELL_SIZE].occupyingUnit = newEnemy
+		all_enemies_location.append(newEnemy)
 	
 	# Send cell and grid information to the battlefield main so it is easily accessible
 	BattlefieldInfo.grid = self.grid
 	BattlefieldInfo.map_height = self.map_height
 	BattlefieldInfo.map_width = self.map_width
+	BattlefieldInfo.ally_units = self.all_allies_location
+	BattlefieldInfo.enemy_units = self.all_enemies_location
 	
 	# Load the information for the map into the camera
 	emit_signal("mapInformationLoaded")

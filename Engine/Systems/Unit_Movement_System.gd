@@ -57,5 +57,8 @@ func process_movement(delta):
 		unit.turn_greyscale_on()
 		unit.get_node("Animation").current_animation = "Idle"
 		
+		# Turn off tiles
+		BattlefieldInfo.movement_calculator.turn_off_all_tiles(unit, BattlefieldInfo.grid)
+		
 		# Emit signal to update the cells
 		emit_signal("unit_finished_moving")

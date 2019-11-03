@@ -16,10 +16,14 @@ func _ready():
 	
 	# Movement System
 	unit_movement_system = Unit_Movement_System.new()
+	
+	# Turn Manager
+	turn_manager = Turn_Manager.new()
 
 # Run Systems
 func _process(delta):
 	unit_movement_system.process_movement(delta)
+	turn_manager._process(delta)
 
 #######################
 #BATTLEFIELD VARIABLES#

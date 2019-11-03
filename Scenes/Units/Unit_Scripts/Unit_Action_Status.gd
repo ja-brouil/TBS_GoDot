@@ -2,6 +2,8 @@ extends Node
 
 class_name Unit_Action_Status
 
+signal unit_became_done
+
 # Listings:
 # Move -> Can do everything
 # Action -> Can do one action (Attack, Heal, Cast Magic, inventory, etc...)
@@ -18,3 +20,7 @@ func get_current_action():
 
 func set_current_action(action):
 	current_action_status = action
+	
+	# notify when unit is done so we can check the turn manager
+	if (action == DONE):
+		emit_signal("unit_became_done")

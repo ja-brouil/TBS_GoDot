@@ -45,11 +45,16 @@ _global_script_classes=[ {
 "path": "res://Engine/Data_Structures/PriorityQueue.gd"
 }, {
 "base": "Node",
+"class": "Turn_Manager",
+"language": "GDScript",
+"path": "res://Engine/Systems/Turn_Manager.gd"
+}, {
+"base": "Node",
 "class": "Unit_Action_Status",
 "language": "GDScript",
 "path": "res://Scenes/Units/Unit_Scripts/Unit_Action_Status.gd"
 }, {
-"base": "Reference",
+"base": "Node",
 "class": "Unit_Movement",
 "language": "GDScript",
 "path": "res://Scenes/Units/Unit_Scripts/Unit_Movement.gd"
@@ -67,6 +72,7 @@ _global_script_class_icons={
 "MovementCalculator": "",
 "MovementRangeRect": "",
 "PriorityQueue": "",
+"Turn_Manager": "",
 "Unit_Action_Status": "",
 "Unit_Movement": "",
 "Unit_Movement_System": ""
@@ -99,6 +105,10 @@ window/stretch/mode="2d"
 [editor_plugins]
 
 enabled=PoolStringArray( "vnen.tiled_importer" )
+
+[gui]
+
+theme/use_hidpi=true
 
 [importer_defaults]
 

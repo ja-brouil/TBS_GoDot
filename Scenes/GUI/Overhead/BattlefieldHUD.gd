@@ -18,14 +18,11 @@ func _ready():
 	battlefield.get_node("Cursor").connect("turn_off_ui", self, "turn_off_battlefield_ui")
 	battlefield.get_node("Cursor").connect("turn_on_ui", self, "turn_on_battlefield_ui")
 	
-	# Connect Area to the Camera movement
-	battlefield.get_node("GameCamera").connect("camera_moved", $Areas, "move_areas")
-	
 	# Connect cursor to the Area
-	$Areas/BottomLeft.connect("body_entered", self, "bottom_left")
-	$Areas/BottomRight.connect("body_entered", self, "bottom_right")
-	$Areas/TopLeft.connect("body_entered", self, "top_left")
-	$Areas/TopRight.connect("body_entered", self, "top_right")
+	get_parent().get_node("GameCamera/Areas/BottomLeft").connect("body_entered", self, "bottom_left")
+	get_parent().get_node("GameCamera/Areas/BottomRight").connect("body_entered", self, "bottom_right")
+	get_parent().get_node("GameCamera/Areas/TopLeft").connect("body_entered", self, "top_left")
+	get_parent().get_node("GameCamera/Areas/TopRight").connect("body_entered", self, "top_right")
 	
 	# Connect to unit movement system
 	BattlefieldInfo.unit_movement_system.connect("unit_finished_moving", self, "turn_on_battlefield_ui")
@@ -33,6 +30,9 @@ func _ready():
 	# Initial Quandrant and previous
 	cursor_quadrant = TOP_LEFT
 	previous_quadrant = TOP_LEFT
+	
+	# Box Fade Connector
+	
 
 func update_battlefield_ui(cursor_direction, cursor_position):
 	# Update Unit Box
@@ -49,13 +49,13 @@ func update_unit_box():
 	# Check if there is a unit and display information
 	if BattlefieldInfo.current_Unit_Selected != null:
 		print(BattlefieldInfo.current_Unit_Selected) # Set appropriate unit stats here
-#		$"Battlefield HUD/Unit Info/FadeAnimU".play("Fade") # play the animation for the ui
+		$"Battlefield HUD/Unit Info/FadeAnimU".play("Fade") # play the animation for the ui
 		$"Battlefield HUD/Unit Info".visible = true
 	else:
-		$"Battlefield HUD/Unit Info".visible = false
-#		if !$"Battlefield HUD/Unit Info/FadeAnimU".is_playing() && $"Battlefield HUD/Unit Info".modulate.a != 0:
-#			$"Battlefield HUD/Unit Info/FadeAnimU".play("FadeOut")
-#		else:
+		$"Battlefield HUD/Unit Info/FadeAnimU".play("FadeOut")
+
+func _on_unit_box_fade():
+	$"Battlefield HUD/Unit Info".visible = false
 
 # Update Terrain
 func update_terrain_box(cursor_position):
@@ -87,8 +87,6 @@ func move_gui_boxes():
 	match cursor_quadrant:
 		TOP_LEFT:
 			# Unit Info Box
-#			if $"Battlefield HUD/Unit Info".visible && battlefield.get_Current_Unit_Selected() != null:
-#				$"Battlefield HUD/Unit Info/FadeAnimU".play("Fade")
 			$"Battlefield HUD/Unit Info".rect_position.x = 0 
 			$"Battlefield HUD/Unit Info".rect_position.y = 115
 			
@@ -104,8 +102,6 @@ func move_gui_boxes():
 
 		BOTTOM_LEFT:
 			# Unit Info Box
-#			if $"Battlefield HUD/Unit Info".visible && battlefield.get_Current_Unit_Selected() != null:
-#				$"Battlefield HUD/Unit Info/FadeAnimU".play("Fade")
 			$"Battlefield HUD/Unit Info".rect_position.x = 0 
 			$"Battlefield HUD/Unit Info".rect_position.y = 0
 

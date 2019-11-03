@@ -1,3 +1,5 @@
+extends Node
+
 # Contains all the statistics needed for movement for the units on the battlefield
 class_name Unit_Movement
 

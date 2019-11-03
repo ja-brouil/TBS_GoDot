@@ -12,6 +12,7 @@ var queue = []
 # Constructor
 func _init(battlefield):
 	self.battlefield = battlefield
+	
 
 # Calculate Movement Blue Squares
 func calculatePossibleMoves(Unit, AllTiles) -> void:

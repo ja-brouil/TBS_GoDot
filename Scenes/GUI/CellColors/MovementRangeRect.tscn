@@ -1,32 +1,25 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/GUI/Cell/MovementRangeRect.gd" type="Script" id=1]
+[ext_resource path="res://assets/UI/Square Selectors/bluedarkSelect.png" type="Texture" id=2]
+[ext_resource path="res://assets/UI/Square Selectors/redselect.png" type="Texture" id=3]
 
+[sub_resource type="ShaderMaterial" id=2]
 
 [node name="MovementRangeRect" type="Node2D"]
 z_index = 4
 script = ExtResource( 1 )
 
-[node name="Blue" type="ColorRect" parent="."]
+[node name="Blue" type="Sprite" parent="."]
 visible = false
-margin_left = 1.0
-margin_top = 1.0
-margin_right = 15.0
-margin_bottom = 15.0
-color = Color( 0, 0.27451, 1, 0.282353 )
+modulate = Color( 1, 1, 1, 0.392157 )
+material = SubResource( 2 )
+texture = ExtResource( 2 )
+centered = false
 
-[node name="Red" type="ColorRect" parent="."]
+[node name="Red" type="Sprite" parent="."]
 visible = false
-margin_left = 1.0
-margin_top = 1.0
-margin_right = 15.0
-margin_bottom = 15.0
-color = Color( 1, 0, 0, 0.282353 )
+texture = ExtResource( 3 )
 
-[node name="Green" type="ColorRect" parent="."]
+[node name="Green" type="Sprite" parent="."]
 visible = false
-margin_left = 1.0
-margin_top = 1.0
-margin_right = 15.0
-margin_bottom = 15.0
-color = Color( 0.0313726, 1, 0, 0.34902 )

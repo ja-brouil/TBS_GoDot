@@ -11,7 +11,7 @@ signal turn_on_ui
 var currentUnit
 
 # Which mode is the cursor in
-enum {MOVE, SELECT_MOVE_TILE, SELECT_ATTACK_TILE, SELECT_HEAL_TILE, SELECT_SPECIAL_TILE}
+enum {MOVE, SELECT_MOVE_TILE, SELECT_ATTACK_TILE, SELECT_HEAL_TILE, SELECT_SPECIAL_TILE, WAIT}
 var cursor_state
 
 func _ready():
@@ -21,7 +21,14 @@ func _ready():
 	# Intial enum
 	cursor_state = MOVE
 	
+	# Connect to Movement
+	BattlefieldInfo.unit_movement_system.connect("unit_finished_moving", self, "back_to_move")
+	
 func _input(event):
+	# Do not process if cursor is in wait mode
+	if cursor_state == WAIT:
+		return
+	
 	# Move Cursor by x pixels
 	if Input.is_action_pressed("ui_left"):
 		self.position.x -= Cell.CELL_SIZE
@@ -151,6 +158,9 @@ func acceptButton() -> void:
 				# Start moving the unit
 				BattlefieldInfo.unit_movement_system.is_moving = true
 				
+				# Turn off Cursor
+				enable(false, WAIT)
+				
 			else:
 				$"InvalidSound".play()
 
@@ -171,6 +181,7 @@ func cancel_Button() -> void:
 			# Turn on the UI if not on
 			emit_signal("turn_on_ui")
 
+# Set animations state
 func set_animation_status(State: bool):
 	if State:
 		get_node("AnimatedCursor").visible = true
@@ -178,6 +189,15 @@ func set_animation_status(State: bool):
 	if !State:
 		get_node("AnimatedCursor").visible = false
 		get_node("StaticCursor").visible = true
+
+# Enable or disable visibility
+func enable(status, next_cursor_state):
+		visible = status
+		cursor_state = next_cursor_state
+
+func back_to_move():
+	enable(true, MOVE)
+
 
 func debug() -> void:
 	print(BattlefieldInfo.grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE].toString())
