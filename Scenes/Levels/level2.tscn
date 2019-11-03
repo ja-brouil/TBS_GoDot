@@ -6,9 +6,6 @@
 [node name="Level" index="0" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
-[node name="CellInfo" parent="." index="1"]
-visible = false
-
 [node name="2076" parent="CellInfo" index="0"]
 editor/display_folded = false
 
@@ -26,3 +23,4 @@ editor/display_folded = false
 
 [node name="Enemies" parent="." index="3"]
 editor/display_folded = false
+visible = false

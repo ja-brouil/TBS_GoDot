@@ -48,7 +48,7 @@ func update_battlefield_ui(cursor_direction, cursor_position):
 func update_unit_box():
 	# Check if there is a unit and display information
 	if BattlefieldInfo.current_Unit_Selected != null:
-		print(BattlefieldInfo.current_Unit_Selected) # Set appropriate unit stats here
+		print("Printed from BattlefieldHUD:",BattlefieldInfo.current_Unit_Selected) # Set appropriate unit stats here
 		$"Battlefield HUD/Unit Info/FadeAnimU".play("Fade") # play the animation for the ui
 		$"Battlefield HUD/Unit Info".visible = true
 	else:

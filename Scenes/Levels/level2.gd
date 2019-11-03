@@ -74,6 +74,10 @@ func _ready():
 		all_allies_location.append(new_ally)
 		new_ally.UnitMovementStats.currentTile = grid[new_ally.position.x / Cell.CELL_SIZE][new_ally.position.y / Cell.CELL_SIZE]
 		grid[new_ally.position.x / Cell.CELL_SIZE][new_ally.position.y / Cell.CELL_SIZE].occupyingUnit = new_ally
+		
+		# Add Eirika to Battlefield Info for 
+		if allyCellInfo.get_meta("Name") == "Eirika":
+			BattlefieldInfo.Eirika = new_ally
 	
 	# Create Enemy Units
 	for enemy in enemyInfoLayer.get_children():

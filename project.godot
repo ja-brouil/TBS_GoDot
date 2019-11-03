@@ -63,6 +63,11 @@ _global_script_classes=[ {
 "class": "Unit_Movement_System",
 "language": "GDScript",
 "path": "res://Engine/Systems/Unit_Movement_System.gd"
+}, {
+"base": "Reference",
+"class": "Unit_Stats",
+"language": "GDScript",
+"path": "res://Scenes/Units/Unit_Scripts/Unit_Stats.gd"
 } ]
 _global_script_class_icons={
 "Battlefield_Unit": "",
@@ -75,7 +80,8 @@ _global_script_class_icons={
 "Turn_Manager": "",
 "Unit_Action_Status": "",
 "Unit_Movement": "",
-"Unit_Movement_System": ""
+"Unit_Movement_System": "",
+"Unit_Stats": ""
 }
 
 [application]

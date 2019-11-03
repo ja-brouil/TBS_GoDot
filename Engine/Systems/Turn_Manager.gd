@@ -12,6 +12,7 @@ signal play_transition
 func _init():
 	turn = PLAYER_TURN
 
+
 func _process(delta):
 	check_end_of_turn()
 
@@ -30,6 +31,10 @@ func check_end_of_turn():
 			
 			# All Units have moved and are done
 			emit_signal("play_transition", "Enemy")
+			turn = WAIT
+		ENEMY_TURN:
+			
+			emit_signal("play_transition", "Ally")
 
 # Ally turn
 # reset all allies to active

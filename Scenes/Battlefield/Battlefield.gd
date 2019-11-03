@@ -39,8 +39,11 @@ var map_width
 
 # Camera Values
 var camera_limit_bottom
-var camera_limit_
+var camera_limit_right
 
 # Battlefield Unit Info
 var ally_units = {}
 var enemy_units = {}
+
+# Eirika for AI purposes
+var Eirika

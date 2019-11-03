@@ -24,12 +24,22 @@ func calculatePossibleMoves(Unit, AllTiles) -> void:
 	# Reset Grid values
 	reset_grid_values()
 	
-	# Process Tiles
+	# Process Move Tiles
 	processTile(Unit.UnitMovementStats.currentTile, Unit.UnitMovementStats, Unit.UnitMovementStats.movementSteps, Unit)
+	
+	# Process Attack tiles -> Find a better way of optimizing this
+	processAttackTile(Unit)
+	
+	# Process Heal Tiles -> Find better way of optimizaing this
+	processHealingTile(Unit)
 	
 	# Light all the blue tiles -> Change this later to check if the unit has a healing ability and turn on green tiles
 	for blueTile in Unit.UnitMovementStats.allowedMovement:
 		AllTiles[blueTile.getPosition().x][blueTile.getPosition().y].get_node("MovementRangeRect").turnOn("Blue")
+	for redTile in Unit.UnitMovementStats.allowedAttackRange:
+		AllTiles[redTile.getPosition().x][redTile.getPosition().y].get_node("MovementRangeRect").turnOn("Red")
+	for greenTile in Unit.UnitMovementStats.allowedHealRange:
+		AllTiles[greenTile.getPosition().x][greenTile.getPosition().y].get_node("MovementRangeRect").turnOn("Green")
 
 # Process all the tiles to find what is movable to
 func processTile(initialTile, unit_movement, moveSteps, unit):
@@ -58,6 +68,61 @@ func processTile(initialTile, unit_movement, moveSteps, unit):
 					# Tile is occupied -> Check if it's an ally (or enemy for enemy)
 					if adjTile.occupyingUnit.UnitMovementStats.is_ally == unit_movement.is_ally:
 						queue.append([next_cost, adjTile])
+
+# Process Attackable Range
+func processAttackTile(Unit):
+	# Reset values
+	reset_grid_values()
+	var new_queue = []
+	
+	# Get tiles
+	var moveSteps = (Unit.UnitInventory.MAX_ATTACK_RANGE - 1)
+	for blueTile in Unit.UnitMovementStats.allowedMovement:
+		for adjTile in blueTile.adjCells:
+			if !Unit.UnitMovementStats.allowedMovement.has(adjTile):
+				new_queue.append([moveSteps, adjTile])
+	
+	# BFS Search for attack tiles
+	while !new_queue.empty():
+		var check_tile = new_queue.pop_front()
+		Unit.UnitMovementStats.allowedAttackRange.append(check_tile[1])
+		check_tile[1].isVisited = true
+		
+		# Get the next cost
+		for adjTile in check_tile[1].adjCells:
+			var next_cost = check_tile[0] - 1
+
+			# Do not process tiles that we have already seen or if we cannot get there or if the movement already has this
+			if next_cost >= 0 && !adjTile.isVisited && !Unit.UnitMovementStats.allowedMovement.has(adjTile):
+				new_queue.append([next_cost, adjTile])
+
+# Process Healing Range
+func processHealingTile(Unit):
+	# Reset values
+	reset_grid_values()
+	var new_queue = []
+	
+	# Get tiles
+	var moveSteps = (Unit.UnitInventory.MAX_HEAL_RANGE - 1)
+	for blueTile in Unit.UnitMovementStats.allowedMovement:
+		for adjTile in blueTile.adjCells:
+			if !Unit.UnitMovementStats.allowedMovement.has(adjTile):
+				new_queue.append([moveSteps, adjTile])
+	
+	# BFS Search for attack tiles
+	while !new_queue.empty():
+		var check_tile = new_queue.pop_front()
+		if !Unit.UnitMovementStats.allowedAttackRange.has(check_tile[1]):
+			Unit.UnitMovementStats.allowedHealRange.append(check_tile[1])
+		check_tile[1].isVisited = true
+		
+		# Get the next cost
+		for adjTile in check_tile[1].adjCells:
+			var next_cost = check_tile[0] - 1
+
+			# Do not process tiles that we have already seen or if we cannot get there or if the movement already has this
+			if next_cost >= 0 && !adjTile.isVisited && !Unit.UnitMovementStats.allowedMovement.has(adjTile):
+				new_queue.append([next_cost, adjTile])
 
 # Returns the penalty cost associated with the unit's class for moving across different tiles
 func getPenaltyCost(Unit_Movement, Cell_Type) -> int:
@@ -88,8 +153,11 @@ func turn_off_all_tiles(Unit, AllTiles) -> void:
 	for blueTile in Unit.UnitMovementStats.allowedMovement:
 		AllTiles[blueTile.getPosition().x][blueTile.getPosition().y].get_node("MovementRangeRect").turnOff("Blue")
 	# Turn off Red -> TO DO
-	
+	for redTile in Unit.UnitMovementStats.allowedAttackRange:
+		AllTiles[redTile.getPosition().x][redTile.getPosition().y].get_node("MovementRangeRect").turnOff("Red")
 	# Turn off Green -> TO DO
+	for greenTile in Unit.UnitMovementStats.allowedHealRange:
+		AllTiles[greenTile.getPosition().x][greenTile.getPosition().y].get_node("MovementRangeRect").turnOff("Green")
 
 # Find the shortest path to the target destination | This uses the A* algorithm
 func get_path_to_destination(Unit, target_destination, AllTiles):

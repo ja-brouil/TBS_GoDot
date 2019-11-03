@@ -84,7 +84,6 @@ func updateCursorData() -> void:
 				
 				# Check if this unit is an ally
 				if currentUnit.UnitMovementStats.is_ally && currentUnit.UnitActionStatus.get_current_action() != Unit_Action_Status.DONE:
-					print(currentUnit)
 					currentUnit.get_node("Animation").current_animation = "Selected"
 				
 				# Stop Cursor animation
@@ -158,6 +157,11 @@ func acceptButton() -> void:
 				# Start moving the unit
 				BattlefieldInfo.unit_movement_system.is_moving = true
 				
+				# Set Camera on unit
+				var movement_camera = preload("res://Scenes/Camera/MovementCamera.tscn").instance()
+				BattlefieldInfo.current_Unit_Selected.add_child(movement_camera)
+				movement_camera.current = true
+
 				# Turn off Cursor
 				enable(false, WAIT)
 				
