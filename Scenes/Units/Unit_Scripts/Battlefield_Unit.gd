@@ -30,6 +30,9 @@ func _ready():
 	# Inventory
 	UnitInventory = preload("res://Scenes/Units/Unit_Scripts/Inventory.tscn").instance()
 	add_child(UnitInventory)
+	
+	# Unit stats
+	UnitStats = Unit_Stats.new()
 
 # Greyscale options
 func turn_greyscale_on():

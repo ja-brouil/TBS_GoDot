@@ -10,6 +10,9 @@ var MAX_ATTACK_RANGE = 2
 # Heal Range
 var MAX_HEAL_RANGE = 2
 
+# Current item equipped
+var current_item_equipped
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.

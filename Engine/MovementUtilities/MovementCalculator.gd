@@ -207,7 +207,7 @@ func get_path_to_destination(Unit, target_destination, AllTiles):
 				# Add to the open List
 				if !open_list.contains(adjCell):
 					open_list.add_first(adjCell)
-					
+
 	# Create the Pathfinding Queue
 	create_pathfinding_queue(target_destination, Unit)
 

@@ -3620,7 +3620,7 @@
     <property name="isAlly" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="2277" x="224" y="208" width="16" height="16">
+  <object id="2277" x="112" y="192" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
     <property name="BonusDodge" type="int" value="0"/>
