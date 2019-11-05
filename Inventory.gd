@@ -5,7 +5,7 @@ var Inventory = []
 const MAX_INVENTORY = 6
 
 # Attack range based on weapon
-var MAX_ATTACK_RANGE = 2
+var MAX_ATTACK_RANGE = 1
 
 # Heal Range
 var MAX_HEAL_RANGE = 2

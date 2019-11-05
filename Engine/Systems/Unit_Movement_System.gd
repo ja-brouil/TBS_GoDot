@@ -62,3 +62,7 @@ func process_movement(delta):
 		
 		# Emit signal to update the cells
 		emit_signal("unit_finished_moving")
+		
+		# TESTING AI | CHANGE THIS LATER
+		if unit.has_node("AI"):
+			BattlefieldInfo.turn_manager = Turn_Manager.ENEMY_TURN

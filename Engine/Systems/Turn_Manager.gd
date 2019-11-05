@@ -21,6 +21,11 @@ func reset_allys():
 	for ally_unit in BattlefieldInfo.ally_units:
 		ally_unit.UnitActionStatus.set_current_action(Unit_Action_Status.MOVE)
 
+# Enemy
+func reset_enemies():
+	for enemy_unit in BattlefieldInfo.enemy_units:
+		enemy_unit.UnitActionStatus.set_current_action(Unit_Action_Status.MOVE)
+
 # Not really a fan of checking this every frame but it will do for now. Optimize this later.
 func check_end_of_turn():
 	match turn:
@@ -28,13 +33,19 @@ func check_end_of_turn():
 			for ally_unit in BattlefieldInfo.ally_units:
 				if ally_unit.UnitActionStatus.get_current_action() != Unit_Action_Status.DONE:
 					return
-			
 			# All Units have moved and are done
 			emit_signal("play_transition", "Enemy")
 			turn = WAIT
 		ENEMY_TURN:
-			
+			for enemy_unit in BattlefieldInfo.enemy_units:
+				if enemy_unit.UnitActionStatus.get_current_action() != Unit_Action_Status.DONE:
+					print("here")
+					BattlefieldInfo.next_ai(enemy_unit)
+					turn = WAIT
+					return
+			# All units have moved and are done
 			emit_signal("play_transition", "Ally")
+			turn = WAIT
 
 # Ally turn
 # reset all allies to active

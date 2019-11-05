@@ -47,3 +47,7 @@ var enemy_units = {}
 
 # Eirika for AI purposes
 var Eirika
+
+# Use a signal for this | Change this, just temporary
+func next_ai(enemy_unit):
+	enemy_unit.get_node("AI").process_ai()

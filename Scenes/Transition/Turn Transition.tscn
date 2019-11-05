@@ -140,3 +140,4 @@ anims/Move_Off = SubResource( 1 )
 [node name="Animation_E" type="AnimationPlayer" parent="."]
 anims/Move_Off = SubResource( 2 )
 [connection signal="animation_finished" from="Animation" to="." method="ally_animation_finished"]
+[connection signal="animation_finished" from="Animation_E" to="." method="enemy_animation_finished"]

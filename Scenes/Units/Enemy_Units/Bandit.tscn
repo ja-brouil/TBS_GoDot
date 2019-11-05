@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/Units/Enemy_Units/Bandit.gd" type="Script" id=1]
 [ext_resource path="res://assets/units/bandit/banditRed.png" type="Texture" id=2]
 [ext_resource path="res://assets/sound/unitMovement/Light Foot Steps 1.wav" type="AudioStream" id=3]
+[ext_resource path="res://Scenes/AI/AI.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Down"
@@ -334,3 +335,5 @@ anims/Idle = SubResource( 3 )
 anims/Left = SubResource( 4 )
 anims/Right = SubResource( 5 )
 anims/Up = SubResource( 6 )
+
+[node name="AI" parent="." instance=ExtResource( 4 )]
