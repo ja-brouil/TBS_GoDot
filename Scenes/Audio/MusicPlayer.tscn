@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Audio/MusicPlayer.gd" type="Script" id=1]
 [ext_resource path="res://assets/music/FE Level1 SD.wav" type="AudioStream" id=2]
+[ext_resource path="res://assets/sound/transition/Next Turn.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/music/enemy theme.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/music/oneUnitLeft.wav" type="AudioStream" id=5]
 
 [node name="MusicPlayer" type="Node"]
 script = ExtResource( 1 )
@@ -10,3 +13,10 @@ script = ExtResource( 1 )
 stream = ExtResource( 2 )
 
 [node name="Transition" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="EnemyLevel" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="OneUnitLeft" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )

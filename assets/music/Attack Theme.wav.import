@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Attack Theme.wav-49b6694eeb4c7807967dcf38c9e38af2.sample"
+
+[deps]
+
+source_file="res://assets/music/Attack Theme.wav"
+dest_files=[ "res://.import/Attack Theme.wav-49b6694eeb4c7807967dcf38c9e38af2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

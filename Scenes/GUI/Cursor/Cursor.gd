@@ -1,4 +1,5 @@
 extends Node2D
+class_name Cursor
 
 # Signal for camera and other UI elements to update
 signal cursorMoved
@@ -200,7 +201,8 @@ func enable(status, next_cursor_state):
 		cursor_state = next_cursor_state
 
 func back_to_move():
-	enable(true, MOVE)
+	if BattlefieldInfo.turn_manager.turn == Turn_Manager.PLAYER_TURN:
+		enable(true, MOVE)
 
 
 func debug() -> void:

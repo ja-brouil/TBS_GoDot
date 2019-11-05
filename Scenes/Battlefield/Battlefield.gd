@@ -1,5 +1,4 @@
-extends Node2D
-
+extends Node
 #########
 #SYSTEMS#
 #########
@@ -8,6 +7,7 @@ extends Node2D
 var unit_movement_system
 var movement_calculator
 var turn_manager
+var music_player
 
 # Start battlefield game
 func _ready():
@@ -19,11 +19,15 @@ func _ready():
 	
 	# Turn Manager
 	turn_manager = Turn_Manager.new()
+	add_child(turn_manager)
+	
+	# Music player
+	music_player = preload("res://Scenes/Audio/MusicPlayer.tscn").instance()
+	add_child(music_player)
 
 # Run Systems
 func _process(delta):
 	unit_movement_system.process_movement(delta)
-	turn_manager._process(delta)
 
 #######################
 #BATTLEFIELD VARIABLES#

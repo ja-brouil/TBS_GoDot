@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Iron Sword.gd" type="Script" id=1]
+
+[node name="Iron Sword" type="Sprite"]
+script = ExtResource( 1 )

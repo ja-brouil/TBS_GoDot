@@ -22,7 +22,7 @@ var movementSteps
 var movement_queue = []
 
 # Allow Ally Movement
-var is_ally
+var is_ally = true
 
 # Movement Penalties
 var defaultPenalty

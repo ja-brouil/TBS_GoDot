@@ -2,7 +2,7 @@ extends Node2D
 
 # Type of AI | Default is passive
 enum {AGGRESIVE, PASSIVE, PATROL, HEAL, RANDOM}
-var ai_type = PASSIVE
+var ai_type = AGGRESIVE
 
 # Holds all attackable enemies
 var all_attackable_enemies = []
@@ -19,37 +19,8 @@ var tile_to_walk_from
 #	Unit.UnitMovementStats.allowedHealRange.clear()
 
 func process_ai():
-	# All AI will find all enemies that can be attacked, regardless of status
-	calculate_move_sets()
-	find_all_enemies_within_range()
+	$Timer.start(0.5)
 	
-	# Match the type of enemy
-	match ai_type:
-		AGGRESIVE:
-			# Move toward Eirika if there are no enemies to attack
-			if all_attackable_enemies.empty():
-				find_tile_to_move_to_no_enemies()
-			else:
-				# Find unit to attack
-				find_tile_to_move_to(find_most_threatening_enemy())
-		PASSIVE:
-			# Check if there are any enemies within range that we can attack
-			if all_attackable_enemies.empty():
-				get_parent().UnitActionStatus.set_current_action(Unit_Action_Status.DONE)
-			else:
-				# Find unit to attack
-				find_tile_to_move_to(find_most_threatening_enemy())
-		PATROL:
-			# Check if there are any enemies within range that we can attack
-			if all_attackable_enemies.empty():
-				print("Moving to other destination")
-			else:
-				print("finding enemy to attack")
-		HEAL:
-			pass
-		RANDOM:
-			pass
-
 # Helper Functions
 # Calculate Movesets
 func calculate_move_sets():
@@ -62,13 +33,14 @@ func find_all_enemies_within_range():
 	
 	# Get all attackable enemies
 	# Process Blue tiles first
+	
 	for blue_tile in get_parent().UnitMovementStats.allowedMovement:
-		if blue_tile.occupyingUnit != null && blue_tile.occupyingUnit.UnitMovementStats.is_Ally:
+		if blue_tile.occupyingUnit != null && blue_tile.occupyingUnit.UnitMovementStats.is_ally:
 			all_attackable_enemies.append(blue_tile.occupyingUnit)
 	
 	# Process Red Tiles
 	for red_tile in get_parent().UnitMovementStats.allowedAttackRange:
-		if red_tile.occupyingUnit != null && red_tile.occupyingUnit.UnitMovementStats.is_Ally:
+		if red_tile.occupyingUnit != null && red_tile.occupyingUnit.UnitMovementStats.is_ally:
 			all_attackable_enemies.append(red_tile.occupyingUnit)
 
 # Find all enemies that can be healed
@@ -78,17 +50,17 @@ func find_all_enemies_that_can_be_healed():
 	
 	# Process Blue tiles first
 	for blue_tile in get_parent().UnitMovementStats.allowedMovement:
-		if blue_tile.occuypingUnit != null && !blue_tile.occupyingUnit.UnitMovementStats.is_Ally:
+		if blue_tile.occuypingUnit != null && !blue_tile.occupyingUnit.UnitMovementStats.is_ally:
 			all_healable_enemies.append(blue_tile.occupyingUnit)
 	
 	# Process Red Tiles
 	for red_tile in get_parent().UnitMovementStats.allowedAttackRange:
-		if red_tile.occupyingUnit != null && !red_tile.occupyingUnit.UnitMovementStats.is_Ally:
+		if red_tile.occupyingUnit != null && !red_tile.occupyingUnit.UnitMovementStats.is_ally:
 			all_healable_enemies.append(red_tile.occupyingUnit)
 	
 	# Process Green Tiles
 	for green_tile in get_parent().UnitMovementStats.allowedHealkRange:
-		if green_tile.occupyingUnit != null && !green_tile.occupyingUnit.UnitMovementStats.is_Ally:
+		if green_tile.occupyingUnit != null && !green_tile.occupyingUnit.UnitMovementStats.is_ally:
 			all_healable_enemies.append(green_tile.occupyingUnit)
 			
 
@@ -108,12 +80,13 @@ func find_most_threatening_enemy():
 		
 		# Attack Type
 		# Physical Damage
-		if get_parent().UnitInventory.current_item_equipped.weapon_type == Item.WEAPON:
+		print(get_parent().UnitInventory.current_item_equipped.weapon_type)
+		if get_parent().UnitInventory.current_item_equipped.weapon_type == Item.WEAPON_TYPE.WEAPON:
 			# Check Physical Defense -> Avoid enemies with higher def
 			threat_value -= (ally_unit.UnitStats.def / 2)
 			
 		# Magic Damage
-		elif get_parent().UnitInventory.current_item_equipped.weapon_type == Item.MAGIC:
+		elif get_parent().UnitInventory.current_item_equipped.weapon_type == Item.WEAPON_TYPE.MAGIC:
 			# Check Magical Defense -> Avoid enemies with higher res
 			threat_value -= (ally_unit.UnitStats.res / 2)
 		
@@ -146,7 +119,7 @@ func find_tile_to_move_to(Unit_To_Move_Toward):
 	var best_tile_value = 0
 	
 	for tile_check in allowed_tiles:
-		var tile_value = (tile_check.avoidancebonus + tile_check.defenseBonus)
+		var tile_value = (tile_check.avoidanceBonus + tile_check.defenseBonus)
 		 
 		if tile_value > best_tile_value:
 			best_tile = tile_check
@@ -177,17 +150,18 @@ func find_tile_to_move_to_no_enemies():
 	var eirika_tile
 	for ally_unit in BattlefieldInfo.ally_units:
 		if ally_unit.UnitStats.name == "Eirika":
-			eirika_tile = eirika_tile.UnitMovementStats.currentTile
+			eirika_tile = ally_unit.UnitMovementStats.currentTile
 			
 	# Create the path to that tile
-	BattlefieldInfo.movement_calculator.get_path_to_destination(get_parent(), eirika_tile, BattlefieldInfo.grid)
+	BattlefieldInfo.movement_calculator.get_path_to_destination_AI(get_parent(), eirika_tile, BattlefieldInfo.grid)
 	
 	# Work backwards until we have a tile that is part of the system
+	var final_movement_queue = []
 	while !get_parent().UnitMovementStats.movement_queue.empty():
-		if get_parent().UnitMovementStats.allowedMovement.has(get_parent().UnitMovementStats.movement_queue.front()):
-			break
-		else:
-			get_parent().UnitMovementStats.movement_queue.pop_front()
+		var test_tile = get_parent().UnitMovementStats.movement_queue.pop_front()
+		if get_parent().UnitMovementStats.allowedMovement.has(test_tile):
+			final_movement_queue.push_back(test_tile)
+	get_parent().UnitMovementStats.movement_queue = final_movement_queue
 	
 	# Move to the target
 	# Remove the unit's occupied status on the grid
@@ -201,3 +175,36 @@ func find_tile_to_move_to_no_enemies():
 	BattlefieldInfo.current_Unit_Selected = get_parent()
 	BattlefieldInfo.current_Unit_Selected.add_child(movement_camera)
 	movement_camera.current = true
+
+# AI Script
+func _on_Timer_timeout():
+	# All AI will find all enemies that can be attacked, regardless of status
+	calculate_move_sets()
+	find_all_enemies_within_range()
+	
+	# Match the type of enemy
+	match ai_type:
+		AGGRESIVE:
+			# Move toward Eirika if there are no enemies to attack
+			if all_attackable_enemies.empty():
+				find_tile_to_move_to_no_enemies()
+			else:
+				# Find unit to attack
+				find_tile_to_move_to(find_most_threatening_enemy())
+		PASSIVE:
+			# Check if there are any enemies within range that we can attack
+			if all_attackable_enemies.empty():
+				get_parent().UnitActionStatus.set_current_action(Unit_Action_Status.DONE)
+			else:
+				# Find unit to attack
+				find_tile_to_move_to(find_most_threatening_enemy())
+		PATROL:
+			# Check if there are any enemies within range that we can attack
+			if all_attackable_enemies.empty():
+				print("Moving to other destination")
+			else:
+				print("finding enemy to attack")
+		HEAL:
+			pass
+		RANDOM:
+			pass

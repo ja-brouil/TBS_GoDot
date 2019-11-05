@@ -6,18 +6,18 @@ var name
 var class_type
 
 # Regular attributes
-var max_health
-var current_health
+var max_health = 20
+var current_health = 20
 const MAX_POSSIBLE_HEALTH = 60
 
-var strength # Physical damage
-var skill    # Accuracy Rate
-var speed    # Double attack rate and avoidance
-var magic    # Magic Damage
-var luck     # Critical strike chance and avoidance
-var def      # Physical damage defence
-var res      # Magical damage defence
-var consti   # Allows to wield heavier weapons
+var strength = 5 # Physical damage
+var skill    = 5 # Accuracy Rate
+var speed    = 5 # Double attack rate and avoidance
+var magic    = 5 # Magic Damage
+var luck     = 5 # Critical strike chance and avoidance
+var def      = 5 # Physical damage defence
+var res      = 5 # Magical damage defence
+var consti   = 5 # Allows to wield heavier weapons
 
 # Bonuses
 var bonus_crit

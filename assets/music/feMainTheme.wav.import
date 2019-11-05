@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/feMainTheme.wav-6f73618da5d76491c14ff0418699910a.sample"
+
+[deps]
+
+source_file="res://assets/music/feMainTheme.wav"
+dest_files=[ "res://.import/feMainTheme.wav-6f73618da5d76491c14ff0418699910a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=true
+compress/mode=0

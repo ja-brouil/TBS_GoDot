@@ -148,4 +148,5 @@ func turn_off_battlefield_ui():
 
 # Turn on all UI elements of the battlefield
 func turn_on_battlefield_ui():
-	$"Battlefield HUD".visible = true
+	if BattlefieldInfo.turn_manager.turn == Turn_Manager.PLAYER_TURN:
+		$"Battlefield HUD".visible = true
