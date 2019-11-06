@@ -159,7 +159,7 @@ func find_tile_to_move_to_no_enemies():
 	var final_movement_queue = []
 	while !get_parent().UnitMovementStats.movement_queue.empty():
 		var test_tile = get_parent().UnitMovementStats.movement_queue.pop_front()
-		if get_parent().UnitMovementStats.allowedMovement.has(test_tile):
+		if get_parent().UnitMovementStats.allowedMovement.has(test_tile) && test_tile.occupyingUnit == null:
 			final_movement_queue.push_back(test_tile)
 	get_parent().UnitMovementStats.movement_queue = final_movement_queue
 	

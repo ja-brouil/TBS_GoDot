@@ -26,13 +26,19 @@ func start_transition(type):
 
 # Update turn manager
 func ally_animation_finished(anim_name):
+	# Set Turn
 	BattlefieldInfo.turn_manager.turn = Turn_Manager.PLAYER_TURN
 	BattlefieldInfo.turn_manager.reset_allys()
 	
+	# Set Music
 	if BattlefieldInfo.enemy_units.size() <= 1:
 		BattlefieldInfo.music_player.get_node("OneUnitLeft").play(0)
 	else:
 		BattlefieldInfo.music_player.get_node("AllyLevel").play(0)
+	
+	# Activate UI and Cursor again
+	get_parent().get_parent().get_node("BattlefieldHUD").turn_on_battlefield_ui()
+	get_parent().get_parent().get_node("Cursor").back_to_move()
 
 func enemy_animation_finished(anim_name):
 	BattlefieldInfo.turn_manager.turn = Turn_Manager.ENEMY_TURN
