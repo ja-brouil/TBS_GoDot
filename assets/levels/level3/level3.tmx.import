@@ -12,11 +12,11 @@ dest_files=[ "res://.import/level3.tmx-6d061715b8368de2ca7c63e01927df77.scn" ]
 [params]
 
 custom_properties=true
-tile_metadata=false
+tile_metadata=true
 uv_clip=true
 image_flags=7
 collision_layer=1
 embed_internal_images=false
-save_tiled_properties=false
+save_tiled_properties=true
 add_background=true
 post_import_script=""

@@ -30,9 +30,6 @@ func _ready():
 	# Initial Quandrant and previous
 	cursor_quadrant = TOP_LEFT
 	previous_quadrant = TOP_LEFT
-	
-	# Box Fade Connector
-	
 
 func update_battlefield_ui(cursor_direction, cursor_position):
 	# Update Unit Box

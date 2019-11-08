@@ -1,8 +1,8 @@
 extends Node2D
 
 # Type of AI | Default is passive
-enum {AGGRESIVE, PASSIVE, PATROL, HEAL, RANDOM}
-var ai_type = AGGRESIVE
+# Strings AGGRESIVE, PASSIVE, PATROL, HEAL, RANDOM | -> Make sure its all lowercase
+var ai_type = "Aggresive"
 
 # Holds all attackable enemies
 var all_attackable_enemies = []
@@ -67,7 +67,7 @@ func find_all_enemies_that_can_be_healed():
 # Find the enemy to attack
 func find_most_threatening_enemy():
 	var most_threat_value = 0
-	var attack_this_target = all_attackable_enemies.pop_front()
+	var attack_this_target = all_attackable_enemies.front()
 	
 	# Always attack Eirika if we find her
 	for ally_unit in all_attackable_enemies:
@@ -80,7 +80,6 @@ func find_most_threatening_enemy():
 		
 		# Attack Type
 		# Physical Damage
-		print(get_parent().UnitInventory.current_item_equipped.weapon_type)
 		if get_parent().UnitInventory.current_item_equipped.weapon_type == Item.WEAPON_TYPE.WEAPON:
 			# Check Physical Defense -> Avoid enemies with higher def
 			threat_value -= (ally_unit.UnitStats.def / 2)
@@ -106,20 +105,30 @@ func find_most_threatening_enemy():
 
 # Find tile to move to
 func find_tile_to_move_to(Unit_To_Move_Toward):
-	# Figure out the algorithm to get there
-	
-	# Find out which tile we can move around the unit
+	# Get all adjencent tiles
 	var allowed_tiles = []
 	for tile in Unit_To_Move_Toward.UnitMovementStats.currentTile.adjCells:
-		if get_parent().UnitMovementStats.allowedMovement.has(tile):
+		if get_parent().UnitMovementStats.allowedMovement.has(tile) && tile.occupyingUnit == null:
 			allowed_tiles.append(tile)
 	
+	# Fall back in case there are no tiles available
+	if allowed_tiles.empty():
+		find_tile_to_move_to_no_enemies()
+		return
+	
+	# Add current tile the unit is on
+	# CHANGE THIS SO THAT IT ONLY ADDS IF ITS ADJ
+	allowed_tiles.append(get_parent().UnitMovementStats.currentTile)
+	
 	# Calculate the best tile to go to
-	var best_tile = allowed_tiles[0]
+	var best_tile = allowed_tiles.front()
 	var best_tile_value = 0
 	
 	for tile_check in allowed_tiles:
-		var tile_value = (tile_check.avoidanceBonus + tile_check.defenseBonus)
+		tile_check = allowed_tiles[0]
+		var tile_value = 0
+		
+		tile_value = (tile_check.avoidanceBonus + tile_check.defenseBonus)
 		 
 		if tile_value > best_tile_value:
 			best_tile = tile_check
@@ -184,27 +193,30 @@ func _on_Timer_timeout():
 	
 	# Match the type of enemy
 	match ai_type:
-		AGGRESIVE:
+		"Aggresive":
 			# Move toward Eirika if there are no enemies to attack
 			if all_attackable_enemies.empty():
 				find_tile_to_move_to_no_enemies()
 			else:
 				# Find unit to attack
 				find_tile_to_move_to(find_most_threatening_enemy())
-		PASSIVE:
+		"Passive":
 			# Check if there are any enemies within range that we can attack
 			if all_attackable_enemies.empty():
 				get_parent().UnitActionStatus.set_current_action(Unit_Action_Status.DONE)
+				BattlefieldInfo.movement_calculator.turn_off_all_tiles(get_parent(), BattlefieldInfo.grid)
+				# Move to the next enemy
+				BattlefieldInfo.turn_manager.turn = Turn_Manager.ENEMY_TURN
 			else:
 				# Find unit to attack
 				find_tile_to_move_to(find_most_threatening_enemy())
-		PATROL:
+		"Patrol":
 			# Check if there are any enemies within range that we can attack
 			if all_attackable_enemies.empty():
 				print("Moving to other destination")
 			else:
 				print("finding enemy to attack")
-		HEAL:
+		"Heal":
 			pass
-		RANDOM:
+		"Random":
 			pass

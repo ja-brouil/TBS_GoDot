@@ -85,8 +85,9 @@ func processAttackTile(Unit):
 	# BFS Search for attack tiles
 	while !new_queue.empty():
 		var check_tile = new_queue.pop_front()
-		Unit.UnitMovementStats.allowedAttackRange.append(check_tile[1])
-		check_tile[1].isVisited = true
+		if !Unit.UnitMovementStats.allowedAttackRange.has(check_tile[1]): 
+			Unit.UnitMovementStats.allowedAttackRange.append(check_tile[1])
+			check_tile[1].isVisited = true
 		
 		# Get the next cost
 		for adjTile in check_tile[1].adjCells:
@@ -112,9 +113,9 @@ func processHealingTile(Unit):
 	# BFS Search for attack tiles
 	while !new_queue.empty():
 		var check_tile = new_queue.pop_front()
-		if !Unit.UnitMovementStats.allowedAttackRange.has(check_tile[1]):
+		if !Unit.UnitMovementStats.allowedAttackRange.has(check_tile[1]) && !Unit.UnitMovementStats.allowedHealRange.has(check_tile[1]):
 			Unit.UnitMovementStats.allowedHealRange.append(check_tile[1])
-		check_tile[1].isVisited = true
+			check_tile[1].isVisited = true
 		
 		# Get the next cost
 		for adjTile in check_tile[1].adjCells:

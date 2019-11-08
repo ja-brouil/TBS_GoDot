@@ -20,7 +20,7 @@ func _ready():
 	$"AnimatedCursor/AnimationPlayer".play("Moving")
 	
 	# Intial enum
-	cursor_state = MOVE
+	cursor_state = WAIT
 	
 	# Connect to Movement
 	BattlefieldInfo.unit_movement_system.connect("unit_finished_moving", self, "back_to_move")
@@ -59,11 +59,11 @@ func _input(event):
 	if Input.is_action_just_pressed("debug"):
 		debug()
 
-
+# Update cursor
 func updateCursorData() -> void:
 	# Clamp the cursor
-	self.position.x = clamp(self.position.x, 0, (BattlefieldInfo.map_height * Cell.CELL_SIZE) - (Cell.CELL_SIZE * 3))
-	self.position.y = clamp(self.position.y, 0, (BattlefieldInfo.map_width * Cell.CELL_SIZE) - Cell.CELL_SIZE)
+	self.position.x = clamp(self.position.x, 0, (BattlefieldInfo.map_width * Cell.CELL_SIZE) - Cell.CELL_SIZE)
+	self.position.y = clamp(self.position.y, 0, (BattlefieldInfo.map_height * Cell.CELL_SIZE) - Cell.CELL_SIZE)
 	
 	# Move Mode
 	match cursor_state:
@@ -204,7 +204,9 @@ func back_to_move():
 	if BattlefieldInfo.turn_manager.turn == Turn_Manager.PLAYER_TURN:
 		enable(true, MOVE)
 
-
 func debug() -> void:
 	print(BattlefieldInfo.grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE].toString())
 	print("Cursor is at: ", self.position)
+	if BattlefieldInfo.grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE].occupyingUnit != null:
+		print("Unit Name: ", BattlefieldInfo.grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE].occupyingUnit.UnitStats.name)
+		print("Unit Status: ", BattlefieldInfo.grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE].occupyingUnit.UnitActionStatus.get_current_action())

@@ -5,3 +5,6 @@ func _ready():
 	
 	# Set this when the level loads but for now, this is just a test to simply things
 	UnitStats.name = "Eirika"
+	
+	# Is ally bug fix?
+	UnitMovementStats.is_ally = true

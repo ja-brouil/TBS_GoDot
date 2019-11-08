@@ -2,7 +2,7 @@ extends Camera2D
 
 class_name MainCamera
 
-const CAMERA_CURSOR_DIFFERENTIAL_FACTOR = 0
+const CAMERA_CURSOR_DIFFERENTIAL_FACTOR = 1
 const CAMERA_WIDTH = 240
 const CAMERA_HEIGTH = 160
 var RIGHT_CLAMP_MAX
@@ -39,10 +39,10 @@ func _on_Cursor_cursorMoved(direction, cursor_position):
 	
 # Sets the parameters for the maximum camera movement once the level is loaded
 func _on_Level_mapInformationLoaded():
-	limit_bottom = BattlefieldInfo.map_width * Cell.CELL_SIZE
-	limit_right = BattlefieldInfo.map_height * Cell.CELL_SIZE - 32
+	limit_bottom = (BattlefieldInfo.map_height * Cell.CELL_SIZE)
+	limit_right = (BattlefieldInfo.map_width * Cell.CELL_SIZE)
 	RIGHT_CLAMP_MAX = (BattlefieldInfo.map_width * Cell.CELL_SIZE) - CAMERA_WIDTH
-	BOTTOM_CLAMP_MAX = (BattlefieldInfo.map_height * Cell.CELL_SIZE) - CAMERA_HEIGTH - (Cell.CELL_SIZE * 2)
+	BOTTOM_CLAMP_MAX = (BattlefieldInfo.map_height * Cell.CELL_SIZE) - CAMERA_HEIGTH
 	
 # Prevent out of bounds for the camera
 func clampCameraPosition():

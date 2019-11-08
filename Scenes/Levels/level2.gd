@@ -69,8 +69,13 @@ func _ready():
 		var path = str("res://Scenes/Units/Player_Units/AllyUnits/", allyCellInfo.get_meta("Name"),".tscn")
 		var new_ally = load(path).instance()
 		add_child(new_ally)
+		
+		# Set Stats
 		new_ally.position.x = allyCellInfo.position.x
 		new_ally.position.y = allyCellInfo.position.y
+		new_ally.UnitStats.name = allyCellInfo.get_meta("Name")
+		
+		# Set Battlefield Info
 		all_allies_location.append(new_ally)
 		new_ally.UnitMovementStats.currentTile = grid[new_ally.position.x / Cell.CELL_SIZE][new_ally.position.y / Cell.CELL_SIZE]
 		grid[new_ally.position.x / Cell.CELL_SIZE][new_ally.position.y / Cell.CELL_SIZE].occupyingUnit = new_ally
@@ -83,8 +88,16 @@ func _ready():
 	for enemy in enemyInfoLayer.get_children():
 		var path = str("res://Scenes/Units/Enemy_Units/", enemy.get_meta("Class"),".tscn")
 		var newEnemy = load(path).instance()
+		
+		# Set AI Type
+		newEnemy.get_node("AI").ai_type = enemy.get_meta("aiType")
 		add_child(newEnemy)
+		
+		# Set Stats
 		newEnemy.position = Vector2(enemy.position.x, enemy.position.y)
+		newEnemy.UnitStats.name = enemy.get_meta("Name")
+		
+		# Set Battlefield Info
 		newEnemy.UnitMovementStats.currentTile = grid[newEnemy.position.x / Cell.CELL_SIZE][newEnemy.position.y / Cell.CELL_SIZE]
 		grid[newEnemy.position.x / Cell.CELL_SIZE][newEnemy.position.y / Cell.CELL_SIZE].occupyingUnit = newEnemy
 		all_enemies_location.append(newEnemy)

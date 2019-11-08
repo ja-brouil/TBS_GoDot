@@ -56,15 +56,3 @@ func check_end_of_turn():
 			emit_signal("play_transition", "Ally")
 			reset_greyscale()
 			turn = WAIT
-
-# Ally turn
-# reset all allies to active
-# Check if all the allies are on done status
-# if they are -> turn over to enemy turn
-
-# Enemy Turn
-# Set all enemies to active
-# Process all aggresive enemies
-# process all passive enemies
-# process all healers
-# are we done processing all enemies?

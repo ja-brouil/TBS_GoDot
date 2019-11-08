@@ -15,9 +15,9 @@ __meta__ = {
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Level" parent="YSort" instance=ExtResource( 1 )]
-z_index = 1
 
 [node name="Cursor" parent="." instance=ExtResource( 2 )]
+visible = false
 z_index = 5
 
 [node name="GameCamera" parent="." instance=ExtResource( 3 )]

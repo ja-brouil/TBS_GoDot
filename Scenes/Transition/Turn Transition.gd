@@ -29,6 +29,7 @@ func ally_animation_finished(anim_name):
 	# Set Turn
 	BattlefieldInfo.turn_manager.turn = Turn_Manager.PLAYER_TURN
 	BattlefieldInfo.turn_manager.reset_allys()
+	BattlefieldInfo.turn_manager.reset_enemies()
 	
 	# Set Music
 	if BattlefieldInfo.enemy_units.size() <= 1:
