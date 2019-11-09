@@ -53,8 +53,8 @@ func clampCameraPosition():
 
 # Set back to this camera
 func set_current_camera():
-	var new_cam_position = Vector2(BattlefieldInfo.current_Unit_Selected.position.x - (CAMERA_WIDTH / 2), BattlefieldInfo.current_Unit_Selected.position.y - (CAMERA_HEIGTH / 2))
+	#var new_cam_position = Vector2(BattlefieldInfo.current_Unit_Selected.position.x - (CAMERA_WIDTH / 2), BattlefieldInfo.current_Unit_Selected.position.y - (CAMERA_HEIGTH / 2))
 	# Remove other camera
-	position = new_cam_position
+	#position = new_cam_position
 	BattlefieldInfo.current_Unit_Selected.get_node("MovementCamera").queue_free()
 	current = true

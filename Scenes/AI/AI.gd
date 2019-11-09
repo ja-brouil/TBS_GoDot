@@ -1,7 +1,7 @@
 extends Node2D
 
 # Type of AI | Default is passive
-# Strings AGGRESIVE, PASSIVE, PATROL, HEAL, RANDOM | -> Make sure its all lowercase
+# Strings AGGRESIVE, PASSIVE, PATROL, HEAL, RANGED, RANDOM | -> Make sure its all lowercase
 var ai_type = "Aggresive"
 
 # Holds all attackable enemies
@@ -73,7 +73,12 @@ func find_most_threatening_enemy():
 	for ally_unit in all_attackable_enemies:
 		var threat_value = 0
 		if ally_unit.UnitStats.name == "Eirika":
-			return ally_unit
+			# Check if all the adj tiles are taken or we can't go there
+			for eirika_adj_cell in ally_unit.UnitMovementStats.currentTile.adjCells:
+				if get_parent().UnitMovementStats.allowedMovement.has(eirika_adj_cell) && eirika_adj_cell.occupyingUnit != null: 
+					return ally_unit
+			# No cells are available then remove Eirika
+			continue
 		
 		# Check HP Amount -> Lower percentage enemies = higher threat
 		threat_value += (100 - ((ally_unit.UnitStats.current_health / ally_unit.UnitStats.max_health) * 100))
@@ -100,10 +105,15 @@ func find_most_threatening_enemy():
 			most_threat_value = threat_value
 			attack_this_target = ally_unit
 	
+	# stop if the enemy list is empty
+	if all_attackable_enemies.empty():
+		find_tile_to_move_to_no_enemies()
+		return
+	
 	# Should have found the enemy to attack
 	return attack_this_target
 
-# Find tile to move to
+# Find tile to move to | Melee  units
 func find_tile_to_move_to(Unit_To_Move_Toward):
 	# Get all adjencent tiles
 	var allowed_tiles = []
@@ -115,10 +125,6 @@ func find_tile_to_move_to(Unit_To_Move_Toward):
 	if allowed_tiles.empty():
 		find_tile_to_move_to_no_enemies()
 		return
-	
-	# Add current tile the unit is on
-	# CHANGE THIS SO THAT IT ONLY ADDS IF ITS ADJ
-	allowed_tiles.append(get_parent().UnitMovementStats.currentTile)
 	
 	# Calculate the best tile to go to
 	var best_tile = allowed_tiles.front()
@@ -160,7 +166,14 @@ func find_tile_to_move_to_no_enemies():
 	for ally_unit in BattlefieldInfo.ally_units:
 		if ally_unit.UnitStats.name == "Eirika":
 			eirika_tile = ally_unit.UnitMovementStats.currentTile
-			
+	
+	# If the tile we are standing on is ALREADY an adj of eirika, then just attack her and stay put
+	# Attack code here
+	for adjTile in eirika_tile.adjCells:
+		if adjTile == get_parent().UnitMovementStats.currentTile:
+			print("FROM AI SCRIPT: ATTACKED EIRIKA, Now moving away!")
+			eirika_tile = get_parent().UnitMovementStats.currentTile
+	
 	# Create the path to that tile
 	BattlefieldInfo.movement_calculator.get_path_to_destination_AI(get_parent(), eirika_tile, BattlefieldInfo.grid)
 	
@@ -170,6 +183,10 @@ func find_tile_to_move_to_no_enemies():
 		var test_tile = get_parent().UnitMovementStats.movement_queue.pop_front()
 		if get_parent().UnitMovementStats.allowedMovement.has(test_tile) && test_tile.occupyingUnit == null:
 			final_movement_queue.push_back(test_tile)
+	
+	# Prevent null errors if you can't go anywhere for some reason
+	if final_movement_queue.empty():
+		final_movement_queue.push_back(get_parent().UnitMovementStats.currentTile)
 	get_parent().UnitMovementStats.movement_queue = final_movement_queue
 	
 	# Move to the target
