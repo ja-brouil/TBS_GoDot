@@ -198,6 +198,7 @@ func get_path_to_destination(Unit, target_destination, AllTiles):
 			if adjCell.movementCost >= 50 || closed_list.contains(adjCell) || !Unit.UnitMovementStats.allowedMovement.has(adjCell):
 				continue
 			
+			
 			# Calculate Heuristic costs
 			var movement_cost_to_neighbor = current_tile.gCost + adjCell.movementCost
 			if movement_cost_to_neighbor < adjCell.gCost || !open_list.contains(adjCell):

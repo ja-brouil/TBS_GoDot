@@ -73,12 +73,12 @@ func find_most_threatening_enemy():
 	for ally_unit in all_attackable_enemies:
 		var threat_value = 0
 		if ally_unit.UnitStats.name == "Eirika":
-			# Check if all the adj tiles are taken or we can't go there
-			for eirika_adj_cell in ally_unit.UnitMovementStats.currentTile.adjCells:
-				if get_parent().UnitMovementStats.allowedMovement.has(eirika_adj_cell) && eirika_adj_cell.occupyingUnit != null: 
-					return ally_unit
-			# No cells are available then remove Eirika
-			continue
+			# Check if we are already standing on an Eirika tile
+			for eirika_adj_tile in ally_unit.UnitMovementStats.currentTile.adjCells:
+				if get_parent().UnitMovementStats.currentTile == eirika_adj_tile:
+					attack_eirika_and_move_away()
+					return
+			return ally_unit
 		
 		# Check HP Amount -> Lower percentage enemies = higher threat
 		threat_value += (100 - ((ally_unit.UnitStats.current_health / ally_unit.UnitStats.max_health) * 100))
@@ -167,27 +167,20 @@ func find_tile_to_move_to_no_enemies():
 		if ally_unit.UnitStats.name == "Eirika":
 			eirika_tile = ally_unit.UnitMovementStats.currentTile
 	
-	# If the tile we are standing on is ALREADY an adj of eirika, then just attack her and stay put
-	# Attack code here
-	for adjTile in eirika_tile.adjCells:
-		if adjTile == get_parent().UnitMovementStats.currentTile:
-			print("FROM AI SCRIPT: ATTACKED EIRIKA, Now moving away!")
-			eirika_tile = get_parent().UnitMovementStats.currentTile
-	
 	# Create the path to that tile
 	BattlefieldInfo.movement_calculator.get_path_to_destination_AI(get_parent(), eirika_tile, BattlefieldInfo.grid)
 	
 	# Work backwards until we have a tile that is part of the system
-	var final_movement_queue = []
 	while !get_parent().UnitMovementStats.movement_queue.empty():
-		var test_tile = get_parent().UnitMovementStats.movement_queue.pop_front()
+		var test_tile = get_parent().UnitMovementStats.movement_queue.back()
 		if get_parent().UnitMovementStats.allowedMovement.has(test_tile) && test_tile.occupyingUnit == null:
-			final_movement_queue.push_back(test_tile)
+			get_parent().UnitMovementStats.allowedMovement.append(test_tile)
+			break
+		get_parent().UnitMovementStats.movement_queue.pop_back()
 	
 	# Prevent null errors if you can't go anywhere for some reason
-	if final_movement_queue.empty():
-		final_movement_queue.push_back(get_parent().UnitMovementStats.currentTile)
-	get_parent().UnitMovementStats.movement_queue = final_movement_queue
+	if get_parent().UnitMovementStats.movement_queue.empty():
+		get_parent().UnitMovementStats.movement_queue.append(get_parent().UnitMovementStats.currentTile)
 	
 	# Move to the target
 	# Remove the unit's occupied status on the grid
@@ -202,8 +195,60 @@ func find_tile_to_move_to_no_enemies():
 	BattlefieldInfo.current_Unit_Selected.add_child(movement_camera)
 	movement_camera.current = true
 
+# Move away from Eirika if we are standing on an adj tile already
+func attack_eirika_and_move_away():
+	# Math for positions on the map
+	var min_x = 0
+	var min_y = 0
+	var max_x = BattlefieldInfo.map_width - 1
+	var max_y = BattlefieldInfo.map_height - 1
+	var move_square = Vector2(0,0)
+	
+	# Attack then move
+	print("FROM AI SCRIPT: Attacking Eirika then moving!")
+	
+	# Calculate X Distance
+	if abs(min_x - (get_parent().position.x / Cell.CELL_SIZE)) >= abs(max_x - (get_parent().position.x / Cell.CELL_SIZE)):
+		move_square.x = min_x
+	else:
+		move_square.x = max_x
+	
+	# Calcuate Y Distance
+	if abs(min_y - (get_parent().position.y / Cell.CELL_SIZE)) >= abs(max_y - (get_parent().position.y / Cell.CELL_SIZE)):
+		move_square.y = min_y
+	else:
+		move_square.y = max_y
+	
+	# Move to this tile
+	# Create the path to that tile
+	BattlefieldInfo.movement_calculator.get_path_to_destination(get_parent(), BattlefieldInfo.grid[move_square.x][move_square.y], BattlefieldInfo.grid)
+	
+	# Work backwards until we have a tile that is part of the system
+	while !get_parent().UnitMovementStats.movement_queue.empty():
+		var test_tile = get_parent().UnitMovementStats.movement_queue.back()
+		if get_parent().UnitMovementStats.allowedMovement.has(test_tile) && test_tile.occupyingUnit == null:
+			get_parent().UnitMovementStats.allowedMovement.append(test_tile)
+			break
+		get_parent().UnitMovementStats.movement_queue.pop_back()
+	
+	# Move to the target
+	# Remove the unit's occupied status on the grid
+	get_parent().UnitMovementStats.currentTile.occupyingUnit = null
+	
+	# Start moving the unit
+	BattlefieldInfo.unit_movement_system.is_moving = true
+	
+	# Set Camera on unit
+	var movement_camera = preload("res://Scenes/Camera/MovementCamera.tscn").instance()
+	BattlefieldInfo.current_Unit_Selected = get_parent()
+	BattlefieldInfo.current_Unit_Selected.add_child(movement_camera)
+	movement_camera.current = true
+	
 # AI Script
 func _on_Timer_timeout():
+	# Print Bandit name
+	print("FROM AI SCRIPT: PROCESSING BANDIT NAME: ", get_parent().UnitStats.name)
+	
 	# All AI will find all enemies that can be attacked, regardless of status
 	calculate_move_sets()
 	find_all_enemies_within_range()

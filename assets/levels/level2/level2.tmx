@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.0" orientation="orthogonal" renderorder="right-down" width="20" height="22" tilewidth="16" tileheight="16" infinite="0" nextobjectid="2852">
+<map version="1.0" tiledversion="1.1.0" orientation="orthogonal" renderorder="right-down" width="20" height="22" tilewidth="16" tileheight="16" infinite="0" nextobjectid="2866">
  <tileset firstgid="1" source="level2tileset.tsx"/>
  <layer name="Background" width="20" height="22">
   <data encoding="csv">
@@ -3252,47 +3252,7 @@
     <property name="TileType" value="River"/>
    </properties>
   </object>
-  <object id="2231" x="64" y="192" width="16" height="16">
-   <properties>
-    <property name="Avd" type="int" value="0"/>
-    <property name="Def" type="int" value="0"/>
-    <property name="MovementCost" type="int" value="2"/>
-    <property name="TileType" value="River"/>
-   </properties>
-  </object>
-  <object id="2232" x="64" y="176" width="16" height="16">
-   <properties>
-    <property name="Avd" type="int" value="0"/>
-    <property name="Def" type="int" value="0"/>
-    <property name="MovementCost" type="int" value="2"/>
-    <property name="TileType" value="River"/>
-   </properties>
-  </object>
-  <object id="2233" x="64" y="208" width="16" height="16">
-   <properties>
-    <property name="Avd" type="int" value="0"/>
-    <property name="Def" type="int" value="0"/>
-    <property name="MovementCost" type="int" value="2"/>
-    <property name="TileType" value="River"/>
-   </properties>
-  </object>
   <object id="2234" x="80" y="208" width="16" height="16">
-   <properties>
-    <property name="Avd" type="int" value="0"/>
-    <property name="Def" type="int" value="0"/>
-    <property name="MovementCost" type="int" value="2"/>
-    <property name="TileType" value="River"/>
-   </properties>
-  </object>
-  <object id="2235" x="80" y="224" width="16" height="16">
-   <properties>
-    <property name="Avd" type="int" value="0"/>
-    <property name="Def" type="int" value="0"/>
-    <property name="MovementCost" type="int" value="2"/>
-    <property name="TileType" value="River"/>
-   </properties>
-  </object>
-  <object id="2236" x="96" y="224" width="16" height="16">
    <properties>
     <property name="Avd" type="int" value="0"/>
     <property name="Def" type="int" value="0"/>
@@ -3548,6 +3508,46 @@
     <property name="TileType" value="Hill"/>
    </properties>
   </object>
+  <object id="2861" x="64" y="176" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="River"/>
+   </properties>
+  </object>
+  <object id="2862" x="64" y="192" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="River"/>
+   </properties>
+  </object>
+  <object id="2863" x="64" y="208" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="River"/>
+   </properties>
+  </object>
+  <object id="2864" x="80" y="224" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="River"/>
+   </properties>
+  </object>
+  <object id="2865" x="96" y="224" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="2"/>
+    <property name="TileType" value="River"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="Allies" visible="0">
   <object id="2281" x="32" y="288" width="16" height="16">
@@ -3597,75 +3597,6 @@
   </object>
  </objectgroup>
  <objectgroup name="Enemies">
-  <object id="2843" x="80" y="240" width="16" height="16">
-   <properties>
-    <property name="BonusCrit" type="int" value="0"/>
-    <property name="BonusDodge" type="int" value="0"/>
-    <property name="BonusHit" type="int" value="0"/>
-    <property name="Class" value="Bandit"/>
-    <property name="Consti" type="int" value="8"/>
-    <property name="Defense" type="int" value="2"/>
-    <property name="Health" type="int" value="12"/>
-    <property name="Luck" type="int" value="0"/>
-    <property name="Magic" type="int" value="3"/>
-    <property name="MaxHealth" type="int" value="12"/>
-    <property name="Move" type="int" value="3"/>
-    <property name="Name" value="Bandit"/>
-    <property name="Res" type="int" value="1"/>
-    <property name="Skill" type="int" value="3"/>
-    <property name="Speed" type="int" value="2"/>
-    <property name="Str" type="int" value="6"/>
-    <property name="Weapon" value="Iron Axe"/>
-    <property name="aiType" value="Aggresive"/>
-    <property name="isAlly" type="bool" value="false"/>
-   </properties>
-  </object>
-  <object id="2845" x="64" y="256" width="16" height="16">
-   <properties>
-    <property name="BonusCrit" type="int" value="0"/>
-    <property name="BonusDodge" type="int" value="0"/>
-    <property name="BonusHit" type="int" value="0"/>
-    <property name="Class" value="Bandit"/>
-    <property name="Consti" type="int" value="8"/>
-    <property name="Defense" type="int" value="2"/>
-    <property name="Health" type="int" value="12"/>
-    <property name="Luck" type="int" value="0"/>
-    <property name="Magic" type="int" value="3"/>
-    <property name="MaxHealth" type="int" value="12"/>
-    <property name="Move" type="int" value="3"/>
-    <property name="Name" value="Bandit"/>
-    <property name="Res" type="int" value="1"/>
-    <property name="Skill" type="int" value="3"/>
-    <property name="Speed" type="int" value="2"/>
-    <property name="Str" type="int" value="6"/>
-    <property name="Weapon" value="Iron Axe"/>
-    <property name="aiType" value="Passive"/>
-    <property name="isAlly" type="bool" value="false"/>
-   </properties>
-  </object>
-  <object id="2846" x="256" y="256" width="16" height="16">
-   <properties>
-    <property name="BonusCrit" type="int" value="0"/>
-    <property name="BonusDodge" type="int" value="0"/>
-    <property name="BonusHit" type="int" value="0"/>
-    <property name="Class" value="Bandit"/>
-    <property name="Consti" type="int" value="8"/>
-    <property name="Defense" type="int" value="2"/>
-    <property name="Health" type="int" value="12"/>
-    <property name="Luck" type="int" value="0"/>
-    <property name="Magic" type="int" value="3"/>
-    <property name="MaxHealth" type="int" value="12"/>
-    <property name="Move" type="int" value="3"/>
-    <property name="Name" value="Bandit"/>
-    <property name="Res" type="int" value="1"/>
-    <property name="Skill" type="int" value="3"/>
-    <property name="Speed" type="int" value="2"/>
-    <property name="Str" type="int" value="6"/>
-    <property name="Weapon" value="Iron Axe"/>
-    <property name="aiType" value="Aggresive"/>
-    <property name="isAlly" type="bool" value="false"/>
-   </properties>
-  </object>
   <object id="2847" x="128" y="160" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
@@ -3679,7 +3610,7 @@
     <property name="Magic" type="int" value="3"/>
     <property name="MaxHealth" type="int" value="12"/>
     <property name="Move" type="int" value="3"/>
-    <property name="Name" value="Bandit"/>
+    <property name="Name" value="Bandit 1"/>
     <property name="Res" type="int" value="1"/>
     <property name="Skill" type="int" value="3"/>
     <property name="Speed" type="int" value="2"/>
@@ -3689,7 +3620,7 @@
     <property name="isAlly" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="2848" x="144" y="160" width="16" height="16">
+  <object id="2852" x="144" y="160" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
     <property name="BonusDodge" type="int" value="0"/>
@@ -3702,7 +3633,7 @@
     <property name="Magic" type="int" value="3"/>
     <property name="MaxHealth" type="int" value="12"/>
     <property name="Move" type="int" value="3"/>
-    <property name="Name" value="Bandit"/>
+    <property name="Name" value="Bandit 2"/>
     <property name="Res" type="int" value="1"/>
     <property name="Skill" type="int" value="3"/>
     <property name="Speed" type="int" value="2"/>
@@ -3712,7 +3643,7 @@
     <property name="isAlly" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="2849" x="176" y="272" width="16" height="16">
+  <object id="2853" x="112" y="272" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
     <property name="BonusDodge" type="int" value="0"/>
@@ -3725,7 +3656,7 @@
     <property name="Magic" type="int" value="3"/>
     <property name="MaxHealth" type="int" value="12"/>
     <property name="Move" type="int" value="3"/>
-    <property name="Name" value="Bandit"/>
+    <property name="Name" value="Bandit 5"/>
     <property name="Res" type="int" value="1"/>
     <property name="Skill" type="int" value="3"/>
     <property name="Speed" type="int" value="2"/>
@@ -3735,7 +3666,7 @@
     <property name="isAlly" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="2850" x="160" y="288" width="16" height="16">
+  <object id="2854" x="96" y="208" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
     <property name="BonusDodge" type="int" value="0"/>
@@ -3748,7 +3679,7 @@
     <property name="Magic" type="int" value="3"/>
     <property name="MaxHealth" type="int" value="12"/>
     <property name="Move" type="int" value="3"/>
-    <property name="Name" value="Bandit"/>
+    <property name="Name" value="Bandit 3"/>
     <property name="Res" type="int" value="1"/>
     <property name="Skill" type="int" value="3"/>
     <property name="Speed" type="int" value="2"/>
@@ -3758,7 +3689,7 @@
     <property name="isAlly" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="2851" x="144" y="272" width="16" height="16">
+  <object id="2855" x="112" y="208" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
     <property name="BonusDodge" type="int" value="0"/>
@@ -3771,7 +3702,7 @@
     <property name="Magic" type="int" value="3"/>
     <property name="MaxHealth" type="int" value="12"/>
     <property name="Move" type="int" value="3"/>
-    <property name="Name" value="Bandit"/>
+    <property name="Name" value="Bandit 4"/>
     <property name="Res" type="int" value="1"/>
     <property name="Skill" type="int" value="3"/>
     <property name="Speed" type="int" value="2"/>
