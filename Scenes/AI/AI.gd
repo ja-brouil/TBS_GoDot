@@ -69,41 +69,41 @@ func find_most_threatening_enemy():
 	var most_threat_value = 0
 	var attack_this_target = all_attackable_enemies.front()
 	
-	# Always attack Eirika if we find her
+	# Find unit to attack
 	for ally_unit in all_attackable_enemies:
 		var threat_value = 0
-		if ally_unit.UnitStats.name == "Eirika":
-			# Check if we are already standing on an Eirika tile
-			for eirika_adj_tile in ally_unit.UnitMovementStats.currentTile.adjCells:
-				if get_parent().UnitMovementStats.currentTile == eirika_adj_tile:
-					attack_eirika_and_move_away()
-					return
-			return ally_unit
 		
-		# Check HP Amount -> Lower percentage enemies = higher threat
-		threat_value += (100 - ((ally_unit.UnitStats.current_health / ally_unit.UnitStats.max_health) * 100))
-		
-		# Attack Type
-		# Physical Damage
-		if get_parent().UnitInventory.current_item_equipped.weapon_type == Item.WEAPON_TYPE.WEAPON:
-			# Check Physical Defense -> Avoid enemies with higher def
-			threat_value -= (ally_unit.UnitStats.def / 2)
-			
-		# Magic Damage
-		elif get_parent().UnitInventory.current_item_equipped.weapon_type == Item.WEAPON_TYPE.MAGIC:
-			# Check Magical Defense -> Avoid enemies with higher res
-			threat_value -= (ally_unit.UnitStats.res / 2)
-		
-		# Get Speed and Luck values (half these) Avoid enemies who can dodge very well
-		threat_value -= ((ally_unit.UnitStats.luck + ally_unit.UnitStats.speed) / 2)
-		
-		# Check who is strong attack wise and go for them
-		threat_value += (ally_unit.UnitStats.strength + ally_unit.UnitStats.magic)
-		
-		# Check if this new unit is worth more
-		if (threat_value > most_threat_value):
-			most_threat_value = threat_value
-			attack_this_target = ally_unit
+		# Is this unit actually reachable to attack? -> Change later for ranged units
+		for adj_cell in ally_unit.UnitMovementStats.currentTile.adjCells:
+			if get_parent().UnitMovementStats.allowedMovement.has(adj_cell) && adj_cell.occupyingUnit == null:
+				# Small incentive to attack Eirika
+				if ally_unit.UnitStats.name == "Eirika":
+					threat_value += 10
+				
+				# Check HP Amount -> Lower percentage enemies = higher threat
+				threat_value += (100 - ((ally_unit.UnitStats.current_health / ally_unit.UnitStats.max_health) * 100))
+				
+				# Attack Type
+				# Physical Damage
+				if get_parent().UnitInventory.current_item_equipped.weapon_type == Item.WEAPON_TYPE.WEAPON:
+					# Check Physical Defense -> Avoid enemies with higher def
+					threat_value -= (ally_unit.UnitStats.def / 2)
+					
+				# Magic Damage
+				elif get_parent().UnitInventory.current_item_equipped.weapon_type == Item.WEAPON_TYPE.MAGIC:
+					# Check Magical Defense -> Avoid enemies with higher res
+					threat_value -= (ally_unit.UnitStats.res / 2)
+				
+				# Get Speed and Luck values (half these) Avoid enemies who can dodge very well
+				threat_value -= ((ally_unit.UnitStats.luck + ally_unit.UnitStats.speed) / 2)
+				
+				# Check who is strong attack wise and go for them
+				threat_value += (ally_unit.UnitStats.strength + ally_unit.UnitStats.magic)
+				
+				# Check if this new unit is worth more
+				if (threat_value > most_threat_value):
+					most_threat_value = threat_value
+					attack_this_target = ally_unit
 	
 	# stop if the enemy list is empty
 	if all_attackable_enemies.empty():
@@ -111,6 +111,8 @@ func find_most_threatening_enemy():
 		return
 	
 	# Should have found the enemy to attack
+	print("FROM AI SCRIPT: PROCESSING BANDIT NAME: ", get_parent().UnitStats.name)
+	print("FROM AI SCRIPT: WE ARE ATTACKING NAME: ", attack_this_target.UnitStats.name)
 	return attack_this_target
 
 # Find tile to move to | Melee  units
@@ -194,61 +196,9 @@ func find_tile_to_move_to_no_enemies():
 	BattlefieldInfo.current_Unit_Selected = get_parent()
 	BattlefieldInfo.current_Unit_Selected.add_child(movement_camera)
 	movement_camera.current = true
-
-# Move away from Eirika if we are standing on an adj tile already
-func attack_eirika_and_move_away():
-	# Math for positions on the map
-	var min_x = 0
-	var min_y = 0
-	var max_x = BattlefieldInfo.map_width - 1
-	var max_y = BattlefieldInfo.map_height - 1
-	var move_square = Vector2(0,0)
-	
-	# Attack then move
-	print("FROM AI SCRIPT: Attacking Eirika then moving!")
-	
-	# Calculate X Distance
-	if abs(min_x - (get_parent().position.x / Cell.CELL_SIZE)) >= abs(max_x - (get_parent().position.x / Cell.CELL_SIZE)):
-		move_square.x = min_x
-	else:
-		move_square.x = max_x
-	
-	# Calcuate Y Distance
-	if abs(min_y - (get_parent().position.y / Cell.CELL_SIZE)) >= abs(max_y - (get_parent().position.y / Cell.CELL_SIZE)):
-		move_square.y = min_y
-	else:
-		move_square.y = max_y
-	
-	# Move to this tile
-	# Create the path to that tile
-	BattlefieldInfo.movement_calculator.get_path_to_destination(get_parent(), BattlefieldInfo.grid[move_square.x][move_square.y], BattlefieldInfo.grid)
-	
-	# Work backwards until we have a tile that is part of the system
-	while !get_parent().UnitMovementStats.movement_queue.empty():
-		var test_tile = get_parent().UnitMovementStats.movement_queue.back()
-		if get_parent().UnitMovementStats.allowedMovement.has(test_tile) && test_tile.occupyingUnit == null:
-			get_parent().UnitMovementStats.allowedMovement.append(test_tile)
-			break
-		get_parent().UnitMovementStats.movement_queue.pop_back()
-	
-	# Move to the target
-	# Remove the unit's occupied status on the grid
-	get_parent().UnitMovementStats.currentTile.occupyingUnit = null
-	
-	# Start moving the unit
-	BattlefieldInfo.unit_movement_system.is_moving = true
-	
-	# Set Camera on unit
-	var movement_camera = preload("res://Scenes/Camera/MovementCamera.tscn").instance()
-	BattlefieldInfo.current_Unit_Selected = get_parent()
-	BattlefieldInfo.current_Unit_Selected.add_child(movement_camera)
-	movement_camera.current = true
 	
 # AI Script
 func _on_Timer_timeout():
-	# Print Bandit name
-	print("FROM AI SCRIPT: PROCESSING BANDIT NAME: ", get_parent().UnitStats.name)
-	
 	# All AI will find all enemies that can be attacked, regardless of status
 	calculate_move_sets()
 	find_all_enemies_within_range()
