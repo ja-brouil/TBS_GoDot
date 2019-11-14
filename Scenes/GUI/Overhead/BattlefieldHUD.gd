@@ -9,6 +9,9 @@ enum {TOP_LEFT, TOP_RIGHT, BOTTOM_LEFT, BOTTOM_RIGHT}
 var cursor_quadrant
 var previous_quadrant
 
+# Full Bar constant for math
+const full_bar_width = 237
+
 func _ready():
 	# Battlefield access
 	battlefield = get_parent()
@@ -45,7 +48,7 @@ func update_battlefield_ui(cursor_direction, cursor_position):
 func update_unit_box():
 	# Check if there is a unit and display information
 	if BattlefieldInfo.current_Unit_Selected != null:
-		print("Printed from BattlefieldHUD:",BattlefieldInfo.current_Unit_Selected) # Set appropriate unit stats here
+		print("Printed from BattlefieldHUD:", BattlefieldInfo.current_Unit_Selected) # Set appropriate unit stats here
 		$"Battlefield HUD/Unit Info/FadeAnimU".play("Fade") # play the animation for the ui
 		$"Battlefield HUD/Unit Info".visible = true
 	else:
@@ -58,6 +61,11 @@ func _on_unit_box_fade():
 func update_terrain_box(cursor_position):
 	# Get the cell where the cursor currently is
 	var cursor_cell = BattlefieldInfo.grid[cursor_position.x / Cell.CELL_SIZE][cursor_position.y / Cell.CELL_SIZE]
+	
+	# Set Name of the Unit if not null and set HP stats
+	if BattlefieldInfo.current_Unit_Selected != null:
+		$"Battlefield HUD/Unit Info/Name".text = BattlefieldInfo.current_Unit_Selected.UnitStats.name
+		calculate_health_values()
 	
 	# Set Tile Name
 	$"Battlefield HUD/Terrain Info/T Name".text = cursor_cell.tileName
@@ -147,3 +155,14 @@ func turn_off_battlefield_ui():
 func turn_on_battlefield_ui():
 	if BattlefieldInfo.turn_manager.turn == Turn_Manager.PLAYER_TURN:
 		$"Battlefield HUD".visible = true
+
+# Calculate Text for Unit 
+func calculate_health_values():
+	# Set Health Text
+	$"Battlefield HUD/Unit Info/Health".text = str(BattlefieldInfo.current_Unit_Selected.UnitStats.current_health, " / ", BattlefieldInfo.current_Unit_Selected.UnitStats.max_health)
+	
+	# Set Percentage for drawing the box
+	$"Battlefield HUD/Unit Info/Full HP".region_rect = Rect2(0, 0, full_bar_width * (float(BattlefieldInfo.current_Unit_Selected.UnitStats.current_health) / float(BattlefieldInfo.current_Unit_Selected.UnitStats.max_health)), 17)
+	
+	# Set Portrait
+	$"Battlefield HUD/Unit Info/Portrait".texture = BattlefieldInfo.current_Unit_Selected.unit_portrait_path

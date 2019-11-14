@@ -20,6 +20,9 @@ var UnitStats
 # Inventory
 var UnitInventory
 
+# Unit portrait
+var unit_portrait_path
+
 func _ready():
 	# Movement Stats
 	UnitMovementStats = Unit_Movement.new(5,0,0,0,0,0,0,0,0)

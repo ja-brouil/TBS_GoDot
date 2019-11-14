@@ -17,6 +17,9 @@ func _ready():
 	map_height = self.get_meta("height")
 	map_width = self.get_meta("width")
 	
+	print(self.get_meta("Victory Condition"))
+	print(self.get_meta("Enemies to defeat"))
+	
 	# Start 2D Array
 	for i in map_width:
 		grid.append([])

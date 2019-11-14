@@ -24,6 +24,7 @@ func _ready():
 	# Music player
 	music_player = preload("res://Scenes/Audio/MusicPlayer.tscn").instance()
 	add_child(music_player)
+	
 
 # Run Systems
 func _process(delta):
@@ -32,7 +33,6 @@ func _process(delta):
 #######################
 #BATTLEFIELD VARIABLES#
 #######################
-
 # Current Unit Selected
 var current_Unit_Selected: Node2D
 
@@ -52,6 +52,10 @@ var enemy_units = {}
 # Eirika for AI purposes
 var Eirika
 
-# Use a signal for this | Change this, just temporary
+# Combat Unit
+var combat_player_unit
+var combat_ai_unit
+
+# Process next enemy -> might need to be changed into a signal
 func next_ai(enemy_unit):
 	enemy_unit.get_node("AI").process_ai()

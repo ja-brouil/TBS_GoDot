@@ -5,3 +5,8 @@ func _ready():
 	$Animation.current_animation = "Idle"
 	UnitMovementStats.is_ally = false
 	
+	# Test for UI
+	UnitStats.current_health = randi() % 19 + 1
+	
+	# Portrait
+	unit_portrait_path = preload("res://assets/units/enemyPortrait/normalSoldierPortrait.png")

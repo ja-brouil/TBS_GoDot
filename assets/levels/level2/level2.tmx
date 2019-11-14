@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.0" orientation="orthogonal" renderorder="right-down" width="20" height="22" tilewidth="16" tileheight="16" infinite="0" nextobjectid="2866">
+<map version="1.0" tiledversion="1.1.0" orientation="orthogonal" renderorder="right-down" width="20" height="22" tilewidth="16" tileheight="16" infinite="0" nextobjectid="2867">
+ <properties>
+  <property name="Enemies to defeat" type="int" value="15"/>
+  <property name="Victory Condition" value="Kill all enemies"/>
+ </properties>
  <tileset firstgid="1" source="level2tileset.tsx"/>
  <layer name="Background" width="20" height="22">
   <data encoding="csv">
@@ -3709,6 +3713,29 @@
     <property name="Str" type="int" value="6"/>
     <property name="Weapon" value="Iron Axe"/>
     <property name="aiType" value="Aggresive"/>
+    <property name="isAlly" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="2866" x="160" y="256" width="16" height="16">
+   <properties>
+    <property name="BonusCrit" type="int" value="0"/>
+    <property name="BonusDodge" type="int" value="0"/>
+    <property name="BonusHit" type="int" value="0"/>
+    <property name="Class" value="Bandit"/>
+    <property name="Consti" type="int" value="8"/>
+    <property name="Defense" type="int" value="2"/>
+    <property name="Health" type="int" value="12"/>
+    <property name="Luck" type="int" value="0"/>
+    <property name="Magic" type="int" value="3"/>
+    <property name="MaxHealth" type="int" value="12"/>
+    <property name="Move" type="int" value="3"/>
+    <property name="Name" value="Bandit Keith"/>
+    <property name="Res" type="int" value="1"/>
+    <property name="Skill" type="int" value="3"/>
+    <property name="Speed" type="int" value="2"/>
+    <property name="Str" type="int" value="6"/>
+    <property name="Weapon" value="Iron Axe"/>
+    <property name="aiType" value="Passive"/>
     <property name="isAlly" type="bool" value="false"/>
    </properties>
   </object>
