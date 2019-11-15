@@ -1,18 +1,24 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Scenes/GUI/Overhead/BattlefieldHUD.gd" type="Script" id=1]
 [ext_resource path="res://assets/UI/Panels/unitInfoBox.png" type="Texture" id=2]
-[ext_resource path="res://assets/font/Font_Resource.tres" type="DynamicFont" id=3]
-[ext_resource path="res://assets/font/Main Font.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://assets/UI/Panels/emptyHealthBar.png" type="Texture" id=5]
-[ext_resource path="res://assets/UI/Panels/fullHealthBar.png" type="Texture" id=6]
-[ext_resource path="res://assets/units/eirika/eirikaPortrait.png" type="Texture" id=7]
-[ext_resource path="res://assets/UI/Panels/victoryConditionBox.png" type="Texture" id=8]
-[ext_resource path="res://assets/UI/Panels/terrainInfoBox.png" type="Texture" id=9]
+[ext_resource path="res://assets/font/Main Font.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/UI/Panels/emptyHealthBar.png" type="Texture" id=4]
+[ext_resource path="res://assets/UI/Panels/fullHealthBar.png" type="Texture" id=5]
+[ext_resource path="res://assets/units/eirika/eirikaPortrait.png" type="Texture" id=6]
+[ext_resource path="res://assets/UI/Panels/victoryConditionBox.png" type="Texture" id=7]
+[ext_resource path="res://assets/UI/Panels/terrainInfoBox.png" type="Texture" id=8]
+[ext_resource path="res://assets/font/Font_Resource.tres" type="DynamicFont" id=9]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 98, 44 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 20
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "Fade"
@@ -63,10 +69,12 @@ tracks/1/keys = {
 }
 
 [sub_resource type="DynamicFont" id=4]
-font_data = ExtResource( 4 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
 
 [sub_resource type="StyleBoxTexture" id=5]
-texture = ExtResource( 8 )
+texture = ExtResource( 7 )
 region_rect = Rect2( 0, 0, 77, 27 )
 
 [sub_resource type="Animation" id=6]
@@ -87,10 +95,12 @@ tracks/0/keys = {
 
 [sub_resource type="DynamicFont" id=7]
 size = 20
-font_data = ExtResource( 4 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
 
 [sub_resource type="StyleBoxTexture" id=8]
-texture = ExtResource( 9 )
+texture = ExtResource( 8 )
 region_rect = Rect2( 0, 0, 44, 43 )
 
 [sub_resource type="Animation" id=9]
@@ -138,11 +148,11 @@ __meta__ = {
 
 [node name="Name" type="Label" parent="Battlefield HUD/Unit Info"]
 margin_left = 45.0
-margin_top = 11.3632
-margin_right = 142.0
-margin_bottom = 44.3632
+margin_top = 11.0
+margin_right = 205.0
+margin_bottom = 44.0
 rect_scale = Vector2( 0.25, 0.25 )
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = SubResource( 10 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 text = "Name"
@@ -161,33 +171,36 @@ anims/Fade = SubResource( 2 )
 anims/FadeOut = SubResource( 3 )
 
 [node name="Health" type="Label" parent="Battlefield HUD/Unit Info"]
-margin_left = 54.4363
-margin_top = 21.7178
-margin_right = 116.436
-margin_bottom = 39.7178
+margin_left = 45.0
+margin_top = 22.0
+margin_right = 205.0
+margin_bottom = 40.0
 rect_scale = Vector2( 0.25, 0.25 )
 custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 text = "20 / 20"
+align = 1
+valign = 1
 
 [node name="Empty HP" type="Sprite" parent="Battlefield HUD/Unit Info"]
-position = Vector2( 62.1463, 30.0781 )
-scale = Vector2( 0.168938, 0.237098 )
-texture = ExtResource( 5 )
+position = Vector2( 44, 28 )
+scale = Vector2( 0.169, 0.237 )
+texture = ExtResource( 4 )
+centered = false
 
 [node name="Full HP" type="Sprite" parent="Battlefield HUD/Unit Info"]
-position = Vector2( 41.9543, 27.9171 )
-scale = Vector2( 0.168938, 0.237098 )
-texture = ExtResource( 6 )
+position = Vector2( 44, 28 )
+scale = Vector2( 0.169, 0.237 )
+texture = ExtResource( 5 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 237, 17 )
 
 [node name="Portrait" type="Sprite" parent="Battlefield HUD/Unit Info"]
-position = Vector2( 25.006, 21.3855 )
-scale = Vector2( 0.935988, 0.871975 )
-texture = ExtResource( 7 )
+position = Vector2( 25.006, 21.386 )
+scale = Vector2( 0.994, 0.872 )
+texture = ExtResource( 6 )
 
 [node name="Victory Info" type="Panel" parent="Battlefield HUD"]
 anchor_left = 1.0
@@ -231,7 +244,7 @@ margin_top = 5.0
 margin_right = 180.0
 margin_bottom = 65.0
 rect_scale = Vector2( 0.25, 0.25 )
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 9 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Plains"
@@ -244,14 +257,14 @@ margin_top = 26.0
 margin_right = 125.0
 margin_bottom = 67.0
 rect_scale = Vector2( 0.125, 0.125 )
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 9 )
 text = "DEF:"
 
 [node name="Def_Value" type="Label" parent="Battlefield HUD/Terrain Info/Def"]
 margin_left = 98.0
 margin_right = 142.0
 margin_bottom = 42.0
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 9 )
 text = "1"
 
 [node name="Avd" type="Label" parent="Battlefield HUD/Terrain Info"]
@@ -260,14 +273,14 @@ margin_top = 20.0
 margin_right = 107.0
 margin_bottom = 64.0
 rect_scale = Vector2( 0.125, 0.125 )
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 9 )
 text = "AVD:"
 
 [node name="Avd_Value" type="Label" parent="Battlefield HUD/Terrain Info/Avd"]
 margin_left = 96.0
 margin_right = 142.0
 margin_bottom = 42.0
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 9 )
 text = "20"
 
 [node name="FadeAnimT" type="AnimationPlayer" parent="Battlefield HUD/Terrain Info"]

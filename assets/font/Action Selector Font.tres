@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/font/Main Font.ttf" type="DynamicFontData" id=1]
 
 [resource]
-size = 32
+size = 50
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 1 )
