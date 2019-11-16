@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Levels/level2.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/GUI/Cursor/Cursor.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Scenes/Transition/Turn Transition.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/GUI/Overhead/GUI Areas.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/GUI/Overhead/BattlefieldHUD.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/GUI/Action Selector/Action Selector.tscn" type="PackedScene" id=7]
 
 [node name="Battlefield" type="Node2D"]
 z_index = 4
@@ -30,5 +31,7 @@ position = Vector2( 0, 192 )
 [node name="Areas" parent="GameCamera" instance=ExtResource( 5 )]
 
 [node name="BattlefieldHUD" parent="." instance=ExtResource( 6 )]
+
+[node name="Action Selector Screen" parent="." instance=ExtResource( 7 )]
 [connection signal="mapInformationLoaded" from="YSort/Level" to="GameCamera" method="_on_Level_mapInformationLoaded"]
 [connection signal="cursorMoved" from="Cursor" to="GameCamera" method="_on_Cursor_cursorMoved"]

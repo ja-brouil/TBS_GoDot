@@ -3,17 +3,20 @@
 [ext_resource path="res://assets/UI/Action Selector/mid.png" type="Texture" id=1]
 [ext_resource path="res://assets/font/Action Selector Font.tres" type="DynamicFont" id=2]
 
-[node name="Trade" type="Control"]
+[node name="Heal" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 
-[node name="TextureRect" type="Sprite" parent="."]
+[node name="TextureBox" type="Sprite" parent="."]
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 1 )
 centered = false
 
-[node name="Label" type="Label" parent="TextureRect"]
+[node name="Label" type="Label" parent="."]
 margin_right = 440.0
 margin_bottom = 97.0
+rect_scale = Vector2( 0.1, 0.1 )
 custom_fonts/font = ExtResource( 2 )
-text = "Trade"
+text = "Heal"
 align = 1
 valign = 1

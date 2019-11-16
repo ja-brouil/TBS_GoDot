@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/UI/Action Selector/mid.png" type="Texture" id=1]
 [ext_resource path="res://assets/font/Action Selector Font.tres" type="DynamicFont" id=2]
 
-[node name="Wait" type="Node2D"]
+[node name="Wait" type="Control"]
 
 [node name="TextureRect" type="Sprite" parent="."]
 scale = Vector2( 0.1, 0.1 )
