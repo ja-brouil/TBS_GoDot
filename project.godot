@@ -79,7 +79,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scenes/Units/Unit_Scripts/Unit_Movement.gd"
 }, {
-"base": "Reference",
+"base": "Node",
 "class": "Unit_Movement_System",
 "language": "GDScript",
 "path": "res://Engine/Systems/Unit_Movement_System.gd"
@@ -116,6 +116,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
+Calculators="*res://Engine/Systems/Calculators.gd"
 BattlefieldInfo="*res://Scenes/Battlefield/Battlefield.gd"
 
 [debug]

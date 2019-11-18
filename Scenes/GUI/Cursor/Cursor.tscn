@@ -59,11 +59,16 @@ bus = "Cursor"
 stream = ExtResource( 9 )
 bus = "Cursor"
 
-[node name="Bounds" type="KinematicBody2D" parent="."]
+[node name="Cursor Bounds" type="KinematicBody2D" parent="."]
 visible = false
 collision_layer = 2
 collision_mask = 2
 
-[node name="Bound" type="CollisionShape2D" parent="Bounds"]
+[node name="Bound" type="CollisionShape2D" parent="Cursor Bounds"]
 position = Vector2( 5.32986, 13.7505 )
 shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

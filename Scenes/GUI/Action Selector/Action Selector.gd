@@ -8,36 +8,57 @@ const ACTION_SIZE_Y = 10
 const TOP_LEFT = Vector2(12,20)
 const TOP_RIGHT = Vector2(181,20)
 const OFF_SIDE = Vector2(-100,-100)
+var new_menu_position = Vector2(0,0)
 
 # Hand
 const HAND_OFF_SET = Vector2(-5,-1.5)
 
-# Preload all the menu items
-var node_array = ["Attack", "Item", "Heal", "Trade", "Wait"]
+# Signals for changing UI screens
+signal selected_wait
+signal selected_back
+
+# UI Active
+var is_active = false
 
 # Keep track of all the actions that we have currently
 var current_actions = []
 var current_number_action = 0
 var current_option_selected = "Wait"
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	# Test method for first item
-	var test_array = [node_array[0], node_array[2], node_array[1], node_array[3] , node_array[4]]
-	build_menu(test_array, TOP_LEFT)
+	# Connect to Cursor
+	get_parent().get_node("GameCamera/Areas/BottomLeft").connect("body_entered", self, "left_side")
+	get_parent().get_node("GameCamera/Areas/BottomRight").connect("body_entered", self, "right_side")
+	get_parent().get_node("GameCamera/Areas/TopLeft").connect("body_entered", self, "left_side")
+	get_parent().get_node("GameCamera/Areas/TopRight").connect("body_entered", self, "right_side")
+	
+	BattlefieldInfo.unit_movement_system.connect("action_selector_screen", self, "start")
 
 # Start this screen
 func start():
-	pass
+	# Show action menu
+	$"Action Menu".visible = true
+	
+	# Get Menu items
+	var menu_items = get_menu_items()
+	
+	# Build Menu
+	build_menu(menu_items)
+	
+	# Active Input
+	is_active = true
 
 # Input for Hand movement
 func _input(event):
+	if !is_active:
+		return
+		
 	if Input.is_action_just_pressed("ui_accept"):
-		print("FROM ACTION SELECTOR: This was called ", current_option_selected)
 		$"Action Menu/Hand Selector/Accept".play(0)
+		process_selection()
 	elif Input.is_action_just_pressed("ui_cancel"):
-		print("FROM ACTION SELECTOR: WE ARE GOING BACK TO THE UNIT")
 		$"Action Menu/Hand Selector/Cancel".play(0)
+		go_back()
 	elif Input.is_action_just_pressed("ui_up"):
 		movement("up")
 	elif Input.is_action_just_pressed("ui_down"):
@@ -64,10 +85,7 @@ func movement(direction):
 
 
 # Build the menu based on how many options there are
-func build_menu(menu_items, position):
-	# Show action menu
-	$"Action Menu".visible = true
-	
+func build_menu(menu_items):
 	# Move old items
 	for child_nodes in $"Action Menu".get_children():
 		child_nodes.rect_position = OFF_SIDE
@@ -76,8 +94,8 @@ func build_menu(menu_items, position):
 	# Sort the array alphabetically
 	menu_items.sort()
 	
-	# Put the top Item first -> Assume for now its top left for testing purposes
-	$"Action Menu/Top".rect_position = position
+	# Put the top Item first
+	$"Action Menu/Top".rect_position = new_menu_position
 	
 #	Get each item and build the menu
 	var last_item = $"Action Menu/Top"
@@ -93,6 +111,96 @@ func build_menu(menu_items, position):
 	current_option_selected = current_actions[0]
 	current_number_action = 0
 
+# Build the menu items
+func get_menu_items():
+	var menu_items = []
+	
+	# Check which enemies and allies are around
+	for adj_cell in BattlefieldInfo.current_Unit_Selected.UnitMovementStats.currentTile.adjCells:
+		# Do we have a healing item?
+		for player_item in BattlefieldInfo.current_Unit_Selected.UnitInventory.inventory:
+			if player_item.item_class == Item.ITEM_CLASS.MAGIC && player_item.weapon_type == Item.WEAPON_TYPE.HEALING:
+				# calculate based on each item if we can reach that person
+				print("Have a healing item!")
+				
+				# Add heal option
+				if !menu_items.has("Heal"):
+					menu_items.append("Heal")
+		
+		# Attack items
+		for player_item in BattlefieldInfo.current_Unit_Selected.UnitInventory.inventory:
+			# This should be based on how far you can reach -> For now if we have an item | This null check should be moved up as an optimization
+			if player_item != null:
+				# Check here with the longest distance normallhy
+				for adj_cell in BattlefieldInfo.current_Unit_Selected.UnitMovementStats.currentTile.adjCells:
+					if adj_cell.occupyingUnit != null && !adj_cell.occupyingUnit.UnitMovementStats.is_ally:
+						if !menu_items.has("Attack"):
+							menu_items.append("Attack")
+							break
+	
+	# Trade Option
+	for adj_cell in BattlefieldInfo.current_Unit_Selected.UnitMovementStats.currentTile.adjCells:
+		if adj_cell.occupyingUnit != null && adj_cell.occupyingUnit.UnitMovementStats.is_ally:
+			if !menu_items.has("Trade"):
+				menu_items.append("Trade")
+				break
+	
+	# Always add Item and wait
+	menu_items.append("Item")
+	menu_items.append("Wait")
+	return menu_items
+
+# Process Selection
+func process_selection():
+	match current_option_selected:
+		"Attack":
+			print("From Action Selector: Selected Attack! Go to the attack screen!")
+		"Healing":
+			print("From Action Selector: Selected Healing! Go to the healing screen!")
+		"Item":
+			print("From Action Selector: Selected Item! Go to the item screen!")
+		"Trade":
+			print("From Action Selector: Selected Trade! Go to the trade screen!")
+		"Wait":
+			# Set unit to done
+			BattlefieldInfo.current_Unit_Selected.UnitActionStatus.set_current_action(Unit_Action_Status.DONE)
+			BattlefieldInfo.current_Unit_Selected.turn_greyscale_on()
+			BattlefieldInfo.current_Unit_Selected.get_node("Animation").current_animation = "Idle"
+			emit_signal("selected_wait")
+			
+			# Turn this off
+			hide_action_menu()
+
+# Go back
+func go_back():
+	# Move Unit back
+	BattlefieldInfo.current_Unit_Selected.position = BattlefieldInfo.previous_position
+	Calculators.update_unit_tile_info(BattlefieldInfo.current_Unit_Selected, BattlefieldInfo.grid[BattlefieldInfo.previous_position.x / Cell.CELL_SIZE][BattlefieldInfo.previous_position.y / Cell.CELL_SIZE])
+	
+	# Move Camera
+	get_parent().get_node("GameCamera").position = BattlefieldInfo.previous_camera_position
+	
+	# Set status and animation
+	BattlefieldInfo.current_Unit_Selected.UnitActionStatus.set_current_action(Unit_Action_Status.MOVE)
+	BattlefieldInfo.current_Unit_Selected.get_node("Animation").play("Idle")
+	
+	# Move Cursor
+	get_parent().get_node("Cursor").position = BattlefieldInfo.previous_position
+	
+	# Set Cursor status
+	get_parent().get_node("Cursor").enable_standard()
+	
+	# Hide menu
+	hide_action_menu()
+
+# Left
+func left_side(body):
+	new_menu_position = TOP_RIGHT
+
+# Right
+func right_side(body):
+	new_menu_position = TOP_LEFT
+
 # Move everything off and hide it
 func hide_action_menu():
 	$"Action Menu".visible = false
@@ -100,3 +208,6 @@ func hide_action_menu():
 	# Move old items
 	for child_nodes in $"Action Menu".get_children():
 		child_nodes.rect_position = OFF_SIDE
+	
+	# Turn off active
+	is_active = false

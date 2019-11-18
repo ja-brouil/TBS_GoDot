@@ -12,7 +12,7 @@ signal turn_on_ui
 var currentUnit
 
 # Which mode is the cursor in
-enum {MOVE, SELECT_MOVE_TILE, SELECT_ATTACK_TILE, SELECT_HEAL_TILE, SELECT_SPECIAL_TILE, WAIT}
+enum {MOVE, SELECT_MOVE_TILE, WAIT}
 var cursor_state
 
 func _ready():
@@ -23,7 +23,8 @@ func _ready():
 	cursor_state = WAIT
 	
 	# Connect to Movement
-	BattlefieldInfo.unit_movement_system.connect("unit_finished_moving", self, "back_to_move")
+	get_parent().get_node("Action Selector Screen").connect("selected_wait", self, "enable_standard")
+	# BattlefieldInfo.unit_movement_system.connect("unit_finished_moving", self, "back_to_move")
 	
 func _input(event):
 	# Do not process if cursor is in wait mode
@@ -52,6 +53,7 @@ func _input(event):
 		$"MoveSound".play()
 		emit_signal("cursorMoved", "up", self.position)
 	elif Input.is_action_just_pressed("ui_accept"):
+		updateCursorData()
 		acceptButton()
 	elif Input.is_action_just_pressed("ui_cancel"):
 		cancel_Button()
@@ -108,7 +110,17 @@ func acceptButton() -> void:
 		MOVE:
 		# Open end turn window # Send a signal out here -> Or if you pressed a unit that is done
 			if BattlefieldInfo.grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE].occupyingUnit == null || currentUnit.UnitActionStatus.get_current_action() == Unit_Action_Status.DONE:
-				print("End turn menu was pressed")
+				# Play accept sound
+				$"AcceptSound".play()
+				
+				# Activate the end turn window
+				get_parent().get_node("End Turn").start()
+				
+				# Turn this off
+				enable(false, WAIT)
+				
+				# Turn UI Off
+				emit_signal("turn_off_ui")
 				return
 			
 			# Set current unit to the global unit selector
@@ -123,6 +135,9 @@ func acceptButton() -> void:
 			
 			# Set Cursor to the move status
 			cursor_state = SELECT_MOVE_TILE
+			
+			# Set previous camera location so we can move back to it
+			BattlefieldInfo.previous_camera_position = get_parent().get_node("GameCamera").position
 			
 			# Set animation back to true
 			set_animation_status(true)
@@ -141,6 +156,8 @@ func acceptButton() -> void:
 			
 			# Validate if tile is in the list
 			if BattlefieldInfo.movement_calculator.check_if_move_is_valid(BattlefieldInfo.grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE], currentUnit):
+				# Set the old position so that we can go back if needed
+				BattlefieldInfo.previous_position = currentUnit.UnitMovementStats.currentTile.position
 				
 				# Get the path to the tile
 				BattlefieldInfo.movement_calculator.get_path_to_destination(currentUnit, BattlefieldInfo.grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE], BattlefieldInfo.grid)
@@ -177,6 +194,7 @@ func cancel_Button() -> void:
 			BattlefieldInfo.movement_calculator.turn_off_all_tiles(currentUnit, BattlefieldInfo.grid)
 			
 			# Set Cursor back to Move status and clear current unit if needed
+			updateCursorData()
 			cursor_state = MOVE
 			updateCursorData()
 			
@@ -197,8 +215,15 @@ func set_animation_status(State: bool):
 
 # Enable or disable visibility
 func enable(status, next_cursor_state):
-		visible = status
-		cursor_state = next_cursor_state
+	visible = status
+	cursor_state = next_cursor_state
+	updateCursorData()
+
+# Standard enable
+func enable_standard():
+	visible = true
+	$Timer.start(0)
+	emit_signal("turn_on_ui")
 
 func back_to_move():
 	if BattlefieldInfo.turn_manager.turn == Turn_Manager.PLAYER_TURN:
@@ -210,3 +235,8 @@ func debug() -> void:
 	if BattlefieldInfo.grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE].occupyingUnit != null:
 		print("Unit Name: ", BattlefieldInfo.grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE].occupyingUnit.UnitStats.name)
 		print("Unit Status: ", BattlefieldInfo.grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE].occupyingUnit.UnitActionStatus.get_current_action())
+
+# Prevent this scene from automatically starting the event input
+func _on_Timer_timeout():
+	cursor_state = MOVE
+	updateCursorData()

@@ -24,17 +24,23 @@ func _ready():
 	# Music player
 	music_player = preload("res://Scenes/Audio/MusicPlayer.tscn").instance()
 	add_child(music_player)
-	
 
 # Run Systems
 func _process(delta):
 	unit_movement_system.process_movement(delta)
+
 
 #######################
 #BATTLEFIELD VARIABLES#
 #######################
 # Current Unit Selected
 var current_Unit_Selected: Node2D
+
+# Previous position in order to be able to go back
+var previous_position = Vector2(0,0)
+
+# Previous camera position
+var previous_camera_position = Vector2(0,0)
 
 # Map Info
 var grid = []

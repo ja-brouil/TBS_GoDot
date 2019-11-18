@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/GUI/Action Selector/Action Selector.gd" type="Script" id=1]
-[ext_resource path="res://assets/UI/Action Selector/top.png" type="Texture" id=2]
-[ext_resource path="res://assets/UI/Action Selector/bottom.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/GUI/Action Selector/Actions/Top.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/GUI/Action Selector/Actions/Bottom.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/GUI/Action Selector/Actions/Attack.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/GUI/Action Selector/Actions/Heal.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/GUI/Action Selector/Actions/Item.tscn" type="PackedScene" id=6]
@@ -14,23 +14,10 @@
 script = ExtResource( 1 )
 
 [node name="Action Menu" type="Control" parent="."]
-visible = false
 
-[node name="Top" type="TextureRect" parent="Action Menu"]
-margin_left = -169.386
-margin_top = 26.6565
-margin_right = 300.614
-margin_bottom = 148.656
-rect_scale = Vector2( 0.1, 0.1 )
-texture = ExtResource( 2 )
+[node name="Top" parent="Action Menu" instance=ExtResource( 2 )]
 
-[node name="Bottom" type="TextureRect" parent="Action Menu"]
-margin_left = -193.254
-margin_top = 89.5812
-margin_right = 246.746
-margin_bottom = 128.581
-rect_scale = Vector2( 0.1, 0.1 )
-texture = ExtResource( 3 )
+[node name="Bottom" parent="Action Menu" instance=ExtResource( 3 )]
 
 [node name="Attack" parent="Action Menu" instance=ExtResource( 4 )]
 margin_left = -155.927

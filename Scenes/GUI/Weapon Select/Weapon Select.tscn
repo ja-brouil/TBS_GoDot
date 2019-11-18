@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scenes/GUI/Weapon Select/Weapon Select.gd" type="Script" id=1]
+[ext_resource path="res://assets/UI/Damage Preview/itemBox.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/GUI/Action Selector/Actions/Top.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/GUI/Action Selector/Actions/Bottom.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/GUI/Hand Cursor/Hand Selector.tscn" type="PackedScene" id=5]
+
+[node name="Weapon Select" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="Weapon Select" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Item Box" type="TextureRect" parent="Weapon Select"]
+margin_left = 127.341
+margin_top = 90.8807
+margin_right = 1156.34
+margin_bottom = 691.881
+rect_scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 2 )
+
+[node name="Weapon List" type="Control" parent="Weapon Select"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Top" parent="Weapon Select/Weapon List" instance=ExtResource( 3 )]
+margin_left = -129.596
+margin_top = 37.5252
+margin_right = 340.404
+margin_bottom = 159.525
+
+[node name="Bottom" parent="Weapon Select/Weapon List" instance=ExtResource( 4 )]
+margin_left = -127.529
+margin_top = 76.1566
+margin_right = 312.471
+margin_bottom = 115.157
+
+[node name="Hand Selector" parent="Weapon Select/Weapon List" instance=ExtResource( 5 )]
+margin_left = -146.1
+margin_top = 57.274
+margin_right = -130.1
+margin_bottom = 70.274

@@ -83,14 +83,15 @@ func find_most_threatening_enemy():
 				# Check HP Amount -> Lower percentage enemies = higher threat
 				threat_value += (100 - ((ally_unit.UnitStats.current_health / ally_unit.UnitStats.max_health) * 100))
 				
+				
 				# Attack Type
 				# Physical Damage
-				if get_parent().UnitInventory.current_item_equipped.weapon_type == Item.WEAPON_TYPE.WEAPON:
+				if get_parent().UnitInventory.current_item_equipped.item_class == Item.ITEM_CLASS.PHYSICAL:
 					# Check Physical Defense -> Avoid enemies with higher def
 					threat_value -= (ally_unit.UnitStats.def / 2)
 					
 				# Magic Damage
-				elif get_parent().UnitInventory.current_item_equipped.weapon_type == Item.WEAPON_TYPE.MAGIC:
+				elif get_parent().UnitInventory.current_item_equipped.item_class == Item.ITEM_CLASS.MAGIC:
 					# Check Magical Defense -> Avoid enemies with higher res
 					threat_value -= (ally_unit.UnitStats.res / 2)
 				

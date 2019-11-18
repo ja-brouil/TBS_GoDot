@@ -1,37 +1,42 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Scenes/Levels/level2.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/GUI/Cursor/Cursor.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/Camera/GameCamera.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/Transition/Turn Transition.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/GUI/Overhead/GUI Areas.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/GUI/Overhead/BattlefieldHUD.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Scenes/GUI/Action Selector/Action Selector.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Battlefield/Battlefield.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Levels/level2.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/GUI/Cursor/Cursor.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Camera/GameCamera.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Transition/Turn Transition.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/GUI/Overhead/GUI Areas.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/GUI/Overhead/BattlefieldHUD.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/GUI/Action Selector/Action Selector.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/GUI/End Turn/End Turn.tscn" type="PackedScene" id=9]
 
 [node name="Battlefield" type="Node2D"]
 z_index = 4
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 352.006 ]
 }
 
 [node name="YSort" type="YSort" parent="."]
 
-[node name="Level" parent="YSort" instance=ExtResource( 1 )]
+[node name="Level" parent="YSort" instance=ExtResource( 2 )]
 
-[node name="Cursor" parent="." instance=ExtResource( 2 )]
+[node name="Cursor" parent="." instance=ExtResource( 3 )]
 visible = false
 position = Vector2( 16, 272 )
 z_index = 5
 
-[node name="GameCamera" parent="." instance=ExtResource( 3 )]
+[node name="GameCamera" parent="." instance=ExtResource( 4 )]
 position = Vector2( 0, 192 )
 
-[node name="Turn Transition" parent="GameCamera" instance=ExtResource( 4 )]
+[node name="Turn Transition" parent="GameCamera" instance=ExtResource( 5 )]
 
-[node name="Areas" parent="GameCamera" instance=ExtResource( 5 )]
+[node name="Areas" parent="GameCamera" instance=ExtResource( 6 )]
 
-[node name="BattlefieldHUD" parent="." instance=ExtResource( 6 )]
+[node name="BattlefieldHUD" parent="." instance=ExtResource( 7 )]
 
-[node name="Action Selector Screen" parent="." instance=ExtResource( 7 )]
+[node name="Action Selector Screen" parent="." instance=ExtResource( 8 )]
+
+[node name="End Turn" parent="." instance=ExtResource( 9 )]
 [connection signal="mapInformationLoaded" from="YSort/Level" to="GameCamera" method="_on_Level_mapInformationLoaded"]
 [connection signal="cursorMoved" from="Cursor" to="GameCamera" method="_on_Cursor_cursorMoved"]

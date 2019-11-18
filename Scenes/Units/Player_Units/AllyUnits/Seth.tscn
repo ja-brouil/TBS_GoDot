@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scenes/Units/Player_Units/AllyUnits/Seth.gd" type="Script" id=1]
 [ext_resource path="res://assets/units/cavalier/cavalierAlly.png" type="Texture" id=2]
@@ -32,7 +32,7 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0, 0.5, 1, 1.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
+"update": 1,
 "values": [ Rect2( 4, 105, 18, 23 ), Rect2( 36, 104, 18, 24 ), Rect2( 68, 103, 18, 25 ), Rect2( 100, 104, 18, 24 ) ]
 }
 tracks/2/type = "value"
@@ -44,7 +44,7 @@ tracks/2/enabled = true
 tracks/2/keys = {
 "times": PoolRealArray( 0, 0.5, 1, 1.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
+"update": 1,
 "values": [ Vector2( 0.129936, -3.63805 ), Vector2( 0.259872, -4.80747 ), Vector2( 0.207898, -5.89894 ), Vector2( 0.415796, -4.78148 ) ]
 }
 tracks/3/type = "value"
@@ -61,7 +61,48 @@ tracks/3/keys = {
 }
 
 [sub_resource type="Animation" id=2]
-resource_name = "Highlighted"
+resource_name = "Down no sound"
+length = 1.75
+loop = true
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 4, 105, 18, 23 ), Rect2( 36, 104, 18, 24 ), Rect2( 68, 103, 18, 25 ), Rect2( 100, 104, 18, 24 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0.129936, -3.63805 ), Vector2( 0.259872, -4.80747 ), Vector2( 0.207898, -5.89894 ), Vector2( 0.415796, -4.78148 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=3]
 length = 1.75
 loop = true
 step = 0.5
@@ -102,7 +143,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 length = 2.0
 loop = true
 step = 0.5
@@ -143,7 +184,7 @@ tracks/2/keys = {
 "values": [ Vector2( 0.191, -4.50606 ), Vector2( 0.191, -4.50606 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 length = 1.75
 loop = true
 step = 0.5
@@ -198,7 +239,49 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
+resource_name = "Left no sound"
+length = 1.75
+loop = true
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( -3.89809, -1.55906 ), Vector2( -3.89809, -1.55906 ), Vector2( -3.63822, -1.55906 ), Vector2( -3.42166, -1.42913 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 0, 43, 25, 21 ), Rect2( 32, 43, 25, 21 ), Rect2( 64, 42, 24, 22 ), Rect2( 96, 43, 24, 21 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=7]
 length = 1.75
 loop = true
 step = 0.5
@@ -253,7 +336,49 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=8]
+resource_name = "Right no sound"
+length = 1.75
+loop = true
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( -3.89809, -1.55906 ), Vector2( -3.89809, -1.55906 ), Vector2( -3.63822, -1.55906 ), Vector2( -3.42166, -1.42913 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 0, 43, 25, 21 ), Rect2( 32, 43, 25, 21 ), Rect2( 64, 42, 24, 22 ), Rect2( 96, 43, 24, 21 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=9]
 length = 1.75
 loop = true
 step = 0.5
@@ -294,7 +419,7 @@ tracks/2/keys = {
 "values": [ Vector2( 0, -5.717 ), Vector2( 0, -1.689 ), Vector2( 0, -3.3002 ), Vector2( 0.129936, -1.79293 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=10]
 length = 1.75
 loop = true
 step = 0.5
@@ -349,6 +474,48 @@ tracks/3/keys = {
 "values": [ false ]
 }
 
+[sub_resource type="Animation" id=11]
+resource_name = "Up no sound"
+length = 1.75
+loop = true
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0.129936, -2.72849 ), Vector2( 0.129936, -3.63805 ), Vector2( 0.129936, -4.83346 ), Vector2( 0.259872, -3.56008 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 1, 138, 16, 22 ), Rect2( 33, 137, 16, 23 ), Rect2( 65, 136, 16, 24 ), Rect2( 97, 137, 16, 23 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
 [node name="Seth" type="Node2D"]
 z_index = 5
 script = ExtResource( 1 )
@@ -358,21 +525,25 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0.191, -4.50606 )
+position = Vector2( 0.129936, -3.63805 )
 texture = ExtResource( 2 )
 centered = false
 region_enabled = true
-region_rect = Rect2( 35, 76, 16, 20 )
+region_rect = Rect2( 4, 105, 18, 23 )
 
 [node name="Animation" type="AnimationPlayer" parent="."]
 playback_speed = 2.0
 anims/Down = SubResource( 1 )
-anims/Highlighted = SubResource( 2 )
-anims/Idle = SubResource( 3 )
-anims/Left = SubResource( 4 )
-anims/Right = SubResource( 5 )
-anims/Selected = SubResource( 6 )
-anims/Up = SubResource( 7 )
+"anims/Down no sound" = SubResource( 2 )
+anims/Highlighted = SubResource( 3 )
+anims/Idle = SubResource( 4 )
+anims/Left = SubResource( 5 )
+"anims/Left no sound" = SubResource( 6 )
+anims/Right = SubResource( 7 )
+"anims/Right no sound" = SubResource( 8 )
+anims/Selected = SubResource( 9 )
+anims/Up = SubResource( 10 )
+"anims/Up no sound" = SubResource( 11 )
 
 [node name="footsteps" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )

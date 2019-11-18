@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scenes/Units/Enemy_Units/Bandit.gd" type="Script" id=1]
 [ext_resource path="res://assets/units/bandit/banditRed.png" type="Texture" id=2]
@@ -145,7 +145,48 @@ tracks/2/keys = {
 }
 
 [sub_resource type="Animation" id=4]
-resource_name = "Left"
+resource_name = "Idle no sound"
+length = 1.75
+loop = true
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 8, 79, 16, 17 ), Rect2( 40, 80, 16, 16 ), Rect2( 72, 78, 16, 18 ), Rect2( 104, 80, 16, 16 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( -0.0818233, 0.981899 ), Vector2( 1.90735e-06, -1.06372 ), Vector2( 0.0818272, 0.818249 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=5]
 length = 1.75
 loop = true
 step = 0.5
@@ -200,8 +241,7 @@ tracks/3/keys = {
 "values": [ Vector2( 0.148752, -8.97729 ), Vector2( 0.148752, -9.8698 ), Vector2( 0.297503, -9.2748 ), Vector2( 0.148752, -9.8698 ) ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "Right"
+[sub_resource type="Animation" id=6]
 length = 1.75
 loop = true
 step = 0.5
@@ -256,7 +296,7 @@ tracks/3/keys = {
 "values": [ Vector2( 0.148752, -8.97729 ), Vector2( 0.148752, -9.8698 ), Vector2( 0.297503, -9.2748 ), Vector2( 0.148752, -9.8698 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=7]
 length = 1.75
 loop = true
 step = 0.5
@@ -332,8 +372,9 @@ playback_speed = 2.0
 anims/Down = SubResource( 1 )
 anims/Highlighted = SubResource( 2 )
 anims/Idle = SubResource( 3 )
-anims/Left = SubResource( 4 )
-anims/Right = SubResource( 5 )
-anims/Up = SubResource( 6 )
+"anims/Idle no sound" = SubResource( 4 )
+anims/Left = SubResource( 5 )
+anims/Right = SubResource( 6 )
+anims/Up = SubResource( 7 )
 
 [node name="AI" parent="." instance=ExtResource( 4 )]

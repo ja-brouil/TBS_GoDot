@@ -1,9 +1,6 @@
 # Controls the overhead display when on the battle field
 extends CanvasLayer
 
-# Battlefield access for caching purposes
-var battlefield
-
 # Positioning
 enum {TOP_LEFT, TOP_RIGHT, BOTTOM_LEFT, BOTTOM_RIGHT}
 var cursor_quadrant
@@ -13,13 +10,10 @@ var previous_quadrant
 const full_bar_width = 237
 
 func _ready():
-	# Battlefield access
-	battlefield = get_parent()
-	
 	# Connect the cursor movement signal and turning off
-	battlefield.get_node("Cursor").connect("cursorMoved", self, "update_battlefield_ui")
-	battlefield.get_node("Cursor").connect("turn_off_ui", self, "turn_off_battlefield_ui")
-	battlefield.get_node("Cursor").connect("turn_on_ui", self, "turn_on_battlefield_ui")
+	get_parent().get_node("Cursor").connect("cursorMoved", self, "update_battlefield_ui")
+	get_parent().get_node("Cursor").connect("turn_off_ui", self, "turn_off_battlefield_ui")
+	get_parent().get_node("Cursor").connect("turn_on_ui", self, "turn_on_battlefield_ui")
 	
 	# Connect cursor to the Area
 	get_parent().get_node("GameCamera/Areas/BottomLeft").connect("body_entered", self, "bottom_left")
@@ -27,8 +21,9 @@ func _ready():
 	get_parent().get_node("GameCamera/Areas/TopLeft").connect("body_entered", self, "top_left")
 	get_parent().get_node("GameCamera/Areas/TopRight").connect("body_entered", self, "top_right")
 	
-	# Connect to unit movement system
-	BattlefieldInfo.unit_movement_system.connect("unit_finished_moving", self, "turn_on_battlefield_ui")
+	# Connect to Action selector
+	get_parent().get_node("Action Selector Screen").connect("selected_wait", self, "turn_on_battlefield_ui")
+	# BattlefieldInfo.unit_movement_system.connect("unit_finished_moving", self, "turn_on_battlefield_ui")
 	
 	# Initial Quandrant and previous
 	cursor_quadrant = TOP_LEFT
@@ -48,7 +43,7 @@ func update_battlefield_ui(cursor_direction, cursor_position):
 func update_unit_box():
 	# Check if there is a unit and display information
 	if BattlefieldInfo.current_Unit_Selected != null:
-		print("Printed from BattlefieldHUD:", BattlefieldInfo.current_Unit_Selected) # Set appropriate unit stats here
+		#print("Printed from BattlefieldHUD:", BattlefieldInfo.current_Unit_Selected) # Set appropriate unit stats here
 		$"Battlefield HUD/Unit Info/FadeAnimU".play("Fade") # play the animation for the ui
 		$"Battlefield HUD/Unit Info".visible = true
 	else:
@@ -150,11 +145,16 @@ func move_gui_boxes():
 # Turn off all UI elements of the battlefield
 func turn_off_battlefield_ui():
 	$"Battlefield HUD".visible = false
+	update_battlefield_ui("up", get_parent().get_node("Cursor").position)
 
 # Turn on all UI elements of the battlefield
 func turn_on_battlefield_ui():
 	if BattlefieldInfo.turn_manager.turn == Turn_Manager.PLAYER_TURN:
 		$"Battlefield HUD".visible = true
+	update_battlefield_ui("up", get_parent().get_node("Cursor").position)
+	# Turn off unit frame
+	if BattlefieldInfo.current_Unit_Selected == null:
+		$"Battlefield HUD/Unit Info".visible = false
 
 # Calculate Text for Unit 
 func calculate_health_values():

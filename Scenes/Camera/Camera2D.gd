@@ -14,8 +14,6 @@ func _ready():
 	# Return to this camera when the unit is done moving
 	BattlefieldInfo.unit_movement_system.connect("unit_finished_moving", self, "set_current_camera")
 	
-	print(get_viewport_rect().size)
-
 # Update the camera on cursor movement
 func _on_Cursor_cursorMoved(direction, cursor_position):
 	match direction:
@@ -53,8 +51,6 @@ func clampCameraPosition():
 
 # Set back to this camera
 func set_current_camera():
-	#var new_cam_position = Vector2(BattlefieldInfo.current_Unit_Selected.position.x - (CAMERA_WIDTH / 2), BattlefieldInfo.current_Unit_Selected.position.y - (CAMERA_HEIGTH / 2))
 	# Remove other camera
-	#position = new_cam_position
 	BattlefieldInfo.current_Unit_Selected.get_node("MovementCamera").queue_free()
 	current = true

@@ -1,3 +1,5 @@
+extends Node
+
 # Controls the movement system for the units
 class_name Unit_Movement_System
 
@@ -6,6 +8,12 @@ var is_moving = false
 
 # Update the world info
 signal unit_finished_moving
+signal action_selector_screen
+
+var battlefield
+
+func _ready():
+	battlefield = get_parent()
 
 func process_movement(delta):
 	if !is_moving:
@@ -52,17 +60,27 @@ func process_movement(delta):
 		unit.UnitMovementStats.currentTile = destination_cell
 		unit.UnitMovementStats.currentTile.occupyingUnit = unit
 		
-		# Set unit's status to action state -> For now set this to done and greyscale
-		unit.UnitActionStatus.set_current_action(Unit_Action_Status.DONE)
-		unit.turn_greyscale_on()
-		unit.get_node("Animation").current_animation = "Idle"
-		
 		# Turn off tiles
 		BattlefieldInfo.movement_calculator.turn_off_all_tiles(unit, BattlefieldInfo.grid)
 		
 		# Emit signal to update the cells
 		emit_signal("unit_finished_moving")
 		
-		# TESTING AI | CHANGE THIS LATER
+		# Activate AI vs Player Unit
 		if unit.has_node("AI"):
 			BattlefieldInfo.turn_manager.turn = Turn_Manager.ENEMY_TURN
+			
+			# Process another AI method here ie, check for attack/do whatever after moving for now just wait
+			unit.UnitActionStatus.set_current_action(Unit_Action_Status.DONE)
+			unit.turn_greyscale_on()
+			unit.get_node("Animation").current_animation = "Idle"
+		else:
+			# Set unit's status to action state and animation
+			unit.UnitActionStatus.set_current_action(Unit_Action_Status.ACTION)
+			if BattlefieldInfo.current_Unit_Selected.get_node("Animation").current_animation == "Idle":
+				BattlefieldInfo.current_Unit_Selected.get_node("Animation").current_animation == "Idle"
+			else:
+				BattlefieldInfo.current_Unit_Selected.get_node("Animation").current_animation = str(BattlefieldInfo.current_Unit_Selected.get_node("Animation").current_animation, " no sound")
+			
+			# Go to the action selector screen
+			emit_signal("action_selector_screen")

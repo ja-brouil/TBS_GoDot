@@ -111,10 +111,10 @@ func calculate_damage():
 	var enemy_base_def = 0
 	
 	# Player
-	if BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped.weapon_type == Item.WEAPON_TYPE.PHYSICAL:
+	if BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped.item_class == Item.ITEM_CLASS.PHYSICAL:
 		player_base_damage = BattlefieldInfo.combat_player_unit.UnitStats.strength
 		enemy_base_def = BattlefieldInfo.combat_ai_unit.UnitStats.def
-	elif BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped.weapon_type == Item.WEAPON_TYPE.MAGIC:
+	elif BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped.item_class == Item.ITEM_CLASS.MAGIC:
 		player_base_damage = BattlefieldInfo.combat_player_unit.UnitStats.magic
 		enemy_base_def = BattlefieldInfo.combat_ai_unit.UnitStats.res
 	
@@ -146,10 +146,10 @@ func calculate_damage():
 			player_missed = true
 	
 	# Enemy
-	if BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.weapon_type == Item.WEAPON_TYPE.PHYSICAL:
+	if BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.item_class == Item.ITEM_CLASS.PHYSICAL:
 		enemy_base_damage = BattlefieldInfo.combat_combat_ai_unit.UnitStats.strength
 		player_base_def = BattlefieldInfo.combat_player_unit.UnitStats.def
-	elif BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.weapon_type == Item.WEAPON_TYPE.MAGIC:
+	elif BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.item_class == Item.ITEM_CLASS.MAGIC:
 		enemy_base_damage = BattlefieldInfo.combat_combat_ai_unit.UnitStats.magic
 		player_base_def = BattlefieldInfo.combat_player_unit.UnitStats.res
 	
