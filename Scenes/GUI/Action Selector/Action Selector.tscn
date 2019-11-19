@@ -16,8 +16,16 @@ script = ExtResource( 1 )
 [node name="Action Menu" type="Control" parent="."]
 
 [node name="Top" parent="Action Menu" instance=ExtResource( 2 )]
+margin_left = -170.683
+margin_top = 41.2831
+margin_right = 299.317
+margin_bottom = 163.283
 
 [node name="Bottom" parent="Action Menu" instance=ExtResource( 3 )]
+margin_left = -100.953
+margin_top = 19.0804
+margin_right = 339.047
+margin_bottom = 58.0804
 
 [node name="Attack" parent="Action Menu" instance=ExtResource( 4 )]
 margin_left = -155.927
@@ -54,3 +62,8 @@ margin_left = -162.79
 margin_top = 59.6598
 margin_right = -147.79
 margin_bottom = 72.6598
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -53,4 +53,4 @@ func clampCameraPosition():
 func set_current_camera():
 	# Remove other camera
 	BattlefieldInfo.current_Unit_Selected.get_node("MovementCamera").queue_free()
-	current = true
+	make_current()

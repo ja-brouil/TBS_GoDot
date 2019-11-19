@@ -31,7 +31,6 @@ func process_movement(delta):
 	if abs(unit.position.x - destination_cell.position.x) >= 0.75 || abs(unit.position.y - destination_cell.position.y) >= 0.75:
 		unit.position.x += (destination_cell.position.x - starting_cell.position.x) * unit.animation_movement_speed * delta
 		unit.position.y += (destination_cell.position.y - starting_cell.position.y) * unit.animation_movement_speed * delta
-		# unit.get_node("Sound_Movement").play()
 	else:
 		# Finalize movement to prevent rounding errors
 		unit.position.x = destination_cell.position.x

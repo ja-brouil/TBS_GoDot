@@ -23,5 +23,9 @@ var min_range # Min range
 
 # Description
 var item_description
+var item_name
+
+# Icon
+var icon
 
 # Special abilities should be added here in the extended item slot

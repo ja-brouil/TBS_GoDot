@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/Items/Swords/Steel Sword.gd" type="Script" id=1]
+
+[node name="Steel Sword" type="Sprite"]
+script = ExtResource( 1 )

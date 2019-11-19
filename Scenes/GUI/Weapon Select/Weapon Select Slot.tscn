@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scenes/GUI/Weapon Select/Weapon Select Slot.gd" type="Script" id=1]
+[ext_resource path="res://assets/UI/Action Selector/mid.png" type="Texture" id=2]
+[ext_resource path="res://assets/font/Main Font.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://FE Icon.jpg" type="Texture" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 26
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
+
+[node name="Weapon Select Slot" type="Control"]
+script = ExtResource( 1 )
+
+[node name="Background" type="Sprite" parent="."]
+scale = Vector2( 0.200337, 0.0997819 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Weapon Name" type="Label" parent="Background"]
+margin_left = 91.2176
+margin_top = -0.328857
+margin_right = 359.218
+margin_bottom = 89.6711
+rect_scale = Vector2( 1, 1.1 )
+custom_fonts/font = SubResource( 1 )
+text = "Killing Edge"
+align = 1
+valign = 1
+
+[node name="Uses" type="Label" parent="Background"]
+margin_left = 363.0
+margin_top = 3.0
+margin_right = 420.0
+margin_bottom = 90.0
+rect_scale = Vector2( 1, 1.1 )
+custom_fonts/font = SubResource( 1 )
+text = "99"
+align = 1
+valign = 1
+
+[node name="Icon" type="TextureRect" parent="Background"]
+margin_left = 35.7441
+margin_top = 12.4436
+margin_right = 72.7441
+margin_bottom = 83.4436
+texture = ExtResource( 4 )
+expand = true

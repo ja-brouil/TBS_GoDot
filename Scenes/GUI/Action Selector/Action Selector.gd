@@ -45,8 +45,8 @@ func start():
 	# Build Menu
 	build_menu(menu_items)
 	
-	# Active Input
-	is_active = true
+	# Start input acceptance
+	$Timer.start(0)
 
 # Input for Hand movement
 func _input(event):
@@ -154,7 +154,12 @@ func get_menu_items():
 func process_selection():
 	match current_option_selected:
 		"Attack":
+			# Go to the other menu
+			get_parent().get_node("Weapon Select").start()
 			print("From Action Selector: Selected Attack! Go to the attack screen!")
+			
+			# Turn off
+			hide_action_menu()
 		"Healing":
 			print("From Action Selector: Selected Healing! Go to the healing screen!")
 		"Item":
@@ -211,3 +216,7 @@ func hide_action_menu():
 	
 	# Turn off active
 	is_active = false
+
+func _on_Timer_timeout():
+	# Active Input
+	is_active = true

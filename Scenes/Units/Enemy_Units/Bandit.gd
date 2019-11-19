@@ -10,3 +10,6 @@ func _ready():
 	
 	# Portrait
 	unit_portrait_path = preload("res://assets/units/enemyPortrait/normalSoldierPortrait.png")
+	
+	# Mug shot
+	unit_mugshot = preload("res://assets/units/bandit/bandit mugshot.png")

@@ -1,15 +1,19 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/GUI/Weapon Select/Weapon Select.gd" type="Script" id=1]
-[ext_resource path="res://assets/UI/Damage Preview/itemBox.png" type="Texture" id=2]
-[ext_resource path="res://Scenes/GUI/Action Selector/Actions/Top.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/GUI/Action Selector/Actions/Bottom.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/GUI/Hand Cursor/Hand Selector.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/UI/Item Preview/itemBox.png" type="Texture" id=2]
+[ext_resource path="res://FE Icon.jpg" type="Texture" id=3]
+[ext_resource path="res://assets/font/Action Selector Font.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Scenes/GUI/Action Selector/Actions/Top.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/GUI/Action Selector/Actions/Bottom.tscn" type="PackedScene" id=6]
+[ext_resource path="res://icon.png" type="Texture" id=7]
+[ext_resource path="res://Scenes/GUI/Hand Cursor/Hand Selector.tscn" type="PackedScene" id=8]
 
 [node name="Weapon Select" type="CanvasLayer"]
 script = ExtResource( 1 )
 
 [node name="Weapon Select" type="Control" parent="."]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 
@@ -21,24 +25,166 @@ margin_bottom = 691.881
 rect_scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 2 )
 
+[node name="Weapon Icon" type="TextureRect" parent="Weapon Select/Item Box"]
+margin_left = 654.574
+margin_top = 123.172
+margin_right = 780.574
+margin_bottom = 242.172
+texture = ExtResource( 3 )
+expand = true
+
+[node name="Affin" type="Label" parent="Weapon Select/Item Box"]
+margin_left = 226.59
+margin_top = 123.0
+margin_right = 582.59
+margin_bottom = 242.0
+custom_fonts/font = ExtResource( 4 )
+text = "Affin"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Atk" type="Label" parent="Weapon Select/Item Box"]
+margin_left = 88.9691
+margin_top = 291.239
+margin_right = 288.969
+margin_bottom = 391.239
+custom_fonts/font = ExtResource( 4 )
+text = "Atk"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Atk N" type="Label" parent="Weapon Select/Item Box"]
+margin_left = 272.527
+margin_top = 291.239
+margin_right = 472.527
+margin_bottom = 391.239
+custom_fonts/font = ExtResource( 4 )
+text = "100"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Crit" type="Label" parent="Weapon Select/Item Box"]
+margin_left = 519.34
+margin_top = 291.239
+margin_right = 719.34
+margin_bottom = 391.239
+custom_fonts/font = ExtResource( 4 )
+text = "Crit"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Crit N" type="Label" parent="Weapon Select/Item Box"]
+margin_left = 745.565
+margin_top = 291.239
+margin_right = 945.565
+margin_bottom = 391.239
+custom_fonts/font = ExtResource( 4 )
+text = "100"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Hit" type="Label" parent="Weapon Select/Item Box"]
+margin_left = 88.9691
+margin_top = 418.558
+margin_right = 288.969
+margin_bottom = 518.558
+custom_fonts/font = ExtResource( 4 )
+text = "Hit"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Hit N" type="Label" parent="Weapon Select/Item Box"]
+margin_left = 272.527
+margin_top = 418.558
+margin_right = 472.527
+margin_bottom = 518.558
+custom_fonts/font = ExtResource( 4 )
+text = "100"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Avoid" type="Label" parent="Weapon Select/Item Box"]
+margin_left = 545.565
+margin_top = 418.558
+margin_right = 745.565
+margin_bottom = 518.558
+custom_fonts/font = ExtResource( 4 )
+text = "Avoid"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Avoid N" type="Label" parent="Weapon Select/Item Box"]
+margin_left = 745.565
+margin_top = 418.558
+margin_right = 945.565
+margin_bottom = 518.558
+custom_fonts/font = ExtResource( 4 )
+text = "100"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
 [node name="Weapon List" type="Control" parent="Weapon Select"]
-margin_right = 40.0
-margin_bottom = 40.0
 
-[node name="Top" parent="Weapon Select/Weapon List" instance=ExtResource( 3 )]
-margin_left = -129.596
-margin_top = 37.5252
-margin_right = 340.404
-margin_bottom = 159.525
+[node name="Top" parent="Weapon Select/Weapon List" instance=ExtResource( 5 )]
+margin_left = -106.743
+margin_top = 7.23653
+margin_right = 835.257
+margin_bottom = 210.237
+expand = true
 
-[node name="Bottom" parent="Weapon Select/Weapon List" instance=ExtResource( 4 )]
-margin_left = -127.529
-margin_top = 76.1566
-margin_right = 312.471
-margin_bottom = 115.157
+[node name="Bottom" parent="Weapon Select/Weapon List" instance=ExtResource( 6 )]
+margin_left = -106.743
+margin_top = 48.4331
+margin_right = 775.257
+margin_bottom = 86.4331
+expand = true
 
-[node name="Hand Selector" parent="Weapon Select/Weapon List" instance=ExtResource( 5 )]
-margin_left = -146.1
-margin_top = 57.274
-margin_right = -130.1
-margin_bottom = 70.274
+[node name="Unit Mugshot" type="TextureRect" parent="Weapon Select"]
+margin_left = 145.0
+margin_top = 22.0
+margin_right = 219.0
+margin_bottom = 95.0
+texture = ExtResource( 7 )
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Hand Selector" parent="." instance=ExtResource( 8 )]
+show_behind_parent = true
+margin_left = -90.7582
+margin_top = 32.5644
+margin_right = -74.7582
+margin_bottom = 45.5644
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

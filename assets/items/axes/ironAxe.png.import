@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cavalierAlly copy.png-da749bb0aa9bfe7b476eb2ce8d2b500d.stex"
+path="res://.import/ironAxe.png-00d44ef0dc246e23e2303799504945b4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/units/cavalierAlly copy.png"
-dest_files=[ "res://.import/cavalierAlly copy.png-da749bb0aa9bfe7b476eb2ce8d2b500d.stex" ]
+source_file="res://assets/items/axes/ironAxe.png"
+dest_files=[ "res://.import/ironAxe.png-00d44ef0dc246e23e2303799504945b4.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -30,5 +30,5 @@ process/HDR_as_SRGB=false
 process/invert_color=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

@@ -3,9 +3,7 @@
 [ext_resource path="res://assets/UI/Action Selector/top.png" type="Texture" id=1]
 
 [node name="Top" type="TextureRect"]
-margin_left = -169.386
-margin_top = 26.6565
-margin_right = 300.614
-margin_bottom = 148.656
+margin_right = 470.0
+margin_bottom = 122.0
 rect_scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 1 )
