@@ -3,7 +3,7 @@ extends Battlefield_Unit
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Set these later when the level loads
-	UnitMovementStats.movementSteps = 20
+	UnitMovementStats.movementSteps = 15
 	$Animation.current_animation = "Idle"
 	
 	# Unit portrait

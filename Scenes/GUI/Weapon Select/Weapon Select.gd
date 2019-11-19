@@ -127,6 +127,7 @@ func update_item_box():
 	$"Weapon Select/Item Box/Avoid N".text = str(current_selected_option.weight)
 	$"Weapon Select/Item Box/Hit N".text = str(current_selected_option.hit)
 	$"Weapon Select/Item Box/Weapon Icon".texture = current_selected_option.icon
+	$"Weapon Select/Item Box/Weapon".text = current_selected_option.item_name
 
 # Cancel option
 func go_back():
@@ -161,6 +162,9 @@ func turn_off():
 	is_active = false
 	
 	$"Hand Selector".visible = false
+	
+	# Reset option
+	current_selected_number = 0
 
 func _on_Timer_timeout():
 	is_active = true

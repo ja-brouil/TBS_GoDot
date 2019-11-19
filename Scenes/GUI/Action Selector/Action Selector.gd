@@ -167,15 +167,14 @@ func process_selection():
 		"Trade":
 			print("From Action Selector: Selected Trade! Go to the trade screen!")
 		"Wait":
+			# Turn this off
+			hide_action_menu()
+			
 			# Set unit to done
 			BattlefieldInfo.current_Unit_Selected.UnitActionStatus.set_current_action(Unit_Action_Status.DONE)
 			BattlefieldInfo.current_Unit_Selected.turn_greyscale_on()
 			BattlefieldInfo.current_Unit_Selected.get_node("Animation").current_animation = "Idle"
 			emit_signal("selected_wait")
-			
-			# Turn this off
-			hide_action_menu()
-
 # Go back
 func go_back():
 	# Move Unit back
