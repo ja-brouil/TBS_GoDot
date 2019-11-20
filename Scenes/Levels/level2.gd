@@ -70,10 +70,32 @@ func _ready():
 		var new_ally = load(path).instance()
 		add_child(new_ally)
 		
-		# Set Stats
+		# Set Stats and position
 		new_ally.position.x = allyCellInfo.position.x
 		new_ally.position.y = allyCellInfo.position.y
 		new_ally.UnitStats.name = allyCellInfo.get_meta("Name")
+		new_ally.UnitStats.strength = allyCellInfo.get_meta("Str")
+		new_ally.UnitStats.skill = allyCellInfo.get_meta("Skill")
+		new_ally.UnitStats.speed = allyCellInfo.get_meta("Speed")
+		new_ally.UnitStats.magic = allyCellInfo.get_meta("Magic")
+		new_ally.UnitStats.luck = allyCellInfo.get_meta("Luck")
+		new_ally.UnitStats.def = allyCellInfo.get_meta("Defense")
+		new_ally.UnitStats.res = allyCellInfo.get_meta("Res")
+		new_ally.UnitStats.consti = allyCellInfo.get_meta("Consti")
+		new_ally.UnitStats.bonus_crit = allyCellInfo.get_meta("BonusCrit")
+		new_ally.UnitStats.bonus_dodge = allyCellInfo.get_meta("BonusDodge")
+		new_ally.UnitStats.bonus_hit = allyCellInfo.get_meta("BonusHit")
+		
+		# Stat upgrades
+		new_ally.UnitStats.str_chance = allyCellInfo.get_meta("strChance")
+		new_ally.UnitStats.skill_chance = allyCellInfo.get_meta("skillChance")
+		new_ally.UnitStats.speed_chance = allyCellInfo.get_meta("speedChance")
+		new_ally.UnitStats.magic_chance = allyCellInfo.get_meta("magicChance")
+		new_ally.UnitStats.luck_chance = allyCellInfo.get_meta("luckChance")
+		new_ally.UnitStats.def_chance = allyCellInfo.get_meta("defChance")
+		new_ally.UnitStats.res_chance = allyCellInfo.get_meta("resChance")
+		new_ally.UnitStats.consti_chance = allyCellInfo.get_meta("constiChance")
+		new_ally.UnitStats.max_health_chance = allyCellInfo.get_meta("maxHPChance")
 		
 		# Set Battlefield Info
 		all_allies_location.append(new_ally)

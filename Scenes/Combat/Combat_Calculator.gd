@@ -80,14 +80,23 @@ func calculate_hit_chance():
 	
 	# Calculate accuracy
 	player_accuracy = c_player_accuracy - c_ai_avoidance
-	enemy_accuracy = c_ai_accuracy - c_player_accuracy
+	enemy_accuracy = c_ai_accuracy - c_player_avoidance
 	
+	if player_accuracy < 0:
+		player_accuracy = 0
+	
+	if enemy_accuracy < 0:
+		enemy_accuracy = 0
 
 # Crit Chance
 func calculate_crit_chance():
 	player_critical_rate = (BattlefieldInfo.combat_player_unit.UnitStats.skill / 2) + BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped.crit + BattlefieldInfo.combat_player_unit.UnitStats.bonus_crit - BattlefieldInfo.combat_ai_unit.UnitStats.luck
 	enemy_critical_rate = (BattlefieldInfo.combat_ai_unit.UnitStats.skill / 2) + BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.crit + BattlefieldInfo.combat_ai_unit.UnitStats.bonus_crit - BattlefieldInfo.combat_player_unit.UnitStats.luck
 	
+	if player_critical_rate < 0:
+		player_critical_rate = 0
+	if enemy_critical_rate < 0:
+		enemy_critical_rate = 0
 
 # Damage Preview -> Add double attack mode
 func calculate_damage():
@@ -136,10 +145,10 @@ func calculate_damage():
 			player_actual_damage = 0
 	else:
 		# No Crit, check if unit hit or missed
-		if (!hit_occured(player_accuracy)):
+		if (hit_occured(player_accuracy)):
 			player_actual_damage = player_base_damage - enemy_base_def
 			
-			if player_actual_damage >= 0:
+			if player_actual_damage <= 0:
 				player_actual_damage = 0
 				print("FROM COMBAT CALC: NO DAMAGE DEALT FROM PLAYER")
 		else:
@@ -171,10 +180,10 @@ func calculate_damage():
 			enemy_actual_damage = 0
 	else:
 		# No Crit, check if unit hit or missed
-		if (!hit_occured(enemy_accuracy)):
+		if (hit_occured(enemy_accuracy)):
 			enemy_actual_damage = enemy_base_damage - player_base_def
 			
-			if enemy_actual_damage >= 0:
+			if enemy_actual_damage <= 0:
 				enemy_actual_damage = 0
 				print("FROM COMBAT CALC: NO DAMAGE DEALT FROM ENEMY")
 		else:
