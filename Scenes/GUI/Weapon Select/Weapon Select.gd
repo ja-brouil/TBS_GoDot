@@ -47,7 +47,7 @@ func _input(event):
 		movement("down")
 	elif Input.is_action_just_pressed("ui_accept"):
 		$"Hand Selector/Accept".play(0)
-		print("FROM WEAPON SELECT: WE ARE GOING TO CHOOSE ENEMY SCREEN. WE HAVE CHOSEN: ", current_selected_option.item_name)
+		process_selection()
 	elif Input.is_action_just_pressed("ui_cancel"):
 		$"Hand Selector/Cancel".play(0)
 		go_back()
@@ -139,7 +139,11 @@ func go_back():
 
 # Go to unit selection
 func process_selection():
-	pass
+	# Turn this off
+	turn_off()
+	
+	# Go to the Damage preview screen
+	get_parent().get_node("Damage Preview").start(current_selected_option)
 
 # On/Off
 func turn_on():

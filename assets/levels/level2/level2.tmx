@@ -3553,8 +3553,8 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="Allies" visible="0">
-  <object id="2281" x="32" y="288" width="16" height="16">
+ <objectgroup name="Allies">
+  <object id="2281" x="96" y="272" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="1"/>
     <property name="BonusDodge" type="int" value="1"/>

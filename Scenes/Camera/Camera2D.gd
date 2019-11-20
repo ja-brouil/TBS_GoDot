@@ -13,7 +13,7 @@ signal camera_moved
 func _ready():
 	# Return to this camera when the unit is done moving
 	BattlefieldInfo.unit_movement_system.connect("unit_finished_moving", self, "set_current_camera")
-	
+
 # Update the camera on cursor movement
 func _on_Cursor_cursorMoved(direction, cursor_position):
 	match direction:

@@ -8,8 +8,8 @@ func _ready():
 	weight = 5
 	hit = 95
 	crit = 10
-	max_range = 1
-	min_range = 1
+	max_range = 2
+	min_range = 2
 	
 	# Set strong against and weak against
 	strong_against = Item.WEAPON_TYPE.AXE

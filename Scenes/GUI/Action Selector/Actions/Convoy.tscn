@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/UI/Action Selector/mid.png" type="Texture" id=1]
+[ext_resource path="res://assets/font/Action Selector Font.tres" type="DynamicFont" id=2]
+
+[node name="Convoy" type="Control"]
+
+[node name="TextureRect" type="Sprite" parent="."]
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Label" type="Label" parent="TextureRect"]
+margin_right = 440.0
+margin_bottom = 97.0
+custom_fonts/font = ExtResource( 2 )
+text = "Convoy"
+align = 1
+valign = 1

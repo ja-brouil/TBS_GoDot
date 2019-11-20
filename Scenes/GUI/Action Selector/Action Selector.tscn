@@ -1,14 +1,16 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scenes/GUI/Action Selector/Action Selector.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/GUI/Action Selector/Actions/Top.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/GUI/Action Selector/Actions/Bottom.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/GUI/Action Selector/Actions/Attack.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/GUI/Action Selector/Actions/Heal.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/GUI/Action Selector/Actions/Item.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Scenes/GUI/Action Selector/Actions/Trade.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Scenes/GUI/Action Selector/Actions/Wait.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Scenes/GUI/Hand Cursor/Hand Selector.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/GUI/Action Selector/Actions/Convoy.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/GUI/Action Selector/Actions/Heal.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/GUI/Action Selector/Actions/Item.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/GUI/Action Selector/Actions/Trade.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/GUI/Action Selector/Actions/Wait.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/GUI/Action Selector/Actions/Visit.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/GUI/Hand Cursor/Hand Selector.tscn" type="PackedScene" id=11]
 
 [node name="Action Selector Screen" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -33,31 +35,43 @@ margin_top = 152.357
 margin_right = -155.927
 margin_bottom = 152.357
 
-[node name="Heal" parent="Action Menu" instance=ExtResource( 5 )]
+[node name="Convoy" parent="Action Menu" instance=ExtResource( 5 )]
+margin_left = -173.344
+margin_top = 87.7512
+margin_right = -173.344
+margin_bottom = 87.7512
+
+[node name="Heal" parent="Action Menu" instance=ExtResource( 6 )]
 margin_left = -127.607
 margin_top = 64.9704
 margin_right = -127.607
 margin_bottom = 64.9704
 
-[node name="Item" parent="Action Menu" instance=ExtResource( 6 )]
+[node name="Item" parent="Action Menu" instance=ExtResource( 7 )]
 margin_left = -207.44
 margin_top = 139.761
 margin_right = -207.44
 margin_bottom = 139.761
 
-[node name="Trade" parent="Action Menu" instance=ExtResource( 7 )]
+[node name="Trade" parent="Action Menu" instance=ExtResource( 8 )]
 margin_left = -180.66
 margin_top = 186.66
 margin_right = -180.66
 margin_bottom = 186.66
 
-[node name="Wait" parent="Action Menu" instance=ExtResource( 8 )]
+[node name="Wait" parent="Action Menu" instance=ExtResource( 9 )]
 margin_left = -161.798
 margin_top = 115.364
 margin_right = -161.798
 margin_bottom = 115.364
 
-[node name="Hand Selector" parent="Action Menu" instance=ExtResource( 9 )]
+[node name="Visit" parent="Action Menu" instance=ExtResource( 10 )]
+margin_left = -116.882
+margin_top = 93.1457
+margin_right = -116.882
+margin_bottom = 93.1457
+
+[node name="Hand Selector" parent="Action Menu" instance=ExtResource( 11 )]
 margin_left = -162.79
 margin_top = 59.6598
 margin_right = -147.79

@@ -125,6 +125,7 @@ config/icon="res://FE Icon.jpg"
 Calculators="*res://Engine/Systems/Calculators.gd"
 BattlefieldInfo="*res://Scenes/Battlefield/Battlefield.gd"
 GroupNames="*res://Engine/Systems/Group Names.gd"
+Combat_Calculator="*res://Scenes/Combat/Combat_Calculator.gd"
 
 [debug]
 

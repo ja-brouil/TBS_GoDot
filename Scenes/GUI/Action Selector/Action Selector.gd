@@ -131,19 +131,34 @@ func get_menu_items():
 		for player_item in BattlefieldInfo.current_Unit_Selected.UnitInventory.inventory:
 			# This should be based on how far you can reach -> For now if we have an item | This null check should be moved up as an optimization
 			if player_item != null:
-				# Check here with the longest distance normallhy
+				# Check here with the longest distance normally
 				for adj_cell in BattlefieldInfo.current_Unit_Selected.UnitMovementStats.currentTile.adjCells:
 					if adj_cell.occupyingUnit != null && !adj_cell.occupyingUnit.UnitMovementStats.is_ally:
 						if !menu_items.has("Attack"):
 							menu_items.append("Attack")
 							break
 	
-	# Trade Option
+	# Trade Option | Convoy
 	for adj_cell in BattlefieldInfo.current_Unit_Selected.UnitMovementStats.currentTile.adjCells:
 		if adj_cell.occupyingUnit != null && adj_cell.occupyingUnit.UnitMovementStats.is_ally:
 			if !menu_items.has("Trade"):
 				menu_items.append("Trade")
-				break
+			# Check if next to Eirika
+			if adj_cell.occupyingUnit.UnitStats.name == "Eirika":
+				if !menu_items.has("Convoy"):
+					menu_items.append("Convoy")
+	
+	# Are we Eirika?
+	if BattlefieldInfo.current_Unit_Selected.UnitStats.name == "Eirika":
+		if !menu_items.has("Convoy"):
+			menu_items.append("Convoy")
+	
+	# Cell Visit -> Armory/Arena/Village
+	if BattlefieldInfo.current_Unit_Selected.UnitMovementStats.currentTile.tileName == "Village" || \
+	   BattlefieldInfo.current_Unit_Selected.UnitMovementStats.currentTile.tileName == "Arena" || \
+	   BattlefieldInfo.current_Unit_Selected.UnitMovementStats.currentTile.tileName == "Village":
+		if !menu_items.has("Visit"):
+			menu_items.append("Visit")
 	
 	# Always add Item and wait
 	menu_items.append("Item")
@@ -160,12 +175,16 @@ func process_selection():
 			
 			# Turn off
 			hide_action_menu()
+		"Convoy":
+			print("From Action Selector: Selected Convoy! Go to the convoy screen!")
 		"Healing":
 			print("From Action Selector: Selected Healing! Go to the healing screen!")
 		"Item":
 			print("From Action Selector: Selected Item! Go to the item screen!")
 		"Trade":
 			print("From Action Selector: Selected Trade! Go to the trade screen!")
+		"Visit":
+			print("From Action Selector: Selected Visit! Go to the visit screen!")
 		"Wait":
 			# Turn this off
 			hide_action_menu()
@@ -175,6 +194,7 @@ func process_selection():
 			BattlefieldInfo.current_Unit_Selected.turn_greyscale_on()
 			BattlefieldInfo.current_Unit_Selected.get_node("Animation").current_animation = "Idle"
 			emit_signal("selected_wait")
+			
 # Go back
 func go_back():
 	# Move Unit back

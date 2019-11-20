@@ -79,13 +79,15 @@ func calculate_hit_chance():
 	c_ai_avoidance = get_avoidance(BattlefieldInfo.combat_ai_unit)
 	
 	# Calculate accuracy
-	player_accuracy = clamp(c_player_accuracy - c_ai_avoidance, 0, 10000)
-	enemy_accuracy = clamp(c_ai_accuracy - c_player_accuracy, 0, 10000)
+	player_accuracy = c_player_accuracy - c_ai_avoidance
+	enemy_accuracy = c_ai_accuracy - c_player_accuracy
+	
 
 # Crit Chance
 func calculate_crit_chance():
 	player_critical_rate = (BattlefieldInfo.combat_player_unit.UnitStats.skill / 2) + BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped.crit + BattlefieldInfo.combat_player_unit.UnitStats.bonus_crit - BattlefieldInfo.combat_ai_unit.UnitStats.luck
 	enemy_critical_rate = (BattlefieldInfo.combat_ai_unit.UnitStats.skill / 2) + BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.crit + BattlefieldInfo.combat_ai_unit.UnitStats.bonus_crit - BattlefieldInfo.combat_player_unit.UnitStats.luck
+	
 
 # Damage Preview -> Add double attack mode
 func calculate_damage():
@@ -147,17 +149,17 @@ func calculate_damage():
 	
 	# Enemy
 	if BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.item_class == Item.ITEM_CLASS.PHYSICAL:
-		enemy_base_damage = BattlefieldInfo.combat_combat_ai_unit.UnitStats.strength
+		enemy_base_damage = BattlefieldInfo.combat_ai_unit.UnitStats.strength
 		player_base_def = BattlefieldInfo.combat_player_unit.UnitStats.def
 	elif BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.item_class == Item.ITEM_CLASS.MAGIC:
-		enemy_base_damage = BattlefieldInfo.combat_combat_ai_unit.UnitStats.magic
+		enemy_base_damage = BattlefieldInfo.combat_ai_unit.UnitStats.magic
 		player_base_def = BattlefieldInfo.combat_player_unit.UnitStats.res
 	
 	enemy_base_damage += ((BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.might + player_weapon_bonus) * enemy_effective_bonus)
 	player_base_def += BattlefieldInfo.combat_player_unit.UnitMovementStats.currentTile.defenseBonus
 	
 	# Set GUI
-	player_damage = player_base_damage
+	enemy_damage = enemy_base_damage
 	
 	# Check Crit Chance
 	if (crit_occurred(enemy_critical_rate)):
