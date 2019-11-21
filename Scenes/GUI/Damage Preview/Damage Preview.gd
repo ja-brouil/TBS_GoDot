@@ -157,6 +157,7 @@ func turn_off_red_tiles():
 # On/Off
 func turn_on():
 	$Preview.visible = true
+	$"Static Cursor".visible = true
 	
 	turn_on_red_tiles()
 	
@@ -164,6 +165,7 @@ func turn_on():
 
 func turn_off():
 	$Preview.visible = false
+	$"Static Cursor".visible = false
 	turn_off_red_tiles()
 
 func _on_Timer_timeout():

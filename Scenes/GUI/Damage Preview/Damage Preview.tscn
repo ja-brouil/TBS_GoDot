@@ -191,12 +191,14 @@ valign = 1
 wait_time = 0.2
 
 [node name="Hand Selector" parent="." instance=ExtResource( 5 )]
+visible = false
 margin_left = -59.8514
 margin_top = 27.736
 margin_right = -43.8514
 margin_bottom = 40.736
 
 [node name="Static Cursor" type="Sprite" parent="."]
+visible = false
 z_index = 3
 texture = ExtResource( 6 )
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

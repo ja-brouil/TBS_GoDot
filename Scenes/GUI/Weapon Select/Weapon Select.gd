@@ -142,6 +142,9 @@ func process_selection():
 	# Turn this off
 	turn_off()
 	
+	# Set Current equipped item
+	BattlefieldInfo.current_Unit_Selected.UnitInventory.current_item_equipped = current_selected_option
+	
 	# Go to the Damage preview screen
 	get_parent().get_node("Damage Preview").start(current_selected_option)
 
