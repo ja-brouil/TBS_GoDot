@@ -31,7 +31,7 @@
 421,422,423,424,425,426,427,428,429,430,431,432,433,434,435,436,437,438,439,440
 </data>
  </layer>
- <objectgroup name="CellInfo">
+ <objectgroup name="CellInfo" visible="0">
   <object id="1794" x="0" y="256" width="16" height="16">
    <properties>
     <property name="Avd" type="int" value="0"/>
@@ -3556,13 +3556,13 @@
  <objectgroup name="Allies">
   <object id="2281" x="32" y="272" width="16" height="16">
    <properties>
-    <property name="BonusCrit" type="int" value="1"/>
-    <property name="BonusDodge" type="int" value="1"/>
-    <property name="BonusHit" type="int" value="2"/>
+    <property name="BonusCrit" type="int" value="0"/>
+    <property name="BonusDodge" type="int" value="0"/>
+    <property name="BonusHit" type="int" value="0"/>
     <property name="Class" value="Paladin"/>
     <property name="Consti" type="int" value="11"/>
     <property name="Defense" type="int" value="11"/>
-    <property name="Health" type="int" value="20"/>
+    <property name="Health" type="int" value="30"/>
     <property name="Luck" type="int" value="13"/>
     <property name="Magic" type="int" value="3"/>
     <property name="MaxHealth" type="int" value="20"/>
@@ -3595,9 +3595,9 @@
   </object>
   <object id="2867" x="48" y="272" width="16" height="16">
    <properties>
-    <property name="BonusCrit" type="int" value="1"/>
-    <property name="BonusDodge" type="int" value="1"/>
-    <property name="BonusHit" type="int" value="2"/>
+    <property name="BonusCrit" type="int" value="0"/>
+    <property name="BonusDodge" type="int" value="0"/>
+    <property name="BonusHit" type="int" value="0"/>
     <property name="Class" value="Lord"/>
     <property name="Consti" type="int" value="5"/>
     <property name="Defense" type="int" value="3"/>
@@ -3686,18 +3686,19 @@
     <property name="BonusDodge" type="int" value="0"/>
     <property name="BonusHit" type="int" value="0"/>
     <property name="Class" value="Bandit"/>
-    <property name="Consti" type="int" value="8"/>
+    <property name="Consti" type="int" value="11"/>
     <property name="Defense" type="int" value="2"/>
-    <property name="Health" type="int" value="12"/>
+    <property name="Health" type="int" value="22"/>
+    <property name="Level" type="int" value="1"/>
     <property name="Luck" type="int" value="0"/>
     <property name="Magic" type="int" value="3"/>
-    <property name="MaxHealth" type="int" value="12"/>
-    <property name="Move" type="int" value="3"/>
+    <property name="MaxHealth" type="int" value="22"/>
+    <property name="Move" type="int" value="5"/>
     <property name="Name" value="Bandit 5"/>
     <property name="Res" type="int" value="1"/>
-    <property name="Skill" type="int" value="3"/>
-    <property name="Speed" type="int" value="2"/>
-    <property name="Str" type="int" value="6"/>
+    <property name="Skill" type="int" value="1"/>
+    <property name="Speed" type="int" value="1"/>
+    <property name="Str" type="int" value="5"/>
     <property name="Weapon" value="Iron Axe"/>
     <property name="aiType" value="Aggresive"/>
     <property name="isAlly" type="bool" value="false"/>
@@ -3734,7 +3735,7 @@
     <property name="Class" value="Bandit"/>
     <property name="Consti" type="int" value="8"/>
     <property name="Defense" type="int" value="2"/>
-    <property name="Health" type="int" value="12"/>
+    <property name="Health" type="int" value="19"/>
     <property name="Luck" type="int" value="0"/>
     <property name="Magic" type="int" value="3"/>
     <property name="MaxHealth" type="int" value="12"/>
@@ -3756,17 +3757,17 @@
     <property name="BonusHit" type="int" value="0"/>
     <property name="Class" value="Bandit"/>
     <property name="Consti" type="int" value="8"/>
-    <property name="Defense" type="int" value="2"/>
+    <property name="Defense" type="int" value="4"/>
     <property name="Health" type="int" value="12"/>
     <property name="Luck" type="int" value="0"/>
-    <property name="Magic" type="int" value="3"/>
-    <property name="MaxHealth" type="int" value="12"/>
-    <property name="Move" type="int" value="3"/>
-    <property name="Name" value="Bandit Keith"/>
+    <property name="Magic" type="int" value="0"/>
+    <property name="MaxHealth" type="int" value="20"/>
+    <property name="Move" type="int" value="5"/>
+    <property name="Name" value="Bandit"/>
     <property name="Res" type="int" value="1"/>
-    <property name="Skill" type="int" value="3"/>
+    <property name="Skill" type="int" value="1"/>
     <property name="Speed" type="int" value="2"/>
-    <property name="Str" type="int" value="6"/>
+    <property name="Str" type="int" value="5"/>
     <property name="Weapon" value="Iron Axe"/>
     <property name="aiType" value="Passive"/>
     <property name="isAlly" type="bool" value="false"/>

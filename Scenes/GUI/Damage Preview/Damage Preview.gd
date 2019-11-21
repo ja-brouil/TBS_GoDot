@@ -38,7 +38,7 @@ func _input(event):
 		update_preview_box()
 	elif Input.is_action_just_pressed("ui_up") || Input.is_action_just_pressed("ui_left"):
 		current_number_selected += 1
-		if current_number_selected > reachable_enemies_list.size():
+		if current_number_selected >= reachable_enemies_list.size():
 			current_number_selected = reachable_enemies_list.size() - 1
 		$"Hand Selector/Move".play(0)
 		update_cursor()
@@ -106,7 +106,7 @@ func get_reachable_enemies():
 
 # Move Cursor
 func update_cursor():
-	$"Preview/Static Cursor".rect_position = current_option_selected.position
+	$"Static Cursor".position = current_option_selected.position
 
 # Process Selection -> go to combat phase
 func process_selection():

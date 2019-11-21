@@ -4,13 +4,14 @@
 [ext_resource path="res://assets/UI/Damage Preview/damageBox.png" type="Texture" id=2]
 [ext_resource path="res://FE Icon.jpg" type="Texture" id=3]
 [ext_resource path="res://assets/font/Action Selector Font.tres" type="DynamicFont" id=4]
-[ext_resource path="res://assets/UI/Cursor/staticCursor.png" type="Texture" id=5]
-[ext_resource path="res://Scenes/GUI/Hand Cursor/Hand Selector.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/GUI/Hand Cursor/Hand Selector.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/UI/Cursor/staticCursor.png" type="Texture" id=6]
 
 [node name="Damage Preview" type="CanvasLayer"]
 script = ExtResource( 1 )
 
 [node name="Preview" type="Control" parent="."]
+editor/display_folded = true
 visible = false
 
 [node name="Preview Panel" type="TextureRect" parent="Preview"]
@@ -186,22 +187,16 @@ text = "100"
 align = 1
 valign = 1
 
-[node name="Static Cursor" type="Control" parent="Preview"]
-
-[node name="Static Cursor Texture" type="TextureRect" parent="Preview/Static Cursor"]
-margin_left = 117.094
-margin_top = 48.8839
-margin_right = 137.094
-margin_bottom = 68.8839
-texture = ExtResource( 5 )
-expand = true
-
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.2
 
-[node name="Hand Selector" parent="." instance=ExtResource( 6 )]
+[node name="Hand Selector" parent="." instance=ExtResource( 5 )]
 margin_left = -59.8514
 margin_top = 27.736
 margin_right = -43.8514
 margin_bottom = 40.736
+
+[node name="Static Cursor" type="Sprite" parent="."]
+z_index = 3
+texture = ExtResource( 6 )
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

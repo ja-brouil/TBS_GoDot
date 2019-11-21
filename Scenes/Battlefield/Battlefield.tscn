@@ -24,7 +24,6 @@ __meta__ = {
 [node name="Level" parent="YSort" instance=ExtResource( 2 )]
 
 [node name="Cursor" parent="." instance=ExtResource( 3 )]
-visible = false
 position = Vector2( 16, 272 )
 z_index = 5
 

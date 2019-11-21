@@ -10,7 +10,6 @@ var item_class =  ITEM_CLASS.PHYSICAL
 
 # Strong against and weak against
 var strong_against
-var weak_against
 
 # Item Stats
 var uses      # Remaining times this can be used

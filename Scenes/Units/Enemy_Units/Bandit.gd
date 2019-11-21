@@ -13,3 +13,7 @@ func _ready():
 	
 	# Mug shot
 	unit_mugshot = preload("res://assets/units/bandit/bandit mugshot.png")
+	
+	# Add axe
+	var axe = preload("res://Scenes/Items/Axes/Iron Axe.tscn").instance()
+	UnitInventory.add_item(axe)

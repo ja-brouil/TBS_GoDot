@@ -2,25 +2,27 @@ extends "res://Scenes/Items/Item.gd"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	# Steel Sword stats
-	uses = 40
-	might = 7
-	weight = 5
-	hit = 95
-	crit = 10
+	# Iron Axe stats
+	uses = 45
+	might = 8
+	weight = 10
+	hit = 75
+	crit = 0
 	max_range = 1
 	min_range = 1
 	
+	# Set type
+	weapon_type = Item.WEAPON_TYPE.AXE
+	
 	# Set strong against and weak against
-	strong_against = Item.WEAPON_TYPE.AXE
-	weak_against = Item.WEAPON_TYPE.LANCE
+	strong_against = Item.WEAPON_TYPE.LANCE
 	
 	# Icon
-	icon = preload("res://assets/items/swords/rapier.png")
+	icon = preload("res://assets/items/axes/ironAxe.png")
 	
 	# Description and name
-	item_name = "Rapier"
-	item_description = "A flexible sword with a higher crit chance."
+	item_name = "Iron Axe"
+	item_description = "A simple axe made of iron."
 
 # Special ability -> Modify this later
 func special_ability(unit_holding_this_item, unit_that_is_being_attacked):

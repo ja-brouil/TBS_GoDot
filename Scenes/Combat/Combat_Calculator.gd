@@ -22,6 +22,10 @@ var enemy_accuracy = 0
 var player_critical_rate = 0
 var enemy_critical_rate = 0
 
+# Player Attack speed
+var player_attack_speed = 0
+var enemy_attack_speed = 0
+
 # Damage preview for GUI
 var player_damage = 0
 var enemy_damage = 0
@@ -49,17 +53,17 @@ func calculate_damage_and_previews():
 func calculate_double_attack():
 	# Check if speed doubles
 	# Player
-	var player_attack_speed = get_attack_speed(BattlefieldInfo.combat_player_unit)
-	var ai_attack_speed = get_attack_speed(BattlefieldInfo.combat_ai_unit)
+	player_attack_speed = get_attack_speed(BattlefieldInfo.combat_player_unit)
+	enemy_attack_speed = get_attack_speed(BattlefieldInfo.combat_ai_unit)
 	
-	if player_attack_speed - ai_attack_speed >= 4:
-		player_attack_speed = true
+	if player_attack_speed - enemy_attack_speed >= 4:
+		player_double_attack = true
 		enemy_double_attack = false
-	elif ai_attack_speed - player_attack_speed >= 4:
-		player_attack_speed = false
+	elif enemy_attack_speed - player_attack_speed >= 4:
+		player_double_attack = false
 		enemy_double_attack = true
 	else:
-		player_attack_speed = false
+		player_double_attack = false
 		enemy_double_attack = false
 
 # Hit Chance
@@ -72,13 +76,13 @@ func calculate_hit_chance():
 	
 	# Player
 	c_player_accuracy = get_accuracy(BattlefieldInfo.combat_player_unit, player_weapon_bonus)
-	c_player_avoidance = get_avoidance(BattlefieldInfo.combat_player_unit)
+	c_player_avoidance = get_avoidance(BattlefieldInfo.combat_player_unit, player_attack_speed)
 	
 	# AI
 	c_ai_accuracy = get_accuracy(BattlefieldInfo.combat_ai_unit, enemy_weapon_bonus)
-	c_ai_avoidance = get_avoidance(BattlefieldInfo.combat_ai_unit)
+	c_ai_avoidance = get_avoidance(BattlefieldInfo.combat_ai_unit, enemy_attack_speed)
 	
-	# Calculate accuracy
+	# Calculate Hit Chance
 	player_accuracy = c_player_accuracy - c_ai_avoidance
 	enemy_accuracy = c_ai_accuracy - c_player_avoidance
 	
@@ -105,6 +109,7 @@ func calculate_damage():
 	
 	# Get Bonuses
 	get_special_ability(BattlefieldInfo.combat_player_unit, BattlefieldInfo.combat_ai_unit)
+	get_weapon_bonus()
 	
 	# Calculate Crit
 	calculate_crit_chance()
@@ -133,7 +138,7 @@ func calculate_damage():
 	enemy_base_def += BattlefieldInfo.combat_ai_unit.UnitMovementStats.currentTile.defenseBonus
 	
 	# Set GUI
-	player_damage = player_base_damage
+	player_damage = player_base_damage - enemy_base_def
 	
 	# Check Crit Chance
 	if (crit_occurred(player_critical_rate)):
@@ -168,7 +173,7 @@ func calculate_damage():
 	player_base_def += BattlefieldInfo.combat_player_unit.UnitMovementStats.currentTile.defenseBonus
 	
 	# Set GUI
-	enemy_damage = enemy_base_damage
+	enemy_damage = enemy_base_damage - player_base_def
 	
 	# Check Crit Chance
 	if (crit_occurred(enemy_critical_rate)):
@@ -199,10 +204,10 @@ func get_attack_speed(unit):
 	return unit.UnitStats.speed - item_weight_stat
 
 func get_accuracy(unit, weapon_bonus):
-	return unit.UnitInventory.current_item_equipped.hit + (unit.UnitStats.skill * 2) + (unit.UnitStats.luck / 2) + 5 + (weapon_bonus * 15)
+	return unit.UnitInventory.current_item_equipped.hit + (unit.UnitStats.skill * 2) + (unit.UnitStats.luck / 2) + (weapon_bonus * 15)
 
-func get_avoidance(unit):
-	return get_attack_speed(unit) + unit.UnitStats.luck + 5 + unit.UnitMovementStats.currentTile.avoidanceBonus
+func get_avoidance(unit, attack_speed):
+	return (attack_speed * 2) + unit.UnitStats.luck + unit.UnitMovementStats.currentTile.avoidanceBonus
 
 func get_special_ability(player_unit, ai_unit):
 	player_effective_bonus = player_unit.UnitInventory.current_item_equipped.special_ability(player_unit, ai_unit)
@@ -253,16 +258,20 @@ func reset_stats():
 	player_effective_bonus = 1
 	enemy_effective_bonus = 1
 	
+	# Attack speed
+	player_attack_speed = 0
+	enemy_attack_speed = 0
+	
 	# Miss
 	player_missed = false
 	enemy_missed = false
 
 func get_weapon_bonus():
 	# Player
-	if BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped.strong_against == BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.weak_against:
+	if BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped.strong_against == BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.weapon_type:
 		player_weapon_bonus = 1
 		enemy_weapon_bonus = -1
-	elif BattlefieldInfo.combat_ai_unit.UnitInventroy.current_item_equipped.strong_against == BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped.weak_against:
+	elif BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.strong_against == BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped.weapon_type:
 		enemy_weapon_bonus = 1
 		player_weapon_bonus = -1
 	else:

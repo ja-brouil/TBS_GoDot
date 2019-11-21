@@ -6,7 +6,7 @@ export var map_width: int # cell size
 var all_allies_location = [] # Holds all ally info
 var all_enemies_location = [] # holds all enemy info
 var grid = [] # Holds all cell data
-var cell = load("res://Scenes/GUI/Cell/Cell.tscn")
+var cell = preload("res://Scenes/GUI/Cell/Cell.tscn")
 
 # Map information has been loaded
 signal mapInformationLoaded
@@ -118,6 +118,33 @@ func _ready():
 		# Set Stats
 		newEnemy.position = Vector2(enemy.position.x, enemy.position.y)
 		newEnemy.UnitStats.name = enemy.get_meta("Name")
+		
+		# Set Stats and position
+		newEnemy.position.x = enemy.position.x
+		newEnemy.position.y = enemy.position.y
+		newEnemy.UnitStats.name = enemy.get_meta("Name")
+		newEnemy.UnitStats.strength = enemy.get_meta("Str")
+		newEnemy.UnitStats.skill = enemy.get_meta("Skill")
+		newEnemy.UnitStats.speed = enemy.get_meta("Speed")
+		newEnemy.UnitStats.magic = enemy.get_meta("Magic")
+		newEnemy.UnitStats.luck = enemy.get_meta("Luck")
+		newEnemy.UnitStats.def = enemy.get_meta("Defense")
+		newEnemy.UnitStats.res = enemy.get_meta("Res")
+		newEnemy.UnitStats.consti = enemy.get_meta("Consti")
+		newEnemy.UnitStats.bonus_crit = enemy.get_meta("BonusCrit")
+		newEnemy.UnitStats.bonus_dodge = enemy.get_meta("BonusDodge")
+		newEnemy.UnitStats.bonus_hit = enemy.get_meta("BonusHit")
+		
+		# Stat upgrades
+#		newEnemy.UnitStats.str_chance = enemy.get_meta("strChance")
+#		newEnemy.UnitStats.skill_chance = enemy.get_meta("skillChance")
+#		newEnemy.UnitStats.speed_chance = enemy.get_meta("speedChance")
+#		newEnemy.UnitStats.magic_chance = enemy.get_meta("magicChance")
+#		newEnemy.UnitStats.luck_chance = enemy.get_meta("luckChance")
+#		newEnemy.UnitStats.def_chance = enemy.get_meta("defChance")
+#		newEnemy.UnitStats.res_chance = enemy.get_meta("resChance")
+#		newEnemy.UnitStats.consti_chance = enemy.get_meta("constiChance")
+#		newEnemy.UnitStats.max_health_chance = enemy.get_meta("maxHPChance")
 		
 		# Set Battlefield Info
 		newEnemy.UnitMovementStats.currentTile = grid[newEnemy.position.x / Cell.CELL_SIZE][newEnemy.position.y / Cell.CELL_SIZE]
