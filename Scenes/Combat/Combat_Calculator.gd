@@ -10,6 +10,26 @@ const CRITICAL_BONUS = 3
 var player_double_attack = false
 var enemy_double_attack = false
 
+# Double attack variables
+var player_first_attack_hit
+var player_first_attack_crit
+var player_second_attack_hit
+var player_second_attack_crit
+var enemy_first_attack_hit
+var enemy_first_attack_crit
+var enemy_second_attack_hit
+var enemy_second_attack_crit
+
+# Animation stuff
+var player_missed_first_attack
+var enemy_missed_first_attack
+var player_missed_second_attack
+var enemy_missed_second_attack
+
+# Counter attack enabled
+var player_can_counter_attack
+var enemy_can_counter_attack
+
 # Weapon bonuses
 var player_weapon_bonus = 0
 var enemy_weapon_bonus = 0
