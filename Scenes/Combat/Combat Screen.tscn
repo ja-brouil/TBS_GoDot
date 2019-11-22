@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scenes/Combat/Combat.gd" type="Script" id=1]
 [ext_resource path="res://assets/UI/combatUI/Plains.png" type="Texture" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://assets/UI/combatUI/Empty HP Battle UI.png" type="Texture" id=5]
 [ext_resource path="res://assets/UI/combatUI/Full HP Battle UI.png" type="Texture" id=6]
 [ext_resource path="res://icon.png" type="Texture" id=7]
+[ext_resource path="res://Scenes/Units/Player_Units/AllyUnits/Eirika/Eirika Combat.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Units/Enemy_Units/Bandit Combat.tscn" type="PackedScene" id=9]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 3 )
@@ -54,6 +56,7 @@ position = Vector2( 120, 80 )
 texture = ExtResource( 2 )
 
 [node name="Combat UI" type="Panel" parent="Combat Control"]
+editor/display_folded = true
 margin_right = 240.0
 margin_bottom = 160.0
 custom_styles/panel = SubResource( 1 )
@@ -286,3 +289,10 @@ __meta__ = {
 position = Vector2( 131.912, 129.314 )
 scale = Vector2( 0.20285, 0.20709 )
 texture = ExtResource( 7 )
+
+[node name="Eirika Combat" parent="." instance=ExtResource( 8 )]
+position = Vector2( 156.004, 71.3759 )
+z_index = 1
+
+[node name="Bandit Combat" parent="." instance=ExtResource( 9 )]
+position = Vector2( 87.5495, 64.9852 )

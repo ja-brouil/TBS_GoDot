@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Critical Hit 1.wav-cb7b73b1a65f830a38d2dd991b79d72d.sample"
+
+[deps]
+
+source_file="res://assets/sound/battle sounds/Critical Hit 1.wav"
+dest_files=[ "res://.import/Critical Hit 1.wav-cb7b73b1a65f830a38d2dd991b79d72d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

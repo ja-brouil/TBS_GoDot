@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Put Away Weapon.wav-c2090944325db43f77f5343c7f54bccd.sample"
+
+[deps]
+
+source_file="res://assets/sound/weapon sounds/Put Away Weapon.wav"
+dest_files=[ "res://.import/Put Away Weapon.wav-c2090944325db43f77f5343c7f54bccd.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

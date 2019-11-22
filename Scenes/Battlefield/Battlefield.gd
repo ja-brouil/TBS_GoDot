@@ -7,7 +7,11 @@ extends Node
 var unit_movement_system
 var movement_calculator
 var turn_manager
+
+# Sound and music
 var music_player
+var battle_sounds
+var weapon_sounds
 
 # Start battlefield game
 func _ready():
@@ -24,6 +28,14 @@ func _ready():
 	# Music player
 	music_player = preload("res://Scenes/Audio/MusicPlayer.tscn").instance()
 	add_child(music_player)
+	
+	# Battle Sounds
+	battle_sounds = preload("res://Scenes/Audio/Battle Sounds.tscn").instance()
+	add_child(battle_sounds)
+	
+	# Weapon Sounds
+	weapon_sounds = preload("res://Scenes/Audio/Weapon Sounds.tscn").instance()
+	add_child(weapon_sounds)
 
 # Run Systems
 func _process(delta):

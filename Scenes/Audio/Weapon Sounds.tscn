@@ -1,0 +1,32 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/sound/weapon sounds/Bow Shoot.wav" type="AudioStream" id=1]
+[ext_resource path="res://assets/sound/weapon sounds/Bow.wav" type="AudioStream" id=2]
+[ext_resource path="res://assets/sound/weapon sounds/Draw Weapon.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/sound/weapon sounds/Hand Axe.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/sound/weapon sounds/Legendary Weapon.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/sound/weapon sounds/Put Away Weapon.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/sound/weapon sounds/Spear Throw.wav" type="AudioStream" id=7]
+
+[node name="Weapon Sounds" type="Node"]
+
+[node name="Bow Shoot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+
+[node name="Bow" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+
+[node name="Draw Weapon" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="Hand Axe" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="Legendary Weapon" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[node name="Put Away Weapon" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[node name="Spear Throw" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )

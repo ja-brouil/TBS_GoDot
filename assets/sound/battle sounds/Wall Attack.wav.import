@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Wall Attack.wav-3cc4c274bffc033fca4a98955ca5e733.sample"
+
+[deps]
+
+source_file="res://assets/sound/battle sounds/Wall Attack.wav"
+dest_files=[ "res://.import/Wall Attack.wav-3cc4c274bffc033fca4a98955ca5e733.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

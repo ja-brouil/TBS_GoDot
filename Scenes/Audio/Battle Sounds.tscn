@@ -1,0 +1,64 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://assets/sound/battle sounds/Attack 1.wav" type="AudioStream" id=1]
+[ext_resource path="res://assets/sound/battle sounds/Attack 2.wav" type="AudioStream" id=2]
+[ext_resource path="res://assets/sound/battle sounds/Attack 3.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/sound/battle sounds/Attack 4.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/sound/battle sounds/Attack Hit 1.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/sound/battle sounds/Attack Hit 2.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/sound/battle sounds/Attack Hit 3.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/sound/battle sounds/Attack Hit 4.wav" type="AudioStream" id=8]
+[ext_resource path="res://assets/sound/battle sounds/Attack Miss 1.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/sound/battle sounds/Attack Miss 2.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/sound/battle sounds/Attack Miss 3.wav" type="AudioStream" id=11]
+[ext_resource path="res://assets/sound/battle sounds/Critical Hit 1.wav" type="AudioStream" id=12]
+[ext_resource path="res://assets/sound/battle sounds/Critical Hit 2.wav" type="AudioStream" id=13]
+[ext_resource path="res://assets/sound/battle sounds/Final Hit.wav" type="AudioStream" id=14]
+[ext_resource path="res://assets/sound/battle sounds/Death.wav" type="AudioStream" id=15]
+
+[node name="Battle Sounds" type="Node"]
+
+[node name="Attack 1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+
+[node name="Attack 2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+
+[node name="Attack 3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="Attack 4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="Attack Hit 1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[node name="Attack Hit 2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[node name="Attack Hit 3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+
+[node name="Attack Hit 4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[node name="Attack Miss 1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+
+[node name="Attack Miss 2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+
+[node name="Attack Miss 3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+
+[node name="Critical Hit 1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+
+[node name="Critical Hit 2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+
+[node name="Final Hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+
+[node name="Death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )

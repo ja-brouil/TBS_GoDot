@@ -3610,7 +3610,7 @@
     <property name="Res" type="int" value="2"/>
     <property name="Skill" type="int" value="9"/>
     <property name="Speed" type="int" value="10"/>
-    <property name="Str" type="int" value="5"/>
+    <property name="Str" type="int" value="4"/>
     <property name="Weapon" value="Rapier"/>
     <property name="buildingPenalty" type="int" value="0"/>
     <property name="constiChance" type="int" value="70"/>
@@ -3688,7 +3688,7 @@
     <property name="Class" value="Bandit"/>
     <property name="Consti" type="int" value="11"/>
     <property name="Defense" type="int" value="2"/>
-    <property name="Health" type="int" value="22"/>
+    <property name="Health" type="int" value="21"/>
     <property name="Level" type="int" value="1"/>
     <property name="Luck" type="int" value="0"/>
     <property name="Magic" type="int" value="3"/>
@@ -3696,9 +3696,9 @@
     <property name="Move" type="int" value="5"/>
     <property name="Name" value="Bandit 5"/>
     <property name="Res" type="int" value="1"/>
-    <property name="Skill" type="int" value="1"/>
-    <property name="Speed" type="int" value="1"/>
-    <property name="Str" type="int" value="5"/>
+    <property name="Skill" type="int" value="3"/>
+    <property name="Speed" type="int" value="5"/>
+    <property name="Str" type="int" value="6"/>
     <property name="Weapon" value="Iron Axe"/>
     <property name="aiType" value="Aggresive"/>
     <property name="isAlly" type="bool" value="false"/>

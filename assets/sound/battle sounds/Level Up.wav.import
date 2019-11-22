@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Level Up.wav-9f03c6ef174267ae42fc3ed115abc385.sample"
+
+[deps]
+
+source_file="res://assets/sound/battle sounds/Level Up.wav"
+dest_files=[ "res://.import/Level Up.wav-9f03c6ef174267ae42fc3ed115abc385.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

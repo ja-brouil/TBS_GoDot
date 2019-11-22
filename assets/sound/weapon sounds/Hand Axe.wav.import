@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Hand Axe.wav-8912f06b05f1a4596b7c81e772fdd3ba.sample"
+
+[deps]
+
+source_file="res://assets/sound/weapon sounds/Hand Axe.wav"
+dest_files=[ "res://.import/Hand Axe.wav-8912f06b05f1a4596b7c81e772fdd3ba.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

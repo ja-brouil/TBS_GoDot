@@ -2,6 +2,10 @@ extends Battlefield_Unit
 
 # Specific Unit Constants
 
+var gunship_red_left_canon
+var gunship_blue_right_canon
+
+
 func _ready():
 	# Initial Animation
 	$Animation.current_animation = "Idle"

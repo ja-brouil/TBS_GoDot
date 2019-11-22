@@ -27,4 +27,8 @@ var item_name
 # Icon
 var icon
 
+# Sound effects
+var draw_weapon_sound_effect
+var put_away_sound_effect
+
 # Special abilities should be added here in the extended item slot

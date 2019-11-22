@@ -20,6 +20,8 @@ func _ready():
 	# Description and name
 	item_name = "Rapier"
 	item_description = "A flexible sword with a higher crit chance."
+	
+	# Sounds
 
 # Special ability -> Modify this later
 func special_ability(unit_holding_this_item, unit_that_is_being_attacked):

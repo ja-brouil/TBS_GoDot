@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/fighterRegular.png-fecb16db6f4ac4f7d5dbf5d4350474a7.stex"
+path="res://.import/Lightning Effects.png-4076f6205f4b38f7c47fe2914a7c583f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/units/bandit/fighterRegular.png"
-dest_files=[ "res://.import/fighterRegular.png-fecb16db6f4ac4f7d5dbf5d4350474a7.stex" ]
+source_file="res://assets/battle_effects/Lightning Effects.png"
+dest_files=[ "res://.import/Lightning Effects.png-4076f6205f4b38f7c47fe2914a7c583f.stex" ]
 
 [params]
 

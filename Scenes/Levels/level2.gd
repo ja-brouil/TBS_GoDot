@@ -66,7 +66,7 @@ func _ready():
 #	resChance, riverPenalty, seaPenalty, skillChance, speedChance, strChance]
 	
 	for allyCellInfo in allyInfoLayer.get_children():
-		var path = str("res://Scenes/Units/Player_Units/AllyUnits/", allyCellInfo.get_meta("Name"),".tscn")
+		var path = str("res://Scenes/Units/Player_Units/AllyUnits/", allyCellInfo.get_meta("Name"),"/",allyCellInfo.get_meta("Name"),".tscn")
 		var new_ally = load(path).instance()
 		add_child(new_ally)
 		
