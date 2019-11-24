@@ -11,24 +11,28 @@ var player_double_attack = false
 var enemy_double_attack = false
 
 # Double attack variables
-var player_first_attack_hit
-var player_first_attack_crit
-var player_second_attack_hit
-var player_second_attack_crit
-var enemy_first_attack_hit
-var enemy_first_attack_crit
-var enemy_second_attack_hit
-var enemy_second_attack_crit
+var player_first_attack_hit = false
+var player_first_attack_crit = false
+var player_second_attack_hit = false
+var player_second_attack_crit = false
+var enemy_first_attack_hit = false
+var enemy_first_attack_crit = false
+var enemy_second_attack_hit = false
+var enemy_second_attack_crit = false
 
 # Animation stuff
-var player_missed_first_attack
-var enemy_missed_first_attack
-var player_missed_second_attack
-var enemy_missed_second_attack
+var player_missed_first_attack = false
+var enemy_missed_first_attack = false
+var player_missed_second_attack = false
+var enemy_missed_second_attack = false
+var player_crit_first_attack = false
+var player_crit_second_attack = false
+var enemy_crit_first_attack = false
+var enemy_crit_second_attack = false
 
 # Counter attack enabled
-var player_can_counter_attack
-var enemy_can_counter_attack
+var player_can_counter_attack = false
+var enemy_can_counter_attack = false
 
 # Weapon bonuses
 var player_weapon_bonus = 0
@@ -50,9 +54,17 @@ var enemy_attack_speed = 0
 var player_damage = 0
 var enemy_damage = 0
 
+# Damage actual
+var player_base_damage = 0
+var player_base_def = 0
+var enemy_base_damage = 0
+var enemy_base_def = 0
+
 # Actual damage for combat purposes
-var player_actual_damage = 0
-var enemy_actual_damage = 0
+var player_first_actual_damage = 0
+var enemy_first_actual_damage = 0
+var player_second_actual_damage = 0
+var enemy_second_actual_damage = 0
 
 # Effective bonus
 var player_effective_bonus = 1
@@ -140,12 +152,118 @@ func calculate_damage():
 	# Calculate double attack
 	calculate_double_attack()
 	
-	# Calculate Damage
-	var player_base_damage = 0
-	var player_base_def = 0
-	var enemy_base_damage = 0
-	var enemy_base_def = 0
+	# Calculate Damage preview
+	calculate_damage_amounts()
+
+# Process this to process combat
+func process_player_combat():
+	# Player
+	var temp_player_damage = player_base_damage
+	# Check Crit Chance
+	if (crit_occurred(player_critical_rate)):
+		print("FROM COMBAT CALC: PLAYER CRIT OCCURED FIRST")
+		temp_player_damage *= 3
+		player_first_actual_damage = temp_player_damage - enemy_base_def
+
+		if player_first_actual_damage < 0:
+			player_first_actual_damage = 0
+		
+		player_first_attack_crit = true
+	else:
+		# No Crit, check if unit hit or missed
+		if (hit_occured(player_accuracy)):
+			player_first_actual_damage = temp_player_damage - enemy_base_def
+
+			if player_first_actual_damage <= 0:
+				player_first_actual_damage = 0
+				print("FROM COMBAT CALC: NO DAMAGE DEALT FROM PLAYER FIRST")
+		else:
+			# Player missed
+			print("FROM COMBAT CALC: PLAYER MISSED FIRST")
+			player_missed_first_attack = true
+			
+	# Double attack
+	if player_double_attack:
+		temp_player_damage = player_base_damage
+		# Check Crit Chance
+		if (crit_occurred(player_critical_rate)):
+			print("FROM COMBAT CALC: PLAYER CRIT OCCURED SECOND")
+			temp_player_damage *= 3
+			player_second_actual_damage = temp_player_damage - enemy_base_def
+			
+			
+			if player_second_actual_damage < 0:
+				player_second_actual_damage = 0
+			
+			player_second_attack_crit = true
+		else:
+			# No Crit, check if unit hit or missed
+			if (hit_occured(player_accuracy)):
+				player_second_actual_damage = temp_player_damage - enemy_base_def
 	
+				if player_second_actual_damage <= 0:
+					player_second_actual_damage = 0
+					print("FROM COMBAT CALC: NO DAMAGE DEALT FROM PLAYER SECOND")
+			else:
+				# Player missed
+				print("FROM COMBAT CALC: PLAYER MISSED FIRST")
+				player_missed_second_attack = true
+
+func process_enemy_combat():
+	# Check Crit Chance
+	# First
+	var temp_damage = enemy_base_damage
+	if (crit_occurred(enemy_critical_rate)):
+		print("FROM COMBAT CALC: ENEMY CRIT OCCURED FIRST")
+		temp_damage *= 3
+		enemy_first_actual_damage = temp_damage - player_base_def
+		
+		enemy_crit_first_attack = true
+		
+		if enemy_first_actual_damage < 0:
+			enemy_first_actual_damage = 0
+	else:
+		# No Crit, check if unit hit or missed
+		if (hit_occured(enemy_accuracy)):
+			enemy_first_actual_damage = temp_damage - player_base_def
+
+			if enemy_first_actual_damage <= 0:
+				enemy_first_actual_damage = 0
+				print("FROM COMBAT CALC: NO DAMAGE DEALT FROM ENEMY FIRST")
+		else:
+			# Enemy Missed
+			print("FROM COMBAT CALC: ENEMY MISSED FIRST")
+			enemy_missed_first_attack = true
+	
+	# Second
+	if enemy_double_attack:
+		temp_damage = enemy_base_damage
+		if (crit_occurred(enemy_critical_rate)):
+			print("FROM COMBAT CALC: ENEMY CRIT OCCURED SECOND")
+			temp_damage *= 3
+			enemy_second_actual_damage = temp_damage - player_base_def
+			
+			enemy_second_attack_crit = true
+			
+			if enemy_second_actual_damage < 0:
+				enemy_second_actual_damage = 0
+		else:
+			# No Crit, check if unit hit or missed
+			if (hit_occured(enemy_accuracy)):
+				enemy_second_actual_damage = temp_damage - player_base_def
+	
+				if enemy_first_actual_damage <= 0:
+					enemy_first_actual_damage = 0
+					print("FROM COMBAT CALC: NO DAMAGE DEALT FROM ENEMY SECOND")
+			else:
+				# Enemy Missed
+				print("FROM COMBAT CALC: ENEMY MISSED SECOND")
+				enemy_missed_second_attack = true
+
+####################
+# Helper Functions #
+####################
+func calculate_damage_amounts():
 	# Player
 	if BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped.item_class == Item.ITEM_CLASS.PHYSICAL:
 		player_base_damage = BattlefieldInfo.combat_player_unit.UnitStats.strength
@@ -160,27 +278,6 @@ func calculate_damage():
 	# Set GUI
 	player_damage = player_base_damage - enemy_base_def
 	
-	# Check Crit Chance
-	if (crit_occurred(player_critical_rate)):
-		print("FROM COMBAT CALC: PLAYER CRIT OCCURED")
-		player_base_damage *= 3
-		player_actual_damage = player_base_damage - enemy_base_def
-		
-		if player_actual_damage < 0:
-			player_actual_damage = 0
-	else:
-		# No Crit, check if unit hit or missed
-		if (hit_occured(player_accuracy)):
-			player_actual_damage = player_base_damage - enemy_base_def
-			
-			if player_actual_damage <= 0:
-				player_actual_damage = 0
-				print("FROM COMBAT CALC: NO DAMAGE DEALT FROM PLAYER")
-		else:
-			# Player missed
-			print("FROM COMBAT CALC: PLAYER MISSED")
-			player_missed = true
-	
 	# Enemy
 	if BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.item_class == Item.ITEM_CLASS.PHYSICAL:
 		enemy_base_damage = BattlefieldInfo.combat_ai_unit.UnitStats.strength
@@ -194,31 +291,7 @@ func calculate_damage():
 	
 	# Set GUI
 	enemy_damage = enemy_base_damage - player_base_def
-	
-	# Check Crit Chance
-	if (crit_occurred(enemy_critical_rate)):
-		print("FROM COMBAT CALC: ENEMY CRIT OCCURED")
-		enemy_base_damage *= 3
-		enemy_actual_damage = enemy_base_damage - player_base_def
-		
-		if enemy_actual_damage < 0:
-			enemy_actual_damage = 0
-	else:
-		# No Crit, check if unit hit or missed
-		if (hit_occured(enemy_accuracy)):
-			enemy_actual_damage = enemy_base_damage - player_base_def
-			
-			if enemy_actual_damage <= 0:
-				enemy_actual_damage = 0
-				print("FROM COMBAT CALC: NO DAMAGE DEALT FROM ENEMY")
-		else:
-			# Player missed
-			print("FROM COMBAT CALC: ENEMY MISSED")
-			player_missed = true
 
-####################
-# Helper Functions #
-####################
 func get_attack_speed(unit):
 	var item_weight_stat = clamp(unit.UnitInventory.current_item_equipped.weight - unit.UnitStats.consti, 0, 10000)
 	return unit.UnitStats.speed - item_weight_stat
@@ -271,8 +344,10 @@ func reset_stats():
 	enemy_damage = 0
 	
 	# Actual damage for combat purposes
-	player_actual_damage = 0
-	enemy_actual_damage = 0
+	player_first_actual_damage = 0
+	enemy_first_actual_damage = 0
+	player_second_actual_damage = 0
+	enemy_second_actual_damage = 0
 	
 	# Effective bonus
 	player_effective_bonus = 1
@@ -285,6 +360,36 @@ func reset_stats():
 	# Miss
 	player_missed = false
 	enemy_missed = false
+	
+	# Double attack variables
+	player_first_attack_hit = false
+	player_first_attack_crit = false
+	player_second_attack_hit = false
+	player_second_attack_crit = false
+	enemy_first_attack_hit = false
+	enemy_first_attack_crit = false
+	enemy_second_attack_hit = false
+	enemy_second_attack_crit = false
+	
+	# Animation stuff
+	player_missed_first_attack = false
+	enemy_missed_first_attack = false
+	player_missed_second_attack = false
+	enemy_missed_second_attack = false
+	player_crit_first_attack = false
+	player_crit_second_attack = false
+	enemy_crit_first_attack = false
+	enemy_crit_second_attack = false
+	
+	# Counter attack enabled
+	player_can_counter_attack = false
+	enemy_can_counter_attack = false
+	
+	# Damage
+	player_base_damage = 0
+	player_base_def = 0
+	enemy_base_damage = 0
+	enemy_base_def = 0
 
 func get_weapon_bonus():
 	# Player

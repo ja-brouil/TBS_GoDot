@@ -1,26 +1,36 @@
 extends CanvasLayer
 
-var combat_system
-
-func _ready():
-	combat_system = Combat_System.new()
+# Combat Process
+func start_combat(): 
+	# Process actual numbers
+	Combat_Calculator.process_player_combat()
+	Combat_Calculator.process_enemy_combat()
 	
-	BattlefieldInfo.music_player.get_node("Ally Combat").play(0)
-
-func _input(event):
-	if Input.is_action_just_pressed("debug"):
-		$"Eirika Combat/anim".play("regular")
+	# Place appropriate combat art
+	place_combat_art()
 	
+	adjust_gui_text_and_hp_box()
+	
+	# Attack whoever is first
+	var ally = true # placeholder
+	process_first_attack(ally)
+	
+	# If not dead and able to counter attack
+	var enemy = true # placeholder
+	process_first_attack(enemy)
 
-func play_draw_sound_player():
-	# Get weapon type and play appropriate sound
+
+func place_combat_art():
 	pass
 
-func play_draw_sound_enemy():
+func adjust_gui_text_and_hp_box():
 	pass
 
-func play_put_away_player():
+func process_first_attack(unit):
 	pass
-
-func play_put_away_enemy():
-	pass
+	# Check if miss/crit/hit
+	# play appropariate animations
+	# play appropriate sound effects
+	# update damage
+	# update world
+	# return to map

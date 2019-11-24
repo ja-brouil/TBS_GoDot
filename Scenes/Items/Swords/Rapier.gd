@@ -20,9 +20,18 @@ func _ready():
 	# Description and name
 	item_name = "Rapier"
 	item_description = "A flexible sword with a higher crit chance."
-	
-	# Sounds
+
 
 # Special ability -> Modify this later
 func special_ability(unit_holding_this_item, unit_that_is_being_attacked):
 	return 1
+
+# Sounds
+func draw_attack_sound():
+	# Parent Override
+	.draw_attack_sound()
+	BattlefieldInfo.weapon_sounds.get_node("Draw Weapon").play(0)
+
+func put_away_attack_sound():
+	.put_away_attack_sound()
+	BattlefieldInfo.weapon_sounds.get_node("Put Away Weapon").play(0)

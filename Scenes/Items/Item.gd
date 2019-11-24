@@ -28,7 +28,10 @@ var item_name
 var icon
 
 # Sound effects
-var draw_weapon_sound_effect
-var put_away_sound_effect
+func draw_attack_sound():
+	pass
+
+func put_away_attack_sound():
+	pass
 
 # Special abilities should be added here in the extended item slot

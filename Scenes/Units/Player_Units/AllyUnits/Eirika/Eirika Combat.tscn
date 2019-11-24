@@ -1,16 +1,15 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Units/Player_Units/AllyUnits/Eirika/Eirika Combat.gd" type="Script" id=1]
 [ext_resource path="res://assets/units/eirika/Eirika Combat Sprites.png" type="Texture" id=2]
 [ext_resource path="res://assets/battle_effects/Physical Effects.png" type="Texture" id=3]
 
 [sub_resource type="Animation" id=1]
-resource_name = "crit"
+resource_name = "sword crit"
 
-[sub_resource type="Animation" id=2]
-resource_name = "regular"
+[sub_resource type="Animation" id=3]
+resource_name = "sword miss"
 length = 5.6
-step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("sprite:region_rect")
 tracks/0/interp = 1
@@ -78,7 +77,94 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0.25, 3, 3.1, 5.5 ),
+"times": PoolRealArray( 0.2, 3, 3.1, 5.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_draw_sound"
+}, {
+"args": [  ],
+"method": "play_attack_sound"
+}, {
+"args": [  ],
+"method": "play_miss_sound"
+}, {
+"args": [  ],
+"method": "play_put_away"
+} ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "sword regular"
+length = 5.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 6, 26, 36, 34 ), Rect2( 49, 20, 29, 40 ), Rect2( 86, 19, 28, 41 ), Rect2( 122, 29, 28, 31 ), Rect2( 159, 29, 29, 31 ), Rect2( 196, 33, 48, 27 ), Rect2( 252, 33, 48, 27 ), Rect2( 306, 32, 53, 28 ), Rect2( 366, 26, 33, 34 ), Rect2( 403.809, 18.3745, 30.5554, 46.0315 ), Rect2( 6, 26, 36, 34 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 2, 3, 4, 4.5, 5, 5.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0.238205, 1.46285 ), Vector2( 0.886475, -1.99458 ), Vector2( 0.886475, 3.40766 ), Vector2( -35.5945, 5.78201 ), Vector2( -26.2812, 5.98017 ), Vector2( 0.114718, 1.60692 ), Vector2( 1.65824, -0.193836 ), Vector2( 0.238205, 1.46285 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("battle_effect:region_rect")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 3.1, 3.15, 3.2, 3.25, 3.3, 3.35, 3.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 310.827, 75.3462, 56.7227, 50.0494 ), Rect2( 526.039, 46.9849, 109.275, 105.104 ), Rect2( 20.3849, 186.635, 148.626, 153.023 ), Rect2( 259.678, 182.85, 161.668, 160.67 ), Rect2( 503.601, 183.036, 162.625, 158.966 ), Rect2( 254.721, 346.46, 172.224, 160.208 ), Rect2( 254.721, 346.46, 172.224, 160.208 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("battle_effect:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 3.1, 3.15, 3.2, 3.25, 3.3, 3.35, 3.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( -85.9954, -0.405655 ), Vector2( -86.5201, 0.119049 ), Vector2( -87.0448, 0.119049 ), Vector2( -85.4707, -0.930359 ), Vector2( -85.9954, -0.930359 ), Vector2( -85.9954, -0.930359 ), Vector2( -85.9954, -0.930359 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("battle_effect:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 3.1, 3.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.2, 3, 3.1, 5.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "values": [ {
 "args": [  ],
@@ -96,6 +182,7 @@ tracks/5/keys = {
 }
 
 [node name="Eirika Combat" type="Node2D"]
+visible = false
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [ -0.474197 ],
@@ -118,6 +205,7 @@ region_rect = Rect2( 254.721, 346.46, 172.224, 160.208 )
 
 [node name="anim" type="AnimationPlayer" parent="."]
 playback_speed = 4.0
-anims/crit = SubResource( 1 )
-anims/regular = SubResource( 2 )
+"anims/sword crit" = SubResource( 1 )
+"anims/sword miss" = SubResource( 3 )
+"anims/sword regular" = SubResource( 2 )
 [connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]

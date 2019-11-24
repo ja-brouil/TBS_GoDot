@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/battle_effects/Physical Effects.png" type="Texture" id=3]
 
 [sub_resource type="Animation" id=1]
-resource_name = "regular"
+resource_name = "axe regular"
 length = 10.52
 step = 0.01
 tracks/0/type = "value"
@@ -51,7 +51,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.5, 4.5, 5, 10.5 ),
+"times": PoolRealArray( 0.5, 4.5, 5, 10.49 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "values": [ {
 "args": [  ],
@@ -64,7 +64,7 @@ tracks/3/keys = {
 "method": "play_hit_sound"
 }, {
 "args": [  ],
-"method": "play_put_away"
+"method": "put_away_attack_sound"
 } ]
 }
 tracks/4/type = "value"
@@ -105,6 +105,7 @@ tracks/6/keys = {
 }
 
 [node name="Bandit Combat" type="Node2D"]
+visible = false
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [ -23.0504 ],
@@ -112,19 +113,19 @@ __meta__ = {
 }
 
 [node name="combat_sprite" type="Sprite" parent="."]
+position = Vector2( 32.6612, -17.369 )
 scale = Vector2( 0.45, 0.45 )
 texture = ExtResource( 2 )
 flip_h = true
 region_enabled = true
-region_rect = Rect2( 3, 77, 80, 136 )
+region_rect = Rect2( 2656, 47, 206, 163 )
 
 [node name="combat_effect" type="Sprite" parent="."]
-visible = false
-position = Vector2( 79.4448, -19.3909 )
+position = Vector2( 81.0345, -22.5702 )
 texture = ExtResource( 3 )
 region_enabled = true
-region_rect = Rect2( 313.838, 75.8994, 51.1058, 48.485 )
+region_rect = Rect2( 12.5476, 348.809, 171.875, 156.131 )
 
 [node name="anim" type="AnimationPlayer" parent="."]
 playback_speed = 5.0
-anims/regular = SubResource( 1 )
+"anims/axe regular" = SubResource( 1 )

@@ -118,7 +118,7 @@ func update_preview_box():
 	BattlefieldInfo.combat_ai_unit = current_option_selected
 	
 	# Calculate damage previews -> This needs to be changed later so it only does PREVIEWS and the actual combat is determined ONLY once the combat screen starts
-	Combat_Calculator.calculate_damage()
+	Combat_Calculator.calculate_damage_amounts()
 	
 	# Player
 	$"Preview/Player/Player Name".text = BattlefieldInfo.combat_player_unit.UnitStats.name
