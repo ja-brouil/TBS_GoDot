@@ -19,7 +19,7 @@ func start_combat():
 	var enemy = true # placeholder
 	process_first_attack(enemy)
 
-
+# Get the 
 func place_combat_art():
 	pass
 
@@ -34,3 +34,6 @@ func process_first_attack(unit):
 	# update damage
 	# update world
 	# return to map
+
+func clean_up():
+	pass

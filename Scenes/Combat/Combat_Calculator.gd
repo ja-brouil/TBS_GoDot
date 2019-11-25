@@ -1,8 +1,5 @@
 extends Node
 
-# Calculates the values needed for combat damage
-class_name Combat_System
-
 # Combat variables
 const CRITICAL_BONUS = 3
 
@@ -123,6 +120,12 @@ func calculate_hit_chance():
 	
 	if enemy_accuracy < 0:
 		enemy_accuracy = 0
+	
+	if player_accuracy > 100:
+		player_accuracy = 100
+	
+	if enemy_accuracy > 100:
+		enemy_accuracy = 100
 
 # Crit Chance
 func calculate_crit_chance():
