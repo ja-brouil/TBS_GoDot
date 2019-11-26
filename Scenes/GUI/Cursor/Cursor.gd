@@ -88,9 +88,9 @@ func updateCursorData() -> void:
 				# Check if this unit is an ally
 				if currentUnit.UnitMovementStats.is_ally && currentUnit.UnitActionStatus.get_current_action() != Unit_Action_Status.DONE:
 					currentUnit.get_node("Animation").current_animation = "Selected"
+					# Stop Cursor animation
+					set_animation_status(false)
 				
-				# Stop Cursor animation
-				set_animation_status(false)
 			else:
 				# Do we have a unit selected right now?
 				if currentUnit != null:

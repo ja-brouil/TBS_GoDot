@@ -1,9 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scenes/Units/Enemy_Units/Bandit.gd" type="Script" id=1]
 [ext_resource path="res://assets/units/bandit/banditRed.png" type="Texture" id=2]
 [ext_resource path="res://assets/sound/unitMovement/Light Foot Steps 1.wav" type="AudioStream" id=3]
 [ext_resource path="res://Scenes/AI/AI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/GUI/Damage Preview/Cursor Select.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/GUI/Damage Preview/Damage_Preview_Area_Unit.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Down"
@@ -378,3 +380,11 @@ anims/Right = SubResource( 6 )
 anims/Up = SubResource( 7 )
 
 [node name="AI" parent="." instance=ExtResource( 4 )]
+
+[node name="Cursor Select" parent="." instance=ExtResource( 5 )]
+visible = false
+position = Vector2( -4, -5 )
+offset = Vector2( 0, 0 )
+
+[node name="Damage_Preview" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1.74703, 0.952929 )

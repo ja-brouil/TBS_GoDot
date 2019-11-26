@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scenes/Units/Player_Units/AllyUnits/Seth/Seth.gd" type="Script" id=1]
 [ext_resource path="res://assets/units/cavalier/cavalierAlly.png" type="Texture" id=2]
 [ext_resource path="res://assets/sound/unitMovement/Horse Steps.wav" type="AudioStream" id=3]
-
+[ext_resource path="res://Scenes/GUI/Damage Preview/Cursor Select.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/GUI/Damage Preview/Damage_Preview_Area_Unit.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Down"
@@ -548,3 +549,9 @@ anims/Up = SubResource( 10 )
 
 [node name="footsteps" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
+
+[node name="Cursor Select" parent="." instance=ExtResource( 4 )]
+visible = false
+
+[node name="Damage_Preview" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1, 1 )

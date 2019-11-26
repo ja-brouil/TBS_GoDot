@@ -44,6 +44,7 @@ func init(cellPosition, avoidanceBonus, defenseBonus, movementCost, tileName) ->
 	# Set Vector 2
 	self.cellPosition.x = cellPosition.x
 	self.cellPosition.y = cellPosition.y
+	
 
 # Heuristic costs
 func get_fCost() -> int:

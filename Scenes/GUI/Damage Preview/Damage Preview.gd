@@ -5,6 +5,10 @@ var reachable_enemies_list = []
 var current_option_selected
 var current_number_selected = 0
 
+# Left/Right side constants
+const RIGHT_SIDE = Vector2(140,0)
+const LEFT_SIDE = Vector2(0,0)
+
 # Tile highlight
 var highlight_tiles = []
 
@@ -25,23 +29,22 @@ func _input(event):
 	if Input.is_action_just_pressed("ui_accept"):
 		print("FROM DAMAGE PREVIEW: Go to combat screen")
 		$"Hand Selector/Accept".play(0)
+		process_selection()
 	elif Input.is_action_just_pressed("ui_cancel"):
 		$"Hand Selector/Cancel".play(0)
 		go_back()
-	elif Input.is_action_just_pressed("ui_down") || Input.is_action_just_pressed("ui_right"):
+	elif Input.is_action_just_pressed("ui_up") || Input.is_action_just_pressed("ui_right"):
 		current_number_selected -= 1
 		if current_number_selected < 0:
-			current_number_selected = 0
-		$"Hand Selector/Move".play(0)
-		update_cursor()
-		update_enemy_chosen()
-		update_preview_box()
-	elif Input.is_action_just_pressed("ui_up") || Input.is_action_just_pressed("ui_left"):
-		current_number_selected += 1
-		if current_number_selected >= reachable_enemies_list.size():
 			current_number_selected = reachable_enemies_list.size() - 1
 		$"Hand Selector/Move".play(0)
-		update_cursor()
+		update_enemy_chosen()
+		update_preview_box()
+	elif Input.is_action_just_pressed("ui_down") || Input.is_action_just_pressed("ui_left"):
+		current_number_selected += 1
+		if current_number_selected >= reachable_enemies_list.size():
+			current_number_selected = 0
+		$"Hand Selector/Move".play(0)
 		update_enemy_chosen()
 		update_preview_box()
 
@@ -62,7 +65,7 @@ func start(item):
 	current_option_selected = reachable_enemies_list[current_number_selected]
 	
 	# Update cursor
-	update_cursor()
+	update_enemy_chosen()
 	
 	# Update Box
 	update_preview_box()
@@ -104,21 +107,24 @@ func get_reachable_enemies():
 							reachable_enemies_list.append(adj_tile.occupyingUnit)
 				open_tile.append([adj_tile, move_steps])
 
-# Move Cursor
-func update_cursor():
-	$"Static Cursor".position = current_option_selected.position
-
 # Process Selection -> go to combat phase
 func process_selection():
-	pass
+	# Turn this off
+	turn_off()
+	
+	# Start combat phase
+	get_parent().get_node("Combat Screen").start_combat()
 
 # Update preview boxes
 func update_preview_box():
 	# Update Selected Unit
 	BattlefieldInfo.combat_ai_unit = current_option_selected
 	
-	# Calculate damage previews -> This needs to be changed later so it only does PREVIEWS and the actual combat is determined ONLY once the combat screen starts
+	# Calculate damage previews
 	Combat_Calculator.calculate_damage()
+	
+	# Set menu position
+	set_menu_position()
 	
 	# Player
 	$"Preview/Player/Player Name".text = BattlefieldInfo.combat_player_unit.UnitStats.name
@@ -137,13 +143,25 @@ func update_preview_box():
 	$"Preview/Enemy/Enemy Crit".text = str(Combat_Calculator.enemy_critical_rate)
 	$"Preview/Enemy/Enemy Hit".text = str(Combat_Calculator.enemy_accuracy)
 
+# Set position of menu -> This needs to be fixed later
+func set_menu_position():
+	if current_option_selected.get_node("Damage_Preview").overlaps_body(get_parent().get_node("GameCamera/Areas/TopLeft")) || \
+		current_option_selected.get_node("Damage_Preview").overlaps_body(get_parent().get_node("GameCamera/Areas/BottomLeft")):
+			$Preview.rect_position = LEFT_SIDE
+	else:
+		$Preview.rect_position = RIGHT_SIDE
+
 # Update chosen enemy
 func update_enemy_chosen():
+	current_option_selected.get_node("Cursor Select").visible = false
 	current_option_selected = reachable_enemies_list[current_number_selected]
+	current_option_selected.get_node("Cursor Select").visible = true
 
 # Go back to the previous screen
 func go_back():
 	turn_off()
+	# Back to weapon selection
+	get_parent().get_node("Weapon Select").start()
 
 # Highlight tiles
 func turn_on_red_tiles():
@@ -157,7 +175,6 @@ func turn_off_red_tiles():
 # On/Off
 func turn_on():
 	$Preview.visible = true
-	$"Static Cursor".visible = true
 	
 	turn_on_red_tiles()
 	
@@ -165,8 +182,9 @@ func turn_on():
 
 func turn_off():
 	$Preview.visible = false
-	$"Static Cursor".visible = false
+	current_option_selected.get_node("Cursor Select").visible = false
 	turn_off_red_tiles()
+	is_active = false
 
 func _on_Timer_timeout():
 	is_active = true

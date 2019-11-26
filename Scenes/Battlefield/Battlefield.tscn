@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/Battlefield/Battlefield.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Levels/level2.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Scenes/GUI/End Turn/End Turn.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/GUI/Weapon Select/Weapon Select.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scenes/GUI/Damage Preview/Damage Preview.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scenes/Combat/Combat Screen.tscn" type="PackedScene" id=12]
 
 [node name="Battlefield" type="Node2D"]
 z_index = 4
@@ -22,6 +23,10 @@ __meta__ = {
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Level" parent="YSort" instance=ExtResource( 2 )]
+
+[node name="Combat Tint" type="CanvasModulate" parent="YSort"]
+visible = false
+color = Color( 1, 1, 1, 0.392157 )
 
 [node name="Cursor" parent="." instance=ExtResource( 3 )]
 visible = false
@@ -44,5 +49,7 @@ position = Vector2( 0, 192 )
 [node name="Weapon Select" parent="." instance=ExtResource( 10 )]
 
 [node name="Damage Preview" parent="." instance=ExtResource( 11 )]
+
+[node name="Combat Screen" parent="." instance=ExtResource( 12 )]
 [connection signal="mapInformationLoaded" from="YSort/Level" to="GameCamera" method="_on_Level_mapInformationLoaded"]
 [connection signal="cursorMoved" from="Cursor" to="GameCamera" method="_on_Cursor_cursorMoved"]

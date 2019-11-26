@@ -46,6 +46,7 @@ __meta__ = {
 }
 
 [node name="Combat Control" type="Control" parent="."]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 
@@ -54,13 +55,9 @@ position = Vector2( 120, 80 )
 texture = ExtResource( 2 )
 
 [node name="Combat UI" type="Panel" parent="Combat Control"]
-editor/display_folded = true
 margin_right = 240.0
 margin_bottom = 160.0
 custom_styles/panel = SubResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Enemy" type="Control" parent="Combat Control/Combat UI"]
 margin_left = 0.610687
@@ -148,12 +145,12 @@ __meta__ = {
 }
 
 [node name="Enemy Full HP" type="Sprite" parent="Combat Control/Combat UI/Enemy"]
-position = Vector2( 71.3281, 149.258 )
+position = Vector2( 31.1647, 145.168 )
 scale = Vector2( 0.296742, 0.216234 )
 texture = ExtResource( 6 )
-__meta__ = {
-"_edit_lock_": true
-}
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 273, 37 )
 
 [node name="Enemy HP Number" type="Label" parent="Combat Control/Combat UI/Enemy"]
 margin_top = 138.0
@@ -164,14 +161,6 @@ custom_fonts/font = SubResource( 5 )
 text = "60"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Enemy Item Icon" type="Sprite" parent="Combat Control/Combat UI/Enemy"]
-position = Vector2( 53.2293, 129.349 )
-scale = Vector2( 0.20285, 0.20709 )
-texture = ExtResource( 7 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -222,12 +211,12 @@ __meta__ = {
 }
 
 [node name="Player Full HP" type="Sprite" parent="Combat Control/Combat UI/Player"]
-position = Vector2( 167.34, 149.11 )
+position = Vector2( 126.525, 144.963 )
 scale = Vector2( 0.296742, 0.216234 )
 texture = ExtResource( 6 )
-__meta__ = {
-"_edit_lock_": true
-}
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 273, 37 )
 
 [node name="Player Hit" type="Label" parent="Combat Control/Combat UI/Player"]
 margin_left = 223.39
@@ -288,8 +277,21 @@ position = Vector2( 131.912, 129.314 )
 scale = Vector2( 0.20285, 0.20709 )
 texture = ExtResource( 7 )
 
-[node name="Ally Unit" type="Node2D" parent="."]
+[node name="Enemy Item Icon" type="Sprite" parent="Combat Control/Combat UI/Player"]
+position = Vector2( 52.6693, 129.201 )
+scale = Vector2( 0.20285, 0.20709 )
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Ally Unit" type="Position2D" parent="."]
 position = Vector2( 156, 71 )
 
-[node name="Enemy Unit" type="Node2D" parent="."]
+[node name="Enemy Unit" type="Position2D" parent="."]
 position = Vector2( 87, 65 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

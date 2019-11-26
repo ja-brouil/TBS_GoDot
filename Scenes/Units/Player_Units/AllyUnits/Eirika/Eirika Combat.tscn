@@ -1,13 +1,14 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Units/Player_Units/AllyUnits/Eirika/Eirika Combat.gd" type="Script" id=1]
 [ext_resource path="res://assets/units/eirika/Eirika Combat Sprites.png" type="Texture" id=2]
 [ext_resource path="res://assets/battle_effects/Physical Effects.png" type="Texture" id=3]
+[ext_resource path="res://assets/transition/white flash.png" type="Texture" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "sword crit"
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 resource_name = "sword miss"
 length = 5.6
 tracks/0/type = "value"
@@ -94,9 +95,9 @@ tracks/5/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "sword regular"
+[sub_resource type="Animation" id=3]
 length = 5.6
+step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("sprite:region_rect")
 tracks/0/interp = 1
@@ -131,7 +132,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 3.1, 3.15, 3.2, 3.25, 3.3, 3.35, 3.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Rect2( 310.827, 75.3462, 56.7227, 50.0494 ), Rect2( 526.039, 46.9849, 109.275, 105.104 ), Rect2( 20.3849, 186.635, 148.626, 153.023 ), Rect2( 259.678, 182.85, 161.668, 160.67 ), Rect2( 503.601, 183.036, 162.625, 158.966 ), Rect2( 254.721, 346.46, 172.224, 160.208 ), Rect2( 254.721, 346.46, 172.224, 160.208 ) ]
+"values": [ Rect2( 310.827, 75.3462, 56.7227, 50.0494 ), Rect2( 526.039, 46.9849, 109.275, 105.104 ), Rect2( 20.3849, 186.635, 148.626, 153.023 ), Rect2( 259.678, 182.85, 164.551, 158.947 ), Rect2( 503.601, 183.036, 162.625, 158.966 ), Rect2( 254.721, 346.46, 172.889, 159.403 ), Rect2( 254.721, 346.46, 172.889, 159.403 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("battle_effect:position")
@@ -177,16 +178,27 @@ tracks/5/keys = {
 "method": "play_hit_sound"
 }, {
 "args": [  ],
-"method": "play_put_away"
+"method": "put_away_attack_sound"
 } ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("flash:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 3, 3.08 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
 }
 
 [node name="Eirika Combat" type="Node2D"]
-visible = false
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_horizontal_guides_": [ -0.474197 ],
-"_edit_vertical_guides_": [ -85.4343 ]
+"_edit_horizontal_guides_": [ 0.122391, 22.9996 ],
+"_edit_vertical_guides_": [ -85.4343, 5.25386 ]
 }
 
 [node name="sprite" type="Sprite" parent="."]
@@ -198,14 +210,18 @@ region_rect = Rect2( 6, 26, 36, 34 )
 
 [node name="battle_effect" type="Sprite" parent="."]
 visible = false
+modulate = Color( 1, 1, 1, 0.490196 )
 position = Vector2( -85.9954, -0.930359 )
 texture = ExtResource( 3 )
 region_enabled = true
-region_rect = Rect2( 254.721, 346.46, 172.224, 160.208 )
+region_rect = Rect2( 254.721, 346.46, 172.889, 159.403 )
 
 [node name="anim" type="AnimationPlayer" parent="."]
 playback_speed = 4.0
 "anims/sword crit" = SubResource( 1 )
-"anims/sword miss" = SubResource( 3 )
-"anims/sword regular" = SubResource( 2 )
-[connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
+"anims/sword miss" = SubResource( 4 )
+"anims/sword regular" = SubResource( 3 )
+
+[node name="flash" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 4 )

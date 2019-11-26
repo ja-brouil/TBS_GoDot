@@ -26,6 +26,9 @@ var unit_portrait_path
 # Unit Mugshot
 var unit_mugshot
 
+# Combat sprites
+var combat_node
+
 func _ready():
 	# Movement Stats
 	UnitMovementStats = Unit_Movement.new(5,0,0,0,0,0,0,0,0)

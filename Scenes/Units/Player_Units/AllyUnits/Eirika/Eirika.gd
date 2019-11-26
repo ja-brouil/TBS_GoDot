@@ -1,11 +1,5 @@
 extends Battlefield_Unit
 
-# Specific Unit Constants
-
-var gunship_red_left_canon
-var gunship_blue_right_canon
-
-
 func _ready():
 	# Initial Animation
 	$Animation.current_animation = "Idle"
@@ -28,3 +22,6 @@ func _ready():
 
 	# Add 3rd Steel sword
 	UnitInventory.add_item(preload("res://Scenes/Items/Swords/Rapier.tscn").instance())
+	
+	# Set combat node
+	combat_node = preload("res://Scenes/Units/Player_Units/AllyUnits/Eirika/Eirika Combat.tscn")
