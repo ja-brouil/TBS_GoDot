@@ -3554,7 +3554,7 @@
   </object>
  </objectgroup>
  <objectgroup name="Allies">
-  <object id="2281" x="64" y="272" width="16" height="16">
+  <object id="2281" x="32" y="272" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
     <property name="BonusDodge" type="int" value="0"/>
@@ -3593,7 +3593,7 @@
     <property name="strChance" type="int" value="80"/>
    </properties>
   </object>
-  <object id="2867" x="64" y="256" width="16" height="16">
+  <object id="2867" x="48" y="272" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
     <property name="BonusDodge" type="int" value="0"/>
@@ -3680,7 +3680,7 @@
     <property name="isAlly" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="2853" x="112" y="256" width="16" height="16">
+  <object id="2853" x="96" y="272" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
     <property name="BonusDodge" type="int" value="0"/>
@@ -3696,9 +3696,9 @@
     <property name="Move" type="int" value="5"/>
     <property name="Name" value="Bandit 5"/>
     <property name="Res" type="int" value="1"/>
-    <property name="Skill" type="int" value="3"/>
+    <property name="Skill" type="int" value="2"/>
     <property name="Speed" type="int" value="5"/>
-    <property name="Str" type="int" value="6"/>
+    <property name="Str" type="int" value="5"/>
     <property name="Weapon" value="Iron Axe"/>
     <property name="aiType" value="Aggresive"/>
     <property name="isAlly" type="bool" value="false"/>

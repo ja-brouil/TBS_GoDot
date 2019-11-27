@@ -23,5 +23,11 @@ func play_miss_sound():
 	emit_signal("play_enemy_dodge_anim")
 
 func play_crit_sound():
-	var random = randi() % + 1
+	var random = randi() % 1 + 1
 	BattlefieldInfo.battle_sounds.get_node(str("Critical Hit ", random)).play(0)
+
+func shake_camera_crit():
+	get_parent().get_parent().shake(0.5,50,30)
+
+func shake_camera_regular():
+	get_parent().get_parent().shake(0.2,50,30)

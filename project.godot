@@ -19,7 +19,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scenes/GUI/Cell/Cell.gd"
 }, {
-"base": "CanvasLayer",
+"base": "Control",
 "class": "Combat_Screen",
 "language": "GDScript",
 "path": "res://Scenes/Combat/Combat.gd"
@@ -47,7 +47,7 @@ _global_script_classes=[ {
 "base": "Camera2D",
 "class": "MainCamera",
 "language": "GDScript",
-"path": "res://Scenes/Camera/Camera2D.gd"
+"path": "res://Scenes/Camera/MainCamera.gd"
 }, {
 "base": "Reference",
 "class": "MovementCalculator",

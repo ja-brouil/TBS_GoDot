@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/units/bandit/fighterRegular.png" type="Texture" id=2]
 [ext_resource path="res://assets/battle_effects/Physical Effects.png" type="Texture" id=3]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=1]
 resource_name = "axe dodge"
 length = 0.1
 tracks/0/type = "value"
@@ -32,9 +32,8 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "axe miss"
-length = 11.1
+[sub_resource type="Animation" id=2]
+length = 11.6
 step = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("combat_sprite:region_rect")
@@ -95,10 +94,22 @@ tracks/3/keys = {
 "method": "put_away_attack_sound"
 } ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("combat_sprite:z_index")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 11 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 0 ]
+}
 
-[sub_resource type="Animation" id=2]
-length = 10.6
-step = 0.05
+[sub_resource type="Animation" id=3]
+length = 11.1
+step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("combat_sprite:region_rect")
 tracks/0/interp = 1
@@ -189,7 +200,7 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 5, 5.2 ),
+"times": PoolRealArray( 0, 5, 5.09 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ false, true, false ]
@@ -204,6 +215,7 @@ __meta__ = {
 
 [node name="combat_sprite" type="Sprite" parent="."]
 scale = Vector2( 0.45, 0.45 )
+z_index = 1
 texture = ExtResource( 2 )
 flip_h = true
 region_enabled = true
@@ -218,6 +230,6 @@ region_rect = Rect2( 313.838, 75.8994, 51.1058, 48.485 )
 
 [node name="anim" type="AnimationPlayer" parent="."]
 playback_speed = 5.0
-"anims/axe dodge" = SubResource( 3 )
-"anims/axe miss" = SubResource( 1 )
-"anims/axe regular" = SubResource( 2 )
+"anims/axe dodge" = SubResource( 1 )
+"anims/axe miss" = SubResource( 2 )
+"anims/axe regular" = SubResource( 3 )

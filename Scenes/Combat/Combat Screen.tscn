@@ -38,23 +38,18 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 4 )
 
-[node name="Combat Screen" type="CanvasLayer"]
+[node name="Combat Screen" type="Control"]
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_horizontal_guides_": [ 22.2924, 135.94 ],
-"_edit_vertical_guides_": [ 112.744, 118.028, 121.991, 127.511, 5.02642 ]
-}
 
-[node name="Combat Control" type="Control" parent="."]
+[node name="Combat Control" type="Node2D" parent="."]
 visible = false
-margin_right = 40.0
-margin_bottom = 40.0
 
 [node name="Background" type="Sprite" parent="Combat Control"]
 position = Vector2( 120, 80 )
 texture = ExtResource( 2 )
 
 [node name="Combat UI" type="Panel" parent="Combat Control"]
+editor/display_folded = true
 margin_right = 240.0
 margin_bottom = 160.0
 custom_styles/panel = SubResource( 1 )
@@ -271,6 +266,236 @@ __meta__ = {
 }
 
 [node name="Player Item Icon" type="Sprite" parent="Combat Control/Combat UI/Player"]
+position = Vector2( 131.912, 129.314 )
+texture = ExtResource( 7 )
+
+[node name="Combat Control2" type="Control" parent="."]
+editor/display_folded = true
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Background" type="Sprite" parent="Combat Control2"]
+position = Vector2( 120, 80 )
+texture = ExtResource( 2 )
+
+[node name="Combat UI" type="Panel" parent="Combat Control2"]
+margin_right = 240.0
+margin_bottom = 160.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="Enemy" type="Control" parent="Combat Control2/Combat UI"]
+margin_left = 0.610687
+margin_top = -7.62939e-06
+margin_right = 40.6107
+margin_bottom = 40.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Enemy Name" type="Label" parent="Combat Control2/Combat UI/Enemy"]
+margin_left = -1.0
+margin_top = 6.0
+margin_right = 233.0
+margin_bottom = 91.0
+rect_scale = Vector2( 0.25, 0.25 )
+custom_fonts/font = SubResource( 2 )
+text = " E Name"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Enemy Weapon Name" type="Label" parent="Combat Control2/Combat UI/Enemy"]
+margin_left = 65.0
+margin_top = 121.0
+margin_right = 332.0
+margin_bottom = 202.0
+rect_scale = Vector2( 0.2, 0.2 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Killing Edge"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Enemy Hit" type="Label" parent="Combat Control2/Combat UI/Enemy"]
+margin_left = 23.0
+margin_top = 112.0
+margin_right = 51.0
+margin_bottom = 133.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 4 )
+text = "50"
+align = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Enemy Dmg" type="Label" parent="Combat Control2/Combat UI/Enemy"]
+margin_left = 23.0
+margin_top = 120.0
+margin_right = 51.0
+margin_bottom = 141.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 4 )
+text = "10"
+align = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Enemy Crt" type="Label" parent="Combat Control2/Combat UI/Enemy"]
+margin_left = 23.0
+margin_top = 128.0
+margin_right = 51.0
+margin_bottom = 149.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 4 )
+text = "1"
+align = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Enemy Empty HP" type="Sprite" parent="Combat Control2/Combat UI/Enemy"]
+position = Vector2( 71.328, 149.258 )
+scale = Vector2( 0.297, 0.216 )
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Enemy Full HP" type="Sprite" parent="Combat Control2/Combat UI/Enemy"]
+position = Vector2( 31.1647, 145.168 )
+scale = Vector2( 0.296742, 0.216234 )
+texture = ExtResource( 6 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 273, 37 )
+
+[node name="Enemy HP Number" type="Label" parent="Combat Control2/Combat UI/Enemy"]
+margin_top = 138.0
+margin_right = 105.0
+margin_bottom = 212.0
+rect_scale = Vector2( 0.3, 0.3 )
+custom_fonts/font = SubResource( 5 )
+text = "60"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Enemy Item Icon" type="Sprite" parent="Combat Control2/Combat UI/Enemy"]
+position = Vector2( 53.2293, 129.349 )
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Player" type="Control" parent="Combat Control2/Combat UI"]
+margin_left = 1.17069
+margin_top = 0.148262
+margin_right = 41.1707
+margin_bottom = 40.1483
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Player Name" type="Label" parent="Combat Control2/Combat UI/Player"]
+margin_left = 182.0
+margin_top = 8.0
+margin_right = 409.0
+margin_bottom = 78.0
+rect_scale = Vector2( 0.25, 0.25 )
+custom_fonts/font = SubResource( 2 )
+text = "P Name"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Player HP Number" type="Label" parent="Combat Control2/Combat UI/Player"]
+margin_left = 207.283
+margin_top = 138.003
+margin_right = 312.283
+margin_bottom = 212.003
+rect_scale = Vector2( 0.3, 0.3 )
+custom_fonts/font = SubResource( 5 )
+text = "60"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Player Empty HP" type="Sprite" parent="Combat Control2/Combat UI/Player"]
+position = Vector2( 167.34, 149.11 )
+scale = Vector2( 0.297, 0.216 )
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Player Full HP" type="Sprite" parent="Combat Control2/Combat UI/Player"]
+position = Vector2( 126.525, 144.963 )
+scale = Vector2( 0.296742, 0.216234 )
+texture = ExtResource( 6 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 273, 37 )
+
+[node name="Player Hit" type="Label" parent="Combat Control2/Combat UI/Player"]
+margin_left = 220.8
+margin_top = 111.732
+margin_right = 248.8
+margin_bottom = 132.732
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 4 )
+text = "50"
+align = 2
+
+[node name="Player Dmg" type="Label" parent="Combat Control2/Combat UI/Player"]
+margin_left = 220.8
+margin_top = 119.732
+margin_right = 248.8
+margin_bottom = 140.732
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 4 )
+text = "10"
+align = 2
+
+[node name="Player Crt" type="Label" parent="Combat Control2/Combat UI/Player"]
+margin_left = 221.112
+margin_top = 127.732
+margin_right = 249.112
+margin_bottom = 148.732
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 4 )
+text = "1"
+align = 2
+
+[node name="Player Weapon Name" type="Label" parent="Combat Control2/Combat UI/Player"]
+margin_left = 142.414
+margin_top = 120.852
+margin_right = 409.414
+margin_bottom = 201.852
+rect_scale = Vector2( 0.2, 0.2 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Lightning Edge"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Player Item Icon" type="Sprite" parent="Combat Control2/Combat UI/Player"]
 position = Vector2( 131.912, 129.314 )
 texture = ExtResource( 7 )
 

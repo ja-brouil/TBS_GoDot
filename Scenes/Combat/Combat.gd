@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Control
 
 class_name Combat_Screen
 
@@ -125,8 +125,15 @@ func start_combat(current_combat_state):
 	Combat_Calculator.process_player_combat()
 	Combat_Calculator.process_enemy_combat()
 	
-	# Tint background
-	get_parent().get_node("YSort/Combat Tint").visible = true
+	# Turn off units and background
+	get_parent().get_parent().get_node("YSort/Level").set_modulate(Color(1,1,1,0.5))
+	
+	# Turn off Units
+	for ally_unit in BattlefieldInfo.ally_units:
+		ally_unit.visible = false
+	
+	for enemy_unit in BattlefieldInfo.enemy_units:
+		enemy_unit.visible = false
 	
 	# Place appropriate combat art
 	place_combat_art()
@@ -248,7 +255,7 @@ func player_attack():
 	
 	# Did the ally crit?
 	if previous_combat_state == player_first_turn:
-		if Combat_Calculator.player_crit_first_attack:
+		if Combat_Calculator.player_first_attack_crit:
 			var anim_name = str(BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped.weapon_string_name, " crit")
 			player_node_name.get_node("anim").play(anim_name)
 		elif Combat_Calculator.player_first_attack_hit:
@@ -261,7 +268,7 @@ func player_attack():
 			player_node_name.get_node("anim").play(anim_name)
 	
 	if previous_combat_state == player_second_turn:
-		if Combat_Calculator.player_crit_second_attack:
+		if Combat_Calculator.player_second_attack_crit:
 			var anim_name = str(BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped.weapon_string_name, " crit")
 			player_node_name.get_node("anim").play(anim_name)
 		elif Combat_Calculator.player_second_attack_hit:
@@ -360,6 +367,9 @@ func turn_off():
 		BattlefieldInfo.music_player.get_node("Ally Combat").stop()
 	else:
 		BattlefieldInfo.music_player.get_node("Enemy Combat").stop()
+	
+	# Turn off modulate
+	get_parent().get_parent().get_node("YSort/Level").modulate = Color(255, 255, 255, 255)
 
 # Pause
 func _on_Pause_timeout():

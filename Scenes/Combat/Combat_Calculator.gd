@@ -147,15 +147,15 @@ func calculate_damage():
 	get_special_ability(BattlefieldInfo.combat_player_unit, BattlefieldInfo.combat_ai_unit)
 	get_weapon_bonus()
 	
+	# Calculate double attack
+	calculate_double_attack()
+	
 	# Calculate Crit
 	calculate_crit_chance()
 	
 	# Calculate Hit Chance
 	calculate_hit_chance()
-	
-	# Calculate double attack
-	calculate_double_attack()
-	
+
 	# Calculate Damage preview
 	calculate_damage_amounts()
 	
@@ -301,11 +301,13 @@ func calculate_damage_amounts():
 		enemy_base_damage = BattlefieldInfo.combat_ai_unit.UnitStats.magic
 		player_base_def = BattlefieldInfo.combat_player_unit.UnitStats.res
 	
-	enemy_base_damage += ((BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.might + player_weapon_bonus) * enemy_effective_bonus)
+	
+	enemy_base_damage += ((BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.might + enemy_weapon_bonus) * enemy_effective_bonus)
 	player_base_def += BattlefieldInfo.combat_player_unit.UnitMovementStats.currentTile.defenseBonus
 	
 	# Set GUI
 	enemy_damage = enemy_base_damage - player_base_def
+	
 
 func get_attack_speed(unit):
 	var item_weight_stat = clamp(unit.UnitInventory.current_item_equipped.weight - unit.UnitStats.consti, 0, 10000)
@@ -334,7 +336,6 @@ func hit_occured(accuracy_chance):
 		return true
 	elif accuracy_chance <= 0:
 		return false
-	
 	return randi() % 99 + 1 <= accuracy_chance
 
 func reset_stats():
