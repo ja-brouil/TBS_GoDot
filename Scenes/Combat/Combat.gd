@@ -174,6 +174,7 @@ func adjust_gui_text_and_hp_box():
 	$"Combat Control/Combat UI/Player/Player Hit".text = str(Combat_Calculator.player_accuracy)
 	$"Combat Control/Combat UI/Player/Player Dmg".text = str(Combat_Calculator.player_damage)
 	$"Combat Control/Combat UI/Player/Player Weapon Name".text = BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped.item_name
+	$"Combat Control/Combat UI/Player/Player Item Icon".texture = BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped.icon
 	
 	# Set player rect %
 	$"Combat Control/Combat UI/Player/Player Full HP".region_rect = Rect2(0, 0, 273 * \
@@ -186,6 +187,7 @@ func adjust_gui_text_and_hp_box():
 	$"Combat Control/Combat UI/Enemy/Enemy Hit".text = str(Combat_Calculator.enemy_accuracy)
 	$"Combat Control/Combat UI/Enemy/Enemy Dmg".text = str(Combat_Calculator.enemy_damage)
 	$"Combat Control/Combat UI/Enemy/Enemy Weapon Name".text = BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.item_name
+	$"Combat Control/Combat UI/Enemy/Enemy Item Icon".texture = BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.icon
 	
 	# Set enemy rect %
 	$"Combat Control/Combat UI/Enemy/Enemy Full HP".region_rect = Rect2(0, 0, 273 * \

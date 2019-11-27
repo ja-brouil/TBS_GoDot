@@ -60,7 +60,6 @@ margin_bottom = 160.0
 custom_styles/panel = SubResource( 1 )
 
 [node name="Enemy" type="Control" parent="Combat Control/Combat UI"]
-editor/display_folded = true
 margin_left = 0.610687
 margin_top = -7.62939e-06
 margin_right = 40.6107
@@ -166,6 +165,13 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="Enemy Item Icon" type="Sprite" parent="Combat Control/Combat UI/Enemy"]
+position = Vector2( 53.2293, 129.349 )
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_lock_": true
+}
+
 [node name="Player" type="Control" parent="Combat Control/Combat UI"]
 margin_left = 1.17069
 margin_top = 0.148262
@@ -266,16 +272,7 @@ __meta__ = {
 
 [node name="Player Item Icon" type="Sprite" parent="Combat Control/Combat UI/Player"]
 position = Vector2( 131.912, 129.314 )
-scale = Vector2( 0.20285, 0.20709 )
 texture = ExtResource( 7 )
-
-[node name="Enemy Item Icon" type="Sprite" parent="Combat Control/Combat UI/Player"]
-position = Vector2( 52.6693, 129.201 )
-scale = Vector2( 0.20285, 0.20709 )
-texture = ExtResource( 7 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Ally Unit" type="Position2D" parent="."]
 visible = false
