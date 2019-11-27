@@ -60,6 +60,7 @@ margin_bottom = 160.0
 custom_styles/panel = SubResource( 1 )
 
 [node name="Enemy" type="Control" parent="Combat Control/Combat UI"]
+editor/display_folded = true
 margin_left = 0.610687
 margin_top = -7.62939e-06
 margin_right = 40.6107
@@ -219,43 +220,34 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 273, 37 )
 
 [node name="Player Hit" type="Label" parent="Combat Control/Combat UI/Player"]
-margin_left = 223.39
-margin_top = 112.0
-margin_right = 251.39
-margin_bottom = 133.0
+margin_left = 220.8
+margin_top = 111.732
+margin_right = 248.8
+margin_bottom = 132.732
 rect_scale = Vector2( 0.4, 0.4 )
 custom_fonts/font = SubResource( 4 )
 text = "50"
 align = 2
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Player Dmg" type="Label" parent="Combat Control/Combat UI/Player"]
-margin_left = 223.39
-margin_top = 120.0
-margin_right = 251.39
-margin_bottom = 141.0
+margin_left = 220.8
+margin_top = 119.732
+margin_right = 248.8
+margin_bottom = 140.732
 rect_scale = Vector2( 0.4, 0.4 )
 custom_fonts/font = SubResource( 4 )
 text = "10"
 align = 2
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Player Crt" type="Label" parent="Combat Control/Combat UI/Player"]
-margin_left = 223.702
-margin_top = 128.0
-margin_right = 251.702
-margin_bottom = 149.0
+margin_left = 221.112
+margin_top = 127.732
+margin_right = 249.112
+margin_bottom = 148.732
 rect_scale = Vector2( 0.4, 0.4 )
 custom_fonts/font = SubResource( 4 )
 text = "1"
 align = 2
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Player Weapon Name" type="Label" parent="Combat Control/Combat UI/Player"]
 margin_left = 142.414
@@ -286,12 +278,14 @@ __meta__ = {
 }
 
 [node name="Ally Unit" type="Position2D" parent="."]
+visible = false
 position = Vector2( 156, 71 )
 
 [node name="Enemy Unit" type="Position2D" parent="."]
+visible = false
 position = Vector2( 87, 65 )
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
+[node name="Pause" type="Timer" parent="."]
+wait_time = 0.5
 one_shot = true
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="Pause" to="." method="_on_Pause_timeout"]

@@ -71,8 +71,6 @@ var enemy_effective_bonus = 1
 var player_missed = false
 var enemy_missed = false
 
-func _init():
-	pass
 
 func calculate_damage_and_previews():
 	# Get Weapon bonuses
@@ -94,6 +92,9 @@ func calculate_double_attack():
 	else:
 		player_double_attack = false
 		enemy_double_attack = false
+	
+	print("FROM COMBAT CALC: ally double attack ", player_double_attack)
+	print("FROM COMBAT CALC: enemy double attack ", enemy_double_attack)
 
 # Hit Chance
 func calculate_hit_chance():
@@ -157,6 +158,11 @@ func calculate_damage():
 	
 	# Calculate Damage preview
 	calculate_damage_amounts()
+	
+	# TEST DEBUG REMOVE LATER #
+	print("FROM COMBAT CACL: REMOVE THESE PLACEHOLDERS IN THE CALCULATE DAMAGE FUNCTION LATER")
+	player_can_counter_attack = true
+	enemy_can_counter_attack = true
 
 # Process this to process combat
 func process_player_combat():
@@ -176,13 +182,15 @@ func process_player_combat():
 		# No Crit, check if unit hit or missed
 		if (hit_occured(player_accuracy)):
 			player_first_actual_damage = temp_player_damage - enemy_base_def
-
+			player_first_attack_hit = true
+			
 			if player_first_actual_damage <= 0:
 				player_first_actual_damage = 0
 				print("FROM COMBAT CALC: NO DAMAGE DEALT FROM PLAYER FIRST")
 		else:
 			# Player missed
 			print("FROM COMBAT CALC: PLAYER MISSED FIRST")
+			player_first_actual_damage = 0
 			player_missed_first_attack = true
 			
 	# Double attack
@@ -193,7 +201,7 @@ func process_player_combat():
 			print("FROM COMBAT CALC: PLAYER CRIT OCCURED SECOND")
 			temp_player_damage *= 3
 			player_second_actual_damage = temp_player_damage - enemy_base_def
-			
+			player_second_attack_hit = true
 			
 			if player_second_actual_damage < 0:
 				player_second_actual_damage = 0
@@ -203,13 +211,14 @@ func process_player_combat():
 			# No Crit, check if unit hit or missed
 			if (hit_occured(player_accuracy)):
 				player_second_actual_damage = temp_player_damage - enemy_base_def
-	
+				player_second_attack_hit = true
 				if player_second_actual_damage <= 0:
 					player_second_actual_damage = 0
 					print("FROM COMBAT CALC: NO DAMAGE DEALT FROM PLAYER SECOND")
 			else:
 				# Player missed
 				print("FROM COMBAT CALC: PLAYER MISSED FIRST")
+				player_second_actual_damage = 0
 				player_missed_second_attack = true
 
 func process_enemy_combat():
@@ -229,13 +238,14 @@ func process_enemy_combat():
 		# No Crit, check if unit hit or missed
 		if (hit_occured(enemy_accuracy)):
 			enemy_first_actual_damage = temp_damage - player_base_def
-
+			enemy_first_attack_hit = true
 			if enemy_first_actual_damage <= 0:
 				enemy_first_actual_damage = 0
 				print("FROM COMBAT CALC: NO DAMAGE DEALT FROM ENEMY FIRST")
 		else:
 			# Enemy Missed
 			print("FROM COMBAT CALC: ENEMY MISSED FIRST")
+			enemy_first_actual_damage = 0
 			enemy_missed_first_attack = true
 	
 	# Second
@@ -254,14 +264,16 @@ func process_enemy_combat():
 			# No Crit, check if unit hit or missed
 			if (hit_occured(enemy_accuracy)):
 				enemy_second_actual_damage = temp_damage - player_base_def
-	
+				enemy_second_attack_hit = true
 				if enemy_first_actual_damage <= 0:
 					enemy_first_actual_damage = 0
 					print("FROM COMBAT CALC: NO DAMAGE DEALT FROM ENEMY SECOND")
 			else:
 				# Enemy Missed
 				print("FROM COMBAT CALC: ENEMY MISSED SECOND")
+				enemy_second_actual_damage = 0
 				enemy_missed_second_attack = true
+
 
 ####################
 # Helper Functions #

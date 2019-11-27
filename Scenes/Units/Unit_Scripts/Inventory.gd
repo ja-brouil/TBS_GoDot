@@ -13,15 +13,6 @@ var MAX_HEAL_RANGE = 0
 # Current item equipped
 var current_item_equipped
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
-	# Placeholder sword
-#	var iron_sword = load("res://Scenes/Items/Swords/Iron Sword.tscn").instance()
-#	add_item(iron_sword)
-#
-#	current_item_equipped = inventory[0]
-
 # Add item to the inventory
 func add_item(item):
 	if inventory.size() == MAX_INVENTORY:

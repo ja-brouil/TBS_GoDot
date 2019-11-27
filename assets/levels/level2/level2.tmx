@@ -3554,7 +3554,7 @@
   </object>
  </objectgroup>
  <objectgroup name="Allies">
-  <object id="2281" x="32" y="272" width="16" height="16">
+  <object id="2281" x="64" y="272" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
     <property name="BonusDodge" type="int" value="0"/>
@@ -3593,7 +3593,7 @@
     <property name="strChance" type="int" value="80"/>
    </properties>
   </object>
-  <object id="2867" x="48" y="272" width="16" height="16">
+  <object id="2867" x="64" y="256" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
     <property name="BonusDodge" type="int" value="0"/>
@@ -3609,7 +3609,7 @@
     <property name="Name" value="Eirika"/>
     <property name="Res" type="int" value="2"/>
     <property name="Skill" type="int" value="9"/>
-    <property name="Speed" type="int" value="10"/>
+    <property name="Speed" type="int" value="9"/>
     <property name="Str" type="int" value="4"/>
     <property name="Weapon" value="Rapier"/>
     <property name="buildingPenalty" type="int" value="0"/>
@@ -3680,7 +3680,7 @@
     <property name="isAlly" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="2853" x="112" y="272" width="16" height="16">
+  <object id="2853" x="112" y="256" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
     <property name="BonusDodge" type="int" value="0"/>
@@ -3704,7 +3704,7 @@
     <property name="isAlly" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="2854" x="96" y="208" width="16" height="16">
+  <object id="2854" x="224" y="208" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
     <property name="BonusDodge" type="int" value="0"/>
@@ -3712,10 +3712,10 @@
     <property name="Class" value="Bandit"/>
     <property name="Consti" type="int" value="8"/>
     <property name="Defense" type="int" value="2"/>
-    <property name="Health" type="int" value="12"/>
+    <property name="Health" type="int" value="15"/>
     <property name="Luck" type="int" value="0"/>
     <property name="Magic" type="int" value="3"/>
-    <property name="MaxHealth" type="int" value="12"/>
+    <property name="MaxHealth" type="int" value="15"/>
     <property name="Move" type="int" value="3"/>
     <property name="Name" value="Bandit 3"/>
     <property name="Res" type="int" value="1"/>
@@ -3727,7 +3727,7 @@
     <property name="isAlly" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="2855" x="112" y="208" width="16" height="16">
+  <object id="2855" x="256" y="176" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
     <property name="BonusDodge" type="int" value="0"/>
@@ -3738,7 +3738,7 @@
     <property name="Health" type="int" value="19"/>
     <property name="Luck" type="int" value="0"/>
     <property name="Magic" type="int" value="3"/>
-    <property name="MaxHealth" type="int" value="12"/>
+    <property name="MaxHealth" type="int" value="19"/>
     <property name="Move" type="int" value="3"/>
     <property name="Name" value="Bandit 4"/>
     <property name="Res" type="int" value="1"/>
@@ -3750,7 +3750,7 @@
     <property name="isAlly" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="2866" x="160" y="256" width="16" height="16">
+  <object id="2866" x="176" y="272" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
     <property name="BonusDodge" type="int" value="0"/>
@@ -3758,7 +3758,7 @@
     <property name="Class" value="Bandit"/>
     <property name="Consti" type="int" value="8"/>
     <property name="Defense" type="int" value="4"/>
-    <property name="Health" type="int" value="12"/>
+    <property name="Health" type="int" value="20"/>
     <property name="Luck" type="int" value="0"/>
     <property name="Magic" type="int" value="0"/>
     <property name="MaxHealth" type="int" value="20"/>

@@ -23,14 +23,14 @@ func _ready():
 	# Description and name
 	item_name = "Iron Axe"
 	item_description = "A simple axe made of iron."
+	
+	# Animation Weapon
+	weapon_string_name = "axe"
 
 func draw_attack_sound():
-	# Parent Override
-	.draw_attack_sound()
 	BattlefieldInfo.weapon_sounds.get_node("Draw Weapon").play(0)
 
 func put_away_attack_sound():
-	.put_away_attack_sound()
 	BattlefieldInfo.weapon_sounds.get_node("Put Away Weapon").play(0)
 
 # Special ability -> Modify this later

@@ -27,6 +27,9 @@ var item_name
 # Icon
 var icon
 
+# Animation String
+var weapon_string_name
+
 # Sound effects
 func draw_attack_sound():
 	pass

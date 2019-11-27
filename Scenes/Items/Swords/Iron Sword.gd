@@ -20,14 +20,15 @@ func _ready():
 	# Description and name
 	item_name = "Iron Sword"
 	item_description = "A simple sword made of iron."
+	
+	# String name
+	weapon_string_name = "sword"
 
 # Sounds
 func draw_attack_sound():
-	.draw_attack_sound()
 	BattlefieldInfo.weapon_sounds.get_node("Draw Weapon").play(0)
 
 func put_away_attack_sound():
-	.put_away_attack_sound()
 	BattlefieldInfo.weapon_sounds.get_node("Put Away Weapon").play(0)
 
 # Special ability -> Modify this later

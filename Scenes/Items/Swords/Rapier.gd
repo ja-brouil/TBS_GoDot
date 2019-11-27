@@ -20,6 +20,9 @@ func _ready():
 	# Description and name
 	item_name = "Rapier"
 	item_description = "A flexible sword with a higher crit chance."
+	
+	# Animation String name
+	weapon_string_name = "sword"
 
 
 # Special ability -> Modify this later
