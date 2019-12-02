@@ -1,10 +1,9 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scenes/Units/Player_Units/AllyUnits/Eirika/Eirika.gd" type="Script" id=1]
 [ext_resource path="res://assets/units/eirika/eirika.png" type="Texture" id=2]
 [ext_resource path="res://assets/sound/unitMovement/Light Foot Steps 1.wav" type="AudioStream" id=3]
 [ext_resource path="res://Scenes/GUI/Damage Preview/Cursor Select.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/GUI/Damage Preview/Damage_Preview_Area_Unit.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Animation" id=1]
 length = 2.0
@@ -514,10 +513,10 @@ tracks/2/keys = {
 }
 
 [node name="Eirika" type="Node2D"]
-z_index = 5
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
+z_index = 2
 texture = ExtResource( 2 )
 centered = false
 region_enabled = true
@@ -548,5 +547,3 @@ anims/Up = SubResource( 10 )
 
 [node name="Cursor Select" parent="." instance=ExtResource( 4 )]
 visible = false
-
-[node name="Damage_Preview" parent="." instance=ExtResource( 5 )]

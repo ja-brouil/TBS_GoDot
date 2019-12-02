@@ -24,7 +24,9 @@ func _ready():
 	
 	# Connect to Movement
 	get_parent().get_node("Action Selector Screen").connect("selected_wait", self, "enable_standard")
-	# BattlefieldInfo.unit_movement_system.connect("unit_finished_moving", self, "back_to_move")
+	
+	# Connec to turn transition
+	BattlefieldInfo.turn_manager.connect("play_transition", self, "disable_standard")
 	
 func _input(event):
 	# Do not process if cursor is in wait mode
@@ -225,6 +227,11 @@ func enable_standard():
 	$Timer.start(0)
 	emit_signal("turn_on_ui")
 
+func disable_standard(transition_type):
+	visible = false
+	cursor_state = WAIT
+	emit_signal("turn_off_ui")
+
 func back_to_move():
 	if BattlefieldInfo.turn_manager.turn == Turn_Manager.PLAYER_TURN:
 		enable(true, MOVE)
@@ -238,5 +245,6 @@ func debug() -> void:
 
 # Prevent this scene from automatically starting the event input
 func _on_Timer_timeout():
-	cursor_state = MOVE
-	updateCursorData()
+	if BattlefieldInfo.turn_manager.turn != Turn_Manager.ENEMY_TURN && BattlefieldInfo.turn_manager.turn != Turn_Manager.WAIT:
+		cursor_state = MOVE
+		updateCursorData()

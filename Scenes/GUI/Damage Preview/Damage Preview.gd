@@ -20,6 +20,7 @@ var is_active
 
 func _ready():
 	is_active = false
+	$Preview.rect_position = RIGHT_SIDE
 
 # Input
 func _input(event):
@@ -145,11 +146,12 @@ func update_preview_box():
 
 # Set position of menu -> This needs to be fixed later
 func set_menu_position():
-	if current_option_selected.get_node("Damage_Preview").overlaps_body(get_parent().get_node("GameCamera/Areas/TopLeft")) || \
-		current_option_selected.get_node("Damage_Preview").overlaps_body(get_parent().get_node("GameCamera/Areas/BottomLeft")):
-			$Preview.rect_position = LEFT_SIDE
-	else:
-		$Preview.rect_position = RIGHT_SIDE
+	pass
+#	if current_option_selected.get_node("Damage_Preview").overlaps_body(get_parent().get_node("GameCamera/Areas/TopLeft")) || \
+#		current_option_selected.get_node("Damage_Preview").overlaps_body(get_parent().get_node("GameCamera/Areas/BottomLeft")):
+#			$Preview.rect_position = LEFT_SIDE
+#	else:
+#		$Preview.rect_position = RIGHT_SIDE
 
 # Update chosen enemy
 func update_enemy_chosen():

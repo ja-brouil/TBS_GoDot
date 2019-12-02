@@ -1,0 +1,428 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scenes/Units/Unit_Scripts/Ally Combat Script.gd" type="Script" id=1]
+[ext_resource path="res://assets/units/cavalier/Seth Battle.png" type="Texture" id=2]
+[ext_resource path="res://assets/transition/white flash.png" type="Texture" id=3]
+[ext_resource path="res://assets/battle_effects/Physical Effects.png" type="Texture" id=4]
+[ext_resource path="res://assets/sound/unitMovement/Horse Steps.wav" type="AudioStream" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "sword crit"
+length = 22.0
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Seth Sword Regular:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 2.74, 3.03, 3.34, 3.63, 3.97, 4.3, 4.66, 5, 5.43, 5.85, 6.21, 6.66, 7, 7.22, 7.49, 7.79, 8.06, 8.36, 8.69, 9.01, 9.29, 9.53, 9.78, 10.02, 10.35, 10.62, 10.96, 11.3, 11.66, 11.96, 12.27, 12.58, 12.9, 13.19, 13.48, 13.71, 14.02, 14.26, 14.51, 15.74, 16, 16.25, 16.55, 16.86, 17.11, 17.37, 17.63, 17.9, 18.2, 18.44, 18.76, 19.01, 19.26, 19.57, 19.91, 20.19, 20.46, 20.8, 21.06, 21.41, 21.73 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 47, 15, 48, 57 ), Rect2( 190, 15, 55, 57 ), Rect2( 333, 15, 57, 57 ), Rect2( 477, 15, 61, 57 ), Rect2( 632, 0, 52, 72 ), Rect2( 55, 110, 64, 51 ), Rect2( 198, 110, 64, 51 ), Rect2( 338, 110, 74, 51 ), Rect2( 481, 100, 73, 61 ), Rect2( 626, 92, 65, 69 ), Rect2( 54, 181, 65, 69 ), Rect2( 194, 181, 68, 69 ), Rect2( 340, 181, 65, 69 ), Rect2( 481, 181, 67, 69 ), Rect2( 626, 181, 65, 69 ), Rect2( 51, 270, 68, 69 ), Rect2( 194, 269, 68, 70 ), Rect2( 345, 288, 74, 53 ), Rect2( 486, 288, 74, 53 ), Rect2( 631, 286, 73, 53 ), Rect2( 59, 374, 75, 54 ), Rect2( 203, 375, 74, 53 ), Rect2( 345, 377, 74, 53 ), Rect2( 486, 377, 74, 53 ), Rect2( 631, 375, 73, 53 ), Rect2( 59, 463, 75, 54 ), Rect2( 203, 553, 74, 53 ), Rect2( 345, 555, 74, 53 ), Rect2( 486, 555, 74, 53 ), Rect2( 631, 553, 73, 53 ), Rect2( 59, 641, 75, 54 ), Rect2( 203, 642, 74, 53 ), Rect2( 345, 644, 74, 53 ), Rect2( 486, 644, 74, 53 ), Rect2( 631, 642, 73, 53 ), Rect2( 59, 730, 75, 54 ), Rect2( 203, 731, 74, 53 ), Rect2( 345, 733, 74, 53 ), Rect2( 486, 733, 74, 53 ), Rect2( 631, 731, 73, 53 ), Rect2( 59, 819, 75, 54 ), Rect2( 203, 820, 74, 53 ), Rect2( 319, 805, 64, 69 ), Rect2( 420, 806, 85, 67 ), Rect2( 565, 817, 73, 56 ), Rect2( 0, 911, 44, 55 ), Rect2( 154, 912, 44, 54 ), Rect2( 297, 912, 44, 55 ), Rect2( 430, 909, 52, 61 ), Rect2( 573, 890, 47, 80 ), Rect2( 4, 966, 86, 89 ), Rect2( 151, 967, 80, 87 ), Rect2( 297, 975, 75, 80 ), Rect2( 441, 973, 78, 82 ), Rect2( 588, 974, 75, 81 ), Rect2( 13, 1070, 81, 76 ), Rect2( 170, 1076, 70, 68 ), Rect2( 313, 1074, 75, 71 ), Rect2( 469, 1094, 63, 55 ), Rect2( 627, 1095, 39, 47 ), Rect2( 61, 1183, 32, 48 ), Rect2( 208, 1183, 32, 48 ), Rect2( 343, 1183, 47, 48 ), Rect2( 486, 1183, 54, 47 ), Rect2( 616, 1175, 67, 54 ), Rect2( 41, 1262, 54, 56 ), Rect2( 47, 15, 48, 57 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Seth Sword Regular:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 2.74, 3.03, 3.34, 3.63, 3.97, 4.3, 4.66, 5, 5.43, 5.85, 6.21, 6.66, 14.02, 14.26, 14.51, 15.74, 16, 16.25, 16.55, 16.86, 17.11, 17.37, 17.63, 17.9, 18.2, 18.44, 18.76, 19.01, 19.26, 19.57, 19.91, 20.19, 20.46, 20.8, 21.06, 21.41, 21.74 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( -3, 0 ), Vector2( -2, -1 ), Vector2( -1, -8 ), Vector2( -1, 2 ), Vector2( -1, 2 ), Vector2( -1, 2 ), Vector2( -1, -1 ), Vector2( -1, -6 ), Vector2( -1, -6 ), Vector2( -1, -6 ), Vector2( -1, -6 ), Vector2( -1, -6 ), Vector2( -1, -6 ), Vector2( -1, -6 ), Vector2( -1, -6 ), Vector2( -1, 1 ), Vector2( -21, -5 ), Vector2( -45, -5 ), Vector2( -55, 0 ), Vector2( -50, 0 ), Vector2( -32, -1 ), Vector2( -22, -1 ), Vector2( -15, -1 ), Vector2( -8, -10 ), Vector2( 2, -15 ), Vector2( 7, -15 ), Vector2( 12, -12 ), Vector2( 17, -12 ), Vector2( 22, -9 ), Vector2( 26, -5 ), Vector2( 29, -5 ), Vector2( 30, -5 ), Vector2( 31, 8 ), Vector2( 26, 5 ), Vector2( 21, 5 ), Vector2( 22, 4 ), Vector2( 17, 4 ), Vector2( 14, 4 ), Vector2( 10, 3 ), Vector2( 5, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Seth Sword Regular:z_index")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 21.73 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 0 ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2.75, 3.63, 14.58, 14.62, 15.87 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_draw_sound"
+}, {
+"args": [  ],
+"method": "play_draw_sound"
+}, {
+"args": [  ],
+"method": "play_draw_sound"
+}, {
+"args": [  ],
+"method": "play_crit_sound"
+}, {
+"args": [  ],
+"method": "shake_camera_crit"
+}, {
+"args": [  ],
+"method": "put_away_attack_sound"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Flash:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 14.5, 14.55 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Battle Effect:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 14.57, 15.16 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Battle Effect:z_index")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 14.57 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Battle Effect:region_rect")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 14.57, 14.71, 14.84, 14.94, 15.05, 15.18 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 268, 528, 177, 150 ), Rect2( 498, 526, 237, 144 ), Rect2( 255, 688, 235, 145 ), Rect2( 496, 689, 238, 144 ), Rect2( 10, 852, 239, 144 ), Rect2( 253, 853, 238, 143 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Battle Effect:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 14.57 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( -86, -1 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Battle Effect:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Flash:z_index")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 14.56 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("horse movement:playing")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 6.69, 14.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "sword dodge"
+length = 2.0
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Seth Sword Regular:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 47, 15, 48, 57 ), Rect2( 608, 1406, 52, 72 ), Rect2( 47, 15, 48, 57 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Seth Sword Regular:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -8 ), Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Seth Sword Regular:z_index")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 0 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "sword miss"
+length = 10.5
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Seth Sword Regular:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4.5, 4.72, 4.92, 5.15, 5.41, 5.63, 5.79, 5.94, 6.1, 6.25, 6.42, 6.58, 6.75, 6.92, 7.12, 7.29, 7.79, 8.29, 8.79, 9.29, 9.79, 10.29 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 111, 1421, 48, 57 ), Rect2( 232, 1421, 55, 57 ), Rect2( 353, 1421, 57, 57 ), Rect2( 475, 1421, 61, 57 ), Rect2( 608, 1406, 52, 72 ), Rect2( 97, 1499, 64, 69 ), Rect2( 176, 1500, 85, 67 ), Rect2( 299, 1511, 73, 56 ), Rect2( 427, 1516, 44, 55 ), Rect2( 559, 1517, 44, 54 ), Rect2( 75, 1606, 44, 55 ), Rect2( 186, 1603, 52, 61 ), Rect2( 307, 1584, 47, 80 ), Rect2( 427, 1571, 88, 89 ), Rect2( 552, 1571, 104, 96 ), Rect2( 75, 1669, 80, 78 ), Rect2( 197, 1669, 77, 81 ), Rect2( 320, 1667, 78, 85 ), Rect2( 443, 1678, 77, 76 ), Rect2( 571, 1673, 78, 81 ), Rect2( 97, 1765, 76, 82 ), Rect2( 225, 1789, 62, 46 ), Rect2( 361, 1789, 39, 47 ), Rect2( 488, 1788, 32, 48 ), Rect2( 613, 1788, 32, 48 ), Rect2( 121, 1877, 47, 48 ), Rect2( 242, 1877, 54, 47 ), Rect2( 350, 1869, 67, 54 ), Rect2( 468, 1867, 54, 56 ), Rect2( 111, 1421, 48, 57 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Seth Sword Regular:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2, 2.5, 3, 3.5, 4.5, 4.72, 4.92, 5.15, 5.41, 5.63, 5.79, 5.94, 6.1, 6.25, 6.42, 6.58, 6.75, 6.92, 7.12, 7.29, 7.79, 8.29, 8.79, 9.29, 9.79, 10.29 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -8 ), Vector2( -14, -8 ), Vector2( -40, -8 ), Vector2( -54, -2 ), Vector2( -39, 0 ), Vector2( -22, 0 ), Vector2( -20, 0 ), Vector2( -17, 0 ), Vector2( -14, -12 ), Vector2( -10, -15 ), Vector2( 16, -11 ), Vector2( 20, -11 ), Vector2( 25, -8 ), Vector2( 30, -8 ), Vector2( 32, -3 ), Vector2( 32, -6 ), Vector2( 32, -3 ), Vector2( 28, 5 ), Vector2( 22, 5 ), Vector2( 17, 5 ), Vector2( 14, 5 ), Vector2( 10, 5 ), Vector2( 10, 5 ), Vector2( 4, 1 ), Vector2( 0, 1 ), Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Seth Sword Regular:z_index")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 10.29 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 0 ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 3, 3.52, 10.29 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_draw_sound"
+}, {
+"args": [  ],
+"method": "play_attack_sound"
+}, {
+"args": [  ],
+"method": "play_miss_sound"
+}, {
+"args": [  ],
+"method": "put_away_attack_sound"
+} ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "sword regular"
+length = 10.5
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Seth Sword Regular:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4.5, 4.72, 4.92, 5.15, 5.41, 5.63, 5.79, 5.94, 6.1, 6.25, 6.42, 6.58, 6.75, 6.92, 7.12, 7.29, 7.79, 8.29, 8.79, 9.29, 9.79, 10.29 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 111, 1421, 48, 57 ), Rect2( 232, 1421, 55, 57 ), Rect2( 353, 1421, 57, 57 ), Rect2( 475, 1421, 61, 57 ), Rect2( 608, 1406, 52, 72 ), Rect2( 97, 1499, 64, 69 ), Rect2( 176, 1500, 85, 67 ), Rect2( 299, 1511, 73, 56 ), Rect2( 427, 1516, 44, 55 ), Rect2( 559, 1517, 44, 54 ), Rect2( 75, 1606, 44, 55 ), Rect2( 186, 1603, 52, 61 ), Rect2( 307, 1584, 47, 80 ), Rect2( 427, 1571, 88, 89 ), Rect2( 552, 1571, 104, 96 ), Rect2( 75, 1669, 80, 78 ), Rect2( 197, 1669, 77, 81 ), Rect2( 320, 1667, 78, 85 ), Rect2( 443, 1678, 77, 76 ), Rect2( 571, 1673, 78, 81 ), Rect2( 97, 1765, 76, 82 ), Rect2( 225, 1789, 62, 46 ), Rect2( 361, 1789, 39, 47 ), Rect2( 488, 1788, 32, 48 ), Rect2( 613, 1788, 32, 48 ), Rect2( 121, 1877, 47, 48 ), Rect2( 242, 1877, 54, 47 ), Rect2( 350, 1869, 67, 54 ), Rect2( 468, 1867, 54, 56 ), Rect2( 111, 1421, 48, 57 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Seth Sword Regular:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2, 2.5, 3, 3.5, 4.5, 4.72, 4.92, 5.15, 5.41, 5.63, 5.79, 5.94, 6.1, 6.25, 6.42, 6.58, 6.75, 6.92, 7.12, 7.29, 7.79, 8.29, 8.79, 9.29, 9.79, 10.29 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -8 ), Vector2( -14, -8 ), Vector2( -40, -8 ), Vector2( -54, -2 ), Vector2( -39, 0 ), Vector2( -22, 0 ), Vector2( -20, 0 ), Vector2( -17, 0 ), Vector2( -14, -12 ), Vector2( -10, -15 ), Vector2( 16, -11 ), Vector2( 20, -11 ), Vector2( 25, -8 ), Vector2( 30, -8 ), Vector2( 32, -3 ), Vector2( 32, -6 ), Vector2( 32, -3 ), Vector2( 28, 5 ), Vector2( 22, 5 ), Vector2( 17, 5 ), Vector2( 14, 5 ), Vector2( 10, 5 ), Vector2( 10, 5 ), Vector2( 4, 1 ), Vector2( 0, 1 ), Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Battle Effect:region_rect")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 3.5, 3.55, 3.61, 3.67, 3.72, 3.79, 3.85, 3.89 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 310.827, 75.3462, 56.7227, 50.0494 ), Rect2( 528, 49, 110, 103 ), Rect2( 22, 191, 150, 146 ), Rect2( 256, 186, 166, 154 ), Rect2( 502, 185, 165, 158 ), Rect2( 503.601, 183.036, 162.625, 158.966 ), Rect2( 15, 348, 169, 156 ), Rect2( 256, 348, 167, 158 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Battle Effect:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 3.5, 3.56, 3.88 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( -85.9954, -0.405655 ), Vector2( -85.9954, -0.930359 ), Vector2( -85.9954, -0.930359 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Battle Effect:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( -0.01, 3.5, 3.88 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.01, 3.51, 3.61, 3.62, 10.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_draw_sound"
+}, {
+"args": [  ],
+"method": "play_attack_sound"
+}, {
+"args": [  ],
+"method": "play_hit_sound"
+}, {
+"args": [  ],
+"method": "shake_camera_regular"
+}, {
+"args": [  ],
+"method": "put_away_attack_sound"
+} ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Flash:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 3.51, 3.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Seth Sword Regular:z_index")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 10.28 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 0 ]
+}
+
+[node name="Seth Combat" type="Node2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 28.583 ],
+"_edit_vertical_guides_": [ -70.2413, 25.0 ]
+}
+
+[node name="Seth Sword Regular" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 47, 15, 48, 57 )
+
+[node name="Flash" type="Sprite" parent="."]
+visible = false
+z_index = 2
+texture = ExtResource( 3 )
+
+[node name="Battle Effect" type="Sprite" parent="."]
+visible = false
+position = Vector2( -86, -1 )
+z_index = 1
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 253, 853, 238, 143 )
+
+[node name="anim" type="AnimationPlayer" parent="."]
+playback_speed = 4.0
+"anims/sword crit" = SubResource( 1 )
+"anims/sword dodge" = SubResource( 2 )
+"anims/sword miss" = SubResource( 5 )
+"anims/sword regular" = SubResource( 4 )
+
+[node name="horse movement" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )

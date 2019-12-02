@@ -71,6 +71,8 @@ var enemy_effective_bonus = 1
 var player_missed = false
 var enemy_missed = false
 
+func _ready():
+	randomize()
 
 func calculate_damage_and_previews():
 	# Get Weapon bonuses
@@ -328,15 +330,16 @@ func crit_occurred(crit_chance):
 		return true
 	elif crit_chance <= 0:
 		return false
-	
-	return randi() % 99 + 1 <= crit_chance
+		
+	return int(rand_range(0, 100)) <= crit_chance
 
 func hit_occured(accuracy_chance):
 	if accuracy_chance >= 100:
 		return true
 	elif accuracy_chance <= 0:
 		return false
-	return randi() % 99 + 1 <= accuracy_chance
+	
+	return int(rand_range(0,100)) <= accuracy_chance
 
 func reset_stats():
 	# Double attack

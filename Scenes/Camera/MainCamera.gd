@@ -10,7 +10,7 @@ var RIGHT_CLAMP_MAX
 var BOTTOM_CLAMP_MAX
 
 # Camera Shake
-var _duration = 1.0
+var _duration = 0.0
 var _period_in_ms = 0.0
 var _amplitude = 0.0
 var _timer = 0.0
@@ -48,7 +48,7 @@ func _on_Cursor_cursorMoved(direction, cursor_position):
 	# Clamp camera
 	clampCameraPosition()
 
-	
+
 # Sets the parameters for the maximum camera movement once the level is loaded
 func _on_Level_mapInformationLoaded():
 	limit_bottom = (BattlefieldInfo.map_height * Cell.CELL_SIZE)
@@ -72,6 +72,8 @@ func set_current_camera():
 func _process(delta):
     # Only shake when there's shake time remaining.
     if _timer == 0:
+        set_offset(Vector2())
+        set_process(false)
         return
     # Only shake on certain frames.
     _last_shook_timer = _last_shook_timer + delta
@@ -99,6 +101,10 @@ func _process(delta):
 
 # Kick off a new screenshake effect.
 func shake(duration, frequency, amplitude):
+    # Don't interrupt current shake duration
+    if(_timer != 0):
+        return
+   
     # Initialize variables.
     _duration = duration
     _timer = duration
@@ -109,3 +115,4 @@ func shake(duration, frequency, amplitude):
     # Reset previous offset, if any.
     set_offset(get_offset() - _last_offset)
     _last_offset = Vector2(0, 0)
+    set_process(true)

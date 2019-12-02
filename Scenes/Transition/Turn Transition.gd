@@ -15,10 +15,10 @@ func start_transition(type):
 			BattlefieldInfo.music_player.get_node("OneUnitLeft").stop()
 		else:
 			BattlefieldInfo.music_player.get_node("AllyLevel").stop()
-		get_parent().get_parent().get_node("BattlefieldHUD").turn_off_battlefield_ui()
-		get_parent().get_parent().get_node("Cursor").cursor_state = Cursor.WAIT
 		$"Enemy Phase".visible = true
 		$"Animation_E".current_animation = "Move_Off"
+		get_parent().get_parent().get_node("BattlefieldHUD").turn_off_battlefield_ui()
+		get_parent().get_parent().get_node("Cursor").cursor_state = Cursor.WAIT
 	else:
 		BattlefieldInfo.music_player.get_node("EnemyLevel").stop()
 		$"Player Turn".visible = true

@@ -3,7 +3,7 @@ extends Battlefield_Unit
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Set these later when the level loads
-	UnitMovementStats.movementSteps = 15
+	UnitMovementStats.movementSteps = 8
 	$Animation.current_animation = "Idle"
 	
 	# Unit portrait
@@ -17,4 +17,6 @@ func _ready():
 	UnitInventory.add_item(preload("res://Scenes/Items/Swords/Rapier.tscn").instance())
 	
 	# River penalty test
-	UnitMovementStats.riverPenalty = 4
+	UnitMovementStats.riverPenalty = 3
+	
+	combat_node = preload("res://Scenes/Units/Player_Units/AllyUnits/Seth/Seth Combat.tscn")

@@ -1,10 +1,9 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scenes/Units/Player_Units/AllyUnits/Seth/Seth.gd" type="Script" id=1]
 [ext_resource path="res://assets/units/cavalier/cavalierAlly.png" type="Texture" id=2]
 [ext_resource path="res://assets/sound/unitMovement/Horse Steps.wav" type="AudioStream" id=3]
 [ext_resource path="res://Scenes/GUI/Damage Preview/Cursor Select.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/GUI/Damage Preview/Damage_Preview_Area_Unit.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Down"
@@ -519,7 +518,7 @@ tracks/2/keys = {
 }
 
 [node name="Seth" type="Node2D"]
-z_index = 5
+z_index = 2
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 19.1877 ],
@@ -527,11 +526,11 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0.129936, -3.63805 )
+position = Vector2( 0.191, -4.50606 )
 texture = ExtResource( 2 )
 centered = false
 region_enabled = true
-region_rect = Rect2( 4, 105, 18, 23 )
+region_rect = Rect2( 4, 77, 15, 19 )
 
 [node name="Animation" type="AnimationPlayer" parent="."]
 playback_speed = 2.0
@@ -552,6 +551,3 @@ stream = ExtResource( 3 )
 
 [node name="Cursor Select" parent="." instance=ExtResource( 4 )]
 visible = false
-
-[node name="Damage_Preview" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1, 1 )

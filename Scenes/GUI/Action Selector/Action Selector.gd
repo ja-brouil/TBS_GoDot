@@ -152,6 +152,10 @@ func get_menu_items():
 	if BattlefieldInfo.current_Unit_Selected.UnitStats.name == "Eirika":
 		if !menu_items.has("Convoy"):
 			menu_items.append("Convoy")
+		
+		# Are we on the throne tile
+		if BattlefieldInfo.current_Unit_Selected.UnitMovementStats.currentTile.tileName == "Throne":
+			menu_items.append("Seize")
 	
 	# Cell Visit -> Armory/Arena/Village
 	if BattlefieldInfo.current_Unit_Selected.UnitMovementStats.currentTile.tileName == "Village" || \
@@ -185,6 +189,8 @@ func process_selection():
 			print("From Action Selector: Selected Trade! Go to the trade screen!")
 		"Visit":
 			print("From Action Selector: Selected Visit! Go to the visit screen!")
+		"Seize":
+			print("From Action Selector: Selected Seize! You have won this level.")
 		"Wait":
 			# Turn this off
 			hide_action_menu()

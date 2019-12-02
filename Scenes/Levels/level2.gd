@@ -68,7 +68,7 @@ func _ready():
 	for allyCellInfo in allyInfoLayer.get_children():
 		var path = str("res://Scenes/Units/Player_Units/AllyUnits/", allyCellInfo.get_meta("Name"),"/",allyCellInfo.get_meta("Name"),".tscn")
 		var new_ally = load(path).instance()
-		add_child(new_ally)
+		$YSort.add_child(new_ally)
 		
 		# Set Stats and position
 		new_ally.position.x = allyCellInfo.position.x
@@ -113,7 +113,7 @@ func _ready():
 		
 		# Set AI Type
 		newEnemy.get_node("AI").ai_type = enemy.get_meta("aiType")
-		add_child(newEnemy)
+		$YSort.add_child(newEnemy)
 		
 		# Set Stats
 		newEnemy.position = Vector2(enemy.position.x, enemy.position.y)
