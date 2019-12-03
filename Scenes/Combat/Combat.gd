@@ -33,6 +33,7 @@ var enemy_hp_destination = 0
 # Ready
 func _ready():
 	$"Combat Control/Combat UI/XP Screen".connect("done_adding_xp", self, "back_to_battlefield")
+	$"Combat Control/Combat UI/Level Up Screen".connect("done_leveling_up", self, "back_to_battlefield")
 
 # State update
 func _process(delta):
@@ -478,6 +479,7 @@ func on_enemy_death_complete():
 
 # Process XP and go to Level up screen if needed
 func process_xp():
+	$"Combat Control/Combat UI/XP Screen".visible = true
 	# Total miss or no damage dealt at all
 	if Combat_Calculator.player_first_actual_damage + Combat_Calculator.player_second_actual_damage <= 0:
 		$"Combat Control/Combat UI/XP Screen".start_no_damage_or_miss()
@@ -487,6 +489,7 @@ func process_xp():
 	current_combat_state = wait
 
 func process_death_xp():
+	$"Combat Control/Combat UI/XP Screen".visible = true
 	current_combat_state = wait
 	$"Combat Control/Combat UI/XP Screen".start_death()
 
@@ -498,6 +501,9 @@ func back_to_battlefield():
 	current_combat_state = wait
 
 func turn_off():
+	# Remove XP Bar
+	$"Combat Control/Combat UI/XP Screen".visible = false
+	
 	# Stop Music
 	if BattlefieldInfo.turn_manager.turn == Turn_Manager.PLAYER_TURN:
 		if BattlefieldInfo.enemy_units.size() <= 1:
@@ -508,7 +514,6 @@ func turn_off():
 	else:
 		enemy_song_location = BattlefieldInfo.music_player.get_node("EnemyLevel").get_playback_position()
 		BattlefieldInfo.music_player.get_node("Enemy Combat").stop()
-	
 
 # Pause
 func _on_Pause_timeout():

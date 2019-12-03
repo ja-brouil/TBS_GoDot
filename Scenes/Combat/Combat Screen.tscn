@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scenes/Combat/Combat.gd" type="Script" id=1]
 [ext_resource path="res://assets/UI/combatUI/Plains.png" type="Texture" id=2]
@@ -10,7 +10,8 @@
 [ext_resource path="res://Scenes/Combat/Up Arrow Combat.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/Combat/Down Arrow Combat.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/GUI/XP/XP Screen.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Scenes/Combat/Miss.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scenes/GUI/XP/Level Up Screen.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scenes/Combat/Miss.tscn" type="PackedScene" id=12]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 3 )
@@ -61,6 +62,7 @@ margin_bottom = 160.0
 custom_styles/panel = SubResource( 1 )
 
 [node name="Enemy" type="Control" parent="Combat Control/Combat UI"]
+editor/display_folded = true
 margin_left = 0.610687
 margin_top = -7.62939e-06
 margin_right = 40.6107
@@ -182,6 +184,7 @@ visible = false
 position = Vector2( 65.726, 131.443 )
 
 [node name="Player" type="Control" parent="Combat Control/Combat UI"]
+editor/display_folded = true
 margin_left = 1.17069
 margin_top = 0.148262
 margin_right = 41.1707
@@ -293,6 +296,8 @@ position = Vector2( 138.796, 131.083 )
 
 [node name="XP Screen" parent="Combat Control/Combat UI" instance=ExtResource( 10 )]
 
+[node name="Level Up Screen" parent="Combat Control/Combat UI" instance=ExtResource( 11 )]
+
 [node name="Ally Unit" type="Position2D" parent="."]
 position = Vector2( 156, 71 )
 
@@ -307,11 +312,11 @@ one_shot = true
 wait_time = 0.85
 one_shot = true
 
-[node name="Miss_Player" parent="." instance=ExtResource( 11 )]
+[node name="Miss_Player" parent="." instance=ExtResource( 12 )]
 position = Vector2( 72.6183, 74.8539 )
 z_index = 2
 
-[node name="Miss_Enemy" parent="." instance=ExtResource( 11 )]
+[node name="Miss_Enemy" parent="." instance=ExtResource( 12 )]
 position = Vector2( 143.622, 80.7829 )
 z_index = 2
 [connection signal="timeout" from="Pause" to="." method="_on_Pause_timeout"]

@@ -10,6 +10,7 @@ func _ready():
 # Play Song
 func play_song(song_name, starting_position) -> void:
 	get_node(song_name).play(starting_position)
+	$EnemyLevel.volume_db
 
 # Stop song
 func stop_song(song_name) -> void:

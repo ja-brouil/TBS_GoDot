@@ -71,8 +71,8 @@ func move_xp_bar(delta):
 	
 	# Did we pass 100?
 	if BattlefieldInfo.combat_player_unit.UnitStats.current_xp >= Unit_Stats.NEXT_LEVEL_XP:
-		print("FROM XP SCREEN: Level up!")
 		has_unit_leveled_up = true
+		BattlefieldInfo.combat_player_unit.UnitStats.current_xp = 0
 	
 	# Did we finish adding xp?
 	if final_xp_earned <= 0:
@@ -80,14 +80,18 @@ func move_xp_bar(delta):
 		# Round off values to prevent errors
 		final_xp_earned = 0
 		BattlefieldInfo.combat_player_unit.UnitStats.current_xp = int(BattlefieldInfo.combat_player_unit.UnitStats.current_xp)
-		var h = BattlefieldInfo.combat_player_unit.UnitStats.current_xp
-		var b = float(BattlefieldInfo.combat_player_unit.UnitStats.current_xp / Unit_Stats.MAX_LEVEL)
-		set_gui_box()
 		
 		# If unit leveled up
 		if has_unit_leveled_up:
-			$Return.start(0)
 			current_state = wait
+			
+			# Lower volume of the music
+			if BattlefieldInfo.turn_manager.turn == Turn_Manager.ENEMY_TURN:
+				BattlefieldInfo.music_player.get_node("Enemy Combat").volume_db = -12
+			else:
+				BattlefieldInfo.music_player.get_node("Ally Combat").volume_db = -12
+			
+			get_parent().get_node("Level Up Screen").start()
 		else:
 			current_state = wait
 			# Back to battlefield
@@ -162,6 +166,9 @@ func calculate_damage_xp():
 	# Formula = [31 + (enemy’s Level + enemy’s Class bonus A) – (Level + Class bonus A)] / Class power
 	damage_xp = (BASE_XP + (BattlefieldInfo.combat_ai_unit.UnitStats.level + BattlefieldInfo.combat_ai_unit.UnitStats.class_bonus_a) - \
 	(BattlefieldInfo.combat_player_unit.UnitStats.level + BattlefieldInfo.combat_player_unit.UnitStats.class_bonus_a)) / BattlefieldInfo.combat_player_unit.UnitStats.class_power
+	
+	if damage_xp <= 0:
+		damage_xp = 1
 
 # Death
 func calculate_base_defeat():
@@ -178,10 +185,9 @@ func calculate_base_defeat():
 func calculate_total_defeat():
 	final_xp_earned = damage_xp + (defeat_base_enemy_xp + 20 + BattlefieldInfo.combat_ai_unit.UnitStats.boss_bonus + BattlefieldInfo.combat_ai_unit.UnitStats.thief_bonus)
 	
+	if final_xp_earned <= 0:
+		final_xp_earned = 1
 
 func _on_Return_timeout():
-	var h = BattlefieldInfo.combat_player_unit.UnitStats.current_xp
-	print(float(BattlefieldInfo.combat_player_unit.UnitStats.current_xp / Unit_Stats.NEXT_LEVEL_XP))
 	current_state = wait
-	visible = false
 	emit_signal("done_adding_xp")

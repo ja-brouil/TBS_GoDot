@@ -20,7 +20,7 @@ anchor_bottom = 1.0
 script = ExtResource( 1 )
 
 [node name="Return" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 0.5
 one_shot = true
 
 [node name="xp_ui" type="Sprite" parent="."]
@@ -52,4 +52,5 @@ valign = 1
 
 [node name="xp_gain" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
+bus = "Cursor"
 [connection signal="timeout" from="Return" to="." method="_on_Return_timeout"]

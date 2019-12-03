@@ -146,6 +146,9 @@ func move_gui_boxes():
 func turn_off_battlefield_ui():
 	$"Battlefield HUD".visible = false
 	update_battlefield_ui("up", get_parent().get_node("Cursor").position)
+	
+	# Update the box for weird glitch when the cursor gets control back
+	update_unit_box()
 
 # Turn on all UI elements of the battlefield
 func turn_on_battlefield_ui():
