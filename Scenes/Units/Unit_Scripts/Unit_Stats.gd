@@ -5,6 +5,17 @@ class_name Unit_Stats
 var name
 var class_type
 
+# Level
+var level = 1
+var current_xp = 0
+
+# Class Points for Xp
+var class_bonus_a = 0
+var class_bonus_b = 0
+var class_power = 3
+var boss_bonus = 0
+var thief_bonus = 0
+
 # Regular attributes
 var max_health = 20
 var current_health = 20
@@ -25,18 +36,20 @@ var bonus_dodge = 1
 var bonus_hit = 1
 
 # Stat upgrade probability
-var str_chance
-var skill_chance
-var speed_chance
-var magic_chance
-var luck_chance
-var def_chance
-var res_chance
-var consti_chance
-var max_health_chance
+var str_chance = 0
+var skill_chance = 0
+var speed_chance = 0
+var magic_chance = 0
+var luck_chance = 0
+var def_chance = 0
+var res_chance = 0
+var consti_chance = 0
+var max_health_chance = 0
 
 # Max stat possible
 const MAX_STAT = 30
+const MAX_LEVEL = 20
+const NEXT_LEVEL_XP = 100
 
 func _init():
 	name = "PLACERHOLDER"

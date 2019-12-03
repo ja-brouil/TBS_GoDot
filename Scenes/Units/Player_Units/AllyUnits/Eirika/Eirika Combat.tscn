@@ -214,14 +214,17 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 3, 5.5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 3, 3.2, 5.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "values": [ {
 "args": [  ],
 "method": "play_draw_sound"
 }, {
 "args": [  ],
 "method": "play_attack_sound"
+}, {
+"args": [  ],
+"method": "play_miss_sound"
 }, {
 "args": [  ],
 "method": "put_away_attack_sound"
@@ -362,6 +365,7 @@ __meta__ = {
 }
 
 [node name="Erika Combat Sprite" type="Sprite" parent="."]
+position = Vector2( 0.238205, 1.46285 )
 scale = Vector2( 1.25, 1.25 )
 texture = ExtResource( 2 )
 region_enabled = true

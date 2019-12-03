@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/hand.png-1e5793d55262ef8f44b634fa80c95bcf.stex"
+path="res://.import/Miss Sprite.png-04e929080fd2d60761047d1740fa78aa.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/UI/Cursor/hand.png"
-dest_files=[ "res://.import/hand.png-1e5793d55262ef8f44b634fa80c95bcf.stex" ]
+source_file="res://assets/battle_effects/Miss Sprite.png"
+dest_files=[ "res://.import/Miss Sprite.png-04e929080fd2d60761047d1740fa78aa.stex" ]
 
 [params]
 

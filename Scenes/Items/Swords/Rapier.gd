@@ -7,7 +7,7 @@ func _ready():
 	might = 7
 	weight = 5
 	hit = 95
-	crit = 100
+	crit = 10
 	max_range = 1
 	min_range = 1
 	

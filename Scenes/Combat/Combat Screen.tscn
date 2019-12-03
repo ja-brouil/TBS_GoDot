@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scenes/Combat/Combat.gd" type="Script" id=1]
 [ext_resource path="res://assets/UI/combatUI/Plains.png" type="Texture" id=2]
@@ -7,8 +7,10 @@
 [ext_resource path="res://assets/UI/combatUI/Empty HP Battle UI.png" type="Texture" id=5]
 [ext_resource path="res://assets/UI/combatUI/Full HP Battle UI.png" type="Texture" id=6]
 [ext_resource path="res://icon.png" type="Texture" id=7]
-[ext_resource path="res://assets/music/1-17. Last Surprise.wav" type="AudioStream" id=8]
-[ext_resource path="res://assets/music/1-19. Victory.wav" type="AudioStream" id=9]
+[ext_resource path="res://Scenes/Combat/Up Arrow Combat.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Combat/Down Arrow Combat.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/GUI/XP/XP Screen.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/Combat/Miss.tscn" type="PackedScene" id=11]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 3 )
@@ -42,6 +44,9 @@ font_data = ExtResource( 4 )
 
 [node name="Combat Screen" type="Control"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 134.644 ]
+}
 
 [node name="Combat Control" type="Node2D" parent="."]
 visible = false
@@ -51,7 +56,6 @@ position = Vector2( 120, 80 )
 texture = ExtResource( 2 )
 
 [node name="Combat UI" type="Panel" parent="Combat Control"]
-editor/display_folded = true
 margin_right = 240.0
 margin_bottom = 160.0
 custom_styles/panel = SubResource( 1 )
@@ -169,6 +173,14 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="Enemy Up Arrow Combat" parent="Combat Control/Combat UI/Enemy" instance=ExtResource( 8 )]
+visible = false
+position = Vector2( 65.7262, 133.443 )
+
+[node name="Enemy Down Arrow Combat" parent="Combat Control/Combat UI/Enemy" instance=ExtResource( 9 )]
+visible = false
+position = Vector2( 65.726, 131.443 )
+
 [node name="Player" type="Control" parent="Combat Control/Combat UI"]
 margin_left = 1.17069
 margin_top = 0.148262
@@ -271,17 +283,20 @@ __meta__ = {
 position = Vector2( 131.912, 129.314 )
 texture = ExtResource( 7 )
 
-[node name="XP Menu" type="Panel" parent="Combat Control"]
+[node name="Player Up Arrow Combat" parent="Combat Control/Combat UI/Player" instance=ExtResource( 8 )]
 visible = false
-margin_right = 40.0
-margin_bottom = 40.0
+position = Vector2( 138.796, 133.083 )
+
+[node name="Player Down Arrow Combat" parent="Combat Control/Combat UI/Player" instance=ExtResource( 9 )]
+visible = false
+position = Vector2( 138.796, 131.083 )
+
+[node name="XP Screen" parent="Combat Control/Combat UI" instance=ExtResource( 10 )]
 
 [node name="Ally Unit" type="Position2D" parent="."]
-visible = false
 position = Vector2( 156, 71 )
 
 [node name="Enemy Unit" type="Position2D" parent="."]
-visible = false
 position = Vector2( 87, 65 )
 
 [node name="Pause" type="Timer" parent="."]
@@ -289,13 +304,15 @@ wait_time = 0.5
 one_shot = true
 
 [node name="Return Pause" type="Timer" parent="."]
-wait_time = 15.0
+wait_time = 0.85
 one_shot = true
 
-[node name="CombatM" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 8 )
+[node name="Miss_Player" parent="." instance=ExtResource( 11 )]
+position = Vector2( 72.6183, 74.8539 )
+z_index = 2
 
-[node name="Victory" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 9 )
+[node name="Miss_Enemy" parent="." instance=ExtResource( 11 )]
+position = Vector2( 143.622, 80.7829 )
+z_index = 2
 [connection signal="timeout" from="Pause" to="." method="_on_Pause_timeout"]
 [connection signal="timeout" from="Return Pause" to="." method="_on_Return_Pause_timeout"]

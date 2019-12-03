@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cursor.png-ace81afa279612c0c2ec48979f7d3695.stex"
+path="res://.import/xp_full_bar.png-aa800dbf432922f16bd3ef6123bddef7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/UI/Cursor/cursor.png"
-dest_files=[ "res://.import/cursor.png-ace81afa279612c0c2ec48979f7d3695.stex" ]
+source_file="res://assets/UI/xp/xp_full_bar.png"
+dest_files=[ "res://.import/xp_full_bar.png-aa800dbf432922f16bd3ef6123bddef7.stex" ]
 
 [params]
 

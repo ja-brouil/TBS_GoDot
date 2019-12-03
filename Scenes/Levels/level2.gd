@@ -85,6 +85,8 @@ func _ready():
 		new_ally.UnitStats.bonus_crit = allyCellInfo.get_meta("BonusCrit")
 		new_ally.UnitStats.bonus_dodge = allyCellInfo.get_meta("BonusDodge")
 		new_ally.UnitStats.bonus_hit = allyCellInfo.get_meta("BonusHit")
+		new_ally.UnitStats.level = allyCellInfo.get_meta("Level")
+		new_ally.UnitStats.class_type = allyCellInfo.get_meta("Class")
 		
 		# Stat upgrades
 		new_ally.UnitStats.str_chance = allyCellInfo.get_meta("strChance")
@@ -96,6 +98,13 @@ func _ready():
 		new_ally.UnitStats.res_chance = allyCellInfo.get_meta("resChance")
 		new_ally.UnitStats.consti_chance = allyCellInfo.get_meta("constiChance")
 		new_ally.UnitStats.max_health_chance = allyCellInfo.get_meta("maxHPChance")
+		
+		# XP
+		new_ally.UnitStats.class_power = allyCellInfo.get_meta("ClassPower")
+		new_ally.UnitStats.class_bonus_a = allyCellInfo.get_meta("ClassBonusA")
+		new_ally.UnitStats.class_bonus_b = allyCellInfo.get_meta("ClassBonusB")
+		new_ally.UnitStats.boss_bonus = allyCellInfo.get_meta("BossBonus")
+		new_ally.UnitStats.thief_bonus = allyCellInfo.get_meta("ThiefBonus")
 		
 		# Set Battlefield Info
 		all_allies_location.append(new_ally)
@@ -134,17 +143,18 @@ func _ready():
 		newEnemy.UnitStats.bonus_crit = enemy.get_meta("BonusCrit")
 		newEnemy.UnitStats.bonus_dodge = enemy.get_meta("BonusDodge")
 		newEnemy.UnitStats.bonus_hit = enemy.get_meta("BonusHit")
+		newEnemy.UnitStats.level = enemy.get_meta("Level")
+		newEnemy.UnitStats.class_type = enemy.get_meta("Class")
+		newEnemy.UnitStats.current_health = enemy.get_meta("Health")
+		newEnemy.UnitStats.max_health = enemy.get_meta("MaxHealth")
 		
-		# Stat upgrades
-#		newEnemy.UnitStats.str_chance = enemy.get_meta("strChance")
-#		newEnemy.UnitStats.skill_chance = enemy.get_meta("skillChance")
-#		newEnemy.UnitStats.speed_chance = enemy.get_meta("speedChance")
-#		newEnemy.UnitStats.magic_chance = enemy.get_meta("magicChance")
-#		newEnemy.UnitStats.luck_chance = enemy.get_meta("luckChance")
-#		newEnemy.UnitStats.def_chance = enemy.get_meta("defChance")
-#		newEnemy.UnitStats.res_chance = enemy.get_meta("resChance")
-#		newEnemy.UnitStats.consti_chance = enemy.get_meta("constiChance")
-#		newEnemy.UnitStats.max_health_chance = enemy.get_meta("maxHPChance")
+		
+		# XP Stats
+		newEnemy.UnitStats.class_power = enemy.get_meta("ClassPower")
+		newEnemy.UnitStats.class_bonus_a = enemy.get_meta("ClassBonusA")
+		newEnemy.UnitStats.class_bonus_b = enemy.get_meta("ClassBonusB")
+		newEnemy.UnitStats.boss_bonus = enemy.get_meta("BossBonus")
+		newEnemy.UnitStats.thief_bonus = enemy.get_meta("ThiefBonus")
 		
 		# Set Battlefield Info
 		newEnemy.UnitMovementStats.currentTile = grid[newEnemy.position.x / Cell.CELL_SIZE][newEnemy.position.y / Cell.CELL_SIZE]

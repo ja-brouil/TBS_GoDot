@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/cheer.wav-fe27a1346f64c3a17e96d2fe9b20c42a.sample"
+
+[deps]
+
+source_file="res://assets/sound/misc/cheer.wav"
+dest_files=[ "res://.import/cheer.wav-fe27a1346f64c3a17e96d2fe9b20c42a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=true
+compress/mode=0

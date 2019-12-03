@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/battle_effects/Miss Sprite.png" type="Texture" id=1]
+
+[sub_resource type="Animation" id=1]
+resource_name = "regular"
+length = 10.65
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("Miss Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 2, 2, 239, 160 ), Rect2( 243, 2, 239, 160 ), Rect2( 484, 2, 239, 160 ), Rect2( 725, 2, 239, 160 ), Rect2( 2, 163, 239, 160 ), Rect2( 243, 163, 239, 160 ), Rect2( 484, 163, 239, 160 ), Rect2( 725, 163, 239, 160 ), Rect2( 2, 324, 239, 160 ), Rect2( 243, 324, 239, 160 ), Rect2( 484, 324, 239, 160 ), Rect2( 725, 324, 239, 160 ), Rect2( 2, 485, 239, 160 ), Rect2( 243, 485, 239, 160 ), Rect2( 484, 485, 239, 160 ), Rect2( 725, 485, 239, 160 ), Rect2( 2, 485, 239, 160 ), Rect2( 243, 485, 239, 160 ), Rect2( 484, 485, 239, 160 ), Rect2( 725, 485, 239, 160 ), Rect2( 2, 646, 239, 160 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Miss Sprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 10.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Miss Sprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 10, 10.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="Miss" type="Node2D"]
+
+[node name="Miss Sprite" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 2, 2, 239, 160 )
+
+[node name="anim" type="AnimationPlayer" parent="."]
+playback_speed = 10.0
+anims/regular = SubResource( 1 )

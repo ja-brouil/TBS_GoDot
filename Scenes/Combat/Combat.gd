@@ -30,6 +30,10 @@ var next_combat_state
 var player_hp_destination = 0
 var enemy_hp_destination = 0
 
+# Ready
+func _ready():
+	$"Combat Control/Combat UI/XP Screen".connect("done_adding_xp", self, "back_to_battlefield")
+
 # State update
 func _process(delta):
 	# Player Turn
@@ -220,6 +224,19 @@ func adjust_gui_text_and_hp_box():
 	$"Combat Control/Combat UI/Enemy/Enemy Full HP".region_rect = Rect2(0, 0, 273 * \
 	(float(BattlefieldInfo.combat_ai_unit.UnitStats.current_health) / float(BattlefieldInfo.combat_ai_unit.UnitStats.max_health)), \
 	37)
+	
+	# Set Arrows
+	# Weapon Bonus
+	if Combat_Calculator.player_weapon_bonus == 1:
+		$"Combat Control/Combat UI/Player/Player Up Arrow Combat".visible = true
+	elif Combat_Calculator.player_weapon_bonus == -1:
+		$"Combat Control/Combat UI/Player/Player Down Arrow Combat".visible = true
+	
+		# Weapon Bonus
+	if Combat_Calculator.enemy_weapon_bonus == 1:
+		$"Combat Control/Combat UI/Enemy/Enemy Up Arrow Combat".visible = true
+	elif Combat_Calculator.enemy_weapon_bonus == -1:
+		$"Combat Control/Combat UI/Enemy/Enemy Down Arrow Combat".visible = true
 
 # Adjust player hp over time
 func adjust_player_hp_box_over_time(delta):
@@ -365,7 +382,10 @@ func update_hp_number(anim_name):
 	
 	# Exit early if dodge/miss
 	if "miss" in anim_name:
-		if previous_combat_state == enemy_first_turn:
+		if previous_combat_state == player_first_turn:
+			current_combat_state = player_hp_first_update
+			previous_combat_state = wait
+		elif previous_combat_state == enemy_first_turn:
 			current_combat_state = enemy_hp_first_update
 			previous_combat_state = wait
 		elif previous_combat_state == player_second_turn:
@@ -400,10 +420,13 @@ func update_hp_number(anim_name):
 func play_enemy_miss_anim():
 	var weapon_used = str(BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.weapon_string_name, " dodge")
 	enemy_node_name.get_node("anim").play(weapon_used)
+	# Miss animation above the player
+	$Miss_Player/anim.play("regular")
 
 func play_player_miss_anim():
 	var weapon_used = str(BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped.weapon_string_name, " dodge")
 	player_node_name.get_node("anim").play(weapon_used)
+	$Miss_Enemy/anim.play("regular")
 
 func turn_on():
 	$"Combat Control".visible = true
@@ -416,12 +439,13 @@ func turn_on():
 		BattlefieldInfo.music_player.get_node("EnemyLevel").stop()
 	
 	# Start music
-#	if BattlefieldInfo.turn_manager.turn == Turn_Manager.PLAYER_TURN:
-#		BattlefieldInfo.music_player.get_node("Ally Combat").play(0)
-#	else:
-#		BattlefieldInfo.music_player.get_node("Enemy Combat").play(0)
+	if BattlefieldInfo.turn_manager.turn == Turn_Manager.PLAYER_TURN:
+		BattlefieldInfo.music_player.get_node("Ally Combat").play(0)
+	else:
+		BattlefieldInfo.music_player.get_node("Enemy Combat").play(0)
 	
-	$CombatM.play(0)
+	# Uncomment this for PERSONA! :D
+#	$CombatM.play(0)
 	
 	# Variable Reset
 	player_hp_destination = 0
@@ -438,8 +462,6 @@ func process_enemy_death():
 	enemy_node_name.get_node("anim").play("death")
 	current_combat_state = wait
 	
-	$CombatM.stop()
-	$Victory.play(0)
 
 func on_enemy_death_complete():
 	# Remove unit from battlefield info
@@ -452,17 +474,21 @@ func on_enemy_death_complete():
 	BattlefieldInfo.combat_ai_unit.queue_free()
 	
 	# Process XP stuff here
-	process_xp()
-	
-	# Back to the world map
-	back_to_battlefield()
+	process_death_xp()
 
-# We need to wait here for this to finish, there might be a level up screen as well
+# Process XP and go to Level up screen if needed
 func process_xp():
-	print("From Combat Screen: XP Processed")
+	# Total miss or no damage dealt at all
+	if Combat_Calculator.player_first_actual_damage + Combat_Calculator.player_second_actual_damage <= 0:
+		$"Combat Control/Combat UI/XP Screen".start_no_damage_or_miss()
+	else:
+		$"Combat Control/Combat UI/XP Screen".start()
 	
-	# Back to battlefield
-	back_to_battlefield()
+	current_combat_state = wait
+
+func process_death_xp():
+	current_combat_state = wait
+	$"Combat Control/Combat UI/XP Screen".start_death()
 
 func back_to_battlefield():
 	$"Return Pause".start(0)
@@ -490,10 +516,6 @@ func _on_Pause_timeout():
 	previous_combat_state = next_combat_state
 
 func _on_Return_Pause_timeout():
-	# REMOVE THIS
-	$Victory.stop()
-	$CombatM.stop()
-	
 	# Remove any units that are still alive
 	if player_node_name != null:
 		player_node_name.queue_free()
@@ -523,6 +545,10 @@ func _on_Return_Pause_timeout():
 	
 	for enemy_unit in BattlefieldInfo.enemy_units:
 		enemy_unit.visible = true
+	
+	# Disable arrows
+	$"Combat Control/Combat UI/Enemy/Enemy Up Arrow Combat".visible = false
+	$"Combat Control/Combat UI/Enemy/Enemy Down Arrow Combat".visible = false
 	
 	# Disable this
 	$"Combat Control".visible = false

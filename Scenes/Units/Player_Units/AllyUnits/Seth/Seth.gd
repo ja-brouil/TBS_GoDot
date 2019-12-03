@@ -4,6 +4,7 @@ extends Battlefield_Unit
 func _ready():
 	# Set these later when the level loads
 	UnitMovementStats.movementSteps = 8
+	UnitStats.class_bonus_b = 60
 	$Animation.current_animation = "Idle"
 	
 	# Unit portrait

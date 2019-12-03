@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/xp gain.wav-a33f7059adca52ebe911501a41d96117.sample"
+
+[deps]
+
+source_file="res://assets/sound/misc/xp gain.wav"
+dest_files=[ "res://.import/xp gain.wav-a33f7059adca52ebe911501a41d96117.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=true
+compress/mode=0

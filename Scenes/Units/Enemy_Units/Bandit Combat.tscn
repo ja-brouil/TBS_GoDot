@@ -105,7 +105,7 @@ tracks/6/keys = {
 }
 
 [sub_resource type="Animation" id=2]
-length = 0.1
+length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("combat_sprite:region_rect")
 tracks/0/interp = 1
@@ -113,10 +113,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Rect2( 3, 77, 80, 136 ) ]
+"times": PoolRealArray( 0, 0.3, 0.6, 1, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 3, 77, 80, 136 ), Rect2( 3719, 62, 118, 106 ), Rect2( 4472, 100, 110, 110 ), Rect2( 4655, 97, 95, 111 ), Rect2( 3, 77, 80, 136 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("combat_sprite:position")
@@ -127,8 +127,20 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
+"update": 1,
 "values": [ Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("combat_sprite:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=3]

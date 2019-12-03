@@ -135,6 +135,16 @@ func update_preview_box():
 	$"Preview/Player/Player Crit".text = str(Combat_Calculator.player_critical_rate)
 	$"Preview/Player/Player Hit".text = str(Combat_Calculator.player_accuracy)
 	
+	# Double Attack
+	if Combat_Calculator.player_double_attack:
+		$"Preview/Player/Player Double Attack Logo".visible = true
+	
+	# Weapon Bonus
+	if Combat_Calculator.player_weapon_bonus == 1:
+		$"Preview/Player/Player Up Arrow Combat".visible = true
+	elif Combat_Calculator.player_weapon_bonus == -1:
+		$"Preview/Player/Player Down Arrow Combat".visible = true
+	
 	# Enemy
 	$"Preview/Enemy/Enemy Name".text = BattlefieldInfo.combat_ai_unit.UnitStats.name
 	$"Preview/Enemy/Enemy Item Icon".texture = BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.icon
@@ -143,6 +153,16 @@ func update_preview_box():
 	$"Preview/Enemy/Enemy Dmg".text = str(Combat_Calculator.enemy_damage)
 	$"Preview/Enemy/Enemy Crit".text = str(Combat_Calculator.enemy_critical_rate)
 	$"Preview/Enemy/Enemy Hit".text = str(Combat_Calculator.enemy_accuracy)
+	
+	# Double attack
+	if Combat_Calculator.enemy_double_attack:
+		$"Preview/Enemy/Enemy Double Attack Logo".visible = true
+	
+	# Weapon Bonus
+	if Combat_Calculator.enemy_weapon_bonus == 1:
+		$"Preview/Enemy/Enemy Up Arrow Combat".visible = true
+	elif Combat_Calculator.enemy_weapon_bonus == -1:
+		$"Preview/Enemy/Enemy Down Arrow Combat".visible = true
 
 # Set position of menu -> This needs to be fixed later
 func set_menu_position():
@@ -187,6 +207,13 @@ func turn_off():
 	current_option_selected.get_node("Cursor Select").visible = false
 	turn_off_red_tiles()
 	is_active = false
+	# Turn off all arrows and 2x
+	$"Preview/Player/Player Double Attack Logo".visible = false
+	$"Preview/Enemy/Enemy Double Attack Logo".visible = false
+	$"Preview/Enemy/Enemy Up Arrow Combat".visible = false
+	$"Preview/Enemy/Enemy Down Arrow Combat".visible = false
+	$"Preview/Player/Player Up Arrow Combat".visible = false
+	$"Preview/Player/Player Down Arrow Combat".visible = false
 
 func _on_Timer_timeout():
 	is_active = true
