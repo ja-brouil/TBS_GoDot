@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/Textures/Combat Transition.shader" type="Shader" id=1]
+[ext_resource path="res://assets/transition/shards.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Transition/Combat Transition.gd" type="Script" id=3]
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 1 )
+shader_param/cutoff = 0.0
+shader_param/smooth_size = 0.206
+shader_param/mask = ExtResource( 2 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "shard_transition"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/cutoff")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+
+[node name="Combat Trans" type="ColorRect"]
+material = SubResource( 2 )
+margin_right = 240.0
+margin_bottom = 160.0
+color = Color( 1, 1, 1, 0.501961 )
+script = ExtResource( 3 )
+
+[node name="anim" type="AnimationPlayer" parent="."]
+anims/shard_transition = SubResource( 3 )

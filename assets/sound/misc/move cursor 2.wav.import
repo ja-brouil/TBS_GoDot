@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/move cursor 2.wav-9d2e4e947224a59ecf59fa9905959c79.sample"
+
+[deps]
+
+source_file="res://assets/sound/misc/move cursor 2.wav"
+dest_files=[ "res://.import/move cursor 2.wav-9d2e4e947224a59ecf59fa9905959c79.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

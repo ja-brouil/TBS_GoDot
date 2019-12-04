@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/Units/Unit_Scripts/Ally Combat Script.gd" type="Script" id=1]
 [ext_resource path="res://assets/units/cavalier/Seth Battle.png" type="Texture" id=2]
 [ext_resource path="res://assets/transition/white flash.png" type="Texture" id=3]
 [ext_resource path="res://assets/battle_effects/Physical Effects.png" type="Texture" id=4]
 [ext_resource path="res://assets/sound/unitMovement/Horse Steps.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/sound/misc/slow horse step.wav" type="AudioStream" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "sword crit"
@@ -29,7 +30,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 2.74, 3.03, 3.34, 3.63, 3.97, 4.3, 4.66, 5, 5.43, 5.85, 6.21, 6.66, 14.02, 14.26, 14.51, 15.74, 16, 16.25, 16.55, 16.86, 17.11, 17.37, 17.63, 17.9, 18.2, 18.44, 18.76, 19.01, 19.26, 19.57, 19.91, 20.19, 20.46, 20.8, 21.06, 21.41, 21.74 ),
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 2.74, 3.03, 3.34, 3.63, 3.97, 4.3, 4.66, 5, 5.43, 5.85, 6.21, 6.66, 14.02, 14.26, 14.51, 15.74, 16, 16.25, 16.55, 16.86, 17.11, 17.37, 17.63, 17.9, 18.2, 18.44, 18.76, 19.01, 19.26, 19.57, 19.91, 20.19, 20.46, 20.8, 21.06, 21.41, 21.73 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( -3, 0 ), Vector2( -2, -1 ), Vector2( -1, -8 ), Vector2( -1, 2 ), Vector2( -1, 2 ), Vector2( -1, 2 ), Vector2( -1, -1 ), Vector2( -1, -6 ), Vector2( -1, -6 ), Vector2( -1, -6 ), Vector2( -1, -6 ), Vector2( -1, -6 ), Vector2( -1, -6 ), Vector2( -1, -6 ), Vector2( -1, -6 ), Vector2( -1, 1 ), Vector2( -21, -5 ), Vector2( -45, -5 ), Vector2( -55, 0 ), Vector2( -50, 0 ), Vector2( -32, -1 ), Vector2( -22, -1 ), Vector2( -15, -1 ), Vector2( -8, -10 ), Vector2( 2, -15 ), Vector2( 7, -15 ), Vector2( 12, -12 ), Vector2( 17, -12 ), Vector2( 22, -9 ), Vector2( 26, -5 ), Vector2( 29, -5 ), Vector2( 30, -5 ), Vector2( 31, 8 ), Vector2( 26, 5 ), Vector2( 21, 5 ), Vector2( 22, 4 ), Vector2( 17, 4 ), Vector2( 14, 4 ), Vector2( 10, 3 ), Vector2( 5, 0 ), Vector2( 0, 0 ) ]
@@ -171,6 +172,18 @@ tracks/11/keys = {
 "update": 1,
 "values": [ true, false ]
 }
+tracks/12/type = "value"
+tracks/12/path = NodePath("soft horsestep:playing")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 20.46, 20.77 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "sword dodge"
@@ -213,7 +226,7 @@ tracks/2/keys = {
 "values": [ 1, 0 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=3]
 resource_name = "sword miss"
 length = 10.5
 step = 0.01
@@ -421,8 +434,11 @@ region_rect = Rect2( 253, 853, 238, 143 )
 playback_speed = 4.0
 "anims/sword crit" = SubResource( 1 )
 "anims/sword dodge" = SubResource( 2 )
-"anims/sword miss" = SubResource( 5 )
+"anims/sword miss" = SubResource( 3 )
 "anims/sword regular" = SubResource( 4 )
 
 [node name="horse movement" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
+
+[node name="soft horsestep" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )

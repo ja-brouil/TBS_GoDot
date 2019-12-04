@@ -548,6 +548,7 @@ anims/Up = SubResource( 10 )
 
 [node name="footsteps" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
+volume_db = 2.0
 
 [node name="Cursor Select" parent="." instance=ExtResource( 4 )]
 visible = false

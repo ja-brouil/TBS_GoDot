@@ -479,6 +479,12 @@ func on_enemy_death_complete():
 
 # Process XP and go to Level up screen if needed
 func process_xp():
+	# No going past level 20
+	if BattlefieldInfo.combat_player_unit.UnitStats.level == 20:
+		current_combat_state = wait
+		back_to_battlefield()
+		return
+	
 	$"Combat Control/Combat UI/XP Screen".visible = true
 	# Total miss or no damage dealt at all
 	if Combat_Calculator.player_first_actual_damage + Combat_Calculator.player_second_actual_damage <= 0:
@@ -489,6 +495,12 @@ func process_xp():
 	current_combat_state = wait
 
 func process_death_xp():
+	# No going past level 20
+	if BattlefieldInfo.combat_player_unit.UnitStats.level == 20:
+		current_combat_state = wait
+		back_to_battlefield()
+		return
+	
 	$"Combat Control/Combat UI/XP Screen".visible = true
 	current_combat_state = wait
 	$"Combat Control/Combat UI/XP Screen".start_death()
@@ -557,6 +569,9 @@ func _on_Return_Pause_timeout():
 	
 	# Disable this
 	$"Combat Control".visible = false
+	
+	# Disable xp if it's on
+	$"Combat Control/Combat UI/Level Up Screen".visible = false
 	
 	# Set unit state to done
 	# Set the ally unit to done status | Greyscale

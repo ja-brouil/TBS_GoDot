@@ -9,8 +9,8 @@
 [ext_resource path="res://icon.png" type="Texture" id=7]
 [ext_resource path="res://Scenes/Combat/Up Arrow Combat.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/Combat/Down Arrow Combat.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Scenes/GUI/XP/XP Screen.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Scenes/GUI/XP/Level Up Screen.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scenes/GUI/XP and Level/XP Screen.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/GUI/XP and Level/Level Up Screen.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Scenes/Combat/Miss.tscn" type="PackedScene" id=12]
 
 [sub_resource type="StyleBoxTexture" id=1]
@@ -297,6 +297,7 @@ position = Vector2( 138.796, 131.083 )
 [node name="XP Screen" parent="Combat Control/Combat UI" instance=ExtResource( 10 )]
 
 [node name="Level Up Screen" parent="Combat Control/Combat UI" instance=ExtResource( 11 )]
+visible = false
 
 [node name="Ally Unit" type="Position2D" parent="."]
 position = Vector2( 156, 71 )
