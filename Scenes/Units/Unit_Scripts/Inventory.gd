@@ -35,8 +35,21 @@ func add_item(item):
 	if current_item_equipped == null:
 		current_item_equipped = item
 
+# Remove an item from the unit's inventory
 func remove_item(item):
-	# Remove the item from the inventory
-	# Check if we have 0 healing/attack items based on what type the item was
-	# set the max attack rnage/max heal range back to 0 if we don't have anything left
-	pass
+	# Remove the item from the inventory and remove object from the system
+	inventory.erase(item)
+	item.queue_free()
+	
+	MAX_ATTACK_RANGE = 0
+	MAX_HEAL_RANGE = 0
+	
+	# Get new max ranges
+	for inv_item in inventory:
+		if inv_item.item_class == Item.ITEM_CLASS.MAGIC && inv_item.weapon_type == Item.WEAPON_TYPE.HEALING:
+			if inv_item.max_range > MAX_HEAL_RANGE:
+				MAX_HEAL_RANGE = item.max_range
+		# Anyone else that isn't consumable and a healing item
+		elif inv_item.item_class != Item.ITEM_CLASS.CONSUMABLE && inv_item.weapon_type != Item.WEAPON_TYPE.HEALING:
+			if inv_item.max_range > MAX_ATTACK_RANGE:
+				MAX_ATTACK_RANGE = item.max_range

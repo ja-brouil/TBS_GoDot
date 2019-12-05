@@ -33,6 +33,9 @@ var enemy_hp_destination = 0
 # Healing Flip
 var flip_enemy = false
 
+# Broken item
+var broke_item = false
+
 # Ready
 func _ready():
 	$"Combat Control/Combat UI/XP Screen".connect("done_adding_xp", self, "back_to_battlefield")

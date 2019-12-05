@@ -146,25 +146,34 @@ func get_menu_items():
 
 	# Attack items
 	if BattlefieldInfo.current_Unit_Selected.UnitInventory.MAX_ATTACK_RANGE > 0:
-		var queue = []
-		queue.append([BattlefieldInfo.current_Unit_Selected.UnitInventory.MAX_ATTACK_RANGE, BattlefieldInfo.current_Unit_Selected.UnitMovementStats.currentTile])
-		while !queue.empty():
-			# Pop first tile
-			var check_tile = queue.pop_front()
-			
-			# Check if the tile has someone If we do, we have an ally we can heal and reach Exit, we are done
-			if check_tile[1].occupyingUnit != null && !check_tile[1].occupyingUnit.UnitMovementStats.is_ally:
-				# Add heal option
-				menu_items.append("Attack")
-				break;
-			
-			# Tile was empty 
-			for adjTile in check_tile[1].adjCells:
-				var next_cost = check_tile[0] - 1
-				
-				if next_cost >= 0:
-					queue.append([next_cost, adjTile])
-	
+		# Build item slot
+		for weapon in BattlefieldInfo.current_Unit_Selected.UnitInventory.inventory:
+			if weapon.item_class == Item.ITEM_CLASS.PHYSICAL || weapon.item_class == Item.ITEM_CLASS.MAGIC:
+				if weapon.weapon_type != Item.WEAPON_TYPE.HEALING:
+					# Check if we can reach that unit
+					var queue = []
+					#var max_range # Max range
+					#var min_range # Min range
+					queue.append([weapon.max_range, BattlefieldInfo.current_Unit_Selected.UnitMovementStats.currentTile])
+					while !queue.empty():
+						# Pop first tile
+						var check_tile = queue.pop_front()
+						
+						# Check if the tile has someone If we do, we have an enemy we can attack Exit, we are done
+						if check_tile[1].occupyingUnit != null && !check_tile[1].occupyingUnit.UnitMovementStats.is_ally:
+							if Calculators.get_distance_between_two_tiles(check_tile[1], BattlefieldInfo.current_Unit_Selected.UnitMovementStats.currentTile) >= weapon.min_range:
+								# Add Attack
+								if !menu_items.has("Attack"):
+									menu_items.append("Attack")
+								break;
+						
+						# Tile was empty 
+						for adjTile in check_tile[1].adjCells:
+							var next_cost = check_tile[0] - 1
+							
+							if next_cost >= 0:
+								queue.append([next_cost, adjTile])
+
 	# Trade Option | Convoy
 	for adj_cell in BattlefieldInfo.current_Unit_Selected.UnitMovementStats.currentTile.adjCells:
 		if adj_cell.occupyingUnit != null && adj_cell.occupyingUnit.UnitMovementStats.is_ally:

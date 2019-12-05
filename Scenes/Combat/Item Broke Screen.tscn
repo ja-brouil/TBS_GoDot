@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scenes/Combat/Item Broke Screen.gd" type="Script" id=1]
+[ext_resource path="res://assets/sound/misc/item broke.wav" type="AudioStream" id=2]
+[ext_resource path="res://assets/UI/Panels/unitInfoBox.png" type="Texture" id=3]
+[ext_resource path="res://FE Icon.jpg" type="Texture" id=4]
+[ext_resource path="res://assets/font/Main Font.ttf" type="DynamicFontData" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+outline_size = 1
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 5 )
+
+[node name="Item Broke Screen" type="Control"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="Item Broke Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+
+[node name="Item Broke Box" type="TextureRect" parent="."]
+margin_right = 98.0
+margin_bottom = 44.0
+texture = ExtResource( 3 )
+
+[node name="Bg color" type="ColorRect" parent="Item Broke Box"]
+show_behind_parent = true
+margin_left = 6.0
+margin_top = 4.0
+margin_right = 98.0
+margin_bottom = 44.0
+color = Color( 0.905882, 0.784314, 0.678431, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="item icon" type="Sprite" parent="Item Broke Box"]
+position = Vector2( 23.3526, 24.0694 )
+texture = ExtResource( 4 )
+
+[node name="item name" type="Label" parent="Item Broke Box"]
+margin_left = 42.1818
+margin_top = 13.4755
+margin_right = 211.182
+margin_bottom = 44.4755
+rect_scale = Vector2( 0.25, 0.25 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "Test Name"
+align = 1
+valign = 1
+
+[node name="is broken" type="Label" parent="Item Broke Box"]
+margin_left = 43.5106
+margin_top = 24.9292
+margin_right = 212.511
+margin_bottom = 55.9292
+rect_scale = Vector2( 0.25, 0.25 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "is broken!"
+align = 1
+valign = 1
+
+[node name="Exit" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+[connection signal="timeout" from="Exit" to="." method="_on_Exit_timeout"]

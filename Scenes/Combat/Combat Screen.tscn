@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Scenes/Combat/Combat.gd" type="Script" id=1]
 [ext_resource path="res://assets/UI/combatUI/Plains.png" type="Texture" id=2]
@@ -11,7 +11,8 @@
 [ext_resource path="res://Scenes/Combat/Down Arrow Combat.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/GUI/XP and Level/XP Screen.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scenes/GUI/XP and Level/Level Up Screen.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Scenes/Combat/Miss.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenes/Combat/Item Broke Screen.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenes/Combat/Miss.tscn" type="PackedScene" id=13]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 3 )
@@ -299,6 +300,12 @@ position = Vector2( 138.796, 131.083 )
 [node name="Level Up Screen" parent="Combat Control/Combat UI" instance=ExtResource( 11 )]
 visible = false
 
+[node name="Item Broke Screen" parent="Combat Control/Combat UI" instance=ExtResource( 12 )]
+margin_left = 70.9363
+margin_top = 105.435
+margin_right = 70.9363
+margin_bottom = 105.435
+
 [node name="Ally Unit" type="Position2D" parent="."]
 position = Vector2( 156, 71 )
 
@@ -313,11 +320,11 @@ one_shot = true
 wait_time = 0.85
 one_shot = true
 
-[node name="Miss_Player" parent="." instance=ExtResource( 12 )]
+[node name="Miss_Player" parent="." instance=ExtResource( 13 )]
 position = Vector2( 72.6183, 74.8539 )
 z_index = 2
 
-[node name="Miss_Enemy" parent="." instance=ExtResource( 12 )]
+[node name="Miss_Enemy" parent="." instance=ExtResource( 13 )]
 position = Vector2( 143.622, 80.7829 )
 z_index = 2
 [connection signal="timeout" from="Pause" to="." method="_on_Pause_timeout"]

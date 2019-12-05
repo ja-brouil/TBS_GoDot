@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/units/cleric/Heal Restore.png" type="Texture" id=2]
 [ext_resource path="res://assets/sound/battle sounds/Heal.wav" type="AudioStream" id=3]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "staff miss"
 length = 1.1
 tracks/0/type = "value"
@@ -32,8 +32,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, -1.19209e-07 ), Vector2( 0, -1.19209e-07 ), Vector2( 0, -1.19209e-07 ) ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "staff regular"
+[sub_resource type="Animation" id=2]
 length = 7.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Natasha Combat Sprite:region_rect")
@@ -81,7 +80,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 1.5 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ Vector2( -76, -3 ) ]
+"values": [ Vector2( -36, -3 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Battle Effect:region_rect")
@@ -117,15 +116,14 @@ __meta__ = {
 }
 
 [node name="Natasha Combat Sprite" type="Sprite" parent="."]
-position = Vector2( 0, -1.19209e-07 )
+position = Vector2( 0, -2 )
 scale = Vector2( 1.25, 1.25 )
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 9, 30, 20, 32 )
+region_rect = Rect2( 79, 27, 28, 36 )
 
 [node name="Battle Effect" type="Sprite" parent="."]
-visible = false
-position = Vector2( -76, -3 )
+position = Vector2( -36, -3 )
 z_index = 2
 texture = ExtResource( 2 )
 region_enabled = true
@@ -133,8 +131,8 @@ region_rect = Rect2( 2, 2, 240, 160 )
 
 [node name="anim" type="AnimationPlayer" parent="."]
 playback_speed = 4.0
-"anims/staff miss" = SubResource( 2 )
-"anims/staff regular" = SubResource( 1 )
+"anims/staff miss" = SubResource( 1 )
+"anims/staff regular" = SubResource( 2 )
 
 [node name="Healing" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
