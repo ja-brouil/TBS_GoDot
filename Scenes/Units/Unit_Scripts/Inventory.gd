@@ -16,7 +16,8 @@ var current_item_equipped
 # Add item to the inventory
 func add_item(item):
 	if inventory.size() == MAX_INVENTORY:
-		print("Can't add item placeholder! Send to convoy!")
+		print("FROM: INVENTORY: Can't add item placeholder! Send to convoy!")
+		item.queue_free()
 	else:
 		add_child(item)
 		inventory.append(item)
@@ -33,3 +34,9 @@ func add_item(item):
 	
 	if current_item_equipped == null:
 		current_item_equipped = item
+
+func remove_item(item):
+	# Remove the item from the inventory
+	# Check if we have 0 healing/attack items based on what type the item was
+	# set the max attack rnage/max heal range back to 0 if we don't have anything left
+	pass

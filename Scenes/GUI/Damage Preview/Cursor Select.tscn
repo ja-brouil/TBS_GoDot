@@ -2,7 +2,6 @@
 
 [ext_resource path="res://assets/UI/Damage Preview/Cursor/staticCursor.png" type="Texture" id=1]
 
-
 [node name="Cursor Select" type="Sprite"]
 texture = ExtResource( 1 )
 centered = false

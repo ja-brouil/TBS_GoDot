@@ -115,28 +115,55 @@ func build_menu(menu_items):
 func get_menu_items():
 	var menu_items = []
 	
-	# Check which enemies and allies are around
-	for adj_cell in BattlefieldInfo.current_Unit_Selected.UnitMovementStats.currentTile.adjCells:
-		# Do we have a healing item?
-		for player_item in BattlefieldInfo.current_Unit_Selected.UnitInventory.inventory:
-			if player_item.item_class == Item.ITEM_CLASS.MAGIC && player_item.weapon_type == Item.WEAPON_TYPE.HEALING:
-				# calculate based on each item if we can reach that person
-				print("Have a healing item!")
-				
+	# Do we have a healing item? -> This can build the array and send this information already off to the healing screen.
+	if BattlefieldInfo.current_Unit_Selected.UnitInventory.MAX_HEAL_RANGE > 0:
+		# Build item slot
+		for weapon in BattlefieldInfo.current_Unit_Selected.UnitInventory.inventory:
+			if weapon.item_class == Item.ITEM_CLASS.PHYSICAL || weapon.item_class == Item.ITEM_CLASS.MAGIC:
+				if weapon.weapon_type == Item.WEAPON_TYPE.HEALING:
+					# Check if we can reach that unit
+					var queue = []
+					#var max_range # Max range
+					#var min_range # Min range
+					queue.append([weapon.max_range, BattlefieldInfo.current_Unit_Selected.UnitMovementStats.currentTile])
+					while !queue.empty():
+						# Pop first tile
+						var check_tile = queue.pop_front()
+						
+						# Check if the tile has someone If we do, we have an ally we can heal and reach Exit, we are done
+						if check_tile[1].occupyingUnit != null && check_tile[1].occupyingUnit.UnitMovementStats.is_ally && check_tile[1].occupyingUnit != BattlefieldInfo.current_Unit_Selected:
+							if Calculators.get_distance_between_two_tiles(check_tile[1], BattlefieldInfo.current_Unit_Selected.UnitMovementStats.currentTile) >= weapon.min_range && check_tile[1].occupyingUnit.UnitStats.current_health < check_tile[1].occupyingUnit.UnitStats.max_health:
+								# Add heal option
+								menu_items.append("Heal")
+								break;
+						
+						# Tile was empty 
+						for adjTile in check_tile[1].adjCells:
+							var next_cost = check_tile[0] - 1
+							
+							if next_cost >= 0:
+								queue.append([next_cost, adjTile])
+
+	# Attack items
+	if BattlefieldInfo.current_Unit_Selected.UnitInventory.MAX_ATTACK_RANGE > 0:
+		var queue = []
+		queue.append([BattlefieldInfo.current_Unit_Selected.UnitInventory.MAX_ATTACK_RANGE, BattlefieldInfo.current_Unit_Selected.UnitMovementStats.currentTile])
+		while !queue.empty():
+			# Pop first tile
+			var check_tile = queue.pop_front()
+			
+			# Check if the tile has someone If we do, we have an ally we can heal and reach Exit, we are done
+			if check_tile[1].occupyingUnit != null && !check_tile[1].occupyingUnit.UnitMovementStats.is_ally:
 				# Add heal option
-				if !menu_items.has("Heal"):
-					menu_items.append("Heal")
-		
-		# Attack items
-		for player_item in BattlefieldInfo.current_Unit_Selected.UnitInventory.inventory:
-			# This should be based on how far you can reach -> For now if we have an item | This null check should be moved up as an optimization
-			if player_item != null:
-				# Check here with the longest distance normally
-				for adj_cell in BattlefieldInfo.current_Unit_Selected.UnitMovementStats.currentTile.adjCells:
-					if adj_cell.occupyingUnit != null && !adj_cell.occupyingUnit.UnitMovementStats.is_ally:
-						if !menu_items.has("Attack"):
-							menu_items.append("Attack")
-							break
+				menu_items.append("Attack")
+				break;
+			
+			# Tile was empty 
+			for adjTile in check_tile[1].adjCells:
+				var next_cost = check_tile[0] - 1
+				
+				if next_cost >= 0:
+					queue.append([next_cost, adjTile])
 	
 	# Trade Option | Convoy
 	for adj_cell in BattlefieldInfo.current_Unit_Selected.UnitMovementStats.currentTile.adjCells:
@@ -175,14 +202,14 @@ func process_selection():
 		"Attack":
 			# Go to the other menu
 			get_parent().get_node("Weapon Select").start()
-			print("From Action Selector: Selected Attack! Go to the attack screen!")
-			
 			# Turn off
 			hide_action_menu()
 		"Convoy":
 			print("From Action Selector: Selected Convoy! Go to the convoy screen!")
-		"Healing":
-			print("From Action Selector: Selected Healing! Go to the healing screen!")
+		"Heal":
+			get_parent().get_node("Healing Select").start()
+			# Turn off
+			hide_action_menu()
 		"Item":
 			print("From Action Selector: Selected Item! Go to the item screen!")
 		"Trade":

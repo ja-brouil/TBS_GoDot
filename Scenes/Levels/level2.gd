@@ -87,6 +87,8 @@ func _ready():
 		new_ally.UnitStats.bonus_hit = allyCellInfo.get_meta("BonusHit")
 		new_ally.UnitStats.level = allyCellInfo.get_meta("Level")
 		new_ally.UnitStats.class_type = allyCellInfo.get_meta("Class")
+		new_ally.UnitStats.current_health = allyCellInfo.get_meta("Health")
+		new_ally.UnitStats.max_health = allyCellInfo.get_meta("MaxHealth")
 		
 		# Stat upgrades
 		new_ally.UnitStats.str_chance = allyCellInfo.get_meta("strChance")

@@ -67,6 +67,9 @@ var enemy_second_actual_damage = 0
 var player_effective_bonus = 1
 var enemy_effective_bonus = 1
 
+# Healing
+var player_healing_total = 0
+
 # Miss
 var player_missed = false
 var enemy_missed = false
@@ -421,3 +424,7 @@ func get_weapon_bonus():
 	else:
 		player_weapon_bonus = 0
 		enemy_weapon_bonus = 0
+
+func calculate_healing():
+	player_healing_total = 0
+	player_healing_total = BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped.might + BattlefieldInfo.combat_player_unit.UnitStats.magic

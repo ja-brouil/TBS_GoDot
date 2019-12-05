@@ -23,12 +23,15 @@ var ally_song_location = 0
 var enemy_song_location = 0
 
 # Update hp + variables needed
-enum {player_first_turn, player_hp_first_update, enemy_first_turn, enemy_hp_first_update, player_second_turn, player_hp_second_update, enemy_second_turn, enemy_hp_second_update, player_death, enemy_death, wait}
+enum {player_first_turn, player_hp_first_update, enemy_first_turn, enemy_hp_first_update, player_second_turn, player_hp_second_update, enemy_second_turn, enemy_hp_second_update, player_death, enemy_death, player_healing, player_healing_adjust, wait}
 var current_combat_state = wait
 var previous_combat_state = wait
 var next_combat_state
 var player_hp_destination = 0
 var enemy_hp_destination = 0
+
+# Healing Flip
+var flip_enemy = false
 
 # Ready
 func _ready():
@@ -129,12 +132,27 @@ func _process(delta):
 			enemy_death:
 				process_enemy_death()
 				return
+			player_healing:
+				# Play healing anim
+				#enemy_node_name.flip_h = true
+				#flip_enemy = true
+				player_healing_anim()
+			player_healing_adjust:
+				# Update
+				adjust_healing_player(delta)
+				
+				# Did we pass our destination hp?
+				if BattlefieldInfo.combat_ai_unit.UnitStats.current_health >= enemy_hp_destination:
+					BattlefieldInfo.combat_ai_unit.UnitStats.current_health = enemy_hp_destination
+					set_enemy_box()
+					process_heal_xp()
+					current_combat_state = wait
 			wait:
 				pass
 	elif BattlefieldInfo.turn_manager.turn == Turn_Manager.ENEMY_TURN:
 		pass
 	# Enemy Turn Reverse the above code basically
-	
+
 
 # Combat Process
 func start_combat(current_combat_state): 
@@ -228,16 +246,17 @@ func adjust_gui_text_and_hp_box():
 	
 	# Set Arrows
 	# Weapon Bonus
-	if Combat_Calculator.player_weapon_bonus == 1:
-		$"Combat Control/Combat UI/Player/Player Up Arrow Combat".visible = true
-	elif Combat_Calculator.player_weapon_bonus == -1:
-		$"Combat Control/Combat UI/Player/Player Down Arrow Combat".visible = true
-	
-		# Weapon Bonus
-	if Combat_Calculator.enemy_weapon_bonus == 1:
-		$"Combat Control/Combat UI/Enemy/Enemy Up Arrow Combat".visible = true
-	elif Combat_Calculator.enemy_weapon_bonus == -1:
-		$"Combat Control/Combat UI/Enemy/Enemy Down Arrow Combat".visible = true
+	if current_combat_state != player_healing:
+		if Combat_Calculator.player_weapon_bonus == 1:
+			$"Combat Control/Combat UI/Player/Player Up Arrow Combat".visible = true
+		elif Combat_Calculator.player_weapon_bonus == -1:
+			$"Combat Control/Combat UI/Player/Player Down Arrow Combat".visible = true
+		
+			# Weapon Bonus
+		if Combat_Calculator.enemy_weapon_bonus == 1:
+			$"Combat Control/Combat UI/Enemy/Enemy Up Arrow Combat".visible = true
+		elif Combat_Calculator.enemy_weapon_bonus == -1:
+			$"Combat Control/Combat UI/Enemy/Enemy Down Arrow Combat".visible = true
 
 # Adjust player hp over time
 func adjust_player_hp_box_over_time(delta):
@@ -262,6 +281,24 @@ func set_player_box():
 	# Adjust HP Text
 	var temp = int(BattlefieldInfo.combat_player_unit.UnitStats.current_health)
 	$"Combat Control/Combat UI/Player/Player HP Number".text = str(temp)
+
+func adjust_healing_player(delta):
+	# Adjust HP
+	BattlefieldInfo.combat_ai_unit.UnitStats.current_health += (SPEED * delta)
+	
+	# Set enemy rect %
+	$"Combat Control/Combat UI/Enemy/Enemy Full HP".region_rect = Rect2(0, 0, 273 * \
+	(float(BattlefieldInfo.combat_ai_unit.UnitStats.current_health) / float(BattlefieldInfo.combat_ai_unit.UnitStats.max_health)), \
+	37)
+	
+	# Adjust HP Text
+	var temp = int(BattlefieldInfo.combat_ai_unit.UnitStats.current_health)
+	$"Combat Control/Combat UI/Enemy/Enemy HP Number".text = str(temp)
+
+func player_healing_anim():
+	current_combat_state = wait
+	
+	player_node_name.get_node("anim").play("staff regular")
 
 # Adjust enemy hp over time
 func adjust_enemy_hp_box_over_time(delta):
@@ -377,6 +414,17 @@ func update_hp_number(anim_name):
 		# Unit has died, we exit right away
 		return
 	
+	# Healing
+	if "staff" in anim_name:
+		enemy_hp_destination = BattlefieldInfo.combat_ai_unit.UnitStats.current_health + Combat_Calculator.player_healing_total
+		
+		# Clamp prevent going past max hp
+		if enemy_hp_destination > BattlefieldInfo.combat_ai_unit.UnitStats.max_health:
+			enemy_hp_destination = BattlefieldInfo.combat_ai_unit.UnitStats.max_health
+		current_combat_state = player_healing_adjust
+		previous_combat_state = wait
+		return
+	
 	# For miss purposes
 	enemy_hp_destination = BattlefieldInfo.combat_ai_unit.UnitStats.current_health
 	player_hp_destination = BattlefieldInfo.combat_player_unit.UnitStats.current_health 
@@ -445,8 +493,6 @@ func turn_on():
 	else:
 		BattlefieldInfo.music_player.get_node("Enemy Combat").play(0)
 	
-	# Uncomment this for PERSONA! :D
-#	$CombatM.play(0)
 	
 	# Variable Reset
 	player_hp_destination = 0
@@ -494,6 +540,15 @@ func process_xp():
 	
 	current_combat_state = wait
 
+func process_heal_xp():
+	# No going past level 20
+	if BattlefieldInfo.combat_player_unit.UnitStats.level == 20:
+		current_combat_state = wait
+		back_to_battlefield()
+		return
+	$"Combat Control/Combat UI/XP Screen".visible = true
+	$"Combat Control/Combat UI/XP Screen".start_heal_xp()
+
 func process_death_xp():
 	# No going past level 20
 	if BattlefieldInfo.combat_player_unit.UnitStats.level == 20:
@@ -539,6 +594,11 @@ func _on_Return_Pause_timeout():
 	
 	if enemy_node_name != null:
 		enemy_node_name.queue_free()
+	
+	# Flip enemy back
+#	if flip_enemy:
+#		enemy_node_name.flip_h = false
+#		flip_enemy = false
 	
 	# Set Cursor back to move
 	get_parent().get_parent().get_node("Cursor").enable_standard()

@@ -77,6 +77,10 @@ func processAttackTile(Unit):
 	
 	# Get tiles
 	var moveSteps = (Unit.UnitInventory.MAX_ATTACK_RANGE - 1)
+	
+	if moveSteps == -1:
+		return
+	
 	for blueTile in Unit.UnitMovementStats.allowedMovement:
 		for adjTile in blueTile.adjCells:
 			if !Unit.UnitMovementStats.allowedMovement.has(adjTile):
@@ -105,6 +109,10 @@ func processHealingTile(Unit):
 	
 	# Get tiles
 	var moveSteps = (Unit.UnitInventory.MAX_HEAL_RANGE - 1)
+	
+	if moveSteps == -1:
+		return
+	
 	for blueTile in Unit.UnitMovementStats.allowedMovement:
 		for adjTile in blueTile.adjCells:
 			if !Unit.UnitMovementStats.allowedMovement.has(adjTile):

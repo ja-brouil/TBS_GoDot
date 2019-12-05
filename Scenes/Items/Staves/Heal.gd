@@ -1,28 +1,36 @@
 extends "res://Scenes/Items/Item.gd"
 
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	# Steel Sword stats
-	uses = 40
-	might = 7
-	weight = 5
-	hit = 95
-	crit = 10
+	# Healing Staff Stats
+	uses = 30
+	might = 10
+	weight = 0
+	hit = 100
+	crit = 0
 	max_range = 1
 	min_range = 1
 	
 	# Set strong against and weak against
-	strong_against = Item.WEAPON_TYPE.AXE
+	strong_against = Item.WEAPON_TYPE.HEALING
+	
+	# Type
+	weapon_type = Item.WEAPON_TYPE.HEALING
+	
+	# Class
+	item_class = ITEM_CLASS.MAGIC
 	
 	# Icon
-	icon = preload("res://assets/items/swords/rapier.png")
+	icon = preload("res://assets/items/staves/heal.png")
 	
 	# Description and name
-	item_name = "Rapier"
-	item_description = "A flexible sword with a higher crit chance."
+	item_name = "Heal"
+	item_description = "Restores HP to an adjacent ally."
 	
 	# Animation String name
-	weapon_string_name = "sword"
+	weapon_string_name = "staff"
 
 
 # Special ability -> Modify this later

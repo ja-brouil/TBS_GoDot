@@ -1,16 +1,12 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Scenes/GUI/Damage Preview/Damage Preview.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/GUI/Damage Preview/Healing Preview.gd" type="Script" id=1]
 [ext_resource path="res://assets/UI/Damage Preview/damageBox.png" type="Texture" id=2]
 [ext_resource path="res://FE Icon.jpg" type="Texture" id=3]
 [ext_resource path="res://assets/font/Action Selector Font.tres" type="DynamicFont" id=4]
-[ext_resource path="res://Scenes/Combat/Double Attack Logo.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/Combat/Up Arrow Combat.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Scenes/Combat/Down Arrow Combat.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Scenes/GUI/Hand Cursor/Hand Selector.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/GUI/Hand Cursor/Hand Selector.tscn" type="PackedScene" id=5]
 
-[node name="Damage Preview" type="CanvasLayer"]
-editor/display_folded = true
+[node name="Healing Preview" type="CanvasLayer"]
 script = ExtResource( 1 )
 
 [node name="Preview" type="Control" parent="."]
@@ -102,22 +98,9 @@ margin_right = 191.0
 margin_bottom = 205.155
 rect_scale = Vector2( 0.1, 0.1 )
 custom_fonts/font = ExtResource( 4 )
-text = "100"
+text = "-"
 align = 1
 valign = 1
-
-[node name="Player Double Attack Logo" parent="Preview/Player" instance=ExtResource( 5 )]
-visible = false
-position = Vector2( 77.1297, 54.9286 )
-scale = Vector2( 0.85, 0.85 )
-
-[node name="Player Up Arrow Combat" parent="Preview/Player" instance=ExtResource( 6 )]
-visible = false
-position = Vector2( 28.1113, 24.8282 )
-
-[node name="Player Down Arrow Combat" parent="Preview/Player" instance=ExtResource( 7 )]
-visible = false
-position = Vector2( 27.9061, 22.9815 )
 
 [node name="Enemy" type="Control" parent="Preview"]
 margin_left = -44.221
@@ -176,7 +159,7 @@ margin_right = 191.0
 margin_bottom = 171.525
 rect_scale = Vector2( 0.1, 0.1 )
 custom_fonts/font = ExtResource( 4 )
-text = "100"
+text = "-"
 align = 1
 valign = 1
 
@@ -187,7 +170,7 @@ margin_right = 191.0
 margin_bottom = 189.121
 rect_scale = Vector2( 0.1, 0.1 )
 custom_fonts/font = ExtResource( 4 )
-text = "100"
+text = "-"
 align = 1
 valign = 1
 
@@ -198,28 +181,15 @@ margin_right = 191.0
 margin_bottom = 205.155
 rect_scale = Vector2( 0.1, 0.1 )
 custom_fonts/font = ExtResource( 4 )
-text = "100"
+text = "-"
 align = 1
 valign = 1
-
-[node name="Enemy Double Attack Logo" parent="Preview/Enemy" instance=ExtResource( 5 )]
-visible = false
-position = Vector2( 51.9774, 54.67 )
-scale = Vector2( 0.85, 0.85 )
-
-[node name="Enemy Up Arrow Combat" parent="Preview/Enemy" instance=ExtResource( 6 )]
-visible = false
-position = Vector2( 119.732, 113.007 )
-
-[node name="Enemy Down Arrow Combat" parent="Preview/Enemy" instance=ExtResource( 7 )]
-visible = false
-position = Vector2( 119.321, 110.545 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.4
 one_shot = true
 
-[node name="Hand Selector" parent="." instance=ExtResource( 8 )]
+[node name="Hand Selector" parent="." instance=ExtResource( 5 )]
 visible = false
 margin_left = -59.8514
 margin_top = 27.736

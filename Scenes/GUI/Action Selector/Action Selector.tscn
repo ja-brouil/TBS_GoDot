@@ -17,6 +17,7 @@
 script = ExtResource( 1 )
 
 [node name="Action Menu" type="Control" parent="."]
+visible = false
 
 [node name="Top" parent="Action Menu" instance=ExtResource( 2 )]
 margin_left = -170.683

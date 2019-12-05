@@ -19,6 +19,7 @@ extends Control
 # Constants
 const NO_DAMAGE_XP = 1
 const BASE_XP = 31
+const HEAL_XP = 15
 
 # Mode Coefficient
 var mode_coefficient = 1
@@ -32,7 +33,7 @@ var final_xp_earned = 0
 var has_unit_leveled_up = false
 
 # State
-enum {damage, no_damage, death, progress, wait}
+enum {damage, no_damage, death, progress,heal, wait}
 var current_state = wait
 
 # Speed
@@ -51,6 +52,9 @@ func _process(delta):
 			current_state = progress
 			$xp_gain.play(0)
 		death:
+			current_state = progress
+			$xp_gain.play(0)
+		heal:
 			current_state = progress
 			$xp_gain.play(0)
 		progress:
@@ -156,7 +160,15 @@ func start_death():
 	calculate_total_defeat()
 	
 	current_state = death
+
+func start_heal_xp():
+	final_xp_earned = HEAL_XP
 	
+	set_gui_box()
+	visible = true
+	
+	current_state = heal
+
 # Set Box
 func set_gui_box():
 	# Box

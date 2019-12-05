@@ -14,7 +14,7 @@ func _ready():
 	unit_mugshot = preload("res://assets/units/cleric/natasha mugshot.png")
 	
 	# Add Healing Staff
-	UnitInventory.add_item(preload("res://Scenes/Items/Swords/Iron Sword.tscn").instance())
+	UnitInventory.add_item(preload("res://Scenes/Items/Staves/Heal.tscn").instance())
 	
 	# Set combat node
-	combat_node = preload("res://Scenes/Units/Player_Units/AllyUnits/Eirika/Eirika Combat.tscn")
+	combat_node = preload("res://Scenes/Units/Player_Units/AllyUnits/Natasha/Natasha Combat.tscn")

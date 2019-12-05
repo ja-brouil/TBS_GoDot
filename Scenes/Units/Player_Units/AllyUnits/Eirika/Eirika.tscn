@@ -466,7 +466,7 @@ z_index = 2
 texture = ExtResource( 2 )
 centered = false
 region_enabled = true
-region_rect = Rect2( 65, 81, 16, 15 )
+region_rect = Rect2( 97, 81, 16, 15 )
 __meta__ = {
 "_edit_lock_": true
 }

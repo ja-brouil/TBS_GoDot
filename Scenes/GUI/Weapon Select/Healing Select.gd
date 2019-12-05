@@ -1,7 +1,5 @@
 extends CanvasLayer
 
-# To do later just write down what's needed to be done
-
 # Constants 
 const OFF_SET = Vector2(10,10)
 const X_OFF_SET = Vector2(6,0)
@@ -67,23 +65,45 @@ func build_item_list():
 	var last_position = OFF_SET + X_OFF_SET
 	# Build item slot
 	for weapon in BattlefieldInfo.current_Unit_Selected.UnitInventory.inventory:
-		if weapon.item_class == Item.ITEM_CLASS.PHYSICAL || weapon.item_class == Item.ITEM_CLASS.MAGICAL:
-			if weapon.weapon_type != Item.WEAPON_TYPE.HEALING:
-				# Create a slot
-				var item_slot = preload("res://Scenes/GUI/Weapon Select/Weapon Select Slot.tscn").instance() 
-				
-				# Fill data
-				item_slot.start(weapon)
-				
-				# Place position and add child
-				item_slot.rect_position = last_position + SLOT_Y - Vector2(0,1)
-				$"Weapon Select/Weapon List".add_child(item_slot)
-				
-				# New previous position
-				last_position = item_slot.rect_position
-				
-				# Add to array so we can queue free later
-				item_list_menu.append(weapon)
+		if weapon.item_class == Item.ITEM_CLASS.PHYSICAL || weapon.item_class == Item.ITEM_CLASS.MAGIC:
+			if weapon.weapon_type == Item.WEAPON_TYPE.HEALING:
+				# Check if we can reach that unit
+				var queue = []
+				#var max_range # Max range
+				#var min_range # Min range
+				queue.append([weapon.max_range, BattlefieldInfo.current_Unit_Selected.UnitMovementStats.currentTile])
+				while !queue.empty():
+					# Pop first tile
+					var check_tile = queue.pop_front()
+					
+					# Check if the tile has someone If we do, we have an ally we can heal and reach Exit, we are done
+					if check_tile[1].occupyingUnit != null && check_tile[1].occupyingUnit.UnitMovementStats.is_ally && check_tile[1].occupyingUnit != BattlefieldInfo.current_Unit_Selected:
+						if Calculators.get_distance_between_two_tiles(check_tile[1], BattlefieldInfo.current_Unit_Selected.UnitMovementStats.currentTile) >= weapon.min_range:
+							# Is the unit already at full HP?
+							if check_tile[1].occupyingUnit.UnitStats.current_health < check_tile[1].occupyingUnit.UnitStats.max_health:
+								# Create a slot
+								var item_slot = preload("res://Scenes/GUI/Weapon Select/Weapon Select Slot.tscn").instance() 
+								
+								# Fill data
+								item_slot.start(weapon)
+								
+								# Place position and add child
+								item_slot.rect_position = last_position + SLOT_Y - Vector2(0,1)
+								$"Weapon Select/Weapon List".add_child(item_slot)
+								
+								# New previous position
+								last_position = item_slot.rect_position
+								
+								# Add to array so we can queue free later
+								item_list_menu.append(weapon)
+								break;
+					
+					# Tile was empty 
+					for adjTile in check_tile[1].adjCells:
+						var next_cost = check_tile[0] - 1
+						
+						if next_cost >= 0:
+							queue.append([next_cost, adjTile])
 	
 	# Add Bottom
 	$"Weapon Select/Weapon List/Bottom".rect_position = last_position + SLOT_Y
@@ -121,13 +141,6 @@ func update_item_box():
 	# Set selected item
 	current_selected_option = item_list_menu[current_selected_number]
 	
-	# Set the box to the item
-	$"Weapon Select/Item Box/Atk N".text = str(current_selected_option.might)
-	$"Weapon Select/Item Box/Crit N".text = str(current_selected_option.crit)
-	$"Weapon Select/Item Box/Avoid N".text = str(current_selected_option.weight)
-	$"Weapon Select/Item Box/Hit N".text = str(current_selected_option.hit)
-	$"Weapon Select/Item Box/Weapon Icon".texture = current_selected_option.icon
-	$"Weapon Select/Item Box/Weapon".text = current_selected_option.item_name
 
 # Cancel option
 func go_back():
@@ -146,7 +159,7 @@ func process_selection():
 	BattlefieldInfo.current_Unit_Selected.UnitInventory.current_item_equipped = current_selected_option
 	
 	# Go to the Damage preview screen
-	get_parent().get_node("Damage Preview").start(current_selected_option)
+	get_parent().get_node("Healing Preview").start(current_selected_option)
 
 # On/Off
 func turn_on():

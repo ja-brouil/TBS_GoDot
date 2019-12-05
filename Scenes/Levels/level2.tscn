@@ -140,7 +140,6 @@ shape = SubResource( 2 )
 
 [node name="Enemies" parent="." index="6"]
 editor/display_folded = false
-visible = false
 
 [node name="2847" type="StaticBody2D" parent="." index="7"]
 editor/display_folded = true

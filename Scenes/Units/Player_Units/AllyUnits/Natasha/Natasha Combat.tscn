@@ -1,0 +1,141 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/units/cleric/Natasha Combat.png" type="Texture" id=1]
+[ext_resource path="res://assets/units/cleric/Heal Restore.png" type="Texture" id=2]
+[ext_resource path="res://assets/sound/battle sounds/Heal.wav" type="AudioStream" id=3]
+
+[sub_resource type="Animation" id=2]
+resource_name = "staff miss"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Natasha Combat Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 9, 30, 20, 32 ), Rect2( 13, 86, 18, 31 ), Rect2( 9, 30, 20, 32 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Natasha Combat Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, -1.19209e-07 ), Vector2( 0, -1.19209e-07 ), Vector2( 0, -1.19209e-07 ) ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "staff regular"
+length = 7.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Natasha Combat Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 2.5, 5, 6.5, 7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 9, 30, 20, 32 ), Rect2( 39, 26, 27, 36 ), Rect2( 79, 27, 28, 36 ), Rect2( 119, 30, 28, 33 ), Rect2( 157, 28, 26, 36 ), Rect2( 197, 32, 25, 33 ), Rect2( 9, 30, 20, 32 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Natasha Combat Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 2.5, 5, 6.5, 7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -2 ), Vector2( 0, -1 ), Vector2( 0, -3 ), Vector2( 0, -1 ), Vector2( 0, -1.19209e-07 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Battle Effect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.5, 5.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Battle Effect:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( -76, -3 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Battle Effect:region_rect")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 1.5, 1.8, 2.2, 2.6, 3, 3.3, 3.6, 3.8, 4, 4.3, 4.7, 5, 5.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 2, 2, 240, 160 ), Rect2( 243, 2, 240, 160 ), Rect2( 484, 2, 240, 160 ), Rect2( 725, 2, 240, 160 ), Rect2( 966, 2, 240, 160 ), Rect2( 2, 163, 240, 160 ), Rect2( 243, 163, 240, 160 ), Rect2( 484, 163, 240, 160 ), Rect2( 243, 163, 240, 160 ), Rect2( 2, 163, 240, 160 ), Rect2( 725, 2, 240, 160 ), Rect2( 243, 2, 240, 160 ), Rect2( 2, 2, 240, 160 ) ]
+}
+tracks/5/type = "audio"
+tracks/5/path = NodePath("Healing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 3 )
+} ],
+"times": PoolRealArray( 1.5 )
+}
+
+[node name="Natasha Combat" type="Node2D"]
+__meta__ = {
+"_edit_horizontal_guides_": [ 20.0 ],
+"_edit_vertical_guides_": [ 0.0 ]
+}
+
+[node name="Natasha Combat Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -1.19209e-07 )
+scale = Vector2( 1.25, 1.25 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 9, 30, 20, 32 )
+
+[node name="Battle Effect" type="Sprite" parent="."]
+visible = false
+position = Vector2( -76, -3 )
+z_index = 2
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 2, 2, 240, 160 )
+
+[node name="anim" type="AnimationPlayer" parent="."]
+playback_speed = 4.0
+"anims/staff miss" = SubResource( 2 )
+"anims/staff regular" = SubResource( 1 )
+
+[node name="Healing" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -12.0

@@ -5,7 +5,7 @@ extends Node
 
 # Get the distance between two tiles
 func get_distance_between_two_tiles(tile_a, tile_b):
-	return abs(tile_a.position.x - tile_b.position.x) + abs(tile_a.position.y - tile_b.position.y)
+	return (abs(tile_a.position.x - tile_b.position.x) + abs(tile_a.position.y - tile_b.position.y)) / 16
 
 #  Update a tile with the new info
 func update_unit_tile_info(unit, tile):
