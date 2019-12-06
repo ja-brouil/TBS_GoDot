@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/Message.wav-d9cc08a8f65c86306579cd7f6c380ae6.sample"
+path="res://.import/Level up!.wav-4c8b985fc6cacad37fb7beeedb72a13a.sample"
 
 [deps]
 
-source_file="res://assets/sound/message/Message.wav"
-dest_files=[ "res://.import/Message.wav-d9cc08a8f65c86306579cd7f6c380ae6.sample" ]
+source_file="res://assets/sound/misc/Level up!.wav"
+dest_files=[ "res://.import/Level up!.wav-4c8b985fc6cacad37fb7beeedb72a13a.sample" ]
 
 [params]
 

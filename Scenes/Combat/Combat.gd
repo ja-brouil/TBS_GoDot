@@ -16,7 +16,7 @@ var sea = preload("res://assets/UI/combatUI/Sea.png")
 var village = preload("res://assets/UI/combatUI/Village.png")
 
 # Speed for HP decrease
-const SPEED = 10
+const SPEED = 20
 
 # Music Playback
 var ally_song_location = 0
@@ -254,6 +254,8 @@ func _process(delta):
 
 # Combat Process
 func start_combat(current_combat_state): 
+	set_process(true)
+	
 	# Process actual numbers
 	Combat_Calculator.process_player_combat()
 	Combat_Calculator.process_enemy_combat()
@@ -525,12 +527,11 @@ func enemy_attack():
 	
 	# Check if the weapon broke
 	# Subtract durability from the weapon
-	
-	BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.uses -= 1
-	if BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.uses == 0:
-		broke_item = true
-		Combat_Calculator.enemy_can_counter_attack = false
-		Combat_Calculator.enemy_double_attack = false
+#	BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.uses -= 1
+#	if BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.uses == 0:
+#		broke_item = true
+#		Combat_Calculator.enemy_can_counter_attack = false
+#		Combat_Calculator.enemy_double_attack = false
 
 # Change state machine
 func update_hp_number(anim_name):
@@ -721,6 +722,8 @@ func _on_Pause_timeout():
 	previous_combat_state = next_combat_state
 
 func _on_Return_Pause_timeout():
+	set_process(false)
+	
 	# Remove any units that are still alive
 	if player_node_name != null:
 		player_node_name.queue_free()

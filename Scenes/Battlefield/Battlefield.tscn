@@ -25,12 +25,11 @@ __meta__ = {
 [node name="Level" parent="." instance=ExtResource( 2 )]
 
 [node name="Cursor" parent="." instance=ExtResource( 3 )]
-visible = false
-position = Vector2( 16, 272 )
+position = Vector2( 144, 64 )
 z_index = 5
 
 [node name="GameCamera" parent="." instance=ExtResource( 4 )]
-position = Vector2( 0, 192 )
+position = Vector2( 48, 0 )
 zoom = Vector2( 1, 1 )
 
 [node name="Turn Transition" parent="GameCamera" instance=ExtResource( 5 )]

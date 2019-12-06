@@ -1,0 +1,100 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Scenes/Messaging/Message System.gd" type="Script" id=1]
+[ext_resource path="res://assets/Dialogue/dialogueBox.png" type="Texture" id=2]
+[ext_resource path="res://assets/Dialogue/arrowDialogue.png" type="Texture" id=3]
+[ext_resource path="res://assets/font/Main Font.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/sound/message/Message.wav" type="AudioStream" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Up and Down"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Arrow Texture:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 70.2554, 21.5006 ), Vector2( 70.6936, 18.4331 ) ]
+}
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "Scroll"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.062, 1.0 ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("../../Dialogue Sound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 5 )
+} ],
+"times": PoolRealArray( 0 )
+}
+
+[node name="Message System" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -0.185516
+margin_right = -0.185516
+script = ExtResource( 1 )
+
+[node name="Dialogue Box Texture" type="Sprite" parent="."]
+position = Vector2( 115.287, 57.82 )
+texture = ExtResource( 2 )
+
+[node name="Arrow Texture" type="Sprite" parent="Dialogue Box Texture"]
+position = Vector2( 70.6387, 18.8172 )
+texture = ExtResource( 3 )
+
+[node name="Anim" type="AnimationPlayer" parent="Dialogue Box Texture"]
+playback_speed = 1.25
+"anims/Up and Down" = SubResource( 1 )
+
+[node name="Dialogue" type="Label" parent="Dialogue Box Texture"]
+margin_left = -81.0
+margin_top = -20.0
+margin_right = 1175.0
+margin_bottom = 291.0
+rect_scale = Vector2( 0.13, 0.13 )
+custom_fonts/font = SubResource( 2 )
+text = "Eirika:
+
+This is a test of what this will look like. Remember that this will automatically wrap as needed. The max amount of characters is this."
+autowrap = true
+
+[node name="Dialogue Scroll" type="AnimationPlayer" parent="Dialogue Box Texture/Dialogue"]
+playback_speed = 1.75
+anims/Scroll = SubResource( 3 )
+
+[node name="Dialogue Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -11.954

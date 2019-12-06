@@ -28,6 +28,12 @@ func _ready():
 	# Initial Quandrant and previous
 	cursor_quadrant = TOP_LEFT
 	previous_quadrant = TOP_LEFT
+	
+	# Set initial text
+	set_victory_text()
+
+func set_victory_text():
+	$"Battlefield HUD/Victory Info/V Name".text = BattlefieldInfo.victory_text
 
 func update_battlefield_ui(cursor_direction, cursor_position):
 	# Update Unit Box

@@ -91,8 +91,8 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.501961 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="DynamicFont" id=8]
-size = 20
+[sub_resource type="DynamicFont" id=11]
+size = 15
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 3 )
@@ -125,7 +125,6 @@ __meta__ = {
 }
 
 [node name="Battlefield HUD" type="Control" parent="."]
-visible = false
 margin_left = -0.101715
 margin_top = -0.0882874
 margin_right = 239.899
@@ -216,10 +215,12 @@ __meta__ = {
 anims/Fade = SubResource( 7 )
 
 [node name="V Name" type="Label" parent="Battlefield HUD/Victory Info"]
-margin_right = 180.0
-margin_bottom = 65.0
+margin_left = 1.0
+margin_top = 4.0
+margin_right = 176.0
+margin_bottom = 38.0
 rect_scale = Vector2( 0.25, 0.25 )
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 11 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Seize Throne"

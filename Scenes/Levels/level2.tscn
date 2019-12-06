@@ -28,6 +28,7 @@ extents = Vector2( 8, 8 )
 extents = Vector2( 8, 8 )
 
 [node name="Level" instance=ExtResource( 1 )]
+editor/display_folded = true
 script = ExtResource( 2 )
 
 [node name="YSort" type="YSort" parent="." index="0"]
@@ -38,9 +39,20 @@ editor/display_folded = false
 
 [node name="Allies" parent="." index="3"]
 editor/display_folded = false
+visible = false
+
+[node name="2867" parent="Allies" index="0"]
+visible = false
+
+[node name="2870" parent="Allies" index="1"]
+visible = false
+
+[node name="2281" parent="Allies" index="2"]
+visible = false
 
 [node name="2281" type="StaticBody2D" parent="." index="4"]
 editor/display_folded = true
+visible = false
 position = Vector2( 32, 272 )
 __meta__ = {
 "BonusCrit": 0,
@@ -90,6 +102,7 @@ shape = SubResource( 1 )
 
 [node name="2867" type="StaticBody2D" parent="." index="5"]
 editor/display_folded = true
+visible = false
 position = Vector2( 48, 272 )
 __meta__ = {
 "BonusCrit": 0,
@@ -139,9 +152,11 @@ shape = SubResource( 2 )
 
 [node name="Enemies" parent="." index="6"]
 editor/display_folded = false
+visible = false
 
 [node name="2847" type="StaticBody2D" parent="." index="7"]
 editor/display_folded = true
+visible = false
 position = Vector2( 64, 240 )
 __meta__ = {
 "BonusCrit": 0,
@@ -175,6 +190,7 @@ shape = SubResource( 3 )
 
 [node name="2852" type="StaticBody2D" parent="." index="8"]
 editor/display_folded = true
+visible = false
 position = Vector2( 80, 256 )
 __meta__ = {
 "BonusCrit": 0,
@@ -208,6 +224,7 @@ shape = SubResource( 4 )
 
 [node name="2853" type="StaticBody2D" parent="." index="9"]
 editor/display_folded = true
+visible = false
 position = Vector2( 96, 272 )
 __meta__ = {
 "BonusCrit": 0,
@@ -242,6 +259,7 @@ shape = SubResource( 5 )
 
 [node name="2854" type="StaticBody2D" parent="." index="10"]
 editor/display_folded = true
+visible = false
 position = Vector2( 80, 272 )
 __meta__ = {
 "BonusCrit": 0,
@@ -275,6 +293,7 @@ shape = SubResource( 6 )
 
 [node name="2855" type="StaticBody2D" parent="." index="11"]
 editor/display_folded = true
+visible = false
 position = Vector2( 112, 272 )
 __meta__ = {
 "BonusCrit": 0,
@@ -308,6 +327,7 @@ shape = SubResource( 7 )
 
 [node name="2866" type="StaticBody2D" parent="." index="12"]
 editor/display_folded = true
+visible = false
 position = Vector2( 80, 288 )
 __meta__ = {
 "BonusCrit": 0,

@@ -60,6 +60,7 @@ func get_all_enemies_available():
 func build_item_list():
 	# Clear old menu
 	item_list_menu.clear()
+	usable_weapons.clear()
 	
 	# Place Top
 	$"Weapon Select/Weapon List/Top".rect_position = OFF_SET
@@ -69,21 +70,45 @@ func build_item_list():
 	for weapon in BattlefieldInfo.current_Unit_Selected.UnitInventory.inventory:
 		if weapon.item_class == Item.ITEM_CLASS.PHYSICAL || weapon.item_class == Item.ITEM_CLASS.MAGICAL:
 			if weapon.weapon_type != Item.WEAPON_TYPE.HEALING:
-				# Create a slot
-				var item_slot = preload("res://Scenes/GUI/Weapon Select/Weapon Select Slot.tscn").instance() 
+				# Can we reach the enemy unit with this weapon
+				# Check if we can reach that unit
+				var queue = []
+				#var max_range # Max range
+				#var min_range # Min range
+				queue.append([weapon.max_range, BattlefieldInfo.current_Unit_Selected.UnitMovementStats.currentTile])
+				while !queue.empty():
+					# Pop first tile
+					var check_tile = queue.pop_front()
+					
+					# Check if the tile has someone that we can reach
+					if check_tile[1].occupyingUnit != null && !check_tile[1].occupyingUnit.UnitMovementStats.is_ally:
+						if Calculators.get_distance_between_two_tiles(check_tile[1], BattlefieldInfo.current_Unit_Selected.UnitMovementStats.currentTile) >= weapon.min_range:
+							# Add Attack
+							if !usable_weapons.has(weapon):
+								usable_weapons.append(weapon)
+					
+					# Tile was empty 
+					for adjTile in check_tile[1].adjCells:
+						var next_cost = check_tile[0] - 1
+						if next_cost >= 0:
+								queue.append([next_cost, adjTile])
 				
-				# Fill data
-				item_slot.start(weapon)
-				
-				# Place position and add child
-				item_slot.rect_position = last_position + SLOT_Y - Vector2(0,1)
-				$"Weapon Select/Weapon List".add_child(item_slot)
-				
-				# New previous position
-				last_position = item_slot.rect_position
-				
-				# Add to array so we can queue free later
-				item_list_menu.append(weapon)
+	for weapon in usable_weapons:
+		# Create a slot
+		var item_slot = preload("res://Scenes/GUI/Weapon Select/Weapon Select Slot.tscn").instance() 
+		
+		# Fill data
+		item_slot.start(weapon)
+		
+		# Place position and add child
+		item_slot.rect_position = last_position + SLOT_Y - Vector2(0,1)
+		$"Weapon Select/Weapon List".add_child(item_slot)
+		
+		# New previous position
+		last_position = item_slot.rect_position
+		
+		# Add to array so we can queue free later
+		item_list_menu.append(weapon)
 	
 	# Add Bottom
 	$"Weapon Select/Weapon List/Bottom".rect_position = last_position + SLOT_Y

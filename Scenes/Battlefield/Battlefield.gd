@@ -14,6 +14,9 @@ var music_player
 var battle_sounds
 var weapon_sounds
 
+# Victory Condition
+var victory_text
+
 # Start battlefield game
 func _ready():
 	# Movement Calculator
