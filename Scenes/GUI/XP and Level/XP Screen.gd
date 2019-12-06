@@ -206,4 +206,8 @@ func calculate_total_defeat():
 
 func _on_Return_timeout():
 	current_state = wait
-	emit_signal("done_adding_xp")
+	has_unit_leveled_up = false
+	if get_parent().get_parent().get_parent().broke_item:
+		get_parent().get_node("Item Broke Screen").start(BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped, BattlefieldInfo.combat_player_unit)
+	else:
+		emit_signal("done_adding_xp")

@@ -8,7 +8,7 @@ func _ready():
 	weight = 10
 	hit = 75
 	crit = 0
-	max_range = 1
+	max_range = 2
 	min_range = 1
 	
 	# Set type

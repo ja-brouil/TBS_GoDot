@@ -56,6 +56,7 @@ func process_movement(delta):
 		is_moving = false
 		
 		# Set the new current tile and update the world tiles
+		var h = unit.UnitMovementStats.currentTile 
 		unit.UnitMovementStats.currentTile = destination_cell
 		unit.UnitMovementStats.currentTile.occupyingUnit = unit
 		
@@ -67,12 +68,12 @@ func process_movement(delta):
 		
 		# Activate AI vs Player Unit
 		if unit.has_node("AI"):
-			BattlefieldInfo.turn_manager.turn = Turn_Manager.ENEMY_TURN
-			
 			# Process another AI method here ie, check for attack/do whatever after moving for now just wait
-			unit.UnitActionStatus.set_current_action(Unit_Action_Status.DONE)
-			unit.turn_greyscale_on()
+			unit.UnitActionStatus.set_current_action(Unit_Action_Status.ACTION)
+			
+			# Idle Anim
 			unit.get_node("Animation").current_animation = "Idle"
+			unit.get_node("AI").next_step()
 		else:
 			# Set unit's status to action state and animation
 			unit.UnitActionStatus.set_current_action(Unit_Action_Status.ACTION)

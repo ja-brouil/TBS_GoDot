@@ -139,5 +139,10 @@ anims/Move_Off = SubResource( 1 )
 
 [node name="Animation_E" type="AnimationPlayer" parent="."]
 anims/Move_Off = SubResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.75
+one_shot = true
 [connection signal="animation_finished" from="Animation" to="." method="ally_animation_finished"]
 [connection signal="animation_finished" from="Animation_E" to="." method="enemy_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -110,6 +110,7 @@ func _ready():
 		
 		# Set Battlefield Info
 		all_allies_location.append(new_ally)
+		new_ally.UnitMovementStats.is_ally = true
 		new_ally.UnitMovementStats.currentTile = grid[new_ally.position.x / Cell.CELL_SIZE][new_ally.position.y / Cell.CELL_SIZE]
 		grid[new_ally.position.x / Cell.CELL_SIZE][new_ally.position.y / Cell.CELL_SIZE].occupyingUnit = new_ally
 		
@@ -159,6 +160,7 @@ func _ready():
 		newEnemy.UnitStats.thief_bonus = enemy.get_meta("ThiefBonus")
 		
 		# Set Battlefield Info
+		newEnemy.UnitMovementStats.is_ally = false
 		newEnemy.UnitMovementStats.currentTile = grid[newEnemy.position.x / Cell.CELL_SIZE][newEnemy.position.y / Cell.CELL_SIZE]
 		grid[newEnemy.position.x / Cell.CELL_SIZE][newEnemy.position.y / Cell.CELL_SIZE].occupyingUnit = newEnemy
 		all_enemies_location.append(newEnemy)

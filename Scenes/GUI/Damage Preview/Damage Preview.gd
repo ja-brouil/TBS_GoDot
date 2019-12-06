@@ -26,9 +26,7 @@ func _ready():
 func _input(event):
 	if !is_active:
 		return
-	
 	if Input.is_action_just_pressed("ui_accept"):
-		print("FROM DAMAGE PREVIEW: Go to combat screen")
 		$"Hand Selector/Accept".play(0)
 		process_selection()
 	elif Input.is_action_just_pressed("ui_cancel"):
@@ -48,7 +46,6 @@ func _input(event):
 		$"Hand Selector/Move".play(0)
 		update_enemy_chosen()
 		update_preview_box()
-
 
 # Start
 func start(item):

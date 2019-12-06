@@ -164,10 +164,9 @@ func calculate_damage():
 	# Calculate Damage preview
 	calculate_damage_amounts()
 	
-	# TEST DEBUG REMOVE LATER #
-	print("FROM COMBAT CACL: REMOVE THESE PLACEHOLDERS IN THE CALCULATE DAMAGE FUNCTION LATER")
-	player_can_counter_attack = true
-	enemy_can_counter_attack = true
+	# Check if units can counter
+	check_if_units_can_counter()
+	
 
 # Process this to process combat
 func process_player_combat():
@@ -413,6 +412,25 @@ func reset_stats():
 	enemy_base_damage = 0
 	enemy_base_def = 0
 
+# Check if enemy/player can counter
+func check_if_units_can_counter():
+	# Reset Values
+	player_can_counter_attack = false
+	enemy_can_counter_attack = false
+	
+	# Is anyone unarmed?
+	if BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped.item_name == "Unarmed":
+		player_can_counter_attack = false
+	if BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.item_name == "Unarmed":
+		enemy_can_counter_attack = false
+	
+	# Check Range
+	# Player
+	if Calculators.get_distance_between_two_tiles(BattlefieldInfo.combat_player_unit.UnitMovementStats.currentTile, BattlefieldInfo.combat_ai_unit.UnitMovementStats.currentTile) <= BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped.max_range:
+		player_can_counter_attack = true
+	if Calculators.get_distance_between_two_tiles(BattlefieldInfo.combat_player_unit.UnitMovementStats.currentTile, BattlefieldInfo.combat_ai_unit.UnitMovementStats.currentTile) <= BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.max_range:
+		enemy_can_counter_attack = true
+	
 func get_weapon_bonus():
 	# Player
 	if BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped.strong_against == BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.weapon_type:

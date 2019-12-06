@@ -23,7 +23,7 @@ var ally_song_location = 0
 var enemy_song_location = 0
 
 # Update hp + variables needed
-enum {player_first_turn, player_hp_first_update, enemy_first_turn, enemy_hp_first_update, player_second_turn, player_hp_second_update, enemy_second_turn, enemy_hp_second_update, player_death, enemy_death, player_healing, player_healing_adjust, wait}
+enum {player_first_turn, player_hp_first_update, enemy_first_turn, enemy_hp_first_update, player_second_turn, player_hp_second_update, enemy_second_turn, enemy_hp_second_update, player_death, enemy_death, player_healing, player_healing_adjust, enemy_healing, enemy_healing_adjust wait}
 var current_combat_state = wait
 var previous_combat_state = wait
 var next_combat_state
@@ -40,6 +40,8 @@ var broke_item = false
 func _ready():
 	$"Combat Control/Combat UI/XP Screen".connect("done_adding_xp", self, "back_to_battlefield")
 	$"Combat Control/Combat UI/Level Up Screen".connect("done_leveling_up", self, "back_to_battlefield")
+	
+	BattlefieldInfo.combat_screen = self
 
 # State update
 func _process(delta):
@@ -128,8 +130,6 @@ func _process(delta):
 					# Is the unit dead?
 					if BattlefieldInfo.combat_player_unit.UnitStats.current_health == 0:
 						print("COMBAT SCREEN ANIM: Player Unit has died!")
-						# EXIT
-				# We are done here. so to test, just turn off everything and remove
 			player_death:
 				pass
 			enemy_death:
@@ -152,8 +152,103 @@ func _process(delta):
 					current_combat_state = wait
 			wait:
 				pass
-	elif BattlefieldInfo.turn_manager.turn == Turn_Manager.ENEMY_TURN:
-		pass
+	elif BattlefieldInfo.turn_manager.turn == Turn_Manager.ENEMY_COMBAT_TURN:
+			match current_combat_state:
+				enemy_first_turn:
+					enemy_attack()
+				enemy_hp_first_update:
+					# update GUI Box
+					adjust_player_hp_box_over_time(delta)
+					# Did we pass the destination HP? Else, just continue
+					if BattlefieldInfo.combat_player_unit.UnitStats.current_health <= player_hp_destination:
+						BattlefieldInfo.combat_player_unit.UnitStats.current_health = player_hp_destination
+						set_player_box()
+						# Is the unit dead?
+						if BattlefieldInfo.combat_player_unit.UnitStats.current_health == 0:
+							print("COMBAT SCREEN ANIM: Player Unit has died!")
+							return
+						# Can we attack as a player?
+						if Combat_Calculator.player_can_counter_attack:
+							# Set next state to player first attack
+							current_combat_state = player_first_turn
+							previous_combat_state = player_first_turn
+						# can we NOT counter as a player AND the enemy can double attack
+						elif !Combat_Calculator.player_can_counter_attack && Combat_Calculator.enemy_double_attack:
+							current_combat_state = enemy_second_turn
+							previous_combat_state = enemy_second_turn
+						else:
+							process_xp()
+				player_first_turn:
+					player_attack()
+				player_hp_first_update:
+					# update GUI Box
+					adjust_enemy_hp_box_over_time(delta)
+					# Did we pass the destination HP? Else, just continue
+					if BattlefieldInfo.combat_ai_unit.UnitStats.current_health <= enemy_hp_destination:
+						BattlefieldInfo.combat_ai_unit.UnitStats.current_health = enemy_hp_destination
+						set_enemy_box()
+						# Is the unit dead?
+						if BattlefieldInfo.combat_ai_unit.UnitStats.current_health <= 0:
+							current_combat_state = enemy_death
+							return
+						# Can the unit counter attack and has a double attack?
+						if Combat_Calculator.enemy_can_counter_attack && Combat_Calculator.enemy_double_attack:
+							# Set next state to enemy second attack
+							current_combat_state = enemy_second_turn
+							previous_combat_state = enemy_second_turn
+						# Enemy CANNOT double attack but we can
+						elif !Combat_Calculator.enemy_double_attack && Combat_Calculator.player_can_counter_attack && Combat_Calculator.player_double_attack:
+							current_combat_state = player_second_turn
+							previous_combat_state = player_second_turn
+						else:
+							process_xp()
+				enemy_second_turn:
+					enemy_attack()
+				enemy_hp_second_update:
+					# update GUI Box
+					adjust_player_hp_box_over_time(delta)
+					# Did we pass the destination HP? Else, just continue
+					if BattlefieldInfo.combat_player_unit.UnitStats.current_health <= player_hp_destination:
+						BattlefieldInfo.combat_player_unit.UnitStats.current_health = player_hp_destination
+						set_player_box()
+						# Is the unit dead?
+						if BattlefieldInfo.combat_player_unit.UnitStats.current_health == 0:
+							print("COMBAT SCREEN ANIM: Player Unit has died!")
+							return
+						# Can we attack as a player AND have a double attack?
+						if Combat_Calculator.player_can_counter_attack && Combat_Calculator.player_double_attack:
+							# Set next state to player first attack
+							current_combat_state = player_second_turn
+							previous_combat_state = player_second_turn
+						else:
+							# No one can attack anymore so we are done
+							process_xp()
+				player_second_turn:
+					player_attack()
+				player_hp_second_update:
+					# update GUI Box
+					adjust_enemy_hp_box_over_time(delta)
+					# Did we pass the destination HP? Else, just continue
+					if BattlefieldInfo.combat_ai_unit.UnitStats.current_health <= enemy_hp_destination:
+						BattlefieldInfo.combat_ai_unit.UnitStats.current_health = enemy_hp_destination
+						set_enemy_box()
+						# Is the unit dead?
+						if BattlefieldInfo.combat_ai_unit.UnitStats.current_health == 0:
+							current_combat_state = enemy_death
+							return
+						# No more combat here
+						process_xp()
+				enemy_death:
+					process_enemy_death()
+				player_death:
+					pass
+				enemy_healing:
+					pass
+				enemy_healing_adjust:
+					pass
+				wait:
+					pass
+				
 	# Enemy Turn Reverse the above code basically
 
 
@@ -169,6 +264,10 @@ func start_combat(current_combat_state):
 	
 	# Turn off units and background
 	get_parent().get_parent().get_node("Level").set_modulate(Color(1,1,1,0.5))
+	
+	# Set player and unit to done
+	if BattlefieldInfo.turn_manager.turn == Turn_Manager.ENEMY_COMBAT_TURN:
+		BattlefieldInfo.combat_ai_unit.UnitActionStatus.set_current_action(Unit_Action_Status.DONE)
 	
 	# Turn off Units
 	for ally_unit in BattlefieldInfo.ally_units:
@@ -302,6 +401,12 @@ func player_healing_anim():
 	current_combat_state = wait
 	
 	player_node_name.get_node("anim").play("staff regular")
+	
+	# Subtract durability from the weapon
+	BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped.uses -= 1
+	# Check if the weapon broke
+	if BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped.uses <= 0:
+		broke_item = true
 
 # Adjust enemy hp over time
 func adjust_enemy_hp_box_over_time(delta):
@@ -377,6 +482,14 @@ func player_attack():
 			# Player missed
 			var anim_name = str(BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped.weapon_string_name, " miss")
 			player_node_name.get_node("anim").play(anim_name)
+	
+	# Subtract durability from the weapon
+	BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped.uses -= 1
+	# Check if the weapon broke
+	if BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped.uses <= 0:
+		broke_item = true
+		Combat_Calculator.player_can_counter_attack = false
+		Combat_Calculator.player_double_attack = false
 
 func enemy_attack():
 	# Wait
@@ -409,6 +522,15 @@ func enemy_attack():
 			# Enemy Missed
 			var anim_name = str(BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.weapon_string_name, " miss")
 			enemy_node_name.get_node("anim").play(anim_name)
+	
+	# Check if the weapon broke
+	# Subtract durability from the weapon
+	
+	BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.uses -= 1
+	if BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.uses == 0:
+		broke_item = true
+		Combat_Calculator.enemy_can_counter_attack = false
+		Combat_Calculator.enemy_double_attack = false
 
 # Change state machine
 func update_hp_number(anim_name):
@@ -482,19 +604,22 @@ func play_player_miss_anim():
 
 func turn_on():
 	$"Combat Control".visible = true
-	# Stop current music
-	if BattlefieldInfo.turn_manager.turn == Turn_Manager.PLAYER_TURN:
-		if BattlefieldInfo.enemy_units.size() <= 1:
-			BattlefieldInfo.music_player.get_node("OneUnitLeft").stop()
-		BattlefieldInfo.music_player.get_node("AllyLevel").stop()
-	else:
-		BattlefieldInfo.music_player.get_node("EnemyLevel").stop()
+	# Reduce volume of the music
+	BattlefieldInfo.music_player.get_node("AllyLevel").volume_db = -5
 	
-	# Start music
-	if BattlefieldInfo.turn_manager.turn == Turn_Manager.PLAYER_TURN:
-		BattlefieldInfo.music_player.get_node("Ally Combat").play(0)
-	else:
-		BattlefieldInfo.music_player.get_node("Enemy Combat").play(0)
+	# Stop current music
+#	if BattlefieldInfo.turn_manager.turn == Turn_Manager.PLAYER_TURN:
+#		if BattlefieldInfo.enemy_units.size() <= 1:
+#			BattlefieldInfo.music_player.get_node("OneUnitLeft").stop()
+#		BattlefieldInfo.music_player.get_node("AllyLevel").stop()
+#	else:
+#		BattlefieldInfo.music_player.get_node("EnemyLevel").stop()
+#
+#	# Start music
+#	if BattlefieldInfo.turn_manager.turn == Turn_Manager.PLAYER_TURN:
+#		BattlefieldInfo.music_player.get_node("Ally Combat").play(0)
+#	else:
+#		BattlefieldInfo.music_player.get_node("Enemy Combat").play(0)
 	
 	
 	# Variable Reset
@@ -563,6 +688,7 @@ func process_death_xp():
 	current_combat_state = wait
 	$"Combat Control/Combat UI/XP Screen".start_death()
 
+
 func back_to_battlefield():
 	$"Return Pause".start(0)
 	
@@ -573,17 +699,21 @@ func back_to_battlefield():
 func turn_off():
 	# Remove XP Bar
 	$"Combat Control/Combat UI/XP Screen".visible = false
+	$"Combat Control/Combat UI/Item Broke Screen".visible = false
+	
+	# Item broke cancel
+	broke_item = false
 	
 	# Stop Music
-	if BattlefieldInfo.turn_manager.turn == Turn_Manager.PLAYER_TURN:
-		if BattlefieldInfo.enemy_units.size() <= 1:
-			ally_song_location = BattlefieldInfo.music_player.get_node("OneUnitLeft").get_playback_position()
-		else:
-			ally_song_location = BattlefieldInfo.music_player.get_node("AllyLevel").get_playback_position()
-		BattlefieldInfo.music_player.get_node("Ally Combat").stop()
-	else:
-		enemy_song_location = BattlefieldInfo.music_player.get_node("EnemyLevel").get_playback_position()
-		BattlefieldInfo.music_player.get_node("Enemy Combat").stop()
+#	if BattlefieldInfo.turn_manager.turn == Turn_Manager.PLAYER_TURN:
+#		if BattlefieldInfo.enemy_units.size() <= 1:
+#			ally_song_location = BattlefieldInfo.music_player.get_node("OneUnitLeft").get_playback_position()
+#		else:
+#			ally_song_location = BattlefieldInfo.music_player.get_node("AllyLevel").get_playback_position()
+#		BattlefieldInfo.music_player.get_node("Ally Combat").stop()
+#	else:
+#		enemy_song_location = BattlefieldInfo.music_player.get_node("EnemyLevel").get_playback_position()
+#		BattlefieldInfo.music_player.get_node("Enemy Combat").stop()
 
 # Pause
 func _on_Pause_timeout():
@@ -603,17 +733,28 @@ func _on_Return_Pause_timeout():
 #		enemy_node_name.flip_h = false
 #		flip_enemy = false
 	
-	# Set Cursor back to move
-	get_parent().get_parent().get_node("Cursor").enable_standard()
-	
 	# Start Music
 	if BattlefieldInfo.turn_manager.turn == Turn_Manager.PLAYER_TURN:
-		if BattlefieldInfo.enemy_units.size() <= 1:
-			BattlefieldInfo.music_player.get_node("OneUnitLeft").play(ally_song_location)
-		else:
-			BattlefieldInfo.music_player.get_node("AllyLevel").play(ally_song_location)
+#		if BattlefieldInfo.enemy_units.size() <= 1:
+#			BattlefieldInfo.music_player.get_node("OneUnitLeft").play(ally_song_location)
+#		else:
+#			BattlefieldInfo.music_player.get_node("AllyLevel").play(ally_song_location)
+		# Set the ally unit to done status | Greyscale
+		BattlefieldInfo.combat_player_unit.get_node("Animation").play("Idle")
+		BattlefieldInfo.combat_player_unit.UnitActionStatus.current_action_status = Unit_Action_Status.DONE
+		BattlefieldInfo.combat_player_unit.turn_greyscale_on()
+		
+		# Cursor
+		# Set Cursor back to move
+		get_parent().get_parent().get_node("Cursor").enable_standard()
 	else:
-		BattlefieldInfo.music_player.get_node("EnemyLevel").play(enemy_song_location)
+		pass
+#		BattlefieldInfo.music_player.get_node("EnemyLevel").play(enemy_song_location)
+	
+	# AI
+	if BattlefieldInfo.turn_manager.turn == Turn_Manager.ENEMY_COMBAT_TURN:
+		BattlefieldInfo.turn_manager.turn = Turn_Manager.ENEMY_TURN
+		BattlefieldInfo.current_Unit_Selected = null
 	
 	# Turn off modulate
 	get_parent().get_parent().get_node("Level").modulate = Color(1, 1, 1, 1)
@@ -636,11 +777,8 @@ func _on_Return_Pause_timeout():
 	# Disable xp if it's on
 	$"Combat Control/Combat UI/Level Up Screen".visible = false
 	
-	# Set unit state to done
-	# Set the ally unit to done status | Greyscale
-	BattlefieldInfo.combat_player_unit.get_node("Animation").play("Idle")
-	BattlefieldInfo.combat_player_unit.UnitActionStatus.current_action_status = Unit_Action_Status.DONE
-	BattlefieldInfo.combat_player_unit.turn_greyscale_on()
+	# Music Volume Back to Normal
+	BattlefieldInfo.music_player.get_node("anim").play("Volume Up")
 	
 	# Disable
 	turn_off()

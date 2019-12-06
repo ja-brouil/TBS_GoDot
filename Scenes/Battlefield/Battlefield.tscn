@@ -38,7 +38,6 @@ zoom = Vector2( 1, 1 )
 [node name="Areas" parent="GameCamera" instance=ExtResource( 6 )]
 
 [node name="Combat Screen" parent="GameCamera" instance=ExtResource( 7 )]
-editor/display_folded = true
 
 [node name="BattlefieldHUD" parent="." instance=ExtResource( 8 )]
 

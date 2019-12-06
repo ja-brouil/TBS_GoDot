@@ -5,7 +5,7 @@ extends "res://Scenes/Items/Item.gd"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Healing Staff Stats
-	uses = 30
+	uses = 40
 	might = 10
 	weight = 0
 	hit = 100

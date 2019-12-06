@@ -65,7 +65,8 @@ func clampCameraPosition():
 # Set back to this camera
 func set_current_camera():
 	# Remove other camera
-	BattlefieldInfo.current_Unit_Selected.get_node("MovementCamera").queue_free()
+	if BattlefieldInfo.current_Unit_Selected.has_node("MovementCamera"):
+		BattlefieldInfo.current_Unit_Selected.get_node("MovementCamera").queue_free()
 	make_current()
 
 # Shake with decreasing intensity while there's time remaining.

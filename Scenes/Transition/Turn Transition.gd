@@ -8,19 +8,20 @@ func _ready():
 	
 	# Level Start
 	start_transition("Player")
+	$Timer.start(0)
 
 func start_transition(type):
 	if type == "Enemy":
-		if BattlefieldInfo.enemy_units.size() <= 1:
-			BattlefieldInfo.music_player.get_node("OneUnitLeft").stop()
-		else:
-			BattlefieldInfo.music_player.get_node("AllyLevel").stop()
+#		if BattlefieldInfo.enemy_units.size() <= 1:
+#			BattlefieldInfo.music_player.get_node("OneUnitLeft").stop()
+#		else:
+#			BattlefieldInfo.music_player.get_node("AllyLevel").stop()
 		$"Enemy Phase".visible = true
 		$"Animation_E".current_animation = "Move_Off"
 		get_parent().get_parent().get_node("BattlefieldHUD").turn_off_battlefield_ui()
 		get_parent().get_parent().get_node("Cursor").cursor_state = Cursor.WAIT
 	else:
-		BattlefieldInfo.music_player.get_node("EnemyLevel").stop()
+#		BattlefieldInfo.music_player.get_node("EnemyLevel").stop()
 		$"Player Turn".visible = true
 		$"Animation".current_animation = "Move_Off"
 
@@ -32,10 +33,10 @@ func ally_animation_finished(anim_name):
 	BattlefieldInfo.turn_manager.reset_enemies()
 	
 	# Set Music
-	if BattlefieldInfo.enemy_units.size() <= 1:
-		BattlefieldInfo.music_player.get_node("OneUnitLeft").play(0)
-	else:
-		BattlefieldInfo.music_player.get_node("AllyLevel").play(0)
+#	if BattlefieldInfo.enemy_units.size() <= 1:
+#		BattlefieldInfo.music_player.get_node("OneUnitLeft").play(0)
+#	else:
+#		BattlefieldInfo.music_player.get_node("AllyLevel").play(0)
 	
 	# Activate UI and Cursor again
 	get_parent().get_parent().get_node("BattlefieldHUD").turn_on_battlefield_ui()
@@ -44,4 +45,8 @@ func ally_animation_finished(anim_name):
 func enemy_animation_finished(anim_name):
 	BattlefieldInfo.turn_manager.turn = Turn_Manager.ENEMY_TURN
 	BattlefieldInfo.turn_manager.reset_enemies()
-	BattlefieldInfo.music_player.get_node("EnemyLevel").play(0)
+#	BattlefieldInfo.music_player.get_node("EnemyLevel").play(0)
+
+# Initial phase
+func _on_Timer_timeout():
+	BattlefieldInfo.music_player.get_node("AllyLevel").play(0)

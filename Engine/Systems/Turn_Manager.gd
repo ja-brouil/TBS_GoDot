@@ -4,7 +4,7 @@ extends Node
 class_name Turn_Manager
 
 # States
-enum {PLAYER_TURN, ENEMY_TURN, WAIT}
+enum {PLAYER_TURN, ENEMY_TURN, ENEMY_COMBAT_TURN, WAIT}
 var turn
 
 # Signal to play graphic
@@ -48,10 +48,13 @@ func check_end_of_turn():
 		ENEMY_TURN:
 			for enemy_unit in BattlefieldInfo.enemy_units:
 				if enemy_unit.UnitActionStatus.get_current_action() != Unit_Action_Status.DONE:
-					BattlefieldInfo.next_ai(enemy_unit)
 					turn = WAIT
+					BattlefieldInfo.next_ai(enemy_unit)
 					return
 			# All units have moved and are done
+			BattlefieldInfo.current_Unit_Selected = null
 			emit_signal("play_transition", "Ally")
 			reset_greyscale()
 			turn = WAIT
+		WAIT:
+			pass

@@ -215,8 +215,12 @@ func _on_Return_timeout():
 		BattlefieldInfo.music_player.get_node("Enemy Combat").volume_db = 0
 	else:
 		BattlefieldInfo.music_player.get_node("Ally Combat").volume_db = 0
-	emit_signal("done_leveling_up")
 	
+	# Broken weapon screen
+	if get_parent().get_parent().get_parent().broke_item:
+		get_parent().get_node("Item Broke Screen").start(BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped, BattlefieldInfo.combat_player_unit)
+	else:
+		emit_signal("done_leveling_up")
 
 # Half second pause
 func _on_Show_Pause_timeout():

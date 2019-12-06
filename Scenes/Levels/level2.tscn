@@ -38,7 +38,6 @@ editor/display_folded = false
 
 [node name="Allies" parent="." index="3"]
 editor/display_folded = false
-visible = false
 
 [node name="2281" type="StaticBody2D" parent="." index="4"]
 editor/display_folded = true

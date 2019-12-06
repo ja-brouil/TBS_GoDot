@@ -62,7 +62,7 @@ margin_bottom = 55.9292
 rect_scale = Vector2( 0.25, 0.25 )
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
-text = "is broken!"
+text = "broke!"
 align = 1
 valign = 1
 

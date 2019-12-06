@@ -7,6 +7,7 @@ extends Node
 var unit_movement_system
 var movement_calculator
 var turn_manager
+var combat_screen
 
 # Sound and music
 var music_player
@@ -74,6 +75,13 @@ var Eirika
 var combat_player_unit
 var combat_ai_unit
 
-# Process next enemy -> might need to be changed into a signal
+# AI Functions
 func next_ai(enemy_unit):
 	enemy_unit.get_node("AI").process_ai()
+	
+func start_ai_combat():
+	# Calculate damage
+	Combat_Calculator.calculate_damage()
+	
+	# Start Combat screen
+	combat_screen.start_combat(Combat_Screen.enemy_first_turn)

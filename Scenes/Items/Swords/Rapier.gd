@@ -3,7 +3,7 @@ extends "res://Scenes/Items/Item.gd"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Steel Sword stats
-	uses = 40
+	uses = 30
 	might = 7
 	weight = 5
 	hit = 95
