@@ -20,7 +20,7 @@ Download/pull the code locally and scan the project using GoDot. Simply hit run 
 10. Trade function
 11. Convoy Function
 12. Dialogue System
-13. Level up and stats system
+13. ~~Level up and stats system~~
 14. Items database -> Items template built, need to build the rest
 15. End turn menu -> Menu built, end turn option added, rest needs to be build up
 16. Save/Load function
