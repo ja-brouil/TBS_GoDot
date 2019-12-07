@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/Units/Enemy_Units/Bandit.gd" type="Script" id=1]
-[ext_resource path="res://assets/units/bandit/banditRed.png" type="Texture" id=2]
+[ext_resource path="res://assets/units/bandit/bandit_black.png" type="Texture" id=2]
 [ext_resource path="res://assets/sound/unitMovement/Light Foot Steps 1.wav" type="AudioStream" id=3]
 [ext_resource path="res://Scenes/AI/AI.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/GUI/Damage Preview/Cursor Select.tscn" type="PackedScene" id=5]
@@ -360,10 +360,11 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -0.0818233, 0.981899 )
 texture = ExtResource( 2 )
 centered = false
 region_enabled = true
-region_rect = Rect2( 8, 79, 16, 17 )
+region_rect = Rect2( 40, 80, 16, 16 )
 
 [node name="footsteps" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )

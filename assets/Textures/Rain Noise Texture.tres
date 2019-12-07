@@ -1,0 +1,31 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=2]
+
+[ext_resource path="res://assets/Textures/Rain Noise.png" type="Texture" id=1]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform sampler2D noise;
+uniform float intensity : hint_range(0.0,1.0) = 0.05;
+
+
+void fragment(){
+	vec2 direction = vec2(-0.1, 0.2);
+	
+	float movement = TIME * 2.0;
+	float movement_02 = TIME * 1.5;
+	
+	vec4 displacement = texture(noise, fract(UV - direction * movement));
+	vec4 disp_02 = texture(noise, fract(UV - direction * movement_02) );
+	
+	float displacement_length = length(displacement.rgb);
+	float displacement_length_02 = length(disp_02.rgb);
+	
+	vec2 uv = SCREEN_UV + (displacement.rg * intensity * displacement_length) + (disp_02.rg * intensity * displacement_length_02);
+	COLOR = vec4(texture(SCREEN_TEXTURE, uv).rgb, 1.0);
+}"
+
+[resource]
+shader = SubResource( 1 )
+shader_param/intensity = 0.023
+shader_param/noise = ExtResource( 1 )

@@ -143,7 +143,7 @@ func calculate_crit_chance():
 	if enemy_critical_rate < 0:
 		enemy_critical_rate = 0
 
-# Damage Preview -> Add double attack mode
+# Damage Preview
 func calculate_damage():
 	# Reset stats first
 	reset_stats()
@@ -296,6 +296,8 @@ func calculate_damage_amounts():
 	
 	# Set GUI
 	player_damage = player_base_damage - enemy_base_def
+	if player_damage < 0:
+		player_damage = 0
 	
 	# Enemy
 	if BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.item_class == Item.ITEM_CLASS.PHYSICAL:
@@ -311,6 +313,8 @@ func calculate_damage_amounts():
 	
 	# Set GUI
 	enemy_damage = enemy_base_damage - player_base_def
+	if enemy_damage < 0:
+		enemy_damage = 0
 	
 
 func get_attack_speed(unit):
@@ -318,10 +322,10 @@ func get_attack_speed(unit):
 	return unit.UnitStats.speed - item_weight_stat
 
 func get_accuracy(unit, weapon_bonus):
-	return unit.UnitInventory.current_item_equipped.hit + (unit.UnitStats.skill * 2) + (unit.UnitStats.luck / 2) + (weapon_bonus * 15)
+	return unit.UnitInventory.current_item_equipped.hit + (unit.UnitStats.skill * 2) + (unit.UnitStats.luck / 2) + (weapon_bonus * 15) + unit.UnitStats.bonus_hit
 
 func get_avoidance(unit, attack_speed):
-	return (attack_speed * 2) + unit.UnitStats.luck + unit.UnitMovementStats.currentTile.avoidanceBonus
+	return (attack_speed * 2) + unit.UnitStats.luck + unit.UnitMovementStats.currentTile.avoidanceBonus + unit.UnitStats.bonus_dodge
 
 func get_special_ability(player_unit, ai_unit):
 	player_effective_bonus = player_unit.UnitInventory.current_item_equipped.special_ability(player_unit, ai_unit)
@@ -422,6 +426,12 @@ func check_if_units_can_counter():
 	if BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped.item_name == "Unarmed":
 		player_can_counter_attack = false
 	if BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.item_name == "Unarmed":
+		enemy_can_counter_attack = false
+	
+	# Using a healing weapon?
+	if BattlefieldInfo.combat_player_unit.UnitInventory.inventory.current_item_equipped.weapon_type == Item.WEAPON_TYPE.HEALING:
+		player_can_counter_attack = false
+	if BattlefieldInfo.combat_ai_unit.UnitInventory.inventory.current_item_equipped.weapon_type == Item.WEAPON_TYPE.HEALING:
 		enemy_can_counter_attack = false
 	
 	# Check Range

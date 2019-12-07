@@ -8,7 +8,8 @@ func _ready():
 	UnitStats.name = "Natasha"
 	
 	# Unit Portrait
-	unit_portrait_path = preload("res://assets/units/cleric/natasha portrait.png")
+	#unit_portrait_path = preload("res://assets/units/cleric/natasha portrait.png")
+	unit_portrait_path = preload("res://assets/units/cleric/natasha mugshot.png")
 	
 	# Unit Mugshot
 	unit_mugshot = preload("res://assets/units/cleric/natasha mugshot.png")

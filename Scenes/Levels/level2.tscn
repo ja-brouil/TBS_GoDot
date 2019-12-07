@@ -1,360 +1,47 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/levels/level2/level2.tmx" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Levels/level2.gd" type="Script" id=2]
+[ext_resource path="res://assets/Textures/Rain Noise Texture.tres" type="Material" id=3]
+[ext_resource path="res://assets/levels/level2/level2.png" type="Texture" id=4]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8, 8 )
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 8, 8 )
+uniform vec2 tiled_factor = vec2(5.0,5.0);
+uniform float aspect_ratio = 0.5;
 
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 8, 8 )
+void fragment(){
+	vec2 tiled_uvs = UV * tiled_factor;
+	tiled_uvs.y *= aspect_ratio;
+	
+	vec2 waves_uv_offset;
+	waves_uv_offset.x = sin(TIME + tiled_uvs.x + tiled_uvs.y) * 0.0025;
+	//waves_uv_offset.y = sin(TIME + tiled_uvs.x + tiled_uvs.y) * 0.0025;
+	
+	COLOR = texture(TEXTURE, waves_uv_offset + UV);
+}"
 
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 8, 8 )
-
-[sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 8, 8 )
-
-[sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 8, 8 )
-
-[sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 8, 8 )
-
-[sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 8, 8 )
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/tiled_factor = Vector2( 3, 3 )
+shader_param/aspect_ratio = 0.5
 
 [node name="Level" instance=ExtResource( 1 )]
-editor/display_folded = true
 script = ExtResource( 2 )
 
 [node name="YSort" type="YSort" parent="." index="0"]
 z_index = 1
 
+[node name="Background" parent="." index="1"]
+editor/display_folded = false
+modulate = Color( 0.403922, 0.501961, 0.486275, 1 )
+material = SubResource( 2 )
+
 [node name="2149" parent="CellInfo" index="35"]
 editor/display_folded = false
 
-[node name="Allies" parent="." index="3"]
-editor/display_folded = false
-visible = false
-
-[node name="2867" parent="Allies" index="0"]
-visible = false
-
-[node name="2870" parent="Allies" index="1"]
-visible = false
-
-[node name="2281" parent="Allies" index="2"]
-visible = false
-
-[node name="2281" type="StaticBody2D" parent="." index="4"]
-editor/display_folded = true
-visible = false
-position = Vector2( 32, 272 )
-__meta__ = {
-"BonusCrit": 0,
-"BonusDodge": 0,
-"BonusHit": 0,
-"Class": "Paladin",
-"Consti": 11,
-"Defense": 11,
-"Health": 30,
-"Luck": 13,
-"Magic": 3,
-"MaxHealth": 20,
-"Move": 8,
-"Name": "Seth",
-"Res": 8,
-"Skill": 13,
-"Speed": 12,
-"Str": 14,
-"Weapon": "Iron Axe",
-"buildingPenalty": 0,
-"constiChance": 70,
-"defChance": 60,
-"defaultPenalty": 0,
-"forestPenalty": 0,
-"fortressPenalty": 0,
-"height": 16,
-"hillPenalty": 4,
-"isAlly": true,
-"luckChance": 15,
-"magicChance": 10,
-"maxHPChance": 70,
-"mountainPenalty": 0,
-"resChance": 15,
-"riverPenalty": 5,
-"seaPenalty": 0,
-"skillChance": 20,
-"speedChance": 50,
-"strChance": 80,
-"type": "",
-"visible": true,
-"width": 16
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="2281" index="0"]
-position = Vector2( 8, 8 )
-shape = SubResource( 1 )
-
-[node name="2867" type="StaticBody2D" parent="." index="5"]
-editor/display_folded = true
-visible = false
-position = Vector2( 48, 272 )
-__meta__ = {
-"BonusCrit": 0,
-"BonusDodge": 0,
-"BonusHit": 0,
-"Class": "Lord",
-"Consti": 5,
-"Defense": 3,
-"Health": 16,
-"Luck": 6,
-"Magic": 0,
-"MaxHealth": 16,
-"Move": 5,
-"Name": "Eirika",
-"Res": 2,
-"Skill": 9,
-"Speed": 9,
-"Str": 4,
-"Weapon": "Rapier",
-"buildingPenalty": 0,
-"constiChance": 70,
-"defChance": 60,
-"defaultPenalty": 0,
-"forestPenalty": 1,
-"fortressPenalty": 1,
-"height": 16,
-"hillPenalty": 3,
-"isAlly": true,
-"luckChance": 15,
-"magicChance": 10,
-"maxHPChance": 70,
-"mountainPenalty": 0,
-"resChance": 15,
-"riverPenalty": 0,
-"seaPenalty": 0,
-"skillChance": 20,
-"speedChance": 50,
-"strChance": 80,
-"type": "",
-"visible": true,
-"width": 16
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="2867" index="0"]
-position = Vector2( 8, 8 )
-shape = SubResource( 2 )
-
-[node name="Enemies" parent="." index="6"]
-editor/display_folded = false
-visible = false
-
-[node name="2847" type="StaticBody2D" parent="." index="7"]
-editor/display_folded = true
-visible = false
-position = Vector2( 64, 240 )
-__meta__ = {
-"BonusCrit": 0,
-"BonusDodge": 0,
-"BonusHit": 0,
-"Class": "Bandit",
-"Consti": 8,
-"Defense": 2,
-"Health": 12,
-"Luck": 0,
-"Magic": 3,
-"MaxHealth": 12,
-"Move": 3,
-"Name": "Bandit 1",
-"Res": 1,
-"Skill": 3,
-"Speed": 2,
-"Str": 6,
-"Weapon": "Iron Axe",
-"aiType": "Aggresive",
-"height": 16,
-"isAlly": false,
-"type": "",
-"visible": true,
-"width": 16
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="2847" index="0"]
-position = Vector2( 8, 8 )
-shape = SubResource( 3 )
-
-[node name="2852" type="StaticBody2D" parent="." index="8"]
-editor/display_folded = true
-visible = false
-position = Vector2( 80, 256 )
-__meta__ = {
-"BonusCrit": 0,
-"BonusDodge": 0,
-"BonusHit": 0,
-"Class": "Bandit",
-"Consti": 8,
-"Defense": 2,
-"Health": 12,
-"Luck": 0,
-"Magic": 3,
-"MaxHealth": 12,
-"Move": 3,
-"Name": "Bandit 2",
-"Res": 1,
-"Skill": 3,
-"Speed": 2,
-"Str": 6,
-"Weapon": "Iron Axe",
-"aiType": "Aggresive",
-"height": 16,
-"isAlly": false,
-"type": "",
-"visible": true,
-"width": 16
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="2852" index="0"]
-position = Vector2( 8, 8 )
-shape = SubResource( 4 )
-
-[node name="2853" type="StaticBody2D" parent="." index="9"]
-editor/display_folded = true
-visible = false
-position = Vector2( 96, 272 )
-__meta__ = {
-"BonusCrit": 0,
-"BonusDodge": 0,
-"BonusHit": 0,
-"Class": "Bandit",
-"Consti": 11,
-"Defense": 2,
-"Health": 21,
-"Level": 1,
-"Luck": 0,
-"Magic": 3,
-"MaxHealth": 22,
-"Move": 5,
-"Name": "Bandit 5",
-"Res": 1,
-"Skill": 2,
-"Speed": 4,
-"Str": 5,
-"Weapon": "Iron Axe",
-"aiType": "Aggresive",
-"height": 16,
-"isAlly": false,
-"type": "",
-"visible": true,
-"width": 16
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="2853" index="0"]
-position = Vector2( 8, 8 )
-shape = SubResource( 5 )
-
-[node name="2854" type="StaticBody2D" parent="." index="10"]
-editor/display_folded = true
-visible = false
-position = Vector2( 80, 272 )
-__meta__ = {
-"BonusCrit": 0,
-"BonusDodge": 0,
-"BonusHit": 0,
-"Class": "Bandit",
-"Consti": 8,
-"Defense": 2,
-"Health": 15,
-"Luck": 0,
-"Magic": 3,
-"MaxHealth": 15,
-"Move": 3,
-"Name": "Bandit 3",
-"Res": 1,
-"Skill": 3,
-"Speed": 2,
-"Str": 6,
-"Weapon": "Iron Axe",
-"aiType": "Aggresive",
-"height": 16,
-"isAlly": false,
-"type": "",
-"visible": true,
-"width": 16
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="2854" index="0"]
-position = Vector2( 8, 8 )
-shape = SubResource( 6 )
-
-[node name="2855" type="StaticBody2D" parent="." index="11"]
-editor/display_folded = true
-visible = false
-position = Vector2( 112, 272 )
-__meta__ = {
-"BonusCrit": 0,
-"BonusDodge": 0,
-"BonusHit": 0,
-"Class": "Bandit",
-"Consti": 8,
-"Defense": 2,
-"Health": 19,
-"Luck": 0,
-"Magic": 3,
-"MaxHealth": 19,
-"Move": 3,
-"Name": "Bandit 4",
-"Res": 1,
-"Skill": 3,
-"Speed": 2,
-"Str": 6,
-"Weapon": "Iron Axe",
-"aiType": "Aggresive",
-"height": 16,
-"isAlly": false,
-"type": "",
-"visible": true,
-"width": 16
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="2855" index="0"]
-position = Vector2( 8, 8 )
-shape = SubResource( 7 )
-
-[node name="2866" type="StaticBody2D" parent="." index="12"]
-editor/display_folded = true
-visible = false
-position = Vector2( 80, 288 )
-__meta__ = {
-"BonusCrit": 0,
-"BonusDodge": 0,
-"BonusHit": 0,
-"Class": "Bandit",
-"Consti": 8,
-"Defense": 4,
-"Health": 20,
-"Luck": 0,
-"Magic": 0,
-"MaxHealth": 20,
-"Move": 5,
-"Name": "Bandit",
-"Res": 1,
-"Skill": 1,
-"Speed": 2,
-"Str": 5,
-"Weapon": "Iron Axe",
-"aiType": "Passive",
-"height": 16,
-"isAlly": false,
-"type": "",
-"visible": true,
-"width": 16
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="2866" index="0"]
-position = Vector2( 8, 8 )
-shape = SubResource( 8 )
+[node name="Rain" type="Sprite" parent="." index="5"]
+material = ExtResource( 3 )
+texture = ExtResource( 4 )
+centered = false

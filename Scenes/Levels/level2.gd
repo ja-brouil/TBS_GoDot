@@ -123,7 +123,7 @@ func _ready():
 	
 	# Create Enemy Units
 	for enemy in enemyInfoLayer.get_children():
-		var path = str("res://Scenes/Units/Enemy_Units/", enemy.get_meta("Class"),".tscn")
+		var path = str("res://Scenes/Units/Enemy_Units/", enemy.get_meta("InstanceName"),".tscn")
 		var newEnemy = load(path).instance()
 		
 		# Set AI Type

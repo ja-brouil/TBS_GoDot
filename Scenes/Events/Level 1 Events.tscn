@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/Events/Level 1 Events.gd" type="Script" id=1]
+
+[node name="Level 1 Events" type="Node2D"]
+script = ExtResource( 1 )

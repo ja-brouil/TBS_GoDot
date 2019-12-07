@@ -31,9 +31,9 @@ var res      = 5 # Magical damage defence
 var consti   = 5 # Allows to wield heavier weapons
 
 # Bonuses
-var bonus_crit = 1
-var bonus_dodge = 1
-var bonus_hit = 1
+var bonus_crit = 0
+var bonus_dodge = 0
+var bonus_hit = 0
 
 # Stat upgrade probability
 var str_chance = 0

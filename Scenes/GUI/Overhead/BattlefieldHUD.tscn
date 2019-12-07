@@ -91,7 +91,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.501961 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="DynamicFont" id=11]
+[sub_resource type="DynamicFont" id=8]
 size = 15
 use_mipmaps = true
 use_filter = true
@@ -125,9 +125,10 @@ __meta__ = {
 }
 
 [node name="Battlefield HUD" type="Control" parent="."]
-margin_left = -0.101715
+visible = false
+margin_left = 0.0654756
 margin_top = -0.0882874
-margin_right = 239.899
+margin_right = 240.066
 margin_bottom = 159.912
 
 [node name="Unit Info" type="Panel" parent="Battlefield HUD"]
@@ -139,8 +140,7 @@ margin_right = 85.0
 margin_bottom = -5.0
 custom_styles/panel = SubResource( 1 )
 __meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
+"_edit_group_": true
 }
 
 [node name="Name" type="Label" parent="Battlefield HUD/Unit Info"]
@@ -154,6 +154,9 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 text = "Name"
 align = 1
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="ColorRect" type="ColorRect" parent="Battlefield HUD/Unit Info"]
 modulate = Color( 0.568627, 0.811765, 0.945098, 0.654902 )
@@ -162,6 +165,9 @@ margin_left = 5.0
 margin_top = 7.0
 margin_right = 85.0
 margin_bottom = 36.0
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="FadeAnimU" type="AnimationPlayer" parent="Battlefield HUD/Unit Info"]
 anims/Fade = SubResource( 3 )
@@ -179,12 +185,18 @@ custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 text = "20 / 20"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Empty HP" type="Sprite" parent="Battlefield HUD/Unit Info"]
 position = Vector2( 44, 28 )
 scale = Vector2( 0.169, 0.237 )
 texture = ExtResource( 4 )
 centered = false
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Full HP" type="Sprite" parent="Battlefield HUD/Unit Info"]
 position = Vector2( 44, 28 )
@@ -193,11 +205,17 @@ texture = ExtResource( 5 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 237, 17 )
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="Portrait" type="Sprite" parent="Battlefield HUD/Unit Info"]
-position = Vector2( 25.006, 21.386 )
-scale = Vector2( 0.994, 0.872 )
+[node name="Portrait" type="TextureRect" parent="Battlefield HUD/Unit Info"]
+margin_left = 10.0
+margin_top = 5.0
+margin_right = 42.0
+margin_bottom = 37.0
 texture = ExtResource( 6 )
+expand = true
 
 [node name="Victory Info" type="Panel" parent="Battlefield HUD"]
 anchor_left = 1.0
@@ -220,7 +238,7 @@ margin_top = 4.0
 margin_right = 176.0
 margin_bottom = 38.0
 rect_scale = Vector2( 0.25, 0.25 )
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Seize Throne"

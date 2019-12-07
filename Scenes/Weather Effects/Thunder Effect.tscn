@@ -1,0 +1,125 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/transition/white flash.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Levels/Thunder Effect.gd" type="Script" id=2]
+[ext_resource path="res://assets/sound/weather sounds/Thunder Effect 1.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/sound/weather sounds/Thunder Effect 2.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/sound/weather sounds/Thunder Effect 3.wav" type="AudioStream" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Flash 1"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("Thunder Sound 1")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 3 )
+} ],
+"times": PoolRealArray( 0.4 )
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Flash 2"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("Thunder Sound 2")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 4 )
+} ],
+"times": PoolRealArray( 0.4 )
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Flash 3"
+length = 3.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("Thunder Sound 3")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 5 )
+} ],
+"times": PoolRealArray( 0.4 )
+}
+
+[node name="Thunder Effect" type="Sprite"]
+visible = false
+scale = Vector2( 100, 100 )
+z_index = 5
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_vertical_guides_": [  ]
+}
+
+[node name="Thunder Sound 1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="Thunder Sound 2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="Thunder Sound 3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[node name="Interval" type="Timer" parent="."]
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+playback_speed = 5.0
+"anims/Flash 1" = SubResource( 1 )
+"anims/Flash 2" = SubResource( 2 )
+"anims/Flash 3" = SubResource( 3 )
+[connection signal="timeout" from="Interval" to="." method="_on_Interval_timeout"]

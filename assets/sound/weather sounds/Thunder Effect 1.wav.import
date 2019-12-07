@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Thunder Effect 1.wav-fd4b952b71cf941be2b4cd8121ee502c.sample"
+
+[deps]
+
+source_file="res://assets/sound/weather sounds/Thunder Effect 1.wav"
+dest_files=[ "res://.import/Thunder Effect 1.wav-fd4b952b71cf941be2b4cd8121ee502c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

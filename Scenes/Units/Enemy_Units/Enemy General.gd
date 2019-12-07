@@ -6,11 +6,10 @@ func _ready():
 	UnitMovementStats.is_ally = false
 	
 	# Portrait
-	#unit_portrait_path = preload("res://assets/units/enemyPortrait/normalSoldierPortrait.png")
-	unit_portrait_path = preload("res://assets/units/bandit/bandit mugshot.png")
+	unit_portrait_path = preload("res://assets/units/enemyPortrait/Main Villain MugShot.png")
 	
 	# Mug shot
-	unit_mugshot = preload("res://assets/units/bandit/bandit mugshot.png")
+	unit_mugshot = preload("res://assets/units/enemyPortrait/Main Villain MugShot.png")
 	
 	# Add axe
 	var axe = preload("res://Scenes/Items/Axes/Iron Axe.tscn").instance()

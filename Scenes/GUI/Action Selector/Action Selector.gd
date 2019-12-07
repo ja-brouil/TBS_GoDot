@@ -190,7 +190,7 @@ func get_menu_items():
 			menu_items.append("Convoy")
 		
 		# Are we on the throne tile
-		if BattlefieldInfo.current_Unit_Selected.UnitMovementStats.currentTile.tileName == "Throne":
+		if BattlefieldInfo.current_Unit_Selected.UnitMovementStats.currentTile.tileName == "Throne" && BattlefieldInfo.victory_text == "Seize":
 			menu_items.append("Seize")
 	
 	# Cell Visit -> Armory/Arena/Village
