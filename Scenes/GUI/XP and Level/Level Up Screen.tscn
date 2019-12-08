@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Scenes/GUI/XP and Level/Level Up Screen.gd" type="Script" id=1]
 [ext_resource path="res://assets/sound/misc/move sound 2.wav" type="AudioStream" id=2]
-[ext_resource path="res://assets/sound/battle sounds/Level Up.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/sound/misc/Level up!.wav" type="AudioStream" id=3]
 [ext_resource path="res://assets/Textures/Level Up Screen.shader" type="Shader" id=4]
 [ext_resource path="res://assets/UI/XP and Level/Level Up.png" type="Texture" id=5]
 [ext_resource path="res://assets/UI/XP and Level/Level Up Panel.png" type="Texture" id=6]

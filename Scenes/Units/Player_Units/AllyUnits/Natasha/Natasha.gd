@@ -18,4 +18,7 @@ func _ready():
 	UnitInventory.add_item(preload("res://Scenes/Items/Staves/Heal.tscn").instance())
 	
 	# Set combat node
-	combat_node = preload("res://Scenes/Units/Player_Units/AllyUnits/Natasha/Natasha Combat.tscn")
+	combat_node = preload("res://Scenes/Units/Player_Units/AllyUnits/Natasha/Natasha Combat.tscn")\
+	
+	# Death sentence
+	death_sentence.append("Natasha:\n\nAhh...forgive me... Lady Eirika...")

@@ -235,6 +235,7 @@ func disable_standard(transition_type):
 func back_to_move():
 	if BattlefieldInfo.turn_manager.turn == Turn_Manager.PLAYER_TURN:
 		enable(true, MOVE)
+		is_inside_tree()
 
 func debug() -> void:
 	print(BattlefieldInfo.grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE].toString())

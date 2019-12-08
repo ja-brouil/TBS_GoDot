@@ -365,7 +365,6 @@ __meta__ = {
 }
 
 [node name="Erika Combat Sprite" type="Sprite" parent="."]
-position = Vector2( 0.238205, 1.46285 )
 scale = Vector2( 1.25, 1.25 )
 texture = ExtResource( 2 )
 region_enabled = true
@@ -374,10 +373,9 @@ region_rect = Rect2( 6, 26, 36, 34 )
 [node name="Battle Effect" type="Sprite" parent="."]
 visible = false
 position = Vector2( -86, -1 )
-z_index = 1
 texture = ExtResource( 3 )
 region_enabled = true
-region_rect = Rect2( 253, 853, 238, 143 )
+region_rect = Rect2( 268, 528, 177, 150 )
 
 [node name="anim" type="AnimationPlayer" parent="."]
 playback_speed = 4.0

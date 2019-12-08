@@ -1,7 +1,6 @@
-extends Node2D
+extends "res://Scenes/Units/Unit_Scripts/Combat Unit.gd"
 
 signal play_player_dodge_anim
-signal death_anim_done
 
 func play_attack_sound():
 	var random = int(rand_range(1,4))

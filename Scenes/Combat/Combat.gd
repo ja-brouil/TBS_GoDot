@@ -23,7 +23,9 @@ var ally_song_location = 0
 var enemy_song_location = 0
 
 # Update hp + variables needed
-enum {player_first_turn, player_hp_first_update, enemy_first_turn, enemy_hp_first_update, player_second_turn, player_hp_second_update, enemy_second_turn, enemy_hp_second_update, player_death, enemy_death, player_healing, player_healing_adjust, enemy_healing, enemy_healing_adjust wait}
+enum {player_first_turn, player_hp_first_update, enemy_first_turn, enemy_hp_first_update, player_second_turn, 
+player_hp_second_update, enemy_second_turn, enemy_hp_second_update, player_death, enemy_death, player_healing, 
+player_healing_adjust, enemy_healing, enemy_healing_adjust, player_death_quote, enemy_death_quote, wait}
 var current_combat_state = wait
 var previous_combat_state = wait
 var next_combat_state
@@ -40,6 +42,7 @@ var broke_item = false
 func _ready():
 	$"Combat Control/Combat UI/XP Screen".connect("done_adding_xp", self, "back_to_battlefield")
 	$"Combat Control/Combat UI/Level Up Screen".connect("done_leveling_up", self, "back_to_battlefield")
+	get_parent().get_parent().get_node("Message System").connect("no_more_text", self, "on_ally_death_text_complete") # Change this later to accomodate boss units
 	
 	BattlefieldInfo.combat_screen = self
 
@@ -84,7 +87,7 @@ func _process(delta):
 					set_player_box()
 					# Is the unit dead?
 					if BattlefieldInfo.combat_player_unit.UnitStats.current_health == 0:
-						print("COMBAT SCREEN ANIM: Player Unit has died!")
+						current_combat_state = player_death
 						return
 					# Can we attack twice as a player?
 					if Combat_Calculator.player_double_attack:
@@ -129,9 +132,11 @@ func _process(delta):
 					set_player_box()
 					# Is the unit dead?
 					if BattlefieldInfo.combat_player_unit.UnitStats.current_health == 0:
-						print("COMBAT SCREEN ANIM: Player Unit has died!")
+						current_combat_state = player_death
+						return
 			player_death:
-				pass
+				process_ally_death()
+				return
 			enemy_death:
 				process_enemy_death()
 				return
@@ -165,7 +170,7 @@ func _process(delta):
 						set_player_box()
 						# Is the unit dead?
 						if BattlefieldInfo.combat_player_unit.UnitStats.current_health == 0:
-							print("COMBAT SCREEN ANIM: Player Unit has died!")
+							current_combat_state = player_death
 							return
 						# Can we attack as a player?
 						if Combat_Calculator.player_can_counter_attack:
@@ -213,7 +218,7 @@ func _process(delta):
 						set_player_box()
 						# Is the unit dead?
 						if BattlefieldInfo.combat_player_unit.UnitStats.current_health == 0:
-							print("COMBAT SCREEN ANIM: Player Unit has died!")
+							current_combat_state = player_death
 							return
 						# Can we attack as a player AND have a double attack?
 						if Combat_Calculator.player_can_counter_attack && Combat_Calculator.player_double_attack:
@@ -241,7 +246,7 @@ func _process(delta):
 				enemy_death:
 					process_enemy_death()
 				player_death:
-					pass
+					process_ally_death()
 				enemy_healing:
 					pass
 				enemy_healing_adjust:
@@ -249,8 +254,6 @@ func _process(delta):
 				wait:
 					pass
 				
-	# Enemy Turn Reverse the above code basically
-
 
 # Combat Process
 func start_combat(current_combat_state): 
@@ -629,10 +632,25 @@ func turn_on():
 
 # Process Death
 func process_ally_death():
-	pass
+	BattlefieldInfo.message_system.start(BattlefieldInfo.combat_player_unit.death_sentence)
+	current_combat_state = player_death_quote
 
 func on_ally_death_complete():
-	pass
+	# Remove unit from the battle info
+	BattlefieldInfo.ally_units.erase(BattlefieldInfo.combat_player_unit)
+	
+	# Clear Tile it is on
+	BattlefieldInfo.combat_player_unit.UnitMovementStats.currentTile.occupyingUnit = null
+	
+	# Queue Free player
+	BattlefieldInfo.combat_player_unit.queue_free()
+	# Back to Battlefield
+	back_to_battlefield()
+
+func on_ally_death_text_complete():
+	if current_combat_state == player_death_quote:
+		player_node_name.get_node("anim").play("death")
+		current_combat_state = wait
 
 func process_enemy_death():
 	enemy_node_name.get_node("anim").play("death")
@@ -646,7 +664,7 @@ func on_enemy_death_complete():
 	# Clear the tile it's on
 	BattlefieldInfo.combat_ai_unit.UnitMovementStats.currentTile.occupyingUnit = null
 	
-	# Remove the unit from the world
+	# Queue Free the enemy
 	BattlefieldInfo.combat_ai_unit.queue_free()
 	
 	# Process XP stuff here
@@ -773,6 +791,8 @@ func _on_Return_Pause_timeout():
 	# Disable arrows
 	$"Combat Control/Combat UI/Enemy/Enemy Up Arrow Combat".visible = false
 	$"Combat Control/Combat UI/Enemy/Enemy Down Arrow Combat".visible = false
+	$"Combat Control/Combat UI/Player/Player Down Arrow Combat".visible = false
+	$"Combat Control/Combat UI/Player/Player Up Arrow Combat".visible = false
 	
 	# Disable this
 	$"Combat Control".visible = false
@@ -782,6 +802,14 @@ func _on_Return_Pause_timeout():
 	
 	# Music Volume Back to Normal
 	BattlefieldInfo.music_player.get_node("anim").play("Volume Up")
+	
+	# Turn off all the animations
+	enemy_node_name.turn_off()
+	player_node_name.turn_off()
+	
+	# Clear the combat nodes
+	enemy_node_name.queue_free()
+	player_node_name.queue_free()
 	
 	# Disable
 	turn_off()

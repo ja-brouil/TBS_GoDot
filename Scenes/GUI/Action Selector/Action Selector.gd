@@ -92,7 +92,7 @@ func build_menu(menu_items):
 	current_actions.clear()
 	
 	# Sort the array alphabetically
-	menu_items.sort()
+	# menu_items.sort()
 	
 	# Put the top Item first
 	$"Action Menu/Top".rect_position = new_menu_position
@@ -114,36 +114,6 @@ func build_menu(menu_items):
 # Build the menu items
 func get_menu_items():
 	var menu_items = []
-	
-	# Do we have a healing item? -> This can build the array and send this information already off to the healing screen.
-	if BattlefieldInfo.current_Unit_Selected.UnitInventory.MAX_HEAL_RANGE > 0:
-		# Build item slot
-		for weapon in BattlefieldInfo.current_Unit_Selected.UnitInventory.inventory:
-			if weapon.item_class == Item.ITEM_CLASS.PHYSICAL || weapon.item_class == Item.ITEM_CLASS.MAGIC:
-				if weapon.weapon_type == Item.WEAPON_TYPE.HEALING:
-					# Check if we can reach that unit
-					var queue = []
-					#var max_range # Max range
-					#var min_range # Min range
-					queue.append([weapon.max_range, BattlefieldInfo.current_Unit_Selected.UnitMovementStats.currentTile])
-					while !queue.empty():
-						# Pop first tile
-						var check_tile = queue.pop_front()
-						
-						# Check if the tile has someone If we do, we have an ally we can heal and reach Exit, we are done
-						if check_tile[1].occupyingUnit != null && check_tile[1].occupyingUnit.UnitMovementStats.is_ally && check_tile[1].occupyingUnit != BattlefieldInfo.current_Unit_Selected:
-							if Calculators.get_distance_between_two_tiles(check_tile[1], BattlefieldInfo.current_Unit_Selected.UnitMovementStats.currentTile) >= weapon.min_range && check_tile[1].occupyingUnit.UnitStats.current_health < check_tile[1].occupyingUnit.UnitStats.max_health:
-								# Add heal option
-								menu_items.append("Heal")
-								break;
-						
-						# Tile was empty 
-						for adjTile in check_tile[1].adjCells:
-							var next_cost = check_tile[0] - 1
-							
-							if next_cost >= 0:
-								queue.append([next_cost, adjTile])
-
 	# Attack items
 	if BattlefieldInfo.current_Unit_Selected.UnitInventory.MAX_ATTACK_RANGE > 0:
 		# Build item slot
@@ -173,7 +143,44 @@ func get_menu_items():
 							
 							if next_cost >= 0:
 								queue.append([next_cost, adjTile])
-
+	
+		# Do we have a healing item? -> This can build the array and send this information already off to the healing screen.
+	if BattlefieldInfo.current_Unit_Selected.UnitInventory.MAX_HEAL_RANGE > 0:
+		# Build item slot
+		for weapon in BattlefieldInfo.current_Unit_Selected.UnitInventory.inventory:
+			if weapon.item_class == Item.ITEM_CLASS.PHYSICAL || weapon.item_class == Item.ITEM_CLASS.MAGIC:
+				if weapon.weapon_type == Item.WEAPON_TYPE.HEALING:
+					# Check if we can reach that unit
+					var queue = []
+					#var max_range # Max range
+					#var min_range # Min range
+					queue.append([weapon.max_range, BattlefieldInfo.current_Unit_Selected.UnitMovementStats.currentTile])
+					while !queue.empty():
+						# Pop first tile
+						var check_tile = queue.pop_front()
+						
+						# Check if the tile has someone If we do, we have an ally we can heal and reach Exit, we are done
+						if check_tile[1].occupyingUnit != null && check_tile[1].occupyingUnit.UnitMovementStats.is_ally && check_tile[1].occupyingUnit != BattlefieldInfo.current_Unit_Selected:
+							if Calculators.get_distance_between_two_tiles(check_tile[1], BattlefieldInfo.current_Unit_Selected.UnitMovementStats.currentTile) >= weapon.min_range && check_tile[1].occupyingUnit.UnitStats.current_health < check_tile[1].occupyingUnit.UnitStats.max_health:
+								# Add heal option
+								menu_items.append("Heal")
+								break;
+						
+						# Tile was empty 
+						for adjTile in check_tile[1].adjCells:
+							var next_cost = check_tile[0] - 1
+							
+							if next_cost >= 0:
+								queue.append([next_cost, adjTile])
+	
+	# Are we Eirika?
+	if BattlefieldInfo.current_Unit_Selected.UnitStats.name == "Eirika":
+		if !menu_items.has("Convoy"):
+			menu_items.append("Convoy")
+	
+	# Item
+	menu_items.append("Item")
+	
 	# Trade Option | Convoy
 	for adj_cell in BattlefieldInfo.current_Unit_Selected.UnitMovementStats.currentTile.adjCells:
 		if adj_cell.occupyingUnit != null && adj_cell.occupyingUnit.UnitMovementStats.is_ally:
@@ -183,11 +190,6 @@ func get_menu_items():
 			if adj_cell.occupyingUnit.UnitStats.name == "Eirika":
 				if !menu_items.has("Convoy"):
 					menu_items.append("Convoy")
-	
-	# Are we Eirika?
-	if BattlefieldInfo.current_Unit_Selected.UnitStats.name == "Eirika":
-		if !menu_items.has("Convoy"):
-			menu_items.append("Convoy")
 		
 		# Are we on the throne tile
 		if BattlefieldInfo.current_Unit_Selected.UnitMovementStats.currentTile.tileName == "Throne" && BattlefieldInfo.victory_text == "Seize":
@@ -201,7 +203,7 @@ func get_menu_items():
 			menu_items.append("Visit")
 	
 	# Always add Item and wait
-	menu_items.append("Item")
+	
 	menu_items.append("Wait")
 	return menu_items
 

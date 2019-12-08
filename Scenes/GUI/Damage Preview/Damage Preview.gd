@@ -135,6 +135,8 @@ func update_preview_box():
 	# Double Attack
 	if Combat_Calculator.player_double_attack:
 		$"Preview/Player/Player Double Attack Logo".visible = true
+	if Combat_Calculator.enemy_double_attack:
+		$"Preview/Enemy/Enemy Double Attack Logo".visible = true
 	
 	# Weapon Bonus
 	if Combat_Calculator.player_weapon_bonus == 1:

@@ -16,6 +16,7 @@ func _ready():
 	
 	# Add Steel sword
 	UnitInventory.add_item(preload("res://Scenes/Items/Swords/Steel Sword.tscn").instance())
+	UnitInventory.add_item(preload("res://Scenes/Items/Lance/Iron Lance.tscn").instance())
 	
 	# River penalty test
 	UnitMovementStats.riverPenalty = 3

@@ -29,6 +29,9 @@ var unit_mugshot
 # Combat sprites
 var combat_node
 
+# Death sentence for allies
+var death_sentence = []
+
 func _ready():
 	# Movement Stats
 	UnitMovementStats = Unit_Movement.new(5,0,0,0,0,0,0,0,0)

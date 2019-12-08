@@ -35,13 +35,13 @@ z_index = 1
 
 [node name="Background" parent="." index="1"]
 editor/display_folded = false
-modulate = Color( 0.403922, 0.501961, 0.486275, 1 )
 material = SubResource( 2 )
 
 [node name="2149" parent="CellInfo" index="35"]
 editor/display_folded = false
 
 [node name="Rain" type="Sprite" parent="." index="5"]
+modulate = Color( 0.403922, 0.501961, 0.486275, 1 )
 material = ExtResource( 3 )
 texture = ExtResource( 4 )
 centered = false

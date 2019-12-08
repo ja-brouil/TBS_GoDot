@@ -5,6 +5,8 @@ class_name Event_System
 var current_event
 var next_event
 
+var queue_of_events = []
+
 func _ready():
 	BattlefieldInfo.event_system = self
 

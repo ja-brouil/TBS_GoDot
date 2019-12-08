@@ -2,6 +2,11 @@ extends Node2D
 
 class_name MovementRangeRect
 
+func _ready():
+	$"Blue/Blue Player".play("Wave")
+	$"Red/Red Player".play("Wave")
+	$"Green/Green Player".play("Wave")
+
 func turnOn(colorName):
 	if colorName == "Red":
 		$"Red".visible = true

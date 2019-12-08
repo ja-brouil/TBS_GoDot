@@ -17,3 +17,7 @@ func update_unit_tile_info(unit, tile):
 	
 	# Set the unit to the new tile
 	unit.UnitMovementStats.currentTile.occupyingUnit = unit
+
+# Check if there are more than the constant maximum of letters allowed
+func is_string_longer_than_max_constant(string_to_test):
+	return string_to_test.length() > Messaging_System.MAX_LETTERS

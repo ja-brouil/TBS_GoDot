@@ -11,7 +11,7 @@ var turn
 signal play_transition
 
 func _init():
-	turn = PLAYER_TURN
+	turn = WAIT
 
 func _process(delta):
 	check_end_of_turn()

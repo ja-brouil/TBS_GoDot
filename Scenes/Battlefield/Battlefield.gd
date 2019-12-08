@@ -8,7 +8,7 @@ var unit_movement_system
 var movement_calculator
 var turn_manager
 var combat_screen
-var event_system
+var message_system
 
 # Sound and music
 var music_player

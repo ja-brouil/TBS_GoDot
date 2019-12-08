@@ -47,6 +47,7 @@ func _on_Cursor_cursorMoved(direction, cursor_position):
 				emit_signal("camera_moved", position)
 	# Clamp camera
 	clampCameraPosition()
+	
 
 
 # Sets the parameters for the maximum camera movement once the level is loaded

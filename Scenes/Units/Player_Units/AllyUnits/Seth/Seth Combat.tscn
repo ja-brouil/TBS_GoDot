@@ -1,11 +1,139 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scenes/Units/Unit_Scripts/Ally Combat Script.gd" type="Script" id=1]
 [ext_resource path="res://assets/units/cavalier/Seth Battle.png" type="Texture" id=2]
-[ext_resource path="res://assets/transition/white flash.png" type="Texture" id=3]
-[ext_resource path="res://assets/battle_effects/Physical Effects.png" type="Texture" id=4]
-[ext_resource path="res://assets/sound/unitMovement/Horse Steps.wav" type="AudioStream" id=5]
-[ext_resource path="res://assets/sound/misc/slow horse step.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/units/cavalier/Paladin Lance Regular.png" type="Texture" id=3]
+[ext_resource path="res://assets/units/cavalier/paladin lance crit.png" type="Texture" id=4]
+[ext_resource path="res://assets/transition/white flash.png" type="Texture" id=5]
+[ext_resource path="res://assets/battle_effects/Physical Effects.png" type="Texture" id=6]
+[ext_resource path="res://assets/sound/unitMovement/Horse Steps.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/sound/misc/slow horse step.wav" type="AudioStream" id=8]
+
+[sub_resource type="Animation" id=5]
+resource_name = "death"
+
+[sub_resource type="Animation" id=6]
+resource_name = "lance crit"
+
+[sub_resource type="Animation" id=7]
+resource_name = "lance dodge"
+
+[sub_resource type="Animation" id=8]
+resource_name = "lance miss"
+
+[sub_resource type="Animation" id=9]
+resource_name = "lance regular"
+length = 9.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Battle Effect:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 3.5, 3.55, 3.61, 3.67, 3.72, 3.79, 3.85, 3.89 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 310.827, 75.3462, 56.7227, 50.0494 ), Rect2( 528, 49, 110, 103 ), Rect2( 22, 191, 150, 146 ), Rect2( 256, 186, 166, 154 ), Rect2( 502, 185, 165, 158 ), Rect2( 503.601, 183.036, 162.625, 158.966 ), Rect2( 15, 348, 169, 156 ), Rect2( 256, 348, 167, 158 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Battle Effect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 3.5, 3.56, 3.88 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( -85.9954, -0.405655 ), Vector2( -85.9954, -0.930359 ), Vector2( -85.9954, -0.930359 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Battle Effect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( -0.01, 3.5, 3.88 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.01, 3.51, 3.61, 3.62, 6.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_draw_sound"
+}, {
+"args": [  ],
+"method": "play_attack_sound"
+}, {
+"args": [  ],
+"method": "play_hit_sound"
+}, {
+"args": [  ],
+"method": "shake_camera_regular"
+}, {
+"args": [  ],
+"method": "put_away_attack_sound"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Flash:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 3.51, 3.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Lance Sprite Regular:region_rect")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4.5, 4.7, 4.9, 5.1, 5.3, 5.5, 5.7, 5.9, 6.1, 6.3, 6.5, 6.7, 6.9, 7.1, 7.3, 7.5, 7.7, 7.9, 8.1, 8.3, 8.5, 8.7, 8.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 56, 31, 47, 61 ), Rect2( 177, 31, 54, 61 ), Rect2( 298, 33, 53, 59 ), Rect2( 420, 36, 61, 56 ), Rect2( 538, 33, 67, 59 ), Rect2( 647, 35, 64, 58 ), Rect2( 732, 38, 79, 54 ), Rect2( 847, 36, 75, 56 ), Rect2( 995, 40, 38, 58 ), Rect2( 1116, 28, 60, 70 ), Rect2( 1237, 28, 60, 70 ), Rect2( 1351, 36, 56, 64 ), Rect2( 1472, 23, 47, 77 ), Rect2( 1592, 0, 82, 94 ), Rect2( 1708, 2, 91, 91 ), Rect2( 1837, 10, 82, 86 ), Rect2( 1957, 14, 83, 80 ), Rect2( 2080, 25, 85, 74 ), Rect2( 2208, 24, 84, 78 ), Rect2( 2342, 36, 72, 59 ), Rect2( 2469, 46, 62, 46 ), Rect2( 2604, 47, 40, 47 ), Rect2( 2732, 46, 33, 48 ), Rect2( 2857, 46, 40, 48 ), Rect2( 2970, 46, 50, 48 ), Rect2( 3091, 46, 54, 47 ), Rect2( 3212, 46, 49, 47 ), Rect2( 3321, 33, 67, 59 ), Rect2( 3441, 32, 55, 61 ), Rect2( 3559, 31, 54, 61 ), Rect2( 56, 31, 47, 61 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Lance Sprite Regular:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1.5, 2, 2.5, 3, 3.5, 4.5, 4.7, 4.9, 5.1, 5.3, 5.5, 5.7, 5.9, 6.1, 6.3, 6.5, 6.7, 6.9, 7.1, 7.3, 7.5, 7.7, 7.9, 8.1, 8.3, 8.5, 8.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( -5, 0 ), Vector2( -15, 0 ), Vector2( -22, 0 ), Vector2( -38, 0 ), Vector2( -52, 0 ), Vector2( -39, 0 ), Vector2( -9, -6 ), Vector2( 0, -5 ), Vector2( 10, -5 ), Vector2( 13, -10 ), Vector2( 19, -19 ), Vector2( 23, -19 ), Vector2( 29, -13 ), Vector2( 32, -13 ), Vector2( 35, -4 ), Vector2( 37, -4 ), Vector2( 37, -1 ), Vector2( 37, 5 ), Vector2( 31, 5 ), Vector2( 24, 5 ), Vector2( 24, 5 ), Vector2( 12, 5 ), Vector2( 4, 5 ), Vector2( 1, 5 ), Vector2( 1, 1 ), Vector2( 1, -2 ), Vector2( 1, -2 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Lance Sprite Regular:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=1]
 resource_name = "sword crit"
@@ -184,6 +312,18 @@ tracks/12/keys = {
 "update": 1,
 "values": [ true, false ]
 }
+tracks/13/type = "value"
+tracks/13/path = NodePath("Seth Sword Regular:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "sword dodge"
@@ -224,6 +364,18 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 1, 0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Seth Sword Regular:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -288,6 +440,18 @@ tracks/3/keys = {
 "args": [  ],
 "method": "put_away_attack_sound"
 } ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Seth Sword Regular:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -404,6 +568,18 @@ tracks/7/keys = {
 "update": 1,
 "values": [ 1, 0 ]
 }
+tracks/8/type = "value"
+tracks/8/path = NodePath("Seth Sword Regular:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [node name="Seth Combat" type="Node2D"]
 script = ExtResource( 1 )
@@ -413,32 +589,50 @@ __meta__ = {
 }
 
 [node name="Seth Sword Regular" type="Sprite" parent="."]
+visible = false
+position = Vector2( -17, 0 )
+z_index = 1
 texture = ExtResource( 2 )
 region_enabled = true
-region_rect = Rect2( 47, 15, 48, 57 )
+region_rect = Rect2( 186, 1603, 52, 61 )
+
+[node name="Lance Sprite Regular" type="Sprite" parent="."]
+position = Vector2( 1, -2 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 56, 31, 47, 61 )
+
+[node name="Lance Sprite Crit" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 4 )
 
 [node name="Flash" type="Sprite" parent="."]
 visible = false
 z_index = 2
-texture = ExtResource( 3 )
+texture = ExtResource( 5 )
 
 [node name="Battle Effect" type="Sprite" parent="."]
 visible = false
-position = Vector2( -86, -1 )
+position = Vector2( -85.9954, -0.930359 )
 z_index = 1
-texture = ExtResource( 4 )
+texture = ExtResource( 6 )
 region_enabled = true
-region_rect = Rect2( 253, 853, 238, 143 )
+region_rect = Rect2( 256, 348, 167, 158 )
 
 [node name="anim" type="AnimationPlayer" parent="."]
 playback_speed = 4.0
+anims/death = SubResource( 5 )
+"anims/lance crit" = SubResource( 6 )
+"anims/lance dodge" = SubResource( 7 )
+"anims/lance miss" = SubResource( 8 )
+"anims/lance regular" = SubResource( 9 )
 "anims/sword crit" = SubResource( 1 )
 "anims/sword dodge" = SubResource( 2 )
 "anims/sword miss" = SubResource( 3 )
 "anims/sword regular" = SubResource( 4 )
 
 [node name="horse movement" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 5 )
+stream = ExtResource( 7 )
 
 [node name="soft horsestep" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 6 )
+stream = ExtResource( 8 )

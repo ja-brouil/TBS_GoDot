@@ -30,6 +30,11 @@ _global_script_classes=[ {
 "path": "res://Scenes/Combat/Combat.gd"
 }, {
 "base": "Node2D",
+"class": "Combat_Unit",
+"language": "GDScript",
+"path": "res://Scenes/Units/Unit_Scripts/Combat Unit.gd"
+}, {
+"base": "Node2D",
 "class": "Cursor",
 "language": "GDScript",
 "path": "res://Scenes/GUI/Cursor/Cursor.gd"
@@ -58,6 +63,11 @@ _global_script_classes=[ {
 "class": "MainCamera",
 "language": "GDScript",
 "path": "res://Scenes/Camera/MainCamera.gd"
+}, {
+"base": "CanvasLayer",
+"class": "Messaging_System",
+"language": "GDScript",
+"path": "res://Scenes/Messaging/Message System.gd"
 }, {
 "base": "Reference",
 "class": "MovementCalculator",
@@ -109,12 +119,14 @@ _global_script_class_icons={
 "Battlefield_Unit": "",
 "Cell": "",
 "Combat_Screen": "",
+"Combat_Unit": "",
 "Cursor": "",
 "Event_System": "",
 "Group_Name": "",
 "HashSet": "",
 "Item": "",
 "MainCamera": "",
+"Messaging_System": "",
 "MovementCalculator": "",
 "MovementRangeRect": "",
 "Music_Player": "",
