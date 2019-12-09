@@ -5,7 +5,7 @@ var enemy_texture;
 
 func _ready():
 	BattlefieldInfo.turn_manager.connect("play_transition", self, "start_transition")
-		
+	BattlefieldInfo.turn_transition = self
 
 func start_level():
 	# Level Start

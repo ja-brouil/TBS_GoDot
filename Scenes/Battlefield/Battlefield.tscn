@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Scenes/Battlefield/Battlefield.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Levels/level2.tscn" type="PackedScene" id=2]
@@ -16,7 +16,8 @@
 [ext_resource path="res://Scenes/GUI/Damage Preview/Damage Preview.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Scenes/GUI/Damage Preview/Healing Preview.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Scenes/Messaging/Message System.tscn" type="PackedScene" id=16]
-[ext_resource path="res://Scenes/Events/Level 1 Events.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Engine/Systems/Event System.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Scenes/Events/Level 2/Event Loader L2.gd" type="Script" id=18]
 
 [node name="Battlefield" type="Node2D"]
 z_index = 4
@@ -33,6 +34,7 @@ position = Vector2( 144, 64 )
 z_index = 5
 
 [node name="GameCamera" parent="." instance=ExtResource( 4 )]
+editor/display_folded = true
 position = Vector2( 48, 0 )
 zoom = Vector2( 1, 1 )
 
@@ -60,6 +62,9 @@ zoom = Vector2( 1, 1 )
 
 [node name="Message System" parent="." instance=ExtResource( 16 )]
 
-[node name="Level 1 Events" parent="." instance=ExtResource( 17 )]
+[node name="Event System" parent="." instance=ExtResource( 17 )]
+
+[node name="Event Loader" type="Node" parent="."]
+script = ExtResource( 18 )
 [connection signal="mapInformationLoaded" from="Level" to="GameCamera" method="_on_Level_mapInformationLoaded"]
 [connection signal="cursorMoved" from="Cursor" to="GameCamera" method="_on_Cursor_cursorMoved"]

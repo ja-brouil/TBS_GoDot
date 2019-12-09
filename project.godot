@@ -10,11 +10,6 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node2D",
-"class": "Base_Event",
-"language": "GDScript",
-"path": "res://Scenes/Events/Event Base.gd"
-}, {
-"base": "Node2D",
 "class": "Battlefield_Unit",
 "language": "GDScript",
 "path": "res://Scenes/Units/Unit_Scripts/Battlefield_Unit.gd"
@@ -39,6 +34,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scenes/GUI/Cursor/Cursor.gd"
 }, {
+"base": "Node2D",
+"class": "Event_Base",
+"language": "GDScript",
+"path": "res://Scenes/Events/Event Base.gd"
+}, {
 "base": "Node",
 "class": "Event_System",
 "language": "GDScript",
@@ -58,6 +58,16 @@ _global_script_classes=[ {
 "class": "Item",
 "language": "GDScript",
 "path": "res://Scenes/Items/Item.gd"
+}, {
+"base": "Node2D",
+"class": "L2_Event_Part1",
+"language": "GDScript",
+"path": "res://Scenes/Events/Level 2/L2 Event Part 1.gd"
+}, {
+"base": "Node2D",
+"class": "L2_Event_Part2",
+"language": "GDScript",
+"path": "res://Scenes/Events/Level 2/L2 Event Part 2.gd"
 }, {
 "base": "Camera2D",
 "class": "MainCamera",
@@ -115,16 +125,18 @@ _global_script_classes=[ {
 "path": "res://Scenes/Units/Unit_Scripts/Unit_Stats.gd"
 } ]
 _global_script_class_icons={
-"Base_Event": "",
 "Battlefield_Unit": "",
 "Cell": "",
 "Combat_Screen": "",
 "Combat_Unit": "",
 "Cursor": "",
+"Event_Base": "",
 "Event_System": "",
 "Group_Name": "",
 "HashSet": "",
 "Item": "",
+"L2_Event_Part1": "",
+"L2_Event_Part2": "",
 "MainCamera": "",
 "Messaging_System": "",
 "MovementCalculator": "",

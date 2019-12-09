@@ -3599,7 +3599,7 @@
     <property name="strChance" type="int" value="80"/>
    </properties>
   </object>
-  <object id="2867" x="144" y="64" width="16" height="16">
+  <object id="2867" x="160" y="80" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
     <property name="BonusDodge" type="int" value="0"/>
@@ -3644,7 +3644,7 @@
     <property name="strChance" type="int" value="70"/>
    </properties>
   </object>
-  <object id="2870" x="64" y="240" width="16" height="16">
+  <object id="2870" x="128" y="80" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
     <property name="BonusDodge" type="int" value="0"/>
@@ -3890,7 +3890,7 @@
     <property name="Magic" type="int" value="3"/>
     <property name="MaxHealth" type="int" value="50"/>
     <property name="Move" type="int" value="6"/>
-    <property name="Name" value="???"/>
+    <property name="Name" value="Vezarius"/>
     <property name="Res" type="int" value="16"/>
     <property name="Skill" type="int" value="11"/>
     <property name="Speed" type="int" value="16"/>

@@ -9,6 +9,9 @@ var movement_calculator
 var turn_manager
 var combat_screen
 var message_system
+var main_game_camera
+var turn_transition
+var event_system
 
 # Sound and music
 var music_player
@@ -78,6 +81,10 @@ var Eirika
 # Combat Unit
 var combat_player_unit
 var combat_ai_unit
+
+# Start the level
+func start_level():
+	turn_transition.start_level()
 
 # AI Functions
 func next_ai(enemy_unit):

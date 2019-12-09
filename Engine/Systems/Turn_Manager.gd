@@ -7,6 +7,10 @@ class_name Turn_Manager
 enum {PLAYER_TURN, ENEMY_TURN, ENEMY_COMBAT_TURN, WAIT}
 var turn
 
+# Turn number
+var player_turn_number = 0
+var enemy_turn_number = 0
+
 # Signal to play graphic
 signal play_transition
 

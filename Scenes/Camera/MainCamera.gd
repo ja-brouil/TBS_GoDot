@@ -24,6 +24,11 @@ signal camera_moved
 func _ready():
 	# Return to this camera when the unit is done moving
 	BattlefieldInfo.unit_movement_system.connect("unit_finished_moving", self, "set_current_camera")
+	
+	# Access the main camera from anywhere
+	BattlefieldInfo.main_game_camera = self
+	
+	# Camera Shake for battle effect
 	set_process(true)
 
 # Update the camera on cursor movement
