@@ -58,6 +58,7 @@ position = Vector2( 120, 80 )
 texture = ExtResource( 2 )
 
 [node name="Combat UI" type="Panel" parent="Combat Control"]
+editor/display_folded = true
 margin_right = 240.0
 margin_bottom = 160.0
 custom_styles/panel = SubResource( 1 )

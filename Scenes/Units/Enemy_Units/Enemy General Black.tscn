@@ -6,7 +6,7 @@
 [ext_resource path="res://Scenes/GUI/Damage Preview/Cursor Select.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/AI/AI.tscn" type="PackedScene" id=5]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=1]
 resource_name = "Down"
 length = 2.0
 loop = true
@@ -74,7 +74,7 @@ tracks/4/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=2]
 resource_name = "Down no sound"
 length = 2.0
 loop = true
@@ -142,8 +142,7 @@ tracks/4/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "Idle"
+[sub_resource type="Animation" id=3]
 length = 2.0
 loop = true
 step = 0.5
@@ -196,7 +195,7 @@ tracks/3/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=4]
 resource_name = "Left"
 length = 2.0
 loop = true
@@ -264,7 +263,7 @@ tracks/4/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=5]
 resource_name = "Left no sound"
 length = 2.0
 loop = true
@@ -332,7 +331,7 @@ tracks/4/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=6]
 resource_name = "Right"
 length = 2.0
 loop = true
@@ -400,7 +399,7 @@ tracks/4/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=7]
 resource_name = "Right no sound"
 length = 2.0
 loop = true
@@ -468,8 +467,7 @@ tracks/4/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "Up"
+[sub_resource type="Animation" id=8]
 length = 2.0
 loop = true
 step = 0.5
@@ -536,8 +534,7 @@ tracks/4/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "Up no sound"
+[sub_resource type="Animation" id=9]
 length = 2.0
 loop = true
 step = 0.5
@@ -615,14 +612,14 @@ visible = false
 
 [node name="Animation" type="AnimationPlayer" parent="."]
 playback_speed = 2.0
-anims/Down = SubResource( 3 )
-"anims/Down no sound" = SubResource( 5 )
-anims/Idle = SubResource( 1 )
-anims/Left = SubResource( 6 )
-"anims/Left no sound" = SubResource( 7 )
-anims/Right = SubResource( 8 )
-"anims/Right no sound" = SubResource( 9 )
-anims/Up = SubResource( 2 )
-"anims/Up no sound" = SubResource( 4 )
+anims/Down = SubResource( 1 )
+"anims/Down no sound" = SubResource( 2 )
+anims/Idle = SubResource( 3 )
+anims/Left = SubResource( 4 )
+"anims/Left no sound" = SubResource( 5 )
+anims/Right = SubResource( 6 )
+"anims/Right no sound" = SubResource( 7 )
+anims/Up = SubResource( 8 )
+"anims/Up no sound" = SubResource( 9 )
 
 [node name="AI" parent="." instance=ExtResource( 5 )]

@@ -261,6 +261,7 @@ func process_enemy_combat():
 			enemy_second_actual_damage = temp_damage - player_base_def
 			
 			enemy_second_attack_crit = true
+			enemy_crit_second_attack = true
 			
 			if enemy_second_actual_damage < 0:
 				enemy_second_actual_damage = 0
@@ -424,9 +425,9 @@ func check_if_units_can_counter():
 
 	# Check Range
 	# Player
-	if Calculators.get_distance_between_two_tiles(BattlefieldInfo.combat_player_unit.UnitMovementStats.currentTile, BattlefieldInfo.combat_ai_unit.UnitMovementStats.currentTile) <= BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped.max_range:
+	if Calculators.get_distance_between_two_tiles(BattlefieldInfo.combat_player_unit.UnitMovementStats.currentTile, BattlefieldInfo.combat_ai_unit.UnitMovementStats.currentTile) <= BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped.max_range && Calculators.get_distance_between_two_tiles(BattlefieldInfo.combat_player_unit.UnitMovementStats.currentTile, BattlefieldInfo.combat_ai_unit.UnitMovementStats.currentTile) >= BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped.min_range:
 		player_can_counter_attack = true
-	if Calculators.get_distance_between_two_tiles(BattlefieldInfo.combat_player_unit.UnitMovementStats.currentTile, BattlefieldInfo.combat_ai_unit.UnitMovementStats.currentTile) <= BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.max_range:
+	if Calculators.get_distance_between_two_tiles(BattlefieldInfo.combat_player_unit.UnitMovementStats.currentTile, BattlefieldInfo.combat_ai_unit.UnitMovementStats.currentTile) <= BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.max_range && Calculators.get_distance_between_two_tiles(BattlefieldInfo.combat_player_unit.UnitMovementStats.currentTile, BattlefieldInfo.combat_ai_unit.UnitMovementStats.currentTile) >= BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.min_range:
 		enemy_can_counter_attack = true
 	
 	# Is anyone unarmed?
@@ -440,6 +441,10 @@ func check_if_units_can_counter():
 		player_can_counter_attack = false
 	if BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.weapon_type == Item.WEAPON_TYPE.HEALING:
 		enemy_can_counter_attack = false
+	
+	# Counter attacks print
+	print("Player counter attack status: ", player_can_counter_attack)
+	print("Enemy counter attack status: ", enemy_can_counter_attack)
 	
 func get_weapon_bonus():
 	# Player

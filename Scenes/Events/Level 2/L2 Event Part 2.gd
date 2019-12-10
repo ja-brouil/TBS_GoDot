@@ -65,7 +65,6 @@ func move_camera():
 	# Move Camera and Remove old camera
 	BattlefieldInfo.main_game_camera.get_node("Tween").connect("tween_all_completed", self, "event_complete")
 	BattlefieldInfo.main_game_camera.get_node("Tween").interpolate_property(BattlefieldInfo.main_game_camera, "position", BattlefieldInfo.main_game_camera.position, new_position_for_camera, 1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	movement_camera.queue_free()
 	BattlefieldInfo.main_game_camera.current = true
 	BattlefieldInfo.main_game_camera.get_node("Tween").start()
 	
@@ -77,21 +76,14 @@ func move_actor():
 	# Build path to the enemy
 	BattlefieldInfo.movement_calculator.get_path_to_destination_AI(Vezarius, BattlefieldInfo.grid[5][17], BattlefieldInfo.grid)
 	
-	# Move Actor
-	# Set Camera on unit
-	movement_camera = preload("res://Scenes/Camera/MovementCamera.tscn").instance()
-	Vezarius.add_child(movement_camera)
-	movement_camera.current = true
-	
 	# Add actor to list and move them
 	BattlefieldInfo.movement_system_cinematic.unit_to_move_same_time.append(Vezarius)
 	BattlefieldInfo.movement_system_cinematic.is_moving = true
 
 # Enable combat -> need some type of combat cinematic next time
 func enable_combat():
-	# BattlefieldInfo.combat_screen.cinematic_branch = true
+	BattlefieldInfo.combat_screen.cinematic_branch = true
 	BattlefieldInfo.combat_ai_unit = Vezarius
 	BattlefieldInfo.combat_player_unit = Dead_soldier
 	BattlefieldInfo.start_ai_combat()
 	BattlefieldInfo.turn_manager.turn = Turn_Manager.ENEMY_COMBAT_TURN
-	movement_camera.queue_free()

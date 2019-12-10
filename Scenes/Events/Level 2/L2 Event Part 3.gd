@@ -58,6 +58,10 @@ func move_actor():
 	BattlefieldInfo.movement_calculator.get_path_to_destination_AI(move_actor_1, BattlefieldInfo.grid[9][4], BattlefieldInfo.grid)
 	BattlefieldInfo.movement_calculator.get_path_to_destination_AI(move_actor_2, BattlefieldInfo.grid[9][4], BattlefieldInfo.grid)
 	
+	# Remove original tile
+	move_actor_1.UnitMovementStats.currentTile.occupyingUnit = null
+	move_actor_2.UnitMovementStats.currentTile.occupyingUnit = null
+	
 	# Move Actor
 	# Set Camera on unit
 	var movement_camera = preload("res://Scenes/Camera/MovementCamera.tscn").instance()
@@ -73,5 +77,6 @@ func move_actor():
 func hide_actor(unit):
 	BattlefieldInfo.turn_manager.turn = Turn_Manager.WAIT
 	unit.visible = false
+	BattlefieldInfo.ally_units.erase(unit)
 	unit.UnitMovementStats.currentTile.occupyingUnit = null
 	unit.queue_free()

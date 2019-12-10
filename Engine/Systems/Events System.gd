@@ -55,7 +55,9 @@ func resume_gameplay():
 
 # Starts the level -> Use this for events that take place at the beginning of the level
 func start_level():
+	BattlefieldInfo.turn_manager.turn = Turn_Manager.WAIT
 	BattlefieldInfo.start_level()
+	current_state = middle_events
 
 # Ends the level and goes to the next level
 func end_level():

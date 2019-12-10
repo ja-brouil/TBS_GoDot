@@ -1,12 +1,15 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://assets/units/general/general crit axe black.png" type="Texture" id=1]
-[ext_resource path="res://assets/battle_effects/Physical Effects.png" type="Texture" id=2]
-[ext_resource path="res://assets/transition/white flash.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/Units/Enemy_Units/Enemy General Black Combat.gd" type="Script" id=1]
+[ext_resource path="res://assets/units/general/general crit axe black.png" type="Texture" id=2]
+[ext_resource path="res://assets/battle_effects/Physical Effects.png" type="Texture" id=3]
+[ext_resource path="res://assets/transition/white flash.png" type="Texture" id=4]
+[ext_resource path="res://assets/sound/battle sounds/AXE_3.wav" type="AudioStream" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "axe crit"
 length = 19.0
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Combat Sprite:region_rect")
 tracks/0/interp = 1
@@ -26,10 +29,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8, 4, 4.2, 4.4, 4.6, 4.8, 5, 5.2, 5.4, 5.6, 5.8, 6, 6.2, 6.8, 7.2, 7.4, 7.6, 7.8, 8, 8.2, 8.4, 8.6, 8.8, 9, 9.2, 9.4, 9.6, 9.8, 10, 10.2, 10.4, 10.6, 10.8, 11, 11.2, 11.4, 11.6, 11.8, 12, 12.2, 12.4, 12.6, 12.8, 13, 13.2, 13.4, 13.6, 13.8, 14, 14.2, 14.4, 14.6, 14.8, 15, 15.2, 15.4, 16.7, 16.9, 17.1, 17.3, 17.7, 17.9 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8, 4, 4.2, 4.4, 4.6, 4.8, 5, 5.2, 5.4, 5.6, 5.8, 6, 6.2, 6.4, 6.6, 6.8, 7, 7.2, 7.4, 7.6, 7.8, 8, 8.2, 8.4, 8.6, 8.8, 9, 9.2, 9.4, 9.6, 9.8, 10, 10.2, 10.4, 10.6, 10.8, 11, 11.2, 11.4, 11.6, 11.8, 12, 12.2, 12.4, 12.6, 12.8, 13, 13.2, 13.4, 13.6, 13.8, 14, 14.2, 14.4, 14.6, 14.8, 15, 15.2, 15.4, 16.7, 16.9, 17.1, 17.3, 17.7, 17.9, 18.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Vector2( 0, 0 ), Vector2( 3, 0 ), Vector2( 6, 0 ), Vector2( 18, -3 ), Vector2( 11, -4 ), Vector2( 12, -11 ), Vector2( 16, -11 ), Vector2( 16, -12 ), Vector2( 17, -6 ), Vector2( 18, -3 ), Vector2( 11, -4 ), Vector2( 10, -11 ), Vector2( 16, -12 ), Vector2( 23, -11 ), Vector2( 21, -6 ), Vector2( 21, -3 ), Vector2( 11, -4 ), Vector2( 12, -11 ), Vector2( 16, -11 ), Vector2( 22, -13 ), Vector2( 21, -6 ), Vector2( 21, -3 ), Vector2( 11, -4 ), Vector2( 12, -11 ), Vector2( 16, -11 ), Vector2( 22, -13 ), Vector2( 21, -6 ), Vector2( 21, -3 ), Vector2( 11, -3 ), Vector2( 12, -11 ), Vector2( -19, 0 ), Vector2( -19, -3 ), Vector2( -19, 0 ), Vector2( -22, 0 ), Vector2( -22, -3 ), Vector2( -22, -3 ), Vector2( -22, -3 ), Vector2( -21, 0 ), Vector2( -21, 0 ), Vector2( -21, 0 ), Vector2( -21, -3 ), Vector2( -21, -3 ), Vector2( -12, -3 ), Vector2( -15, 0 ), Vector2( -15, 0 ), Vector2( -21, 0 ), Vector2( -22, -3 ), Vector2( -22, -3 ), Vector2( -15, -3 ), Vector2( -15, 0 ), Vector2( -15, 0 ), Vector2( -20, 0 ), Vector2( -20, -3 ), Vector2( -20, -3 ), Vector2( 6, -3 ), Vector2( 28, -4 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 9, 0 ), Vector2( 9, 0 ), Vector2( 9, 0 ), Vector2( 8, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 3, 0 ), Vector2( 6, 0 ), Vector2( 18, -2 ), Vector2( 11, -4 ), Vector2( 13, -11 ), Vector2( 16, -12 ), Vector2( 22, -13 ), Vector2( 21, -6 ), Vector2( 21, -3 ), Vector2( 11, -4 ), Vector2( 13, -11 ), Vector2( 16, -12 ), Vector2( 22, -13 ), Vector2( 21, -6 ), Vector2( 21, -3 ), Vector2( 11, -4 ), Vector2( 13, -11 ), Vector2( 16, -12 ), Vector2( 22, -13 ), Vector2( 21, -6 ), Vector2( 21, -3 ), Vector2( 11, -4 ), Vector2( 13, -11 ), Vector2( 16, -12 ), Vector2( 22, -13 ), Vector2( 21, -6 ), Vector2( 21, -3 ), Vector2( 11, -4 ), Vector2( 13, -11 ), Vector2( -19, 2 ), Vector2( -17, -2 ), Vector2( -17, -3 ), Vector2( -10, -4 ), Vector2( -13, 1 ), Vector2( -15, 1 ), Vector2( -20, 1 ), Vector2( -19, -2 ), Vector2( -19, -3 ), Vector2( -10, -4 ), Vector2( -13, 1 ), Vector2( -15, 1 ), Vector2( -20, 1 ), Vector2( -19, -2 ), Vector2( -19, -3 ), Vector2( -10, -4 ), Vector2( -13, 1 ), Vector2( -15, 1 ), Vector2( -20, 1 ), Vector2( -19, -2 ), Vector2( -19, -3 ), Vector2( -10, -4 ), Vector2( -13, 1 ), Vector2( -15, 1 ), Vector2( -20, 1 ), Vector2( -19, -2 ), Vector2( -19, -3 ), Vector2( 6, -3 ), Vector2( 28, -4 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 9, -1 ), Vector2( 9, -3 ), Vector2( 9, -2 ), Vector2( 8, -2 ), Vector2( 0, -2 ), Vector2( 0, -2 ), Vector2( 0, 0 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Combat Sprite:flip_h")
@@ -62,14 +65,17 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0.1, 11.5, 11.6, 17.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0.1, 11.4, 11.55, 11.6, 17.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "values": [ {
 "args": [  ],
 "method": "play_draw_sound"
 }, {
 "args": [  ],
 "method": "play_attack_sound"
+}, {
+"args": [  ],
+"method": "play_crit_sound"
 }, {
 "args": [  ],
 "method": "shake_camera_crit"
@@ -149,6 +155,18 @@ tracks/10/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Axe Twirl Crit:playing")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 11.35 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -374,13 +392,14 @@ tracks/10/keys = {
 }
 
 [node name="Enemy General Black Combat" type="Node2D"]
+script = ExtResource( 1 )
 __meta__ = {
-"_edit_horizontal_guides_": [ 24.0 ],
-"_edit_vertical_guides_": [ 28.0, 75.0, -15.0 ]
+"_edit_horizontal_guides_": [ 24.0, 22.046 ],
+"_edit_vertical_guides_": [ 28.0, 75.0, -15.0, 15.9028 ]
 }
 
 [node name="anim" type="AnimationPlayer" parent="."]
-playback_speed = 4.0
+playback_speed = 6.0
 "anims/axe crit" = SubResource( 1 )
 "anims/axe death" = SubResource( 2 )
 "anims/axe dodge" = SubResource( 3 )
@@ -388,7 +407,7 @@ playback_speed = 4.0
 "anims/axe regular" = SubResource( 5 )
 
 [node name="Combat Sprite" type="Sprite" parent="."]
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 flip_h = true
 region_enabled = true
 region_rect = Rect2( 0, 26, 56, 47 )
@@ -396,10 +415,13 @@ region_rect = Rect2( 0, 26, 56, 47 )
 [node name="Battle Effect" type="Sprite" parent="."]
 visible = false
 position = Vector2( 70, -1 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 region_enabled = true
-region_rect = Rect2( 253, 853, 238, 143 )
+region_rect = Rect2( 268, 528, 177, 150 )
 
 [node name="Flash" type="Sprite" parent="."]
 visible = false
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
+
+[node name="Axe Twirl Crit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )

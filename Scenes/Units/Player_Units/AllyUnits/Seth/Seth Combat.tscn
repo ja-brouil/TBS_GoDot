@@ -9,16 +9,16 @@
 [ext_resource path="res://assets/sound/unitMovement/Horse Steps.wav" type="AudioStream" id=7]
 [ext_resource path="res://assets/sound/misc/slow horse step.wav" type="AudioStream" id=8]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "lance crit"
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "lance dodge"
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "lance miss"
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "lance regular"
 length = 9.3
 tracks/0/type = "value"
@@ -132,7 +132,7 @@ tracks/7/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 length = 22.0
 step = 0.01
 tracks/0/type = "value"
@@ -321,8 +321,7 @@ tracks/13/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "sword death"
+[sub_resource type="Animation" id=6]
 length = 3.3
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
@@ -681,12 +680,12 @@ region_rect = Rect2( 256, 348, 167, 158 )
 
 [node name="anim" type="AnimationPlayer" parent="."]
 playback_speed = 4.0
-"anims/lance crit" = SubResource( 2 )
-"anims/lance dodge" = SubResource( 3 )
-"anims/lance miss" = SubResource( 4 )
-"anims/lance regular" = SubResource( 5 )
-"anims/sword crit" = SubResource( 6 )
-"anims/sword death" = SubResource( 1 )
+"anims/lance crit" = SubResource( 1 )
+"anims/lance dodge" = SubResource( 2 )
+"anims/lance miss" = SubResource( 3 )
+"anims/lance regular" = SubResource( 4 )
+"anims/sword crit" = SubResource( 5 )
+"anims/sword death" = SubResource( 6 )
 "anims/sword dodge" = SubResource( 7 )
 "anims/sword miss" = SubResource( 8 )
 "anims/sword regular" = SubResource( 9 )
