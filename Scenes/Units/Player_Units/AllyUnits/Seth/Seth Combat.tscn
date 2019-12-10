@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=2]
 
-[ext_resource path="res://Scenes/Units/Unit_Scripts/Ally Combat Script.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Units/Player_Units/AllyUnits/Seth/Seth Combat.gd" type="Script" id=1]
 [ext_resource path="res://assets/units/cavalier/Seth Battle.png" type="Texture" id=2]
 [ext_resource path="res://assets/units/cavalier/Paladin Lance Regular.png" type="Texture" id=3]
 [ext_resource path="res://assets/units/cavalier/paladin lance crit.png" type="Texture" id=4]
@@ -9,17 +9,13 @@
 [ext_resource path="res://assets/sound/unitMovement/Horse Steps.wav" type="AudioStream" id=7]
 [ext_resource path="res://assets/sound/misc/slow horse step.wav" type="AudioStream" id=8]
 
-[sub_resource type="Animation" id=1]
-resource_name = "lance crit"
-
 [sub_resource type="Animation" id=2]
-resource_name = "lance dodge"
 
 [sub_resource type="Animation" id=3]
-resource_name = "lance miss"
 
 [sub_resource type="Animation" id=4]
-resource_name = "lance regular"
+
+[sub_resource type="Animation" id=5]
 length = 9.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Battle Effect:region_rect")
@@ -132,7 +128,7 @@ tracks/7/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 length = 22.0
 step = 0.01
 tracks/0/type = "value"
@@ -315,13 +311,13 @@ tracks/13/loop_wrap = true
 tracks/13/imported = false
 tracks/13/enabled = true
 tracks/13/keys = {
-"times": PoolRealArray( 0 ),
+"times": PoolRealArray( -0.16 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=7]
 length = 3.3
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
@@ -389,7 +385,7 @@ tracks/4/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 length = 2.0
 step = 0.5
 tracks/0/type = "value"
@@ -441,7 +437,7 @@ tracks/3/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 length = 10.5
 step = 0.01
 tracks/0/type = "value"
@@ -516,7 +512,7 @@ tracks/4/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=10]
 length = 10.5
 step = 0.01
 tracks/0/type = "value"
@@ -636,7 +632,7 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0 ),
+"times": PoolRealArray( -0.17 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
@@ -657,6 +653,7 @@ region_enabled = true
 region_rect = Rect2( 47, 15, 48, 57 )
 
 [node name="Lance Sprite Regular" type="Sprite" parent="."]
+visible = false
 texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 56, 31, 47, 61 )
@@ -680,15 +677,15 @@ region_rect = Rect2( 256, 348, 167, 158 )
 
 [node name="anim" type="AnimationPlayer" parent="."]
 playback_speed = 4.0
-"anims/lance crit" = SubResource( 1 )
-"anims/lance dodge" = SubResource( 2 )
-"anims/lance miss" = SubResource( 3 )
-"anims/lance regular" = SubResource( 4 )
-"anims/sword crit" = SubResource( 5 )
-"anims/sword death" = SubResource( 6 )
-"anims/sword dodge" = SubResource( 7 )
-"anims/sword miss" = SubResource( 8 )
-"anims/sword regular" = SubResource( 9 )
+"anims/lance crit" = SubResource( 2 )
+"anims/lance dodge" = SubResource( 3 )
+"anims/lance miss" = SubResource( 4 )
+"anims/lance regular" = SubResource( 5 )
+"anims/sword crit" = SubResource( 6 )
+"anims/sword death" = SubResource( 7 )
+"anims/sword dodge" = SubResource( 8 )
+"anims/sword miss" = SubResource( 9 )
+"anims/sword regular" = SubResource( 10 )
 
 [node name="horse movement" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )

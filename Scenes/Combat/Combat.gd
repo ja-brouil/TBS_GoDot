@@ -523,7 +523,6 @@ func enemy_attack():
 		elif Combat_Calculator.enemy_first_attack_hit:
 			# Play Regular
 			var anim_name = str(BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.weapon_string_name, " regular")
-			print(anim_name)
 			enemy_node_name.get_node("anim").play(anim_name)
 		else:
 			# Enemy Missed

@@ -588,7 +588,7 @@ tracks/3/keys = {
 }
 
 [node name="Enemy General Black" type="Node2D"]
-z_index = 3
+z_index = 5
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 22.1433 ],
