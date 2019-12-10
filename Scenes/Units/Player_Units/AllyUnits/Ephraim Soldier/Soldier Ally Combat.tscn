@@ -1,0 +1,411 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scenes/Units/Player_Units/AllyUnits/Ephraim Soldier/Soldier Ally Combat.gd" type="Script" id=1]
+[ext_resource path="res://assets/units/soldier/soldier_blue.png" type="Texture" id=2]
+[ext_resource path="res://assets/battle_effects/Physical Effects.png" type="Texture" id=3]
+[ext_resource path="res://assets/transition/white flash.png" type="Texture" id=4]
+
+[sub_resource type="Animation" id=6]
+length = 6.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Combat Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 2.3, 2.6, 2.9, 3.2, 4.3, 4.6, 5, 5.3, 5.7, 6, 6.3, 6.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 19, 162, 26, 45 ), Rect2( 69, 150, 31, 58 ), Rect2( 117, 149, 36, 59 ), Rect2( 170, 172, 44, 35 ), Rect2( 228, 167, 40, 33 ), Rect2( 276, 168, 42, 33 ), Rect2( 330, 168, 61, 33 ), Rect2( 14, 221, 60, 33 ), Rect2( 87, 221, 34, 36 ), Rect2( 133, 224, 47, 35 ), Rect2( 194, 223, 49, 33 ), Rect2( 255, 219, 44, 34 ), Rect2( 312, 218, 34, 36 ), Rect2( 355, 205, 29, 51 ), Rect2( 19, 25, 26, 45 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Combat Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 2.3, 2.6, 2.9, 3.2, 4.6, 5, 5.3, 5.7, 6, 6.3, 6.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( -3, -6 ), Vector2( -5, -6 ), Vector2( -9, 5 ), Vector2( -27, 8 ), Vector2( -40, 7 ), Vector2( -50, 7 ), Vector2( -38, 6 ), Vector2( -20, 6 ), Vector2( -6, 6 ), Vector2( 0, 6 ), Vector2( -2, 5 ), Vector2( -2, -3 ), Vector2( 0, 0 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5, 3.1, 3.2, 3.201, 6.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_draw_sound"
+}, {
+"args": [  ],
+"method": "play_attack_sound"
+}, {
+"args": [  ],
+"method": "shake_camera_crit"
+}, {
+"args": [  ],
+"method": "play_crit_sound"
+}, {
+"args": [  ],
+"method": "put_away_attack_sound"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Flash:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 3.2, 3.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Battle Effect:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 3.2, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Battle Effect:z_index")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 3.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Battle Effect:region_rect")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 3.3, 3.4, 3.5, 3.6, 3.7, 3.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 268, 528, 177, 150 ), Rect2( 498, 526, 237, 144 ), Rect2( 255, 688, 235, 145 ), Rect2( 496, 689, 238, 144 ), Rect2( 10, 852, 239, 144 ), Rect2( 253, 853, 238, 143 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Battle Effect:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 3.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( -70, -1 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Battle Effect:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "lance death"
+length = 3.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Combat Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Combat Sprite:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Rect2( 19, 25, 26, 45 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Combat Sprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Combat Sprite:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.9 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 1.5, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_death_sound"
+}, {
+"args": [  ],
+"method": "death_anim_signal"
+} ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "lance dodge"
+length = 1.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Combat Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -2 ), Vector2( 0, 6 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Combat Sprite:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 15, 344, 26, 45 ), Rect2( 438, 291, 43, 49 ), Rect2( 502, 300, 39, 33 ), Rect2( 19, 25, 26, 45 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "lance miss"
+length = 5.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Combat Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 3.6, 3.9, 4.2, 4.4, 4.8, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( -1, 6 ), Vector2( -10, 6 ), Vector2( -19, 6 ), Vector2( -52, 6 ), Vector2( -39, 6 ), Vector2( -16, 6 ), Vector2( -1, 6 ), Vector2( 0, 6 ), Vector2( 0, -3 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Combat Sprite:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 3.3, 3.6, 3.9, 4.2, 4.4, 4.6, 4.8, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 19, 25, 26, 45 ), Rect2( 59, 36, 41, 34 ), Rect2( 109, 36, 40, 33 ), Rect2( 157, 37, 42, 33 ), Rect2( 211, 37, 61, 33 ), Rect2( 284, 39, 60, 33 ), Rect2( 357, 39, 34, 36 ), Rect2( 15, 92, 47, 35 ), Rect2( 76, 91, 49, 33 ), Rect2( 137, 87, 44, 34 ), Rect2( 194, 86, 34, 36 ), Rect2( 237, 73, 29, 51 ), Rect2( 19, 25, 26, 45 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 1.9, 2.1, 4.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_draw_sound"
+}, {
+"args": [  ],
+"method": "play_attack_sound"
+}, {
+"args": [  ],
+"method": "play_miss_sound"
+}, {
+"args": [  ],
+"method": "put_away_attack_sound"
+} ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 5.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Combat Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 3.3, 3.6, 3.9, 4.2, 4.4, 4.6, 4.8, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( -1, 6 ), Vector2( -10, 6 ), Vector2( -19, 6 ), Vector2( -52, 6 ), Vector2( -52, 6 ), Vector2( -39, 6 ), Vector2( -16, 6 ), Vector2( -1, 6 ), Vector2( 0, 6 ), Vector2( 0, 6 ), Vector2( 0, -3 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Combat Sprite:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 3.3, 3.6, 3.9, 4.2, 4.4, 4.6, 4.8, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 19, 25, 26, 45 ), Rect2( 59, 36, 41, 34 ), Rect2( 109, 36, 40, 33 ), Rect2( 157, 37, 42, 33 ), Rect2( 211, 37, 61, 33 ), Rect2( 284, 39, 60, 33 ), Rect2( 357, 39, 34, 36 ), Rect2( 15, 92, 47, 35 ), Rect2( 76, 91, 49, 33 ), Rect2( 137, 87, 44, 34 ), Rect2( 194, 86, 34, 36 ), Rect2( 237, 73, 29, 51 ), Rect2( 19, 25, 26, 45 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 2, 2.15, 2.2, 4.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_draw_sound"
+}, {
+"args": [  ],
+"method": "play_attack_sound"
+}, {
+"args": [  ],
+"method": "shake_camera_regular"
+}, {
+"args": [  ],
+"method": "play_hit_sound"
+}, {
+"args": [  ],
+"method": "put_away_attack_sound"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Battle Effect:region_rect")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 2, 2.05, 2.1, 2.15, 2.2, 2.25, 2.35 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 310.827, 75.3462, 56.7227, 50.0494 ), Rect2( 528, 49, 110, 103 ), Rect2( 22, 191, 150, 146 ), Rect2( 256, 186, 166, 154 ), Rect2( 502, 185, 165, 158 ), Rect2( 503.601, 183.036, 162.625, 158.966 ), Rect2( 15, 348, 169, 156 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Battle Effect:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 2, 2.05, 2.35 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( -75, -0.406 ), Vector2( -75, -0.93 ), Vector2( -75, -0.93 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Battle Effect:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( -0.01, 1.95, 2.35 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Flash:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1.95, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+
+[node name="Ally Soldier Combat" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="anim" type="AnimationPlayer" parent="."]
+playback_speed = 4.0
+"anims/lance crit" = SubResource( 6 )
+"anims/lance death" = SubResource( 7 )
+"anims/lance dodge" = SubResource( 4 )
+"anims/lance miss" = SubResource( 8 )
+"anims/lance regular" = SubResource( 5 )
+
+[node name="Combat Sprite" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.9 )
+texture = ExtResource( 2 )
+flip_h = true
+region_enabled = true
+region_rect = Rect2( 15, 344, 26, 45 )
+
+[node name="Battle Effect" type="Sprite" parent="."]
+visible = false
+position = Vector2( -70, -1 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 253, 853, 238, 143 )
+
+[node name="Flash" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0, -7.62939e-06 )
+scale = Vector2( 1.66667, 1.875 )
+texture = ExtResource( 4 )

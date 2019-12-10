@@ -8,11 +8,16 @@ enum {PLAYER_TURN, ENEMY_TURN, ENEMY_COMBAT_TURN, WAIT}
 var turn
 
 # Turn number
-var player_turn_number = 0
+var player_turn_number = 1
 var enemy_turn_number = 0
+
+# Signal for events
+signal player_turn_increased
+signal enemy_turn_increased
 
 # Signal to play graphic
 signal play_transition
+
 
 func _init():
 	turn = WAIT
@@ -46,8 +51,7 @@ func check_end_of_turn():
 				if ally_unit.UnitActionStatus.get_current_action() != Unit_Action_Status.DONE:
 					return
 			# All Units have moved and are done
-			emit_signal("play_transition", "Enemy")
-			reset_greyscale()
+			$"End of Enemy".start(0)
 			turn = WAIT
 		ENEMY_TURN:
 			for enemy_unit in BattlefieldInfo.enemy_units:
@@ -57,8 +61,15 @@ func check_end_of_turn():
 					return
 			# All units have moved and are done
 			BattlefieldInfo.current_Unit_Selected = null
-			emit_signal("play_transition", "Ally")
-			reset_greyscale()
+			$"End of Ally".start(0)
 			turn = WAIT
 		WAIT:
 			pass
+
+func _on_End_of_Ally_timeout():
+	emit_signal("play_transition", "Ally")
+	reset_greyscale()
+
+func _on_End_of_Enemy_timeout():
+	emit_signal("play_transition", "Enemy")
+	reset_greyscale()

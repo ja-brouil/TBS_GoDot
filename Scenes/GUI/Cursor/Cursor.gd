@@ -9,7 +9,7 @@ signal turn_off_ui
 signal turn_on_ui
 
 # Holds current unit selected
-var currentUnit
+#var BattlefieldInfo.current_Unit_Selected
 
 # Which mode is the cursor in
 enum {MOVE, SELECT_MOVE_TILE, WAIT}
@@ -73,31 +73,30 @@ func updateCursorData() -> void:
 	match cursor_state:
 		MOVE:
 			# Set Animation status of unit if not null -> This is if you go from one cell to another and both are adj and occupied
-			if currentUnit != null:
-					currentUnit.get_node("Animation").current_animation = "Idle"
-					currentUnit = null
+			if BattlefieldInfo.current_Unit_Selected != null:
+					BattlefieldInfo.current_Unit_Selected.get_node("Animation").current_animation = "Idle"
 					set_animation_status(true)
 					# Remove Global Unit
 					BattlefieldInfo.current_Unit_Selected = null
 			
 			# check if the cell if occupied
 			if BattlefieldInfo.grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE].occupyingUnit != null:
-				currentUnit = BattlefieldInfo.grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE].occupyingUnit
+				BattlefieldInfo.current_Unit_Selected = BattlefieldInfo.grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE].occupyingUnit
 				
 				# Set Global Variable
 				BattlefieldInfo.current_Unit_Selected = BattlefieldInfo.grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE].occupyingUnit
 				
 				# Check if this unit is an ally
-				if currentUnit.UnitMovementStats.is_ally && currentUnit.UnitActionStatus.get_current_action() != Unit_Action_Status.DONE:
-					currentUnit.get_node("Animation").current_animation = "Selected"
+				if BattlefieldInfo.current_Unit_Selected.UnitMovementStats.is_ally && BattlefieldInfo.current_Unit_Selected.UnitActionStatus.get_current_action() != Unit_Action_Status.DONE:
+					BattlefieldInfo.current_Unit_Selected.get_node("Animation").current_animation = "Selected"
 					# Stop Cursor animation
 					set_animation_status(false)
 				
 			else:
 				# Do we have a unit selected right now?
-				if currentUnit != null:
-					currentUnit.get_node("Animation").current_animation = "Idle"
-					currentUnit = null
+				if BattlefieldInfo.current_Unit_Selected != null:
+					BattlefieldInfo.current_Unit_Selected.get_node("Animation").current_animation = "Idle"
+					BattlefieldInfo.current_Unit_Selected = null
 					
 					# Remove Global Unit
 					BattlefieldInfo.current_Unit_Selected = null
@@ -111,7 +110,7 @@ func acceptButton() -> void:
 	match cursor_state:
 		MOVE:
 		# Open end turn window # Send a signal out here -> Or if you pressed a unit that is done
-			if BattlefieldInfo.grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE].occupyingUnit == null || currentUnit.UnitActionStatus.get_current_action() == Unit_Action_Status.DONE:
+			if BattlefieldInfo.grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE].occupyingUnit == null || BattlefieldInfo.current_Unit_Selected.UnitActionStatus.get_current_action() == Unit_Action_Status.DONE:
 				# Play accept sound
 				$"AcceptSound".play()
 				
@@ -126,11 +125,11 @@ func acceptButton() -> void:
 				return
 			
 			# Set current unit to the global unit selector
-			BattlefieldInfo.current_Unit_Selected = currentUnit
+			BattlefieldInfo.current_Unit_Selected = BattlefieldInfo.current_Unit_Selected
 			
 			# Set Selected Animation to current unit
-			if currentUnit.UnitMovementStats.is_ally:
-				currentUnit.get_node("Animation").current_animation = "Highlighted"
+			if BattlefieldInfo.current_Unit_Selected.UnitMovementStats.is_ally:
+				BattlefieldInfo.current_Unit_Selected.get_node("Animation").current_animation = "Highlighted"
 			
 			# Highlight ranges
 			BattlefieldInfo.movement_calculator.calculatePossibleMoves(BattlefieldInfo.grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE].occupyingUnit, BattlefieldInfo.grid)
@@ -152,24 +151,24 @@ func acceptButton() -> void:
 			
 		SELECT_MOVE_TILE:
 			# Validate that this is an ally
-			if !currentUnit.UnitMovementStats.is_ally:
+			if !BattlefieldInfo.current_Unit_Selected.UnitMovementStats.is_ally:
 				cancel_Button()
 				return
 			
 			# Validate if tile is in the list
-			if BattlefieldInfo.movement_calculator.check_if_move_is_valid(BattlefieldInfo.grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE], currentUnit):
+			if BattlefieldInfo.movement_calculator.check_if_move_is_valid(BattlefieldInfo.grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE], BattlefieldInfo.current_Unit_Selected):
 				# Set the old position so that we can go back if needed
-				BattlefieldInfo.previous_position = currentUnit.UnitMovementStats.currentTile.position
+				BattlefieldInfo.previous_position = BattlefieldInfo.current_Unit_Selected.UnitMovementStats.currentTile.position
 				
 				# Get the path to the tile
-				BattlefieldInfo.movement_calculator.get_path_to_destination(currentUnit, BattlefieldInfo.grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE], BattlefieldInfo.grid)
+				BattlefieldInfo.movement_calculator.get_path_to_destination(BattlefieldInfo.current_Unit_Selected, BattlefieldInfo.grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE], BattlefieldInfo.grid)
 				
 				# Check if we are going to the same tile
-				if BattlefieldInfo.grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE] == currentUnit.UnitMovementStats.currentTile:
-					currentUnit.UnitMovementStats.movement_queue.push_front(BattlefieldInfo.grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE])
+				if BattlefieldInfo.grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE] == BattlefieldInfo.current_Unit_Selected.UnitMovementStats.currentTile:
+					BattlefieldInfo.current_Unit_Selected.UnitMovementStats.movement_queue.push_front(BattlefieldInfo.grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE])
 				
 				# Remove the unit's occupied status on the grid
-				currentUnit.UnitMovementStats.currentTile.occupyingUnit = null
+				BattlefieldInfo.current_Unit_Selected.UnitMovementStats.currentTile.occupyingUnit = null
 				
 				# Play Accept
 				$"AcceptSound".play()
@@ -193,7 +192,7 @@ func cancel_Button() -> void:
 	match cursor_state:
 		SELECT_MOVE_TILE:
 			# Clear all highlighted tiles
-			BattlefieldInfo.movement_calculator.turn_off_all_tiles(currentUnit, BattlefieldInfo.grid)
+			BattlefieldInfo.movement_calculator.turn_off_all_tiles(BattlefieldInfo.current_Unit_Selected, BattlefieldInfo.grid)
 			
 			# Set Cursor back to Move status and clear current unit if needed
 			updateCursorData()
@@ -248,4 +247,3 @@ func debug() -> void:
 func _on_Timer_timeout():
 	if BattlefieldInfo.turn_manager.turn != Turn_Manager.ENEMY_TURN && BattlefieldInfo.turn_manager.turn != Turn_Manager.WAIT:
 		cursor_state = MOVE
-		updateCursorData()

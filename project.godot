@@ -69,6 +69,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scenes/Events/Level 2/L2 Event Part 2.gd"
 }, {
+"base": "Node2D",
+"class": "L2_Event_Part3",
+"language": "GDScript",
+"path": "res://Scenes/Events/Level 2/L2 Event Part 3.gd"
+}, {
 "base": "Camera2D",
 "class": "MainCamera",
 "language": "GDScript",
@@ -119,6 +124,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Engine/Systems/Unit_Movement_System.gd"
 }, {
+"base": "Node",
+"class": "Unit_Movement_System_Cinematic",
+"language": "GDScript",
+"path": "res://Engine/Systems/Unit_Movement_System_Cinematic.gd"
+}, {
 "base": "Reference",
 "class": "Unit_Stats",
 "language": "GDScript",
@@ -137,6 +147,7 @@ _global_script_class_icons={
 "Item": "",
 "L2_Event_Part1": "",
 "L2_Event_Part2": "",
+"L2_Event_Part3": "",
 "MainCamera": "",
 "Messaging_System": "",
 "MovementCalculator": "",
@@ -147,6 +158,7 @@ _global_script_class_icons={
 "Unit_Action_Status": "",
 "Unit_Movement": "",
 "Unit_Movement_System": "",
+"Unit_Movement_System_Cinematic": "",
 "Unit_Stats": ""
 }
 

@@ -6,7 +6,7 @@ func _ready():
 	uses = 45
 	might = 7
 	weight = 8
-	hit = 80
+	hit = 90
 	crit = 0
 	max_range = 1
 	min_range = 1

@@ -207,6 +207,9 @@ func calculate_total_defeat():
 func _on_Return_timeout():
 	current_state = wait
 	has_unit_leveled_up = false
+	BattlefieldInfo.combat_player_unit.get_node("Animation").play("Idle")
+	BattlefieldInfo.combat_player_unit.UnitActionStatus.current_action_status = Unit_Action_Status.DONE
+	BattlefieldInfo.combat_player_unit.turn_greyscale_on()
 	if get_parent().get_parent().get_parent().broke_item:
 		get_parent().get_node("Item Broke Screen").start(BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped, BattlefieldInfo.combat_player_unit)
 	else:

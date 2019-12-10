@@ -20,6 +20,9 @@ signal selected_back
 # UI Active
 var is_active = false
 
+# For damage preview screen
+signal menu_moved
+
 # Keep track of all the actions that we have currently
 var current_actions = []
 var current_number_action = 0
@@ -263,10 +266,12 @@ func go_back():
 
 # Left
 func left_side(body):
+	emit_signal("menu_moved", "right")
 	new_menu_position = TOP_RIGHT
 
 # Right
 func right_side(body):
+	emit_signal("menu_moved", "left")
 	new_menu_position = TOP_LEFT
 
 # Move everything off and hide it

@@ -5,6 +5,7 @@ func _ready():
 	# Load events for this level
 	BattlefieldInfo.event_system.add_event(L2_Event_Part1.new())
 	BattlefieldInfo.event_system.add_event(L2_Event_Part2.new())
+	BattlefieldInfo.event_system.add_event(L2_Event_Part3.new())
 	
 	# Start Level
 	BattlefieldInfo.event_system.start_events_queue()

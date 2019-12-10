@@ -30,7 +30,7 @@ var unit_mugshot
 var combat_node
 
 # Death sentence for allies
-var death_sentence = []
+var death_sentence
 
 func _ready():
 	# Movement Stats

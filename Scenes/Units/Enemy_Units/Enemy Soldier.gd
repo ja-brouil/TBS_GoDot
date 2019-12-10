@@ -6,7 +6,6 @@ func _ready():
 	UnitMovementStats.is_ally = false
 	
 	# Portrait
-	#unit_portrait_path = preload("res://assets/units/enemyPortrait/normalSoldierPortrait.png")
 	unit_portrait_path = preload("res://assets/units/enemyPortrait/red soldier portrait.png")
 	
 	# Mug shot

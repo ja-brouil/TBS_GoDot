@@ -8,10 +8,13 @@ var unit_movement_system
 var movement_calculator
 var turn_manager
 var combat_screen
+
+# Cinematic Systems
 var message_system
 var main_game_camera
 var turn_transition
 var event_system
+var movement_system_cinematic
 
 # Sound and music
 var music_player
@@ -29,8 +32,11 @@ func _ready():
 	# Movement System
 	unit_movement_system = Unit_Movement_System.new()
 	
+	# Cinematic Movement System
+	movement_system_cinematic = Unit_Movement_System_Cinematic.new()
+	
 	# Turn Manager
-	turn_manager = Turn_Manager.new()
+	turn_manager = preload("res://Engine/Systems/Turn Manager.tscn").instance()
 	add_child(turn_manager)
 	
 	# Music player
@@ -48,6 +54,7 @@ func _ready():
 # Run Systems
 func _process(delta):
 	unit_movement_system.process_movement(delta)
+	movement_system_cinematic.process_movement(delta)
 
 
 #######################

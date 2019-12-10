@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/Audio/MusicPlayer.gd" type="Script" id=1]
 [ext_resource path="res://assets/music/FE Level1 SD.wav" type="AudioStream" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://assets/music/Chasing Daybreak.wav" type="AudioStream" id=8]
 [ext_resource path="res://assets/music/Fodlan Winds.wav" type="AudioStream" id=9]
 [ext_resource path="res://assets/music/Tearing through Heaven.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/music/Unfufilled.wav" type="AudioStream" id=11]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Volume Up"
@@ -59,3 +60,6 @@ stream = ExtResource( 10 )
 
 [node name="anim" type="AnimationPlayer" parent="."]
 "anims/Volume Up" = SubResource( 1 )
+
+[node name="Unfufilled" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )

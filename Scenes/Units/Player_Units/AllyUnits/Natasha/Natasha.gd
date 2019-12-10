@@ -21,4 +21,5 @@ func _ready():
 	combat_node = preload("res://Scenes/Units/Player_Units/AllyUnits/Natasha/Natasha Combat.tscn")\
 	
 	# Death sentence
+	death_sentence = []
 	death_sentence.append("Natasha:\n\nAhh...forgive me... Lady Eirika...")

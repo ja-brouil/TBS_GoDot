@@ -10,7 +10,6 @@ func _ready():
 func start_level():
 	# Level Start
 	start_transition("Player")
-	$Timer.start(0)
 
 func start_transition(type):
 	if type == "Enemy":
@@ -34,11 +33,8 @@ func ally_animation_finished(anim_name):
 	BattlefieldInfo.turn_manager.reset_allys()
 	BattlefieldInfo.turn_manager.reset_enemies()
 	
-	# Set Music
-#	if BattlefieldInfo.enemy_units.size() <= 1:
-#		BattlefieldInfo.music_player.get_node("OneUnitLeft").play(0)
-#	else:
-#		BattlefieldInfo.music_player.get_node("AllyLevel").play(0)
+	BattlefieldInfo.turn_manager.player_turn_number +=1
+	BattlefieldInfo.turn_manager.emit_signal("player_turn_increased", BattlefieldInfo.turn_manager.player_turn_number)
 	
 	# Activate UI and Cursor again
 	get_parent().get_parent().get_node("BattlefieldHUD").turn_on_battlefield_ui()
@@ -47,8 +43,9 @@ func ally_animation_finished(anim_name):
 func enemy_animation_finished(anim_name):
 	BattlefieldInfo.turn_manager.turn = Turn_Manager.ENEMY_TURN
 	BattlefieldInfo.turn_manager.reset_enemies()
-#	BattlefieldInfo.music_player.get_node("EnemyLevel").play(0)
+	BattlefieldInfo.turn_manager.enemy_turn_number += 1
+	BattlefieldInfo.turn_manager.emit_signal("enemy_turn_increased", BattlefieldInfo.turn_manager.enemy_turn_number)
 
 # Initial phase
 func _on_Timer_timeout():
-	BattlefieldInfo.music_player.get_node("AllyLevel").play(0)
+	pass

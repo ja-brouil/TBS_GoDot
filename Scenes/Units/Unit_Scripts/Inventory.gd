@@ -15,6 +15,9 @@ var MIN_HEAL_RANGE = 999
 # Current item equipped
 var current_item_equipped
 
+# What weapons the unit can use?
+var usable_weapons = []
+
 # Add item to the inventory
 func add_item(item):
 	if inventory.size() == MAX_INVENTORY:
@@ -23,6 +26,9 @@ func add_item(item):
 	else:
 		add_child(item)
 		inventory.append(item)
+		
+		# Check if the unit can use this item and mark true if it's usable
+		
 		
 		# Check what kind of item this is
 		# Process healing item

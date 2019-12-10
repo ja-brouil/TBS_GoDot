@@ -21,6 +21,8 @@ var is_active
 func _ready():
 	is_active = false
 	$Preview.rect_position = RIGHT_SIDE
+	
+	get_parent().get_node("Action Selector Screen").connect("menu_moved", self, "set_menu_position")
 
 # Input
 func _input(event):
@@ -121,8 +123,13 @@ func update_preview_box():
 	# Calculate damage previews
 	Combat_Calculator.calculate_damage()
 	
-	# Set menu position
-	set_menu_position()
+	
+	# Turn off bonuses
+	# Weapon Bonus
+	$"Preview/Player/Player Up Arrow Combat".visible = false
+	$"Preview/Player/Player Down Arrow Combat".visible = false
+	$"Preview/Enemy/Enemy Up Arrow Combat".visible = false
+	$"Preview/Enemy/Enemy Down Arrow Combat".visible = false
 	
 	# Player
 	$"Preview/Player/Player Name".text = BattlefieldInfo.combat_player_unit.UnitStats.name
@@ -135,8 +142,6 @@ func update_preview_box():
 	# Double Attack
 	if Combat_Calculator.player_double_attack:
 		$"Preview/Player/Player Double Attack Logo".visible = true
-	if Combat_Calculator.enemy_double_attack:
-		$"Preview/Enemy/Enemy Double Attack Logo".visible = true
 	
 	# Weapon Bonus
 	if Combat_Calculator.player_weapon_bonus == 1:
@@ -163,14 +168,12 @@ func update_preview_box():
 	elif Combat_Calculator.enemy_weapon_bonus == -1:
 		$"Preview/Enemy/Enemy Down Arrow Combat".visible = true
 
-# Set position of menu -> This needs to be fixed later
-func set_menu_position():
-	pass
-#	if current_option_selected.get_node("Damage_Preview").overlaps_body(get_parent().get_node("GameCamera/Areas/TopLeft")) || \
-#		current_option_selected.get_node("Damage_Preview").overlaps_body(get_parent().get_node("GameCamera/Areas/BottomLeft")):
-#			$Preview.rect_position = LEFT_SIDE
-#	else:
-#		$Preview.rect_position = RIGHT_SIDE
+# Set position of menu
+func set_menu_position(new_position):
+	if new_position == "left":
+		$Preview.rect_position = LEFT_SIDE
+	else:
+		$Preview.rect_position = RIGHT_SIDE
 
 # Update chosen enemy
 func update_enemy_chosen():

@@ -31,7 +31,7 @@ func move_camera():
 	pass
 
 # Move an actor to a location
-func move_actor(new_position: Cell, actor: Battlefield_Unit):
+func move_actor():
 	pass
 
 # Start the text dialogue
@@ -39,7 +39,7 @@ func enable_text(text_array: Array):
 	BattlefieldInfo.message_system.start(text_array)
 
 # Start combat between two actors
-func enable_combat(actor1: Battlefield_Unit, actor2: Battlefield_Unit):
+func enable_combat():
 	pass
 
 # Force the player to do a certain instruction

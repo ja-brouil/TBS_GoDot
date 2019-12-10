@@ -5,77 +5,7 @@
 [ext_resource path="res://assets/battle_effects/Physical Effects.png" type="Texture" id=3]
 [ext_resource path="res://assets/transition/white flash.png" type="Texture" id=4]
 
-[sub_resource type="Animation" id=5]
-resource_name = "death"
-length = 3.3
-tracks/0/type = "value"
-tracks/0/path = NodePath("Combat Sprite:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Combat Sprite:region_rect")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ Rect2( 19, 25, 26, 45 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Combat Sprite:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, true ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Combat Sprite:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 1, 3 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0.9 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/4/type = "method"
-tracks/4/path = NodePath(".")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 1.5, 3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"values": [ {
-"args": [  ],
-"method": "play_death_sound"
-}, {
-"args": [  ],
-"method": "death_anim_signal"
-} ]
-}
-
-[sub_resource type="Animation" id=1]
-resource_name = "lance crit"
+[sub_resource type="Animation" id=6]
 length = 7.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Combat Sprite:region_rect")
@@ -200,8 +130,76 @@ tracks/8/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "lance dodge"
+[sub_resource type="Animation" id=7]
+resource_name = "lance death"
+length = 3.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Combat Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Combat Sprite:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Rect2( 19, 25, 26, 45 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Combat Sprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Combat Sprite:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.9 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 1.5, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_death_sound"
+}, {
+"args": [  ],
+"method": "death_anim_signal"
+} ]
+}
+
+[sub_resource type="Animation" id=8]
 length = 1.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Combat Sprite:position")
@@ -228,8 +226,7 @@ tracks/1/keys = {
 "values": [ Rect2( 15, 344, 26, 45 ), Rect2( 438, 291, 43, 49 ), Rect2( 502, 300, 39, 33 ), Rect2( 19, 25, 26, 45 ) ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "lance miss"
+[sub_resource type="Animation" id=9]
 length = 5.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Combat Sprite:position")
@@ -279,8 +276,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "lance regular"
+[sub_resource type="Animation" id=5]
 length = 5.5
 step = 0.05
 tracks/0/type = "value"
@@ -391,24 +387,24 @@ __meta__ = {
 
 [node name="anim" type="AnimationPlayer" parent="."]
 playback_speed = 3.0
-anims/death = SubResource( 5 )
-"anims/lance crit" = SubResource( 1 )
-"anims/lance dodge" = SubResource( 2 )
-"anims/lance miss" = SubResource( 3 )
-"anims/lance regular" = SubResource( 4 )
+"anims/lance crit" = SubResource( 6 )
+"anims/lance death" = SubResource( 7 )
+"anims/lance dodge" = SubResource( 8 )
+"anims/lance miss" = SubResource( 9 )
+"anims/lance regular" = SubResource( 5 )
 
 [node name="Combat Sprite" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0.9 )
 texture = ExtResource( 2 )
 region_enabled = true
-region_rect = Rect2( 19, 162, 26, 45 )
+region_rect = Rect2( 15, 344, 26, 45 )
 
 [node name="Battle Effect" type="Sprite" parent="."]
 visible = false
 position = Vector2( 70, -1 )
 texture = ExtResource( 3 )
 region_enabled = true
-region_rect = Rect2( 268, 528, 177, 150 )
+region_rect = Rect2( 255, 688, 235, 145 )
 
 [node name="Flash" type="Sprite" parent="."]
 visible = false

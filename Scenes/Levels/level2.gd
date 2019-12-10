@@ -69,7 +69,7 @@ func _ready():
 #	resChance, riverPenalty, seaPenalty, skillChance, speedChance, strChance]
 	
 	for allyCellInfo in allyInfoLayer.get_children():
-		var path = str("res://Scenes/Units/Player_Units/AllyUnits/", allyCellInfo.get_meta("Name"),"/",allyCellInfo.get_meta("Name"),".tscn")
+		var path = str("res://Scenes/Units/Player_Units/AllyUnits/", allyCellInfo.get_meta("InstanceName"),"/",allyCellInfo.get_meta("InstanceName"),".tscn")
 		var new_ally = load(path).instance()
 		$YSort.add_child(new_ally)
 		
@@ -92,6 +92,9 @@ func _ready():
 		new_ally.UnitStats.class_type = allyCellInfo.get_meta("Class")
 		new_ally.UnitStats.current_health = allyCellInfo.get_meta("Health")
 		new_ally.UnitStats.max_health = allyCellInfo.get_meta("MaxHealth")
+		
+		# Movement
+		new_ally.UnitMovementStats.movementSteps = allyCellInfo.get_meta("Move")
 		
 		# Stat upgrades
 		new_ally.UnitStats.str_chance = allyCellInfo.get_meta("strChance")

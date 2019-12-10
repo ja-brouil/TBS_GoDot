@@ -21,7 +21,6 @@ signal no_more_text
 func _ready():
 	BattlefieldInfo.message_system = self
 	# test():
-	
 
 func start(text_queue):
 	self.text_queue = text_queue
@@ -64,8 +63,8 @@ func _input(event):
 					turn_off()
 					emit_signal("no_more_text")
 					
-					# Play sound
-					$"Accept".play(0)
+					# Play sound Change this -> Not a fan
+					#$"Accept".play(0)
 					current_state = wait
 				else:
 					# Grab first one and scroll and set to input
@@ -77,6 +76,9 @@ func _input(event):
 					current_state = input
 		choice:
 			pass
+
+func _on_Dialogue_Scroll_animation_finished(anim_name):
+	current_state = next
 
 func turn_on():
 	$"Dialogue Box Texture".visible = true
@@ -93,3 +95,5 @@ func test():
 	"Eirika:\nThis is a test of what this will look like. Remember that this will automatically wrap as needed. The max amount of characters is this."]
 	
 	start(test_queue)
+
+

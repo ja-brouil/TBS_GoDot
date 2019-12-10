@@ -5,8 +5,8 @@
 [ext_resource path="res://assets/units/cleric/Heal Restore.png" type="Texture" id=3]
 [ext_resource path="res://assets/sound/battle sounds/Heal.wav" type="AudioStream" id=4]
 
-[sub_resource type="Animation" id=3]
-resource_name = "death"
+[sub_resource type="Animation" id=1]
+resource_name = "staff death"
 length = 3.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Combat Sprite:position")
@@ -74,8 +74,7 @@ tracks/4/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "staff dodge"
+[sub_resource type="Animation" id=2]
 length = 1.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Combat Sprite:region_rect")
@@ -102,7 +101,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, -1.19209e-07 ), Vector2( 0, -1.19209e-07 ), Vector2( 0, -1.19209e-07 ) ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=3]
 length = 7.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Combat Sprite:region_rect")
@@ -203,9 +202,9 @@ region_rect = Rect2( 2, 2, 240, 160 )
 
 [node name="anim" type="AnimationPlayer" parent="."]
 playback_speed = 4.0
-anims/death = SubResource( 3 )
-"anims/staff dodge" = SubResource( 1 )
-"anims/staff regular" = SubResource( 2 )
+"anims/staff death" = SubResource( 1 )
+"anims/staff dodge" = SubResource( 2 )
+"anims/staff regular" = SubResource( 3 )
 
 [node name="Healing" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )

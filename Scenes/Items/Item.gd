@@ -30,6 +30,9 @@ var icon
 # Animation String
 var weapon_string_name
 
+# Usability by current unit/class
+var is_usable_by_current_unit = true
+
 # Sound effects
 func draw_attack_sound():
 	pass

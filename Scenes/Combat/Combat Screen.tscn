@@ -19,7 +19,7 @@ texture = ExtResource( 3 )
 region_rect = Rect2( 0, 0, 1212, 808 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 32
+size = 20
 outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
 use_filter = true
@@ -185,7 +185,6 @@ visible = false
 position = Vector2( 65.726, 131.443 )
 
 [node name="Player" type="Control" parent="Combat Control/Combat UI"]
-editor/display_folded = true
 margin_left = 1.17069
 margin_top = 0.148262
 margin_right = 41.1707

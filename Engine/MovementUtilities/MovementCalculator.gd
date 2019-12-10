@@ -205,8 +205,7 @@ func get_path_to_destination(Unit, target_destination, AllTiles):
 			# Do not process unwalkable tiles or we can't go there
 			if adjCell.movementCost >= 50 || closed_list.contains(adjCell) || !Unit.UnitMovementStats.allowedMovement.has(adjCell):
 				continue
-			
-			
+				
 			# Calculate Heuristic costs
 			var movement_cost_to_neighbor = current_tile.gCost + adjCell.movementCost
 			if movement_cost_to_neighbor < adjCell.gCost || !open_list.contains(adjCell):
@@ -221,8 +220,7 @@ func get_path_to_destination(Unit, target_destination, AllTiles):
 	# Create the Pathfinding Queue
 	create_pathfinding_queue(target_destination, Unit)
 
-# Find the shortest path to the target destination | AI Version
-# Find the shortest path to the target destination | This uses the A* algorithm
+# Find the shortest path to the target destination | AI Version | Use this for cinematic purposes too
 func get_path_to_destination_AI(Unit, target_destination, AllTiles):
 	# Clear Tile statistics first
 	for tile_array in AllTiles:
