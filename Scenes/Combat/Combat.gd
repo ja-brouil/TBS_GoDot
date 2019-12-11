@@ -42,6 +42,10 @@ var flip_enemy = false
 # Broken item
 var broke_item = false
 
+# Placeholders
+var ally_placeholder
+var enemy_placeholder
+
 # Cinematic Branch
 var cinematic_branch = false
 signal combat_screen_done
@@ -320,6 +324,14 @@ func place_combat_art():
 	player_node_name = BattlefieldInfo.combat_player_unit.combat_node.instance()
 	player_node_name.position = $"Ally Unit".position
 	
+	# Placeholders
+	ally_placeholder = BattlefieldInfo.combat_player_unit.combat_node.instance()
+	ally_placeholder.position = $"Ally Unit".position
+	var anim_name = str(BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped.weapon_string_name, " regular")
+	ally_placeholder.get_node(anim_name).visible = true
+	ally_placeholder.z_index += 1
+	add_child(ally_placeholder)
+	
 	# Player Animation Signals
 	player_node_name.connect("play_enemy_dodge_anim", self, "play_enemy_miss_anim")
 	player_node_name.connect("death_anim_done", self, "on_ally_death_complete")
@@ -329,6 +341,14 @@ func place_combat_art():
 	# Enemy
 	enemy_node_name = BattlefieldInfo.combat_ai_unit.combat_node.instance()
 	enemy_node_name.position = $"Enemy Unit".position
+	
+	# Placeholders
+	enemy_placeholder = BattlefieldInfo.combat_ai_unit.combat_node.instance()
+	enemy_placeholder.position = $"Enemy Unit".position
+	var anim_name2 = str(BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.weapon_string_name, " regular")
+	enemy_placeholder.get_node(anim_name2).visible = true
+	enemy_placeholder.z_index += 1
+	add_child(enemy_placeholder)
 	
 	# Enemy Miss signal
 	enemy_node_name.connect("play_player_dodge_anim", self, "play_player_miss_anim")
@@ -503,6 +523,10 @@ func player_attack():
 			var anim_name = str(BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped.weapon_string_name, " miss")
 			player_node_name.get_node("anim").play(anim_name)
 	
+	# Turn player off
+	var anim_name_off = str(BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped.weapon_string_name, " regular")
+	ally_placeholder.get_node(anim_name_off).visible = false
+	
 	# Subtract durability from the weapon
 	BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped.uses -= 1
 	# Check if the weapon broke
@@ -542,6 +566,10 @@ func enemy_attack():
 			# Enemy Missed
 			var anim_name = str(BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.weapon_string_name, " miss")
 			enemy_node_name.get_node("anim").play(anim_name)
+			
+		# Turn enemy off
+	var anim_name2 = str(BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.weapon_string_name, " regular")
+	enemy_placeholder.get_node(anim_name2).visible = false
 
 # Change state machine
 func update_hp_number(anim_name):
@@ -647,6 +675,9 @@ func process_ally_death():
 		# No death text
 		current_combat_state = wait
 		player_node_name.get_node("anim").play(str(BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped.weapon_string_name, " death"))
+		# Turn player off
+		var anim_name_off = str(BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped.weapon_string_name, " regular")
+		ally_placeholder.get_node(anim_name_off).visible = false
 
 func on_ally_death_complete():
 	# Remove unit from the battle info
@@ -675,6 +706,8 @@ func process_after_text():
 
 func process_enemy_death():
 	enemy_node_name.get_node("anim").play(str(BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.weapon_string_name, " death"))
+	var anim_name2 = str(BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.weapon_string_name, " regular")
+	enemy_placeholder.get_node(anim_name2).visible = false
 	current_combat_state = wait
 	
 
@@ -831,6 +864,8 @@ func _on_Return_Pause_timeout():
 	# Clear the combat nodes
 	enemy_node_name.queue_free()
 	player_node_name.queue_free()
+	ally_placeholder.queue_free()
+	enemy_placeholder.queue_free()
 	
 	# Reset Messaging State and Combat State
 	current_combat_state = wait

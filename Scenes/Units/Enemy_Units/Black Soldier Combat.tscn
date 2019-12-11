@@ -8,7 +8,7 @@
 [sub_resource type="Animation" id=1]
 length = 7.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("Combat Sprite:region_rect")
+tracks/0/path = NodePath("lance regular:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -20,7 +20,7 @@ tracks/0/keys = {
 "values": [ Rect2( 19, 162, 26, 45 ), Rect2( 69, 150, 31, 58 ), Rect2( 117, 149, 36, 59 ), Rect2( 170, 172, 44, 35 ), Rect2( 228, 167, 40, 33 ), Rect2( 276, 168, 42, 33 ), Rect2( 330, 168, 61, 33 ), Rect2( 14, 221, 60, 33 ), Rect2( 87, 221, 34, 36 ), Rect2( 133, 224, 47, 35 ), Rect2( 194, 223, 49, 33 ), Rect2( 255, 219, 44, 34 ), Rect2( 312, 218, 34, 36 ), Rect2( 355, 205, 29, 51 ), Rect2( 19, 25, 26, 45 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Combat Sprite:position")
+tracks/1/path = NodePath("lance regular:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -129,12 +129,24 @@ tracks/8/keys = {
 "update": 1,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
+tracks/9/type = "value"
+tracks/9/path = NodePath("lance regular:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "lance death"
 length = 3.3
 tracks/0/type = "value"
-tracks/0/path = NodePath("Combat Sprite:position")
+tracks/0/path = NodePath("lance regular:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -146,7 +158,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Combat Sprite:region_rect")
+tracks/1/path = NodePath("lance regular:region_rect")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -158,7 +170,7 @@ tracks/1/keys = {
 "values": [ Rect2( 19, 25, 26, 45 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Combat Sprite:visible")
+tracks/2/path = NodePath("lance regular:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -170,7 +182,7 @@ tracks/2/keys = {
 "values": [ true, true ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Combat Sprite:modulate")
+tracks/3/path = NodePath("lance regular:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -202,7 +214,7 @@ tracks/4/keys = {
 [sub_resource type="Animation" id=3]
 length = 1.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("Combat Sprite:position")
+tracks/0/path = NodePath("lance regular:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -214,7 +226,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, -2 ), Vector2( 0, 6 ), Vector2( 0, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Combat Sprite:region_rect")
+tracks/1/path = NodePath("lance regular:region_rect")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -225,11 +237,23 @@ tracks/1/keys = {
 "update": 1,
 "values": [ Rect2( 15, 344, 26, 45 ), Rect2( 438, 291, 43, 49 ), Rect2( 502, 300, 39, 33 ), Rect2( 19, 25, 26, 45 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("lance regular:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=4]
 length = 5.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("Combat Sprite:position")
+tracks/0/path = NodePath("lance regular:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -241,7 +265,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 1, 6 ), Vector2( 10, 6 ), Vector2( 19, 6 ), Vector2( 52, 6 ), Vector2( 52, 6 ), Vector2( 39, 6 ), Vector2( 16, 6 ), Vector2( 1, 6 ), Vector2( 0, 6 ), Vector2( 0, 6 ), Vector2( 0, -3 ), Vector2( 0, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Combat Sprite:region_rect")
+tracks/1/path = NodePath("lance regular:region_rect")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -275,12 +299,24 @@ tracks/2/keys = {
 "method": "put_away_attack_sound"
 } ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("lance regular:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=5]
 length = 5.5
 step = 0.05
 tracks/0/type = "value"
-tracks/0/path = NodePath("Combat Sprite:position")
+tracks/0/path = NodePath("lance regular:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -292,7 +328,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 1, 6 ), Vector2( 10, 6 ), Vector2( 19, 6 ), Vector2( 52, 6 ), Vector2( 52, 6 ), Vector2( 39, 6 ), Vector2( 16, 6 ), Vector2( 1, 6 ), Vector2( 0, 6 ), Vector2( 0, 6 ), Vector2( 0, -3 ), Vector2( 0, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Combat Sprite:region_rect")
+tracks/1/path = NodePath("lance regular:region_rect")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -377,6 +413,18 @@ tracks/6/keys = {
 "update": 1,
 "values": [ false, true, false ]
 }
+tracks/7/type = "value"
+tracks/7/path = NodePath("lance regular:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [node name="Black Soldier Combat" type="Node2D"]
 script = ExtResource( 1 )
@@ -393,19 +441,19 @@ playback_speed = 3.0
 "anims/lance miss" = SubResource( 4 )
 "anims/lance regular" = SubResource( 5 )
 
-[node name="Combat Sprite" type="Sprite" parent="."]
+[node name="lance regular" type="Sprite" parent="."]
+visible = false
 modulate = Color( 1, 1, 1, 0.9 )
 texture = ExtResource( 2 )
 region_enabled = true
-region_rect = Rect2( 19, 25, 26, 45 )
+region_rect = Rect2( 19, 162, 26, 45 )
 
 [node name="Battle Effect" type="Sprite" parent="."]
 visible = false
 position = Vector2( 70, -1 )
-z_index = 1
 texture = ExtResource( 3 )
 region_enabled = true
-region_rect = Rect2( 253, 853, 238, 143 )
+region_rect = Rect2( 255, 688, 235, 145 )
 
 [node name="Flash" type="Sprite" parent="."]
 visible = false

@@ -291,7 +291,7 @@ func next_step():
 # AI Script
 func _on_Timer_timeout():
 	# If we have no weapons left to use, we surrender
-	if get_parent().UnitInventory.current_item_equipped.name == "Unarmed":
+	if get_parent().UnitInventory.current_item_equipped.item_name == "Unarmed":
 		get_parent().UnitActionStatus.set_current_action(Unit_Action_Status.DONE)
 		# Move to the next enemy
 		BattlefieldInfo.turn_manager.turn = Turn_Manager.ENEMY_TURN

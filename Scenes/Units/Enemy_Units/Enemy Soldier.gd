@@ -12,6 +12,7 @@ func _ready():
 	unit_mugshot = preload("res://assets/units/enemyPortrait/red soldier portrait.png")
 	
 	# Add Lance
+	UnitInventory.usable_weapons.append(Item.WEAPON_TYPE.LANCE)
 	var lance = preload("res://Scenes/Items/Lance/Iron Lance.tscn").instance()
 	UnitInventory.add_item(lance)
 	

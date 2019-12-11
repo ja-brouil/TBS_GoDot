@@ -121,7 +121,7 @@ func get_menu_items():
 	if BattlefieldInfo.current_Unit_Selected.UnitInventory.MAX_ATTACK_RANGE > 0:
 		# Build item slot
 		for weapon in BattlefieldInfo.current_Unit_Selected.UnitInventory.inventory:
-			if weapon.item_class == Item.ITEM_CLASS.PHYSICAL || weapon.item_class == Item.ITEM_CLASS.MAGIC:
+			if weapon.is_usable_by_current_unit && (weapon.item_class == Item.ITEM_CLASS.PHYSICAL || weapon.item_class == Item.ITEM_CLASS.MAGIC):
 				if weapon.weapon_type != Item.WEAPON_TYPE.HEALING:
 					# Check if we can reach that unit
 					var queue = []
@@ -182,7 +182,8 @@ func get_menu_items():
 			menu_items.append("Convoy")
 	
 	# Item
-	menu_items.append("Item")
+	if !BattlefieldInfo.current_Unit_Selected.UnitInventory.inventory.empty():
+		menu_items.append("Item")
 	
 	# Trade Option | Convoy
 	for adj_cell in BattlefieldInfo.current_Unit_Selected.UnitMovementStats.currentTile.adjCells:
@@ -205,8 +206,8 @@ func get_menu_items():
 		if !menu_items.has("Visit"):
 			menu_items.append("Visit")
 	
-	# Always add Item and wait
-	
+	# Always wait
+	var current_number_action = 0
 	menu_items.append("Wait")
 	return menu_items
 
@@ -225,7 +226,8 @@ func process_selection():
 			# Turn off
 			hide_action_menu()
 		"Item":
-			print("From Action Selector: Selected Item! Go to the item screen!")
+			get_parent().get_node("Item Screen").start()
+			hide_action_menu()
 		"Trade":
 			print("From Action Selector: Selected Trade! Go to the trade screen!")
 		"Visit":

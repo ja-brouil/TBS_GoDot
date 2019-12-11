@@ -9,6 +9,7 @@ func play_miss_sound():
 	emit_signal("play_enemy_dodge_anim")
 
 func turn_off():
-	$"Lance Sprite Crit".visible = false
-	$"Lance Sprite Regular".visible = false
-	$"Seth Sword Regular".visible = false
+	pass
+#	$"Lance Sprite Crit".visible = false
+#	$"Lance Sprite Regular".visible = false
+#	$"Seth Sword Regular".visible = false

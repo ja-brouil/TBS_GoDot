@@ -7,3 +7,7 @@ func play_miss_sound():
 	BattlefieldInfo.battle_sounds.get_node(str("Attack Miss ", random)).play(0)
 	# Play Miss anim
 	emit_signal("play_enemy_dodge_anim")
+
+# This will only be called when Eirika dies for this animation
+func game_over():
+	pass

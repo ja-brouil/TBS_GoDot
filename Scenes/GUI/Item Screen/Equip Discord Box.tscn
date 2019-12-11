@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scenes/GUI/Item Screen/Equip Discord Box.gd" type="Script" id=1]
+[ext_resource path="res://assets/UI/Inventory/equip discard box.png" type="Texture" id=2]
+[ext_resource path="res://assets/font/Main Font.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/font/Weapon Name.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Scenes/GUI/Hand Cursor/Hand Selector.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/GUI/Item Screen/Yes No Box.tscn" type="PackedScene" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
+
+[node name="Equip Discord Box" type="Control"]
+script = ExtResource( 1 )
+
+[node name="Box Texture" type="TextureRect" parent="."]
+margin_right = 29.0
+margin_bottom = 43.0
+texture = ExtResource( 2 )
+expand = true
+
+[node name="Equip" type="Label" parent="Box Texture"]
+margin_left = 5.48586
+margin_top = 8.93379
+margin_right = 64.4859
+margin_bottom = 29.9338
+rect_scale = Vector2( 0.3, 0.3 )
+custom_fonts/font = SubResource( 1 )
+text = "Equip"
+align = 1
+valign = 1
+
+[node name="Discard" type="Label" parent="Box Texture"]
+margin_left = 3.05467
+margin_top = 27.9364
+margin_right = 83.0547
+margin_bottom = 48.9364
+rect_scale = Vector2( 0.3, 0.3 )
+custom_fonts/font = ExtResource( 4 )
+text = "Discard"
+align = 1
+valign = 1
+
+[node name="Hand Selector" parent="." instance=ExtResource( 5 )]
+margin_left = -12.8577
+margin_top = 6.53159
+margin_right = 2.14229
+margin_bottom = 18.5316
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.35
+one_shot = true
+
+[node name="Yes No Box" parent="." instance=ExtResource( 6 )]
+visible = false
+margin_left = 29.0
+margin_top = 15.2338
+margin_right = 29.0
+margin_bottom = 15.2338
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

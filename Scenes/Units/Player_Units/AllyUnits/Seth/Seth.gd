@@ -2,7 +2,7 @@ extends Battlefield_Unit
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	# Set these later when the level loads
+	# Unique Unit Stats
 	UnitMovementStats.movementSteps = 8
 	UnitStats.class_bonus_b = 60
 	$Animation.current_animation = "Idle"
@@ -14,7 +14,9 @@ func _ready():
 	# Weapon Select Portrait
 	unit_mugshot = preload("res://assets/units/cavalier/seth mugshot.png")
 	
-	# Add Steel sword
+	# Weapons and Inventory
+	UnitInventory.usable_weapons.append(Item.WEAPON_TYPE.SWORD)
+	UnitInventory.usable_weapons.append(Item.WEAPON_TYPE.LANCE)
 	UnitInventory.add_item(preload("res://Scenes/Items/Lance/Silver Lance.tscn").instance())
 	UnitInventory.add_item(preload("res://Scenes/Items/Swords/Steel Sword.tscn").instance())
 	UnitInventory.add_item(preload("res://Scenes/Items/Lance/Iron Lance.tscn").instance())

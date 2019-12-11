@@ -9,13 +9,13 @@
 [ext_resource path="res://assets/sound/unitMovement/Horse Steps.wav" type="AudioStream" id=7]
 [ext_resource path="res://assets/sound/misc/slow horse step.wav" type="AudioStream" id=8]
 
+[sub_resource type="Animation" id=1]
+
 [sub_resource type="Animation" id=2]
 
 [sub_resource type="Animation" id=3]
 
 [sub_resource type="Animation" id=4]
-
-[sub_resource type="Animation" id=5]
 length = 9.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Battle Effect:region_rect")
@@ -92,7 +92,7 @@ tracks/4/keys = {
 "values": [ false, true, false ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Lance Sprite Regular:region_rect")
+tracks/5/path = NodePath("lance regular:region_rect")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -104,7 +104,7 @@ tracks/5/keys = {
 "values": [ Rect2( 56, 31, 47, 61 ), Rect2( 177, 31, 54, 61 ), Rect2( 298, 33, 53, 59 ), Rect2( 420, 36, 61, 56 ), Rect2( 538, 33, 67, 59 ), Rect2( 647, 35, 64, 58 ), Rect2( 732, 38, 79, 54 ), Rect2( 847, 36, 75, 56 ), Rect2( 995, 40, 38, 58 ), Rect2( 1116, 28, 60, 70 ), Rect2( 1237, 28, 60, 70 ), Rect2( 1351, 36, 56, 64 ), Rect2( 1472, 23, 47, 77 ), Rect2( 1592, 0, 82, 94 ), Rect2( 1708, 2, 91, 91 ), Rect2( 1837, 10, 82, 86 ), Rect2( 1957, 14, 83, 80 ), Rect2( 2080, 25, 85, 74 ), Rect2( 2208, 24, 84, 78 ), Rect2( 2342, 36, 72, 59 ), Rect2( 2469, 46, 62, 46 ), Rect2( 2604, 47, 40, 47 ), Rect2( 2732, 46, 33, 48 ), Rect2( 2857, 46, 40, 48 ), Rect2( 2970, 46, 50, 48 ), Rect2( 3091, 46, 54, 47 ), Rect2( 3212, 46, 49, 47 ), Rect2( 3321, 33, 67, 59 ), Rect2( 3441, 32, 55, 61 ), Rect2( 3559, 31, 54, 61 ), Rect2( 56, 31, 47, 61 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Lance Sprite Regular:position")
+tracks/6/path = NodePath("lance regular:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -116,7 +116,7 @@ tracks/6/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( -5, 0 ), Vector2( -15, 0 ), Vector2( -22, 0 ), Vector2( -38, 0 ), Vector2( -52, 0 ), Vector2( -39, 0 ), Vector2( -9, -6 ), Vector2( 0, -5 ), Vector2( 10, -5 ), Vector2( 13, -10 ), Vector2( 19, -19 ), Vector2( 23, -19 ), Vector2( 29, -13 ), Vector2( 32, -13 ), Vector2( 35, -4 ), Vector2( 37, -4 ), Vector2( 37, -1 ), Vector2( 37, 5 ), Vector2( 31, 5 ), Vector2( 24, 5 ), Vector2( 24, 5 ), Vector2( 12, 5 ), Vector2( 4, 5 ), Vector2( 1, 5 ), Vector2( 1, 1 ), Vector2( 1, -2 ), Vector2( 1, -2 ) ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("Lance Sprite Regular:visible")
+tracks/7/path = NodePath("lance regular:visible")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -128,11 +128,11 @@ tracks/7/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 length = 22.0
 step = 0.01
 tracks/0/type = "value"
-tracks/0/path = NodePath("Seth Sword Regular:region_rect")
+tracks/0/path = NodePath("sword regular:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -144,7 +144,7 @@ tracks/0/keys = {
 "values": [ Rect2( 47, 15, 48, 57 ), Rect2( 190, 15, 55, 57 ), Rect2( 333, 15, 57, 57 ), Rect2( 477, 15, 61, 57 ), Rect2( 632, 0, 52, 72 ), Rect2( 55, 110, 64, 51 ), Rect2( 198, 110, 64, 51 ), Rect2( 338, 110, 74, 51 ), Rect2( 481, 100, 73, 61 ), Rect2( 626, 92, 65, 69 ), Rect2( 54, 181, 65, 69 ), Rect2( 194, 181, 68, 69 ), Rect2( 340, 181, 65, 69 ), Rect2( 481, 181, 67, 69 ), Rect2( 626, 181, 65, 69 ), Rect2( 51, 270, 68, 69 ), Rect2( 194, 269, 68, 70 ), Rect2( 345, 288, 74, 53 ), Rect2( 486, 288, 74, 53 ), Rect2( 631, 286, 73, 53 ), Rect2( 59, 374, 75, 54 ), Rect2( 203, 375, 74, 53 ), Rect2( 345, 377, 74, 53 ), Rect2( 486, 377, 74, 53 ), Rect2( 631, 375, 73, 53 ), Rect2( 59, 463, 75, 54 ), Rect2( 203, 553, 74, 53 ), Rect2( 345, 555, 74, 53 ), Rect2( 486, 555, 74, 53 ), Rect2( 631, 553, 73, 53 ), Rect2( 59, 641, 75, 54 ), Rect2( 203, 642, 74, 53 ), Rect2( 345, 644, 74, 53 ), Rect2( 486, 644, 74, 53 ), Rect2( 631, 642, 73, 53 ), Rect2( 59, 730, 75, 54 ), Rect2( 203, 731, 74, 53 ), Rect2( 345, 733, 74, 53 ), Rect2( 486, 733, 74, 53 ), Rect2( 631, 731, 73, 53 ), Rect2( 59, 819, 75, 54 ), Rect2( 203, 820, 74, 53 ), Rect2( 319, 805, 64, 69 ), Rect2( 420, 806, 85, 67 ), Rect2( 565, 817, 73, 56 ), Rect2( 0, 911, 44, 55 ), Rect2( 154, 912, 44, 54 ), Rect2( 297, 912, 44, 55 ), Rect2( 430, 909, 52, 61 ), Rect2( 573, 890, 47, 80 ), Rect2( 4, 966, 86, 89 ), Rect2( 151, 967, 80, 87 ), Rect2( 297, 975, 75, 80 ), Rect2( 441, 973, 78, 82 ), Rect2( 588, 974, 75, 81 ), Rect2( 13, 1070, 81, 76 ), Rect2( 170, 1076, 70, 68 ), Rect2( 313, 1074, 75, 71 ), Rect2( 469, 1094, 63, 55 ), Rect2( 627, 1095, 39, 47 ), Rect2( 61, 1183, 32, 48 ), Rect2( 208, 1183, 32, 48 ), Rect2( 343, 1183, 47, 48 ), Rect2( 486, 1183, 54, 47 ), Rect2( 616, 1175, 67, 54 ), Rect2( 41, 1262, 54, 56 ), Rect2( 47, 15, 48, 57 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Seth Sword Regular:position")
+tracks/1/path = NodePath("sword regular:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -156,7 +156,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( -3, 0 ), Vector2( -2, -1 ), Vector2( -1, -8 ), Vector2( -1, 2 ), Vector2( -1, 2 ), Vector2( -1, 2 ), Vector2( -1, -1 ), Vector2( -1, -6 ), Vector2( -1, -6 ), Vector2( -1, -6 ), Vector2( -1, -6 ), Vector2( -1, -6 ), Vector2( -1, -6 ), Vector2( -1, -6 ), Vector2( -1, -6 ), Vector2( -1, 1 ), Vector2( -21, -5 ), Vector2( -45, -5 ), Vector2( -55, 0 ), Vector2( -50, 0 ), Vector2( -32, -1 ), Vector2( -22, -1 ), Vector2( -15, -1 ), Vector2( -8, -10 ), Vector2( 2, -15 ), Vector2( 7, -15 ), Vector2( 12, -12 ), Vector2( 17, -12 ), Vector2( 22, -9 ), Vector2( 26, -5 ), Vector2( 29, -5 ), Vector2( 30, -5 ), Vector2( 31, 8 ), Vector2( 26, 5 ), Vector2( 21, 5 ), Vector2( 22, 4 ), Vector2( 17, 4 ), Vector2( 14, 4 ), Vector2( 10, 3 ), Vector2( 5, 0 ), Vector2( 0, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Seth Sword Regular:z_index")
+tracks/2/path = NodePath("sword regular:z_index")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -305,19 +305,19 @@ tracks/12/keys = {
 "values": [ true, false ]
 }
 tracks/13/type = "value"
-tracks/13/path = NodePath("Seth Sword Regular:visible")
+tracks/13/path = NodePath("sword regular:visible")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/imported = false
 tracks/13/enabled = true
 tracks/13/keys = {
-"times": PoolRealArray( -0.16 ),
+"times": PoolRealArray( -0.05 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 length = 3.3
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
@@ -337,7 +337,7 @@ tracks/0/keys = {
 } ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Seth Sword Regular:visible")
+tracks/1/path = NodePath("sword regular:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -349,7 +349,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Seth Sword Regular:position")
+tracks/2/path = NodePath("sword regular:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -361,7 +361,7 @@ tracks/2/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Seth Sword Regular:region_rect")
+tracks/3/path = NodePath("sword regular:region_rect")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -373,7 +373,7 @@ tracks/3/keys = {
 "values": [ Rect2( 47, 15, 48, 57 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Seth Sword Regular:modulate")
+tracks/4/path = NodePath("sword regular:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -385,11 +385,11 @@ tracks/4/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=7]
 length = 2.0
 step = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("Seth Sword Regular:region_rect")
+tracks/0/path = NodePath("sword regular:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -401,7 +401,7 @@ tracks/0/keys = {
 "values": [ Rect2( 47, 15, 48, 57 ), Rect2( 608, 1406, 52, 72 ), Rect2( 47, 15, 48, 57 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Seth Sword Regular:position")
+tracks/1/path = NodePath("sword regular:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -413,7 +413,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, -8 ), Vector2( 0, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Seth Sword Regular:z_index")
+tracks/2/path = NodePath("sword regular:z_index")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -425,7 +425,7 @@ tracks/2/keys = {
 "values": [ 1, 0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Seth Sword Regular:visible")
+tracks/3/path = NodePath("sword regular:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -437,11 +437,11 @@ tracks/3/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=8]
 length = 10.5
 step = 0.01
 tracks/0/type = "value"
-tracks/0/path = NodePath("Seth Sword Regular:region_rect")
+tracks/0/path = NodePath("sword regular:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -453,7 +453,7 @@ tracks/0/keys = {
 "values": [ Rect2( 111, 1421, 48, 57 ), Rect2( 232, 1421, 55, 57 ), Rect2( 353, 1421, 57, 57 ), Rect2( 475, 1421, 61, 57 ), Rect2( 608, 1406, 52, 72 ), Rect2( 97, 1499, 64, 69 ), Rect2( 176, 1500, 85, 67 ), Rect2( 299, 1511, 73, 56 ), Rect2( 427, 1516, 44, 55 ), Rect2( 559, 1517, 44, 54 ), Rect2( 75, 1606, 44, 55 ), Rect2( 186, 1603, 52, 61 ), Rect2( 307, 1584, 47, 80 ), Rect2( 427, 1571, 88, 89 ), Rect2( 552, 1571, 104, 96 ), Rect2( 75, 1669, 80, 78 ), Rect2( 197, 1669, 77, 81 ), Rect2( 320, 1667, 78, 85 ), Rect2( 443, 1678, 77, 76 ), Rect2( 571, 1673, 78, 81 ), Rect2( 97, 1765, 76, 82 ), Rect2( 225, 1789, 62, 46 ), Rect2( 361, 1789, 39, 47 ), Rect2( 488, 1788, 32, 48 ), Rect2( 613, 1788, 32, 48 ), Rect2( 121, 1877, 47, 48 ), Rect2( 242, 1877, 54, 47 ), Rect2( 350, 1869, 67, 54 ), Rect2( 468, 1867, 54, 56 ), Rect2( 111, 1421, 48, 57 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Seth Sword Regular:position")
+tracks/1/path = NodePath("sword regular:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -465,7 +465,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, -8 ), Vector2( -14, -8 ), Vector2( -40, -8 ), Vector2( -54, -2 ), Vector2( -39, 0 ), Vector2( -22, 0 ), Vector2( -20, 0 ), Vector2( -17, 0 ), Vector2( -14, -12 ), Vector2( -10, -15 ), Vector2( 16, -11 ), Vector2( 20, -11 ), Vector2( 25, -8 ), Vector2( 30, -8 ), Vector2( 32, -3 ), Vector2( 32, -6 ), Vector2( 32, -3 ), Vector2( 28, 5 ), Vector2( 22, 5 ), Vector2( 17, 5 ), Vector2( 14, 5 ), Vector2( 10, 5 ), Vector2( 10, 5 ), Vector2( 4, 1 ), Vector2( 0, 1 ), Vector2( 0, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Seth Sword Regular:z_index")
+tracks/2/path = NodePath("sword regular:z_index")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -500,7 +500,7 @@ tracks/3/keys = {
 } ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Seth Sword Regular:visible")
+tracks/4/path = NodePath("sword regular:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -512,11 +512,11 @@ tracks/4/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=9]
 length = 10.5
 step = 0.01
 tracks/0/type = "value"
-tracks/0/path = NodePath("Seth Sword Regular:region_rect")
+tracks/0/path = NodePath("sword regular:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -528,7 +528,7 @@ tracks/0/keys = {
 "values": [ Rect2( 111, 1421, 48, 57 ), Rect2( 232, 1421, 55, 57 ), Rect2( 353, 1421, 57, 57 ), Rect2( 475, 1421, 61, 57 ), Rect2( 608, 1406, 52, 72 ), Rect2( 97, 1499, 64, 69 ), Rect2( 176, 1500, 85, 67 ), Rect2( 299, 1511, 73, 56 ), Rect2( 427, 1516, 44, 55 ), Rect2( 559, 1517, 44, 54 ), Rect2( 75, 1606, 44, 55 ), Rect2( 186, 1603, 52, 61 ), Rect2( 307, 1584, 47, 80 ), Rect2( 427, 1571, 88, 89 ), Rect2( 552, 1571, 104, 96 ), Rect2( 75, 1669, 80, 78 ), Rect2( 197, 1669, 77, 81 ), Rect2( 320, 1667, 78, 85 ), Rect2( 443, 1678, 77, 76 ), Rect2( 571, 1673, 78, 81 ), Rect2( 97, 1765, 76, 82 ), Rect2( 225, 1789, 62, 46 ), Rect2( 361, 1789, 39, 47 ), Rect2( 488, 1788, 32, 48 ), Rect2( 613, 1788, 32, 48 ), Rect2( 121, 1877, 47, 48 ), Rect2( 242, 1877, 54, 47 ), Rect2( 350, 1869, 67, 54 ), Rect2( 468, 1867, 54, 56 ), Rect2( 111, 1421, 48, 57 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Seth Sword Regular:position")
+tracks/1/path = NodePath("sword regular:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -614,7 +614,7 @@ tracks/6/keys = {
 "values": [ false, true, false ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("Seth Sword Regular:z_index")
+tracks/7/path = NodePath("sword regular:z_index")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -626,7 +626,7 @@ tracks/7/keys = {
 "values": [ 1, 0 ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("Seth Sword Regular:visible")
+tracks/8/path = NodePath("sword regular:visible")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -645,20 +645,19 @@ __meta__ = {
 "_edit_vertical_guides_": [ -70.2413, 25.0 ]
 }
 
-[node name="Seth Sword Regular" type="Sprite" parent="."]
+[node name="sword regular" type="Sprite" parent="."]
 visible = false
-z_index = 1
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 47, 15, 48, 57 )
 
-[node name="Lance Sprite Regular" type="Sprite" parent="."]
+[node name="lance regular" type="Sprite" parent="."]
 visible = false
 texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 56, 31, 47, 61 )
 
-[node name="Lance Sprite Crit" type="Sprite" parent="."]
+[node name="lance crit" type="Sprite" parent="."]
 visible = false
 texture = ExtResource( 4 )
 
@@ -669,23 +668,23 @@ texture = ExtResource( 5 )
 
 [node name="Battle Effect" type="Sprite" parent="."]
 visible = false
-position = Vector2( -85.9954, -0.930359 )
+position = Vector2( -86, -1 )
 z_index = 1
 texture = ExtResource( 6 )
 region_enabled = true
-region_rect = Rect2( 256, 348, 167, 158 )
+region_rect = Rect2( 253, 853, 238, 143 )
 
 [node name="anim" type="AnimationPlayer" parent="."]
 playback_speed = 4.0
-"anims/lance crit" = SubResource( 2 )
-"anims/lance dodge" = SubResource( 3 )
-"anims/lance miss" = SubResource( 4 )
-"anims/lance regular" = SubResource( 5 )
-"anims/sword crit" = SubResource( 6 )
-"anims/sword death" = SubResource( 7 )
-"anims/sword dodge" = SubResource( 8 )
-"anims/sword miss" = SubResource( 9 )
-"anims/sword regular" = SubResource( 10 )
+"anims/lance crit" = SubResource( 1 )
+"anims/lance dodge" = SubResource( 2 )
+"anims/lance miss" = SubResource( 3 )
+"anims/lance regular" = SubResource( 4 )
+"anims/sword crit" = SubResource( 5 )
+"anims/sword death" = SubResource( 6 )
+"anims/sword dodge" = SubResource( 7 )
+"anims/sword miss" = SubResource( 8 )
+"anims/sword regular" = SubResource( 9 )
 
 [node name="horse movement" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )

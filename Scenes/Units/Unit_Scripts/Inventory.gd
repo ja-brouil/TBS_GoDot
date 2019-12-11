@@ -13,7 +13,7 @@ var MAX_HEAL_RANGE = 0
 var MIN_HEAL_RANGE = 999
 
 # Current item equipped
-var current_item_equipped
+var current_item_equipped = null
 
 # What weapons the unit can use?
 var usable_weapons = []
@@ -22,32 +22,38 @@ var usable_weapons = []
 func add_item(item):
 	if inventory.size() == MAX_INVENTORY:
 		print("FROM: INVENTORY: Can't add item placeholder! Send to convoy!")
-		item.queue_free()
+		# Send to convoy
 	else:
 		add_child(item)
 		inventory.append(item)
 		
 		# Check if the unit can use this item and mark true if it's usable
+		for allowed in usable_weapons:
+			if item.weapon_type == allowed:
+				item.is_usable_by_current_unit = true
+				# Check what kind of item this is
+				# Process healing item
+				if item.item_class == Item.ITEM_CLASS.MAGIC && item.weapon_type == Item.WEAPON_TYPE.HEALING:
+					if item.max_range > MAX_HEAL_RANGE:
+						MAX_HEAL_RANGE = item.max_range
+					if item.min_range < MIN_HEAL_RANGE:
+						MIN_HEAL_RANGE = item.min_range
+					# Set to equipped item
+					if current_item_equipped == null:
+						current_item_equipped = item
+				# Anyone else that isn't consumable and a healing item
+				elif item.item_class != Item.ITEM_CLASS.CONSUMABLE && item.weapon_type != Item.WEAPON_TYPE.HEALING:
+					if item.max_range > MAX_ATTACK_RANGE:
+						MAX_ATTACK_RANGE = item.max_range
+					if item.min_range < MIN_ATTACK_RANGE:
+						MIN_ATTACK_RANGE = item.min_range
+					if current_item_equipped == null:
+						current_item_equipped = item
+						
 		
-		
-		# Check what kind of item this is
-		# Process healing item
-		if item.item_class == Item.ITEM_CLASS.MAGIC && item.weapon_type == Item.WEAPON_TYPE.HEALING:
-			if item.max_range > MAX_HEAL_RANGE:
-				MAX_HEAL_RANGE = item.max_range
-			if item.min_range < MIN_HEAL_RANGE:
-				MIN_HEAL_RANGE = item.min_range
-			# Set to equipped item
-			if current_item_equipped == null:
-				current_item_equipped = item
-		# Anyone else that isn't consumable and a healing item
-		elif item.item_class != Item.ITEM_CLASS.CONSUMABLE && item.weapon_type != Item.WEAPON_TYPE.HEALING:
-			if item.max_range > MAX_ATTACK_RANGE:
-				MAX_ATTACK_RANGE = item.max_range
-			if item.min_range < MIN_ATTACK_RANGE:
-				MIN_ATTACK_RANGE = item.min_range
-			if current_item_equipped == null:
-				current_item_equipped = item
+		# Auto accept consumables
+		if item.item_class == Item.ITEM_CLASS.CONSUMABLE:
+			item.is_usable_by_current_unit = true
 
 # Remove an item from the unit's inventory
 func remove_item(item):

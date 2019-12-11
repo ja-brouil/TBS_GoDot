@@ -11,9 +11,10 @@ func _ready():
 	# Mug shot
 	unit_mugshot = preload("res://assets/units/enemyPortrait/Main Villain MugShot.png")
 	
-	# Add axe
-	var axe = preload("res://Scenes/Items/Axes/Gorehowl.tscn").instance()
-	UnitInventory.add_item(axe)
+	# Inventory and Weapons
+	UnitInventory.usable_weapons.append(Item.WEAPON_TYPE.AXE)
+	UnitInventory.usable_weapons.append(Item.WEAPON_TYPE.LANCE)
+	UnitInventory.add_item(preload("res://Scenes/Items/Axes/Gorehowl.tscn").instance())
 	
 	# Combat sprite
 	combat_node = preload("res://Scenes/Units/Enemy_Units/Enemy General Black Combat.tscn")

@@ -1,0 +1,74 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scenes/GUI/Item Screen/Item Screen.gd" type="Script" id=1]
+[ext_resource path="res://assets/UI/Inventory/top inventory.png" type="Texture" id=2]
+[ext_resource path="res://assets/UI/Inventory/bottom inventory.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/GUI/Item Screen/Item Select Slot.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/GUI/Hand Cursor/Hand Selector.tscn" type="PackedScene" id=5]
+[ext_resource path="res://icon.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/GUI/Item Screen/Equip Discord Box.tscn" type="PackedScene" id=7]
+
+[node name="Item Screen" type="CanvasLayer"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_vertical_guides_": [  ]
+}
+
+[node name="Item Menu" type="Control" parent="."]
+margin_left = -248.963
+margin_right = -8.96324
+margin_bottom = 160.0
+
+[node name="Top" type="Sprite" parent="Item Menu"]
+position = Vector2( -67.4551, 5.54831 )
+scale = Vector2( 0.171231, 0.197048 )
+texture = ExtResource( 2 )
+
+[node name="Bottom" type="Sprite" parent="Item Menu"]
+position = Vector2( -136.388, 18.4094 )
+scale = Vector2( 0.169903, 0.189458 )
+texture = ExtResource( 3 )
+
+[node name="Slot 1" parent="Item Menu" instance=ExtResource( 4 )]
+position = Vector2( -152.407, 43.0422 )
+
+[node name="Slot 2" parent="Item Menu" instance=ExtResource( 4 )]
+position = Vector2( -97.7032, 16.2533 )
+
+[node name="Slot 3" parent="Item Menu" instance=ExtResource( 4 )]
+position = Vector2( -103.032, 40.8862 )
+
+[node name="Slot 4" parent="Item Menu" instance=ExtResource( 4 )]
+position = Vector2( -103.032, 61.7401 )
+
+[node name="Slot 5" parent="Item Menu" instance=ExtResource( 4 )]
+position = Vector2( -103.032, 82.0305 )
+
+[node name="Slot 6" parent="Item Menu" instance=ExtResource( 4 )]
+position = Vector2( -103.032, 100.684 )
+
+[node name="Hand Selector" parent="Item Menu" instance=ExtResource( 5 )]
+margin_left = -136.388
+margin_top = 24.4892
+margin_right = -120.388
+margin_bottom = 37.4892
+
+[node name="Mugshot" type="TextureRect" parent="Item Menu"]
+margin_left = 53.577
+margin_top = 26.0557
+margin_right = 127.577
+margin_bottom = 99.0557
+texture = ExtResource( 6 )
+expand = true
+
+[node name="Equip Discord Box" parent="Item Menu" instance=ExtResource( 7 )]
+visible = false
+margin_left = -139.942
+margin_top = 54.2364
+margin_right = -139.942
+margin_bottom = 54.2364
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.35
+one_shot = true
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

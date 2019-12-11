@@ -68,7 +68,7 @@ func build_item_list():
 	var last_position = OFF_SET + X_OFF_SET
 	# Build item slot
 	for weapon in BattlefieldInfo.current_Unit_Selected.UnitInventory.inventory:
-		if weapon.item_class == Item.ITEM_CLASS.PHYSICAL || weapon.item_class == Item.ITEM_CLASS.MAGICAL:
+		if weapon.is_usable_by_current_unit && (weapon.item_class == Item.ITEM_CLASS.PHYSICAL || weapon.item_class == Item.ITEM_CLASS.MAGICAL):
 			if weapon.weapon_type != Item.WEAPON_TYPE.HEALING:
 				# Can we reach the enemy unit with this weapon
 				# Check if we can reach that unit
@@ -187,6 +187,7 @@ func turn_on():
 	$Timer.start(0)
 
 func turn_off():
+	# Prevent memory leaks
 	for item_slot in get_tree().get_nodes_in_group(GroupNames.ITEM_SLOT_GROUP_NAME):
 		item_slot.queue_free()
 	

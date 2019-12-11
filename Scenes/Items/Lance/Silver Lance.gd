@@ -18,7 +18,7 @@ func _ready():
 	weapon_type = Item.WEAPON_TYPE.LANCE
 	
 	# Icon
-	icon = preload("res://assets/items/lances/iron_lance_icon.png")
+	icon = preload("res://assets/items/lances/silverLance.png")
 	
 	# Description and name
 	item_name = "Silver Lance"

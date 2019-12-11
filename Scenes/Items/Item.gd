@@ -31,13 +31,20 @@ var icon
 var weapon_string_name
 
 # Usability by current unit/class
-var is_usable_by_current_unit = true
+var is_usable_by_current_unit = false
 
 # Sound effects
 func draw_attack_sound():
 	pass
 
 func put_away_attack_sound():
+	pass
+
+# Consumable functions
+func can_be_consumed():
+	return true
+
+func use_consumable():
 	pass
 
 # Special abilities should be added here in the extended item slot

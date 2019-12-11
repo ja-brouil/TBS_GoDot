@@ -11,7 +11,7 @@ resource_name = "axe crit"
 length = 19.0
 step = 0.05
 tracks/0/type = "value"
-tracks/0/path = NodePath("Combat Sprite:region_rect")
+tracks/0/path = NodePath("axe crit:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -23,7 +23,7 @@ tracks/0/keys = {
 "values": [ Rect2( 0, 26, 56, 47 ), Rect2( 141, 27, 49, 46 ), Rect2( 284, 28, 43, 48 ), Rect2( 398, 22, 66, 52 ), Rect2( 548, 18, 52, 56 ), Rect2( 681, 4, 55, 70 ), Rect2( 810, 2, 62, 72 ), Rect2( 934, 0, 74, 74 ), Rect2( 1073, 14, 71, 60 ), Rect2( 1209, 20, 71, 54 ), Rect2( 1364, 18, 52, 56 ), Rect2( 1497, 4, 55, 70 ), Rect2( 1626, 2, 62, 72 ), Rect2( 1750, 0, 74, 74 ), Rect2( 1889, 14, 71, 60 ), Rect2( 2025, 20, 71, 54 ), Rect2( 2180, 18, 52, 56 ), Rect2( 2313, 4, 55, 70 ), Rect2( 2442, 2, 62, 72 ), Rect2( 2566, 0, 74, 74 ), Rect2( 2705, 14, 71, 60 ), Rect2( 2841, 20, 71, 54 ), Rect2( 2996, 18, 52, 56 ), Rect2( 3129, 4, 55, 70 ), Rect2( 3258, 2, 62, 72 ), Rect2( 3382, 0, 74, 74 ), Rect2( 3521, 14, 71, 60 ), Rect2( 3657, 20, 71, 54 ), Rect2( 3812, 18, 52, 56 ), Rect2( 3945, 4, 55, 70 ), Rect2( 4108, 27, 70, 50 ), Rect2( 4244, 21, 66, 53 ), Rect2( 4380, 19, 66, 55 ), Rect2( 4516, 17, 52, 57 ), Rect2( 4652, 27, 58, 47 ), Rect2( 4788, 27, 62, 47 ), Rect2( 4924, 27, 73, 48 ), Rect2( 5060, 21, 71, 53 ), Rect2( 5196, 19, 71, 55 ), Rect2( 5332, 17, 52, 57 ), Rect2( 5468, 27, 58, 47 ), Rect2( 5604, 27, 62, 47 ), Rect2( 5740, 27, 73, 48 ), Rect2( 5876, 21, 71, 53 ), Rect2( 6012, 19, 71, 55 ), Rect2( 6148, 17, 52, 57 ), Rect2( 6284, 27, 58, 47 ), Rect2( 6420, 27, 62, 47 ), Rect2( 6556, 27, 73, 48 ), Rect2( 6692, 21, 71, 53 ), Rect2( 6828, 19, 71, 55 ), Rect2( 6964, 17, 52, 57 ), Rect2( 7100, 27, 58, 47 ), Rect2( 7236, 27, 62, 47 ), Rect2( 7372, 27, 73, 48 ), Rect2( 7508, 21, 71, 53 ), Rect2( 7644, 19, 71, 55 ), Rect2( 7782, 25, 35, 53 ), Rect2( 7863, 20, 100, 56 ), Rect2( 7989, 29, 109, 46 ), Rect2( 8125, 29, 109, 45 ), Rect2( 8261, 29, 109, 45 ), Rect2( 8397, 29, 109, 45 ), Rect2( 8533, 29, 109, 45 ), Rect2( 8669, 29, 109, 45 ), Rect2( 8805, 29, 109, 45 ), Rect2( 8941, 29, 109, 45 ), Rect2( 9077, 29, 109, 45 ), Rect2( 9213, 29, 109, 45 ), Rect2( 9349, 29, 109, 45 ), Rect2( 9485, 29, 109, 45 ), Rect2( 9621, 29, 109, 45 ), Rect2( 9757, 29, 109, 45 ), Rect2( 9893, 29, 109, 45 ), Rect2( 10029, 29, 109, 45 ), Rect2( 10165, 29, 109, 45 ), Rect2( 10301, 29, 109, 45 ), Rect2( 10437, 29, 109, 45 ), Rect2( 10633, 28, 49, 46 ), Rect2( 10764, 24, 54, 50 ), Rect2( 10898, 25, 50, 49 ), Rect2( 11032, 25, 45, 49 ), Rect2( 11156, 23, 52, 50 ), Rect2( 11288, 24, 56, 49 ), Rect2( 11423, 24, 57, 49 ), Rect2( 0, 26, 56, 47 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Combat Sprite:position")
+tracks/1/path = NodePath("axe crit:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -35,7 +35,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 3, 0 ), Vector2( 6, 0 ), Vector2( 18, -2 ), Vector2( 11, -4 ), Vector2( 13, -11 ), Vector2( 16, -12 ), Vector2( 22, -13 ), Vector2( 21, -6 ), Vector2( 21, -3 ), Vector2( 11, -4 ), Vector2( 13, -11 ), Vector2( 16, -12 ), Vector2( 22, -13 ), Vector2( 21, -6 ), Vector2( 21, -3 ), Vector2( 11, -4 ), Vector2( 13, -11 ), Vector2( 16, -12 ), Vector2( 22, -13 ), Vector2( 21, -6 ), Vector2( 21, -3 ), Vector2( 11, -4 ), Vector2( 13, -11 ), Vector2( 16, -12 ), Vector2( 22, -13 ), Vector2( 21, -6 ), Vector2( 21, -3 ), Vector2( 11, -4 ), Vector2( 13, -11 ), Vector2( -19, 2 ), Vector2( -17, -2 ), Vector2( -17, -3 ), Vector2( -10, -4 ), Vector2( -13, 1 ), Vector2( -15, 1 ), Vector2( -20, 1 ), Vector2( -19, -2 ), Vector2( -19, -3 ), Vector2( -10, -4 ), Vector2( -13, 1 ), Vector2( -15, 1 ), Vector2( -20, 1 ), Vector2( -19, -2 ), Vector2( -19, -3 ), Vector2( -10, -4 ), Vector2( -13, 1 ), Vector2( -15, 1 ), Vector2( -20, 1 ), Vector2( -19, -2 ), Vector2( -19, -3 ), Vector2( -10, -4 ), Vector2( -13, 1 ), Vector2( -15, 1 ), Vector2( -20, 1 ), Vector2( -19, -2 ), Vector2( -19, -3 ), Vector2( 6, -3 ), Vector2( 28, -4 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 9, -1 ), Vector2( 9, -3 ), Vector2( 9, -2 ), Vector2( 8, -2 ), Vector2( 0, -2 ), Vector2( 0, -2 ), Vector2( 0, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Combat Sprite:flip_h")
+tracks/2/path = NodePath("axe crit:flip_h")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -47,7 +47,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Combat Sprite:visible")
+tracks/3/path = NodePath("axe crit:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -173,7 +173,7 @@ tracks/11/keys = {
 resource_name = "axe death"
 length = 3.3
 tracks/0/type = "value"
-tracks/0/path = NodePath("Combat Sprite:position")
+tracks/0/path = NodePath("axe crit:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -185,7 +185,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Combat Sprite:region_rect")
+tracks/1/path = NodePath("axe crit:region_rect")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -197,7 +197,7 @@ tracks/1/keys = {
 "values": [ Rect2( 19, 25, 26, 45 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Combat Sprite:visible")
+tracks/2/path = NodePath("axe crit:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -209,7 +209,7 @@ tracks/2/keys = {
 "values": [ true, true ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Combat Sprite:modulate")
+tracks/3/path = NodePath("axe crit:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -248,7 +248,7 @@ resource_name = "axe miss"
 resource_name = "axe regular"
 length = 19.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("Combat Sprite:region_rect")
+tracks/0/path = NodePath("axe crit:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -260,7 +260,7 @@ tracks/0/keys = {
 "values": [ Rect2( 0, 26, 56, 47 ), Rect2( 141, 27, 49, 46 ), Rect2( 284, 28, 43, 48 ), Rect2( 398, 22, 66, 52 ), Rect2( 548, 18, 52, 56 ), Rect2( 681, 4, 55, 70 ), Rect2( 810, 2, 62, 72 ), Rect2( 934, 0, 74, 74 ), Rect2( 1073, 14, 71, 60 ), Rect2( 1209, 20, 71, 54 ), Rect2( 1364, 18, 52, 56 ), Rect2( 1497, 4, 55, 70 ), Rect2( 1626, 2, 62, 72 ), Rect2( 1750, 0, 74, 74 ), Rect2( 1889, 14, 71, 60 ), Rect2( 2025, 20, 71, 54 ), Rect2( 2180, 18, 52, 56 ), Rect2( 2313, 4, 55, 70 ), Rect2( 2442, 2, 62, 72 ), Rect2( 2566, 0, 74, 74 ), Rect2( 2705, 14, 71, 60 ), Rect2( 2841, 20, 71, 54 ), Rect2( 2996, 18, 52, 56 ), Rect2( 3129, 4, 55, 70 ), Rect2( 3258, 2, 62, 72 ), Rect2( 3382, 0, 74, 74 ), Rect2( 3521, 14, 71, 60 ), Rect2( 3657, 20, 71, 54 ), Rect2( 3812, 18, 52, 56 ), Rect2( 3945, 4, 55, 70 ), Rect2( 4108, 27, 70, 50 ), Rect2( 4244, 21, 66, 53 ), Rect2( 4380, 19, 66, 55 ), Rect2( 4516, 17, 52, 57 ), Rect2( 4652, 27, 58, 47 ), Rect2( 4788, 27, 62, 47 ), Rect2( 4924, 27, 73, 48 ), Rect2( 5060, 21, 71, 53 ), Rect2( 5196, 19, 71, 55 ), Rect2( 5332, 17, 52, 57 ), Rect2( 5468, 27, 58, 47 ), Rect2( 5604, 27, 62, 47 ), Rect2( 5740, 27, 73, 48 ), Rect2( 5876, 21, 71, 53 ), Rect2( 6012, 19, 71, 55 ), Rect2( 6148, 17, 52, 57 ), Rect2( 6284, 27, 58, 47 ), Rect2( 6420, 27, 62, 47 ), Rect2( 6556, 27, 73, 48 ), Rect2( 6692, 21, 71, 53 ), Rect2( 6828, 19, 71, 55 ), Rect2( 6964, 17, 52, 57 ), Rect2( 7100, 27, 58, 47 ), Rect2( 7236, 27, 62, 47 ), Rect2( 7372, 27, 73, 48 ), Rect2( 7508, 21, 71, 53 ), Rect2( 7644, 19, 71, 55 ), Rect2( 7782, 25, 35, 53 ), Rect2( 7863, 20, 100, 56 ), Rect2( 7989, 29, 109, 46 ), Rect2( 8125, 29, 109, 45 ), Rect2( 8261, 29, 109, 45 ), Rect2( 8397, 29, 109, 45 ), Rect2( 8533, 29, 109, 45 ), Rect2( 8669, 29, 109, 45 ), Rect2( 8805, 29, 109, 45 ), Rect2( 8941, 29, 109, 45 ), Rect2( 9077, 29, 109, 45 ), Rect2( 9213, 29, 109, 45 ), Rect2( 9349, 29, 109, 45 ), Rect2( 9485, 29, 109, 45 ), Rect2( 9621, 29, 109, 45 ), Rect2( 9757, 29, 109, 45 ), Rect2( 9893, 29, 109, 45 ), Rect2( 10029, 29, 109, 45 ), Rect2( 10165, 29, 109, 45 ), Rect2( 10301, 29, 109, 45 ), Rect2( 10437, 29, 109, 45 ), Rect2( 10633, 28, 49, 46 ), Rect2( 10764, 24, 54, 50 ), Rect2( 10898, 25, 50, 49 ), Rect2( 11032, 25, 45, 49 ), Rect2( 11156, 23, 52, 50 ), Rect2( 11288, 24, 56, 49 ), Rect2( 11423, 24, 57, 49 ), Rect2( 0, 26, 56, 47 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Combat Sprite:position")
+tracks/1/path = NodePath("axe crit:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -272,7 +272,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 3, 0 ), Vector2( 6, 0 ), Vector2( 18, -3 ), Vector2( 11, -4 ), Vector2( 12, -11 ), Vector2( 16, -11 ), Vector2( 16, -12 ), Vector2( 17, -6 ), Vector2( 18, -3 ), Vector2( 11, -4 ), Vector2( 10, -11 ), Vector2( 16, -12 ), Vector2( 23, -11 ), Vector2( 21, -6 ), Vector2( 21, -3 ), Vector2( 11, -4 ), Vector2( 12, -11 ), Vector2( 16, -11 ), Vector2( 22, -13 ), Vector2( 21, -6 ), Vector2( 21, -3 ), Vector2( 11, -4 ), Vector2( 12, -11 ), Vector2( 16, -11 ), Vector2( 22, -13 ), Vector2( 21, -6 ), Vector2( 21, -3 ), Vector2( 11, -3 ), Vector2( 12, -11 ), Vector2( -19, 0 ), Vector2( -19, -3 ), Vector2( -19, 0 ), Vector2( -22, 0 ), Vector2( -22, -3 ), Vector2( -22, -3 ), Vector2( -22, -3 ), Vector2( -21, 0 ), Vector2( -21, 0 ), Vector2( -21, 0 ), Vector2( -21, -3 ), Vector2( -21, -3 ), Vector2( -12, -3 ), Vector2( -15, 0 ), Vector2( -15, 0 ), Vector2( -21, 0 ), Vector2( -22, -3 ), Vector2( -22, -3 ), Vector2( -15, -3 ), Vector2( -15, 0 ), Vector2( -15, 0 ), Vector2( -20, 0 ), Vector2( -20, -3 ), Vector2( -20, -3 ), Vector2( 6, -3 ), Vector2( 28, -4 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 41, 0 ), Vector2( 9, 0 ), Vector2( 9, 0 ), Vector2( 9, 0 ), Vector2( 8, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Combat Sprite:flip_h")
+tracks/2/path = NodePath("axe crit:flip_h")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -284,7 +284,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Combat Sprite:visible")
+tracks/3/path = NodePath("axe crit:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -406,7 +406,15 @@ playback_speed = 6.0
 "anims/axe miss" = SubResource( 4 )
 "anims/axe regular" = SubResource( 5 )
 
-[node name="Combat Sprite" type="Sprite" parent="."]
+[node name="axe regular" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 2 )
+flip_h = true
+region_enabled = true
+region_rect = Rect2( 0, 26, 56, 47 )
+
+[node name="axe crit" type="Sprite" parent="."]
+visible = false
 texture = ExtResource( 2 )
 flip_h = true
 region_enabled = true

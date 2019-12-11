@@ -531,12 +531,10 @@ __meta__ = {
 stream = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, -1 )
 texture = ExtResource( 3 )
 centered = false
-flip_h = true
 region_enabled = true
-region_rect = Rect2( 38, 114, 19, 17 )
+region_rect = Rect2( 8, 49, 16, 16 )
 
 [node name="Cursor Select" parent="." instance=ExtResource( 4 )]
 visible = false

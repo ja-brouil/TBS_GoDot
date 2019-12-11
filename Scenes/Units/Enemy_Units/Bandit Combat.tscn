@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/Units/Enemy_Units/Bandit Combat.gd" type="Script" id=1]
-[ext_resource path="res://assets/units/bandit/fighterRegular.png" type="Texture" id=2]
+[ext_resource path="res://assets/units/bandit/fighter_Regular_black.png" type="Texture" id=2]
 [ext_resource path="res://assets/battle_effects/Physical Effects.png" type="Texture" id=3]
 [ext_resource path="res://assets/transition/white flash.png" type="Texture" id=4]
 
@@ -10,7 +10,7 @@ resource_name = "axe crit"
 length = 11.1
 step = 0.01
 tracks/0/type = "value"
-tracks/0/path = NodePath("Combat Sprite:region_rect")
+tracks/0/path = NodePath("axe regular:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -22,7 +22,7 @@ tracks/0/keys = {
 "values": [ Rect2( 3, 77, 80, 136 ), Rect2( 262, 92, 103, 121 ), Rect2( 519, 108, 123, 105 ), Rect2( 771, 103, 120, 110 ), Rect2( 1023, 103, 115, 110 ), Rect2( 1275, 102, 110, 111 ), Rect2( 1527, 105, 105, 108 ), Rect2( 1779, 105, 100, 108 ), Rect2( 2031, 102, 92, 111 ), Rect2( 2230, 71, 118, 138 ), Rect2( 2406, 0, 231, 213 ), Rect2( 2656, 47, 206, 163 ), Rect2( 2907, 47, 181.157, 183.954 ), Rect2( 3150.6, 17.0988, 202.928, 206.05 ), Rect2( 3464.59, 34.2697, 134.245, 190.441 ), Rect2( 3704.98, 51.4405, 151.416, 170.148 ), Rect2( 3957.39, 51.4405, 145.172, 157.66 ), Rect2( 4224.32, 54.5625, 137.367, 154.538 ), Rect2( 4472, 100, 110, 110 ), Rect2( 4655, 97, 95, 111 ), Rect2( 4906, 85, 96, 120 ), Rect2( 3, 77, 80, 136 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Combat Sprite:position")
+tracks/1/path = NodePath("axe regular:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -34,7 +34,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 2.6431 ), Vector2( 0.188782, 6.23018 ), Vector2( 0.188782, 6.04138 ), Vector2( 0.188782, 6.04138 ), Vector2( 11.5164, -0.943973 ), Vector2( 32.6612, -17.369 ), Vector2( 32.6612, -17.369 ), Vector2( 33.0388, -2.07673 ), Vector2( 32.2518, -9.947 ), Vector2( 19.1347, -8.37295 ), Vector2( 19.9217, -3.38844 ), Vector2( 18.61, -6.01187 ), Vector2( 11.7891, -3.65078 ), Vector2( 8.90333, 4.74417 ), Vector2( 8.90333, 4.74417 ), Vector2( -0.54101, 4.21949 ), Vector2( 0, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Combat Sprite:flip_h")
+tracks/2/path = NodePath("axe regular:flip_h")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -143,13 +143,25 @@ tracks/9/keys = {
 "update": 1,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
+tracks/10/type = "value"
+tracks/10/path = NodePath("axe regular:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "axe death"
 length = 3.5
 step = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("Combat Sprite:position")
+tracks/0/path = NodePath("axe regular:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -161,7 +173,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Combat Sprite:region_rect")
+tracks/1/path = NodePath("axe regular:region_rect")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -173,7 +185,7 @@ tracks/1/keys = {
 "values": [ Rect2( 3, 77, 80, 136 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Combat Sprite:flip_h")
+tracks/2/path = NodePath("axe regular:flip_h")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -185,19 +197,19 @@ tracks/2/keys = {
 "values": [ true ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Combat Sprite:visible")
+tracks/3/path = NodePath("axe regular:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 1 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ true ]
+"values": [ true, true ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Combat Sprite:modulate")
+tracks/4/path = NodePath("axe regular:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -229,7 +241,7 @@ tracks/5/keys = {
 [sub_resource type="Animation" id=3]
 length = 2.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("Combat Sprite:region_rect")
+tracks/0/path = NodePath("axe regular:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -241,7 +253,7 @@ tracks/0/keys = {
 "values": [ Rect2( 3, 77, 80, 136 ), Rect2( 3719, 62, 118, 106 ), Rect2( 4472, 100, 110, 110 ), Rect2( 4655, 97, 95, 111 ), Rect2( 3, 77, 80, 136 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Combat Sprite:position")
+tracks/1/path = NodePath("axe regular:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -253,7 +265,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Combat Sprite:flip_h")
+tracks/2/path = NodePath("axe regular:flip_h")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -264,12 +276,24 @@ tracks/2/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("axe regular:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=4]
 length = 11.6
 step = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("Combat Sprite:region_rect")
+tracks/0/path = NodePath("axe regular:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -281,7 +305,7 @@ tracks/0/keys = {
 "values": [ Rect2( 3, 77, 80, 136 ), Rect2( 262, 92, 103, 121 ), Rect2( 519, 108, 123, 105 ), Rect2( 771, 103, 120, 110 ), Rect2( 1023, 103, 115, 110 ), Rect2( 1275, 102, 110, 111 ), Rect2( 1527, 105, 105, 108 ), Rect2( 1779, 105, 100, 108 ), Rect2( 2031, 102, 92, 111 ), Rect2( 2230, 71, 118, 138 ), Rect2( 2406, 0, 231, 213 ), Rect2( 2656, 47, 206, 163 ), Rect2( 2907, 47, 181.157, 183.954 ), Rect2( 3150.6, 17.0988, 202.928, 206.05 ), Rect2( 3464.59, 34.2697, 134.245, 190.441 ), Rect2( 3704.98, 51.4405, 151.416, 170.148 ), Rect2( 3957.39, 51.4405, 145.172, 157.66 ), Rect2( 4224.32, 54.5625, 137.367, 154.538 ), Rect2( 4472, 100, 110, 110 ), Rect2( 4655, 97, 95, 111 ), Rect2( 4906, 85, 96, 120 ), Rect2( 3, 77, 80, 136 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Combat Sprite:position")
+tracks/1/path = NodePath("axe regular:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -293,7 +317,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 2.6431 ), Vector2( 0.188782, 6.23018 ), Vector2( 0.188782, 6.04138 ), Vector2( 0.188782, 6.04138 ), Vector2( 11.5164, -0.943973 ), Vector2( 32.6612, -17.369 ), Vector2( 32.6612, -17.369 ), Vector2( 33.0388, -2.07673 ), Vector2( 32.2518, -9.947 ), Vector2( 19.1347, -8.37295 ), Vector2( 19.9217, -3.38844 ), Vector2( 18.61, -6.01187 ), Vector2( 11.7891, -3.65078 ), Vector2( 8.90333, 4.74417 ), Vector2( 8.90333, 4.74417 ), Vector2( -0.54101, 4.21949 ), Vector2( 0, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Combat Sprite:flip_h")
+tracks/2/path = NodePath("axe regular:flip_h")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -328,7 +352,7 @@ tracks/3/keys = {
 } ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Combat Sprite:z_index")
+tracks/4/path = NodePath("axe regular:z_index")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -339,12 +363,24 @@ tracks/4/keys = {
 "update": 1,
 "values": [ 1, 0 ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("axe regular:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=5]
 length = 11.1
 step = 0.01
 tracks/0/type = "value"
-tracks/0/path = NodePath("Combat Sprite:region_rect")
+tracks/0/path = NodePath("axe regular:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -356,7 +392,7 @@ tracks/0/keys = {
 "values": [ Rect2( 3, 77, 80, 136 ), Rect2( 262, 92, 103, 121 ), Rect2( 519, 108, 123, 105 ), Rect2( 771, 103, 120, 110 ), Rect2( 1023, 103, 115, 110 ), Rect2( 1275, 102, 110, 111 ), Rect2( 1527, 105, 105, 108 ), Rect2( 1779, 105, 100, 108 ), Rect2( 2031, 102, 92, 111 ), Rect2( 2230, 71, 118, 138 ), Rect2( 2406, 0, 231, 213 ), Rect2( 2656, 47, 206, 163 ), Rect2( 2907, 47, 181.157, 183.954 ), Rect2( 3150.6, 17.0988, 202.928, 206.05 ), Rect2( 3464.59, 34.2697, 134.245, 190.441 ), Rect2( 3704.98, 51.4405, 151.416, 170.148 ), Rect2( 3957.39, 51.4405, 145.172, 157.66 ), Rect2( 4224.32, 54.5625, 137.367, 154.538 ), Rect2( 4472, 100, 110, 110 ), Rect2( 4655, 97, 95, 111 ), Rect2( 4906, 85, 96, 120 ), Rect2( 3, 77, 80, 136 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Combat Sprite:position")
+tracks/1/path = NodePath("axe regular:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -368,7 +404,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 2.6431 ), Vector2( 0.188782, 6.23018 ), Vector2( 0.188782, 6.04138 ), Vector2( 0.188782, 6.04138 ), Vector2( 11.5164, -0.943973 ), Vector2( 32.6612, -17.369 ), Vector2( 32.6612, -17.369 ), Vector2( 33.0388, -2.07673 ), Vector2( 32.2518, -9.947 ), Vector2( 19.1347, -8.37295 ), Vector2( 19.9217, -3.38844 ), Vector2( 18.61, -6.01187 ), Vector2( 11.7891, -3.65078 ), Vector2( 8.90333, 4.74417 ), Vector2( 8.90333, 4.74417 ), Vector2( -0.54101, 4.21949 ), Vector2( 0, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Combat Sprite:flip_h")
+tracks/2/path = NodePath("axe regular:flip_h")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -453,6 +489,18 @@ tracks/7/keys = {
 "update": 1,
 "values": [ false, true, false ]
 }
+tracks/8/type = "value"
+tracks/8/path = NodePath("axe regular:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [node name="Bandit Combat" type="Node2D"]
 script = ExtResource( 1 )
@@ -461,7 +509,8 @@ __meta__ = {
 "_edit_vertical_guides_": [ 81.4285 ]
 }
 
-[node name="Combat Sprite" type="Sprite" parent="."]
+[node name="axe regular" type="Sprite" parent="."]
+visible = false
 scale = Vector2( 0.45, 0.45 )
 z_index = 1
 texture = ExtResource( 2 )

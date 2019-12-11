@@ -9,7 +9,7 @@
 resource_name = "staff death"
 length = 3.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("Combat Sprite:position")
+tracks/0/path = NodePath("staff regular:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -21,7 +21,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Combat Sprite:region_rect")
+tracks/1/path = NodePath("staff regular:region_rect")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -33,7 +33,7 @@ tracks/1/keys = {
 "values": [ Rect2( 9, 30, 20, 32 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Combat Sprite:visible")
+tracks/2/path = NodePath("staff regular:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -45,7 +45,7 @@ tracks/2/keys = {
 "values": [ true, true ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Combat Sprite:modulate")
+tracks/3/path = NodePath("staff regular:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -77,7 +77,7 @@ tracks/4/keys = {
 [sub_resource type="Animation" id=2]
 length = 1.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("Combat Sprite:region_rect")
+tracks/0/path = NodePath("staff regular:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -89,7 +89,7 @@ tracks/0/keys = {
 "values": [ Rect2( 9, 30, 20, 32 ), Rect2( 13, 86, 18, 31 ), Rect2( 9, 30, 20, 32 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Combat Sprite:position")
+tracks/1/path = NodePath("staff regular:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -100,11 +100,23 @@ tracks/1/keys = {
 "update": 1,
 "values": [ Vector2( 0, -1.19209e-07 ), Vector2( 0, -1.19209e-07 ), Vector2( 0, -1.19209e-07 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("staff regular:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=3]
 length = 7.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("Combat Sprite:region_rect")
+tracks/0/path = NodePath("staff regular:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -116,7 +128,7 @@ tracks/0/keys = {
 "values": [ Rect2( 9, 30, 20, 32 ), Rect2( 39, 26, 27, 36 ), Rect2( 79, 27, 28, 36 ), Rect2( 119, 30, 28, 33 ), Rect2( 157, 28, 26, 36 ), Rect2( 197, 32, 25, 33 ), Rect2( 9, 30, 20, 32 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Combat Sprite:position")
+tracks/1/path = NodePath("staff regular:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -177,6 +189,18 @@ tracks/5/keys = {
 } ],
 "times": PoolRealArray( 1.5 )
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("staff regular:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [node name="Natasha Combat" type="Node2D"]
 script = ExtResource( 1 )
@@ -185,7 +209,8 @@ __meta__ = {
 "_edit_vertical_guides_": [ 0.0 ]
 }
 
-[node name="Combat Sprite" type="Sprite" parent="."]
+[node name="staff regular" type="Sprite" parent="."]
+visible = false
 modulate = Color( 1, 1, 1, 0.9 )
 scale = Vector2( 1.25, 1.25 )
 texture = ExtResource( 2 )

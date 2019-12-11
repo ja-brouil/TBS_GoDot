@@ -7,7 +7,6 @@ func _ready():
 	# Set this when the level loads but for now, this is just a test to simply things
 	UnitStats.name = "Eirika"
 	
-	
 	# Unit Portrait
 	#unit_portrait_path = preload("res://assets/units/eirika/eirikaPortrait.png")
 	unit_portrait_path = preload("res://assets/units/eirika/eirika mugshot.png")
@@ -15,13 +14,10 @@ func _ready():
 	# Unit Mugshot
 	unit_mugshot = preload("res://assets/units/eirika/eirika mugshot.png")
 	
-	# Add 2nd Steel sword
+	# Weapons and Inventory
+	UnitInventory.usable_weapons.append(Item.WEAPON_TYPE.SWORD)
+	UnitInventory.add_item(preload("res://Scenes/Items/Lance/Iron Lance.tscn").instance())
 	UnitInventory.add_item(preload("res://Scenes/Items/Swords/Iron Sword.tscn").instance())
-	
-	# Add Steel sword
-	UnitInventory.add_item(preload("res://Scenes/Items/Swords/Steel Sword.tscn").instance())
-
-	# Add Rapier
 	UnitInventory.add_item(preload("res://Scenes/Items/Swords/Rapier.tscn").instance())
 	
 	# Set combat node

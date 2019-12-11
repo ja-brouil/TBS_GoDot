@@ -14,11 +14,14 @@ func _ready():
 	# Unit Mugshot
 	unit_mugshot = preload("res://assets/units/cleric/natasha mugshot.png")
 	
+	# Allowed weapon usage
+	UnitInventory.usable_weapons.append(Item.WEAPON_TYPE.HEALING)
+	
 	# Add Healing Staff
 	UnitInventory.add_item(preload("res://Scenes/Items/Staves/Heal.tscn").instance())
 	
 	# Set combat node
-	combat_node = preload("res://Scenes/Units/Player_Units/AllyUnits/Natasha/Natasha Combat.tscn")\
+	combat_node = preload("res://Scenes/Units/Player_Units/AllyUnits/Natasha/Natasha Combat.tscn")
 	
 	# Death sentence
 	death_sentence = []

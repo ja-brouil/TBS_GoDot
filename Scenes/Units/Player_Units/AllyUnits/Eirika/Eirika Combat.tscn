@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/Units/Unit_Scripts/Ally Combat Script.gd" type="Script" id=1]
 [ext_resource path="res://assets/units/eirika/Eirika Combat Sprites.png" type="Texture" id=2]
@@ -10,7 +10,7 @@ resource_name = "sword crit"
 length = 6.3
 step = 0.01
 tracks/0/type = "value"
-tracks/0/path = NodePath("Erika Combat Sprite:position")
+tracks/0/path = NodePath("sword regular:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -22,7 +22,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 7, -3 ), Vector2( 3, 1 ), Vector2( 6, 3 ), Vector2( 6, 3 ), Vector2( 6, 3 ), Vector2( 6, 3 ), Vector2( 6, 3 ), Vector2( 6, -5 ), Vector2( 5, 3 ), Vector2( -21, 5 ), Vector2( -35, 6 ), Vector2( -20, 1 ), Vector2( -6, -4 ), Vector2( 0, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Erika Combat Sprite:z_index")
+tracks/1/path = NodePath("sword regular:z_index")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -34,7 +34,7 @@ tracks/1/keys = {
 "values": [ 0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Erika Combat Sprite:region_rect")
+tracks/2/path = NodePath("sword regular:region_rect")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -141,11 +141,14 @@ tracks/9/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
+[sub_resource type="Animation" id=5]
+resource_name = "sword death"
+
 [sub_resource type="Animation" id=2]
 length = 1.1
 step = 0.05
 tracks/0/type = "value"
-tracks/0/path = NodePath("Erika Combat Sprite:position")
+tracks/0/path = NodePath("sword regular:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -157,7 +160,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0.238205, 1.46285 ), Vector2( 0.238205, 1.46285 ), Vector2( 0.238205, 1.46285 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Erika Combat Sprite:z_index")
+tracks/1/path = NodePath("sword regular:z_index")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -169,7 +172,7 @@ tracks/1/keys = {
 "values": [ 0, 0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Erika Combat Sprite:region_rect")
+tracks/2/path = NodePath("sword regular:region_rect")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -184,7 +187,7 @@ tracks/2/keys = {
 [sub_resource type="Animation" id=3]
 length = 6.6
 tracks/0/type = "value"
-tracks/0/path = NodePath("Erika Combat Sprite:region_rect")
+tracks/0/path = NodePath("sword regular:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -196,7 +199,7 @@ tracks/0/keys = {
 "values": [ Rect2( 6, 26, 36, 34 ), Rect2( 49, 20, 29, 40 ), Rect2( 86, 19, 28, 41 ), Rect2( 122, 29, 28, 31 ), Rect2( 159, 29, 29, 31 ), Rect2( 196, 33, 48, 27 ), Rect2( 252, 33, 48, 27 ), Rect2( 306, 32, 53, 28 ), Rect2( 366, 26, 33, 34 ), Rect2( 403.809, 18.3745, 30.5554, 46.0315 ), Rect2( 6, 26, 36, 34 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Erika Combat Sprite:position")
+tracks/1/path = NodePath("sword regular:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -231,7 +234,7 @@ tracks/2/keys = {
 } ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Erika Combat Sprite:z_index")
+tracks/3/path = NodePath("sword regular:z_index")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -247,7 +250,7 @@ tracks/3/keys = {
 length = 6.6
 step = 0.01
 tracks/0/type = "value"
-tracks/0/path = NodePath("Erika Combat Sprite:region_rect")
+tracks/0/path = NodePath("sword regular:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -259,7 +262,7 @@ tracks/0/keys = {
 "values": [ Rect2( 6, 26, 36, 34 ), Rect2( 49, 20, 29, 40 ), Rect2( 86, 19, 28, 41 ), Rect2( 122, 29, 28, 31 ), Rect2( 159, 29, 29, 31 ), Rect2( 196, 33, 48, 27 ), Rect2( 252, 33, 48, 27 ), Rect2( 306, 32, 53, 28 ), Rect2( 366, 26, 33, 34 ), Rect2( 403.809, 18.3745, 30.5554, 46.0315 ), Rect2( 6, 26, 36, 34 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Erika Combat Sprite:position")
+tracks/1/path = NodePath("sword regular:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -333,7 +336,7 @@ tracks/5/keys = {
 } ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Erika Combat Sprite:z_index")
+tracks/6/path = NodePath("sword regular:z_index")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -364,7 +367,7 @@ __meta__ = {
 "_edit_vertical_guides_": [ -35.0, 0.0 ]
 }
 
-[node name="Erika Combat Sprite" type="Sprite" parent="."]
+[node name="sword regular" type="Sprite" parent="."]
 scale = Vector2( 1.25, 1.25 )
 texture = ExtResource( 2 )
 region_enabled = true
@@ -380,6 +383,7 @@ region_rect = Rect2( 268, 528, 177, 150 )
 [node name="anim" type="AnimationPlayer" parent="."]
 playback_speed = 4.0
 "anims/sword crit" = SubResource( 1 )
+"anims/sword death" = SubResource( 5 )
 "anims/sword dodge" = SubResource( 2 )
 "anims/sword miss" = SubResource( 3 )
 "anims/sword regular" = SubResource( 4 )
