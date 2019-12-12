@@ -12,14 +12,9 @@ class_name L2_Event_Part3
 
 # Dialogue between the characters
 var dialogue = [
-	"Seth:\n\nWe have been betrayed! Someone has informed them of our location!",
-	"Seth:\n\nGet the Pegasus Horses ready immediately!",
-	"Eirika:\n\nWhat about the forward guard! We cannot abbadon them!",
-	"Ephraim Soldier:\n\nWe must get you to safety first my lady! We are ready to lay down our lives down for you.",
-	"Ephraim Soldier:\n\nYou must escape! We know that you will come back for us one day!",
-	"Eirika:\n\nThank you... I will return, I swear it!",
-	"Seth:\n\nMake haste! We don't time have time to lose. We cannot defeat them all so let's buy enough time to escape.",
-	"Ephraim Soldier:\n\nYes sir! You heard the Knight Commander! Get those Pegasi ready NOW!"
+	"Seth:\n\nWhat! How did they know we are here?",
+	"Seth:\n\nYou two! Get the ship ready immediately!",
+	"Ephraim Soldier:\n\nYes sir! You heard the Knight Commander! Move it!",
 ]
 
 # Move these actors and combat
@@ -61,12 +56,6 @@ func move_actor():
 	# Remove original tile
 	move_actor_1.UnitMovementStats.currentTile.occupyingUnit = null
 	move_actor_2.UnitMovementStats.currentTile.occupyingUnit = null
-	
-	# Move Actor
-	# Set Camera on unit
-	var movement_camera = preload("res://Scenes/Camera/MovementCamera.tscn").instance()
-	move_actor_1.add_child(movement_camera)
-	movement_camera.current = true
 	
 	# Add actors to movement
 	BattlefieldInfo.movement_system_cinematic.unit_to_move_same_time.append(move_actor_1)

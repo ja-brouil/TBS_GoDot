@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="20" height="22" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="2915">
+<map version="1.0" tiledversion="1.1.0" orientation="orthogonal" renderorder="right-down" width="20" height="22" tilewidth="16" tileheight="16" infinite="0" nextobjectid="2926">
  <properties>
   <property name="Enemies to defeat" type="int" value="15"/>
-  <property name="Victory Condition" value="Survive 10 Turns"/>
+  <property name="Victory Condition" value="Survive for 10 turns"/>
  </properties>
  <tileset firstgid="1" source="level2tileset.tsx"/>
- <layer id="1" name="Background" width="20" height="22">
+ <layer name="Background" width="20" height="22">
   <data encoding="csv">
 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,
 21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,
@@ -31,7 +31,7 @@
 421,422,423,424,425,426,427,428,429,430,431,432,433,434,435,436,437,438,439,440
 </data>
  </layer>
- <objectgroup id="2" name="CellInfo" visible="0">
+ <objectgroup name="CellInfo" visible="0">
   <object id="1794" x="0" y="256" width="16" height="16">
    <properties>
     <property name="Avd" type="int" value="0"/>
@@ -3553,8 +3553,8 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="3" name="Allies">
-  <object id="2281" x="160" y="80" width="16" height="16">
+ <objectgroup name="Allies">
+  <object id="2281" x="144" y="112" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
     <property name="BonusDodge" type="int" value="0"/>
@@ -3581,7 +3581,7 @@
     <property name="ThiefBonus" type="int" value="0"/>
     <property name="Weapon" value="Iron Axe"/>
     <property name="buildingPenalty" type="int" value="0"/>
-    <property name="constiChance" type="int" value="70"/>
+    <property name="constiChance" type="int" value="0"/>
     <property name="defChance" type="int" value="60"/>
     <property name="defaultPenalty" type="int" value="0"/>
     <property name="forestPenalty" type="int" value="0"/>
@@ -3600,7 +3600,7 @@
     <property name="strChance" type="int" value="80"/>
    </properties>
   </object>
-  <object id="2867" x="144" y="80" width="16" height="16">
+  <object id="2867" x="144" y="64" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
     <property name="BonusDodge" type="int" value="0"/>
@@ -3627,7 +3627,7 @@
     <property name="ThiefBonus" type="int" value="0"/>
     <property name="Weapon" value="Rapier"/>
     <property name="buildingPenalty" type="int" value="0"/>
-    <property name="constiChance" type="int" value="70"/>
+    <property name="constiChance" type="int" value="0"/>
     <property name="defChance" type="int" value="60"/>
     <property name="defaultPenalty" type="int" value="0"/>
     <property name="forestPenalty" type="int" value="1"/>
@@ -3673,7 +3673,7 @@
     <property name="ThiefBonus" type="int" value="0"/>
     <property name="Weapon" value="Heal"/>
     <property name="buildingPenalty" type="int" value="0"/>
-    <property name="constiChance" type="int" value="50"/>
+    <property name="constiChance" type="int" value="0"/>
     <property name="defChance" type="int" value="40"/>
     <property name="defaultPenalty" type="int" value="0"/>
     <property name="forestPenalty" type="int" value="1"/>
@@ -3692,191 +3692,7 @@
     <property name="strChance" type="int" value="0"/>
    </properties>
   </object>
-  <object id="2898" x="128" y="288" width="16" height="16">
-   <properties>
-    <property name="BonusCrit" type="int" value="0"/>
-    <property name="BonusDodge" type="int" value="0"/>
-    <property name="BonusHit" type="int" value="0"/>
-    <property name="BossBonus" type="int" value="0"/>
-    <property name="Class" value="Soldier"/>
-    <property name="ClassBonusA" type="int" value="0"/>
-    <property name="ClassBonusB" type="int" value="0"/>
-    <property name="ClassPower" type="int" value="3"/>
-    <property name="Consti" type="int" value="5"/>
-    <property name="Defense" type="int" value="2"/>
-    <property name="Health" type="int" value="15"/>
-    <property name="InstanceName" value="Ephraim Soldier"/>
-    <property name="Level" type="int" value="1"/>
-    <property name="Luck" type="int" value="0"/>
-    <property name="Magic" type="int" value="0"/>
-    <property name="MaxHealth" type="int" value="15"/>
-    <property name="Move" type="int" value="0"/>
-    <property name="Name" value="Ephraim Soldier"/>
-    <property name="Res" type="int" value="2"/>
-    <property name="Skill" type="int" value="4"/>
-    <property name="Speed" type="int" value="4"/>
-    <property name="Str" type="int" value="2"/>
-    <property name="ThiefBonus" type="int" value="0"/>
-    <property name="Weapon" value="Iron Lance"/>
-    <property name="buildingPenalty" type="int" value="0"/>
-    <property name="constiChance" type="int" value="0"/>
-    <property name="defChance" type="int" value="0"/>
-    <property name="defaultPenalty" type="int" value="0"/>
-    <property name="forestPenalty" type="int" value="0"/>
-    <property name="fortressPenalty" type="int" value="0"/>
-    <property name="hillPenalty" type="int" value="4"/>
-    <property name="isAlly" type="bool" value="true"/>
-    <property name="luckChance" type="int" value="0"/>
-    <property name="magicChance" type="int" value="0"/>
-    <property name="maxHPChance" type="int" value="0"/>
-    <property name="mountainPenalty" type="int" value="0"/>
-    <property name="resChance" type="int" value="0"/>
-    <property name="riverPenalty" type="int" value="0"/>
-    <property name="seaPenalty" type="int" value="0"/>
-    <property name="skillChance" type="int" value="0"/>
-    <property name="speedChance" type="int" value="0"/>
-    <property name="strChance" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="2904" x="128" y="272" width="16" height="16">
-   <properties>
-    <property name="BonusCrit" type="int" value="0"/>
-    <property name="BonusDodge" type="int" value="0"/>
-    <property name="BonusHit" type="int" value="0"/>
-    <property name="BossBonus" type="int" value="0"/>
-    <property name="Class" value="Soldier"/>
-    <property name="ClassBonusA" type="int" value="0"/>
-    <property name="ClassBonusB" type="int" value="0"/>
-    <property name="ClassPower" type="int" value="3"/>
-    <property name="Consti" type="int" value="5"/>
-    <property name="Defense" type="int" value="2"/>
-    <property name="Health" type="int" value="15"/>
-    <property name="InstanceName" value="Ephraim Soldier"/>
-    <property name="Level" type="int" value="1"/>
-    <property name="Luck" type="int" value="0"/>
-    <property name="Magic" type="int" value="0"/>
-    <property name="MaxHealth" type="int" value="15"/>
-    <property name="Move" type="int" value="0"/>
-    <property name="Name" value="Ephraim Soldier"/>
-    <property name="Res" type="int" value="2"/>
-    <property name="Skill" type="int" value="4"/>
-    <property name="Speed" type="int" value="4"/>
-    <property name="Str" type="int" value="2"/>
-    <property name="ThiefBonus" type="int" value="0"/>
-    <property name="Weapon" value="Iron Lance"/>
-    <property name="buildingPenalty" type="int" value="0"/>
-    <property name="constiChance" type="int" value="0"/>
-    <property name="defChance" type="int" value="0"/>
-    <property name="defaultPenalty" type="int" value="0"/>
-    <property name="forestPenalty" type="int" value="0"/>
-    <property name="fortressPenalty" type="int" value="0"/>
-    <property name="hillPenalty" type="int" value="4"/>
-    <property name="isAlly" type="bool" value="true"/>
-    <property name="luckChance" type="int" value="0"/>
-    <property name="magicChance" type="int" value="0"/>
-    <property name="maxHPChance" type="int" value="0"/>
-    <property name="mountainPenalty" type="int" value="0"/>
-    <property name="resChance" type="int" value="0"/>
-    <property name="riverPenalty" type="int" value="0"/>
-    <property name="seaPenalty" type="int" value="0"/>
-    <property name="skillChance" type="int" value="0"/>
-    <property name="speedChance" type="int" value="0"/>
-    <property name="strChance" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="2906" x="112" y="256" width="16" height="16">
-   <properties>
-    <property name="BonusCrit" type="int" value="0"/>
-    <property name="BonusDodge" type="int" value="0"/>
-    <property name="BonusHit" type="int" value="0"/>
-    <property name="BossBonus" type="int" value="0"/>
-    <property name="Class" value="Soldier"/>
-    <property name="ClassBonusA" type="int" value="0"/>
-    <property name="ClassBonusB" type="int" value="0"/>
-    <property name="ClassPower" type="int" value="3"/>
-    <property name="Consti" type="int" value="5"/>
-    <property name="Defense" type="int" value="2"/>
-    <property name="Health" type="int" value="15"/>
-    <property name="InstanceName" value="Ephraim Soldier"/>
-    <property name="Level" type="int" value="1"/>
-    <property name="Luck" type="int" value="0"/>
-    <property name="Magic" type="int" value="0"/>
-    <property name="MaxHealth" type="int" value="15"/>
-    <property name="Move" type="int" value="0"/>
-    <property name="Name" value="Ephraim Soldier"/>
-    <property name="Res" type="int" value="2"/>
-    <property name="Skill" type="int" value="4"/>
-    <property name="Speed" type="int" value="4"/>
-    <property name="Str" type="int" value="2"/>
-    <property name="ThiefBonus" type="int" value="0"/>
-    <property name="Weapon" value="Iron Lance"/>
-    <property name="buildingPenalty" type="int" value="0"/>
-    <property name="constiChance" type="int" value="0"/>
-    <property name="defChance" type="int" value="0"/>
-    <property name="defaultPenalty" type="int" value="0"/>
-    <property name="forestPenalty" type="int" value="0"/>
-    <property name="fortressPenalty" type="int" value="0"/>
-    <property name="hillPenalty" type="int" value="4"/>
-    <property name="isAlly" type="bool" value="true"/>
-    <property name="luckChance" type="int" value="0"/>
-    <property name="magicChance" type="int" value="0"/>
-    <property name="maxHPChance" type="int" value="0"/>
-    <property name="mountainPenalty" type="int" value="0"/>
-    <property name="resChance" type="int" value="0"/>
-    <property name="riverPenalty" type="int" value="0"/>
-    <property name="seaPenalty" type="int" value="0"/>
-    <property name="skillChance" type="int" value="0"/>
-    <property name="speedChance" type="int" value="0"/>
-    <property name="strChance" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="2910" x="96" y="272" width="16" height="16">
-   <properties>
-    <property name="BonusCrit" type="int" value="0"/>
-    <property name="BonusDodge" type="int" value="0"/>
-    <property name="BonusHit" type="int" value="0"/>
-    <property name="BossBonus" type="int" value="0"/>
-    <property name="Class" value="Soldier"/>
-    <property name="ClassBonusA" type="int" value="0"/>
-    <property name="ClassBonusB" type="int" value="0"/>
-    <property name="ClassPower" type="int" value="3"/>
-    <property name="Consti" type="int" value="5"/>
-    <property name="Defense" type="int" value="2"/>
-    <property name="Health" type="int" value="15"/>
-    <property name="InstanceName" value="Ephraim Soldier"/>
-    <property name="Level" type="int" value="1"/>
-    <property name="Luck" type="int" value="0"/>
-    <property name="Magic" type="int" value="0"/>
-    <property name="MaxHealth" type="int" value="15"/>
-    <property name="Move" type="int" value="2"/>
-    <property name="Name" value="Dead Soldier"/>
-    <property name="Res" type="int" value="2"/>
-    <property name="Skill" type="int" value="4"/>
-    <property name="Speed" type="int" value="4"/>
-    <property name="Str" type="int" value="2"/>
-    <property name="ThiefBonus" type="int" value="0"/>
-    <property name="Weapon" value="Iron Lance"/>
-    <property name="buildingPenalty" type="int" value="0"/>
-    <property name="constiChance" type="int" value="0"/>
-    <property name="defChance" type="int" value="0"/>
-    <property name="defaultPenalty" type="int" value="0"/>
-    <property name="forestPenalty" type="int" value="0"/>
-    <property name="fortressPenalty" type="int" value="0"/>
-    <property name="hillPenalty" type="int" value="4"/>
-    <property name="isAlly" type="bool" value="true"/>
-    <property name="luckChance" type="int" value="0"/>
-    <property name="magicChance" type="int" value="0"/>
-    <property name="maxHPChance" type="int" value="0"/>
-    <property name="mountainPenalty" type="int" value="0"/>
-    <property name="resChance" type="int" value="0"/>
-    <property name="riverPenalty" type="int" value="0"/>
-    <property name="seaPenalty" type="int" value="0"/>
-    <property name="skillChance" type="int" value="0"/>
-    <property name="speedChance" type="int" value="0"/>
-    <property name="strChance" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="2911" x="128" y="96" width="16" height="16">
+  <object id="2911" x="128" y="128" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
     <property name="BonusDodge" type="int" value="0"/>
@@ -3922,7 +3738,7 @@
     <property name="strChance" type="int" value="0"/>
    </properties>
   </object>
-  <object id="2912" x="144" y="96" width="16" height="16">
+  <object id="2912" x="144" y="128" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
     <property name="BonusDodge" type="int" value="0"/>
@@ -3968,7 +3784,7 @@
     <property name="strChance" type="int" value="0"/>
    </properties>
   </object>
-  <object id="2913" x="112" y="272" width="16" height="16">
+  <object id="2914" x="144" y="272" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
     <property name="BonusDodge" type="int" value="0"/>
@@ -3986,7 +3802,7 @@
     <property name="Luck" type="int" value="0"/>
     <property name="Magic" type="int" value="0"/>
     <property name="MaxHealth" type="int" value="20"/>
-    <property name="Move" type="int" value="0"/>
+    <property name="Move" type="int" value="2"/>
     <property name="Name" value="Ephraim Soldier"/>
     <property name="Res" type="int" value="2"/>
     <property name="Skill" type="int" value="4"/>
@@ -4014,7 +3830,7 @@
     <property name="strChance" type="int" value="0"/>
    </properties>
   </object>
-  <object id="2914" x="112" y="288" width="16" height="16">
+  <object id="2915" x="128" y="128" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
     <property name="BonusDodge" type="int" value="0"/>
@@ -4032,7 +3848,99 @@
     <property name="Luck" type="int" value="0"/>
     <property name="Magic" type="int" value="0"/>
     <property name="MaxHealth" type="int" value="15"/>
-    <property name="Move" type="int" value="0"/>
+    <property name="Move" type="int" value="2"/>
+    <property name="Name" value="Move Me 3"/>
+    <property name="Res" type="int" value="2"/>
+    <property name="Skill" type="int" value="4"/>
+    <property name="Speed" type="int" value="4"/>
+    <property name="Str" type="int" value="2"/>
+    <property name="ThiefBonus" type="int" value="0"/>
+    <property name="Weapon" value="Iron Lance"/>
+    <property name="buildingPenalty" type="int" value="0"/>
+    <property name="constiChance" type="int" value="0"/>
+    <property name="defChance" type="int" value="0"/>
+    <property name="defaultPenalty" type="int" value="0"/>
+    <property name="forestPenalty" type="int" value="0"/>
+    <property name="fortressPenalty" type="int" value="0"/>
+    <property name="hillPenalty" type="int" value="4"/>
+    <property name="isAlly" type="bool" value="true"/>
+    <property name="luckChance" type="int" value="0"/>
+    <property name="magicChance" type="int" value="0"/>
+    <property name="maxHPChance" type="int" value="0"/>
+    <property name="mountainPenalty" type="int" value="0"/>
+    <property name="resChance" type="int" value="0"/>
+    <property name="riverPenalty" type="int" value="0"/>
+    <property name="seaPenalty" type="int" value="0"/>
+    <property name="skillChance" type="int" value="0"/>
+    <property name="speedChance" type="int" value="0"/>
+    <property name="strChance" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="2916" x="144" y="128" width="16" height="16">
+   <properties>
+    <property name="BonusCrit" type="int" value="0"/>
+    <property name="BonusDodge" type="int" value="0"/>
+    <property name="BonusHit" type="int" value="0"/>
+    <property name="BossBonus" type="int" value="0"/>
+    <property name="Class" value="Soldier"/>
+    <property name="ClassBonusA" type="int" value="0"/>
+    <property name="ClassBonusB" type="int" value="0"/>
+    <property name="ClassPower" type="int" value="3"/>
+    <property name="Consti" type="int" value="5"/>
+    <property name="Defense" type="int" value="2"/>
+    <property name="Health" type="int" value="15"/>
+    <property name="InstanceName" value="Ephraim Soldier"/>
+    <property name="Level" type="int" value="1"/>
+    <property name="Luck" type="int" value="0"/>
+    <property name="Magic" type="int" value="0"/>
+    <property name="MaxHealth" type="int" value="15"/>
+    <property name="Move" type="int" value="2"/>
+    <property name="Name" value="Move Me 4"/>
+    <property name="Res" type="int" value="2"/>
+    <property name="Skill" type="int" value="4"/>
+    <property name="Speed" type="int" value="4"/>
+    <property name="Str" type="int" value="2"/>
+    <property name="ThiefBonus" type="int" value="0"/>
+    <property name="Weapon" value="Iron Lance"/>
+    <property name="buildingPenalty" type="int" value="0"/>
+    <property name="constiChance" type="int" value="0"/>
+    <property name="defChance" type="int" value="0"/>
+    <property name="defaultPenalty" type="int" value="0"/>
+    <property name="forestPenalty" type="int" value="0"/>
+    <property name="fortressPenalty" type="int" value="0"/>
+    <property name="hillPenalty" type="int" value="4"/>
+    <property name="isAlly" type="bool" value="true"/>
+    <property name="luckChance" type="int" value="0"/>
+    <property name="magicChance" type="int" value="0"/>
+    <property name="maxHPChance" type="int" value="0"/>
+    <property name="mountainPenalty" type="int" value="0"/>
+    <property name="resChance" type="int" value="0"/>
+    <property name="riverPenalty" type="int" value="0"/>
+    <property name="seaPenalty" type="int" value="0"/>
+    <property name="skillChance" type="int" value="0"/>
+    <property name="speedChance" type="int" value="0"/>
+    <property name="strChance" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="2917" x="128" y="272" width="16" height="16">
+   <properties>
+    <property name="BonusCrit" type="int" value="0"/>
+    <property name="BonusDodge" type="int" value="0"/>
+    <property name="BonusHit" type="int" value="0"/>
+    <property name="BossBonus" type="int" value="0"/>
+    <property name="Class" value="Soldier"/>
+    <property name="ClassBonusA" type="int" value="0"/>
+    <property name="ClassBonusB" type="int" value="0"/>
+    <property name="ClassPower" type="int" value="3"/>
+    <property name="Consti" type="int" value="5"/>
+    <property name="Defense" type="int" value="2"/>
+    <property name="Health" type="int" value="20"/>
+    <property name="InstanceName" value="Ephraim Soldier"/>
+    <property name="Level" type="int" value="1"/>
+    <property name="Luck" type="int" value="0"/>
+    <property name="Magic" type="int" value="0"/>
+    <property name="MaxHealth" type="int" value="20"/>
+    <property name="Move" type="int" value="2"/>
     <property name="Name" value="Ephraim Soldier"/>
     <property name="Res" type="int" value="2"/>
     <property name="Skill" type="int" value="4"/>
@@ -4060,99 +3968,285 @@
     <property name="strChance" type="int" value="0"/>
    </properties>
   </object>
+  <object id="2918" x="112" y="256" width="16" height="16">
+   <properties>
+    <property name="BonusCrit" type="int" value="0"/>
+    <property name="BonusDodge" type="int" value="0"/>
+    <property name="BonusHit" type="int" value="0"/>
+    <property name="BossBonus" type="int" value="0"/>
+    <property name="Class" value="Soldier"/>
+    <property name="ClassBonusA" type="int" value="0"/>
+    <property name="ClassBonusB" type="int" value="0"/>
+    <property name="ClassPower" type="int" value="3"/>
+    <property name="Consti" type="int" value="5"/>
+    <property name="Defense" type="int" value="2"/>
+    <property name="Health" type="int" value="20"/>
+    <property name="InstanceName" value="Ephraim Soldier"/>
+    <property name="Level" type="int" value="1"/>
+    <property name="Luck" type="int" value="0"/>
+    <property name="Magic" type="int" value="0"/>
+    <property name="MaxHealth" type="int" value="20"/>
+    <property name="Move" type="int" value="2"/>
+    <property name="Name" value="Ephraim Soldier"/>
+    <property name="Res" type="int" value="2"/>
+    <property name="Skill" type="int" value="4"/>
+    <property name="Speed" type="int" value="4"/>
+    <property name="Str" type="int" value="2"/>
+    <property name="ThiefBonus" type="int" value="0"/>
+    <property name="Weapon" value="Iron Lance"/>
+    <property name="buildingPenalty" type="int" value="0"/>
+    <property name="constiChance" type="int" value="0"/>
+    <property name="defChance" type="int" value="0"/>
+    <property name="defaultPenalty" type="int" value="0"/>
+    <property name="forestPenalty" type="int" value="0"/>
+    <property name="fortressPenalty" type="int" value="0"/>
+    <property name="hillPenalty" type="int" value="4"/>
+    <property name="isAlly" type="bool" value="true"/>
+    <property name="luckChance" type="int" value="0"/>
+    <property name="magicChance" type="int" value="0"/>
+    <property name="maxHPChance" type="int" value="0"/>
+    <property name="mountainPenalty" type="int" value="0"/>
+    <property name="resChance" type="int" value="0"/>
+    <property name="riverPenalty" type="int" value="0"/>
+    <property name="seaPenalty" type="int" value="0"/>
+    <property name="skillChance" type="int" value="0"/>
+    <property name="speedChance" type="int" value="0"/>
+    <property name="strChance" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="2919" x="112" y="272" width="16" height="16">
+   <properties>
+    <property name="BonusCrit" type="int" value="0"/>
+    <property name="BonusDodge" type="int" value="0"/>
+    <property name="BonusHit" type="int" value="0"/>
+    <property name="BossBonus" type="int" value="0"/>
+    <property name="Class" value="Soldier"/>
+    <property name="ClassBonusA" type="int" value="0"/>
+    <property name="ClassBonusB" type="int" value="0"/>
+    <property name="ClassPower" type="int" value="3"/>
+    <property name="Consti" type="int" value="5"/>
+    <property name="Defense" type="int" value="2"/>
+    <property name="Health" type="int" value="20"/>
+    <property name="InstanceName" value="Ephraim Soldier"/>
+    <property name="Level" type="int" value="1"/>
+    <property name="Luck" type="int" value="0"/>
+    <property name="Magic" type="int" value="0"/>
+    <property name="MaxHealth" type="int" value="20"/>
+    <property name="Move" type="int" value="2"/>
+    <property name="Name" value="Ephraim Soldier"/>
+    <property name="Res" type="int" value="2"/>
+    <property name="Skill" type="int" value="4"/>
+    <property name="Speed" type="int" value="4"/>
+    <property name="Str" type="int" value="2"/>
+    <property name="ThiefBonus" type="int" value="0"/>
+    <property name="Weapon" value="Iron Lance"/>
+    <property name="buildingPenalty" type="int" value="0"/>
+    <property name="constiChance" type="int" value="0"/>
+    <property name="defChance" type="int" value="0"/>
+    <property name="defaultPenalty" type="int" value="0"/>
+    <property name="forestPenalty" type="int" value="0"/>
+    <property name="fortressPenalty" type="int" value="0"/>
+    <property name="hillPenalty" type="int" value="4"/>
+    <property name="isAlly" type="bool" value="true"/>
+    <property name="luckChance" type="int" value="0"/>
+    <property name="magicChance" type="int" value="0"/>
+    <property name="maxHPChance" type="int" value="0"/>
+    <property name="mountainPenalty" type="int" value="0"/>
+    <property name="resChance" type="int" value="0"/>
+    <property name="riverPenalty" type="int" value="0"/>
+    <property name="seaPenalty" type="int" value="0"/>
+    <property name="skillChance" type="int" value="0"/>
+    <property name="speedChance" type="int" value="0"/>
+    <property name="strChance" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="2920" x="112" y="288" width="16" height="16">
+   <properties>
+    <property name="BonusCrit" type="int" value="0"/>
+    <property name="BonusDodge" type="int" value="0"/>
+    <property name="BonusHit" type="int" value="0"/>
+    <property name="BossBonus" type="int" value="0"/>
+    <property name="Class" value="Soldier"/>
+    <property name="ClassBonusA" type="int" value="0"/>
+    <property name="ClassBonusB" type="int" value="0"/>
+    <property name="ClassPower" type="int" value="3"/>
+    <property name="Consti" type="int" value="5"/>
+    <property name="Defense" type="int" value="2"/>
+    <property name="Health" type="int" value="20"/>
+    <property name="InstanceName" value="Ephraim Soldier"/>
+    <property name="Level" type="int" value="1"/>
+    <property name="Luck" type="int" value="0"/>
+    <property name="Magic" type="int" value="0"/>
+    <property name="MaxHealth" type="int" value="20"/>
+    <property name="Move" type="int" value="2"/>
+    <property name="Name" value="Ephraim Soldier"/>
+    <property name="Res" type="int" value="2"/>
+    <property name="Skill" type="int" value="4"/>
+    <property name="Speed" type="int" value="4"/>
+    <property name="Str" type="int" value="2"/>
+    <property name="ThiefBonus" type="int" value="0"/>
+    <property name="Weapon" value="Iron Lance"/>
+    <property name="buildingPenalty" type="int" value="0"/>
+    <property name="constiChance" type="int" value="0"/>
+    <property name="defChance" type="int" value="0"/>
+    <property name="defaultPenalty" type="int" value="0"/>
+    <property name="forestPenalty" type="int" value="0"/>
+    <property name="fortressPenalty" type="int" value="0"/>
+    <property name="hillPenalty" type="int" value="4"/>
+    <property name="isAlly" type="bool" value="true"/>
+    <property name="luckChance" type="int" value="0"/>
+    <property name="magicChance" type="int" value="0"/>
+    <property name="maxHPChance" type="int" value="0"/>
+    <property name="mountainPenalty" type="int" value="0"/>
+    <property name="resChance" type="int" value="0"/>
+    <property name="riverPenalty" type="int" value="0"/>
+    <property name="seaPenalty" type="int" value="0"/>
+    <property name="skillChance" type="int" value="0"/>
+    <property name="speedChance" type="int" value="0"/>
+    <property name="strChance" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="2921" x="128" y="288" width="16" height="16">
+   <properties>
+    <property name="BonusCrit" type="int" value="0"/>
+    <property name="BonusDodge" type="int" value="0"/>
+    <property name="BonusHit" type="int" value="0"/>
+    <property name="BossBonus" type="int" value="0"/>
+    <property name="Class" value="Soldier"/>
+    <property name="ClassBonusA" type="int" value="0"/>
+    <property name="ClassBonusB" type="int" value="0"/>
+    <property name="ClassPower" type="int" value="3"/>
+    <property name="Consti" type="int" value="5"/>
+    <property name="Defense" type="int" value="2"/>
+    <property name="Health" type="int" value="20"/>
+    <property name="InstanceName" value="Ephraim Soldier"/>
+    <property name="Level" type="int" value="1"/>
+    <property name="Luck" type="int" value="0"/>
+    <property name="Magic" type="int" value="0"/>
+    <property name="MaxHealth" type="int" value="20"/>
+    <property name="Move" type="int" value="2"/>
+    <property name="Name" value="Ephraim Soldier"/>
+    <property name="Res" type="int" value="2"/>
+    <property name="Skill" type="int" value="4"/>
+    <property name="Speed" type="int" value="4"/>
+    <property name="Str" type="int" value="2"/>
+    <property name="ThiefBonus" type="int" value="0"/>
+    <property name="Weapon" value="Iron Lance"/>
+    <property name="buildingPenalty" type="int" value="0"/>
+    <property name="constiChance" type="int" value="0"/>
+    <property name="defChance" type="int" value="0"/>
+    <property name="defaultPenalty" type="int" value="0"/>
+    <property name="forestPenalty" type="int" value="0"/>
+    <property name="fortressPenalty" type="int" value="0"/>
+    <property name="hillPenalty" type="int" value="4"/>
+    <property name="isAlly" type="bool" value="true"/>
+    <property name="luckChance" type="int" value="0"/>
+    <property name="magicChance" type="int" value="0"/>
+    <property name="maxHPChance" type="int" value="0"/>
+    <property name="mountainPenalty" type="int" value="0"/>
+    <property name="resChance" type="int" value="0"/>
+    <property name="riverPenalty" type="int" value="0"/>
+    <property name="seaPenalty" type="int" value="0"/>
+    <property name="skillChance" type="int" value="0"/>
+    <property name="speedChance" type="int" value="0"/>
+    <property name="strChance" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="2922" x="96" y="272" width="16" height="16">
+   <properties>
+    <property name="BonusCrit" type="int" value="0"/>
+    <property name="BonusDodge" type="int" value="0"/>
+    <property name="BonusHit" type="int" value="0"/>
+    <property name="BossBonus" type="int" value="0"/>
+    <property name="Class" value="Soldier"/>
+    <property name="ClassBonusA" type="int" value="0"/>
+    <property name="ClassBonusB" type="int" value="0"/>
+    <property name="ClassPower" type="int" value="3"/>
+    <property name="Consti" type="int" value="5"/>
+    <property name="Defense" type="int" value="2"/>
+    <property name="Health" type="int" value="20"/>
+    <property name="InstanceName" value="Ephraim Soldier"/>
+    <property name="Level" type="int" value="1"/>
+    <property name="Luck" type="int" value="0"/>
+    <property name="Magic" type="int" value="0"/>
+    <property name="MaxHealth" type="int" value="20"/>
+    <property name="Move" type="int" value="2"/>
+    <property name="Name" value="Dead Soldier"/>
+    <property name="Res" type="int" value="2"/>
+    <property name="Skill" type="int" value="4"/>
+    <property name="Speed" type="int" value="4"/>
+    <property name="Str" type="int" value="2"/>
+    <property name="ThiefBonus" type="int" value="0"/>
+    <property name="Weapon" value="Iron Lance"/>
+    <property name="buildingPenalty" type="int" value="0"/>
+    <property name="constiChance" type="int" value="0"/>
+    <property name="defChance" type="int" value="0"/>
+    <property name="defaultPenalty" type="int" value="0"/>
+    <property name="forestPenalty" type="int" value="0"/>
+    <property name="fortressPenalty" type="int" value="0"/>
+    <property name="hillPenalty" type="int" value="4"/>
+    <property name="isAlly" type="bool" value="true"/>
+    <property name="luckChance" type="int" value="0"/>
+    <property name="magicChance" type="int" value="0"/>
+    <property name="maxHPChance" type="int" value="0"/>
+    <property name="mountainPenalty" type="int" value="0"/>
+    <property name="resChance" type="int" value="0"/>
+    <property name="riverPenalty" type="int" value="0"/>
+    <property name="seaPenalty" type="int" value="0"/>
+    <property name="skillChance" type="int" value="0"/>
+    <property name="speedChance" type="int" value="0"/>
+    <property name="strChance" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="2925" x="160" y="80" width="16" height="16">
+   <properties>
+    <property name="BonusCrit" type="int" value="0"/>
+    <property name="BonusDodge" type="int" value="0"/>
+    <property name="BonusHit" type="int" value="0"/>
+    <property name="BossBonus" type="int" value="0"/>
+    <property name="Class" value="Archer"/>
+    <property name="ClassBonusA" type="int" value="0"/>
+    <property name="ClassBonusB" type="int" value="0"/>
+    <property name="ClassPower" type="int" value="3"/>
+    <property name="Consti" type="int" value="5"/>
+    <property name="Defense" type="int" value="3"/>
+    <property name="Health" type="int" value="18"/>
+    <property name="InstanceName" value="Ally Archer"/>
+    <property name="Level" type="int" value="1"/>
+    <property name="Luck" type="int" value="4"/>
+    <property name="Magic" type="int" value="0"/>
+    <property name="MaxHealth" type="int" value="18"/>
+    <property name="Move" type="int" value="5"/>
+    <property name="Name" value="Neimi"/>
+    <property name="Res" type="int" value="2"/>
+    <property name="Skill" type="int" value="5"/>
+    <property name="Speed" type="int" value="6"/>
+    <property name="Str" type="int" value="4"/>
+    <property name="ThiefBonus" type="int" value="0"/>
+    <property name="Weapon" value="Iron Bow"/>
+    <property name="buildingPenalty" type="int" value="0"/>
+    <property name="constiChance" type="int" value="0"/>
+    <property name="defChance" type="int" value="15"/>
+    <property name="defaultPenalty" type="int" value="0"/>
+    <property name="forestPenalty" type="int" value="1"/>
+    <property name="fortressPenalty" type="int" value="1"/>
+    <property name="hillPenalty" type="int" value="2"/>
+    <property name="isAlly" type="bool" value="true"/>
+    <property name="luckChance" type="int" value="50"/>
+    <property name="magicChance" type="int" value="0"/>
+    <property name="maxHPChance" type="int" value="55"/>
+    <property name="mountainPenalty" type="int" value="0"/>
+    <property name="resChance" type="int" value="35"/>
+    <property name="riverPenalty" type="int" value="0"/>
+    <property name="seaPenalty" type="int" value="0"/>
+    <property name="skillChance" type="int" value="50"/>
+    <property name="speedChance" type="int" value="65"/>
+    <property name="strChance" type="int" value="55"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup id="4" name="Enemies">
-  <object id="2878" x="0" y="256" width="16" height="16">
-   <properties>
-    <property name="BonusCrit" type="int" value="0"/>
-    <property name="BonusDodge" type="int" value="0"/>
-    <property name="BonusHit" type="int" value="0"/>
-    <property name="BossBonus" type="int" value="0"/>
-    <property name="Class" value="Bandit"/>
-    <property name="ClassBonusA" type="int" value="0"/>
-    <property name="ClassBonusB" type="int" value="0"/>
-    <property name="ClassPower" type="int" value="3"/>
-    <property name="Consti" type="int" value="8"/>
-    <property name="Defense" type="int" value="2"/>
-    <property name="Health" type="int" value="21"/>
-    <property name="InstanceName" value="Enemy Soldier"/>
-    <property name="Level" type="int" value="3"/>
-    <property name="Luck" type="int" value="0"/>
-    <property name="Magic" type="int" value="3"/>
-    <property name="MaxHealth" type="int" value="21"/>
-    <property name="Move" type="int" value="5"/>
-    <property name="Name" value="Soldier"/>
-    <property name="Res" type="int" value="1"/>
-    <property name="Skill" type="int" value="3"/>
-    <property name="Speed" type="int" value="2"/>
-    <property name="Str" type="int" value="6"/>
-    <property name="ThiefBonus" type="int" value="0"/>
-    <property name="Weapon" value="Iron Axe"/>
-    <property name="aiType" value="Aggresive"/>
-    <property name="isAlly" type="bool" value="false"/>
-   </properties>
-  </object>
-  <object id="2888" x="288" y="176" width="16" height="16">
-   <properties>
-    <property name="BonusCrit" type="int" value="0"/>
-    <property name="BonusDodge" type="int" value="0"/>
-    <property name="BonusHit" type="int" value="0"/>
-    <property name="BossBonus" type="int" value="0"/>
-    <property name="Class" value="Bandit"/>
-    <property name="ClassBonusA" type="int" value="0"/>
-    <property name="ClassBonusB" type="int" value="0"/>
-    <property name="ClassPower" type="int" value="3"/>
-    <property name="Consti" type="int" value="8"/>
-    <property name="Defense" type="int" value="2"/>
-    <property name="Health" type="int" value="21"/>
-    <property name="InstanceName" value="Bandit"/>
-    <property name="Level" type="int" value="3"/>
-    <property name="Luck" type="int" value="0"/>
-    <property name="Magic" type="int" value="3"/>
-    <property name="MaxHealth" type="int" value="21"/>
-    <property name="Move" type="int" value="5"/>
-    <property name="Name" value="Barbarian"/>
-    <property name="Res" type="int" value="1"/>
-    <property name="Skill" type="int" value="3"/>
-    <property name="Speed" type="int" value="2"/>
-    <property name="Str" type="int" value="6"/>
-    <property name="ThiefBonus" type="int" value="0"/>
-    <property name="Weapon" value="Iron Axe"/>
-    <property name="aiType" value="Aggresive"/>
-    <property name="isAlly" type="bool" value="false"/>
-   </properties>
-  </object>
-  <object id="2889" x="304" y="144" width="16" height="16">
-   <properties>
-    <property name="BonusCrit" type="int" value="0"/>
-    <property name="BonusDodge" type="int" value="0"/>
-    <property name="BonusHit" type="int" value="0"/>
-    <property name="BossBonus" type="int" value="0"/>
-    <property name="Class" value="Bandit"/>
-    <property name="ClassBonusA" type="int" value="0"/>
-    <property name="ClassBonusB" type="int" value="0"/>
-    <property name="ClassPower" type="int" value="3"/>
-    <property name="Consti" type="int" value="8"/>
-    <property name="Defense" type="int" value="2"/>
-    <property name="Health" type="int" value="21"/>
-    <property name="InstanceName" value="Bandit"/>
-    <property name="Level" type="int" value="3"/>
-    <property name="Luck" type="int" value="0"/>
-    <property name="Magic" type="int" value="3"/>
-    <property name="MaxHealth" type="int" value="21"/>
-    <property name="Move" type="int" value="5"/>
-    <property name="Name" value="Barbarian"/>
-    <property name="Res" type="int" value="1"/>
-    <property name="Skill" type="int" value="3"/>
-    <property name="Speed" type="int" value="2"/>
-    <property name="Str" type="int" value="6"/>
-    <property name="ThiefBonus" type="int" value="0"/>
-    <property name="Weapon" value="Iron Axe"/>
-    <property name="aiType" value="Aggresive"/>
-    <property name="isAlly" type="bool" value="false"/>
-   </properties>
-  </object>
-  <object id="2890" x="32" y="256" width="16" height="16">
+ <objectgroup name="Enemies">
+  <object id="2878" x="32" y="256" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
     <property name="BonusDodge" type="int" value="0"/>
@@ -4182,7 +4276,67 @@
     <property name="isAlly" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="2892" x="48" y="256" width="16" height="16">
+  <object id="2888" x="288" y="144" width="16" height="16">
+   <properties>
+    <property name="BonusCrit" type="int" value="0"/>
+    <property name="BonusDodge" type="int" value="0"/>
+    <property name="BonusHit" type="int" value="0"/>
+    <property name="BossBonus" type="int" value="0"/>
+    <property name="Class" value="Bandit"/>
+    <property name="ClassBonusA" type="int" value="0"/>
+    <property name="ClassBonusB" type="int" value="0"/>
+    <property name="ClassPower" type="int" value="3"/>
+    <property name="Consti" type="int" value="8"/>
+    <property name="Defense" type="int" value="2"/>
+    <property name="Health" type="int" value="21"/>
+    <property name="InstanceName" value="Bandit"/>
+    <property name="Level" type="int" value="3"/>
+    <property name="Luck" type="int" value="0"/>
+    <property name="Magic" type="int" value="3"/>
+    <property name="MaxHealth" type="int" value="21"/>
+    <property name="Move" type="int" value="5"/>
+    <property name="Name" value="Barbarian"/>
+    <property name="Res" type="int" value="1"/>
+    <property name="Skill" type="int" value="3"/>
+    <property name="Speed" type="int" value="2"/>
+    <property name="Str" type="int" value="6"/>
+    <property name="ThiefBonus" type="int" value="0"/>
+    <property name="Weapon" value="Iron Axe"/>
+    <property name="aiType" value="Aggresive"/>
+    <property name="isAlly" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="2889" x="304" y="128" width="16" height="16">
+   <properties>
+    <property name="BonusCrit" type="int" value="0"/>
+    <property name="BonusDodge" type="int" value="0"/>
+    <property name="BonusHit" type="int" value="0"/>
+    <property name="BossBonus" type="int" value="0"/>
+    <property name="Class" value="Bandit"/>
+    <property name="ClassBonusA" type="int" value="0"/>
+    <property name="ClassBonusB" type="int" value="0"/>
+    <property name="ClassPower" type="int" value="3"/>
+    <property name="Consti" type="int" value="8"/>
+    <property name="Defense" type="int" value="2"/>
+    <property name="Health" type="int" value="21"/>
+    <property name="InstanceName" value="Bandit"/>
+    <property name="Level" type="int" value="3"/>
+    <property name="Luck" type="int" value="0"/>
+    <property name="Magic" type="int" value="3"/>
+    <property name="MaxHealth" type="int" value="21"/>
+    <property name="Move" type="int" value="5"/>
+    <property name="Name" value="Barbarian"/>
+    <property name="Res" type="int" value="1"/>
+    <property name="Skill" type="int" value="3"/>
+    <property name="Speed" type="int" value="2"/>
+    <property name="Str" type="int" value="6"/>
+    <property name="ThiefBonus" type="int" value="0"/>
+    <property name="Weapon" value="Iron Axe"/>
+    <property name="aiType" value="Aggresive"/>
+    <property name="isAlly" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="2890" x="32" y="304" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
     <property name="BonusDodge" type="int" value="0"/>
@@ -4212,7 +4366,37 @@
     <property name="isAlly" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="2893" x="288" y="128" width="16" height="16">
+  <object id="2892" x="0" y="256" width="16" height="16">
+   <properties>
+    <property name="BonusCrit" type="int" value="0"/>
+    <property name="BonusDodge" type="int" value="0"/>
+    <property name="BonusHit" type="int" value="0"/>
+    <property name="BossBonus" type="int" value="0"/>
+    <property name="Class" value="Soldier"/>
+    <property name="ClassBonusA" type="int" value="0"/>
+    <property name="ClassBonusB" type="int" value="0"/>
+    <property name="ClassPower" type="int" value="3"/>
+    <property name="Consti" type="int" value="8"/>
+    <property name="Defense" type="int" value="2"/>
+    <property name="Health" type="int" value="21"/>
+    <property name="InstanceName" value="Enemy Soldier"/>
+    <property name="Level" type="int" value="3"/>
+    <property name="Luck" type="int" value="0"/>
+    <property name="Magic" type="int" value="3"/>
+    <property name="MaxHealth" type="int" value="21"/>
+    <property name="Move" type="int" value="5"/>
+    <property name="Name" value="Soldier"/>
+    <property name="Res" type="int" value="1"/>
+    <property name="Skill" type="int" value="3"/>
+    <property name="Speed" type="int" value="2"/>
+    <property name="Str" type="int" value="6"/>
+    <property name="ThiefBonus" type="int" value="0"/>
+    <property name="Weapon" value="Iron Axe"/>
+    <property name="aiType" value="Aggresive"/>
+    <property name="isAlly" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="2893" x="304" y="160" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
     <property name="BonusDodge" type="int" value="0"/>
@@ -4302,7 +4486,7 @@
     <property name="isAlly" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="2897" x="48" y="288" width="16" height="16">
+  <object id="2897" x="32" y="272" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
     <property name="BonusDodge" type="int" value="0"/>

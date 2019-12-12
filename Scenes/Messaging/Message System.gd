@@ -1,9 +1,15 @@
 extends CanvasLayer
 
 class_name Messaging_System
+# This is for in game cinematics ONLY Use the other one for portraits
+
 
 # Final position for the arrow
 const ARROW_FINAL_POSITION = Vector2(70,19)
+
+# Top/Bottom position
+const BOTTOM = Vector2(122,127)
+const TOP = Vector2(122,28)
 
 # Max letters per dialogue | Use Calculator function to get the length of a text
 const MAX_LETTERS = 147
@@ -85,6 +91,9 @@ func turn_on():
 
 func turn_off():
 	$"Dialogue Box Texture".visible = false
+
+func set_position(new_position):
+	$"Dialogue Box Texture".position = new_position
 
 ### Test ####
 func test():

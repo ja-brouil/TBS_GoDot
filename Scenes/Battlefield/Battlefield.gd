@@ -20,6 +20,7 @@ var movement_system_cinematic
 var music_player
 var battle_sounds
 var weapon_sounds
+var extra_sound_effects
 
 # Victory Condition
 var victory_text
@@ -50,6 +51,10 @@ func _ready():
 	# Weapon Sounds
 	weapon_sounds = preload("res://Scenes/Audio/Weapon Sounds.tscn").instance()
 	add_child(weapon_sounds)
+	
+	# Extra sounds
+	extra_sound_effects = preload("res://Scenes/Audio/Extra Sound Effects.tscn").instance()
+	add_child(extra_sound_effects)
 
 # Run Systems
 func _process(delta):

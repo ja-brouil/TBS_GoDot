@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/sound/misc/DOOR_OPEN_1.wav" type="AudioStream" id=1]
+
+[node name="Extra Sound Effects" type="Node"]
+
+[node name="Open Door" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )

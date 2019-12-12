@@ -13,9 +13,9 @@ class_name L2_Event_Part2
 var dialogue = [
 	"General Vezarius:\n\nAh, my dear Eirika.",
 	"General Vezarius:\n\nYour father thought it would have been safe to send you to Castle Merceus.",
-	"General Vezarius:\n\nYou cannot run from me girl!",
+	"General Vezarius:\n\nThere is no escaping now!",
 	"General Vezarius:\n\nI will have your head and anyone else who stands in my way!",
-	"General Vezarius:\n\nFoward my men! Bathe the sea red with their blood!"
+	"General Vezarius:\n\nFoward my men! Paint the land red with their blood!"
 ]
 
 # Move these actors and combat
@@ -40,6 +40,7 @@ func start():
 	for ally in BattlefieldInfo.ally_units:
 		if ally.UnitStats.name == "Dead Soldier":
 			Dead_soldier = ally
+			ally.UnitStats.name = "Ephraim Soldier"
 			break
 	
 	# Register to the dialogue system
@@ -55,6 +56,7 @@ func start():
 	BattlefieldInfo.music_player.get_node("AllyLevel").play(0)
 	
 	# Start Text
+	BattlefieldInfo.message_system.set_position(Messaging_System.TOP)
 	enable_text(dialogue)
 
 # Move Camera back

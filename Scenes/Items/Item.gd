@@ -3,7 +3,7 @@ class_name Item
 # Represents an item in the game
 
 # Item type
-enum WEAPON_TYPE {SWORD, AXE, LANCE, BOW, LIGHT, DARK, ELEMENTAL, HEALING}
+enum WEAPON_TYPE {SWORD, AXE, LANCE, BOW, LIGHT, DARK, ELEMENTAL, HEALING, NO_WEAKNESS}
 var weapon_type = WEAPON_TYPE.SWORD
 enum ITEM_CLASS {PHYSICAL, MAGIC, CONSUMABLE}
 var item_class =  ITEM_CLASS.PHYSICAL

@@ -210,7 +210,6 @@ __meta__ = {
 }
 
 [node name="staff regular" type="Sprite" parent="."]
-visible = false
 modulate = Color( 1, 1, 1, 0.9 )
 scale = Vector2( 1.25, 1.25 )
 texture = ExtResource( 2 )

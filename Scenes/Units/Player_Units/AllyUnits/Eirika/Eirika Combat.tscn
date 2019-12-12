@@ -141,10 +141,10 @@ tracks/9/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=2]
 resource_name = "sword death"
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=3]
 length = 1.1
 step = 0.05
 tracks/0/type = "value"
@@ -184,7 +184,7 @@ tracks/2/keys = {
 "values": [ Rect2( 6, 26, 36, 34 ), Rect2( 18, 197, 23, 36 ), Rect2( 6, 26, 36, 34 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 length = 6.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("sword regular:region_rect")
@@ -246,7 +246,7 @@ tracks/3/keys = {
 "values": [ 1, 0 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 length = 6.6
 step = 0.01
 tracks/0/type = "value"
@@ -368,6 +368,7 @@ __meta__ = {
 }
 
 [node name="sword regular" type="Sprite" parent="."]
+position = Vector2( 0.238205, 1.46285 )
 scale = Vector2( 1.25, 1.25 )
 texture = ExtResource( 2 )
 region_enabled = true
@@ -376,17 +377,18 @@ region_rect = Rect2( 6, 26, 36, 34 )
 [node name="Battle Effect" type="Sprite" parent="."]
 visible = false
 position = Vector2( -86, -1 )
+z_index = 1
 texture = ExtResource( 3 )
 region_enabled = true
-region_rect = Rect2( 268, 528, 177, 150 )
+region_rect = Rect2( 253, 853, 238, 143 )
 
 [node name="anim" type="AnimationPlayer" parent="."]
 playback_speed = 4.0
 "anims/sword crit" = SubResource( 1 )
-"anims/sword death" = SubResource( 5 )
-"anims/sword dodge" = SubResource( 2 )
-"anims/sword miss" = SubResource( 3 )
-"anims/sword regular" = SubResource( 4 )
+"anims/sword death" = SubResource( 2 )
+"anims/sword dodge" = SubResource( 3 )
+"anims/sword miss" = SubResource( 4 )
+"anims/sword regular" = SubResource( 5 )
 
 [node name="Flash" type="Sprite" parent="."]
 visible = false

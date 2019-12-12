@@ -1,12 +1,11 @@
 [gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://Scenes/Units/Player_Units/AllyUnits/Natasha/Natasha.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Units/Player_Units/AllyUnits/Ally Archer/Ally Archer.gd" type="Script" id=1]
 [ext_resource path="res://assets/sound/unitMovement/Light Foot Steps 1.wav" type="AudioStream" id=2]
-[ext_resource path="res://assets/units/cleric/cleric_map_sprite.png" type="Texture" id=3]
+[ext_resource path="res://assets/units/archer/archer ally.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/GUI/Damage Preview/Cursor Select.tscn" type="PackedScene" id=4]
 
-[sub_resource type="Animation" id=1]
-resource_name = "Down"
+[sub_resource type="Animation" id=2]
 length = 2.0
 loop = true
 step = 0.5
@@ -20,19 +19,21 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5, 1, 1.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Rect2( 74, 15, 15, 17 ), Rect2( 74, 48, 15, 17 ), Rect2( 74, 80, 15, 18 ), Rect2( 74, 114, 15, 17 ) ]
+"values": [ Rect2( 72, 9, 20, 17 ), Rect2( 72, 40, 20, 18 ), Rect2( 72, 73, 20, 17 ), Rect2( 72, 104, 20, 18 ) ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:flip_h")
+tracks/1/type = "audio"
+tracks/1/path = NodePath("Footsteps")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+} ],
+"times": PoolRealArray( 0 )
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Sprite:position")
@@ -41,27 +42,25 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 1, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Vector2( 0, -1 ), Vector2( 0, -2 ), Vector2( 0, -1 ) ]
+"values": [ Vector2( -4, -1 ), Vector2( -4, -2 ), Vector2( -4, -1 ), Vector2( -4, -2 ) ]
 }
-tracks/3/type = "audio"
-tracks/3/path = NodePath("Footsteps")
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:flip_h")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"clips": [ {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource( 2 )
-} ],
-"times": PoolRealArray( 0 )
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=13]
 resource_name = "Down no sound"
 length = 2.0
 loop = true
@@ -76,34 +75,34 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5, 1, 1.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Rect2( 74, 15, 15, 17 ), Rect2( 74, 48, 15, 17 ), Rect2( 74, 80, 15, 18 ), Rect2( 74, 114, 15, 17 ) ]
+"values": [ Rect2( 72, 9, 20, 17 ), Rect2( 72, 40, 20, 18 ), Rect2( 72, 73, 20, 17 ), Rect2( 72, 104, 20, 18 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:flip_h")
+tracks/1/path = NodePath("Sprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ Vector2( -4, -1 ), Vector2( -4, -2 ), Vector2( -4, -1 ), Vector2( -4, -2 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:position")
+tracks/2/path = NodePath("Sprite:flip_h")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 1, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ Vector2( 0, -1 ), Vector2( 0, -2 ), Vector2( 0, -1 ) ]
+"values": [ false ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=16]
 resource_name = "Highlighted"
 length = 2.0
 loop = true
@@ -118,7 +117,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5, 1, 1.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Rect2( 74, 15, 15, 17 ), Rect2( 74, 48, 15, 17 ), Rect2( 74, 80, 15, 18 ), Rect2( 74, 114, 15, 17 ) ]
+"values": [ Rect2( 72, 9, 20, 17 ), Rect2( 72, 40, 20, 18 ), Rect2( 72, 73, 20, 17 ), Rect2( 72, 104, 20, 18 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite:position")
@@ -127,10 +126,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Vector2( 0, -1 ), Vector2( 0, -2 ), Vector2( 0, -1 ) ]
+"values": [ Vector2( -4, -1 ), Vector2( -4, -2 ), Vector2( -4, -1 ), Vector2( -4, -2 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Sprite:flip_h")
@@ -146,6 +145,7 @@ tracks/2/keys = {
 }
 
 [sub_resource type="Animation" id=4]
+resource_name = "Idle"
 length = 2.0
 loop = true
 step = 0.5
@@ -159,7 +159,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5, 1, 1.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Rect2( 8, 49, 16, 16 ), Rect2( 9, 83, 15, 15 ), Rect2( 10, 115, 14, 16 ), Rect2( 9, 83, 15, 15 ) ]
+"values": [ Rect2( 7, 41, 16, 16 ), Rect2( 7, 73, 16, 16 ), Rect2( 8, 104, 15, 16 ), Rect2( 7, 73, 16, 16 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite:position")
@@ -168,10 +168,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ Vector2( 0, 0 ), Vector2( 1, 1 ), Vector2( 2, 0 ), Vector2( 1, 1 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 1, 0 ), Vector2( 0, 0 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Sprite:flip_h")
@@ -186,8 +186,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "Left"
+[sub_resource type="Animation" id=6]
 length = 2.0
 loop = true
 step = 0.5
@@ -201,7 +200,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5, 1, 1.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Rect2( 38, 15, 19, 17 ), Rect2( 38, 48, 19, 17 ), Rect2( 39, 81, 18, 17 ), Rect2( 38, 114, 19, 17 ) ]
+"values": [ Rect2( 40, 8, 17, 17 ), Rect2( 40, 40, 17, 17 ), Rect2( 40, 72, 17, 17 ), Rect2( 40, 104, 17, 17 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite:position")
@@ -213,7 +212,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ Vector2( -3, -1 ) ]
+"values": [ Vector2( -1, -1 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Sprite:flip_h")
@@ -242,7 +241,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=14]
 resource_name = "Left no sound"
 length = 2.0
 loop = true
@@ -257,7 +256,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5, 1, 1.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Rect2( 38, 15, 19, 17 ), Rect2( 38, 48, 19, 17 ), Rect2( 39, 81, 18, 17 ), Rect2( 38, 114, 19, 17 ) ]
+"values": [ Rect2( 40, 8, 17, 17 ), Rect2( 40, 40, 17, 17 ), Rect2( 40, 72, 17, 17 ), Rect2( 40, 104, 17, 17 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite:position")
@@ -269,7 +268,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ Vector2( -3, -1 ) ]
+"values": [ Vector2( -1, -1 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Sprite:flip_h")
@@ -284,8 +283,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "Right"
+[sub_resource type="Animation" id=8]
 length = 2.0
 loop = true
 step = 0.5
@@ -299,7 +297,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5, 1, 1.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Rect2( 38, 15, 19, 17 ), Rect2( 38, 48, 19, 17 ), Rect2( 39, 81, 18, 17 ), Rect2( 38, 114, 19, 17 ) ]
+"values": [ Rect2( 40, 8, 17, 17 ), Rect2( 40, 40, 17, 17 ), Rect2( 40, 72, 17, 17 ), Rect2( 40, 104, 17, 17 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite:position")
@@ -308,10 +306,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.5, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ Vector2( 0, -1 ) ]
+"values": [ Vector2( -1, -1 ), Vector2( -1, -1 ), Vector2( -1, -1 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Sprite:flip_h")
@@ -340,7 +338,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=15]
 resource_name = "Right no sound"
 length = 2.0
 loop = true
@@ -355,7 +353,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5, 1, 1.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Rect2( 38, 15, 19, 17 ), Rect2( 38, 48, 19, 17 ), Rect2( 39, 81, 18, 17 ), Rect2( 38, 114, 19, 17 ) ]
+"values": [ Rect2( 40, 8, 17, 17 ), Rect2( 40, 40, 17, 17 ), Rect2( 40, 72, 17, 17 ), Rect2( 40, 104, 17, 17 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite:position")
@@ -364,10 +362,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.5, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ Vector2( 0, -1 ) ]
+"values": [ Vector2( -1, -1 ), Vector2( -1, -1 ), Vector2( -1, -1 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Sprite:flip_h")
@@ -382,7 +380,8 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=5]
+resource_name = "Selected"
 length = 2.0
 loop = true
 step = 0.5
@@ -396,7 +395,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5, 1, 1.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Rect2( 142, 43, 14, 22 ), Rect2( 138, 70, 19, 28 ), Rect2( 137, 101, 19, 30 ), Rect2( 138, 70, 19, 28 ) ]
+"values": [ Rect2( 137, 42, 20, 17 ), Rect2( 139, 71, 18, 20 ), Rect2( 140, 101, 19, 22 ), Rect2( 139, 71, 18, 20 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite:position")
@@ -408,7 +407,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.5, 1, 1.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Vector2( 1, -6 ), Vector2( -3, -12 ), Vector2( -4, -14 ), Vector2( -3, -12 ) ]
+"values": [ Vector2( -4, -1 ), Vector2( -2, -4 ), Vector2( -3, -6 ), Vector2( -2, -4 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Sprite:flip_h")
@@ -421,61 +420,6 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
-}
-
-[sub_resource type="Animation" id=10]
-length = 2.0
-loop = true
-step = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ Rect2( 108, 15, 15, 17 ), Rect2( 108, 48, 15, 17 ), Rect2( 108, 81, 15, 17 ), Rect2( 108, 114, 15, 17 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ Vector2( 0, -1 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:flip_h")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/3/type = "audio"
-tracks/3/path = NodePath("Footsteps")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"clips": [ {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource( 2 )
-} ],
-"times": PoolRealArray( 0 )
 }
 
 [sub_resource type="Animation" id=11]
@@ -492,7 +436,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5, 1, 1.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Rect2( 108, 15, 15, 17 ), Rect2( 108, 48, 15, 17 ), Rect2( 108, 81, 15, 17 ), Rect2( 108, 114, 15, 17 ) ]
+"values": [ Rect2( 107, 9, 20, 17 ), Rect2( 107, 40, 20, 18 ), Rect2( 107, 73, 20, 17 ), Rect2( 107, 104, 20, 18 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite:position")
@@ -501,10 +445,66 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, -1 ), Vector2( 0, -2 ), Vector2( 0, -1 ), Vector2( 0, -2 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ Vector2( 0, -1 ) ]
+"values": [ false ]
+}
+tracks/3/type = "audio"
+tracks/3/path = NodePath("Footsteps")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+} ],
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=17]
+resource_name = "Up no sound"
+length = 2.0
+loop = true
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 107, 9, 20, 17 ), Rect2( 107, 40, 20, 18 ), Rect2( 107, 73, 20, 17 ), Rect2( 107, 104, 20, 18 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, -1 ), Vector2( 0, -2 ), Vector2( 0, -1 ), Vector2( 0, -2 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Sprite:flip_h")
@@ -519,37 +519,37 @@ tracks/2/keys = {
 "values": [ false ]
 }
 
-[node name="Natasha" type="Node2D"]
+[node name="Ally Archer" type="Node2D"]
 z_index = 2
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_horizontal_guides_": [ 15.9076 ],
-"_edit_vertical_guides_": [ 16.0848 ]
+"_edit_horizontal_guides_": [ 16.0 ],
+"_edit_vertical_guides_": [ 16.0 ]
 }
 
 [node name="Footsteps" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, -1 )
+position = Vector2( -4, -1 )
 texture = ExtResource( 3 )
 centered = false
 region_enabled = true
-region_rect = Rect2( 74, 15, 15, 17 )
+region_rect = Rect2( 137, 42, 20, 17 )
 
 [node name="Cursor Select" parent="." instance=ExtResource( 4 )]
 visible = false
 
 [node name="Animation" type="AnimationPlayer" parent="."]
 playback_speed = 2.0
-anims/Down = SubResource( 1 )
-"anims/Down no sound" = SubResource( 2 )
-anims/Highlighted = SubResource( 3 )
+anims/Down = SubResource( 2 )
+"anims/Down no sound" = SubResource( 13 )
+anims/Highlighted = SubResource( 16 )
 anims/Idle = SubResource( 4 )
-anims/Left = SubResource( 5 )
-"anims/Left no sound" = SubResource( 6 )
-anims/Right = SubResource( 7 )
-"anims/Right no sound" = SubResource( 8 )
-anims/Selected = SubResource( 9 )
-anims/Up = SubResource( 10 )
-"anims/Up no sound" = SubResource( 11 )
+anims/Left = SubResource( 6 )
+"anims/Left no sound" = SubResource( 14 )
+anims/Right = SubResource( 8 )
+"anims/Right no sound" = SubResource( 15 )
+anims/Selected = SubResource( 5 )
+anims/Up = SubResource( 11 )
+"anims/Up no sound" = SubResource( 17 )

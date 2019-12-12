@@ -632,7 +632,7 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( -0.17 ),
+"times": PoolRealArray( 0.01 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]

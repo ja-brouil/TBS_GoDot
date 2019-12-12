@@ -13,7 +13,7 @@ var current_event
 
 func _ready():
 	BattlefieldInfo.event_system = self
-
+	
 # Start the events
 func start_events_queue():
 	# If the event queue is empty, we are done processing events

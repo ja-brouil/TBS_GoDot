@@ -4,7 +4,7 @@
 resource_name = "EQ10"
 
 [resource]
-bus/0/volume_db = -6.7
+bus/0/volume_db = -13.1
 bus/0/effect/0/effect = SubResource( 1 )
 bus/0/effect/0/enabled = false
 bus/1/name = "Cursor"

@@ -447,6 +447,12 @@ func check_if_units_can_counter():
 	print("Enemy counter attack status: ", enemy_can_counter_attack)
 	
 func get_weapon_bonus():
+	# No Weakness return early
+	if BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped.strong_against == Item.WEAPON_TYPE.NO_WEAKNESS || BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.strong_against == Item.WEAPON_TYPE.NO_WEAKNESS:
+		player_weapon_bonus = 0
+		enemy_weapon_bonus = 0
+		return
+	
 	# Player
 	if BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped.strong_against == BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.weapon_type:
 		player_weapon_bonus = 1

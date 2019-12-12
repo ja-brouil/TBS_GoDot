@@ -441,6 +441,7 @@ func player_healing_anim():
 	current_combat_state = wait
 	
 	player_node_name.get_node("anim").play("staff regular")
+	ally_placeholder.visible = false
 	
 	# Subtract durability from the weapon
 	BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped.uses -= 1

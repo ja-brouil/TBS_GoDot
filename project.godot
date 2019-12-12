@@ -60,19 +60,34 @@ _global_script_classes=[ {
 "path": "res://Scenes/Items/Item.gd"
 }, {
 "base": "Node2D",
+"class": "L2_Event_Part05",
+"language": "GDScript",
+"path": "res://Scenes/Events/Level 2/L2 Event Part 05.gd"
+}, {
+"base": "Node2D",
 "class": "L2_Event_Part1",
 "language": "GDScript",
-"path": "res://Scenes/Events/Level 2/L2 Event Part 1.gd"
+"path": "res://Scenes/Events/Level 2/L2 Event Part 10.gd"
 }, {
 "base": "Node2D",
 "class": "L2_Event_Part2",
 "language": "GDScript",
-"path": "res://Scenes/Events/Level 2/L2 Event Part 2.gd"
+"path": "res://Scenes/Events/Level 2/L2 Event Part 20.gd"
 }, {
 "base": "Node2D",
 "class": "L2_Event_Part3",
 "language": "GDScript",
-"path": "res://Scenes/Events/Level 2/L2 Event Part 3.gd"
+"path": "res://Scenes/Events/Level 2/L2 Event Part 30.gd"
+}, {
+"base": "Node2D",
+"class": "L2_Event_Part4",
+"language": "GDScript",
+"path": "res://Scenes/Events/Level 2/L2 Event Part 40.gd"
+}, {
+"base": "Node2D",
+"class": "L2_Event_Part5",
+"language": "GDScript",
+"path": "res://Scenes/Events/Level 2/L2 Event Part 50.gd"
 }, {
 "base": "Camera2D",
 "class": "MainCamera",
@@ -145,9 +160,12 @@ _global_script_class_icons={
 "Group_Name": "",
 "HashSet": "",
 "Item": "",
+"L2_Event_Part05": "",
 "L2_Event_Part1": "",
 "L2_Event_Part2": "",
 "L2_Event_Part3": "",
+"L2_Event_Part4": "",
+"L2_Event_Part5": "",
 "MainCamera": "",
 "Messaging_System": "",
 "MovementCalculator": "",

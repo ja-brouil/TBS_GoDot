@@ -63,3 +63,5 @@ stream = ExtResource( 10 )
 
 [node name="Unfufilled" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
+
+[node name="Tween" type="Tween" parent="."]
