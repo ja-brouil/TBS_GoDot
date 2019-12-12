@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/ARROW_2.wav-7774920f46ca0d6a60051278b030b625.sample"
+
+[deps]
+
+source_file="res://assets/sound/battle sounds/ARROW_2.wav"
+dest_files=[ "res://.import/ARROW_2.wav-7774920f46ca0d6a60051278b030b625.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=true
+compress/mode=0

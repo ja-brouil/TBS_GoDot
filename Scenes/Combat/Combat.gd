@@ -568,7 +568,7 @@ func enemy_attack():
 			var anim_name = str(BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.weapon_string_name, " miss")
 			enemy_node_name.get_node("anim").play(anim_name)
 			
-		# Turn enemy off
+	# Turn enemy off
 	var anim_name2 = str(BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.weapon_string_name, " regular")
 	enemy_placeholder.get_node(anim_name2).visible = false
 
@@ -576,7 +576,13 @@ func enemy_attack():
 func update_hp_number(anim_name):
 	# Not interested in anything that isn't damage -> Replace later with state machine?
 	if "death" in anim_name || "dodge" in anim_name:
-		# Unit has died, we exit right away
+		# Turn enemy off
+		var anim_name2 = str(BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.weapon_string_name, " regular")
+		enemy_placeholder.get_node(anim_name2).visible = false
+		
+		# Turn player off
+		var anim_name_off = str(BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped.weapon_string_name, " regular")
+		ally_placeholder.get_node(anim_name_off).visible = false
 		return
 	
 	# Healing
@@ -594,21 +600,6 @@ func update_hp_number(anim_name):
 	enemy_hp_destination = BattlefieldInfo.combat_ai_unit.UnitStats.current_health
 	player_hp_destination = BattlefieldInfo.combat_player_unit.UnitStats.current_health 
 	
-	# Exit early if dodge/miss
-#	if "miss" in anim_name:
-#		if previous_combat_state == player_first_turn:
-#			current_combat_state = player_hp_first_update
-#			previous_combat_state = wait
-#		elif previous_combat_state == enemy_first_turn:
-#			current_combat_state = enemy_hp_first_update
-#			previous_combat_state = wait
-#		elif previous_combat_state == player_second_turn:
-#			current_combat_state = player_hp_second_update
-#			previous_combat_state = wait
-#		elif enemy_second_turn:
-#			current_combat_state = enemy_hp_second_update
-#			previous_combat_state = wait
-#	else:
 	# Update HP
 	if previous_combat_state == player_first_turn:
 		enemy_hp_destination = BattlefieldInfo.combat_ai_unit.UnitStats.current_health - Combat_Calculator.player_first_actual_damage
@@ -632,12 +623,20 @@ func update_hp_number(anim_name):
 	player_hp_destination = int(clamp(player_hp_destination, 0, 1000))
 
 func play_enemy_miss_anim():
+	# Turn enemy off
+	var anim_name2 = str(BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.weapon_string_name, " regular")
+	enemy_placeholder.get_node(anim_name2).visible = false
+	
 	var weapon_used = str(BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.weapon_string_name, " dodge")
 	enemy_node_name.get_node("anim").play(weapon_used)
 	# Miss animation above the player
 	$Miss_Player/anim.play("regular")
 
 func play_player_miss_anim():
+	# Turn player off
+	var anim_name_off = str(BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped.weapon_string_name, " regular")
+	ally_placeholder.get_node(anim_name_off).visible = false
+	
 	var weapon_used = str(BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped.weapon_string_name, " dodge")
 	player_node_name.get_node("anim").play(weapon_used)
 	$Miss_Enemy/anim.play("regular")

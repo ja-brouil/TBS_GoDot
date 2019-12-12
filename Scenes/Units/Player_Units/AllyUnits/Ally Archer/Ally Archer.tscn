@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/units/archer/archer ally.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/GUI/Damage Preview/Cursor Select.tscn" type="PackedScene" id=4]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 length = 2.0
 loop = true
 step = 0.5
@@ -60,7 +60,7 @@ tracks/3/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=2]
 resource_name = "Down no sound"
 length = 2.0
 loop = true
@@ -102,7 +102,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=3]
 resource_name = "Highlighted"
 length = 2.0
 loop = true
@@ -186,7 +186,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 length = 2.0
 loop = true
 step = 0.5
@@ -241,7 +241,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=6]
 resource_name = "Left no sound"
 length = 2.0
 loop = true
@@ -283,7 +283,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=7]
 length = 2.0
 loop = true
 step = 0.5
@@ -338,7 +338,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=8]
 resource_name = "Right no sound"
 length = 2.0
 loop = true
@@ -380,8 +380,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "Selected"
+[sub_resource type="Animation" id=9]
 length = 2.0
 loop = true
 step = 0.5
@@ -422,7 +421,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=10]
 length = 2.0
 loop = true
 step = 0.5
@@ -477,7 +476,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=11]
 resource_name = "Up no sound"
 length = 2.0
 loop = true
@@ -542,14 +541,14 @@ visible = false
 
 [node name="Animation" type="AnimationPlayer" parent="."]
 playback_speed = 2.0
-anims/Down = SubResource( 2 )
-"anims/Down no sound" = SubResource( 13 )
-anims/Highlighted = SubResource( 16 )
+anims/Down = SubResource( 1 )
+"anims/Down no sound" = SubResource( 2 )
+anims/Highlighted = SubResource( 3 )
 anims/Idle = SubResource( 4 )
-anims/Left = SubResource( 6 )
-"anims/Left no sound" = SubResource( 14 )
-anims/Right = SubResource( 8 )
-"anims/Right no sound" = SubResource( 15 )
-anims/Selected = SubResource( 5 )
-anims/Up = SubResource( 11 )
-"anims/Up no sound" = SubResource( 17 )
+anims/Left = SubResource( 5 )
+"anims/Left no sound" = SubResource( 6 )
+anims/Right = SubResource( 7 )
+"anims/Right no sound" = SubResource( 8 )
+anims/Selected = SubResource( 9 )
+anims/Up = SubResource( 10 )
+"anims/Up no sound" = SubResource( 11 )

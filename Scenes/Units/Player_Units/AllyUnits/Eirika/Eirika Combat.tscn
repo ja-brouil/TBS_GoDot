@@ -368,7 +368,6 @@ __meta__ = {
 }
 
 [node name="sword regular" type="Sprite" parent="."]
-position = Vector2( 0.238205, 1.46285 )
 scale = Vector2( 1.25, 1.25 )
 texture = ExtResource( 2 )
 region_enabled = true
