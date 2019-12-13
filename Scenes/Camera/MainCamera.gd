@@ -72,6 +72,7 @@ func clampCameraPosition():
 func set_current_camera():
 	# Remove other camera
 	if BattlefieldInfo.current_Unit_Selected.has_node("MovementCamera"):
+		position = BattlefieldInfo.current_Unit_Selected.position + Vector2(-112, -72)
 		BattlefieldInfo.current_Unit_Selected.get_node("MovementCamera").queue_free()
 	make_current()
 

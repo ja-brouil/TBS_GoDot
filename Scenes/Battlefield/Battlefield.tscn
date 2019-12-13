@@ -41,6 +41,7 @@ zoom = Vector2( 1, 1 )
 [node name="Turn Transition" parent="GameCamera" instance=ExtResource( 5 )]
 
 [node name="Areas" parent="GameCamera" instance=ExtResource( 6 )]
+position = Vector2( -47.9345, -0.0882874 )
 
 [node name="Combat Screen" parent="GameCamera" instance=ExtResource( 7 )]
 

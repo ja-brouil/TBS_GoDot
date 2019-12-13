@@ -39,7 +39,7 @@ func add_item(item):
 					if item.min_range < MIN_HEAL_RANGE:
 						MIN_HEAL_RANGE = item.min_range
 					# Set to equipped item
-					if current_item_equipped == null:
+					if current_item_equipped == null && item.is_usable_by_current_unit:
 						current_item_equipped = item
 				# Anyone else that isn't consumable and a healing item
 				elif item.item_class != Item.ITEM_CLASS.CONSUMABLE && item.weapon_type != Item.WEAPON_TYPE.HEALING:
@@ -47,7 +47,7 @@ func add_item(item):
 						MAX_ATTACK_RANGE = item.max_range
 					if item.min_range < MIN_ATTACK_RANGE:
 						MIN_ATTACK_RANGE = item.min_range
-					if current_item_equipped == null:
+					if current_item_equipped == null && item.is_usable_by_current_unit:
 						current_item_equipped = item
 						
 		

@@ -37,6 +37,9 @@ func process_movement(delta):
 		unit.position.y = destination_cell.position.y
 		unit.UnitMovementStats.currentTile = destination_cell
 		
+		# Set Camera
+		BattlefieldInfo.main_game_camera.position = BattlefieldInfo.current_Unit_Selected.get_node("MovementCamera").get_global_position()
+		
 		# Remove the tile in the queue
 		unit.UnitMovementStats.movement_queue.pop_front()
 	

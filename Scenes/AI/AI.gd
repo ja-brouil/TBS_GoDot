@@ -130,12 +130,6 @@ func find_most_threatening_enemy():
 			most_threat_value = threat_value
 			attack_this_target = ally_unit
 	
-	# fail safe maybe? test AI against various scenarios
-#	# stop if the enemy list is empty
-#	if all_attackable_enemies.empty():
-#		find_tile_to_move_to_no_enemies()
-#		return
-	
 	# Should have found the enemy to attack
 	player_unit_target = attack_this_target
 	return attack_this_target
@@ -196,7 +190,7 @@ func get_best_tile_to_go_to(allowed_tiles, weapon):
 	var best_item = null
 	for item_weapon in weapon.inventory:
 		# Check if we can use this weapon given the range
-		if item_weapon.max_range <= distance_between_tile_target_and_enemy_to_attack || item_weapon.min_range >= distance_between_tile_target_and_enemy_to_attack:
+		if item_weapon.is_usable_by_current_unit && (item_weapon.max_range <= distance_between_tile_target_and_enemy_to_attack || item_weapon.min_range >= distance_between_tile_target_and_enemy_to_attack):
 			if item_weapon.might > highest_might:
 				best_item = item_weapon
 				highest_might = best_item.might

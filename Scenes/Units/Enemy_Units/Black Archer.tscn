@@ -1,37 +1,12 @@
 [gd_scene load_steps=17 format=2]
 
-[ext_resource path="res://assets/sound/unitMovement/Light Foot Steps 1.wav" type="AudioStream" id=1]
-[ext_resource path="res://assets/units/archer/archer ally.png" type="Texture" id=2]
-[ext_resource path="res://Scenes/GUI/Damage Preview/Cursor Select.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/AI/AI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Units/Enemy_Units/Black Archer.gd" type="Script" id=1]
+[ext_resource path="res://assets/sound/unitMovement/Light Foot Steps 1.wav" type="AudioStream" id=2]
+[ext_resource path="res://assets/units/archer/black archer.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/GUI/Damage Preview/Cursor Select.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/AI/AI.tscn" type="PackedScene" id=5]
 
-[sub_resource type="GDScript" id=1]
-script/source = "extends Battlefield_Unit
-
-func _ready():
-	# Initial Animation
-	$Animation.current_animation = \"Idle\"
-	
-	# Unit Portrait
-	unit_portrait_path = preload(\"res://assets/units/archer/Naomi.png\")
-	
-	# Unit Mugshot
-	unit_mugshot = unit_portrait_path
-	
-	# Weapons and Inventory
-	UnitInventory.usable_weapons.append(Item.WEAPON_TYPE.BOW)
-	UnitInventory.add_item(preload(\"res://Scenes/Items/Lance/Iron Lance.tscn\").instance())
-	UnitInventory.add_item(preload(\"res://Scenes/Items/Swords/Iron Sword.tscn\").instance())
-	UnitInventory.add_item(preload(\"res://Scenes/Items/Bows/Iron Bow.tscn\").instance())
-	
-	# Set combat node
-	combat_node = preload(\"res://Scenes/Units/Player_Units/AllyUnits/Ally Archer/Naomi Combat.tscn\")
-	
-	# Death sentence
-	death_sentence = []
-	death_sentence.append(\"Neimi:\\n\\nLady Eirika... I missed the mark...\")"
-
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 length = 2.0
 loop = true
 step = 0.5
@@ -57,7 +32,7 @@ tracks/1/keys = {
 "clips": [ {
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource( 1 )
+"stream": ExtResource( 2 )
 } ],
 "times": PoolRealArray( 0 )
 }
@@ -86,7 +61,7 @@ tracks/3/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "Down no sound"
 length = 2.0
 loop = true
@@ -128,7 +103,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "Highlighted"
 length = 2.0
 loop = true
@@ -170,7 +145,8 @@ tracks/2/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
+resource_name = "Idle"
 length = 2.0
 loop = true
 step = 0.5
@@ -211,7 +187,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 length = 2.0
 loop = true
 step = 0.5
@@ -261,12 +237,12 @@ tracks/3/keys = {
 "clips": [ {
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource( 1 )
+"stream": ExtResource( 2 )
 } ],
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 resource_name = "Left no sound"
 length = 2.0
 loop = true
@@ -308,7 +284,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=7]
 length = 2.0
 loop = true
 step = 0.5
@@ -358,12 +334,12 @@ tracks/3/keys = {
 "clips": [ {
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource( 1 )
+"stream": ExtResource( 2 )
 } ],
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=8]
 resource_name = "Right no sound"
 length = 2.0
 loop = true
@@ -405,7 +381,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=9]
 length = 2.0
 loop = true
 step = 0.5
@@ -446,7 +422,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=10]
 length = 2.0
 loop = true
 step = 0.5
@@ -496,12 +472,12 @@ tracks/3/keys = {
 "clips": [ {
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource( 1 )
+"stream": ExtResource( 2 )
 } ],
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=11]
 resource_name = "Up no sound"
 length = 2.0
 loop = true
@@ -543,39 +519,39 @@ tracks/2/keys = {
 "values": [ false ]
 }
 
-[node name="Enemy Archer" type="Node2D"]
+[node name="Black Archer" type="Node2D"]
 z_index = 2
-script = SubResource( 1 )
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 16.0 ],
 "_edit_vertical_guides_": [ 16.0 ]
 }
 
 [node name="Footsteps" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 1 )
+stream = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( -4, -1 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 137, 42, 20, 17 )
 
-[node name="Cursor Select" parent="." instance=ExtResource( 3 )]
+[node name="Cursor Select" parent="." instance=ExtResource( 4 )]
 visible = false
 
 [node name="Animation" type="AnimationPlayer" parent="."]
 playback_speed = 2.0
-anims/Down = SubResource( 2 )
-"anims/Down no sound" = SubResource( 3 )
-anims/Highlighted = SubResource( 4 )
-anims/Idle = SubResource( 5 )
-anims/Left = SubResource( 6 )
-"anims/Left no sound" = SubResource( 7 )
-anims/Right = SubResource( 8 )
-"anims/Right no sound" = SubResource( 9 )
-anims/Selected = SubResource( 10 )
-anims/Up = SubResource( 11 )
-"anims/Up no sound" = SubResource( 12 )
+anims/Down = SubResource( 1 )
+"anims/Down no sound" = SubResource( 2 )
+anims/Highlighted = SubResource( 3 )
+anims/Idle = SubResource( 4 )
+anims/Left = SubResource( 5 )
+"anims/Left no sound" = SubResource( 6 )
+anims/Right = SubResource( 7 )
+"anims/Right no sound" = SubResource( 8 )
+anims/Selected = SubResource( 9 )
+anims/Up = SubResource( 10 )
+"anims/Up no sound" = SubResource( 11 )
 
-[node name="AI" parent="." instance=ExtResource( 4 )]
+[node name="AI" parent="." instance=ExtResource( 5 )]

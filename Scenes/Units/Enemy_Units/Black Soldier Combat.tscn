@@ -446,7 +446,7 @@ visible = false
 modulate = Color( 1, 1, 1, 0.9 )
 texture = ExtResource( 2 )
 region_enabled = true
-region_rect = Rect2( 19, 162, 26, 45 )
+region_rect = Rect2( 19, 25, 26, 45 )
 
 [node name="Battle Effect" type="Sprite" parent="."]
 visible = false

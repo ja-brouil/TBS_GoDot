@@ -22,6 +22,9 @@ var battle_sounds
 var weapon_sounds
 var extra_sound_effects
 
+# Cursor
+var cursor
+
 # Victory Condition
 var victory_text
 
