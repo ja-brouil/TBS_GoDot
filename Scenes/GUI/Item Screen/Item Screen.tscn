@@ -30,10 +30,10 @@ scale = Vector2( 0.169903, 0.189458 )
 texture = ExtResource( 3 )
 
 [node name="Slot 1" parent="Item Menu" instance=ExtResource( 4 )]
-position = Vector2( -152.407, 43.0422 )
+position = Vector2( -103.032, 116.002 )
 
 [node name="Slot 2" parent="Item Menu" instance=ExtResource( 4 )]
-position = Vector2( -97.7032, 16.2533 )
+position = Vector2( -103.032, 26.0557 )
 
 [node name="Slot 3" parent="Item Menu" instance=ExtResource( 4 )]
 position = Vector2( -103.032, 40.8862 )
@@ -48,10 +48,10 @@ position = Vector2( -103.032, 82.0305 )
 position = Vector2( -103.032, 100.684 )
 
 [node name="Hand Selector" parent="Item Menu" instance=ExtResource( 5 )]
-margin_left = -136.388
-margin_top = 24.4892
-margin_right = -120.388
-margin_bottom = 37.4892
+margin_left = -137.8
+margin_top = 18.4093
+margin_right = -121.8
+margin_bottom = 31.4093
 
 [node name="Mugshot" type="TextureRect" parent="Item Menu"]
 margin_left = 53.577

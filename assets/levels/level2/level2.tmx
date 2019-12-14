@@ -3557,7 +3557,7 @@
   <object id="2281" x="144" y="112" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
-    <property name="BonusDodge" type="int" value="0"/>
+    <property name="BonusDodge" type="int" value="100"/>
     <property name="BonusHit" type="int" value="0"/>
     <property name="BossBonus" type="int" value="0"/>
     <property name="Class" value="Paladin"/>
@@ -4200,8 +4200,8 @@
   </object>
   <object id="2925" x="160" y="80" width="16" height="16">
    <properties>
-    <property name="BonusCrit" type="int" value="100"/>
-    <property name="BonusDodge" type="int" value="100"/>
+    <property name="BonusCrit" type="int" value="0"/>
+    <property name="BonusDodge" type="int" value="0"/>
     <property name="BonusHit" type="int" value="0"/>
     <property name="BossBonus" type="int" value="0"/>
     <property name="Class" value="Archer"/>

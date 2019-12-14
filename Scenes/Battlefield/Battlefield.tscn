@@ -6,8 +6,8 @@
 [ext_resource path="res://Scenes/Camera/GameCamera.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Transition/Turn Transition.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/GUI/Overhead/GUI Areas.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Scenes/Combat/Combat Screen.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Scenes/Weather Effects/Thunder Effect.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Weather Effects/Thunder Effect.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Combat/Combat Screen.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/GUI/Overhead/BattlefieldHUD.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/GUI/Action Selector/Action Selector.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scenes/GUI/End Turn/End Turn.tscn" type="PackedScene" id=11]
@@ -41,11 +41,11 @@ zoom = Vector2( 1, 1 )
 [node name="Turn Transition" parent="GameCamera" instance=ExtResource( 5 )]
 
 [node name="Areas" parent="GameCamera" instance=ExtResource( 6 )]
-position = Vector2( -47.9345, -0.0882874 )
+position = Vector2( 1.17069, 0.258598 )
 
-[node name="Combat Screen" parent="GameCamera" instance=ExtResource( 7 )]
+[node name="Thunder Effect" parent="GameCamera" instance=ExtResource( 7 )]
 
-[node name="Thunder Effect" parent="GameCamera" instance=ExtResource( 8 )]
+[node name="Combat Screen" parent="GameCamera" instance=ExtResource( 8 )]
 
 [node name="BattlefieldHUD" parent="." instance=ExtResource( 9 )]
 

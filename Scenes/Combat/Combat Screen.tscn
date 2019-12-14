@@ -46,9 +46,6 @@ font_data = ExtResource( 4 )
 
 [node name="Combat Screen" type="Control"]
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_horizontal_guides_": [ 134.644 ]
-}
 
 [node name="Combat Control" type="Node2D" parent="."]
 visible = false

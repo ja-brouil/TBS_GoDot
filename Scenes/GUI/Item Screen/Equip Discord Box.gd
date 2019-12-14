@@ -97,7 +97,7 @@ func process_selection():
 
 func go_back():
 	is_active = false
-	get_parent().get_parent().get_node("Timer").start(0)
+	get_parent().get_parent().start()
 	
 	visible = false
 

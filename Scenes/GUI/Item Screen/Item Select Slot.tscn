@@ -1,15 +1,31 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/GUI/Item Screen/Item Select Slot.gd" type="Script" id=1]
 [ext_resource path="res://assets/UI/Inventory/middle.png" type="Texture" id=2]
 [ext_resource path="res://assets/font/Main Font.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://FE Icon.jpg" type="Texture" id=4]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 26
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "equipped"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Weapon Name:custom_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.352941, 0.890196, 0.333333, 1 ), Color( 0.117647, 0.858824, 0.0901961, 1 ) ]
+}
 
 [node name="Item Select Slot" type="Node2D"]
 script = ExtResource( 1 )
@@ -27,7 +43,8 @@ margin_top = 1.0
 margin_right = 423.0
 margin_bottom = 54.0
 rect_scale = Vector2( 1, 1.1 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Killing Edge"
 align = 1
 valign = 1
@@ -38,7 +55,7 @@ margin_top = 11.4025
 margin_right = 471.302
 margin_bottom = 42.4025
 rect_scale = Vector2( 1, 1.1 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "99"
 align = 1
 valign = 1
@@ -50,3 +67,6 @@ margin_right = 73.3628
 margin_bottom = 52.7822
 texture = ExtResource( 4 )
 expand = true
+
+[node name="anim" type="AnimationPlayer" parent="Background"]
+anims/equipped = SubResource( 2 )

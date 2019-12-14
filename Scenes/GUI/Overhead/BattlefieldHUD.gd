@@ -23,7 +23,6 @@ func _ready():
 	
 	# Connect to Action selector
 	get_parent().get_node("Action Selector Screen").connect("selected_wait", self, "turn_on_battlefield_ui")
-	# BattlefieldInfo.unit_movement_system.connect("unit_finished_moving", self, "turn_on_battlefield_ui")
 	
 	# Initial Quandrant and previous
 	cursor_quadrant = TOP_LEFT

@@ -25,6 +25,7 @@ func process_movement(delta):
 	var destination_cell = unit.UnitMovementStats.movement_queue.front()
 	
 	# Set correct animation for unit moving
+	var direction = unit.get_direction_to_face(starting_cell, destination_cell)
 	unit.get_node("Animation").current_animation = unit.get_direction_to_face(starting_cell, destination_cell)
 	
 	# Move Unit and smooth it out over time
@@ -38,7 +39,7 @@ func process_movement(delta):
 		unit.UnitMovementStats.currentTile = destination_cell
 		
 		# Set Camera
-		BattlefieldInfo.main_game_camera.position = BattlefieldInfo.current_Unit_Selected.get_node("MovementCamera").get_global_position()
+		BattlefieldInfo.main_game_camera._on_unit_moved(direction, unit.position)
 		
 		# Remove the tile in the queue
 		unit.UnitMovementStats.movement_queue.pop_front()
@@ -49,6 +50,9 @@ func process_movement(delta):
 		unit.position.x = destination_cell.position.x
 		unit.position.y = destination_cell.position.y
 		unit.UnitMovementStats.currentTile = destination_cell
+		
+		# Camera
+		BattlefieldInfo.main_game_camera._on_unit_moved(direction, unit.position)
 		
 		# Remove the tile in the queue
 		unit.UnitMovementStats.movement_queue.pop_front()
@@ -65,6 +69,10 @@ func process_movement(delta):
 		
 		# Turn off tiles
 		BattlefieldInfo.movement_calculator.turn_off_all_tiles(unit, BattlefieldInfo.grid)
+		
+		# Set final camera
+		BattlefieldInfo.main_game_camera.smoothing_speed = 8
+		BattlefieldInfo.main_game_camera._on_unit_moved(direction, unit.position)
 		
 		# Emit signal to update the cells
 		emit_signal("unit_finished_moving")

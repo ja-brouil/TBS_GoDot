@@ -220,10 +220,8 @@ func get_best_tile_to_go_to(allowed_tiles, weapon):
 		BattlefieldInfo.unit_movement_system.is_moving = true
 		
 		# Set Camera on unit
-		var movement_camera = preload("res://Scenes/Camera/MovementCamera.tscn").instance()
 		BattlefieldInfo.current_Unit_Selected = get_parent()
-		BattlefieldInfo.current_Unit_Selected.add_child(movement_camera)
-		movement_camera.current = true
+		BattlefieldInfo.main_game_camera.position = (BattlefieldInfo.current_Unit_Selected.position + Vector2(-112, -82))
 
 # Find best tile to move to if there is nothing to attack within range
 func find_tile_to_move_to_no_enemies():
@@ -256,10 +254,8 @@ func find_tile_to_move_to_no_enemies():
 	BattlefieldInfo.unit_movement_system.is_moving = true
 	
 	# Set Camera on unit
-	var movement_camera = preload("res://Scenes/Camera/MovementCamera.tscn").instance()
 	BattlefieldInfo.current_Unit_Selected = get_parent()
-	BattlefieldInfo.current_Unit_Selected.add_child(movement_camera)
-	movement_camera.current = true
+	BattlefieldInfo.main_game_camera.position = (BattlefieldInfo.current_Unit_Selected.position + Vector2(-112, -82))
 	
 	# Set to move
 	current_state = MOVE

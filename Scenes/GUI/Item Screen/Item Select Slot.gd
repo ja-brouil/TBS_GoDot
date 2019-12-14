@@ -14,3 +14,10 @@ func start(item):
 	
 	# Icon
 	$"Background/Icon".texture = item.icon
+	
+	# Check if this is equipped
+	if BattlefieldInfo.current_Unit_Selected.UnitInventory.current_item_equipped == item:
+		$Background/anim.play("equipped")
+	else:
+		$Background/anim.stop(true)
+		$"Background/Weapon Name".set("custom_colors/font_color", Color(1.0, 1.0, 1.0))

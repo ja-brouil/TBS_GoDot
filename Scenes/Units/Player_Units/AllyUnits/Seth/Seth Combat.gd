@@ -8,8 +8,8 @@ func play_miss_sound():
 	# Play Miss anim
 	emit_signal("play_enemy_dodge_anim")
 
-func turn_off():
-	pass
-#	$"Lance Sprite Crit".visible = false
-#	$"Lance Sprite Regular".visible = false
-#	$"Seth Sword Regular".visible = false
+func shake_camera_crit():
+	get_parent().get_parent().shake(0.5,50,30)
+
+func shake_camera_regular():
+	get_parent().get_parent().shake(0.2,50,30)

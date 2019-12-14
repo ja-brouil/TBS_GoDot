@@ -50,6 +50,7 @@ var enemy_placeholder
 var cinematic_branch = false
 signal combat_screen_done
 
+
 # Ready
 func _ready():
 	$"Combat Control/Combat UI/XP Screen".connect("done_adding_xp", self, "back_to_battlefield")

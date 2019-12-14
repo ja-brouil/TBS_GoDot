@@ -50,7 +50,7 @@ func check_end_of_turn():
 			for ally_unit in BattlefieldInfo.ally_units:
 				if ally_unit.UnitActionStatus.get_current_action() != Unit_Action_Status.DONE:
 					return
-			# All Units have moved and are done
+			# All Ally Units have moved and are done
 			$"End of Enemy".start(0)
 			turn = WAIT
 		ENEMY_TURN:
@@ -59,8 +59,13 @@ func check_end_of_turn():
 					turn = WAIT
 					BattlefieldInfo.next_ai(enemy_unit)
 					return
-			# All units have moved and are done
+			# All Enemy units have moved and are done
 			BattlefieldInfo.current_Unit_Selected = null
+			# Set Camera back on Eirika and cursor
+			BattlefieldInfo.main_game_camera.position = (BattlefieldInfo.Eirika.position + Vector2(-112, -82))
+			BattlefieldInfo.main_game_camera.clampCameraPosition()
+			BattlefieldInfo.cursor.position = BattlefieldInfo.Eirika.position
+			# Start Transition
 			$"End of Ally".start(0)
 			turn = WAIT
 		WAIT:

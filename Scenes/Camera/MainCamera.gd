@@ -4,6 +4,7 @@ class_name MainCamera
 
 # Areas
 const CAMERA_CURSOR_DIFFERENTIAL_FACTOR = 1
+const CAMERA_CURSOR_EXTRA_DIFF = 0
 const CAMERA_WIDTH = 240
 const CAMERA_HEIGTH = 160
 var RIGHT_CLAMP_MAX
@@ -23,7 +24,7 @@ signal camera_moved
 
 func _ready():
 	# Return to this camera when the unit is done moving
-	BattlefieldInfo.unit_movement_system.connect("unit_finished_moving", self, "set_current_camera")
+#	BattlefieldInfo.unit_movement_system.connect("unit_finished_moving", self, "set_current_camera")
 	
 	# Access the main camera from anywhere
 	BattlefieldInfo.main_game_camera = self
@@ -52,7 +53,27 @@ func _on_Cursor_cursorMoved(direction, cursor_position):
 				emit_signal("camera_moved", position)
 	# Clamp camera
 	clampCameraPosition()
-	
+
+func _on_unit_moved(direction, unit_position):
+	match direction:
+		"Up":
+			if abs(position.y - unit_position.y) <= (Cell.CELL_SIZE * (CAMERA_CURSOR_DIFFERENTIAL_FACTOR + CAMERA_CURSOR_EXTRA_DIFF)):
+				position += Vector2(0,-Cell.CELL_SIZE)
+				emit_signal("camera_moved", position)
+		"Down":
+			if abs((position.y + CAMERA_HEIGTH - Cell.CELL_SIZE) - unit_position.y) <= (Cell.CELL_SIZE * (CAMERA_CURSOR_DIFFERENTIAL_FACTOR + CAMERA_CURSOR_EXTRA_DIFF)):
+				position += Vector2(0,Cell.CELL_SIZE)
+				emit_signal("camera_moved", position)
+		"Left":
+			if abs(position.x - unit_position.x) <= (Cell.CELL_SIZE * (CAMERA_CURSOR_DIFFERENTIAL_FACTOR + CAMERA_CURSOR_EXTRA_DIFF)):
+				position += Vector2(-Cell.CELL_SIZE,0)
+				emit_signal("camera_moved", position)
+		"Right":
+			if abs((position.x + CAMERA_WIDTH - Cell.CELL_SIZE) - unit_position.x) <= (Cell.CELL_SIZE * (CAMERA_CURSOR_DIFFERENTIAL_FACTOR + CAMERA_CURSOR_EXTRA_DIFF)):
+				position += Vector2(Cell.CELL_SIZE,0)
+				emit_signal("camera_moved", position)
+	# Clamp camera
+	clampCameraPosition()
 
 
 # Sets the parameters for the maximum camera movement once the level is loaded
@@ -68,13 +89,6 @@ func clampCameraPosition():
 	position.x = clamp(position.x, 0, RIGHT_CLAMP_MAX)
 	position.y = clamp(position.y, 0, BOTTOM_CLAMP_MAX)
 
-# Set back to this camera
-func set_current_camera():
-	# Remove other camera
-	if BattlefieldInfo.current_Unit_Selected.has_node("MovementCamera"):
-		position = BattlefieldInfo.current_Unit_Selected.position + Vector2(-112, -72)
-		BattlefieldInfo.current_Unit_Selected.get_node("MovementCamera").queue_free()
-	make_current()
 
 # Shake with decreasing intensity while there's time remaining.
 func _process(delta):

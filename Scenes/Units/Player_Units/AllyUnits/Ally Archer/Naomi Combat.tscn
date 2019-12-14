@@ -307,7 +307,7 @@ tracks/3/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=4]
 resource_name = "bow miss"
 length = 6.0
 tracks/0/type = "value"
@@ -526,10 +526,9 @@ region_rect = Rect2( 106, 6, 25, 34 )
 [node name="Battle Effect" type="Sprite" parent="."]
 visible = false
 position = Vector2( -80, 0 )
-z_index = 1
 texture = ExtResource( 4 )
 region_enabled = true
-region_rect = Rect2( 253, 853, 238, 143 )
+region_rect = Rect2( 15, 348, 169, 156 )
 
 [node name="Flash" type="Sprite" parent="."]
 visible = false
@@ -542,9 +541,8 @@ playback_speed = 4.0
 "anims/bow crit" = SubResource( 1 )
 "anims/bow death" = SubResource( 2 )
 "anims/bow dodge" = SubResource( 3 )
-"anims/bow miss" = SubResource( 6 )
+"anims/bow miss" = SubResource( 4 )
 "anims/bow regular" = SubResource( 5 )
 
 [node name="Whirl" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
-volume_db = -20.0

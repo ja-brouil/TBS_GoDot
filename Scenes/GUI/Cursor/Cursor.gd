@@ -28,6 +28,9 @@ func _ready():
 	# Connec to turn transition
 	BattlefieldInfo.turn_manager.connect("play_transition", self, "disable_standard")
 	
+	# Cursor to battlefield
+	BattlefieldInfo.cursor = self
+	
 func _input(event):
 	# Do not process if cursor is in wait mode
 	if cursor_state == WAIT:
@@ -59,6 +62,9 @@ func _input(event):
 		acceptButton()
 	elif Input.is_action_just_pressed("ui_cancel"):
 		cancel_Button()
+	elif Input.is_action_just_pressed("L button"):
+		updateCursorData()
+		l_button()
 	
 	if Input.is_action_just_pressed("debug"):
 		debug()
@@ -173,15 +179,19 @@ func acceptButton() -> void:
 				# Play Accept
 				$"AcceptSound".play()
 				
+				# Move Camera back to original spot first
+				BattlefieldInfo.main_game_camera.position = (BattlefieldInfo.current_Unit_Selected.position + Vector2(-112, -82))
+				BattlefieldInfo.main_game_camera.smoothing_speed = 2
+				
 				# Start moving the unit
 				BattlefieldInfo.unit_movement_system.is_moving = true
 				
 				# Set Camera on unit
-				var movement_camera = preload("res://Scenes/Camera/MovementCamera.tscn").instance()
-				BattlefieldInfo.current_Unit_Selected.add_child(movement_camera)
-				movement_camera.anchor_mode = Camera2D.ANCHOR_MODE_FIXED_TOP_LEFT
-				movement_camera.position += Vector2(-112,-72)
-				movement_camera.current = true
+#				var movement_camera = preload("res://Scenes/Camera/MovementCamera.tscn").instance()
+#				BattlefieldInfo.current_Unit_Selected.add_child(movement_camera)
+#				movement_camera.anchor_mode = Camera2D.ANCHOR_MODE_FIXED_TOP_LEFT
+#				movement_camera.position += Vector2(-112,-72)
+#				movement_camera.current = true
 
 				# Turn off Cursor
 				enable(false, WAIT)
@@ -206,6 +216,19 @@ func cancel_Button() -> void:
 			
 			# Turn on the UI if not on
 			emit_signal("turn_on_ui")
+
+# L Button -> Go to next unit that is available
+func l_button() ->  void:
+	for ally_unit in BattlefieldInfo.ally_units:
+		if ally_unit.UnitActionStatus.get_current_action() == Unit_Action_Status.MOVE:
+			var move_to_back = BattlefieldInfo.ally_units.pop_front()
+			BattlefieldInfo.main_game_camera.position = (ally_unit.position + Vector2(-112, -82))
+			BattlefieldInfo.main_game_camera.clampCameraPosition()
+			BattlefieldInfo.cursor.position = ally_unit.position
+			BattlefieldInfo.ally_units.append(move_to_back)
+			updateCursorData()
+			emit_signal("cursorMoved", "left", self.position)
+			break
 
 # Set animations state
 func set_animation_status(State: bool):
