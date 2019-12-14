@@ -30,6 +30,7 @@ func process_movement(delta):
 	
 	# Move Unit and smooth it out over time
 	if abs(unit.position.x - destination_cell.position.x) >= 0.75 || abs(unit.position.y - destination_cell.position.y) >= 0.75:
+		BattlefieldInfo.main_game_camera.position += Vector2((destination_cell.position.x - starting_cell.position.x) * unit.animation_movement_speed * delta, (destination_cell.position.y - starting_cell.position.y)* unit.animation_movement_speed * delta)
 		unit.position.x += (destination_cell.position.x - starting_cell.position.x) * unit.animation_movement_speed * delta
 		unit.position.y += (destination_cell.position.y - starting_cell.position.y) * unit.animation_movement_speed * delta
 	else:
@@ -37,9 +38,6 @@ func process_movement(delta):
 		unit.position.x = destination_cell.position.x
 		unit.position.y = destination_cell.position.y
 		unit.UnitMovementStats.currentTile = destination_cell
-		
-		# Set Camera
-		BattlefieldInfo.main_game_camera._on_unit_moved(direction, unit.position)
 		
 		# Remove the tile in the queue
 		unit.UnitMovementStats.movement_queue.pop_front()
@@ -52,7 +50,7 @@ func process_movement(delta):
 		unit.UnitMovementStats.currentTile = destination_cell
 		
 		# Camera
-		BattlefieldInfo.main_game_camera._on_unit_moved(direction, unit.position)
+		BattlefieldInfo.main_game_camera.position += Vector2((destination_cell.position.x - starting_cell.position.x) * unit.animation_movement_speed * delta, (destination_cell.position.y - starting_cell.position.y) * unit.animation_movement_speed * delta)
 		
 		# Remove the tile in the queue
 		unit.UnitMovementStats.movement_queue.pop_front()

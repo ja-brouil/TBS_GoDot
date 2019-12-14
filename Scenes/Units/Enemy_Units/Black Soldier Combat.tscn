@@ -450,10 +450,11 @@ region_rect = Rect2( 19, 25, 26, 45 )
 
 [node name="Battle Effect" type="Sprite" parent="."]
 visible = false
-position = Vector2( 70, -1 )
+position = Vector2( 75, -0.93 )
+z_index = 1
 texture = ExtResource( 3 )
 region_enabled = true
-region_rect = Rect2( 255, 688, 235, 145 )
+region_rect = Rect2( 15, 348, 169, 156 )
 
 [node name="Flash" type="Sprite" parent="."]
 visible = false

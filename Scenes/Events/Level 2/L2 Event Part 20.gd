@@ -61,6 +61,11 @@ func start():
 
 # Move Camera back
 func move_camera():
+	# Change the 100% crit back down
+	Vezarius.UnitStats.bonus_crit = 0
+	Vezarius.UnitStats.bonus_hit = 0
+	Vezarius.UnitStats.bonus_hit = 0
+	
 	# New Position
 	var new_position_for_camera = Vector2(48,0)
 	
