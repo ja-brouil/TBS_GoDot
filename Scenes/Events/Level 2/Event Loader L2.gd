@@ -10,5 +10,8 @@ func _ready():
 	BattlefieldInfo.event_system.add_event(L2_Event_Part4.new())
 	BattlefieldInfo.event_system.add_event(L2_Event_Part5.new())
 	
+	# Mid Level Events
+	
+	
 	# Start Level
 	BattlefieldInfo.event_system.start_events_queue()

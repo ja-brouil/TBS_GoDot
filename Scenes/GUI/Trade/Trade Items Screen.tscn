@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/GUI/Trade/Trade Items Screen.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/GUI/Hand Cursor/Hand Selector.tscn" type="PackedScene" id=2]
+
+[node name="Trade Items Screen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.736572
+margin_top = -1.10484
+margin_right = 0.736572
+margin_bottom = -1.10484
+script = ExtResource( 1 )
+
+[node name="Hand Selector" parent="." instance=ExtResource( 2 )]
+margin_left = -30.6147
+margin_top = 40.5056
+margin_right = -14.6147
+margin_bottom = 53.5056

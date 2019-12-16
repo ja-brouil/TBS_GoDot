@@ -818,6 +818,18 @@ tracks/14/keys = {
 } ],
 "times": PoolRealArray( 2.53 )
 }
+tracks/15/type = "value"
+tracks/15/path = NodePath("sword regular:modulate")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=7]
 length = 3.3
@@ -1149,6 +1161,7 @@ __meta__ = {
 
 [node name="sword regular" type="Sprite" parent="."]
 visible = false
+z_index = 1
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 47, 15, 48, 57 )
@@ -1175,7 +1188,6 @@ texture = ExtResource( 5 )
 [node name="Battle Effect" type="Sprite" parent="."]
 visible = false
 position = Vector2( -86, -1 )
-z_index = 1
 texture = ExtResource( 6 )
 region_enabled = true
 region_rect = Rect2( 253, 853, 238, 143 )
