@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Scenes/Units/Player_Units/AllyUnits/Seth/Seth Combat.gd" type="Script" id=1]
 [ext_resource path="res://assets/units/cavalier/Seth Battle.png" type="Texture" id=2]
@@ -6,9 +6,8 @@
 [ext_resource path="res://assets/units/cavalier/paladin lance crit.png" type="Texture" id=4]
 [ext_resource path="res://assets/transition/white flash.png" type="Texture" id=5]
 [ext_resource path="res://assets/battle_effects/Physical Effects.png" type="Texture" id=6]
-[ext_resource path="res://assets/sound/misc/CRITICAL_HORSE_0.wav" type="AudioStream" id=7]
-[ext_resource path="res://assets/sound/unitMovement/Horse Steps.wav" type="AudioStream" id=8]
-[ext_resource path="res://assets/sound/misc/slow horse step.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/sound/unitMovement/Horse Steps.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/sound/misc/slow horse step.wav" type="AudioStream" id=8]
 
 [sub_resource type="Animation" id=1]
 length = 16.5
@@ -233,22 +232,8 @@ tracks/16/keys = {
 "update": 1,
 "values": [ true, false ]
 }
-tracks/17/type = "audio"
-tracks/17/path = NodePath("horse neigh")
-tracks/17/interp = 1
-tracks/17/loop_wrap = true
-tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/keys = {
-"clips": [ {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource( 7 )
-} ],
-"times": PoolRealArray( 1.1 )
-}
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=11]
 resource_name = "lance death"
 length = 3.0
 tracks/0/type = "value"
@@ -341,7 +326,7 @@ tracks/6/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=12]
 length = 3.0
 step = 0.5
 tracks/0/type = "value"
@@ -405,7 +390,7 @@ tracks/4/keys = {
 "values": [ Rect2( 56, 31, 47, 61 ), Rect2( 538, 33, 67, 59 ), Rect2( 56, 31, 47, 61 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=13]
 length = 9.3
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
@@ -479,7 +464,7 @@ tracks/4/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=14]
 length = 9.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Battle Effect:region_rect")
@@ -616,7 +601,7 @@ tracks/9/keys = {
 "values": [  ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=15]
 length = 22.0
 step = 0.01
 tracks/0/type = "value"
@@ -787,7 +772,7 @@ tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = {
-"times": PoolRealArray( 19.47, 20.77 ),
+"times": PoolRealArray( 20.46, 20.77 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
@@ -804,34 +789,8 @@ tracks/13/keys = {
 "update": 1,
 "values": [ true ]
 }
-tracks/14/type = "audio"
-tracks/14/path = NodePath("horse neigh")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/keys = {
-"clips": [ {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource( 7 )
-} ],
-"times": PoolRealArray( 2.53 )
-}
-tracks/15/type = "value"
-tracks/15/path = NodePath("sword regular:modulate")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
-}
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=16]
 length = 3.3
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
@@ -899,7 +858,7 @@ tracks/4/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=17]
 length = 2.0
 step = 0.5
 tracks/0/type = "value"
@@ -951,7 +910,7 @@ tracks/3/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=18]
 length = 10.5
 step = 0.01
 tracks/0/type = "value"
@@ -1161,13 +1120,11 @@ __meta__ = {
 
 [node name="sword regular" type="Sprite" parent="."]
 visible = false
-z_index = 1
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 47, 15, 48, 57 )
 
 [node name="lance regular" type="Sprite" parent="."]
-visible = false
 position = Vector2( -1, -3 )
 texture = ExtResource( 3 )
 region_enabled = true
@@ -1188,6 +1145,7 @@ texture = ExtResource( 5 )
 [node name="Battle Effect" type="Sprite" parent="."]
 visible = false
 position = Vector2( -86, -1 )
+z_index = 1
 texture = ExtResource( 6 )
 region_enabled = true
 region_rect = Rect2( 253, 853, 238, 143 )
@@ -1195,21 +1153,18 @@ region_rect = Rect2( 253, 853, 238, 143 )
 [node name="anim" type="AnimationPlayer" parent="."]
 playback_speed = 4.0
 "anims/lance crit" = SubResource( 1 )
-"anims/lance death" = SubResource( 2 )
-"anims/lance dodge" = SubResource( 3 )
-"anims/lance miss" = SubResource( 4 )
-"anims/lance regular" = SubResource( 5 )
-"anims/sword crit" = SubResource( 6 )
-"anims/sword death" = SubResource( 7 )
-"anims/sword dodge" = SubResource( 8 )
-"anims/sword miss" = SubResource( 9 )
+"anims/lance death" = SubResource( 11 )
+"anims/lance dodge" = SubResource( 12 )
+"anims/lance miss" = SubResource( 13 )
+"anims/lance regular" = SubResource( 14 )
+"anims/sword crit" = SubResource( 15 )
+"anims/sword death" = SubResource( 16 )
+"anims/sword dodge" = SubResource( 17 )
+"anims/sword miss" = SubResource( 18 )
 "anims/sword regular" = SubResource( 10 )
 
 [node name="horse movement" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 8 )
+stream = ExtResource( 7 )
 
 [node name="soft horsestep" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 9 )
-
-[node name="horse neigh" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 7 )
+stream = ExtResource( 8 )

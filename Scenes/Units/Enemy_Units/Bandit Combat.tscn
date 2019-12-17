@@ -511,7 +511,8 @@ __meta__ = {
 
 [node name="axe regular" type="Sprite" parent="."]
 visible = false
-scale = Vector2( 0.45, 0.45 )
+position = Vector2( -2.79104, 5.50233 )
+scale = Vector2( 0.380224, 0.369083 )
 z_index = 1
 texture = ExtResource( 2 )
 flip_h = true

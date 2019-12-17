@@ -14,6 +14,7 @@ func start(item):
 	
 	# Icon
 	$"Background/Icon".texture = item.icon
+	$"Background/Icon".visible = true
 	
 	# Check if this is equipped
 	if BattlefieldInfo.current_Unit_Selected.UnitInventory.current_item_equipped == item:
@@ -21,3 +22,11 @@ func start(item):
 	else:
 		$Background/anim.stop(true)
 		$"Background/Weapon Name".set("custom_colors/font_color", Color(1.0, 1.0, 1.0))
+
+# Turn this into an empty slot
+func empty_slot():
+	$"Background/Weapon Name".text = ""
+	
+	$"Background/Uses".text = ""
+	
+	$"Background/Icon".visible = false

@@ -55,7 +55,6 @@ func start():
 func _input(event):
 	if !is_active:
 		return
-		
 	if Input.is_action_just_pressed("ui_accept"):
 		$"Action Menu/Hand Selector/Accept".play(0)
 		process_selection()
@@ -186,14 +185,15 @@ func get_menu_items():
 		menu_items.append("Item")
 	
 	# Trade Option | Convoy
-	for adj_cell in BattlefieldInfo.current_Unit_Selected.UnitMovementStats.currentTile.adjCells:
-		if adj_cell.occupyingUnit != null && adj_cell.occupyingUnit.UnitMovementStats.is_ally:
-			if !menu_items.has("Trade"):
-				menu_items.append("Trade")
-			# Check if next to Eirika
-			if adj_cell.occupyingUnit.UnitStats.name == "Eirika":
-				if !menu_items.has("Convoy"):
-					menu_items.append("Convoy")
+	if BattlefieldInfo.current_Unit_Selected.UnitActionStatus.get_current_action() != Unit_Action_Status.DONE:
+		for adj_cell in BattlefieldInfo.current_Unit_Selected.UnitMovementStats.currentTile.adjCells:
+			if adj_cell.occupyingUnit != null && adj_cell.occupyingUnit.UnitMovementStats.is_ally:
+				if !menu_items.has("Trade"):
+					menu_items.append("Trade")
+				# Check if next to Eirika
+				if adj_cell.occupyingUnit.UnitStats.name == "Eirika":
+					if !menu_items.has("Convoy"):
+						menu_items.append("Convoy")
 		
 		# Are we on the throne tile
 		if BattlefieldInfo.current_Unit_Selected.UnitMovementStats.currentTile.tileName == "Throne" && BattlefieldInfo.victory_text == "Seize":
@@ -229,7 +229,8 @@ func process_selection():
 			get_parent().get_node("Item Screen").start()
 			hide_action_menu()
 		"Trade":
-			print("From Action Selector: Selected Trade! Go to the trade screen!")
+			get_parent().get_node("Trade Screen").start()
+			hide_action_menu()
 		"Visit":
 			print("From Action Selector: Selected Visit! Go to the visit screen!")
 		"Seize":

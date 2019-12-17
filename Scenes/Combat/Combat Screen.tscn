@@ -307,7 +307,7 @@ margin_bottom = 105.435
 position = Vector2( 156, 71 )
 
 [node name="Enemy Unit" type="Position2D" parent="."]
-position = Vector2( 87, 65 )
+position = Vector2( 87, 71 )
 
 [node name="Pause" type="Timer" parent="."]
 wait_time = 0.5
