@@ -7,9 +7,12 @@ signal all_events_completed
 enum {starting_events, middle_events, ending_events}
 var current_state = starting_events
 
-# Event Queue
+# Event Queue | Use this for a series of events
 var queue_of_events = []
 var current_event
+
+# Event listeners
+var mid_level_events = []
 
 func _ready():
 	BattlefieldInfo.event_system = self
@@ -58,6 +61,10 @@ func start_level():
 	BattlefieldInfo.turn_manager.turn = Turn_Manager.WAIT
 	BattlefieldInfo.start_level()
 	current_state = middle_events
+
+# Add a mid level event
+func add_mid_level_event(event: Event_Base):
+	mid_level_events.append(event)
 
 # Ends the level and goes to the next level
 func end_level():

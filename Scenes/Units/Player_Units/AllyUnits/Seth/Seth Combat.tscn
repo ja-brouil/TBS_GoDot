@@ -874,19 +874,19 @@ tracks/11/keys = {
 "values": [ true, false ]
 }
 tracks/12/type = "value"
-tracks/12/path = NodePath("sword regular:visible")
+tracks/12/path = NodePath("lance regular:visible")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = {
-"times": PoolRealArray( -0.03 ),
+"times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
 }
 tracks/13/type = "value"
-tracks/13/path = NodePath("lance regular:visible")
+tracks/13/path = NodePath("lance crit:visible")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/imported = false
@@ -898,31 +898,31 @@ tracks/13/keys = {
 "values": [ false ]
 }
 tracks/14/type = "value"
-tracks/14/path = NodePath("lance crit:visible")
+tracks/14/path = NodePath(".:z_index")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
 tracks/14/enabled = true
 tracks/14/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/15/type = "value"
-tracks/15/path = NodePath(".:z_index")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/keys = {
 "times": PoolRealArray( 0, 21.74 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 5, 0 ]
 }
+tracks/15/type = "value"
+tracks/15/path = NodePath("sword crit:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 tracks/16/type = "value"
-tracks/16/path = NodePath("sword crit:visible")
+tracks/16/path = NodePath("sword regular:visible")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/imported = false
@@ -931,7 +931,7 @@ tracks/16/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ true ]
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=7]

@@ -90,6 +90,9 @@ var camera_limit_right
 var ally_units = {}
 var enemy_units = {}
 
+# Spawn points
+var spawn_pints = []
+
 # Eirika for AI purposes
 var Eirika
 

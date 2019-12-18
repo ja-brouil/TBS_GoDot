@@ -18,7 +18,7 @@ func _ready():
 	UnitInventory.add_item(preload("res://Scenes/Items/Lance/Iron Lance.tscn").instance())
 	
 	# Set combat node -> Change when animation exist
-	combat_node = preload("res://Scenes/Units/Player_Units/AllyUnits/Seth/Seth Combat.tscn")
+	combat_node = preload("res://Scenes/Units/Player_Units/AllyUnits/Ally Knight/Gilliam Combat.tscn")
 	
 	# Death sentence
 	death_sentence = []

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.0" orientation="orthogonal" renderorder="right-down" width="20" height="22" tilewidth="16" tileheight="16" infinite="0" nextobjectid="2931">
+<map version="1.0" tiledversion="1.1.0" orientation="orthogonal" renderorder="right-down" width="20" height="22" tilewidth="16" tileheight="16" infinite="0" nextobjectid="2940">
  <properties>
   <property name="Enemies to defeat" type="int" value="15"/>
   <property name="Victory Condition" value="Survive for 10 turns"/>
@@ -31,7 +31,7 @@
 421,422,423,424,425,426,427,428,429,430,431,432,433,434,435,436,437,438,439,440
 </data>
  </layer>
- <objectgroup name="CellInfo" visible="0">
+ <objectgroup name="CellInfo">
   <object id="1794" x="0" y="256" width="16" height="16">
    <properties>
     <property name="Avd" type="int" value="0"/>
@@ -3553,7 +3553,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="Allies">
+ <objectgroup name="Allies" visible="0">
   <object id="2281" x="144" y="112" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
@@ -4154,7 +4154,7 @@
   </object>
   <object id="2930" x="144" y="64" width="16" height="16">
    <properties>
-    <property name="BonusCrit" type="int" value="0"/>
+    <property name="BonusCrit" type="int" value="100"/>
     <property name="BonusDodge" type="int" value="0"/>
     <property name="BonusHit" type="int" value="0"/>
     <property name="BossBonus" type="int" value="0"/>
@@ -4199,7 +4199,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="Enemies">
+ <objectgroup name="Enemies" visible="0">
   <object id="2878" x="32" y="256" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
@@ -4470,7 +4470,7 @@
     <property name="isAlly" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="2909" x="0" y="288" width="16" height="16">
+  <object id="2909" x="0" y="272" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
     <property name="BonusDodge" type="int" value="0"/>
@@ -4498,6 +4498,50 @@
     <property name="Weapon" value="Iron Axe"/>
     <property name="aiType" value="Passive"/>
     <property name="isAlly" type="bool" value="false"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="SpawnPoints">
+  <object id="2931" name="Spawn Point" x="-16" y="288" width="16" height="16">
+   <properties>
+    <property name="adj_tile_x" type="int" value="0"/>
+    <property name="adj_tile_y" type="int" value="288"/>
+   </properties>
+  </object>
+  <object id="2934" name="Spawn Point" x="-16" y="304" width="16" height="16">
+   <properties>
+    <property name="adj_tile_x" type="int" value="0"/>
+    <property name="adj_tile_y" type="int" value="304"/>
+   </properties>
+  </object>
+  <object id="2935" name="Spawn Point" x="-16" y="256" width="16" height="16">
+   <properties>
+    <property name="adj_tile_x" type="int" value="0"/>
+    <property name="adj_tile_y" type="int" value="256"/>
+   </properties>
+  </object>
+  <object id="2936" name="Spawn Point" x="320" y="288" width="16" height="16">
+   <properties>
+    <property name="adj_tile_x" type="int" value="304"/>
+    <property name="adj_tile_y" type="int" value="288"/>
+   </properties>
+  </object>
+  <object id="2937" name="Spawn Point" x="320" y="304" width="16" height="16">
+   <properties>
+    <property name="adj_tile_x" type="int" value="304"/>
+    <property name="adj_tile_y" type="int" value="304"/>
+   </properties>
+  </object>
+  <object id="2938" name="Spawn Point" x="320" y="128" width="16" height="16">
+   <properties>
+    <property name="adj_tile_x" type="int" value="304"/>
+    <property name="adj_tile_y" type="int" value="128"/>
+   </properties>
+  </object>
+  <object id="2939" name="Spawn Point" x="320" y="144" width="16" height="16">
+   <properties>
+    <property name="adj_tile_x" type="int" value="304"/>
+    <property name="adj_tile_y" type="int" value="144"/>
    </properties>
   </object>
  </objectgroup>

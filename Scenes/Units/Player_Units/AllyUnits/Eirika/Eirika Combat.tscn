@@ -475,7 +475,7 @@ tracks/8/keys = {
 }
 
 [node name="Eirika Combat" type="Node2D"]
-z_index = 4
+z_index = 5
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 22.0, 6.0 ],
@@ -483,20 +483,17 @@ __meta__ = {
 }
 
 [node name="sword regular" type="Sprite" parent="."]
-visible = false
-position = Vector2( 0.238205, 1.46285 )
 scale = Vector2( 1.25, 1.25 )
-z_index = 1
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 6, 26, 36, 34 )
 
 [node name="Battle Effect" type="Sprite" parent="."]
 visible = false
-position = Vector2( -85.9954, -0.930359 )
+position = Vector2( -86, -1 )
 texture = ExtResource( 3 )
 region_enabled = true
-region_rect = Rect2( 256, 348, 167, 158 )
+region_rect = Rect2( 255, 688, 235, 145 )
 
 [node name="anim" type="AnimationPlayer" parent="."]
 playback_speed = 4.0

@@ -12,6 +12,5 @@ func _ready():
 	
 	# Mid Level Events
 	
-	
 	# Start Level
 	BattlefieldInfo.event_system.start_events_queue()
