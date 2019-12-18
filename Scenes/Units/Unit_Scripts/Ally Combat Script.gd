@@ -8,6 +8,9 @@ func play_miss_sound():
 	# Play Miss anim
 	emit_signal("play_enemy_dodge_anim")
 
+func death_anim_signal():
+	emit_signal("death_anim_done")
+
 # This will only be called when Eirika dies for this animation
 func game_over():
 	pass

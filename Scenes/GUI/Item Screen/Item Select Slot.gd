@@ -1,8 +1,6 @@
 extends Node2D
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+var current_item
 
 # Start the node with the data needed
 func start(item):
@@ -16,12 +14,8 @@ func start(item):
 	$"Background/Icon".texture = item.icon
 	$"Background/Icon".visible = true
 	
-	# Check if this is equipped
-	if BattlefieldInfo.current_Unit_Selected.UnitInventory.current_item_equipped == item:
-		$Background/anim.play("equipped")
-	else:
-		$Background/anim.stop(true)
-		$"Background/Weapon Name".set("custom_colors/font_color", Color(1.0, 1.0, 1.0))
+	set_green_equipped(item)
+	current_item = item
 
 # Turn this into an empty slot
 func empty_slot():
@@ -30,3 +24,11 @@ func empty_slot():
 	$"Background/Uses".text = ""
 	
 	$"Background/Icon".visible = false
+
+# Set Green for equipped
+func set_green_equipped(item):
+	if BattlefieldInfo.current_Unit_Selected.UnitInventory.current_item_equipped == item:
+		$Background/anim.play("equipped")
+	else:
+		$Background/anim.stop(true)
+		$"Background/Weapon Name".set("custom_colors/font_color", Color(1.0, 1.0, 1.0))

@@ -22,3 +22,7 @@ func _ready():
 	
 	# Set combat node
 	combat_node = preload("res://Scenes/Units/Player_Units/AllyUnits/Eirika/Eirika Combat.tscn")
+	
+	# Death sentence
+	death_sentence = []
+	death_sentence.append("Eirika:\n\nFather, I've failed... I'm sorry everyone...")

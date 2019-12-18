@@ -177,6 +177,18 @@ tracks/12/keys = {
 "update": 0,
 "values": [ 0.0, 0.0, -20.0 ]
 }
+tracks/13/type = "value"
+tracks/13/path = NodePath(".:z_index")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 6.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 5, 0 ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "bow death"
@@ -258,6 +270,18 @@ tracks/5/keys = {
 "method": "death_anim_signal"
 } ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath(".:z_index")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "bow dodge"
@@ -308,6 +332,18 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:z_index")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 5, 0 ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -380,6 +416,18 @@ tracks/4/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath(".:z_index")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 5.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 4, 0 ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -504,9 +552,20 @@ tracks/8/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/9/type = "value"
+tracks/9/path = NodePath(".:z_index")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 5.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 5, 0 ]
+}
 
 [node name="Black Archer Combat" type="Node2D"]
-z_index = 1
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 17.0 ],
@@ -514,6 +573,7 @@ __meta__ = {
 }
 
 [node name="bow regular" type="Sprite" parent="."]
+visible = false
 texture = ExtResource( 2 )
 flip_h = true
 region_enabled = true
@@ -521,6 +581,7 @@ region_rect = Rect2( 106, 6, 25, 34 )
 
 [node name="bow crit" type="Sprite" parent="."]
 visible = false
+position = Vector2( -1, 0 )
 texture = ExtResource( 3 )
 flip_h = true
 region_enabled = true
@@ -528,10 +589,11 @@ region_rect = Rect2( 106, 6, 25, 34 )
 
 [node name="Battle Effect" type="Sprite" parent="."]
 visible = false
-position = Vector2( 85.995, -0.93 )
+position = Vector2( 170, 0 )
+z_index = 1
 texture = ExtResource( 4 )
 region_enabled = true
-region_rect = Rect2( 528, 49, 110, 103 )
+region_rect = Rect2( 253, 853, 238, 143 )
 
 [node name="Flash" type="Sprite" parent="."]
 visible = false
@@ -549,3 +611,4 @@ playback_speed = 4.0
 
 [node name="Whirl" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
+volume_db = -20.0

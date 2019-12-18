@@ -35,7 +35,7 @@ func add_item(item):
 				item.is_usable_by_current_unit = true
 				# Check what kind of item this is
 				# Process healing item
-				if item.item_class == Item.ITEM_CLASS.MAGIC && item.weapon_type == Item.WEAPON_TYPE.HEALING:
+				if item.item_class == Item.ITEM_CLASS.MAGIC && item.weapon_type == Item.WEAPON_TYPE.HEALING && item.is_usable_by_current_unit:
 					if item.max_range > MAX_HEAL_RANGE:
 						MAX_HEAL_RANGE = item.max_range
 					if item.min_range < MIN_HEAL_RANGE:
@@ -44,14 +44,13 @@ func add_item(item):
 					if current_item_equipped == null && item.is_usable_by_current_unit:
 						current_item_equipped = item
 				# Anyone else that isn't consumable and a healing item
-				elif item.item_class != Item.ITEM_CLASS.CONSUMABLE && item.weapon_type != Item.WEAPON_TYPE.HEALING:
+				elif item.item_class != Item.ITEM_CLASS.CONSUMABLE && item.weapon_type != Item.WEAPON_TYPE.HEALING && item.is_usable_by_current_unit:
 					if item.max_range > MAX_ATTACK_RANGE:
 						MAX_ATTACK_RANGE = item.max_range
 					if item.min_range < MIN_ATTACK_RANGE:
 						MIN_ATTACK_RANGE = item.min_range
 					if current_item_equipped == null && item.is_usable_by_current_unit:
 						current_item_equipped = item
-						
 		
 		# Auto accept consumables
 		if item.item_class == Item.ITEM_CLASS.CONSUMABLE:
@@ -60,6 +59,8 @@ func add_item(item):
 # Remove an item from the unit's inventory
 func remove_item(item):
 	# Remove the item from the inventory and remove object from the system
+	if current_item_equipped == item:
+		current_item_equipped = null
 	inventory.erase(item)
 	item.queue_free()
 	
@@ -68,13 +69,13 @@ func remove_item(item):
 	
 	# Get new max ranges
 	for inv_item in inventory:
-		if inv_item.item_class == Item.ITEM_CLASS.MAGIC && inv_item.weapon_type == Item.WEAPON_TYPE.HEALING:
+		if inv_item.item_class == Item.ITEM_CLASS.MAGIC && inv_item.weapon_type == Item.WEAPON_TYPE.HEALING && item.is_usable_by_current_unit:
 			if inv_item.max_range > MAX_HEAL_RANGE:
 				MAX_HEAL_RANGE = inv_item.max_range
 			if item.min_range < MIN_HEAL_RANGE:
 				MIN_HEAL_RANGE = item.min_range
 		# Anyone else that isn't consumable and a healing item
-		elif inv_item.item_class != Item.ITEM_CLASS.CONSUMABLE && inv_item.weapon_type != Item.WEAPON_TYPE.HEALING:
+		elif inv_item.item_class != Item.ITEM_CLASS.CONSUMABLE && inv_item.weapon_type != Item.WEAPON_TYPE.HEALING && item.is_usable_by_current_unit:
 			if inv_item.max_range > MAX_ATTACK_RANGE:
 				MAX_ATTACK_RANGE = inv_item.max_range
 			if item.min_range < MIN_ATTACK_RANGE:
@@ -83,9 +84,9 @@ func remove_item(item):
 	# Equip next weapon
 	for inv_item in inventory:
 		# Grab next item | attack first then healing if we have nothing
-		if inv_item.item_class != Item.ITEM_CLASS.CONSUMABLE && inv_item.weapon_type != Item.WEAPON_TYPE.HEALING && current_item_equipped != null:
+		if inv_item.item_class != Item.ITEM_CLASS.CONSUMABLE && inv_item.weapon_type != Item.WEAPON_TYPE.HEALING && current_item_equipped != null && inv_item.is_usable_by_current_unit:
 			current_item_equipped = inv_item
-		elif inv_item.item_class == Item.ITEM_CLASS.MAGIC && inv_item.weapon_type == Item.WEAPON_TYPE.HEALING && current_item_equipped != null:
+		elif inv_item.item_class == Item.ITEM_CLASS.MAGIC && inv_item.weapon_type == Item.WEAPON_TYPE.HEALING && current_item_equipped != null && inv_item.is_usable_by_current_unit:
 			current_item_equipped = inv_item
 		
 		# Set to unarmed if we STILL have nothing
@@ -94,6 +95,9 @@ func remove_item(item):
 
 func remove_do_not_delete_item(item):
 	# Remove the item from the inventory and remove object from the system
+	if current_item_equipped == item:
+		current_item_equipped = null
+	
 	inventory.erase(item)
 	remove_child(item)
 	
@@ -102,13 +106,13 @@ func remove_do_not_delete_item(item):
 	
 	# Get new max ranges
 	for inv_item in inventory:
-		if inv_item.item_class == Item.ITEM_CLASS.MAGIC && inv_item.weapon_type == Item.WEAPON_TYPE.HEALING:
+		if inv_item.item_class == Item.ITEM_CLASS.MAGIC && inv_item.weapon_type == Item.WEAPON_TYPE.HEALING && inv_item.is_usable_by_current_unit:
 			if inv_item.max_range > MAX_HEAL_RANGE:
 				MAX_HEAL_RANGE = inv_item.max_range
 			if item.min_range < MIN_HEAL_RANGE:
 				MIN_HEAL_RANGE = item.min_range
 		# Anyone else that isn't consumable and a healing item
-		elif inv_item.item_class != Item.ITEM_CLASS.CONSUMABLE && inv_item.weapon_type != Item.WEAPON_TYPE.HEALING:
+		elif inv_item.item_class != Item.ITEM_CLASS.CONSUMABLE && inv_item.weapon_type != Item.WEAPON_TYPE.HEALING && inv_item.is_usable_by_current_unit:
 			if inv_item.max_range > MAX_ATTACK_RANGE:
 				MAX_ATTACK_RANGE = inv_item.max_range
 			if item.min_range < MIN_ATTACK_RANGE:
@@ -117,9 +121,9 @@ func remove_do_not_delete_item(item):
 	# Equip next weapon
 	for inv_item in inventory:
 		# Grab next item | attack first then healing if we have nothing
-		if inv_item.item_class != Item.ITEM_CLASS.CONSUMABLE && inv_item.weapon_type != Item.WEAPON_TYPE.HEALING && current_item_equipped != null:
+		if inv_item.item_class != Item.ITEM_CLASS.CONSUMABLE && inv_item.weapon_type != Item.WEAPON_TYPE.HEALING && current_item_equipped != null && inv_item.is_usable_by_current_unit:
 			current_item_equipped = inv_item
-		elif inv_item.item_class == Item.ITEM_CLASS.MAGIC && inv_item.weapon_type == Item.WEAPON_TYPE.HEALING && current_item_equipped != null:
+		elif inv_item.item_class == Item.ITEM_CLASS.MAGIC && inv_item.weapon_type == Item.WEAPON_TYPE.HEALING && current_item_equipped != null && inv_item.is_usable_by_current_unit:
 			current_item_equipped = inv_item
 		
 		# Set to unarmed if we STILL have nothing

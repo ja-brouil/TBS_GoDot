@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/FIRE_0.wav-4863b019c369564d65e825bf2e150f51.sample"
+
+[deps]
+
+source_file="res://assets/sound/battle sounds/FIRE_0.wav"
+dest_files=[ "res://.import/FIRE_0.wav-4863b019c369564d65e825bf2e150f51.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

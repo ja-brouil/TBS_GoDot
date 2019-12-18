@@ -13,7 +13,7 @@ class_name L2_Event_Part3
 # Dialogue between the characters
 var dialogue = [
 	"Seth:\n\nWhat! How did they know we are here?",
-	"Seth:\n\nYou two! Get the ship ready immediately!",
+	"Seth:\n\nYou two! Reinforce the forward guard immediately!",
 	"Ephraim Soldier:\n\nYes sir! You heard the Knight Commander! Move it!",
 ]
 
@@ -29,9 +29,11 @@ func start():
 	# Find Move Soldier
 	for ally in BattlefieldInfo.ally_units:
 		if ally.UnitStats.name == "Move Me 1":
+			ally.visible = true
 			move_actor_1 = ally
 		
 		if ally.UnitStats.name == "Move Me 2":
+			ally.visible = true
 			move_actor_2 = ally
 	
 	# Activate all the enemies
@@ -49,9 +51,9 @@ func start():
 	enable_text(dialogue)
 
 func move_actor():
-	# Build path to the enemy
-	BattlefieldInfo.movement_calculator.get_path_to_destination_AI(move_actor_1, BattlefieldInfo.grid[9][4], BattlefieldInfo.grid)
-	BattlefieldInfo.movement_calculator.get_path_to_destination_AI(move_actor_2, BattlefieldInfo.grid[9][4], BattlefieldInfo.grid)
+	# Build path to the location
+	BattlefieldInfo.movement_calculator.get_path_to_destination_AI(move_actor_1, BattlefieldInfo.grid[9][13], BattlefieldInfo.grid)
+	BattlefieldInfo.movement_calculator.get_path_to_destination_AI(move_actor_2, BattlefieldInfo.grid[9][13], BattlefieldInfo.grid)
 	
 	# Remove original tile
 	move_actor_1.UnitMovementStats.currentTile.occupyingUnit = null

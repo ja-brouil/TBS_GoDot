@@ -68,7 +68,7 @@ func build_item_list():
 	var last_position = OFF_SET + X_OFF_SET
 	# Build item slot
 	for weapon in BattlefieldInfo.current_Unit_Selected.UnitInventory.inventory:
-		if weapon.is_usable_by_current_unit && (weapon.item_class == Item.ITEM_CLASS.PHYSICAL || weapon.item_class == Item.ITEM_CLASS.MAGICAL):
+		if weapon.is_usable_by_current_unit && (weapon.item_class == Item.ITEM_CLASS.PHYSICAL || weapon.item_class == Item.ITEM_CLASS.MAGIC):
 			if weapon.weapon_type != Item.WEAPON_TYPE.HEALING:
 				# Can we reach the enemy unit with this weapon
 				# Check if we can reach that unit

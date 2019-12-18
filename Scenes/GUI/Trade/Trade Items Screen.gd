@@ -60,6 +60,7 @@ func start(unit):
 	# Start
 	$Timer.start(0)
 
+
 # Set graphics and name
 func set_unit_portrait_and_name():
 	# Current unit selected
@@ -283,12 +284,19 @@ func process_selection():
 					BattlefieldInfo.current_Unit_Selected.UnitInventory.add_item(first_item)
 					
 					# We can continue to trade but we are done moving
-					BattlefieldInfo.current_Unit_Selected.UnitActionStatus.current_action_status = Unit_Action_Status.DONE
-					BattlefieldInfo.current_Unit_Selected.turn_greyscale_on()
-					BattlefieldInfo.current_Unit_Selected.get_node("Animation").current_animation = "Idle"
+					set_done()
 					
-					# Rebuild the menu
-					start(second_unit)
+				else:
+					# Swap First Item
+					second_unit.UnitInventory.remove_do_not_delete_item(first_item)
+					BattlefieldInfo.current_Unit_Selected.UnitInventory.add_item(first_item)
+					
+					# Swap Second Item
+					BattlefieldInfo.current_Unit_Selected.UnitInventory.remove_do_not_delete_item(second_item)
+					second_unit.UnitInventory.add_item(second_item)
+					
+					# Done trading
+					set_done()
 			else:
 				if second_item == $Empty_Item:
 					# Just take this item out of the first one and send it to the second one
@@ -296,12 +304,18 @@ func process_selection():
 					second_unit.UnitInventory.add_item(first_item)
 					
 					# We can continue to trade but we are done moving
-					BattlefieldInfo.current_Unit_Selected.UnitActionStatus.current_action_status = Unit_Action_Status.DONE
-					BattlefieldInfo.current_Unit_Selected.turn_greyscale_on()
-					BattlefieldInfo.current_Unit_Selected.get_node("Animation").current_animation = "Idle"
+					set_done()
+				else:
+					# Swap First Item
+					BattlefieldInfo.current_Unit_Selected.UnitInventory.remove_do_not_delete_item(first_item)
+					second_unit.UnitInventory.add_item(first_item)
 					
-					# Rebuild the menu
-					start(second_unit)
+					# Swap second item
+					second_unit.UnitInventory.remove_do_not_delete_item(second_item)
+					BattlefieldInfo.current_Unit_Selected.UnitInventory.add_item(second_item)
+					
+					# We can continue to trade but we are done moving
+					set_done()
 
 # Reslot the arrays
 func reslot_arrays():
@@ -323,6 +337,17 @@ func reslot_arrays():
 	
 	item_slots_player_1.clear()
 	item_slots_player_2.clear()
+
+# Set Action to done
+func set_done():
+	# We can continue to trade but we are done moving
+	BattlefieldInfo.current_Unit_Selected.UnitActionStatus.current_action_status = Unit_Action_Status.DONE
+	BattlefieldInfo.current_Unit_Selected.turn_greyscale_on()
+	BattlefieldInfo.current_Unit_Selected.get_node("Animation").current_animation = "Idle"
+	
+	# Rebuild Menu
+	is_active = false
+	start(second_unit)
 
 func go_back():
 	# Hide

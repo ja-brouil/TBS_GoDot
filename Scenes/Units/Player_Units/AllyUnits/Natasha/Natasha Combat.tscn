@@ -112,6 +112,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:z_index")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 5, 0 ]
+}
 
 [sub_resource type="Animation" id=3]
 length = 7.1
@@ -201,6 +213,18 @@ tracks/6/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/7/type = "value"
+tracks/7/path = NodePath(".:z_index")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 5, 0 ]
+}
 
 [node name="Natasha Combat" type="Node2D"]
 script = ExtResource( 1 )
@@ -210,6 +234,7 @@ __meta__ = {
 }
 
 [node name="staff regular" type="Sprite" parent="."]
+visible = false
 modulate = Color( 1, 1, 1, 0.9 )
 scale = Vector2( 1.25, 1.25 )
 texture = ExtResource( 2 )

@@ -21,6 +21,7 @@ margin_right = 240.0
 margin_bottom = 159.0
 
 [node name="Name BG" type="ColorRect" parent="Unit Controlled by Player"]
+editor/display_folded = true
 margin_right = 54.0
 margin_bottom = 12.0
 color = Color( 1, 0.900818, 0.804688, 1 )

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/enemy_knight.png-e7f03ded95277a01e0f8bdf252f5ae8f.stex"
+path="res://.import/mage ally crit.png-0e53c7f457dafb6379bdb0ce3cb1481b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/units/knight/enemy_knight.png"
-dest_files=[ "res://.import/enemy_knight.png-e7f03ded95277a01e0f8bdf252f5ae8f.stex" ]
+source_file="res://assets/units/mage/mage ally crit.png"
+dest_files=[ "res://.import/mage ally crit.png-0e53c7f457dafb6379bdb0ce3cb1481b.stex" ]
 
 [params]
 

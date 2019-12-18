@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/gilliamPortrait.png-ea3f304d72c58c46b441b7f3a55d6d57.stex"
+path="res://.import/knight ally.png-e90ca049dcf02b6433c0a10ff7ad11e0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/units/knight/gilliamPortrait.png"
-dest_files=[ "res://.import/gilliamPortrait.png-ea3f304d72c58c46b441b7f3a55d6d57.stex" ]
+source_file="res://assets/units/knight/knight ally.png"
+dest_files=[ "res://.import/knight ally.png-e90ca049dcf02b6433c0a10ff7ad11e0.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -30,5 +30,5 @@ process/HDR_as_SRGB=false
 process/invert_color=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

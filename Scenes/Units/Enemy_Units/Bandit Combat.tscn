@@ -8,7 +8,6 @@
 [sub_resource type="Animation" id=1]
 resource_name = "axe crit"
 length = 11.1
-step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("axe regular:region_rect")
 tracks/0/interp = 1
@@ -155,6 +154,18 @@ tracks/10/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/11/type = "value"
+tracks/11/path = NodePath(".:z_index")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 10.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 5, 0 ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "axe death"
@@ -288,6 +299,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:z_index")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 5, 0 ]
+}
 
 [sub_resource type="Animation" id=4]
 length = 11.6
@@ -374,6 +397,18 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath(".:z_index")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 11 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 4, 0 ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -501,8 +536,21 @@ tracks/8/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/9/type = "value"
+tracks/9/path = NodePath(".:z_index")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 10.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 5, 0 ]
+}
 
 [node name="Bandit Combat" type="Node2D"]
+z_index = 5
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [ -23.0504 ],
@@ -511,9 +559,7 @@ __meta__ = {
 
 [node name="axe regular" type="Sprite" parent="."]
 visible = false
-position = Vector2( -2.79104, 5.50233 )
 scale = Vector2( 0.380224, 0.369083 )
-z_index = 1
 texture = ExtResource( 2 )
 flip_h = true
 region_enabled = true
@@ -521,10 +567,11 @@ region_rect = Rect2( 3, 77, 80, 136 )
 
 [node name="Battle Effect" type="Sprite" parent="."]
 visible = false
-position = Vector2( 70, -1 )
+position = Vector2( 79.4448, -19.3909 )
+z_index = 1
 texture = ExtResource( 3 )
 region_enabled = true
-region_rect = Rect2( 253, 853, 238, 143 )
+region_rect = Rect2( 313.838, 75.8994, 51.1058, 48.485 )
 
 [node name="anim" type="AnimationPlayer" parent="."]
 playback_speed = 5.0

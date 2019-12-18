@@ -69,15 +69,26 @@ func move_camera():
 	# New Position
 	var new_position_for_camera = Vector2(48,0)
 	
+	# Turn off allies except for a few
+	for ally in BattlefieldInfo.ally_units:
+		ally.visible = false
+		if ally.UnitStats.name == "Move Me 1":
+			ally.visible = true
+		
+		if ally.UnitStats.name == "Move Me 2":
+			ally.visible = true
+		
+		if ally.UnitStats.name == "Seth":
+			ally.visible = true
+		
+		if ally.UnitStats.name == "Eirika":
+			ally.visible = true
+	
 	# Move Camera and Remove old camera
 	BattlefieldInfo.main_game_camera.get_node("Tween").connect("tween_all_completed", self, "event_complete")
 	BattlefieldInfo.main_game_camera.get_node("Tween").interpolate_property(BattlefieldInfo.main_game_camera, "position", BattlefieldInfo.main_game_camera.position, new_position_for_camera, 1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	BattlefieldInfo.main_game_camera.current = true
 	BattlefieldInfo.main_game_camera.get_node("Tween").start()
-	
-	# Show allies
-	for ally in BattlefieldInfo.ally_units:
-		ally.visible = true
 
 func move_actor():
 	# Build path to the enemy

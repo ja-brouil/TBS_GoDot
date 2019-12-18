@@ -59,7 +59,6 @@ func _input(event):
 		$"Action Menu/Hand Selector/Accept".play(0)
 		process_selection()
 	elif Input.is_action_just_pressed("ui_cancel"):
-		$"Action Menu/Hand Selector/Cancel".play(0)
 		go_back()
 	elif Input.is_action_just_pressed("ui_up"):
 		movement("up")
@@ -247,6 +246,13 @@ func process_selection():
 			
 # Go back
 func go_back():
+	if BattlefieldInfo.current_Unit_Selected.UnitActionStatus.get_current_action() == Unit_Action_Status.DONE:
+		$"Action Menu/Hand Selector/Invalid".play(0)
+		return
+	
+	# Accept Sound
+	$"Action Menu/Hand Selector/Cancel".play(0)
+	
 	# Move Unit back
 	BattlefieldInfo.current_Unit_Selected.position = BattlefieldInfo.previous_position
 	Calculators.update_unit_tile_info(BattlefieldInfo.current_Unit_Selected, BattlefieldInfo.grid[BattlefieldInfo.previous_position.x / Cell.CELL_SIZE][BattlefieldInfo.previous_position.y / Cell.CELL_SIZE])
