@@ -30,6 +30,9 @@ func _ready():
 	
 	# Set initial text
 	set_victory_text()
+	
+	# UI Easy access
+	BattlefieldInfo.battlefield_ui = self
 
 func set_victory_text():
 	$"Battlefield HUD/Victory Info/V Name".text = BattlefieldInfo.victory_text

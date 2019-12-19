@@ -19,6 +19,9 @@ func _ready():
 	
 # Start the events
 func start_events_queue():
+	# Pause gameplay if not paused
+	BattlefieldInfo.cursor.disable_standard("Disabled")
+	
 	# If the event queue is empty, we are done processing events
 	if queue_of_events.empty():
 		print("FROM EVENT SYSTEM: Event queue is empty!")
@@ -54,17 +57,13 @@ func remove_event(event: Event_Base):
 
 # Resumes gameplay -> Modify this later for custom starts
 func resume_gameplay():
-	pass
+	BattlefieldInfo.cursor.enable_standard()
 
 # Starts the level -> Use this for events that take place at the beginning of the level
 func start_level():
 	BattlefieldInfo.turn_manager.turn = Turn_Manager.WAIT
 	BattlefieldInfo.start_level()
 	current_state = middle_events
-
-# Add a mid level event
-func add_mid_level_event(event: Event_Base):
-	mid_level_events.append(event)
 
 # Ends the level and goes to the next level
 func end_level():

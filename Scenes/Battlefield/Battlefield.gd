@@ -24,6 +24,7 @@ var extra_sound_effects
 
 # Cursor
 var cursor
+var battlefield_ui
 
 # Victory Condition
 var victory_text
@@ -91,7 +92,7 @@ var ally_units = {}
 var enemy_units = {}
 
 # Spawn points
-var spawn_pints = []
+var spawn_points = []
 
 # Eirika for AI purposes
 var Eirika

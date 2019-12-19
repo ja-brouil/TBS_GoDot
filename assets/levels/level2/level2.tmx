@@ -31,7 +31,7 @@
 421,422,423,424,425,426,427,428,429,430,431,432,433,434,435,436,437,438,439,440
 </data>
  </layer>
- <objectgroup name="CellInfo">
+ <objectgroup name="CellInfo" visible="0">
   <object id="1794" x="0" y="256" width="16" height="16">
    <properties>
     <property name="Avd" type="int" value="0"/>
@@ -4199,7 +4199,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="Enemies" visible="0">
+ <objectgroup name="Enemies">
   <object id="2878" x="32" y="256" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
@@ -4501,7 +4501,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="SpawnPoints">
+ <objectgroup name="SpawnPoints" visible="0">
   <object id="2931" name="Spawn Point" x="-16" y="288" width="16" height="16">
    <properties>
     <property name="adj_tile_x" type="int" value="0"/>

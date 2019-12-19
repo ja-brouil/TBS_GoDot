@@ -171,6 +171,23 @@ func _ready():
 		grid[newEnemy.position.x / Cell.CELL_SIZE][newEnemy.position.y / Cell.CELL_SIZE].occupyingUnit = newEnemy
 		all_enemies_location.append(newEnemy)
 	
+	# Spawn points
+	for spawn_point in $SpawnPoints.get_children():
+		var spawn_point_cell = cell.instance()
+		spawn_point_cell.init(Vector2(spawn_point.position.x / Cell.CELL_SIZE, spawn_point.position.y / Cell.CELL_SIZE), \
+		0, 0, 100, "Plains")
+		spawn_point_cell.set_name("spawn_point_cell")
+		# grid[cellInfo.position.x / Cell.CELL_SIZE][cellInfo.position.y / Cell.CELL_SIZE] = map_cell_info
+		
+		# Add Adj Tile since it's off map
+		var x_adj_pos: int = spawn_point.get_meta("adj_tile_x") / Cell.CELL_SIZE
+		var y_adj_pos: int = spawn_point.get_meta("adj_tile_y") / Cell.CELL_SIZE
+		spawn_point_cell.adjCells.append(grid[x_adj_pos][y_adj_pos])
+		BattlefieldInfo.spawn_points.append(spawn_point_cell)
+		add_child(spawn_point_cell)
+	
+	$SpawnPoints.queue_free()
+	
 	# Send cell and grid information to the battlefield main so it is easily accessible
 	BattlefieldInfo.grid = self.grid
 	BattlefieldInfo.map_height = self.map_height

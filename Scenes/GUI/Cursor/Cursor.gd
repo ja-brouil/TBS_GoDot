@@ -186,13 +186,6 @@ func acceptButton() -> void:
 				# Start moving the unit
 				BattlefieldInfo.unit_movement_system.is_moving = true
 				
-				# Set Camera on unit
-#				var movement_camera = preload("res://Scenes/Camera/MovementCamera.tscn").instance()
-#				BattlefieldInfo.current_Unit_Selected.add_child(movement_camera)
-#				movement_camera.anchor_mode = Camera2D.ANCHOR_MODE_FIXED_TOP_LEFT
-#				movement_camera.position += Vector2(-112,-72)
-#				movement_camera.current = true
-
 				# Turn off Cursor
 				enable(false, WAIT)
 				
