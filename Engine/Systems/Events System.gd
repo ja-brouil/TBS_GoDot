@@ -51,13 +51,19 @@ func start_events_queue():
 func add_event(event: Event_Base):
 	queue_of_events.append(event)
 
+func add_mid_event(event: Event_Base):
+	mid_level_events.append(event)
+
 # Remove an event from the queue
 func remove_event(event: Event_Base):
 	queue_of_events.erase(event)
 
-# Resumes gameplay -> Modify this later for custom starts
+# Resumes gameplay
 func resume_gameplay():
 	BattlefieldInfo.cursor.enable_standard()
+
+func pause_ui():
+	BattlefieldInfo.cursor.disable_standard(null)
 
 # Starts the level -> Use this for events that take place at the beginning of the level
 func start_level():

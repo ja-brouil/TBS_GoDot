@@ -8,7 +8,7 @@ enum {PLAYER_TURN, ENEMY_TURN, ENEMY_COMBAT_TURN, WAIT}
 var turn
 
 # Turn number
-var player_turn_number = 1
+var player_turn_number = 0
 var enemy_turn_number = 0
 
 # Signal for events
@@ -18,6 +18,8 @@ signal enemy_turn_increased
 # Signal to play graphic
 signal play_transition
 
+# Mid Level events I am not sure where to place this so this will have to do for now
+var mid_level_events = []
 
 func _init():
 	turn = WAIT
@@ -50,8 +52,14 @@ func check_end_of_turn():
 			for ally_unit in BattlefieldInfo.ally_units:
 				if ally_unit.UnitActionStatus.get_current_action() != Unit_Action_Status.DONE:
 					return
-			# All Ally Units have moved and are done
-			$"End of Enemy".start(0)
+			# Increase the player turn amount by 1
+			player_turn_number += 1
+			emit_signal("player_turn_increased", player_turn_number)
+			
+			# Run mid level events
+			if mid_level_events.empty():
+				start_ally_transition()
+			
 			turn = WAIT
 		ENEMY_TURN:
 			for enemy_unit in BattlefieldInfo.enemy_units:
@@ -61,15 +69,30 @@ func check_end_of_turn():
 					return
 			# All Enemy units have moved and are done
 			BattlefieldInfo.current_Unit_Selected = null
-			# Set Camera back on Eirika and cursor
-			BattlefieldInfo.main_game_camera.position = (BattlefieldInfo.Eirika.position + Vector2(-112, -82))
-			BattlefieldInfo.main_game_camera.clampCameraPosition()
-			BattlefieldInfo.cursor.position = BattlefieldInfo.Eirika.position
-			# Start Transition
-			$"End of Ally".start(0)
+			
+			# Increase the enemy turn amount by 1
+			enemy_turn_number += 1
+			emit_signal("enemy_turn_increased", enemy_turn_number)
+			
+			# Start enemy transition
+			if mid_level_events.empty():
+				start_enemy_transition()
+			
 			turn = WAIT
 		WAIT:
 			pass
+
+func start_ally_transition():
+	# All Ally Units have moved and are done
+	$"End of Enemy".start(0)
+
+func start_enemy_transition():
+	# Set Camera back on Eirika and cursor
+	BattlefieldInfo.main_game_camera.position = (BattlefieldInfo.Eirika.position + Vector2(-112, -82))
+	BattlefieldInfo.main_game_camera.clampCameraPosition()
+	BattlefieldInfo.cursor.position = BattlefieldInfo.Eirika.position
+	# Start Transition
+	$"End of Ally".start(0)
 
 func _on_End_of_Ally_timeout():
 	emit_signal("play_transition", "Ally")

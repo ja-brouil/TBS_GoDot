@@ -13,6 +13,9 @@ signal mapInformationLoaded
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	# Current Level set
+	BattlefieldInfo.current_level = self
+	
 	# Set Map height
 	map_height = self.get_meta("height")
 	map_width = self.get_meta("width")
@@ -138,8 +141,6 @@ func _ready():
 		newEnemy.UnitStats.name = enemy.get_meta("Name")
 		
 		# Set Stats and position
-		newEnemy.position.x = enemy.position.x
-		newEnemy.position.y = enemy.position.y
 		newEnemy.UnitStats.name = enemy.get_meta("Name")
 		newEnemy.UnitStats.strength = enemy.get_meta("Str")
 		newEnemy.UnitStats.skill = enemy.get_meta("Skill")

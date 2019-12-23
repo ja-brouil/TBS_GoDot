@@ -40,6 +40,7 @@ func start():
 	for ally in BattlefieldInfo.ally_units:
 		if ally.UnitStats.name == "Dead Soldier":
 			Dead_soldier = ally
+			Dead_soldier.UnitStats.name = "Ephraim Soldier"
 			ally.UnitStats.name = "Ephraim Soldier"
 			break
 	

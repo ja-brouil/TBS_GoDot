@@ -140,6 +140,7 @@ func update_preview_box():
 	$"Preview/Player/Player Hit".text = str(Combat_Calculator.player_accuracy)
 	
 	# Double Attack
+	$"Preview/Player/Player Double Attack Logo".visible = false
 	if Combat_Calculator.player_double_attack:
 		$"Preview/Player/Player Double Attack Logo".visible = true
 	
@@ -159,6 +160,7 @@ func update_preview_box():
 	$"Preview/Enemy/Enemy Hit".text = str(Combat_Calculator.enemy_accuracy)
 	
 	# Double attack
+	$"Preview/Enemy/Enemy Double Attack Logo".visible = false
 	if Combat_Calculator.enemy_double_attack:
 		$"Preview/Enemy/Enemy Double Attack Logo".visible = true
 	

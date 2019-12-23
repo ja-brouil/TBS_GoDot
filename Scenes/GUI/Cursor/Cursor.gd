@@ -202,7 +202,6 @@ func cancel_Button() -> void:
 			# Set Cursor back to Move status and clear current unit if needed
 			updateCursorData()
 			cursor_state = MOVE
-			updateCursorData()
 			
 			# Play Cancel sound
 			$"BackSound".play()

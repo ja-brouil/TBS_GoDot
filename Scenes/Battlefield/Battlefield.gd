@@ -16,6 +16,9 @@ var turn_transition
 var event_system
 var movement_system_cinematic
 
+# Level
+var current_level
+
 # Sound and music
 var music_player
 var battle_sounds

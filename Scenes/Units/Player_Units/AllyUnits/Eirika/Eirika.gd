@@ -16,7 +16,6 @@ func _ready():
 	
 	# Weapons and Inventory
 	UnitInventory.usable_weapons.append(Item.WEAPON_TYPE.SWORD)
-	UnitInventory.add_item(preload("res://Scenes/Items/Lance/Iron Lance.tscn").instance())
 	UnitInventory.add_item(preload("res://Scenes/Items/Swords/Iron Sword.tscn").instance())
 	UnitInventory.add_item(preload("res://Scenes/Items/Swords/Rapier.tscn").instance())
 	

@@ -6,11 +6,11 @@ var array = []
 
 func add_first(value):
 	array.push_front(value)
-	array.sort_custom(self, "custom_sort")
+	array.sort_custom(CustomSorter, "custom_sort")
 
 func add_last(value):
 	array.push_back(value)
-	array.sort_custom(self, "custom_sort")
+	array.sort_custom(CustomSorter, "custom_sort")
 
 func pop_front():
 	return array.pop_front()
@@ -27,7 +27,8 @@ func get_size():
 func contains(value):
 	return array.has(value)
 
-func custom_sort(Cell_A, Cell_B):
-	if Cell_A.get_fCost() < Cell_B.get_fCost():
-		return true
-	return false
+class CustomSorter:
+	static func custom_sort(Cell_A, Cell_B):
+		if Cell_A.get_fCost() < Cell_B.get_fCost():
+			return true
+		return false
