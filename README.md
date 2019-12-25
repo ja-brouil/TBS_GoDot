@@ -48,3 +48,5 @@ Movement
 Party Members and UI
 ![UI and Party Members](https://raw.githubusercontent.com/ja-brouil/TBS_GoDot/master/Screenshots/Party%20Members.png)
 
+Trade Screen
+![Trade Screen](https://raw.githubusercontent.com/ja-brouil/TBS_GoDot/master/Screenshots/Trade.png)
