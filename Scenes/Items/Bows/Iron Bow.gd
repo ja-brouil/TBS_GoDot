@@ -30,7 +30,11 @@ func _ready():
 
 # Special ability -> Modify this later
 func special_ability(unit_holding_this_item, unit_that_is_being_attacked):
-	return 1
+	# Triple damage against flying units
+	if unit_that_is_being_attacked.UnitStats.pegasus:
+		return 3
+	else:
+		return 1
 
 # Sounds
 func draw_attack_sound():

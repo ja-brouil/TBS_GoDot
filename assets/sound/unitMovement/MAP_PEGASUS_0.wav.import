@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/MAP_PEGASUS_0.wav-69ede73a87d86ea49a49698b27be7979.sample"
+
+[deps]
+
+source_file="res://assets/sound/unitMovement/MAP_PEGASUS_0.wav"
+dest_files=[ "res://.import/MAP_PEGASUS_0.wav-69ede73a87d86ea49a49698b27be7979.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=true
+compress/mode=0

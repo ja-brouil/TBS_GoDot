@@ -22,6 +22,7 @@ var occupyingUnit = null
 # Pathfinding information
 var hCost = 0
 var gCost = 0
+var fCost = 0
 var adjCells = []
 var parentTile = null
 var isVisited = false
@@ -48,7 +49,8 @@ func init(cellPosition, avoidanceBonus, defenseBonus, movementCost, tileName) ->
 
 # Heuristic costs
 func get_fCost() -> int:
-	return hCost + gCost
+	fCost = hCost + gCost
+	return fCost
 
 func getPosition() -> Vector2:
 	return cellPosition

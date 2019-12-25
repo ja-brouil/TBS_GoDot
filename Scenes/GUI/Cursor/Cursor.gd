@@ -200,8 +200,8 @@ func cancel_Button() -> void:
 			BattlefieldInfo.movement_calculator.turn_off_all_tiles(BattlefieldInfo.current_Unit_Selected, BattlefieldInfo.grid)
 			
 			# Set Cursor back to Move status and clear current unit if needed
-			updateCursorData()
 			cursor_state = MOVE
+			updateCursorData()
 			
 			# Play Cancel sound
 			$"BackSound".play()

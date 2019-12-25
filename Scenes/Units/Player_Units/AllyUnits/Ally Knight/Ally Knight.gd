@@ -7,6 +7,9 @@ func _ready():
 	# Set this when the level loads but for now, this is just a test to simply things
 	UnitStats.name = "Gilliam"
 	
+	# Armor
+	UnitStats.armor = true
+	
 	# Unit Portrait
 	unit_portrait_path = preload("res://assets/units/knight/gilliam portrait.png")
 	

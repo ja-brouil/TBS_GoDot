@@ -51,6 +51,11 @@ const MAX_STAT = 30
 const MAX_LEVEL = 20
 const NEXT_LEVEL_XP = 100
 
+# Damage calculations
+var horse = false
+var pegasus = false
+var armor = false
+
 func _init():
 	name = "PLACERHOLDER"
 	class_type = "PLACEHOLDER"

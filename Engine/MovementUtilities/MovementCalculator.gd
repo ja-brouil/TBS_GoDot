@@ -136,9 +136,9 @@ func processHealingTile(Unit):
 # Returns the penalty cost associated with the unit's class for moving across different tiles
 func getPenaltyCost(Unit_Movement, Cell_Type) -> int:
 	match Cell_Type:
-		"Plain" || "Road" || "Bridge" || "Throne":
+		"Plain", "Road", "Bridge", "Throne":
 			return Unit_Movement.defaultPenalty
-		"Mountain":
+		"Mountain", "Cliff":
 			return Unit_Movement.mountainPenalty
 		"Hill":
 			return Unit_Movement.hillPenalty
@@ -176,6 +176,7 @@ func get_path_to_destination(Unit, target_destination, AllTiles):
 			tile.parentTile = null
 			tile.hCost = 0
 			tile.gCost = 0
+			tile.fCost = 0
 	
 	# Clear Queue for the unit
 	Unit.UnitMovementStats.movement_queue.clear()
@@ -203,11 +204,11 @@ func get_path_to_destination(Unit, target_destination, AllTiles):
 		# Process Adj Tiles
 		for adjCell in current_tile.adjCells:
 			# Do not process unwalkable tiles or we can't go there
-			if adjCell.movementCost >= 50 || closed_list.contains(adjCell) || !Unit.UnitMovementStats.allowedMovement.has(adjCell):
+			if adjCell.movementCost >= 101 || closed_list.contains(adjCell) || !Unit.UnitMovementStats.allowedMovement.has(adjCell):
 				continue
 				
 			# Calculate Heuristic costs
-			var movement_cost_to_neighbor = current_tile.gCost + adjCell.movementCost
+			var movement_cost_to_neighbor = current_tile.gCost + adjCell.movementCost + getPenaltyCost(Unit.UnitMovementStats, adjCell.tileName)
 			if movement_cost_to_neighbor < adjCell.gCost || !open_list.contains(adjCell):
 				adjCell.gCost = movement_cost_to_neighbor
 				adjCell.hCost = calculate_hCost(adjCell, target_destination, Unit, AllTiles)
@@ -255,11 +256,11 @@ func get_path_to_destination_AI(Unit, target_destination, AllTiles):
 		# Process Adj Tiles
 		for adjCell in current_tile.adjCells:
 			# Do not process unwalkable tiles or we can't go there
-			if adjCell.movementCost >= 50 || closed_list.contains(adjCell):
+			if adjCell.movementCost >= 101 || closed_list.contains(adjCell):
 				continue
 			
 			# Calculate Heuristic costs
-			var movement_cost_to_neighbor = current_tile.gCost + adjCell.movementCost
+			var movement_cost_to_neighbor = current_tile.gCost + adjCell.movementCost + getPenaltyCost(Unit.UnitMovementStats, adjCell.tileName)
 			if movement_cost_to_neighbor < adjCell.gCost || !open_list.contains(adjCell):
 				adjCell.gCost = movement_cost_to_neighbor
 				adjCell.hCost = calculate_hCost(adjCell, target_destination, Unit, AllTiles)
@@ -282,9 +283,10 @@ func calculate_hCost(initial_tile, destination_tile, unit, all_tiles) -> int:
 	# Caculate all the tiles using manhattan distance how far you need to go to get to the target destination
 	# North South
 	var vertical_movement
+	
 	if initial_tile.getPosition().y - destination_tile.getPosition().y < 0:
 		vertical_movement = -1
-		for i in range(initial_tile.getPosition().y, destination_tile.getPosition().y, vertical_movement):
+		for i in range(destination_tile.getPosition().y, initial_tile.getPosition().y, vertical_movement):
 			total_vertical_cost += all_tiles[starting_NodeX][i].movementCost + getPenaltyCost(MovementStats, all_tiles[starting_NodeX][i].tileName)
 	elif initial_tile.getPosition().y - destination_tile.getPosition().y > 0:
 		vertical_movement = 1
@@ -297,9 +299,9 @@ func calculate_hCost(initial_tile, destination_tile, unit, all_tiles) -> int:
 	var horizontal_movement
 	if initial_tile.getPosition().x - destination_tile.getPosition().x < 0:
 		horizontal_movement = -1
-		for i in range(initial_tile.getPosition().x, destination_tile.getPosition().x, horizontal_movement):
+		for i in range(destination_tile.getPosition().x, initial_tile.getPosition().x, horizontal_movement):
 			total_horizontal_cost += all_tiles[i][starting_NodeY].movementCost + getPenaltyCost(MovementStats, all_tiles[i][starting_NodeY].tileName)
-	elif initial_tile.getPosition().x - destination_tile.getPosition().y > 0:
+	elif initial_tile.getPosition().x - destination_tile.getPosition().x > 0:
 		horizontal_movement = 1
 		for i in range(initial_tile.getPosition().x, destination_tile.getPosition().x, horizontal_movement):
 			total_horizontal_cost += all_tiles[i][starting_NodeY].movementCost + getPenaltyCost(MovementStats, all_tiles[i][starting_NodeY].tileName)

@@ -35,14 +35,14 @@ var riverPenalty
 var seaPenalty
 
 # Constructor
-func _init(movementSteps, defaultPenalty, hillPenalty, forestPenalty, fortressPenalty, buildingPenalty, riverPenalty, seaPenalty, mountainPenalty):
-	self.movementSteps = movementSteps
-	self.defaultPenalty = defaultPenalty
-	self.hillPenalty = hillPenalty
-	self.forestPenalty = forestPenalty
-	self.fortressPenalty = fortressPenalty
-	self.buildingPenalty = buildingPenalty
-	self.riverPenalty = riverPenalty
-	self.seaPenalty = seaPenalty
-	self.mountainPenalty = mountainPenalty
+func _init():
+	self.movementSteps = 5
+	self.defaultPenalty = 0
+	self.hillPenalty = 1
+	self.forestPenalty = 0
+	self.fortressPenalty = 0
+	self.buildingPenalty = 0
+	self.riverPenalty = 0
+	self.seaPenalty = 0
+	self.mountainPenalty = 0
 	is_ally = true

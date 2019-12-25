@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="20" height="22" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="2940">
+<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="20" height="22" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="2942">
  <properties>
   <property name="Enemies to defeat" type="int" value="15"/>
   <property name="Victory Condition" value="Survive for 10 turns"/>
@@ -1164,7 +1164,7 @@
    <properties>
     <property name="Avd" type="int" value="30"/>
     <property name="Def" type="int" value="30"/>
-    <property name="MovementCost" type="int" value="100"/>
+    <property name="MovementCost" type="int" value="101"/>
     <property name="TileType" value="Castle"/>
    </properties>
   </object>
@@ -1180,7 +1180,7 @@
    <properties>
     <property name="Avd" type="int" value="30"/>
     <property name="Def" type="int" value="30"/>
-    <property name="MovementCost" type="int" value="100"/>
+    <property name="MovementCost" type="int" value="101"/>
     <property name="TileType" value="Castle"/>
    </properties>
   </object>
@@ -1188,7 +1188,7 @@
    <properties>
     <property name="Avd" type="int" value="30"/>
     <property name="Def" type="int" value="30"/>
-    <property name="MovementCost" type="int" value="100"/>
+    <property name="MovementCost" type="int" value="101"/>
     <property name="TileType" value="Castle"/>
    </properties>
   </object>
@@ -1196,7 +1196,7 @@
    <properties>
     <property name="Avd" type="int" value="30"/>
     <property name="Def" type="int" value="30"/>
-    <property name="MovementCost" type="int" value="100"/>
+    <property name="MovementCost" type="int" value="101"/>
     <property name="TileType" value="Castle"/>
    </properties>
   </object>
@@ -1204,7 +1204,7 @@
    <properties>
     <property name="Avd" type="int" value="30"/>
     <property name="Def" type="int" value="30"/>
-    <property name="MovementCost" type="int" value="100"/>
+    <property name="MovementCost" type="int" value="101"/>
     <property name="TileType" value="Castle"/>
    </properties>
   </object>
@@ -1212,7 +1212,7 @@
    <properties>
     <property name="Avd" type="int" value="30"/>
     <property name="Def" type="int" value="30"/>
-    <property name="MovementCost" type="int" value="100"/>
+    <property name="MovementCost" type="int" value="101"/>
     <property name="TileType" value="Castle"/>
    </properties>
   </object>
@@ -1220,7 +1220,7 @@
    <properties>
     <property name="Avd" type="int" value="30"/>
     <property name="Def" type="int" value="30"/>
-    <property name="MovementCost" type="int" value="100"/>
+    <property name="MovementCost" type="int" value="101"/>
     <property name="TileType" value="Castle"/>
    </properties>
   </object>
@@ -3553,7 +3553,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="3" name="Allies" visible="0">
+ <objectgroup id="3" name="Allies">
   <object id="2281" x="144" y="112" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
@@ -3584,7 +3584,7 @@
     <property name="constiChance" type="int" value="0"/>
     <property name="defChance" type="int" value="60"/>
     <property name="defaultPenalty" type="int" value="0"/>
-    <property name="forestPenalty" type="int" value="0"/>
+    <property name="forestPenalty" type="int" value="1"/>
     <property name="fortressPenalty" type="int" value="0"/>
     <property name="hillPenalty" type="int" value="4"/>
     <property name="isAlly" type="bool" value="true"/>
@@ -3676,9 +3676,9 @@
     <property name="constiChance" type="int" value="0"/>
     <property name="defChance" type="int" value="40"/>
     <property name="defaultPenalty" type="int" value="0"/>
-    <property name="forestPenalty" type="int" value="1"/>
-    <property name="fortressPenalty" type="int" value="1"/>
-    <property name="hillPenalty" type="int" value="3"/>
+    <property name="forestPenalty" type="int" value="0"/>
+    <property name="fortressPenalty" type="int" value="0"/>
+    <property name="hillPenalty" type="int" value="2"/>
     <property name="isAlly" type="bool" value="true"/>
     <property name="luckChance" type="int" value="70"/>
     <property name="magicChance" type="int" value="70"/>
@@ -4044,9 +4044,9 @@
     <property name="constiChance" type="int" value="0"/>
     <property name="defChance" type="int" value="15"/>
     <property name="defaultPenalty" type="int" value="0"/>
-    <property name="forestPenalty" type="int" value="1"/>
-    <property name="fortressPenalty" type="int" value="1"/>
-    <property name="hillPenalty" type="int" value="3"/>
+    <property name="forestPenalty" type="int" value="0"/>
+    <property name="fortressPenalty" type="int" value="0"/>
+    <property name="hillPenalty" type="int" value="1"/>
     <property name="isAlly" type="bool" value="true"/>
     <property name="luckChance" type="int" value="50"/>
     <property name="magicChance" type="int" value="65"/>
@@ -4154,6 +4154,52 @@
   </object>
   <object id="2930" x="144" y="64" width="16" height="16">
    <properties>
+    <property name="BonusCrit" type="int" value="100"/>
+    <property name="BonusDodge" type="int" value="0"/>
+    <property name="BonusHit" type="int" value="0"/>
+    <property name="BossBonus" type="int" value="0"/>
+    <property name="Class" value="Pegasus Knight"/>
+    <property name="ClassBonusA" type="int" value="0"/>
+    <property name="ClassBonusB" type="int" value="0"/>
+    <property name="ClassPower" type="int" value="3"/>
+    <property name="Consti" type="int" value="5"/>
+    <property name="Defense" type="int" value="6"/>
+    <property name="Health" type="int" value="17"/>
+    <property name="InstanceName" value="Ally Pegasus Knight"/>
+    <property name="Level" type="int" value="1"/>
+    <property name="Luck" type="int" value="4"/>
+    <property name="Magic" type="int" value="0"/>
+    <property name="MaxHealth" type="int" value="17"/>
+    <property name="Move" type="int" value="7"/>
+    <property name="Name" value="Vanessa"/>
+    <property name="Res" type="int" value="5"/>
+    <property name="Skill" type="int" value="7"/>
+    <property name="Speed" type="int" value="12"/>
+    <property name="Str" type="int" value="5"/>
+    <property name="ThiefBonus" type="int" value="0"/>
+    <property name="Weapon" value="Iron Lance"/>
+    <property name="buildingPenalty" type="int" value="0"/>
+    <property name="constiChance" type="int" value="0"/>
+    <property name="defChance" type="int" value="25"/>
+    <property name="defaultPenalty" type="int" value="0"/>
+    <property name="forestPenalty" type="int" value="-1"/>
+    <property name="fortressPenalty" type="int" value="-1"/>
+    <property name="hillPenalty" type="int" value="-2"/>
+    <property name="isAlly" type="bool" value="true"/>
+    <property name="luckChance" type="int" value="30"/>
+    <property name="magicChance" type="int" value="0"/>
+    <property name="maxHPChance" type="int" value="50"/>
+    <property name="mountainPenalty" type="int" value="-99"/>
+    <property name="resChance" type="int" value="60"/>
+    <property name="riverPenalty" type="int" value="0"/>
+    <property name="seaPenalty" type="int" value="-99"/>
+    <property name="skillChance" type="int" value="55"/>
+    <property name="speedChance" type="int" value="60"/>
+    <property name="strChance" type="int" value="40"/>
+   </properties>
+  </object>
+  <object id="2940" x="144" y="64" width="16" height="16">
+   <properties>
     <property name="BonusCrit" type="int" value="0"/>
     <property name="BonusDodge" type="int" value="0"/>
     <property name="BonusHit" type="int" value="0"/>
@@ -4182,9 +4228,9 @@
     <property name="constiChance" type="int" value="0"/>
     <property name="defChance" type="int" value="55"/>
     <property name="defaultPenalty" type="int" value="0"/>
-    <property name="forestPenalty" type="int" value="1"/>
-    <property name="fortressPenalty" type="int" value="1"/>
-    <property name="hillPenalty" type="int" value="3"/>
+    <property name="forestPenalty" type="int" value="0"/>
+    <property name="fortressPenalty" type="int" value="0"/>
+    <property name="hillPenalty" type="int" value="2"/>
     <property name="isAlly" type="bool" value="true"/>
     <property name="luckChance" type="int" value="30"/>
     <property name="magicChance" type="int" value="0"/>
@@ -4199,7 +4245,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="4" name="Enemies">
+ <objectgroup id="4" name="Enemies" visible="0">
   <object id="2878" x="32" y="256" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
@@ -4498,6 +4544,53 @@
     <property name="Weapon" value="Iron Axe"/>
     <property name="aiType" value="Passive"/>
     <property name="isAlly" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="2941" x="96" y="96" width="16" height="16">
+   <properties>
+    <property name="BonusCrit" type="int" value="0"/>
+    <property name="BonusDodge" type="int" value="0"/>
+    <property name="BonusHit" type="int" value="0"/>
+    <property name="BossBonus" type="int" value="0"/>
+    <property name="Class" value="Pegasus Knight"/>
+    <property name="ClassBonusA" type="int" value="0"/>
+    <property name="ClassBonusB" type="int" value="0"/>
+    <property name="ClassPower" type="int" value="3"/>
+    <property name="Consti" type="int" value="5"/>
+    <property name="Defense" type="int" value="6"/>
+    <property name="Health" type="int" value="17"/>
+    <property name="InstanceName" value="Enemy Pegasus Knight"/>
+    <property name="Level" type="int" value="1"/>
+    <property name="Luck" type="int" value="4"/>
+    <property name="Magic" type="int" value="0"/>
+    <property name="MaxHealth" type="int" value="17"/>
+    <property name="Move" type="int" value="7"/>
+    <property name="Name" value="Soldier"/>
+    <property name="Res" type="int" value="5"/>
+    <property name="Skill" type="int" value="7"/>
+    <property name="Speed" type="int" value="12"/>
+    <property name="Str" type="int" value="5"/>
+    <property name="ThiefBonus" type="int" value="0"/>
+    <property name="Weapon" value="Iron Lance"/>
+    <property name="aiType" value="Aggresive"/>
+    <property name="buildingPenalty" type="int" value="0"/>
+    <property name="constiChance" type="int" value="0"/>
+    <property name="defChance" type="int" value="25"/>
+    <property name="defaultPenalty" type="int" value="0"/>
+    <property name="forestPenalty" type="int" value="-1"/>
+    <property name="fortressPenalty" type="int" value="-1"/>
+    <property name="hillPenalty" type="int" value="-2"/>
+    <property name="isAlly" type="bool" value="false"/>
+    <property name="luckChance" type="int" value="30"/>
+    <property name="magicChance" type="int" value="0"/>
+    <property name="maxHPChance" type="int" value="50"/>
+    <property name="mountainPenalty" type="int" value="-99"/>
+    <property name="resChance" type="int" value="60"/>
+    <property name="riverPenalty" type="int" value="0"/>
+    <property name="seaPenalty" type="int" value="-99"/>
+    <property name="skillChance" type="int" value="55"/>
+    <property name="speedChance" type="int" value="60"/>
+    <property name="strChance" type="int" value="40"/>
    </properties>
   </object>
  </objectgroup>

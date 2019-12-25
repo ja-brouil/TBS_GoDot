@@ -1,11 +1,13 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
-[ext_resource path="res://Scenes/Units/Player_Units/AllyUnits/Eirika/Eirika.gd" type="Script" id=1]
-[ext_resource path="res://assets/units/eirika/eirika.png" type="Texture" id=2]
-[ext_resource path="res://assets/sound/unitMovement/Light Foot Steps 1.wav" type="AudioStream" id=3]
-[ext_resource path="res://Scenes/GUI/Damage Preview/Cursor Select.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Units/Enemy_Units/Enemy Pegasus Knight.gd" type="Script" id=1]
+[ext_resource path="res://assets/units/pegasus knight/enemy pegasus knight.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/AI/AI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Units/Player_Units/AllyUnits/Default Anim.tres" type="Animation" id=4]
+[ext_resource path="res://assets/sound/unitMovement/PEGASUS_FLAP_0.wav" type="AudioStream" id=5]
+[ext_resource path="res://Scenes/GUI/Damage Preview/Cursor Select.tscn" type="PackedScene" id=6]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=12]
 length = 2.0
 loop = true
 step = 0.5
@@ -19,7 +21,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5, 1, 1.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Rect2( 3, 112, 18, 16 ), Rect2( 35, 112, 18, 16 ), Rect2( 67, 112, 18, 15 ), Rect2( 99, 112, 18, 16 ) ]
+"values": [ Rect2( 69, 38, 26, 25 ), Rect2( 66, 70, 33, 28 ), Rect2( 66, 104, 32, 26 ), Rect2( 66, 70, 33, 28 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite:position")
@@ -28,10 +30,133 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( -5, -4 ), Vector2( -8, -4 ), Vector2( -8, -4 ), Vector2( -8, -4 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=13]
+length = 2.0
+loop = true
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 38, 1, 24, 24 ), Rect2( 38, 39, 22, 21 ), Rect2( 38, 71, 21, 23 ), Rect2( 38, 105, 22, 21 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( -4, -4 ), Vector2( -2, -1 ), Vector2( -1, -3 ), Vector2( -2, -1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=14]
+length = 2.0
+loop = true
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 8, 44, 16, 21 ), Rect2( 8, 77, 16, 21 ), Rect2( 8, 109, 16, 22 ), Rect2( 8, 77, 16, 21 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, -1 ), Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=15]
+length = 2.0
+loop = true
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 38, 1, 24, 24 ), Rect2( 38, 39, 22, 21 ), Rect2( 38, 71, 21, 23 ), Rect2( 38, 105, 22, 21 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( -4, -4 ), Vector2( -2, -1 ), Vector2( -1, -3 ), Vector2( -2, -1 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Sprite:flip_h")
@@ -46,7 +171,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 tracks/3/type = "audio"
-tracks/3/path = NodePath("footsteps")
+tracks/3/path = NodePath("Flying Sound")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -55,12 +180,12 @@ tracks/3/keys = {
 "clips": [ {
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource( 3 )
+"stream": ExtResource( 5 )
 } ],
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=16]
 length = 2.0
 loop = true
 step = 0.5
@@ -74,7 +199,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5, 1, 1.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Rect2( 3, 112, 18, 16 ), Rect2( 35, 112, 18, 16 ), Rect2( 67, 112, 18, 15 ), Rect2( 99, 112, 18, 16 ) ]
+"values": [ Rect2( 38, 1, 24, 24 ), Rect2( 38, 39, 22, 21 ), Rect2( 38, 71, 21, 23 ), Rect2( 38, 105, 22, 21 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite:position")
@@ -83,10 +208,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( -4, -4 ), Vector2( -2, -1 ), Vector2( -1, -3 ), Vector2( -2, -1 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Sprite:flip_h")
@@ -101,7 +226,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=17]
 length = 2.0
 loop = true
 step = 0.5
@@ -115,7 +240,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5, 1, 1.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Rect2( 3, 112, 18, 16 ), Rect2( 35, 112, 18, 16 ), Rect2( 67, 112, 18, 15 ), Rect2( 99, 112, 18, 16 ) ]
+"values": [ Rect2( 38, 1, 24, 24 ), Rect2( 38, 39, 22, 21 ), Rect2( 38, 71, 21, 23 ), Rect2( 38, 105, 22, 21 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite:position")
@@ -124,190 +249,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:flip_h")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-
-[sub_resource type="Animation" id=4]
-length = 2.0
-loop = true
-step = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5, 1, 1.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Rect2( 1, 81, 16, 15 ), Rect2( 33, 81, 16, 15 ), Rect2( 65, 81, 16, 15 ), Rect2( 97, 81, 16, 15 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:flip_h")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-
-[sub_resource type="Animation" id=5]
-length = 2.0
-loop = true
-step = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ Rect2( 3, 49, 19, 15 ), Rect2( 37, 49, 17, 15 ), Rect2( 68, 49, 18, 15 ), Rect2( 101, 49, 17, 15 ) ]
-}
-tracks/1/type = "audio"
-tracks/1/path = NodePath("footsteps")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"clips": [ {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource( 3 )
-} ],
-"times": PoolRealArray( 0 )
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:flip_h")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Sprite:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ) ]
-}
-
-[sub_resource type="Animation" id=6]
-length = 2.0
-loop = true
-step = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ Rect2( 3, 49, 19, 15 ), Rect2( 37, 49, 17, 15 ), Rect2( 68, 49, 18, 15 ), Rect2( 101, 49, 17, 15 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:flip_h")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ) ]
-}
-
-[sub_resource type="Animation" id=7]
-length = 2.0
-loop = true
-step = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ Rect2( 3, 49, 19, 15 ), Rect2( 37, 49, 17, 15 ), Rect2( 68, 49, 18, 15 ), Rect2( 101, 49, 17, 15 ) ]
-}
-tracks/1/type = "audio"
-tracks/1/path = NodePath("footsteps")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"clips": [ {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource( 3 )
-} ],
-"times": PoolRealArray( 0 )
+"values": [ Vector2( -4, -4 ), Vector2( -2, -1 ), Vector2( -1, -3 ), Vector2( -2, -1 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Sprite:flip_h")
@@ -321,20 +266,22 @@ tracks/2/keys = {
 "update": 1,
 "values": [ true ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("Sprite:position")
+tracks/3/type = "audio"
+tracks/3/path = NodePath("Flying Sound")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 5 )
+} ],
+"times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=18]
 length = 2.0
 loop = true
 step = 0.5
@@ -348,48 +295,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5, 1, 1.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Rect2( 3, 49, 19, 15 ), Rect2( 37, 49, 17, 15 ), Rect2( 68, 49, 18, 15 ), Rect2( 101, 49, 17, 15 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:flip_h")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ) ]
-}
-
-[sub_resource type="Animation" id=9]
-length = 2.0
-loop = true
-step = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ Rect2( 3, 17, 16, 15 ), Rect2( 35, 17, 18, 15 ), Rect2( 67, 8, 14, 24 ), Rect2( 99, 17, 18, 15 ) ]
+"values": [ Rect2( 38, 1, 24, 24 ), Rect2( 38, 39, 22, 21 ), Rect2( 38, 71, 21, 23 ), Rect2( 38, 105, 22, 21 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite:position")
@@ -398,10 +304,51 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Vector2( 0, 0 ), Vector2( 0, -8.96719 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( -4, -4 ), Vector2( -2, -1 ), Vector2( -1, -3 ), Vector2( -2, -1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=19]
+length = 2.0
+loop = true
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 136, 35, 25, 31 ), Rect2( 136, 65, 25, 34 ), Rect2( 136, 99, 25, 32 ), Rect2( 136, 65, 25, 34 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( -4, -9 ), Vector2( -7, -12 ), Vector2( -6, -11 ), Vector2( -7, -12 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Sprite:flip_h")
@@ -416,26 +363,24 @@ tracks/2/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=20]
 length = 2.0
 loop = true
 step = 0.5
-tracks/0/type = "audio"
-tracks/0/path = NodePath("footsteps")
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"clips": [ {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource( 3 )
-} ],
-"times": PoolRealArray( 0 )
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 99, 5, 32, 24 ), Rect2( 102, 42, 26, 21 ), Rect2( 99, 70, 32, 28 ), Rect2( 99, 104, 32, 26 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:region_rect")
+tracks/1/path = NodePath("Sprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -444,7 +389,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.5, 1, 1.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Rect2( 0, 144, 16, 16 ), Rect2( 32, 144, 16, 16 ), Rect2( 64, 144, 16, 16 ), Rect2( 96, 144, 16, 16 ) ]
+"values": [ Vector2( -7, -3 ), Vector2( -4, 0 ), Vector2( -7, -3 ), Vector2( -7, -3 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Sprite:flip_h")
@@ -458,17 +403,19 @@ tracks/2/keys = {
 "update": 1,
 "values": [ false ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("Sprite:position")
+tracks/3/type = "audio"
+tracks/3/path = NodePath("Flying Sound")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 5 )
+} ],
+"times": PoolRealArray( 0 )
 }
 
 [sub_resource type="Animation" id=11]
@@ -485,22 +432,22 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5, 1, 1.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Rect2( 0, 144, 16, 16 ), Rect2( 32, 144, 16, 16 ), Rect2( 64, 144, 16, 16 ), Rect2( 96, 144, 16, 16 ) ]
+"values": [ Rect2( 99, 5, 32, 24 ), Rect2( 102, 42, 26, 21 ), Rect2( 99, 70, 32, 28 ), Rect2( 99, 104, 32, 26 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:flip_h")
+tracks/1/path = NodePath("Sprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ Vector2( -7, -3 ), Vector2( -4, 0 ), Vector2( -7, -3 ), Vector2( -7, -3 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:position")
+tracks/2/path = NodePath("Sprite:flip_h")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -508,42 +455,38 @@ tracks/2/enabled = true
 tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"update": 1,
+"values": [ false ]
 }
 
-[node name="Eirika" type="Node2D"]
+[node name="Enemy Pegasus Knight" type="Node2D"]
+z_index = 4
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-z_index = 2
 texture = ExtResource( 2 )
 centered = false
 region_enabled = true
-region_rect = Rect2( 65, 81, 16, 15 )
-__meta__ = {
-"_edit_lock_": true
-}
+region_rect = Rect2( 8, 44, 16, 21 )
 
-[node name="footsteps" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 3 )
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="AI" parent="." instance=ExtResource( 3 )]
 
 [node name="Animation" type="AnimationPlayer" parent="."]
 playback_speed = 2.0
-anims/Down = SubResource( 1 )
-"anims/Down no sound" = SubResource( 2 )
-anims/Highlighted = SubResource( 3 )
-anims/Idle = SubResource( 4 )
-anims/Left = SubResource( 5 )
-"anims/Left no sound" = SubResource( 6 )
-anims/Right = SubResource( 7 )
-"anims/Right no sound" = SubResource( 8 )
-anims/Selected = SubResource( 9 )
-anims/Up = SubResource( 10 )
+anims/Down = ExtResource( 4 )
+"anims/Down no sound" = SubResource( 12 )
+anims/Highlighted = SubResource( 13 )
+anims/Idle = SubResource( 14 )
+anims/Left = SubResource( 15 )
+"anims/Left no sound" = SubResource( 16 )
+anims/Right = SubResource( 17 )
+"anims/Right no sound" = SubResource( 18 )
+anims/Selected = SubResource( 19 )
+anims/Up = SubResource( 20 )
 "anims/Up no sound" = SubResource( 11 )
 
-[node name="Cursor Select" parent="." instance=ExtResource( 4 )]
+[node name="Footsteps" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[node name="Cursor Select" parent="." instance=ExtResource( 6 )]
 visible = false

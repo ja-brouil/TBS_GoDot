@@ -1,10 +1,13 @@
 extends Node2D
 
 func _ready():
-	$anim.play("test")
-	
-	
+	range_test()
 
-func _on_anim_animation_finished(anim_name):
-	print(anim_name)
-	print("es" in anim_name)
+func range_test():
+	var test_array = [1,2,3,4,5,6,7,8,9,10]
+	
+	var h = 5
+	var g = 8
+	
+	for i in range(g, h, -1):
+		print(test_array[i])

@@ -28,10 +28,12 @@ script = ExtResource( 1 )
 anims/test = SubResource( 1 )
 
 [node name="Background" type="Sprite" parent="."]
+visible = false
 position = Vector2( 159, 176 )
 texture = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+visible = false
 material = ExtResource( 3 )
 position = Vector2( 118, 79 )
 scale = Vector2( 3.78125, 2.53125 )

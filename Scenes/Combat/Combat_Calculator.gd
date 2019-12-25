@@ -295,6 +295,10 @@ func calculate_damage_amounts():
 	player_base_damage += ((BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped.might + player_weapon_bonus) * player_effective_bonus)
 	enemy_base_def += BattlefieldInfo.combat_ai_unit.UnitMovementStats.currentTile.defenseBonus
 	
+	# Remove for flying units
+	if BattlefieldInfo.combat_ai_unit.UnitStats.pegasus:
+		enemy_base_def -= BattlefieldInfo.combat_ai_unit.UnitMovementStats.currentTile.defenseBonus
+	
 	# Set GUI
 	player_damage = player_base_damage - enemy_base_def
 	if player_damage < 0:
@@ -308,9 +312,12 @@ func calculate_damage_amounts():
 		enemy_base_damage = BattlefieldInfo.combat_ai_unit.UnitStats.magic
 		player_base_def = BattlefieldInfo.combat_player_unit.UnitStats.res
 	
-	
 	enemy_base_damage += ((BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.might + enemy_weapon_bonus) * enemy_effective_bonus)
 	player_base_def += BattlefieldInfo.combat_player_unit.UnitMovementStats.currentTile.defenseBonus
+	
+	# Remove for flying units
+	if BattlefieldInfo.combat_player_unit.UnitStats.pegasus:
+		player_base_def -= BattlefieldInfo.combat_player_unit.UnitMovementStats.currentTile.defenseBonus
 	
 	# Set GUI
 	enemy_damage = enemy_base_damage - player_base_def
@@ -326,7 +333,12 @@ func get_accuracy(unit, weapon_bonus):
 	return unit.UnitInventory.current_item_equipped.hit + (unit.UnitStats.skill * 2) + (unit.UnitStats.luck / 2) + (weapon_bonus * 15) + unit.UnitStats.bonus_hit
 
 func get_avoidance(unit, attack_speed):
-	return (attack_speed * 2) + unit.UnitStats.luck + unit.UnitMovementStats.currentTile.avoidanceBonus + unit.UnitStats.bonus_dodge
+	var tile_bonus
+	if unit.UnitStats.pegasus:
+		tile_bonus = 0
+	else:
+		tile_bonus = unit.UnitMovementStats.currentTile.avoidanceBonus
+	return (attack_speed * 2) + unit.UnitStats.luck + tile_bonus + unit.UnitStats.bonus_dodge
 
 func get_special_ability(player_unit, ai_unit):
 	player_effective_bonus = player_unit.UnitInventory.current_item_equipped.special_ability(player_unit, ai_unit)

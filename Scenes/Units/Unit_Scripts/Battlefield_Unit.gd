@@ -34,7 +34,7 @@ var death_sentence
 
 func _ready():
 	# Movement Stats
-	UnitMovementStats = Unit_Movement.new(5,0,0,0,0,0,0,0,0)
+	UnitMovementStats = Unit_Movement.new()
 
 	# Unit Action state
 	UnitActionStatus = Unit_Action_Status.new()

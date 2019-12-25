@@ -96,8 +96,16 @@ func _ready():
 		new_ally.UnitStats.current_health = allyCellInfo.get_meta("Health")
 		new_ally.UnitStats.max_health = allyCellInfo.get_meta("MaxHealth")
 		
+		
 		# Movement
 		new_ally.UnitMovementStats.movementSteps = allyCellInfo.get_meta("Move")
+		new_ally.UnitMovementStats.defaultPenalty = allyCellInfo.get_meta("defaultPenalty")
+		new_ally.UnitMovementStats.forestPenalty = allyCellInfo.get_meta("forestPenalty")
+		new_ally.UnitMovementStats.fortressPenalty = allyCellInfo.get_meta("fortressPenalty")
+		new_ally.UnitMovementStats.hillPenalty = allyCellInfo.get_meta("hillPenalty")
+		new_ally.UnitMovementStats.riverPenalty = allyCellInfo.get_meta("riverPenalty")
+		new_ally.UnitMovementStats.seaPenalty = allyCellInfo.get_meta("seaPenalty")
+		new_ally.UnitMovementStats.mountainPenalty = allyCellInfo.get_meta("mountainPenalty")
 		
 		# Stat upgrades
 		new_ally.UnitStats.str_chance = allyCellInfo.get_meta("strChance")
@@ -139,9 +147,6 @@ func _ready():
 		# Set Stats
 		newEnemy.position = Vector2(enemy.position.x, enemy.position.y)
 		newEnemy.UnitStats.name = enemy.get_meta("Name")
-		
-		# Set Stats and position
-		newEnemy.UnitStats.name = enemy.get_meta("Name")
 		newEnemy.UnitStats.strength = enemy.get_meta("Str")
 		newEnemy.UnitStats.skill = enemy.get_meta("Skill")
 		newEnemy.UnitStats.speed = enemy.get_meta("Speed")
@@ -158,6 +163,8 @@ func _ready():
 		newEnemy.UnitStats.current_health = enemy.get_meta("Health")
 		newEnemy.UnitStats.max_health = enemy.get_meta("MaxHealth")
 		
+		# Movement stats
+		newEnemy.UnitMovementStats.movementSteps = enemy.get_meta("Move")
 		
 		# XP Stats
 		newEnemy.UnitStats.class_power = enemy.get_meta("ClassPower")
