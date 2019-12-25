@@ -33,6 +33,7 @@ Take a look at any of the bugs below or anything in the to do list. If you wish 
 2. Level up screen -> When a unit level ups, if the enemy/ally is not dead and still alive, it has more prority on the z index over the screen overlay. We will need to hide the units when this is the case.
 3. Bad sorting function? -> I keep getting this error and I'm not sure why. Check in with the custom sort function on the Priority queue
 4. Node already idle process? -> This error pops up once in a while and doesn't do anything but I've noticed that some units will have their animation speed way too fast or some animations just won't start on the UI when this shows up. Not 100% sure why this is hapenning but not a mission critical bug to be honest.
+5. UI Bugs -> A few things are misaligned and other polish can be done.
 
 ## Screenshots
 
