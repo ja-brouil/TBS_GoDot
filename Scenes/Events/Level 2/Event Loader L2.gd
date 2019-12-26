@@ -12,6 +12,3 @@ func _ready():
 	
 	# Mid Level Events
 	BattlefieldInfo.turn_manager.mid_level_events.append(L2_Event_Mid_10.new())
-	
-	# Start Level
-	BattlefieldInfo.event_system.start_events_queue()

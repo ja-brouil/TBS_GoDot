@@ -3553,7 +3553,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="3" name="Allies">
+ <objectgroup id="3" name="Allies" visible="0">
   <object id="2281" x="144" y="112" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
@@ -4245,7 +4245,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="4" name="Enemies" visible="0">
+ <objectgroup id="4" name="Enemies">
   <object id="2878" x="32" y="256" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
@@ -4546,7 +4546,7 @@
     <property name="isAlly" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="2941" x="96" y="96" width="16" height="16">
+  <object id="2941" x="64" y="288" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
     <property name="BonusDodge" type="int" value="0"/>

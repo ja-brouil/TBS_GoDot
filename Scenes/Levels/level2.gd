@@ -74,6 +74,7 @@ func _ready():
 	for allyCellInfo in allyInfoLayer.get_children():
 		var path = str("res://Scenes/Units/Player_Units/AllyUnits/", allyCellInfo.get_meta("InstanceName"),"/",allyCellInfo.get_meta("InstanceName"),".tscn")
 		var new_ally = load(path).instance()
+		new_ally.visible = false
 		$YSort.add_child(new_ally)
 		
 		# Set Stats and position

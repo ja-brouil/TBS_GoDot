@@ -195,7 +195,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Fire Emblem"
-run/main_scene="res://Scenes/Battlefield/Battlefield.tscn"
+run/main_scene="res://Scenes/Intro Screen/Intro Screen.tscn"
 config/icon="res://FE Icon.jpg"
 
 [autoload]
@@ -204,6 +204,7 @@ Calculators="*res://Engine/Systems/Calculators.gd"
 BattlefieldInfo="*res://Scenes/Battlefield/Battlefield.gd"
 GroupNames="*res://Engine/Systems/Group Names.gd"
 Combat_Calculator="*res://Scenes/Combat/Combat_Calculator.gd"
+SceneTransition="*res://Scenes/Transition/Scene Transition.tscn"
 
 [debug]
 

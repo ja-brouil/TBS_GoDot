@@ -17,6 +17,9 @@ var mid_level_events = []
 func _ready():
 	BattlefieldInfo.event_system = self
 	
+	# Register to the scene transition
+	SceneTransition.connect("scene_changed", self, "start_events_queue")
+	
 # Start the events
 func start_events_queue():
 	# Pause gameplay if not paused

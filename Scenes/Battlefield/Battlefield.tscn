@@ -34,12 +34,14 @@ position = Vector2( 144, 64 )
 z_index = 5
 
 [node name="GameCamera" parent="." instance=ExtResource( 3 )]
+editor/display_folded = true
 position = Vector2( 48, 0 )
 zoom = Vector2( 1, 1 )
 
 [node name="Turn Transition" parent="GameCamera" instance=ExtResource( 4 )]
 
 [node name="Areas" parent="GameCamera" instance=ExtResource( 5 )]
+position = Vector2( 0.552368, 0 )
 
 [node name="Thunder Effect" parent="GameCamera" instance=ExtResource( 6 )]
 
