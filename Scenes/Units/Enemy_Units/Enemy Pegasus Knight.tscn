@@ -7,7 +7,7 @@
 [ext_resource path="res://assets/sound/unitMovement/PEGASUS_FLAP_0.wav" type="AudioStream" id=5]
 [ext_resource path="res://Scenes/GUI/Damage Preview/Cursor Select.tscn" type="PackedScene" id=6]
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=1]
 length = 2.0
 loop = true
 step = 0.5
@@ -48,7 +48,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=2]
 length = 2.0
 loop = true
 step = 0.5
@@ -89,7 +89,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=3]
 length = 2.0
 loop = true
 step = 0.5
@@ -130,7 +130,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=4]
 length = 2.0
 loop = true
 step = 0.5
@@ -185,7 +185,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=5]
 length = 2.0
 loop = true
 step = 0.5
@@ -226,7 +226,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=6]
 length = 2.0
 loop = true
 step = 0.5
@@ -281,7 +281,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=7]
 length = 2.0
 loop = true
 step = 0.5
@@ -322,7 +322,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=8]
 length = 2.0
 loop = true
 step = 0.5
@@ -363,7 +363,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=9]
 length = 2.0
 loop = true
 step = 0.5
@@ -418,7 +418,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=10]
 length = 2.0
 loop = true
 step = 0.5
@@ -474,16 +474,16 @@ region_rect = Rect2( 8, 44, 16, 21 )
 [node name="Animation" type="AnimationPlayer" parent="."]
 playback_speed = 2.0
 anims/Down = ExtResource( 4 )
-"anims/Down no sound" = SubResource( 12 )
-anims/Highlighted = SubResource( 13 )
-anims/Idle = SubResource( 14 )
-anims/Left = SubResource( 15 )
-"anims/Left no sound" = SubResource( 16 )
-anims/Right = SubResource( 17 )
-"anims/Right no sound" = SubResource( 18 )
-anims/Selected = SubResource( 19 )
-anims/Up = SubResource( 20 )
-"anims/Up no sound" = SubResource( 11 )
+"anims/Down no sound" = SubResource( 1 )
+anims/Highlighted = SubResource( 2 )
+anims/Idle = SubResource( 3 )
+anims/Left = SubResource( 4 )
+"anims/Left no sound" = SubResource( 5 )
+anims/Right = SubResource( 6 )
+"anims/Right no sound" = SubResource( 7 )
+anims/Selected = SubResource( 8 )
+anims/Up = SubResource( 9 )
+"anims/Up no sound" = SubResource( 10 )
 
 [node name="Footsteps" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )

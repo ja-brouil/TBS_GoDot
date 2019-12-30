@@ -461,7 +461,7 @@ tracks/2/keys = {
 }
 
 [node name="Ally Pegasus Knight" type="Node2D"]
-z_index = 4
+z_index = 2
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 9.0 ],
