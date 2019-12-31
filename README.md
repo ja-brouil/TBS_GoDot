@@ -27,6 +27,7 @@ Take a look at any of the bugs below or anything in the to do list. If you wish 
 15. End turn menu -> Menu built, end turn option added, rest needs to be build up
 16. Save/Load function
 17. Action Select Function -> Menu built, options need to be built, wait has been added, Added trade and heal
+18. ~~Add Game over and Intro Screen -> Complete and tested. Just add options and loading to this next~~
 
 ## Bugs to fix
 1. Trade screen -> When you are the last unit and you trade, the next phase starts due to the turn manager constantly checking every frame. This will need to be changed.

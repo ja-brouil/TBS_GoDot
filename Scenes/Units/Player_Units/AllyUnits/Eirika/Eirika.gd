@@ -24,4 +24,4 @@ func _ready():
 	
 	# Death sentence
 	death_sentence = []
-	death_sentence.append("Eirika:\n\nFather, I've failed... I'm sorry everyone...")
+	death_sentence.append("Eirika:\n\nFather, everyone... I've failed you all... I'm sorry everyone...")

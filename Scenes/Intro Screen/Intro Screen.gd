@@ -1,9 +1,10 @@
 extends Control
 
+# New Game start
+var level1 = load("res://Scenes/Battlefield/Battlefield.tscn")
+
 # No text background
 var no_text_background = preload("res://assets/intro screen/intro background no text.jpg")
-
-var level1 = preload("res://Scenes/Battlefield/Battlefield.tscn")
 
 enum {INTRO, GAME_SELECT, WAIT}
 var current_state = INTRO
@@ -20,17 +21,17 @@ func _ready():
 	
 	current_option = options[current_option_number]
 	
-	# Queue free this once the scene transition is done. Might want to keep this in the memory later if we want to return to the main menu
-	SceneTransition.connect("scene_changed", self, "queue_free")
+	# Anim signal
+	$"Anim".connect("animation_finished", self, "allow_selection")
 
 func _input(event):
 	match current_state:
 		INTRO:
 			# Any key
 			if event is InputEventKey and event.is_pressed():
-				current_state = GAME_SELECT
+				$"Anim".play("Options Fade In")
 				$"Intro Background".texture = no_text_background
-				$Options.visible = true
+				current_state = WAIT
 		GAME_SELECT:
 			if Input.is_action_just_pressed("ui_up"):
 				current_option_number -= 1
@@ -54,6 +55,23 @@ func _input(event):
 				$"Options/Hand Selector/Accept".play(0)
 				process_selection()
 
+func allow_selection(anim_name):
+	current_state = GAME_SELECT
+	
+
 func process_selection():
-	set_process_input(false)
-	SceneTransition.change_scene(level1, 1)
+	match current_option:
+		"New Game":
+			$"Anim".play("music fade out")
+			set_process_input(false)
+			# Clear battlefield
+			BattlefieldInfo.clear()
+			
+			# Scene change
+			SceneTransition.connect("scene_changed", self, "clean_up")
+			SceneTransition.change_scene(level1, 0.1)
+
+func clean_up():
+	$"Intro Song".stop()
+	SceneTransition.disconnect("scene_changed", self, "clean_up")
+	queue_free()

@@ -1,0 +1,93 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+// Color Value in inspector
+uniform vec4 ash : hint_color;
+uniform vec4 fire : hint_color;
+
+// Amount of iterations for noise
+uniform int OCTAVES = 6;
+
+// values that need to be set from a script
+uniform float start_time = 999999.0;
+uniform float duration = 1.0;
+
+float rand(vec2 coord){
+	return fract(sin(dot(coord, vec2(12.9898, 78.233)))* 43758.5453123);
+}
+
+// Noise texture
+float noise(vec2 coord){
+	vec2 i = floor(coord);
+	vec2 f = fract(coord);
+
+	// 4 corners of a rectangle surrounding our point
+	float a = rand(i);
+	float b = rand(i + vec2(1.0, 0.0));
+	float c = rand(i + vec2(0.0, 1.0));
+	float d = rand(i + vec2(1.0, 1.0));
+
+	vec2 cubic = f * f * (3.0 - 2.0 * f);
+
+	return mix(a, b, cubic.x) + (c - a) * cubic.y * (1.0 - cubic.x) + (d - b) * cubic.x * cubic.y;
+}
+
+// More Detail
+float fbm(vec2 coord){
+	float value = 0.0;
+	float scale = 0.5;
+
+	for(int i = 0; i < OCTAVES; i++){
+		value += noise(coord) * scale;
+		coord *= 2.0;
+		scale *= 0.5;
+	}
+	return value;
+}
+
+void fragment(){
+	// Texture Level of blurryness - Use this to preserve the hidden pixels
+	vec4 tex = textureLod(TEXTURE, UV, 0.0);
+	COLOR = tex;
+
+	// Generate Noise
+	float noise = fbm(UV * 6.0);
+
+	// Thresholds
+	float thickness = 0.1;
+	float outer_edge = (TIME - start_time) / duration; // Formula for animation
+	float inner_edge = outer_edge + thickness;
+
+	// Set color to invisible
+	if (noise < inner_edge){
+		float gradient_factor = (inner_edge - noise) / thickness;
+		gradient_factor = clamp(gradient_factor, 0.0, 1.0);
+		vec4 fire_grad = mix(fire, ash, gradient_factor);
+
+		// Short fade in, use 0.02
+		float inner_fade = (inner_edge - noise) / 0.02;
+		inner_fade = clamp(inner_fade, 0.0, 1.0);
+
+		// Set gradient
+		COLOR = mix(COLOR, fire_grad, inner_fade)
+	}
+
+	// Fade to transparency
+	if (noise < outer_edge) {
+		COLOR.a =  1.0 - (outer_edge - noise) / 0.02;
+		COLOR.a = clamp(COLOR.a, 0.0, 1.0);
+	}
+
+	// Set back to transparent
+	COLOR.a *= tex.a;
+}"
+
+[resource]
+shader = SubResource( 1 )
+shader_param/ash = Color( 0.584314, 0.313726, 0.14902, 1 )
+shader_param/fire = Color( 0.92549, 0.0666667, 0.0666667, 1 )
+shader_param/OCTAVES = 6
+shader_param/start_time = 999999.0
+shader_param/duration = 1.0

@@ -98,12 +98,6 @@ func move_xp_bar(delta):
 		# If unit leveled up
 		if has_unit_leveled_up:
 			current_state = wait
-			
-			# Lower volume of the music
-			if BattlefieldInfo.turn_manager.turn == Turn_Manager.ENEMY_TURN:
-				BattlefieldInfo.music_player.get_node("Enemy Combat").volume_db = -12
-			else:
-				BattlefieldInfo.music_player.get_node("Ally Combat").volume_db = -12
 			has_unit_leveled_up = false
 			get_parent().get_node("Level Up Screen").visible = true
 			get_parent().get_node("Level Up Screen").start()

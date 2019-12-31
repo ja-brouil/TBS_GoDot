@@ -18,6 +18,7 @@ var movement_system_cinematic
 
 # Level
 var current_level
+var battlefield_container
 
 # Sound and music
 var music_player
@@ -31,6 +32,41 @@ var battlefield_ui
 
 # Victory Condition
 var victory_text
+
+#######################
+#BATTLEFIELD VARIABLES#
+#######################
+# Current Unit Selected
+var current_Unit_Selected: Node2D
+
+# Previous position in order to be able to go back
+var previous_position = Vector2(0,0)
+
+# Previous camera position
+var previous_camera_position = Vector2(0,0)
+
+# Map Info
+var grid = []
+var map_height
+var map_width
+
+# Camera Values
+var camera_limit_bottom
+var camera_limit_right
+
+# Battlefield Unit Info
+var ally_units = {}
+var enemy_units = {}
+
+# Spawn points
+var spawn_points = []
+
+# Eirika for AI purposes
+var Eirika
+
+# Combat Unit
+var combat_player_unit
+var combat_ai_unit
 
 # Start battlefield game
 func _ready():
@@ -68,41 +104,20 @@ func _process(delta):
 	unit_movement_system.process_movement(delta)
 	movement_system_cinematic.process_movement(delta)
 
-
-#######################
-#BATTLEFIELD VARIABLES#
-#######################
-# Current Unit Selected
-var current_Unit_Selected: Node2D
-
-# Previous position in order to be able to go back
-var previous_position = Vector2(0,0)
-
-# Previous camera position
-var previous_camera_position = Vector2(0,0)
-
-# Map Info
-var grid = []
-var map_height
-var map_width
-
-# Camera Values
-var camera_limit_bottom
-var camera_limit_right
-
-# Battlefield Unit Info
-var ally_units = {}
-var enemy_units = {}
-
-# Spawn points
-var spawn_points = []
-
-# Eirika for AI purposes
-var Eirika
-
-# Combat Unit
-var combat_player_unit
-var combat_ai_unit
+# Clear for starting
+func clear():
+	current_level = null
+	victory_text = null
+	cursor = null
+	battlefield_ui = null
+	current_Unit_Selected = null
+	combat_ai_unit = null
+	combat_player_unit = null
+	grid = null
+	map_height = null
+	map_width = null
+	ally_units = null
+	enemy_units = null
 
 # Start the level
 func start_level():

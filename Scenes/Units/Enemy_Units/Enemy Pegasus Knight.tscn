@@ -485,7 +485,7 @@ anims/Selected = SubResource( 8 )
 anims/Up = SubResource( 9 )
 "anims/Up no sound" = SubResource( 10 )
 
-[node name="Footsteps" type="AudioStreamPlayer" parent="."]
+[node name="Flying Sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 
 [node name="Cursor Select" parent="." instance=ExtResource( 6 )]

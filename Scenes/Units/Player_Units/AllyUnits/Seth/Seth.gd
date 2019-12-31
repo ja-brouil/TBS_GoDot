@@ -26,6 +26,6 @@ func _ready():
 	
 	# Death Quote
 	death_sentence = []
-	death_sentence.append("Seth:\n\nMy lady... Eirika... I wasn't strong enough....")
+	death_sentence.append("Seth:\n\nMy lady... I wasn't strong enough....")
 	
 	combat_node = preload("res://Scenes/Units/Player_Units/AllyUnits/Seth/Seth Combat.tscn")

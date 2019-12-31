@@ -645,7 +645,7 @@ func play_player_miss_anim():
 func turn_on():
 	$"Combat Control".visible = true
 	# Reduce volume of the music
-	BattlefieldInfo.music_player.get_node("AllyLevel").volume_db = -5
+	BattlefieldInfo.music_player.get_node("AllyLevel").volume_db = -8
 	
 	# Stop current music
 #	if BattlefieldInfo.turn_manager.turn == Turn_Manager.PLAYER_TURN:
@@ -669,6 +669,7 @@ func turn_on():
 func process_ally_death():
 	# we have a death text
 	if BattlefieldInfo.combat_player_unit.death_sentence != null:
+		BattlefieldInfo.message_system.set_position(Messaging_System.BOTTOM)
 		BattlefieldInfo.message_system.start(BattlefieldInfo.combat_player_unit.death_sentence)
 		current_combat_state = wait
 		messaging_state = ally_death
@@ -687,6 +688,12 @@ func on_ally_death_complete():
 	# Clear Tile it is on
 	BattlefieldInfo.combat_player_unit.UnitMovementStats.currentTile.occupyingUnit = null
 	
+	# Did Eirika die? Game over ->
+	if BattlefieldInfo.combat_player_unit.UnitStats.name == "Eirika":
+		player_node_name.game_over()
+		set_process_input(false)
+		return
+	
 	# Back to Battlefield
 	back_to_battlefield()
 
@@ -698,6 +705,8 @@ func process_after_text():
 			pass
 		ally_death:
 			player_node_name.get_node("anim").play(str(BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped.weapon_string_name, " death"))
+			var anim_name2 = str(BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped.weapon_string_name, " regular")
+			ally_placeholder.get_node(anim_name2).visible = false
 			current_combat_state = wait
 			messaging_state = no_process
 		after_fight:

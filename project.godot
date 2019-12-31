@@ -196,6 +196,7 @@ _global_script_class_icons={
 
 config/name="Fire Emblem"
 run/main_scene="res://Scenes/Intro Screen/Intro Screen.tscn"
+boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://FE Icon.jpg"
 
 [autoload]

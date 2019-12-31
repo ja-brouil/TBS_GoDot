@@ -1,24 +1,16 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scenes/GUI/XP and Level/Level Up Screen.gd" type="Script" id=1]
 [ext_resource path="res://assets/sound/misc/move sound 2.wav" type="AudioStream" id=2]
 [ext_resource path="res://assets/sound/misc/Level up!.wav" type="AudioStream" id=3]
-[ext_resource path="res://assets/Textures/Level Up Screen.shader" type="Shader" id=4]
+[ext_resource path="res://assets/Shaders/Burn Shader Effect.tres" type="Material" id=4]
 [ext_resource path="res://assets/UI/XP and Level/Level Up.png" type="Texture" id=5]
 [ext_resource path="res://assets/UI/XP and Level/Level Up Panel.png" type="Texture" id=6]
 [ext_resource path="res://assets/font/Action Selector Font.tres" type="DynamicFont" id=7]
 [ext_resource path="res://Scenes/GUI/XP and Level/More Stat Arrow.tscn" type="PackedScene" id=8]
 [ext_resource path="res://icon.png" type="Texture" id=9]
 
-[sub_resource type="ShaderMaterial" id=1]
-shader = ExtResource( 4 )
-shader_param/ash = Color( 0.882353, 0.247059, 0.180392, 1 )
-shader_param/fire = Color( 0.92549, 0.0666667, 0.0666667, 1 )
-shader_param/OCTAVES = 6
-shader_param/start_time = 5.0
-shader_param/duration = 1.0
-
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "fade in"
 length = 0.6
 tracks/0/type = "value"
@@ -46,7 +38,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "fade in"
 length = 0.6
 tracks/0/type = "value"
@@ -87,7 +79,7 @@ stream = ExtResource( 3 )
 
 [node name="Level Up Logo" type="Sprite" parent="."]
 visible = false
-material = SubResource( 1 )
+material = ExtResource( 4 )
 position = Vector2( 121, 59 )
 scale = Vector2( 0.264649, 0.282043 )
 z_index = 4
@@ -95,7 +87,7 @@ texture = ExtResource( 5 )
 region_rect = Rect2( 222, 53, 516, 133 )
 
 [node name="anim" type="AnimationPlayer" parent="Level Up Logo"]
-"anims/fade in" = SubResource( 2 )
+"anims/fade in" = SubResource( 1 )
 
 [node name="Level Up Panel" type="Control" parent="."]
 editor/display_folded = true
@@ -256,7 +248,7 @@ texture = ExtResource( 9 )
 expand = true
 
 [node name="anim" type="AnimationPlayer" parent="Level Up Panel"]
-"anims/fade in" = SubResource( 3 )
+"anims/fade in" = SubResource( 2 )
 
 [node name="Return" type="Timer" parent="."]
 wait_time = 2.0

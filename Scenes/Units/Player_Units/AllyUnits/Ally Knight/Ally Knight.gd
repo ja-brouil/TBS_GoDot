@@ -25,4 +25,4 @@ func _ready():
 	
 	# Death sentence
 	death_sentence = []
-	death_sentence.append("Gilliam:\n\nKnight Commander, I was not strong enough...")
+	death_sentence.append("Gilliam:\n\nKnight Commander, please protect her for me...")

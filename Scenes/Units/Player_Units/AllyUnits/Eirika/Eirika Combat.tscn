@@ -211,7 +211,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 1, 2.5 ),
+"times": PoolRealArray( 1, 2.7 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
@@ -483,7 +483,6 @@ __meta__ = {
 }
 
 [node name="sword regular" type="Sprite" parent="."]
-position = Vector2( 0.238205, 1.46285 )
 scale = Vector2( 1.25, 1.25 )
 texture = ExtResource( 2 )
 region_enabled = true

@@ -8,7 +8,7 @@ onready var animation_player = $"Scene Changer/Animation"
 # Call when you want to change the level
 # Path = file location for the next scene
 # Delay = time between each scene
-func change_scene(path, delay = 0.5):
+func change_scene(path, delay = 0.1):
 	# Create the delay for timeoout
 	yield(get_tree().create_timer(delay), "timeout")
 	
