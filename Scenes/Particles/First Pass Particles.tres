@@ -1,7 +1,9 @@
 [gd_resource type="ParticlesMaterial" load_steps=4 format=2]
 
-[sub_resource type="ParticlesMaterial" id=8]
+[sub_resource type="ParticlesMaterial" id=1]
 trail_divisor = 5
+emission_shape = 1
+emission_sphere_radius = 1.0
 flag_disable_z = true
 gravity = Vector3( 0, 0, 0 )
 angular_velocity = 1.62551e-43
@@ -11,14 +13,14 @@ linear_accel = 2.5
 radial_accel = 1.96
 color = Color( 0.968627, 0.972549, 0.819608, 1 )
 
-[sub_resource type="Curve" id=6]
+[sub_resource type="Curve" id=2]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=7]
-curve = SubResource( 6 )
+[sub_resource type="CurveTexture" id=3]
+curve = SubResource( 2 )
 
 [resource]
-next_pass = SubResource( 8 )
+next_pass = SubResource( 1 )
 trail_divisor = 5
 emission_shape = 1
 emission_sphere_radius = 92.07
@@ -30,6 +32,6 @@ angular_velocity = 302.62
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 linear_accel = 0.58
-scale_curve = SubResource( 7 )
+scale_curve = SubResource( 3 )
 color = Color( 0.815686, 0.815686, 0.588235, 0.6 )
 hue_variation_random = 1.0

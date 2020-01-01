@@ -1,0 +1,397 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scenes/GUI/Unit Info/Unit Info Screen.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/GUI/Item Screen/Item Select Slot.tscn" type="PackedScene" id=3]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://assets/font/Main Font.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = SubResource( 1 )
+
+[node name="Unit Info Screen" type="CanvasLayer"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 130.483, 117.374, 143.437, 155.522 ],
+"_edit_vertical_guides_": [ 130.787, 190.406 ]
+}
+
+[node name="Unit Info Container" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Background Color" type="ColorRect" parent="Unit Info Container"]
+modulate = Color( 1, 1, 1, 0.784314 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.207843, 0.333333, 0.439216, 1 )
+
+[node name="Portrait and Name Container" type="Control" parent="Unit Info Container"]
+margin_right = 120.0
+margin_bottom = 160.0
+
+[node name="Portrait" type="TextureRect" parent="Unit Info Container/Portrait and Name Container"]
+margin_left = 11.8774
+margin_top = 0.255646
+margin_right = 114.877
+margin_bottom = 87.2556
+texture = ExtResource( 2 )
+expand = true
+
+[node name="Name" type="Label" parent="Unit Info Container/Portrait and Name Container"]
+margin_left = 11.0
+margin_top = 91.6129
+margin_right = 411.0
+margin_bottom = 141.613
+rect_scale = Vector2( 0.25, 0.25 )
+custom_fonts/font = SubResource( 2 )
+text = "Name"
+align = 1
+valign = 1
+
+[node name="Class" type="Label" parent="Unit Info Container/Portrait and Name Container"]
+margin_left = 10.8446
+margin_top = 105.968
+margin_right = 410.845
+margin_bottom = 155.968
+rect_scale = Vector2( 0.25, 0.25 )
+custom_fonts/font = SubResource( 2 )
+text = "Class"
+valign = 1
+
+[node name="Level" type="Label" parent="Unit Info Container/Portrait and Name Container"]
+margin_left = 10.7175
+margin_top = 122.906
+margin_right = 162.717
+margin_bottom = 172.906
+rect_scale = Vector2( 0.25, 0.25 )
+custom_fonts/font = SubResource( 2 )
+text = "Level"
+valign = 1
+
+[node name="Level Number" type="Label" parent="Unit Info Container/Portrait and Name Container"]
+margin_left = 49.8017
+margin_top = 122.53
+margin_right = 119.802
+margin_bottom = 172.53
+rect_scale = Vector2( 0.25, 0.25 )
+custom_fonts/font = SubResource( 2 )
+text = "99"
+align = 2
+valign = 1
+
+[node name="E" type="Label" parent="Unit Info Container/Portrait and Name Container"]
+margin_left = 70.8417
+margin_top = 122.831
+margin_right = 168.842
+margin_bottom = 172.831
+rect_scale = Vector2( 0.25, 0.25 )
+custom_fonts/font = SubResource( 2 )
+text = "Exp"
+valign = 1
+
+[node name="Exp num" type="Label" parent="Unit Info Container/Portrait and Name Container"]
+margin_left = 99.9536
+margin_top = 122.769
+margin_right = 169.954
+margin_bottom = 172.769
+rect_scale = Vector2( 0.25, 0.25 )
+custom_fonts/font = SubResource( 2 )
+text = "00"
+valign = 1
+
+[node name="HP Logo" type="Label" parent="Unit Info Container/Portrait and Name Container"]
+margin_left = 10.7811
+margin_top = 143.309
+margin_right = 80.7811
+margin_bottom = 193.309
+rect_scale = Vector2( 0.25, 0.25 )
+custom_fonts/font = SubResource( 2 )
+text = "HP"
+valign = 1
+
+[node name="Current HP" type="Label" parent="Unit Info Container/Portrait and Name Container"]
+margin_left = 37.0
+margin_top = 143.0
+margin_right = 107.0
+margin_bottom = 193.0
+rect_scale = Vector2( 0.25, 0.25 )
+custom_fonts/font = SubResource( 2 )
+text = "99"
+valign = 1
+
+[node name="Slash" type="Label" parent="Unit Info Container/Portrait and Name Container"]
+margin_left = 57.5545
+margin_top = 142.832
+margin_right = 78.5545
+margin_bottom = 192.832
+rect_scale = Vector2( 0.25, 0.25 )
+custom_fonts/font = SubResource( 2 )
+text = "/"
+valign = 1
+
+[node name="Max HP" type="Label" parent="Unit Info Container/Portrait and Name Container"]
+margin_left = 67.0775
+margin_top = 143.376
+margin_right = 137.077
+margin_bottom = 193.376
+rect_scale = Vector2( 0.25, 0.25 )
+custom_fonts/font = SubResource( 2 )
+text = "99"
+valign = 1
+
+[node name="Inventory" type="Control" parent="Unit Info Container"]
+margin_left = 119.747
+margin_top = 0.0632629
+margin_right = 239.747
+margin_bottom = 160.063
+
+[node name="Item Logo" type="Label" parent="Unit Info Container/Inventory"]
+margin_left = 11.3523
+margin_top = 5.0
+margin_right = 429.352
+margin_bottom = 55.0
+rect_scale = Vector2( 0.25, 0.25 )
+custom_fonts/font = SubResource( 2 )
+text = "Inventory"
+align = 1
+valign = 1
+
+[node name="Item Slot Container" type="Control" parent="Unit Info Container/Inventory"]
+margin_left = -0.737915
+margin_top = -6.64127
+margin_right = 39.2621
+margin_bottom = 33.3587
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Item Slot 1" parent="Unit Info Container/Inventory/Item Slot Container" instance=ExtResource( 3 )]
+position = Vector2( 9.92471, 26.6548 )
+scale = Vector2( 1.25, 1.25 )
+
+[node name="Item Slot 2" parent="Unit Info Container/Inventory/Item Slot Container" instance=ExtResource( 3 )]
+position = Vector2( 9.92471, 38.177 )
+scale = Vector2( 1.25, 1.25 )
+
+[node name="Item Slot 3" parent="Unit Info Container/Inventory/Item Slot Container" instance=ExtResource( 3 )]
+position = Vector2( 9.92471, 49.9331 )
+scale = Vector2( 1.25, 1.25 )
+
+[node name="Item Slot 4" parent="Unit Info Container/Inventory/Item Slot Container" instance=ExtResource( 3 )]
+position = Vector2( 9.92471, 61.4939 )
+scale = Vector2( 1.25, 1.25 )
+
+[node name="Item Slot 5" parent="Unit Info Container/Inventory/Item Slot Container" instance=ExtResource( 3 )]
+position = Vector2( 9.92471, 73.2113 )
+scale = Vector2( 1.25, 1.25 )
+
+[node name="Item Slot 6" parent="Unit Info Container/Inventory/Item Slot Container" instance=ExtResource( 3 )]
+position = Vector2( 9.92471, 84.7094 )
+scale = Vector2( 1.25, 1.25 )
+
+[node name="Stats" type="Control" parent="Unit Info Container/Inventory"]
+editor/display_folded = true
+margin_left = 0.250916
+margin_top = -8.53099
+margin_right = 40.2509
+margin_bottom = 31.469
+
+[node name="Stat Logo" type="Label" parent="Unit Info Container/Inventory/Stats"]
+margin_left = 11.1014
+margin_top = 99.7545
+margin_right = 411.101
+margin_bottom = 149.755
+rect_scale = Vector2( 0.25, 0.25 )
+custom_fonts/font = SubResource( 2 )
+text = "Statistics"
+align = 1
+valign = 1
+
+[node name="Str Mag" type="Label" parent="Unit Info Container/Inventory/Stats"]
+margin_left = 10.9521
+margin_top = 116.916
+margin_right = 87.9521
+margin_bottom = 166.916
+rect_scale = Vector2( 0.2, 0.2 )
+custom_fonts/font = SubResource( 2 )
+text = "Str"
+align = 1
+valign = 1
+
+[node name="Def Num" type="Label" parent="Unit Info Container/Inventory/Stats"]
+margin_left = 101.376
+margin_top = 116.583
+margin_right = 178.376
+margin_bottom = 166.583
+rect_scale = Vector2( 0.2, 0.2 )
+custom_fonts/font = SubResource( 2 )
+text = "00"
+align = 1
+valign = 1
+
+[node name="Res Num" type="Label" parent="Unit Info Container/Inventory/Stats"]
+margin_left = 100.763
+margin_top = 129.875
+margin_right = 177.763
+margin_bottom = 179.875
+rect_scale = Vector2( 0.2, 0.2 )
+custom_fonts/font = SubResource( 2 )
+text = "00"
+align = 1
+valign = 1
+
+[node name="Move Num" type="Label" parent="Unit Info Container/Inventory/Stats"]
+margin_left = 101.156
+margin_top = 143.1
+margin_right = 178.156
+margin_bottom = 193.1
+rect_scale = Vector2( 0.2, 0.2 )
+custom_fonts/font = SubResource( 2 )
+text = "00"
+align = 1
+valign = 1
+
+[node name="Con Num" type="Label" parent="Unit Info Container/Inventory/Stats"]
+margin_left = 101.016
+margin_top = 154.729
+margin_right = 178.016
+margin_bottom = 204.729
+rect_scale = Vector2( 0.2, 0.2 )
+custom_fonts/font = SubResource( 2 )
+text = "00"
+align = 1
+valign = 1
+
+[node name="Str Mag Num" type="Label" parent="Unit Info Container/Inventory/Stats"]
+margin_left = 46.3388
+margin_top = 117.333
+margin_right = 123.339
+margin_bottom = 167.333
+rect_scale = Vector2( 0.2, 0.2 )
+custom_fonts/font = SubResource( 2 )
+text = "00"
+align = 1
+valign = 1
+
+[node name="Skill Num" type="Label" parent="Unit Info Container/Inventory/Stats"]
+margin_left = 46.0989
+margin_top = 130.29
+margin_right = 123.099
+margin_bottom = 180.29
+rect_scale = Vector2( 0.2, 0.2 )
+custom_fonts/font = SubResource( 2 )
+text = "00"
+align = 1
+valign = 1
+
+[node name="Spd Num" type="Label" parent="Unit Info Container/Inventory/Stats"]
+margin_left = 46.2516
+margin_top = 142.806
+margin_right = 123.252
+margin_bottom = 192.806
+rect_scale = Vector2( 0.2, 0.2 )
+custom_fonts/font = SubResource( 2 )
+text = "00"
+align = 1
+valign = 1
+
+[node name="Luck Num" type="Label" parent="Unit Info Container/Inventory/Stats"]
+margin_left = 46.4156
+margin_top = 154.783
+margin_right = 123.416
+margin_bottom = 204.783
+rect_scale = Vector2( 0.2, 0.2 )
+custom_fonts/font = SubResource( 2 )
+text = "00"
+align = 1
+valign = 1
+
+[node name="Def" type="Label" parent="Unit Info Container/Inventory/Stats"]
+margin_left = 70.0942
+margin_top = 116.916
+margin_right = 163.094
+margin_bottom = 166.916
+rect_scale = Vector2( 0.2, 0.2 )
+custom_fonts/font = SubResource( 2 )
+text = "Def"
+align = 1
+valign = 1
+
+[node name="Res" type="Label" parent="Unit Info Container/Inventory/Stats"]
+margin_left = 70.0942
+margin_top = 130.296
+margin_right = 168.094
+margin_bottom = 180.296
+rect_scale = Vector2( 0.2, 0.2 )
+custom_fonts/font = SubResource( 2 )
+text = "Res"
+align = 1
+valign = 1
+
+[node name="Move" type="Label" parent="Unit Info Container/Inventory/Stats"]
+margin_left = 67.2345
+margin_top = 142.745
+margin_right = 208.234
+margin_bottom = 192.745
+rect_scale = Vector2( 0.2, 0.2 )
+custom_fonts/font = SubResource( 2 )
+text = "Mov"
+align = 1
+valign = 1
+
+[node name="Cons" type="Label" parent="Unit Info Container/Inventory/Stats"]
+margin_left = 66.8909
+margin_top = 154.903
+margin_right = 207.891
+margin_bottom = 204.903
+rect_scale = Vector2( 0.2, 0.2 )
+custom_fonts/font = SubResource( 2 )
+text = "Con"
+align = 1
+valign = 1
+
+[node name="Skill" type="Label" parent="Unit Info Container/Inventory/Stats"]
+margin_left = 10.6756
+margin_top = 130.28
+margin_right = 118.676
+margin_bottom = 180.28
+rect_scale = Vector2( 0.2, 0.2 )
+custom_fonts/font = SubResource( 2 )
+text = "Skill"
+align = 1
+valign = 1
+
+[node name="Spd" type="Label" parent="Unit Info Container/Inventory/Stats"]
+margin_left = 10.8748
+margin_top = 143.451
+margin_right = 112.875
+margin_bottom = 193.451
+rect_scale = Vector2( 0.2, 0.2 )
+custom_fonts/font = SubResource( 2 )
+text = "Spd"
+align = 1
+valign = 1
+
+[node name="Luck" type="Label" parent="Unit Info Container/Inventory/Stats"]
+margin_left = 10.8749
+margin_top = 154.562
+margin_right = 137.875
+margin_bottom = 204.562
+rect_scale = Vector2( 0.2, 0.2 )
+custom_fonts/font = SubResource( 2 )
+text = "Luck"
+align = 1
+valign = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

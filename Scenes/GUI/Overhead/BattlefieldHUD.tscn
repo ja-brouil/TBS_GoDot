@@ -118,6 +118,7 @@ tracks/0/keys = {
 }
 
 [node name="BattlefieldHUD" type="CanvasLayer"]
+editor/display_folded = true
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 134.613, 145.226, 122.236 ],

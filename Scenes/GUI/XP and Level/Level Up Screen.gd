@@ -210,12 +210,6 @@ func _on_Return_timeout():
 	$"Level Up Panel/Level Up Background/Res/Res Arrow".visible = false
 	$"Level Up Panel/Level Up Background/Con/Con Arrow".visible = false
 	
-	# Set Correct Volumes again
-	if BattlefieldInfo.turn_manager.turn == Turn_Manager.ENEMY_TURN:
-		BattlefieldInfo.music_player.get_node("Enemy Combat").volume_db = 0
-	else:
-		BattlefieldInfo.music_player.get_node("Ally Combat").volume_db = 0
-	
 	# Set to greyscale
 	BattlefieldInfo.combat_player_unit.get_node("Animation").play("Idle")
 	BattlefieldInfo.combat_player_unit.UnitActionStatus.current_action_status = Unit_Action_Status.DONE

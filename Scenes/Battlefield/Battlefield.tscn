@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Scenes/Battlefield/Battlefield Container.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Levels/level2.tscn" type="PackedScene" id=2]
@@ -18,8 +18,9 @@
 [ext_resource path="res://Scenes/Messaging/Message System.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Scenes/GUI/Item Screen/Item Screen.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Scenes/GUI/Trade/Trade Screen.tscn" type="PackedScene" id=18]
-[ext_resource path="res://Engine/Systems/Event System.tscn" type="PackedScene" id=19]
-[ext_resource path="res://Scenes/Events/Level 2/Event Loader L2.gd" type="Script" id=20]
+[ext_resource path="res://Scenes/GUI/Unit Info/Unit Info Screen.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Engine/Systems/Event System.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Scenes/Events/Level 2/Event Loader L2.gd" type="Script" id=21]
 
 [node name="Battlefield" type="Node2D"]
 z_index = 4
@@ -69,9 +70,11 @@ position = Vector2( 0.552368, 0 )
 
 [node name="Trade Screen" parent="." instance=ExtResource( 18 )]
 
-[node name="Event System" parent="." instance=ExtResource( 19 )]
+[node name="Unit Info Screen" parent="." instance=ExtResource( 19 )]
+
+[node name="Event System" parent="." instance=ExtResource( 20 )]
 
 [node name="Event Loader" type="Node" parent="."]
-script = ExtResource( 20 )
+script = ExtResource( 21 )
 [connection signal="mapInformationLoaded" from="Level" to="GameCamera" method="_on_Level_mapInformationLoaded"]
 [connection signal="cursorMoved" from="Cursor" to="GameCamera" method="_on_Cursor_cursorMoved"]

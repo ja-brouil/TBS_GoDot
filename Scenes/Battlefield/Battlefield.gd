@@ -30,6 +30,9 @@ var extra_sound_effects
 var cursor
 var battlefield_ui
 
+# Unit Info Screen
+var unit_info_screen
+
 # Victory Condition
 var victory_text
 

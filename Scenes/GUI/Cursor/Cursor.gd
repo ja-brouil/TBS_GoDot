@@ -65,6 +65,9 @@ func _input(event):
 	elif Input.is_action_just_pressed("L button"):
 		updateCursorData()
 		l_button()
+	elif Input.is_action_just_pressed("R button"):
+		updateCursorData()
+		r_button()
 	
 	if Input.is_action_just_pressed("debug"):
 		debug()
@@ -221,6 +224,12 @@ func l_button() ->  void:
 			updateCursorData()
 			emit_signal("cursorMoved", "left", self.position)
 			break
+
+func r_button() -> void:
+	if BattlefieldInfo.current_Unit_Selected != null:
+		emit_signal("turn_off_ui")
+		disable_standard("standard")
+		BattlefieldInfo.unit_info_screen.turn_on()
 
 # Set animations state
 func set_animation_status(State: bool):
