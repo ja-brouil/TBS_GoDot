@@ -1,6 +1,7 @@
 extends Control
 
 # New Game start
+var world_map = load("res://Scenes/World Map/World Map Screen.tscn")
 var level1 = load("res://Scenes/Battlefield/Battlefield.tscn")
 
 # No text background
@@ -69,7 +70,7 @@ func process_selection():
 			
 			# Scene change
 			SceneTransition.connect("scene_changed", self, "clean_up")
-			SceneTransition.change_scene(level1, 0.1)
+			SceneTransition.change_scene(world_map, 0.1)
 
 func clean_up():
 	$"Intro Song".stop()

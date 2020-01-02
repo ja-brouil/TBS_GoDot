@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/levels/level3/level3.png" type="Texture" id=1]
+
+[node name="Fortress" type="Sprite"]
+position = Vector2( -3.66318, -3.82245 )
+scale = Vector2( 0.476689, 0.522194 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 161, 80, 14, 16 )
