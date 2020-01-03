@@ -104,5 +104,3 @@ func test():
 	"Eirika:\nThis is a test of what this will look like. Remember that this will automatically wrap as needed. The max amount of characters is this."]
 	
 	start(test_queue)
-
-

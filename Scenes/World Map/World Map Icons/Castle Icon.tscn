@@ -5,6 +5,7 @@
 [node name="Castle Icon" type="Sprite"]
 position = Vector2( 7.72639, 2.53191 )
 scale = Vector2( 0.385783, 0.368794 )
+z_index = 1
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 133, 36, 39, 44 )

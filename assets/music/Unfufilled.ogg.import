@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Unfufilled.ogg-70f0a2d4300e08e3c65c9d6bd97965e5.oggstr"
+
+[deps]
+
+source_file="res://assets/music/Unfufilled.ogg"
+dest_files=[ "res://.import/Unfufilled.ogg-70f0a2d4300e08e3c65c9d6bd97965e5.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

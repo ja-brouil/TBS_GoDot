@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Scenes/Battlefield/Battlefield Container.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Levels/level2.tscn" type="PackedScene" id=2]
@@ -22,7 +22,23 @@
 [ext_resource path="res://Engine/Systems/Event System.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Scenes/Events/Level 2/Event Loader L2.gd" type="Script" id=21]
 
+[sub_resource type="Animation" id=1]
+resource_name = "Fade"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
 [node name="Battlefield" type="Node2D"]
+modulate = Color( 0, 0, 0, 1 )
 z_index = 4
 script = ExtResource( 1 )
 __meta__ = {
@@ -76,5 +92,8 @@ position = Vector2( 0.552368, 0 )
 
 [node name="Event Loader" type="Node" parent="."]
 script = ExtResource( 21 )
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+anims/Fade = SubResource( 1 )
 [connection signal="mapInformationLoaded" from="Level" to="GameCamera" method="_on_Level_mapInformationLoaded"]
 [connection signal="cursorMoved" from="Cursor" to="GameCamera" method="_on_Cursor_cursorMoved"]

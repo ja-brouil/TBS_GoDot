@@ -25,7 +25,6 @@ tracks/0/keys = {
 
 [sub_resource type="DynamicFont" id=2]
 size = 50
-outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
 use_filter = true
@@ -73,6 +72,7 @@ margin_right = 1175.0
 margin_bottom = 291.0
 rect_scale = Vector2( 0.13, 0.13 )
 custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.0823529, 0.0705882, 0.0705882, 1 )
 text = "Eirika:
 
 This is a test of what this will look like. Remember that this will automatically wrap as needed. The max amount of characters is this."

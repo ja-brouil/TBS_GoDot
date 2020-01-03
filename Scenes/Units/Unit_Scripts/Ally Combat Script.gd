@@ -2,7 +2,7 @@ extends "res://Scenes/Units/Unit_Scripts/Combat Unit.gd"
 
 signal play_enemy_dodge_anim
 
-var game_over_scene = preload("res://Scenes/Game Over/Game Over Screen.tscn")
+var game_over = preload("res://Scenes/Game Over/Game Over Screen.tscn")
 
 func play_miss_sound():
 	var random = int(rand_range(1,3))
@@ -21,4 +21,4 @@ func game_over():
 	# Stop Turn Manager
 	BattlefieldInfo.turn_manager.turn = Turn_Manager.WAIT
 	
-	SceneTransition.change_scene(game_over_scene, 1)
+	SceneTransition.change_scene(game_over, 1)

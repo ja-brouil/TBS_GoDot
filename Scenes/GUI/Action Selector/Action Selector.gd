@@ -246,7 +246,7 @@ func process_selection():
 			
 # Go back
 func go_back():
-	if BattlefieldInfo.current_Unit_Selected.UnitActionStatus.get_current_action() == Unit_Action_Status.DONE:
+	if BattlefieldInfo.current_Unit_Selected.UnitActionStatus.get_current_action() == Unit_Action_Status.DONE || BattlefieldInfo.current_Unit_Selected.UnitActionStatus.get_current_action() == Unit_Action_Status.TRADE:
 		$"Action Menu/Hand Selector/Invalid".play(0)
 		return
 	

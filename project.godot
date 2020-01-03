@@ -94,6 +94,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scenes/Events/Level 2/L2 Event Part 50.gd"
 }, {
+"base": "World_Map_Event",
+"class": "Level2_WM_Event_Part10",
+"language": "GDScript",
+"path": "res://Scenes/Events/World Map Events/Level 2 WM Event Part 10.gd"
+}, {
 "base": "Camera2D",
 "class": "MainCamera",
 "language": "GDScript",
@@ -158,6 +163,11 @@ _global_script_classes=[ {
 "class": "Unit_Stats",
 "language": "GDScript",
 "path": "res://Scenes/Units/Unit_Scripts/Unit_Stats.gd"
+}, {
+"base": "Node",
+"class": "World_Map_Event",
+"language": "GDScript",
+"path": "res://Scenes/Events/World Map Events/World Map Event.gd"
 } ]
 _global_script_class_icons={
 "Battlefield_Unit": "",
@@ -177,6 +187,7 @@ _global_script_class_icons={
 "L2_Event_Part3": "",
 "L2_Event_Part4": "",
 "L2_Event_Part5": "",
+"Level2_WM_Event_Part10": "",
 "MainCamera": "",
 "Messaging_System": "",
 "MovementCalculator": "",
@@ -189,7 +200,8 @@ _global_script_class_icons={
 "Unit_Movement": "",
 "Unit_Movement_System": "",
 "Unit_Movement_System_Cinematic": "",
-"Unit_Stats": ""
+"Unit_Stats": "",
+"World_Map_Event": ""
 }
 
 [application]
@@ -206,6 +218,8 @@ BattlefieldInfo="*res://Scenes/Battlefield/Battlefield.gd"
 GroupNames="*res://Engine/Systems/Group Names.gd"
 Combat_Calculator="*res://Scenes/Combat/Combat_Calculator.gd"
 SceneTransition="*res://Scenes/Transition/Scene Transition.tscn"
+WorldMapScreen="*res://Scenes/World Map/World Map Screen.tscn"
+ChapterBackground="*res://Scenes/Chapter/Chapter Background.tscn"
 
 [debug]
 

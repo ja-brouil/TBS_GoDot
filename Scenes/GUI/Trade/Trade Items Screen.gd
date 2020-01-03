@@ -341,7 +341,7 @@ func reslot_arrays():
 # Set Action to done
 func set_done():
 	# We can continue to trade but we are done moving
-	BattlefieldInfo.current_Unit_Selected.UnitActionStatus.current_action_status = Unit_Action_Status.DONE
+	BattlefieldInfo.current_Unit_Selected.UnitActionStatus.current_action_status = Unit_Action_Status.TRADE
 	BattlefieldInfo.current_Unit_Selected.turn_greyscale_on()
 	BattlefieldInfo.current_Unit_Selected.get_node("Animation").current_animation = "Idle"
 	

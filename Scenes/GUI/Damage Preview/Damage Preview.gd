@@ -123,7 +123,6 @@ func update_preview_box():
 	# Calculate damage previews
 	Combat_Calculator.calculate_damage()
 	
-	
 	# Turn off bonuses
 	# Weapon Bonus
 	$"Preview/Player/Player Up Arrow Combat".visible = false

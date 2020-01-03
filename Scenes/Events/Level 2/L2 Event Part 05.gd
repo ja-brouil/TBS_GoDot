@@ -39,6 +39,10 @@ func start():
 		else:
 			ally.visible = false
 	
+	# Turn on
+	BattlefieldInfo.battlefield_container.get_node("Anim").play("Fade")
+	yield(BattlefieldInfo.battlefield_container.get_node("Anim"), "animation_finished")
+	
 	# Register to the dialogue system
 	BattlefieldInfo.message_system.connect("no_more_text", self, "move_actor")
 	BattlefieldInfo.movement_system_cinematic.connect("individual_unit_finished_moving", self, "hide_actor")

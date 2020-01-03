@@ -21,6 +21,8 @@ var is_active
 func _ready():
 	is_active = false
 	$Preview.rect_position = RIGHT_SIDE
+	
+	get_parent().get_node("Action Selector Screen").connect("menu_moved", self, "set_menu_position")
 
 # Input
 func _input(event):
@@ -124,9 +126,6 @@ func update_preview_box():
 	# Calculate damage previews
 	Combat_Calculator.calculate_healing()
 	
-	# Set menu position
-	set_menu_position()
-	
 	# Player
 	$"Preview/Player/Player Name".text = BattlefieldInfo.combat_player_unit.UnitStats.name
 	$"Preview/Player/Player Item Icon".texture = selected_item.icon
@@ -141,13 +140,11 @@ func update_preview_box():
 
 
 # Set position of menu -> This needs to be fixed later
-func set_menu_position():
-	pass
-#	if current_option_selected.get_node("Damage_Preview").overlaps_body(get_parent().get_node("GameCamera/Areas/TopLeft")) || \
-#		current_option_selected.get_node("Damage_Preview").overlaps_body(get_parent().get_node("GameCamera/Areas/BottomLeft")):
-#			$Preview.rect_position = LEFT_SIDE
-#	else:
-#		$Preview.rect_position = RIGHT_SIDE
+func set_menu_position(new_position):
+	if new_position == "left":
+		$Preview.rect_position = LEFT_SIDE
+	else:
+		$Preview.rect_position = RIGHT_SIDE
 
 # Update chosen enemy
 func update_enemy_chosen():

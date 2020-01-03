@@ -16,7 +16,7 @@ Take a look at any of the bugs below or anything in the to do list. If you wish 
 4. ~~Implement UI -> Halfway done, placement bugs fixed~~
 5. Optimize/clean up code -> Started, UI screens could be reparented with OOP
 6. ~~Combat Scripts -> Damage formulas written -> 90% done, test magic out last~~
-7. Level transitions -> Shaders built, just need to implement
+7. ~~Level transitions -> Shaders built, just need to implement |  Completed with world map and chapter in betweens~~
 8. Unit UI stats screen
 9. ~~Inventory -> Started, add swaping of position, Need to add enabling of weapons allowed~~
 10. ~~Trade function Completed, all units can trade with each other~~
@@ -30,7 +30,7 @@ Take a look at any of the bugs below or anything in the to do list. If you wish 
 18. ~~Add Game over and Intro Screen -> Complete and tested. Just add options and loading to this next~~
 
 ## Bugs to fix
-1. Trade screen -> When you are the last unit and you trade, the next phase starts due to the turn manager constantly checking every frame. This will need to be changed.
+1. ~~Trade screen -> When you are the last unit and you trade, the next phase starts due to the turn manager constantly checking every frame. This will need to be changed.~~ Fixed this by adding extra state for units
 2. Level up screen -> When a unit level ups, if the enemy/ally is not dead and still alive, it has more prority on the z index over the screen overlay. We will need to hide the units when this is the case.
 3. Bad sorting function? -> I keep getting this error and I'm not sure why. Check in with the custom sort function on the Priority queue
 4. Node already idle process? -> This error pops up once in a while and doesn't do anything but I've noticed that some units will have their animation speed way too fast or some animations just won't start on the UI when this shows up. Not 100% sure why this is hapenning but not a mission critical bug to be honest.

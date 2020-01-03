@@ -27,7 +27,7 @@ shader = SubResource( 1 )
 shader_param/tiled_factor = Vector2( 3, 3 )
 shader_param/aspect_ratio = 0.5
 
-[node name="Level" index="0" instance=ExtResource( 1 )]
+[node name="Level" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="YSort" type="YSort" parent="." index="0"]

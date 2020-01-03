@@ -53,7 +53,8 @@ func start():
 	# Battle Screen Connect
 	BattlefieldInfo.combat_screen.connect("combat_screen_done", self, "move_camera")
 	
-	# Stop other music -> Tween this later
+	# Stop other music
+	BattlefieldInfo.music_player.get_node("Unfufilled").stop()
 	BattlefieldInfo.music_player.get_node("AllyLevel").play(0)
 	
 	# Start Text

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Fire Emblem 8 Remastered - 4 In The Beginning.ogg-9cb314ae0585c43da6421184ad8811f2.oggstr"
+
+[deps]
+
+source_file="res://assets/music/Fire Emblem 8 Remastered - 4 In The Beginning.ogg"
+dest_files=[ "res://.import/Fire Emblem 8 Remastered - 4 In The Beginning.ogg-9cb314ae0585c43da6421184ad8811f2.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

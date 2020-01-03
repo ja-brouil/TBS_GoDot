@@ -5,3 +5,5 @@
 
 [node name="Level3" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+
+[node name="YSort" type="YSort" parent="." index="0"]

@@ -8,7 +8,7 @@ signal unit_became_done
 # Move -> Can do everything
 # Action -> Can do one action (Attack, Heal, Cast Magic, inventory, etc...)
 # Done -> Cannot do anything anymore
-enum {MOVE, ACTION, DONE}
+enum {MOVE, ACTION, TRADE, DONE}
 var current_action_status setget set_current_action, get_current_action
 
 # All Units are set to move
@@ -20,7 +20,3 @@ func get_current_action():
 
 func set_current_action(action):
 	current_action_status = action
-	
-	# notify when unit is done so we can check the turn manager
-	if (action == DONE):
-		emit_signal("unit_became_done")

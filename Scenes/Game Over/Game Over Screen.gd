@@ -3,6 +3,8 @@ extends Control
 var intro_screen = preload("res://Scenes/Intro Screen/Intro Screen.tscn")
 var burn_shader = preload("res://assets/Shaders/Burn Shader Effect Shorter.tres")
 
+var is_active = false
+
 func _ready():
 	# Stop current music
 	BattlefieldInfo.music_player.get_node("AllyLevel").stop()
@@ -13,8 +15,13 @@ func _ready():
 	
 	# Start Animation
 	$"AnimationPlayer".play("Start")
+	yield($AnimationPlayer, "animation_finished")
+	is_active = true
 
 func _input(event):
+	if !is_active:
+		return
+	
 	if event is InputEventKey and event.is_pressed():
 		if $"AnimationPlayer".is_playing():
 			$"Game Over Text".visible = false
@@ -37,4 +44,5 @@ func _input(event):
 func clean_up():
 	$"Game Over Music".stop()
 	SceneTransition.disconnect("scene_changed", self, "clean_up")
+	is_active = false
 	queue_free()

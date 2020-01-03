@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Fodlan Winds.ogg-d8726d50b7e635d61a33c8639a891319.oggstr"
+
+[deps]
+
+source_file="res://assets/music/Fodlan Winds.ogg"
+dest_files=[ "res://.import/Fodlan Winds.ogg-d8726d50b7e635d61a33c8639a891319.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

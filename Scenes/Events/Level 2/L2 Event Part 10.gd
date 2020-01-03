@@ -84,11 +84,9 @@ func move_camera():
 	var new_position_for_camera = Vector2(0,190)
 	
 	# Slow music down and turn it off
-	BattlefieldInfo.music_player.get_node("Unfufilled").stop()
+	BattlefieldInfo.music_player.get_node("Tween").interpolate_property(BattlefieldInfo.music_player.get_node("Unfufilled"), "volume_db", 0, -80, 1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	
 	# Move Camera
 	BattlefieldInfo.main_game_camera.get_node("Tween").connect("tween_all_completed", self, "event_complete")
 	BattlefieldInfo.main_game_camera.get_node("Tween").interpolate_property(BattlefieldInfo.main_game_camera, "position", BattlefieldInfo.main_game_camera.position, new_position_for_camera, 1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	BattlefieldInfo.main_game_camera.get_node("Tween").start()
-	
-	

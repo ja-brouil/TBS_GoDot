@@ -1,12 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/Intro Screen/Intro Screen.gd" type="Script" id=1]
 [ext_resource path="res://assets/intro screen/intro background.jpg" type="Texture" id=2]
-[ext_resource path="res://assets/music/01 Fire Emblem_ Three Houses Main Theme.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/music/01 Fire Emblem_ Three Houses Main Theme.ogg" type="AudioStream" id=3]
 [ext_resource path="res://assets/font/Action Selector Font.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Scenes/GUI/Hand Cursor/Hand Selector.tscn" type="PackedScene" id=5]
-[ext_resource path="res://icon.png" type="Texture" id=6]
-[ext_resource path="res://Scenes/Particles/First Pass Particles.tres" type="Material" id=7]
+[ext_resource path="res://Scenes/Particles/Fog.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Options Fade In"
@@ -52,58 +51,6 @@ tracks/0/keys = {
 "values": [ 0.0, -80.0 ]
 }
 
-[sub_resource type="Shader" id=3]
-code = "shader_type canvas_item;
-
-uniform vec3 color = vec3(0.71, 0.93, 0.95);
-uniform int OCTAVES = 4;
-
-float rand(vec2 coord){
-	return fract(sin(dot(coord, vec2(56, 78)) * 1000.0) * 1000.0);
-}
-
-float noise(vec2 coord){
-	vec2 i = floor(coord);
-	vec2 f = fract(coord);
-
-	// 4 corners of a rectangle surrounding our point
-	float a = rand(i);
-	float b = rand(i + vec2(1.0, 0.0));
-	float c = rand(i + vec2(0.0, 1.0));
-	float d = rand(i + vec2(1.0, 1.0));
-
-	vec2 cubic = f * f * (3.0 - 2.0 * f);
-
-	return mix(a, b, cubic.x) + (c - a) * cubic.y * (1.0 - cubic.x) + (d - b) * cubic.x * cubic.y;
-}
-
-float fbm(vec2 coord){
-	float value = 0.0;
-	float scale = 0.5;
-
-	for(int i = 0; i < OCTAVES; i++){
-		value += noise(coord) * scale;
-		coord *= 2.0;
-		scale *= 0.5;
-	}
-	return value;
-}
-
-void fragment() {
-	vec2 coord = UV * 20.0;
-
-	vec2 motion = vec2( fbm(coord + vec2(TIME * -0.5, TIME * 0.5)) );
-
-	float final = fbm(coord + motion);
-
-	COLOR = vec4(color, final * 0.5);
-}"
-
-[sub_resource type="ShaderMaterial" id=4]
-shader = SubResource( 3 )
-shader_param/color = Vector3( 0.71, 0.93, 0.95 )
-shader_param/OCTAVES = 4
-
 [node name="Intro Screen" type="Control"]
 script = ExtResource( 1 )
 
@@ -113,10 +60,8 @@ anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="Intro Background" type="TextureRect" parent="."]
-margin_left = 0.697327
-margin_top = 0.278946
-margin_right = 240.697
-margin_bottom = 160.279
+margin_right = 240.0
+margin_bottom = 160.0
 texture = ExtResource( 2 )
 expand = true
 
@@ -173,18 +118,4 @@ margin_bottom = 101.146
 "anims/Options Fade In" = SubResource( 1 )
 "anims/music fade out" = SubResource( 2 )
 
-[node name="Fog" type="Sprite" parent="."]
-modulate = Color( 0.54902, 0.643137, 0.501961, 0.654902 )
-material = SubResource( 4 )
-position = Vector2( 120.629, 79.9682 )
-scale = Vector2( 3.76126, 2.49768 )
-texture = ExtResource( 6 )
-
-[node name="Particles2D" type="Particles2D" parent="Fog"]
-position = Vector2( -0.846901, 28.6582 )
-scale = Vector2( 0.3, 0.3 )
-amount = 512
-lifetime = 4.0
-preprocess = 0.1
-randomness = 1.0
-process_material = ExtResource( 7 )
+[node name="Fog" parent="." instance=ExtResource( 6 )]

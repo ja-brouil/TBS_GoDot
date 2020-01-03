@@ -21,7 +21,7 @@ func _ready():
 	map_width = self.get_meta("width")
 	
 	# Set Map victory condition
-	BattlefieldInfo.victory_text = self.get_meta("Victory Condition")
+	BattlefieldInfo.victory_text = self.get_meta("Victory_Condition")
 	
 	# Start 2D Array
 	for i in map_width:
