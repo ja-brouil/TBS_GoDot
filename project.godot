@@ -214,7 +214,7 @@ config/icon="res://FE Icon.jpg"
 [autoload]
 
 Calculators="*res://Engine/Systems/Calculators.gd"
-BattlefieldInfo="*res://Scenes/Battlefield/Battlefield.gd"
+BattlefieldInfo="*res://Scenes/Battlefield/GameSystem.gd"
 GroupNames="*res://Engine/Systems/Group Names.gd"
 Combat_Calculator="*res://Scenes/Combat/Combat_Calculator.gd"
 SceneTransition="*res://Scenes/Transition/Scene Transition.tscn"

@@ -3553,7 +3553,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="Allies">
+ <objectgroup name="Allies" visible="0">
   <object id="2281" x="144" y="112" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
@@ -3612,13 +3612,13 @@
     <property name="ClassPower" type="int" value="3"/>
     <property name="Consti" type="int" value="5"/>
     <property name="Defense" type="int" value="3"/>
-    <property name="Health" type="int" value="16"/>
+    <property name="Health" type="int" value="17"/>
     <property name="InstanceName" value="Eirika"/>
     <property name="Level" type="int" value="1"/>
     <property name="Luck" type="int" value="6"/>
     <property name="Magic" type="int" value="0"/>
-    <property name="MaxHealth" type="int" value="16"/>
-    <property name="Move" type="int" value="5"/>
+    <property name="MaxHealth" type="int" value="17"/>
+    <property name="Move" type="int" value="16"/>
     <property name="Name" value="Eirika"/>
     <property name="Res" type="int" value="2"/>
     <property name="Skill" type="int" value="9"/>
@@ -4245,7 +4245,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="Enemies" visible="0">
+ <objectgroup name="Enemies">
   <object id="2878" x="32" y="256" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>

@@ -54,7 +54,6 @@ func _input(event):
 
 func allow_selection(anim_name):
 	current_state = GAME_SELECT
-	
 
 func process_selection():
 	match current_option:
@@ -64,11 +63,15 @@ func process_selection():
 			# Clear battlefield
 			BattlefieldInfo.clear()
 			
+			# Reset game over status
+			BattlefieldInfo.turn_manager.set_process(true)
+			BattlefieldInfo.game_over = false
+			
 			# Scene change
 			SceneTransition.connect("scene_changed", self, "clean_up")
 			WorldMapScreen.current_event = Level2_WM_Event_Part10.new()
 			WorldMapScreen.connect_to_scene_changer()
-			SceneTransition.change_scene(WorldMapScreen, 0.1)
+			SceneTransition.change_scene_to(WorldMapScreen, 0.1)
 
 func clean_up():
 	$"Intro Song".stop()

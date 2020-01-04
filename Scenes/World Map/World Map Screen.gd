@@ -21,6 +21,8 @@ func _ready():
 
 # Start this map
 func start():
+	current_event.world_map = self
+	
 	# Add child
 	add_child(current_event)
 	

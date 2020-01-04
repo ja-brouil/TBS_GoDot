@@ -50,6 +50,8 @@ var enemy_placeholder
 var cinematic_branch = false
 signal combat_screen_done
 
+# Game Over
+var game_over = false
 
 # Ready
 func _ready():
@@ -58,6 +60,7 @@ func _ready():
 	get_parent().get_parent().get_node("Message System").connect("no_more_text", self, "process_after_text") # Change this later to accomodate boss units
 	
 	BattlefieldInfo.combat_screen = self
+	set_process(true)
 
 # State update
 func _process(delta):
@@ -577,13 +580,15 @@ func enemy_attack():
 func update_hp_number(anim_name):
 	# Not interested in anything that isn't damage -> Replace later with state machine?
 	if "death" in anim_name || "dodge" in anim_name:
-		# Turn enemy off
-		var anim_name2 = str(BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.weapon_string_name, " regular")
-		enemy_placeholder.get_node(anim_name2).visible = false
+		if BattlefieldInfo.combat_ai_unit != null:
+			# Turn enemy off
+			var anim_name2 = str(BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.weapon_string_name, " regular")
+			enemy_placeholder.get_node(anim_name2).visible = false
 		
 		# Turn player off
-		var anim_name_off = str(BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped.weapon_string_name, " regular")
-		ally_placeholder.get_node(anim_name_off).visible = false
+		if BattlefieldInfo.combat_player_unit != null:
+			var anim_name_off = str(BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped.weapon_string_name, " regular")
+			ally_placeholder.get_node(anim_name_off).visible = false
 		return
 	
 	# Healing
@@ -646,20 +651,6 @@ func turn_on():
 	$"Combat Control".visible = true
 	# Reduce volume of the music
 	BattlefieldInfo.music_player.get_node("AllyLevel").volume_db = -8
-	
-	# Stop current music
-#	if BattlefieldInfo.turn_manager.turn == Turn_Manager.PLAYER_TURN:
-#		if BattlefieldInfo.enemy_units.size() <= 1:
-#			BattlefieldInfo.music_player.get_node("OneUnitLeft").stop()
-#		BattlefieldInfo.music_player.get_node("AllyLevel").stop()
-#	else:
-#		BattlefieldInfo.music_player.get_node("EnemyLevel").stop()
-#
-#	# Start music
-#	if BattlefieldInfo.turn_manager.turn == Turn_Manager.PLAYER_TURN:
-#		BattlefieldInfo.music_player.get_node("Ally Combat").play(0)
-#	else:
-#		BattlefieldInfo.music_player.get_node("Enemy Combat").play(0)
 
 	# Variable Reset
 	player_hp_destination = 0
@@ -690,10 +681,12 @@ func on_ally_death_complete():
 	
 	# Did Eirika die? Game over ->
 	if BattlefieldInfo.combat_player_unit.UnitStats.name == "Eirika":
-		player_node_name.game_over()
-		set_process_input(false)
-		return
-	
+		# Stop Music
+		BattlefieldInfo.music_player.get_node("AllyLevel").stop()
+		
+		# Set game over status
+		game_over = true
+
 	# Back to Battlefield
 	back_to_battlefield()
 
@@ -788,13 +781,11 @@ func turn_off():
 	if cinematic_branch:
 		cinematic_branch = false
 		
-		# Remove the unit from the array if it's dead either one
-#		if !weakref(BattlefieldInfo.combat_ai_unit) && BattlefieldInfo.combat_ai_unit.UnitStats.current_health <= 0:
-#			BattlefieldInfo.enemy_units.erase(BattlefieldInfo.combat_ai_unit)
-#		if BattlefieldInfo.combat_player_unit != null && BattlefieldInfo.combat_player_unit.UnitStats.current_health <= 0:
-#			BattlefieldInfo.ally_units.erase(BattlefieldInfo.combat_player_unit)
-		
 		emit_signal("combat_screen_done")
+	
+	# If this is a game over
+	if game_over:
+		BattlefieldInfo.game_over = true
 
 # Pause
 func _on_Pause_timeout():
@@ -803,11 +794,6 @@ func _on_Pause_timeout():
 
 func _on_Return_Pause_timeout():
 	set_process(false)
-	
-	# Flip enemy back -> For healing from allies/enemies Needs to be fixed later
-#	if flip_enemy:
-#		enemy_node_name.flip_h = false
-#		flip_enemy = false
 	
 	# Cinematic Branch
 	if !cinematic_branch:

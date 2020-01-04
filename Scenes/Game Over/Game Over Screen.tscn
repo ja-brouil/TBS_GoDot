@@ -161,7 +161,7 @@ scale = Vector2( 3.76126, 2.49768 )
 texture = SubResource( 3 )
 
 [node name="Game Over Text" type="Label" parent="."]
-modulate = Color( 1, 1, 1, 0.0034853 )
+modulate = Color( 1, 1, 1, 0.00968137 )
 margin_left = 116.338
 margin_top = 60.347
 margin_right = 480.338

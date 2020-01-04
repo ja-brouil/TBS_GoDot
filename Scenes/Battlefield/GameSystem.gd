@@ -36,6 +36,11 @@ var unit_info_screen
 # Victory Condition
 var victory_text
 
+# Screens
+var GAMEOVER
+var WORLD_MAP
+var CHAPTER_BG
+
 #######################
 #BATTLEFIELD VARIABLES#
 #######################
@@ -71,6 +76,9 @@ var Eirika
 var combat_player_unit
 var combat_ai_unit
 
+# Game Over
+var game_over = false
+
 # Start battlefield game
 func _ready():
 	# Movement Calculator
@@ -101,6 +109,11 @@ func _ready():
 	# Extra sounds
 	extra_sound_effects = preload("res://Scenes/Audio/Extra Sound Effects.tscn").instance()
 	add_child(extra_sound_effects)
+	
+	# Scenes needed
+	GAMEOVER = preload("res://Scenes/Game Over/Game Over Screen.tscn")
+	CHAPTER_BG = preload("res://Scenes/Chapter/Chapter Background.tscn")
+	WORLD_MAP = preload("res://Scenes/World Map/World Map Screen.tscn")
 
 # Run Systems
 func _process(delta):

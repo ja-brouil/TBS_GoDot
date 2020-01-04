@@ -67,11 +67,9 @@ func _input(event):
 				# Do we have any more text?
 				if text_queue.size() == 0:
 					turn_off()
+					current_state = wait
 					emit_signal("no_more_text")
 					
-					# Play sound Change this -> Not a fan
-					#$"Accept".play(0)
-					current_state = wait
 				else:
 					# Grab first one and scroll and set to input
 					$"Dialogue Box Texture/Dialogue Text".percent_visible = 0

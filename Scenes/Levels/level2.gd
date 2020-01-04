@@ -16,6 +16,9 @@ func _ready():
 	# Current Level set
 	BattlefieldInfo.current_level = self
 	
+	# Set music volume
+	BattlefieldInfo.music_player.get_node("AllyLevel").volume_db = 0
+	
 	# Set Map height
 	map_height = self.get_meta("height")
 	map_width = self.get_meta("width")

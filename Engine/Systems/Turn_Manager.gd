@@ -21,6 +21,9 @@ signal play_transition
 # Mid Level events I am not sure where to place this so this will have to do for now
 var mid_level_events = []
 
+# Test fix
+var gg
+
 func _init():
 	turn = WAIT
 
@@ -47,6 +50,13 @@ func reset_greyscale():
 
 # Not really a fan of checking this every frame but it will do for now. Optimize this later.
 func check_end_of_turn():
+	# If game over, exit this
+	if BattlefieldInfo.game_over:
+		turn = WAIT
+		set_process(false)
+		call_deferred("game_over_scene")
+		return
+	
 	match turn:
 		PLAYER_TURN:
 			for ally_unit in BattlefieldInfo.ally_units:
@@ -101,3 +111,8 @@ func _on_End_of_Ally_timeout():
 func _on_End_of_Enemy_timeout():
 	emit_signal("play_transition", "Enemy")
 	reset_greyscale()
+
+func game_over_scene():
+	# Free current battlefield scene
+	gg = get_tree().get_root().get_child(get_tree().get_root().get_child_count() - 1)
+	SceneTransition.manual_swap_scene(gg,"res://Scenes/Game Over/Game Over Screen.tscn", 0.1)

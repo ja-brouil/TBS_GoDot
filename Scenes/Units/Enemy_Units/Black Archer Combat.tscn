@@ -574,6 +574,7 @@ __meta__ = {
 
 [node name="bow regular" type="Sprite" parent="."]
 visible = false
+scale = Vector2( 1.2, 1.2 )
 texture = ExtResource( 2 )
 flip_h = true
 region_enabled = true
@@ -582,6 +583,7 @@ region_rect = Rect2( 106, 6, 25, 34 )
 [node name="bow crit" type="Sprite" parent="."]
 visible = false
 position = Vector2( -1, 0 )
+scale = Vector2( 1.2, 1.2 )
 texture = ExtResource( 3 )
 flip_h = true
 region_enabled = true

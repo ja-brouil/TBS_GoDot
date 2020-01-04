@@ -3,7 +3,7 @@ extends World_Map_Event
 class_name Level2_WM_Event_Part10
 
 # New Game start
-var level2 = load("res://Scenes/Battlefield/Battlefield.tscn")
+var level3 = load("res://Scenes/Battlefield/Chapter 3.tscn")
 
 # Eirika Start and move
 var eirika_final = Vector2(-162, -134)
@@ -50,8 +50,8 @@ func build_map():
 
 func after_text():
 	yield(get_tree().create_timer(0.5), "timeout")
-	SceneTransition.change_scene(ChapterBackground, 0.1)
+	SceneTransition.change_scene(GroupNames.CHAPTER_BACKGROUND, 0.1)
 	WorldMapScreen.exit()
 	yield(SceneTransition, "scene_changed")
-	ChapterBackground.start("2", "Fort Merceus", level2, 2)
+	SceneTransition.get_tree().current_scene.start("2", "Fort Merceus", level3, 2)
 	queue_free()

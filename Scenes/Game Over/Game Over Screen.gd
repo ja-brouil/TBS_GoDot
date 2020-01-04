@@ -1,21 +1,24 @@
 extends Control
 
-var intro_screen = preload("res://Scenes/Intro Screen/Intro Screen.tscn")
-var burn_shader = preload("res://assets/Shaders/Burn Shader Effect Shorter.tres")
+var intro_screen = "res://Scenes/Intro Screen/Intro Screen.tscn"
 
 var is_active = false
 
 func _ready():
 	# Stop current music
 	BattlefieldInfo.music_player.get_node("AllyLevel").stop()
-	
+
 	# Start music
 	$"Game Over Music".volume_db = 0
 	$"Game Over Music".play(0)
-	
+
+	# Param time
+	$"Game Over Screen Image".material.set_shader_param("start_time", 9999999.0)
+
 	# Start Animation
 	$"AnimationPlayer".play("Start")
 	yield($AnimationPlayer, "animation_finished")
+	
 	is_active = true
 
 func _input(event):
@@ -23,13 +26,13 @@ func _input(event):
 		return
 	
 	if event is InputEventKey and event.is_pressed():
+		is_active = false
 		if $"AnimationPlayer".is_playing():
 			$"Game Over Text".visible = false
 		
 		# Burn scene up
 		$"Game Over Screen Image".material.set_shader_param("duration", 4.0)
 		$"Game Over Screen Image".material.set_shader_param("start_time", OS.get_ticks_msec() / 1000.0)
-		set_process_input(false)
 		
 		# Scene transition -> Finish burn effect
 		$"AnimationPlayer".play("Text Fade")
@@ -37,12 +40,11 @@ func _input(event):
 		
 		# Fade music
 		$"AnimationPlayer".play("volume fade off")
-		SceneTransition.connect("scene_changed", self, "clean_up")
+		$"Game Over Screen Image".modulate = Color(1,1,1,0)
 		SceneTransition.change_scene(intro_screen, 0.1)
-		
 
 func clean_up():
 	$"Game Over Music".stop()
 	SceneTransition.disconnect("scene_changed", self, "clean_up")
-	is_active = false
+	visible = false
 	queue_free()
