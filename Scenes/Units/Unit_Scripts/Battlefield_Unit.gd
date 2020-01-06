@@ -35,9 +35,11 @@ var death_sentence
 func _ready():
 	# Movement Stats
 	UnitMovementStats = Unit_Movement.new()
+	add_child(UnitMovementStats)
 
 	# Unit Action state
 	UnitActionStatus = Unit_Action_Status.new()
+	add_child(UnitActionStatus)
 	
 	# Inventory
 	UnitInventory = preload("res://Scenes/Units/Unit_Scripts/Inventory.tscn").instance()
@@ -45,6 +47,7 @@ func _ready():
 	
 	# Unit stats
 	UnitStats = Unit_Stats.new()
+	add_child(UnitStats)
 
 # Greyscale options
 func turn_greyscale_on():
