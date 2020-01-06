@@ -786,6 +786,7 @@ func turn_off():
 	# If this is a game over
 	if game_over:
 		BattlefieldInfo.game_over = true
+	BattlefieldInfo.turn_manager.emit_signal("check_end_turn")
 
 # Pause
 func _on_Pause_timeout():

@@ -17,9 +17,6 @@ var mid_level_events = []
 func _ready():
 	BattlefieldInfo.event_system = self
 	
-	# Register to the scene transition
-	SceneTransition.connect("scene_changed", self, "start_events_queue")
-	
 # Start the events
 func start_events_queue():
 	# Pause gameplay if not paused
@@ -29,7 +26,8 @@ func start_events_queue():
 	if queue_of_events.empty():
 		print("FROM EVENT SYSTEM: Event queue is empty!")
 		# Clear the final event
-		current_event.queue_free()
+		if current_event != null:
+			current_event.queue_free()
 		current_event = null
 		emit_signal("all_events_completed")
 		# Start/Resume/End depending on state

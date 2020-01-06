@@ -1,3 +1,4 @@
+extends Reference
 # Movement Calculator for units
 # Calculates which tiles you can move, attack and heal
 # Calculates using A* which is the shortest path to the target cell

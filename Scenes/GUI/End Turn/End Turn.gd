@@ -67,6 +67,9 @@ func process_selection():
 			
 			# Turn this off
 			turn_off()
+			
+			# Transition
+			BattlefieldInfo.turn_manager.emit_signal("check_end_turn")
 
 # Cancel
 func go_back():

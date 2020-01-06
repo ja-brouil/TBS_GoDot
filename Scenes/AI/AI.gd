@@ -275,6 +275,7 @@ func next_step():
 			get_parent().turn_greyscale_on()
 			# Move to the next enemy
 			BattlefieldInfo.turn_manager.turn = Turn_Manager.ENEMY_TURN
+			BattlefieldInfo.turn_manager.emit_signal("check_end_turn")
 		HEAL:
 			pass # Process heal here
 
@@ -307,6 +308,7 @@ func _on_Timer_timeout():
 				BattlefieldInfo.movement_calculator.turn_off_all_tiles(get_parent(), BattlefieldInfo.grid)
 				# Move to the next enemy
 				BattlefieldInfo.turn_manager.turn = Turn_Manager.ENEMY_TURN
+				BattlefieldInfo.turn_manager.emit_signal("check_end_turn")
 			else:
 				# Find unit to attack
 				find_tile_to_move_to(find_most_threatening_enemy())

@@ -18,7 +18,7 @@ func _ready():
 	# Start Animation
 	$"AnimationPlayer".play("Start")
 	yield($AnimationPlayer, "animation_finished")
-	
+	SceneTransition.connect("scene_changed", self, "clean_up")
 	is_active = true
 
 func _input(event):
@@ -46,5 +46,4 @@ func _input(event):
 func clean_up():
 	$"Game Over Music".stop()
 	SceneTransition.disconnect("scene_changed", self, "clean_up")
-	visible = false
 	queue_free()

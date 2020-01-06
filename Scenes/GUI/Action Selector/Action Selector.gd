@@ -14,8 +14,8 @@ var new_menu_position = Vector2(0,0)
 const HAND_OFF_SET = Vector2(-5,-1.5)
 
 # Signals for changing UI screens
-signal selected_wait
 signal selected_back
+signal selected_wait
 
 # UI Active
 var is_active = false
@@ -243,6 +243,8 @@ func process_selection():
 			BattlefieldInfo.current_Unit_Selected.turn_greyscale_on()
 			BattlefieldInfo.current_Unit_Selected.get_node("Animation").current_animation = "Idle"
 			emit_signal("selected_wait")
+			
+			BattlefieldInfo.turn_manager.emit_signal("check_end_turn")
 			
 # Go back
 func go_back():

@@ -85,10 +85,14 @@ func _ready():
 	movement_calculator = MovementCalculator.new(self)
 	
 	# Movement System
-	unit_movement_system = Unit_Movement_System.new()
+	unit_movement_system = preload("res://Engine/Systems/Unit_Movement_System.gd").new()
+	unit_movement_system.set_name("Unit Movement System")
+	add_child(unit_movement_system)
 	
 	# Cinematic Movement System
-	movement_system_cinematic = Unit_Movement_System_Cinematic.new()
+	movement_system_cinematic = preload("res://Engine/Systems/Unit_Movement_System_Cinematic.gd").new()
+	movement_system_cinematic.set_name("Movement System Cinematic")
+	add_child(movement_system_cinematic)
 	
 	# Turn Manager
 	turn_manager = preload("res://Engine/Systems/Turn Manager.tscn").instance()
@@ -111,9 +115,9 @@ func _ready():
 	add_child(extra_sound_effects)
 	
 	# Scenes needed
-	GAMEOVER = preload("res://Scenes/Game Over/Game Over Screen.tscn")
-	CHAPTER_BG = preload("res://Scenes/Chapter/Chapter Background.tscn")
-	WORLD_MAP = preload("res://Scenes/World Map/World Map Screen.tscn")
+#	GAMEOVER = preload("res://Scenes/Game Over/Game Over Screen.tscn")
+#	CHAPTER_BG = preload("res://Scenes/Chapter/Chapter Background.tscn")
+#	WORLD_MAP = preload("res://Scenes/World Map/World Map Screen.tscn")
 
 # Run Systems
 func _process(delta):

@@ -215,11 +215,10 @@ config/icon="res://FE Icon.jpg"
 
 Calculators="*res://Engine/Systems/Calculators.gd"
 BattlefieldInfo="*res://Scenes/Battlefield/GameSystem.gd"
-GroupNames="*res://Engine/Systems/Group Names.gd"
 Combat_Calculator="*res://Scenes/Combat/Combat_Calculator.gd"
 SceneTransition="*res://Scenes/Transition/Scene Transition.tscn"
 WorldMapScreen="*res://Scenes/World Map/World Map Screen.tscn"
-ChapterBackground="*res://Scenes/Chapter/Chapter Background.tscn"
+GroupNames="*res://Engine/Systems/Group Names.gd"
 
 [debug]
 

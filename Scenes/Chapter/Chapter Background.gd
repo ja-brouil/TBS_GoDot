@@ -18,10 +18,11 @@ func start(chapter_number, chapter_name, next_chapter_path, delay):
 	
 	# Wait 2 seconds then move on
 	yield(get_tree().create_timer(2.0), "timeout")
+	get_tree().get_root().remove_child(WorldMapScreen)
 	$Container/Anim.play_backwards("Fade ")
 	yield($Container/Anim,"animation_finished")
 	$Container.visible = false
-	SceneTransition.change_scene_to(next_chapter_path, 0.1)
+	SceneTransition.change_scene(next_chapter_path, 0.1)
 
 func set_fog_color(color):
 	$Container/Fog.modulate = color

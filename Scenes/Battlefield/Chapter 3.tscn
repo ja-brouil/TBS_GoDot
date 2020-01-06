@@ -38,12 +38,7 @@ tracks/0/keys = {
 }
 
 [node name="Chapter 3" type="Node2D"]
-modulate = Color( 0, 0, 0, 1 )
-z_index = 4
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_horizontal_guides_": [ 352.006 ]
-}
 
 [node name="Level" parent="." instance=ExtResource( 2 )]
 

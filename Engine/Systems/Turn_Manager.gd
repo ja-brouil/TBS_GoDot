@@ -18,17 +18,17 @@ signal enemy_turn_increased
 # Signal to play graphic
 signal play_transition
 
+# Check for end of turn
+signal check_end_turn
+
 # Mid Level events I am not sure where to place this so this will have to do for now
 var mid_level_events = []
-
-# Test fix
-var gg
 
 func _init():
 	turn = WAIT
 
-func _process(delta):
-	check_end_of_turn()
+func _ready():
+	connect("check_end_turn", self, "check_end_of_turn")
 
 # Ally
 func reset_allys():
@@ -53,7 +53,6 @@ func check_end_of_turn():
 	# If game over, exit this
 	if BattlefieldInfo.game_over:
 		turn = WAIT
-		set_process(false)
 		call_deferred("game_over_scene")
 		return
 	
@@ -64,13 +63,12 @@ func check_end_of_turn():
 					return
 			# Increase the player turn amount by 1
 			player_turn_number += 1
+			turn = WAIT
 			emit_signal("player_turn_increased", player_turn_number)
 			
 			# Run mid level events
 			if mid_level_events.empty():
 				start_ally_transition()
-			
-			turn = WAIT
 		ENEMY_TURN:
 			for enemy_unit in BattlefieldInfo.enemy_units:
 				if enemy_unit.UnitActionStatus.get_current_action() != Unit_Action_Status.DONE:
@@ -82,13 +80,12 @@ func check_end_of_turn():
 			
 			# Increase the enemy turn amount by 1
 			enemy_turn_number += 1
+			turn = WAIT
 			emit_signal("enemy_turn_increased", enemy_turn_number)
 			
 			# Start enemy transition
 			if mid_level_events.empty():
 				start_enemy_transition()
-			
-			turn = WAIT
 		WAIT:
 			pass
 
@@ -112,7 +109,19 @@ func _on_End_of_Enemy_timeout():
 	emit_signal("play_transition", "Enemy")
 	reset_greyscale()
 
+func reset():
+	player_turn_number = 0
+	enemy_turn_number = 0
+	for event in mid_level_events:
+		event.queue_free()
+	mid_level_events.clear()
+
 func game_over_scene():
+	# Reset
+	reset()
+	
+	# Stop input from cursor
+	BattlefieldInfo.cursor.set_process_input(false)
+	
 	# Free current battlefield scene
-	gg = get_tree().get_root().get_child(get_tree().get_root().get_child_count() - 1)
-	SceneTransition.manual_swap_scene(gg,"res://Scenes/Game Over/Game Over Screen.tscn", 0.1)
+	SceneTransition.change_scene("res://Scenes/Game Over/Game Over Screen.tscn", 2)

@@ -40,6 +40,9 @@ func ally_animation_finished(anim_name):
 func enemy_animation_finished(anim_name):
 	BattlefieldInfo.turn_manager.turn = Turn_Manager.ENEMY_TURN
 	BattlefieldInfo.turn_manager.reset_enemies()
+	
+	# Start AI
+	BattlefieldInfo.turn_manager.emit_signal("check_end_turn")
 
 # Initial phase
 func _on_Timer_timeout():

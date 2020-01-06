@@ -198,7 +198,7 @@ func _ready():
 		BattlefieldInfo.spawn_points.append(spawn_point_cell)
 		add_child(spawn_point_cell)
 	
-	$SpawnPoints.queue_free()
+	$SpawnPoints.free()
 	
 	# Send cell and grid information to the battlefield main so it is easily accessible
 	BattlefieldInfo.grid = self.grid

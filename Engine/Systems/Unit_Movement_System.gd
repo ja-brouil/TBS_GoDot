@@ -10,10 +10,6 @@ var is_moving = false
 signal unit_finished_moving
 signal action_selector_screen
 
-var battlefield
-
-func _ready():
-	battlefield = get_parent()
 
 func process_movement(delta):
 	if !is_moving:
