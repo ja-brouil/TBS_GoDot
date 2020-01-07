@@ -60,6 +60,21 @@ _global_script_classes=[ {
 "path": "res://Scenes/Items/Item.gd"
 }, {
 "base": "Event_Base",
+"class": "L1_Event_Part_10",
+"language": "GDScript",
+"path": "res://Scenes/Events/Level 1/L1 Event Part 10.gd"
+}, {
+"base": "Event_Base",
+"class": "L1_Event_Part_20",
+"language": "GDScript",
+"path": "res://Scenes/Events/Level 1/L1 Event Part 20.gd"
+}, {
+"base": "Event_Base",
+"class": "L1_Event_Part_30",
+"language": "GDScript",
+"path": "res://Scenes/Events/Level 1/L1 Event Part 30.gd"
+}, {
+"base": "Event_Base",
 "class": "L2_Event_Mid_10",
 "language": "GDScript",
 "path": "res://Scenes/Events/Level 2/L2 Event Mid 10.gd"
@@ -93,6 +108,11 @@ _global_script_classes=[ {
 "class": "L2_Event_Part5",
 "language": "GDScript",
 "path": "res://Scenes/Events/Level 2/L2 Event Part 50.gd"
+}, {
+"base": "World_Map_Event",
+"class": "Level1_WM_Event_Part10",
+"language": "GDScript",
+"path": "res://Scenes/Events/World Map Events/Level 1 WM Event Part 10.gd"
 }, {
 "base": "World_Map_Event",
 "class": "Level2_WM_Event_Part10",
@@ -159,10 +179,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Engine/Systems/Unit_Movement_System_Cinematic.gd"
 }, {
-"base": "Reference",
+"base": "Object",
 "class": "Unit_Stats",
 "language": "GDScript",
 "path": "res://Scenes/Units/Unit_Scripts/Unit_Stats.gd"
+}, {
+"base": "Node",
+"class": "Victory_Checker",
+"language": "GDScript",
+"path": "res://Engine/Systems/Victory Checker.gd"
 }, {
 "base": "Node",
 "class": "World_Map_Event",
@@ -180,6 +205,9 @@ _global_script_class_icons={
 "Group_Name": "",
 "HashSet": "",
 "Item": "",
+"L1_Event_Part_10": "",
+"L1_Event_Part_20": "",
+"L1_Event_Part_30": "",
 "L2_Event_Mid_10": "",
 "L2_Event_Part05": "",
 "L2_Event_Part1": "",
@@ -187,6 +215,7 @@ _global_script_class_icons={
 "L2_Event_Part3": "",
 "L2_Event_Part4": "",
 "L2_Event_Part5": "",
+"Level1_WM_Event_Part10": "",
 "Level2_WM_Event_Part10": "",
 "MainCamera": "",
 "Messaging_System": "",
@@ -201,6 +230,7 @@ _global_script_class_icons={
 "Unit_Movement_System": "",
 "Unit_Movement_System_Cinematic": "",
 "Unit_Stats": "",
+"Victory_Checker": "",
 "World_Map_Event": ""
 }
 
@@ -310,6 +340,11 @@ debug={
 "R button"={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"unicode":0,"echo":false,"script":null)
+ ]
+}
+exit_game={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777217,"unicode":0,"echo":false,"script":null)
  ]
 }
 

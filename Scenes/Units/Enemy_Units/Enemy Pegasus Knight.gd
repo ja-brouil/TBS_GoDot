@@ -16,7 +16,7 @@ func _ready():
 	UnitMovementStats.riverPenalty = 0
 	UnitMovementStats.seaPenalty = -99
 	UnitMovementStats.mountainPenalty = -99
-	
+	UnitMovementStats.ruinsPenalty = -2
 	
 	# Unit Portrait
 	unit_portrait_path = preload("res://assets/units/enemyPortrait/red soldier portrait.png")

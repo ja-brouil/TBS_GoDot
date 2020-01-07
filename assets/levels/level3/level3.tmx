@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.0" orientation="orthogonal" renderorder="right-down" width="15" height="15" tilewidth="16" tileheight="16" infinite="0" nextobjectid="277">
+<map version="1.0" tiledversion="1.1.0" orientation="orthogonal" renderorder="right-down" width="15" height="15" tilewidth="16" tileheight="16" infinite="0" nextobjectid="305">
+ <properties>
+  <property name="Enemies_to_defeat" type="int" value="15"/>
+  <property name="Victory_Condition" value="Defeat All Enemies"/>
+ </properties>
  <tileset firstgid="1" source="level3tileset.tsx"/>
  <layer name="Background" width="15" height="15">
   <data encoding="csv">
@@ -730,7 +734,7 @@
     <property name="Avd" type="int" value="0"/>
     <property name="Def" type="int" value="0"/>
     <property name="MovementCost" type="int" value="1"/>
-    <property name="TileType" value="Village"/>
+    <property name="TileType" value="Village Entrance"/>
    </properties>
   </object>
   <object id="92" x="16" y="208" width="16" height="16">
@@ -1482,7 +1486,7 @@
     <property name="Avd" type="int" value="0"/>
     <property name="Def" type="int" value="0"/>
     <property name="MovementCost" type="int" value="1"/>
-    <property name="TileType" value="Village"/>
+    <property name="TileType" value="Village Entrance"/>
    </properties>
   </object>
   <object id="197" x="112" y="32" width="16" height="16">
@@ -1490,7 +1494,7 @@
     <property name="Avd" type="int" value="0"/>
     <property name="Def" type="int" value="0"/>
     <property name="MovementCost" type="int" value="1"/>
-    <property name="TileType" value="Village"/>
+    <property name="TileType" value="Village Entrance"/>
    </properties>
   </object>
   <object id="198" x="112" y="16" width="16" height="16">
@@ -1822,7 +1826,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="Allies">
+ <objectgroup name="Allies" visible="0">
   <object id="251" x="0" y="224" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
@@ -2053,7 +2057,7 @@
     <property name="strChance" type="int" value="0"/>
    </properties>
   </object>
-  <object id="264" x="16" y="208" width="16" height="16">
+  <object id="264" x="0" y="208" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="15"/>
     <property name="BonusDodge" type="int" value="0"/>
@@ -2099,7 +2103,7 @@
     <property name="strChance" type="int" value="70"/>
    </properties>
   </object>
-  <object id="265" x="32" y="224" width="16" height="16">
+  <object id="265" x="0" y="224" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
     <property name="BonusDodge" type="int" value="0"/>
@@ -2145,37 +2149,9 @@
     <property name="strChance" type="int" value="80"/>
    </properties>
   </object>
-  <object id="266" x="192" y="80" width="16" height="16">
-   <properties>
-    <property name="BonusCrit" type="int" value="0"/>
-    <property name="BonusDodge" type="int" value="0"/>
-    <property name="BonusHit" type="int" value="0"/>
-    <property name="BossBonus" type="int" value="0"/>
-    <property name="Class" value="Bandit"/>
-    <property name="ClassBonusA" type="int" value="0"/>
-    <property name="ClassBonusB" type="int" value="0"/>
-    <property name="ClassPower" type="int" value="3"/>
-    <property name="Consti" type="int" value="8"/>
-    <property name="Defense" type="int" value="1"/>
-    <property name="Health" type="int" value="21"/>
-    <property name="InstanceName" value="Bandit"/>
-    <property name="Level" type="int" value="3"/>
-    <property name="Luck" type="int" value="0"/>
-    <property name="Magic" type="int" value="3"/>
-    <property name="MaxHealth" type="int" value="21"/>
-    <property name="Move" type="int" value="5"/>
-    <property name="Name" value="Barbarian"/>
-    <property name="Res" type="int" value="2"/>
-    <property name="Skill" type="int" value="3"/>
-    <property name="Speed" type="int" value="3"/>
-    <property name="Str" type="int" value="5"/>
-    <property name="ThiefBonus" type="int" value="0"/>
-    <property name="Weapon" value="Iron Axe"/>
-    <property name="aiType" value="Passive"/>
-    <property name="isAlly" type="bool" value="false"/>
-   </properties>
-  </object>
-  <object id="267" x="176" y="96" width="16" height="16">
+ </objectgroup>
+ <objectgroup name="Enemies">
+  <object id="295" x="176" y="96" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
     <property name="BonusDodge" type="int" value="0"/>
@@ -2201,161 +2177,11 @@
     <property name="Str" type="int" value="6"/>
     <property name="ThiefBonus" type="int" value="0"/>
     <property name="Weapon" value="Iron Axe"/>
-    <property name="aiType" value="Passive"/>
-    <property name="isAlly" type="bool" value="false"/>
-   </properties>
-  </object>
-  <object id="268" x="192" y="48" width="16" height="16">
-   <properties>
-    <property name="BonusCrit" type="int" value="10"/>
-    <property name="BonusDodge" type="int" value="5"/>
-    <property name="BonusHit" type="int" value="5"/>
-    <property name="BossBonus" type="int" value="0"/>
-    <property name="Class" value="Bandit"/>
-    <property name="ClassBonusA" type="int" value="0"/>
-    <property name="ClassBonusB" type="int" value="0"/>
-    <property name="ClassPower" type="int" value="3"/>
-    <property name="Consti" type="int" value="8"/>
-    <property name="Defense" type="int" value="2"/>
-    <property name="Health" type="int" value="21"/>
-    <property name="InstanceName" value="Bandit"/>
-    <property name="Level" type="int" value="3"/>
-    <property name="Luck" type="int" value="0"/>
-    <property name="Magic" type="int" value="3"/>
-    <property name="MaxHealth" type="int" value="21"/>
-    <property name="Move" type="int" value="5"/>
-    <property name="Name" value="Marcus"/>
-    <property name="Res" type="int" value="1"/>
-    <property name="Skill" type="int" value="3"/>
-    <property name="Speed" type="int" value="2"/>
-    <property name="Str" type="int" value="6"/>
-    <property name="ThiefBonus" type="int" value="0"/>
-    <property name="Weapon" value="Iron Axe"/>
-    <property name="aiType" value="Passive"/>
-    <property name="isAlly" type="bool" value="false"/>
-   </properties>
-  </object>
-  <object id="269" x="64" y="48" width="16" height="16">
-   <properties>
-    <property name="BonusCrit" type="int" value="0"/>
-    <property name="BonusDodge" type="int" value="0"/>
-    <property name="BonusHit" type="int" value="0"/>
-    <property name="BossBonus" type="int" value="0"/>
-    <property name="Class" value="Archer"/>
-    <property name="ClassBonusA" type="int" value="0"/>
-    <property name="ClassBonusB" type="int" value="0"/>
-    <property name="ClassPower" type="int" value="3"/>
-    <property name="Consti" type="int" value="7"/>
-    <property name="Defense" type="int" value="4"/>
-    <property name="Health" type="int" value="19"/>
-    <property name="InstanceName" value="Black Archer"/>
-    <property name="Level" type="int" value="3"/>
-    <property name="Luck" type="int" value="1"/>
-    <property name="Magic" type="int" value="0"/>
-    <property name="MaxHealth" type="int" value="19"/>
-    <property name="Move" type="int" value="5"/>
-    <property name="Name" value="Soldier"/>
-    <property name="Res" type="int" value="1"/>
-    <property name="Skill" type="int" value="3"/>
-    <property name="Speed" type="int" value="3"/>
-    <property name="Str" type="int" value="5"/>
-    <property name="ThiefBonus" type="int" value="0"/>
-    <property name="Weapon" value="Iron Bow"/>
     <property name="aiType" value="Aggresive"/>
     <property name="isAlly" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="270" x="32" y="80" width="16" height="16">
-   <properties>
-    <property name="BonusCrit" type="int" value="0"/>
-    <property name="BonusDodge" type="int" value="0"/>
-    <property name="BonusHit" type="int" value="0"/>
-    <property name="BossBonus" type="int" value="0"/>
-    <property name="Class" value="Bandit"/>
-    <property name="ClassBonusA" type="int" value="0"/>
-    <property name="ClassBonusB" type="int" value="0"/>
-    <property name="ClassPower" type="int" value="3"/>
-    <property name="Consti" type="int" value="8"/>
-    <property name="Defense" type="int" value="1"/>
-    <property name="Health" type="int" value="21"/>
-    <property name="InstanceName" value="Bandit"/>
-    <property name="Level" type="int" value="3"/>
-    <property name="Luck" type="int" value="0"/>
-    <property name="Magic" type="int" value="3"/>
-    <property name="MaxHealth" type="int" value="21"/>
-    <property name="Move" type="int" value="5"/>
-    <property name="Name" value="Barbarian"/>
-    <property name="Res" type="int" value="2"/>
-    <property name="Skill" type="int" value="3"/>
-    <property name="Speed" type="int" value="3"/>
-    <property name="Str" type="int" value="5"/>
-    <property name="ThiefBonus" type="int" value="0"/>
-    <property name="Weapon" value="Iron Axe"/>
-    <property name="aiType" value="Aggresive"/>
-    <property name="isAlly" type="bool" value="false"/>
-   </properties>
-  </object>
-  <object id="272" x="96" y="64" width="16" height="16">
-   <properties>
-    <property name="BonusCrit" type="int" value="0"/>
-    <property name="BonusDodge" type="int" value="0"/>
-    <property name="BonusHit" type="int" value="0"/>
-    <property name="BossBonus" type="int" value="0"/>
-    <property name="Class" value="Archer"/>
-    <property name="ClassBonusA" type="int" value="0"/>
-    <property name="ClassBonusB" type="int" value="0"/>
-    <property name="ClassPower" type="int" value="3"/>
-    <property name="Consti" type="int" value="7"/>
-    <property name="Defense" type="int" value="4"/>
-    <property name="Health" type="int" value="18"/>
-    <property name="InstanceName" value="Black Archer"/>
-    <property name="Level" type="int" value="3"/>
-    <property name="Luck" type="int" value="1"/>
-    <property name="Magic" type="int" value="0"/>
-    <property name="MaxHealth" type="int" value="18"/>
-    <property name="Move" type="int" value="5"/>
-    <property name="Name" value="Soldier"/>
-    <property name="Res" type="int" value="1"/>
-    <property name="Skill" type="int" value="3"/>
-    <property name="Speed" type="int" value="3"/>
-    <property name="Str" type="int" value="5"/>
-    <property name="ThiefBonus" type="int" value="0"/>
-    <property name="Weapon" value="Iron Bow"/>
-    <property name="aiType" value="Aggresive"/>
-    <property name="isAlly" type="bool" value="false"/>
-   </properties>
-  </object>
-  <object id="273" x="224" y="64" width="16" height="16">
-   <properties>
-    <property name="BonusCrit" type="int" value="0"/>
-    <property name="BonusDodge" type="int" value="0"/>
-    <property name="BonusHit" type="int" value="0"/>
-    <property name="BossBonus" type="int" value="0"/>
-    <property name="Class" value="Archer"/>
-    <property name="ClassBonusA" type="int" value="0"/>
-    <property name="ClassBonusB" type="int" value="0"/>
-    <property name="ClassPower" type="int" value="3"/>
-    <property name="Consti" type="int" value="7"/>
-    <property name="Defense" type="int" value="4"/>
-    <property name="Health" type="int" value="21"/>
-    <property name="InstanceName" value="Black Archer"/>
-    <property name="Level" type="int" value="3"/>
-    <property name="Luck" type="int" value="1"/>
-    <property name="Magic" type="int" value="0"/>
-    <property name="MaxHealth" type="int" value="21"/>
-    <property name="Move" type="int" value="5"/>
-    <property name="Name" value="Soldier"/>
-    <property name="Res" type="int" value="1"/>
-    <property name="Skill" type="int" value="3"/>
-    <property name="Speed" type="int" value="3"/>
-    <property name="Str" type="int" value="5"/>
-    <property name="ThiefBonus" type="int" value="0"/>
-    <property name="Weapon" value="Iron Bow"/>
-    <property name="aiType" value="Aggresive"/>
-    <property name="isAlly" type="bool" value="false"/>
-   </properties>
-  </object>
-  <object id="274" x="64" y="96" width="16" height="16">
+  <object id="296" x="64" y="96" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
     <property name="BonusDodge" type="int" value="0"/>
@@ -2385,7 +2211,67 @@
     <property name="isAlly" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="275" x="80" y="80" width="16" height="16">
+  <object id="297" x="192" y="80" width="16" height="16">
+   <properties>
+    <property name="BonusCrit" type="int" value="0"/>
+    <property name="BonusDodge" type="int" value="0"/>
+    <property name="BonusHit" type="int" value="0"/>
+    <property name="BossBonus" type="int" value="0"/>
+    <property name="Class" value="Bandit"/>
+    <property name="ClassBonusA" type="int" value="0"/>
+    <property name="ClassBonusB" type="int" value="0"/>
+    <property name="ClassPower" type="int" value="3"/>
+    <property name="Consti" type="int" value="8"/>
+    <property name="Defense" type="int" value="1"/>
+    <property name="Health" type="int" value="21"/>
+    <property name="InstanceName" value="Bandit"/>
+    <property name="Level" type="int" value="3"/>
+    <property name="Luck" type="int" value="0"/>
+    <property name="Magic" type="int" value="3"/>
+    <property name="MaxHealth" type="int" value="21"/>
+    <property name="Move" type="int" value="5"/>
+    <property name="Name" value="Barbarian"/>
+    <property name="Res" type="int" value="2"/>
+    <property name="Skill" type="int" value="3"/>
+    <property name="Speed" type="int" value="3"/>
+    <property name="Str" type="int" value="5"/>
+    <property name="ThiefBonus" type="int" value="0"/>
+    <property name="Weapon" value="Iron Axe"/>
+    <property name="aiType" value="Passive"/>
+    <property name="isAlly" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="298" x="32" y="80" width="16" height="16">
+   <properties>
+    <property name="BonusCrit" type="int" value="0"/>
+    <property name="BonusDodge" type="int" value="0"/>
+    <property name="BonusHit" type="int" value="0"/>
+    <property name="BossBonus" type="int" value="0"/>
+    <property name="Class" value="Bandit"/>
+    <property name="ClassBonusA" type="int" value="0"/>
+    <property name="ClassBonusB" type="int" value="0"/>
+    <property name="ClassPower" type="int" value="3"/>
+    <property name="Consti" type="int" value="8"/>
+    <property name="Defense" type="int" value="1"/>
+    <property name="Health" type="int" value="21"/>
+    <property name="InstanceName" value="Bandit"/>
+    <property name="Level" type="int" value="3"/>
+    <property name="Luck" type="int" value="0"/>
+    <property name="Magic" type="int" value="3"/>
+    <property name="MaxHealth" type="int" value="21"/>
+    <property name="Move" type="int" value="5"/>
+    <property name="Name" value="Barbarian"/>
+    <property name="Res" type="int" value="2"/>
+    <property name="Skill" type="int" value="3"/>
+    <property name="Speed" type="int" value="3"/>
+    <property name="Str" type="int" value="5"/>
+    <property name="ThiefBonus" type="int" value="0"/>
+    <property name="Weapon" value="Iron Axe"/>
+    <property name="aiType" value="Aggresive"/>
+    <property name="isAlly" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="299" x="80" y="80" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
     <property name="BonusDodge" type="int" value="0"/>
@@ -2415,7 +2301,37 @@
     <property name="isAlly" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="276" x="160" y="64" width="16" height="16">
+  <object id="300" x="96" y="64" width="16" height="16">
+   <properties>
+    <property name="BonusCrit" type="int" value="0"/>
+    <property name="BonusDodge" type="int" value="0"/>
+    <property name="BonusHit" type="int" value="0"/>
+    <property name="BossBonus" type="int" value="0"/>
+    <property name="Class" value="Archer"/>
+    <property name="ClassBonusA" type="int" value="0"/>
+    <property name="ClassBonusB" type="int" value="0"/>
+    <property name="ClassPower" type="int" value="3"/>
+    <property name="Consti" type="int" value="7"/>
+    <property name="Defense" type="int" value="4"/>
+    <property name="Health" type="int" value="18"/>
+    <property name="InstanceName" value="Black Archer"/>
+    <property name="Level" type="int" value="3"/>
+    <property name="Luck" type="int" value="1"/>
+    <property name="Magic" type="int" value="0"/>
+    <property name="MaxHealth" type="int" value="18"/>
+    <property name="Move" type="int" value="5"/>
+    <property name="Name" value="Soldier"/>
+    <property name="Res" type="int" value="1"/>
+    <property name="Skill" type="int" value="3"/>
+    <property name="Speed" type="int" value="3"/>
+    <property name="Str" type="int" value="5"/>
+    <property name="ThiefBonus" type="int" value="0"/>
+    <property name="Weapon" value="Iron Bow"/>
+    <property name="aiType" value="Aggresive"/>
+    <property name="isAlly" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="301" x="224" y="64" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
     <property name="BonusDodge" type="int" value="0"/>
@@ -2441,10 +2357,99 @@
     <property name="Str" type="int" value="5"/>
     <property name="ThiefBonus" type="int" value="0"/>
     <property name="Weapon" value="Iron Bow"/>
+    <property name="aiType" value="Passive"/>
+    <property name="isAlly" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="302" x="160" y="64" width="16" height="16">
+   <properties>
+    <property name="BonusCrit" type="int" value="0"/>
+    <property name="BonusDodge" type="int" value="0"/>
+    <property name="BonusHit" type="int" value="0"/>
+    <property name="BossBonus" type="int" value="0"/>
+    <property name="Class" value="Archer"/>
+    <property name="ClassBonusA" type="int" value="0"/>
+    <property name="ClassBonusB" type="int" value="0"/>
+    <property name="ClassPower" type="int" value="3"/>
+    <property name="Consti" type="int" value="7"/>
+    <property name="Defense" type="int" value="4"/>
+    <property name="Health" type="int" value="21"/>
+    <property name="InstanceName" value="Black Archer"/>
+    <property name="Level" type="int" value="3"/>
+    <property name="Luck" type="int" value="1"/>
+    <property name="Magic" type="int" value="0"/>
+    <property name="MaxHealth" type="int" value="21"/>
+    <property name="Move" type="int" value="5"/>
+    <property name="Name" value="Soldier"/>
+    <property name="Res" type="int" value="1"/>
+    <property name="Skill" type="int" value="3"/>
+    <property name="Speed" type="int" value="3"/>
+    <property name="Str" type="int" value="5"/>
+    <property name="ThiefBonus" type="int" value="0"/>
+    <property name="Weapon" value="Iron Bow"/>
+    <property name="aiType" value="Passive"/>
+    <property name="isAlly" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="303" x="192" y="48" width="16" height="16">
+   <properties>
+    <property name="BonusCrit" type="int" value="10"/>
+    <property name="BonusDodge" type="int" value="5"/>
+    <property name="BonusHit" type="int" value="5"/>
+    <property name="BossBonus" type="int" value="0"/>
+    <property name="Class" value="Bandit"/>
+    <property name="ClassBonusA" type="int" value="0"/>
+    <property name="ClassBonusB" type="int" value="0"/>
+    <property name="ClassPower" type="int" value="3"/>
+    <property name="Consti" type="int" value="8"/>
+    <property name="Defense" type="int" value="2"/>
+    <property name="Health" type="int" value="21"/>
+    <property name="InstanceName" value="Bandit"/>
+    <property name="Level" type="int" value="3"/>
+    <property name="Luck" type="int" value="0"/>
+    <property name="Magic" type="int" value="3"/>
+    <property name="MaxHealth" type="int" value="21"/>
+    <property name="Move" type="int" value="5"/>
+    <property name="Name" value="Marcus"/>
+    <property name="Res" type="int" value="1"/>
+    <property name="Skill" type="int" value="3"/>
+    <property name="Speed" type="int" value="2"/>
+    <property name="Str" type="int" value="6"/>
+    <property name="ThiefBonus" type="int" value="0"/>
+    <property name="Weapon" value="Iron Axe"/>
+    <property name="aiType" value="Passive"/>
+    <property name="isAlly" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="304" x="64" y="48" width="16" height="16">
+   <properties>
+    <property name="BonusCrit" type="int" value="0"/>
+    <property name="BonusDodge" type="int" value="0"/>
+    <property name="BonusHit" type="int" value="0"/>
+    <property name="BossBonus" type="int" value="0"/>
+    <property name="Class" value="Archer"/>
+    <property name="ClassBonusA" type="int" value="0"/>
+    <property name="ClassBonusB" type="int" value="0"/>
+    <property name="ClassPower" type="int" value="3"/>
+    <property name="Consti" type="int" value="7"/>
+    <property name="Defense" type="int" value="4"/>
+    <property name="Health" type="int" value="19"/>
+    <property name="InstanceName" value="Black Archer"/>
+    <property name="Level" type="int" value="3"/>
+    <property name="Luck" type="int" value="1"/>
+    <property name="Magic" type="int" value="0"/>
+    <property name="MaxHealth" type="int" value="19"/>
+    <property name="Move" type="int" value="5"/>
+    <property name="Name" value="Soldier"/>
+    <property name="Res" type="int" value="1"/>
+    <property name="Skill" type="int" value="3"/>
+    <property name="Speed" type="int" value="3"/>
+    <property name="Str" type="int" value="5"/>
+    <property name="ThiefBonus" type="int" value="0"/>
+    <property name="Weapon" value="Iron Bow"/>
     <property name="aiType" value="Aggresive"/>
     <property name="isAlly" type="bool" value="false"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="Enemies"/>
 </map>

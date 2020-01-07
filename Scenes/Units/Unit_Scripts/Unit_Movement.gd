@@ -33,6 +33,7 @@ var fortressPenalty
 var buildingPenalty
 var riverPenalty
 var seaPenalty
+var ruinsPenalty
 
 # Constructor
 func _init():
@@ -45,4 +46,5 @@ func _init():
 	self.riverPenalty = 0
 	self.seaPenalty = 0
 	self.mountainPenalty = 0
+	self.ruinsPenalty = 0
 	is_ally = true

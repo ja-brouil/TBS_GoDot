@@ -5,10 +5,12 @@ extends Node2D
 # Way Point markers
 var castle_waypoint_marker = preload("res://Scenes/World Map/World Map Icons/Castle Icon.tscn")
 var fort_waypoint_marker = preload("res://Scenes/World Map/World Map Icons/Fortress Icon.tscn")
+var village_waypoint_marker = preload("res://Scenes/World Map/World Map Icons/Village Icon.tscn")
 
 # Way Points Array
 var castle_waypoints = []
 var fort_waypoints = []
+var village_waypoints = []
 
 # Eirika
 var eirika_off_screen = Vector2(-300, -75)
@@ -63,6 +65,12 @@ func place_fort_waypoint(fort_position):
 	fort_waypoints.append(f_waypoint_marker)
 	add_child(f_waypoint_marker)
 
+func place_village_waypoint(village_position):
+	var v_waypoint_marker = village_waypoint_marker.instance()
+	v_waypoint_marker.position = village_position
+	village_waypoints.append(v_waypoint_marker)
+	add_child(v_waypoint_marker)
+
 # Place Eirika's new position
 func place_eirika(eirika_new_position):
 	$Eirika.visible = true
@@ -103,6 +111,7 @@ func exit():
 	$"World Map Music 1/Music Tween".start()
 	yield($Anim,"animation_finished")
 	$"World Map Music 1".stop()
+	current_event = null
 	clear_map()
 
 # Connect to Scene changer
@@ -118,8 +127,12 @@ func clear_map():
 	for f_waypoint in fort_waypoints:
 		f_waypoint.queue_free()
 	
+	for v_waypoint in village_waypoints:
+		v_waypoint.queue_free()
+	
 	castle_waypoints.clear()
 	fort_waypoints.clear()
+	village_waypoints.clear()
 	
 	# Reset Eirika
 	$Eirika.position = eirika_off_screen

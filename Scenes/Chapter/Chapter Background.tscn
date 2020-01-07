@@ -88,7 +88,6 @@ flags = 4
 script = ExtResource( 1 )
 
 [node name="Container" type="Control" parent="."]
-visible = false
 modulate = Color( 0, 0, 0, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0

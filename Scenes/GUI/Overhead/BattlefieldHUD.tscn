@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Scenes/GUI/Overhead/BattlefieldHUD.gd" type="Script" id=1]
 [ext_resource path="res://assets/UI/Panels/unitInfoBox.png" type="Texture" id=2]
@@ -101,6 +101,11 @@ font_data = ExtResource( 3 )
 texture = ExtResource( 8 )
 region_rect = Rect2( 0, 0, 44, 43 )
 
+[sub_resource type="DynamicFont" id=11]
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
+
 [sub_resource type="Animation" id=10]
 length = 0.75
 step = 0.25
@@ -118,7 +123,6 @@ tracks/0/keys = {
 }
 
 [node name="BattlefieldHUD" type="CanvasLayer"]
-editor/display_folded = true
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 134.613, 145.226, 122.236 ],
@@ -126,14 +130,13 @@ __meta__ = {
 }
 
 [node name="Battlefield HUD" type="Control" parent="."]
-visible = false
 margin_left = 0.0654756
 margin_top = -0.0882874
 margin_right = 240.066
 margin_bottom = 159.912
 
 [node name="Unit Info" type="Panel" parent="Battlefield HUD"]
-visible = false
+editor/display_folded = true
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = -0.222908
@@ -204,6 +207,7 @@ texture = ExtResource( 6 )
 expand = true
 
 [node name="Victory Info" type="Panel" parent="Battlefield HUD"]
+editor/display_folded = true
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -50.0
@@ -247,7 +251,7 @@ margin_top = 5.0
 margin_right = 180.0
 margin_bottom = 65.0
 rect_scale = Vector2( 0.25, 0.25 )
-custom_fonts/font = ExtResource( 9 )
+custom_fonts/font = SubResource( 11 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Plains"

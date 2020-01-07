@@ -12,7 +12,8 @@ var eirika_initial = Vector2(-168, - 93)
 func _init():
 	# Text
 	text_array = [
-		"With the historial peace negotiations about to start, Eirika's father, King Terenas\nsends his daughter to Fort Merceus with Knight Commander Seth.",
+		"After giving the report on the situation at the village borders, King Terenas invites the Almaryan envoy to discuss the terms of peace",
+		"With these historial peace negotiations about to start, Eirika's father, King Terenas\nsends his daughter to Fort Merceus with Knight Commander Seth.",
 		"Accompanied by her friends and closest allies, they set out for Fort Merceus.",
 		"That night, a terrible storm blankets the region..."
 	]
@@ -54,4 +55,4 @@ func after_text():
 	WorldMapScreen.exit()
 	yield(SceneTransition, "scene_changed")
 	SceneTransition.get_tree().current_scene.start("2", "Fort Merceus", level3, 2)
-	queue_free()
+	free()

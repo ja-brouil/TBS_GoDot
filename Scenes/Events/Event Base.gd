@@ -38,6 +38,9 @@ func move_actor():
 func enable_text(text_array: Array):
 	BattlefieldInfo.message_system.start(text_array)
 
+func enable_text_no_array():
+	pass
+
 # Start combat between two actors
 func enable_combat():
 	pass

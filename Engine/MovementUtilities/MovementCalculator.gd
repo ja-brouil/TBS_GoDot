@@ -151,6 +151,8 @@ func getPenaltyCost(Unit_Movement, Cell_Type) -> int:
 			return Unit_Movement.buildingPenalty
 		"River":
 			return Unit_Movement.riverPenalty
+		"Ruins":
+			return Unit_Movement.ruinsPenalty
 		"Sea":
 			return Unit_Movement.seaPenalty
 		_:

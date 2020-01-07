@@ -5,9 +5,6 @@ func start(chapter_number, chapter_name, next_chapter_path, delay):
 	$"Container/Chapter Number".text = str("Chapter ", chapter_number)
 	$"Container/Chapter Name".text = chapter_name
 	
-	# Visible
-	$Container.visible = true
-	
 	# Play Animation
 	$Container/Anim.play("Fade ")
 
@@ -21,7 +18,6 @@ func start(chapter_number, chapter_name, next_chapter_path, delay):
 	get_tree().get_root().remove_child(WorldMapScreen)
 	$Container/Anim.play_backwards("Fade ")
 	yield($Container/Anim,"animation_finished")
-	$Container.visible = false
 	SceneTransition.change_scene(next_chapter_path, 0.1)
 
 func set_fog_color(color):

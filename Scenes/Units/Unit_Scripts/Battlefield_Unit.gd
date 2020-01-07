@@ -47,7 +47,6 @@ func _ready():
 	
 	# Unit stats
 	UnitStats = Unit_Stats.new()
-	add_child(UnitStats)
 
 # Greyscale options
 func turn_greyscale_on():

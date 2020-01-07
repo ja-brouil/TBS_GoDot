@@ -10,10 +10,6 @@ func _ready():
 	BattlefieldInfo.event_system.add_event(L2_Event_Part4.new())
 	BattlefieldInfo.event_system.add_event(L2_Event_Part5.new())
 	
-	# Add to the tree to prevent a bug
-	for event in BattlefieldInfo.event_system.queue_of_events:
-		add_child(event)
-	
 	# Mid Level Events
 	BattlefieldInfo.turn_manager.mid_level_events.append(L2_Event_Mid_10.new())
 	

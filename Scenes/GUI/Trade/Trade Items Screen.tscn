@@ -160,10 +160,10 @@ position = Vector2( 195, 111 )
 position = Vector2( 195, 120 )
 
 [node name="Player 2 Slot 5" parent="Unit Selected by Player/Inventory 2" instance=ExtResource( 5 )]
-position = Vector2( 195, 129.433 )
+position = Vector2( 195, 128.762 )
 
 [node name="Player 2 Slot 6" parent="Unit Selected by Player/Inventory 2" instance=ExtResource( 5 )]
-position = Vector2( 195, 138.195 )
+position = Vector2( 195, 137.524 )
 
 [node name="Bottom 2" type="TextureRect" parent="Unit Selected by Player/Inventory 2"]
 margin_left = 195.369

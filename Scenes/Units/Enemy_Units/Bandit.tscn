@@ -353,7 +353,7 @@ tracks/3/keys = {
 }
 
 [node name="Bandit" type="Node2D"]
-z_index = 2
+z_index = 4
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 17.0391 ]

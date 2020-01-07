@@ -50,6 +50,14 @@ func reset_greyscale():
 
 # Not really a fan of checking this every frame but it will do for now. Optimize this later.
 func check_end_of_turn():
+	# Check if we have won
+	BattlefieldInfo.victory_system.check_victory_status()
+	
+	# We have beaten this level, move on to the next one
+	if BattlefieldInfo.victory:
+		call_deferred("victory_next_level")
+		return
+	
 	# If game over, exit this
 	if BattlefieldInfo.game_over:
 		turn = WAIT
@@ -125,3 +133,6 @@ func game_over_scene():
 	
 	# Free current battlefield scene
 	SceneTransition.change_scene("res://Scenes/Game Over/Game Over Screen.tscn", 2)
+
+func victory_next_level():
+	BattlefieldInfo.battlefield_container.next_level()

@@ -1,3 +1,5 @@
+extends Object
+
 # Statistics for the unit 
 class_name Unit_Stats
 

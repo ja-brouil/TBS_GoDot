@@ -69,7 +69,7 @@ expand = true
 stream = ExtResource( 3 )
 
 [node name="Options" type="Control" parent="."]
-visible = false
+modulate = Color( 1, 1, 1, 0 )
 margin_right = 40.0
 margin_bottom = 40.0
 

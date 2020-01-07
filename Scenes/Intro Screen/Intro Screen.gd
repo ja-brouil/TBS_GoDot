@@ -71,7 +71,7 @@ func process_selection():
 			SceneTransition.connect("scene_changed", self, "clean_up")
 			if !WorldMapScreen.is_inside_tree():
 				get_tree().get_root().add_child(WorldMapScreen)
-			WorldMapScreen.current_event = Level2_WM_Event_Part10.new()
+			WorldMapScreen.current_event = Level1_WM_Event_Part10.new()
 			WorldMapScreen.connect_to_scene_changer()
 			SceneTransition.change_scene_to(WorldMapScreen, 0.1)
 

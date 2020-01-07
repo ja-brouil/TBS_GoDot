@@ -36,6 +36,9 @@ var unit_info_screen
 # Victory Condition
 var victory_text
 
+# Victory System
+var victory_system
+
 # Screens
 var GAMEOVER
 var WORLD_MAP
@@ -79,6 +82,9 @@ var combat_ai_unit
 # Game Over
 var game_over = false
 
+# Victory
+var victory = false
+
 # Start battlefield game
 func _ready():
 	# Movement Calculator
@@ -114,6 +120,12 @@ func _ready():
 	extra_sound_effects = preload("res://Scenes/Audio/Extra Sound Effects.tscn").instance()
 	add_child(extra_sound_effects)
 	
+	# Map Updater
+	
+	# Victory Checker
+	victory_system = preload("res://Engine/Systems/Victory Checker.tscn").instance()
+	add_child(victory_system)
+	
 	# Scenes needed
 #	GAMEOVER = preload("res://Scenes/Game Over/Game Over Screen.tscn")
 #	CHAPTER_BG = preload("res://Scenes/Chapter/Chapter Background.tscn")
@@ -123,6 +135,11 @@ func _ready():
 func _process(delta):
 	unit_movement_system.process_movement(delta)
 	movement_system_cinematic.process_movement(delta)
+
+# Global Hotkeys
+func _input(event):
+	if Input.is_action_just_pressed("exit_game"):
+		get_tree().quit()
 
 # Clear for starting
 func clear():

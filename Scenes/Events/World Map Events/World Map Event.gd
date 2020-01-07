@@ -12,6 +12,7 @@ var text_array = []
 # Way points arrays
 var castle_waypoints_array = []
 var fort_waypoints_array = []
+var village_waypoints_array = []
 
 # Call this to run the event
 func run():

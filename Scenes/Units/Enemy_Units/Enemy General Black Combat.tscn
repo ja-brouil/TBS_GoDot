@@ -314,7 +314,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 0.5, 2.5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ Rect2( 0, 26, 56, 47 ), Rect2( 284, 28, 43, 48 ), Rect2( 0, 26, 56, 47 ) ]
+"values": [ Rect2( 35, 6, 56, 47 ), Rect2( 277, 8, 43, 48 ), Rect2( 35, 6, 56, 47 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath(".:z_index")
@@ -429,6 +429,18 @@ tracks/6/keys = {
 "args": [  ],
 "method": "put_away_attack_sound"
 } ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("axe regular:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -600,7 +612,7 @@ tracks/11/keys = {
 }
 
 [node name="Enemy General Black Combat" type="Node2D"]
-z_index = 4
+z_index = 5
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 24.0, 22.046 ],

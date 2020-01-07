@@ -355,7 +355,8 @@ func place_combat_art():
 	add_child(enemy_placeholder)
 	
 	# Enemy Miss signal
-	enemy_node_name.connect("play_player_dodge_anim", self, "play_player_miss_anim")
+	if !BattlefieldInfo.combat_ai_unit.UnitMovementStats.is_ally:
+		enemy_node_name.connect("play_player_dodge_anim", self, "play_player_miss_anim")
 	enemy_node_name.connect("death_anim_done", self, "on_enemy_death_complete")
 	enemy_node_name.get_node("anim").connect("animation_finished", self, "update_hp_number")
 	add_child(enemy_node_name)

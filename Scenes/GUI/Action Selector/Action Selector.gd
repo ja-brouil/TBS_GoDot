@@ -201,7 +201,7 @@ func get_menu_items():
 	# Cell Visit -> Armory/Arena/Village
 	if BattlefieldInfo.current_Unit_Selected.UnitMovementStats.currentTile.tileName == "Village" || \
 	   BattlefieldInfo.current_Unit_Selected.UnitMovementStats.currentTile.tileName == "Arena" || \
-	   BattlefieldInfo.current_Unit_Selected.UnitMovementStats.currentTile.tileName == "Village":
+	   BattlefieldInfo.current_Unit_Selected.UnitMovementStats.currentTile.tileName == "Village Entrance":
 		if !menu_items.has("Visit"):
 			menu_items.append("Visit")
 	

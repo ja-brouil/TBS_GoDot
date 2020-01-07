@@ -72,6 +72,10 @@ func update_terrain_box(cursor_position):
 	
 	# Set Tile Name
 	$"Battlefield HUD/Terrain Info/T Name".text = cursor_cell.tileName
+#	if $"Battlefield HUD/Terrain Info/T Name".text.length() >= 10:
+#		$"Battlefield HUD/Terrain Info/T Name".set("custom_fonts/font/size", 15)
+#	else:
+#		$"Battlefield HUD/Terrain Info/T Name".set("custom_fonts/font/size", 32)
 	
 	# Set Stats
 	$"Battlefield HUD/Terrain Info/Avd/Avd_Value".text = str(cursor_cell.avoidanceBonus)

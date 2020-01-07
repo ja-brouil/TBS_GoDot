@@ -1,0 +1,85 @@
+extends Event_Base
+
+class_name L1_Event_Part_30
+
+# Event Description:
+# Seth + Eirika chat for a bit
+
+# Actors to move
+var ewan
+var natasha
+var neimi
+var gilliam
+var vanessa
+
+# Dialogue between the characters
+var dialogue = [
+	"Seth:\n\nThose bastards! Attacking innocent townsfolk!",
+	"Seth:\n\nThere are Almaryan soldiers that are helping them as well!",
+	"Eirika:\n\nThey have already destroyed a village!",
+	"Eirika:\n\nSeth! We have to stop them before they can do anymore damage to the other villages!"
+]
+
+# Set Names for Debug
+func _init():
+	event_name = "Prepare for Battle"
+	event_part = "Part 30"
+
+func start():
+	# Show allies
+	for ally in BattlefieldInfo.ally_units:
+		if ally.UnitStats.name == "Ewan":
+			ewan = ally
+		if ally.UnitStats.name == "Neimi":
+			neimi = ally
+		if ally.UnitStats.name == "Natasha":
+			natasha = ally
+		if ally.UnitStats.name == "Gilliam":
+			gilliam = ally
+		if ally.UnitStats.name == "Vanessa":
+			vanessa = ally
+	
+	for enemy in BattlefieldInfo.enemy_units:
+		enemy.visible = true
+	
+	# Register to the dialogue system
+	BattlefieldInfo.message_system.connect("no_more_text", self, "move_actor")
+	
+	# Register Movement
+	BattlefieldInfo.movement_system_cinematic.connect("unit_finished_moving_cinema", self, "move_cursor")
+	
+	# Start Text
+	BattlefieldInfo.message_system.set_position(Messaging_System.TOP)
+	enable_text(dialogue)
+
+func move_cursor():
+	BattlefieldInfo.cursor.position = Vector2(64, 208)
+	event_complete()
+
+func move_actor():
+	for ally in BattlefieldInfo.ally_units:
+		ally.visible = true
+	
+	# Build path to the location
+	BattlefieldInfo.movement_calculator.get_path_to_destination_AI(natasha, BattlefieldInfo.grid[1][13], BattlefieldInfo.grid)
+	BattlefieldInfo.movement_calculator.get_path_to_destination_AI(ewan, BattlefieldInfo.grid[3][14], BattlefieldInfo.grid)
+	BattlefieldInfo.movement_calculator.get_path_to_destination_AI(neimi, BattlefieldInfo.grid[2][13], BattlefieldInfo.grid)
+	BattlefieldInfo.movement_calculator.get_path_to_destination_AI(gilliam, BattlefieldInfo.grid[5][13], BattlefieldInfo.grid)
+	BattlefieldInfo.movement_calculator.get_path_to_destination_AI(vanessa, BattlefieldInfo.grid[2][12], BattlefieldInfo.grid)
+	
+	# Remove original tile
+	natasha.UnitMovementStats.currentTile.occupyingUnit = null
+	ewan.UnitMovementStats.currentTile.occupyingUnit = null
+	neimi.UnitMovementStats.currentTile.occupyingUnit = null
+	gilliam.UnitMovementStats.currentTile.occupyingUnit = null
+	vanessa.UnitMovementStats.currentTile.occupyingUnit = null
+	
+	# Add actors to movement
+	BattlefieldInfo.movement_system_cinematic.unit_to_move_same_time.append(natasha)
+	BattlefieldInfo.movement_system_cinematic.unit_to_move_same_time.append(neimi)
+	BattlefieldInfo.movement_system_cinematic.unit_to_move_same_time.append(ewan)
+	BattlefieldInfo.movement_system_cinematic.unit_to_move_same_time.append(gilliam)
+	BattlefieldInfo.movement_system_cinematic.unit_to_move_same_time.append(vanessa)
+	
+	# Start the cinematic movement
+	BattlefieldInfo.movement_system_cinematic.is_moving = true

@@ -53,7 +53,7 @@ void fragment(){
 	COLOR = tex;
 
 	// Generate Noise
-	float noise = fbm(UV * 6.0);
+	float noise_generated = fbm(UV * 6.0);
 
 	// Thresholds
 	float thickness = 0.1;
@@ -61,22 +61,22 @@ void fragment(){
 	float inner_edge = outer_edge + thickness;
 
 	// Set color to invisible
-	if (noise < inner_edge){
-		float gradient_factor = (inner_edge - noise) / thickness;
+	if (noise_generated < inner_edge){
+		float gradient_factor = (inner_edge - noise_generated) / thickness;
 		gradient_factor = clamp(gradient_factor, 0.0, 1.0);
 		vec4 fire_grad = mix(fire, ash, gradient_factor);
 
 		// Short fade in, use 0.02
-		float inner_fade = (inner_edge - noise) / 0.02;
+		float inner_fade = (inner_edge - noise_generated) / 0.02;
 		inner_fade = clamp(inner_fade, 0.0, 1.0);
 
 		// Set gradient
-		COLOR = mix(COLOR, fire_grad, inner_fade)
+		COLOR = mix(COLOR, fire_grad, inner_fade);
 	}
 
 	// Fade to transparency
-	if (noise < outer_edge) {
-		COLOR.a =  1.0 - (outer_edge - noise) / 0.02;
+	if (noise_generated < outer_edge) {
+		COLOR.a =  1.0 - (outer_edge - noise_generated) / 0.02;
 		COLOR.a = clamp(COLOR.a, 0.0, 1.0);
 	}
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Scenes/World Map/World Map Screen.gd" type="Script" id=1]
 [ext_resource path="res://assets/world map/world map.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Scenes/GUI/Damage Preview/Cursor Select.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/World Map/World Map Icons/Castle Icon.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/World Map/World Map Icons/Fortress Icon.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/World Map/World Map Icons/Village Icon.tscn" type="PackedScene" id=10]
 
 [sub_resource type="Animation" id=1]
 length = 2.0
@@ -604,3 +605,6 @@ position = Vector2( -270.012, -107.606 )
 
 [node name="Anim" type="AnimationPlayer" parent="."]
 "anims/Fade " = SubResource( 12 )
+
+[node name="Village Icon" parent="." instance=ExtResource( 10 )]
+position = Vector2( -285.899, -57.2718 )

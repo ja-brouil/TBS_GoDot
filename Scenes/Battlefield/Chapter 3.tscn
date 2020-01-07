@@ -38,6 +38,7 @@ tracks/0/keys = {
 }
 
 [node name="Chapter 3" type="Node2D"]
+modulate = Color( 0, 0, 0, 1 )
 script = ExtResource( 1 )
 
 [node name="Level" parent="." instance=ExtResource( 2 )]

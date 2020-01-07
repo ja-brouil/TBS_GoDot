@@ -51,6 +51,7 @@ func start_events_queue():
 # Add an event to the queue
 func add_event(event: Event_Base):
 	queue_of_events.append(event)
+	add_child(event)
 
 func add_mid_event(event: Event_Base):
 	mid_level_events.append(event)
