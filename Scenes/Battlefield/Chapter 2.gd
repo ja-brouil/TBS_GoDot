@@ -22,7 +22,7 @@ func next_level():
 	BattlefieldInfo.cursor.disable_standard("hello world")
 	
 	# stop music
-	BattlefieldInfo.music_player.get_node("AllyLevel").stop(0)
+	BattlefieldInfo.music_player.get_node("AllyLevel").stop()
 	
 	# Fade Away
 	$Anim.play_backwards("Fade")
