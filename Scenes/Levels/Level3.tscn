@@ -8,5 +8,11 @@ script = ExtResource( 2 )
 
 [node name="YSort" type="YSort" parent="." index="0"]
 
+[node name="Background" parent="." index="1"]
+modulate = Color( 0.996078, 0.819608, 0.745098, 1 )
+
+[node name="57" parent="CellInfo" index="1"]
+editor/display_folded = false
+
 [node name="Allies" parent="." index="3"]
 visible = true

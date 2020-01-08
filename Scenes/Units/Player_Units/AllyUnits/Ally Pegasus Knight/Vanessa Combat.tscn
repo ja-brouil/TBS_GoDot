@@ -543,6 +543,18 @@ tracks/9/keys = {
 "update": 1,
 "values": [ false, true, false ]
 }
+tracks/10/type = "value"
+tracks/10/path = NodePath("wing flap:playing")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 4.6, 8.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [node name="Vanessa Combat" type="Node2D"]
 script = ExtResource( 1 )
@@ -552,6 +564,7 @@ __meta__ = {
 }
 
 [node name="lance regular" type="Sprite" parent="."]
+visible = false
 position = Vector2( 0, -10 )
 texture = ExtResource( 2 )
 region_enabled = true

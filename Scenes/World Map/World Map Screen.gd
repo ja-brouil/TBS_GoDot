@@ -20,6 +20,7 @@ var current_event
 
 func _ready():
 	$"Eirika/Eirika Tween".connect("tween_completed", self, "set_eirika_idle")
+	$Eirika/Animation.play("Idle")
 
 # Start this map
 func start():

@@ -61,7 +61,7 @@ func process_selection():
 			print("FROM END TURN: Suspend")
 		"End":
 			# Get all ally units and put it to end
-			for ally_unit in BattlefieldInfo.ally_units:
+			for ally_unit in BattlefieldInfo.ally_units.values():
 				ally_unit.UnitActionStatus.set_current_action(Unit_Action_Status.DONE)
 				ally_unit.get_node("Animation").current_animation = "Idle"
 			

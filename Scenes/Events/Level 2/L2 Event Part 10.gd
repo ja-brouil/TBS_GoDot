@@ -15,7 +15,7 @@ var dialogue = [
 	"Seth:\n\nYour highness, you shouldn't be outside right now.",
 	"Seth:\n\nI can't guarantee your safety out here. Please head back inside.",
 	"Eirika:\n\nI will be alright Seth. The soldiers are my people after all.",
-	"Eirika:\n\nDo you think father will be able to convince them to lay down their arms?",
+	"Eirika:\n\nDo you think father will be able to convince them to finally lay down their arms?",
 	"Seth:\n\nIn all fairness, I truly don't know. His highness is a great king and I trust him to do the right decision.",
 	"Eirika:\n\nYes... I think so too.",
 	"Eirika:\n\nHowever, I can't shake the feeling that we shouldn't be here right now.",
@@ -40,11 +40,8 @@ func start():
 
 	
 	# Move Eirika
-	for ally in BattlefieldInfo.ally_units:
-		if ally.UnitStats.name == "Eirika":
-			eirika = ally
-			eirika.visible = true
-			break
+	BattlefieldInfo.ally_units["Eirika"].visible = true
+	eirika = BattlefieldInfo.ally_units["Eirika"]
 	
 	# Signals needed
 	BattlefieldInfo.message_system.connect("no_more_text", self, "move_camera")

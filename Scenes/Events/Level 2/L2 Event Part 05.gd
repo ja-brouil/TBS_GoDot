@@ -29,15 +29,19 @@ func _init():
 	event_part = "Part 0.5"
 
 func start():
-	for ally in BattlefieldInfo.ally_units:
-		if ally.UnitStats.name == "Seth" || ally.UnitStats.name == "Dead Soldier" || ally.UnitStats.name == "Ephraim Soldier" || ally.UnitStats.name == "Move Me 3" || ally.UnitStats.name == "Move Me 4":
-			ally.visible = true
-			if ally.UnitStats.name == "Move Me 3":
-				move_actor_3 = ally
-			if ally.UnitStats.name == "Move Me 4":
-				move_actor_4 = ally
-		else:
-			ally.visible = false
+	for ally in BattlefieldInfo.ally_units.values():
+		ally.visible = false
+	
+	# Actors
+	BattlefieldInfo.ally_units["Seth"].visible = true
+	BattlefieldInfo.ally_units["Dead Soldier"].visible = true
+	BattlefieldInfo.ally_units["Ally 1"].visible = true
+	BattlefieldInfo.ally_units["Ally 2"].visible = true
+	BattlefieldInfo.ally_units["Ally 3"].visible = true
+	BattlefieldInfo.ally_units["Move Me 3"].visible = true
+	BattlefieldInfo.ally_units["Move Me 4"].visible = true
+	move_actor_3 = BattlefieldInfo.ally_units["Move Me 3"]
+	move_actor_4 = BattlefieldInfo.ally_units["Move Me 4"]
 	
 	# Turn on
 	BattlefieldInfo.battlefield_container.get_node("Anim").play("Fade")
@@ -71,6 +75,6 @@ func move_actor():
 func hide_actor(unit):
 	BattlefieldInfo.turn_manager.turn = Turn_Manager.WAIT
 	unit.visible = false
-	BattlefieldInfo.ally_units.erase(unit)
+	BattlefieldInfo.ally_units.erase(unit.UnitStats.identifier)
 	unit.UnitMovementStats.currentTile.occupyingUnit = null
 	unit.queue_free()

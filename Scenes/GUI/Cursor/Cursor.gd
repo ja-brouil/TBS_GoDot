@@ -214,20 +214,19 @@ func cancel_Button() -> void:
 			emit_signal("turn_on_ui")
 
 # L Button -> Go to next unit that is available
+# Note this isn't working very well with a dictionnary so we'll need to find a new way of getting this function to work
 func l_button() ->  void:
-	for ally_unit in BattlefieldInfo.ally_units:
+	for ally_unit in BattlefieldInfo.ally_units.values():
 		if ally_unit.UnitActionStatus.get_current_action() == Unit_Action_Status.MOVE:
-			var move_to_back = BattlefieldInfo.ally_units.pop_front()
 			BattlefieldInfo.main_game_camera.position = (ally_unit.position + Vector2(-112, -82))
 			BattlefieldInfo.main_game_camera.clampCameraPosition()
 			BattlefieldInfo.cursor.position = ally_unit.position
-			BattlefieldInfo.ally_units.append(move_to_back)
 			updateCursorData()
 			emit_signal("cursorMoved", "left", self.position)
 			break
 
 func r_button() -> void:
-	if BattlefieldInfo.current_Unit_Selected != null:
+	if BattlefieldInfo.current_Unit_Selected != null && cursor_state == MOVE:
 		emit_signal("turn_off_ui")
 		disable_standard("standard")
 		BattlefieldInfo.unit_info_screen.turn_on()

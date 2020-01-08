@@ -122,6 +122,7 @@ visible = false
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 120, 80 )
 scale = Vector2( 1, 1e-05 )
+z_index = 2
 texture = ExtResource( 2 )
 
 [node name="Enemy Phase" type="Sprite" parent="."]
@@ -129,6 +130,7 @@ visible = false
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 120, 80 )
 scale = Vector2( 1, 1e-05 )
+z_index = 2
 texture = ExtResource( 3 )
 
 [node name="Transition_Sound" type="AudioStreamPlayer" parent="."]

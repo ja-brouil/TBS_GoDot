@@ -27,17 +27,11 @@ func _init():
 
 func start():
 	# Find Move Soldier
-	for ally in BattlefieldInfo.ally_units:
-		if ally.UnitStats.name == "Move Me 1":
-			ally.visible = true
-			move_actor_1 = ally
-		
-		if ally.UnitStats.name == "Move Me 2":
-			ally.visible = true
-			move_actor_2 = ally
+	move_actor_1 = BattlefieldInfo.ally_units["Move Me 1"]
+	move_actor_2 = BattlefieldInfo.ally_units["Move Me 2"]
 	
 	# Activate all the enemies
-	for enemy in BattlefieldInfo.enemy_units:
+	for enemy in BattlefieldInfo.enemy_units.values():
 		enemy.visible = true
 	
 	# Register to the dialogue system
@@ -68,6 +62,6 @@ func move_actor():
 func hide_actor(unit):
 	BattlefieldInfo.turn_manager.turn = Turn_Manager.WAIT
 	unit.visible = false
-	BattlefieldInfo.ally_units.erase(unit)
+	BattlefieldInfo.ally_units.erase(unit.UnitStats.identifier)
 	unit.UnitMovementStats.currentTile.occupyingUnit = null
 	unit.queue_free()

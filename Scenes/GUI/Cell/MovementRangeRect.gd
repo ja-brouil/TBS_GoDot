@@ -22,7 +22,6 @@ func turnOff(colorName):
 		$"Blue".visible = false
 	elif colorName == "Green":
 		$"Green".visible = false
-		
 
 func turnEverythingOff():
 	$"Red".visible = false

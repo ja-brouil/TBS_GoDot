@@ -3,6 +3,9 @@ extends Object
 # Statistics for the unit 
 class_name Unit_Stats
 
+# Identifier for dictionnary array
+var identifier
+
 # UI attributes
 var name
 var class_type

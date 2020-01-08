@@ -294,10 +294,10 @@ func start_combat(current_combat_state):
 		BattlefieldInfo.combat_ai_unit.UnitActionStatus.set_current_action(Unit_Action_Status.DONE)
 	
 	# Turn off Units
-	for ally_unit in BattlefieldInfo.ally_units:
+	for ally_unit in BattlefieldInfo.ally_units.values():
 		ally_unit.visible = false
 	
-	for enemy_unit in BattlefieldInfo.enemy_units:
+	for enemy_unit in BattlefieldInfo.enemy_units.values():
 		enemy_unit.visible = false
 	
 	# Place appropriate combat art
@@ -675,10 +675,13 @@ func process_ally_death():
 
 func on_ally_death_complete():
 	# Remove unit from the battle info
-	BattlefieldInfo.ally_units.erase(BattlefieldInfo.combat_player_unit)
+	BattlefieldInfo.ally_units.erase(BattlefieldInfo.combat_player_unit.UnitStats.identifier)
 	
 	# Clear Tile it is on
 	BattlefieldInfo.combat_player_unit.UnitMovementStats.currentTile.occupyingUnit = null
+	
+	# Remove the ally units
+	BattlefieldInfo.battlefield_container.get_node("Level/YSort").remove_child(BattlefieldInfo.combat_player_unit)
 	
 	# Did Eirika die? Game over ->
 	if BattlefieldInfo.combat_player_unit.UnitStats.name == "Eirika":
@@ -687,6 +690,9 @@ func on_ally_death_complete():
 		
 		# Set game over status
 		game_over = true
+		
+	elif BattlefieldInfo.battlefield_container.has_method("check_loss"):
+		game_over = !BattlefieldInfo.battlefield_container.check_loss()
 
 	# Back to Battlefield
 	back_to_battlefield()
@@ -717,10 +723,13 @@ func process_enemy_death():
 
 func on_enemy_death_complete():
 	# Remove unit from battlefield info
-	BattlefieldInfo.enemy_units.erase(BattlefieldInfo.combat_ai_unit)
+	BattlefieldInfo.enemy_units.erase(BattlefieldInfo.combat_ai_unit.UnitStats.identifier)
 	
 	# Clear the tile it's on
 	BattlefieldInfo.combat_ai_unit.UnitMovementStats.currentTile.occupyingUnit = null
+	
+	# Remove the node from the YSort
+	BattlefieldInfo.battlefield_container.get_node("Level/YSort").remove_child(BattlefieldInfo.combat_ai_unit)
 	
 	# Process XP stuff here
 	process_death_xp()
@@ -830,10 +839,10 @@ func _on_Return_Pause_timeout():
 	
 	# Reactive all ally and enemy units left
 	# Turn off Units
-	for ally_unit in BattlefieldInfo.ally_units:
+	for ally_unit in BattlefieldInfo.ally_units.values():
 		ally_unit.visible = true
 	
-	for enemy_unit in BattlefieldInfo.enemy_units:
+	for enemy_unit in BattlefieldInfo.enemy_units.values():
 		enemy_unit.visible = true
 		
 	# Music Volume Back to Normal

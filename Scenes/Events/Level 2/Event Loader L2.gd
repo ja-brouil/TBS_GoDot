@@ -10,6 +10,9 @@ func _ready():
 	BattlefieldInfo.event_system.add_event(L2_Event_Part4.new())
 	BattlefieldInfo.event_system.add_event(L2_Event_Part5.new())
 	
+	# Reset the turn manager
+	BattlefieldInfo.turn_manager.reset()
+	
 	# Mid Level Events
 	BattlefieldInfo.turn_manager.mid_level_events.append(L2_Event_Mid_10.new())
 	

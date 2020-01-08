@@ -12,12 +12,11 @@ var dialogue = [
 
 # Actors
 var vez
-var new_enemies = []
+var id_number = 99
 
 func _init():
-	for enemy in BattlefieldInfo.enemy_units:
-		if enemy.UnitStats.name == "Vezarius":
-			vez = enemy
+	# Get General vez
+	vez = BattlefieldInfo.enemy_units["Vezarius"]
 	
 	# Register to the turn numbers
 	BattlefieldInfo.turn_manager.connect("enemy_turn_increased", self, "start_mid")
@@ -28,7 +27,7 @@ func play_player_transition(turn_number):
 
 func start_mid(turn_number):
 	# Do not process if turn is not 2
-	if turn_number != 5:
+	if turn_number != 2:
 		BattlefieldInfo.turn_manager.start_enemy_transition()
 		return
 	
@@ -122,8 +121,8 @@ func spawn_enemies():
 			
 			# Add Unit to the list of enemies
 			newEnemy.UnitMovementStats.is_ally = false
-			BattlefieldInfo.enemy_units.append(newEnemy)
-			
+			id_number += 1
+			BattlefieldInfo.enemy_units[str("Enemy ",id_number)] = newEnemy
 	
 	# Remove this from the array
 	BattlefieldInfo.turn_manager.mid_level_events.erase(self)

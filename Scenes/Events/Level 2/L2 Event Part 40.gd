@@ -38,23 +38,17 @@ func start():
 	BattlefieldInfo.movement_system_cinematic.connect("unit_finished_moving_cinema", self, "move_camera")
 	
 	# Show allies
-	for ally in BattlefieldInfo.ally_units:
-		if ally.UnitStats.name == "Ewan":
-			ewan = ally
-		if ally.UnitStats.name == "Neimi":
-			neimi = ally
-		if ally.UnitStats.name == "Natasha":
-			natasha = ally
-		if ally.UnitStats.name == "Gilliam":
-			gilliam = ally
-		if ally.UnitStats.name == "Vanessa":
-			vanessa = ally
+	ewan = BattlefieldInfo.ally_units["Ewan"]
+	natasha = BattlefieldInfo.ally_units["Natasha"]
+	neimi = BattlefieldInfo.ally_units["Neimi"]
+	gilliam = BattlefieldInfo.ally_units["Gilliam"]
+	vanessa = BattlefieldInfo.ally_units["Vanessa"]
 	
 	# Start Text
 	enable_text(dialogue)
 
 func move_actors():
-	for ally in BattlefieldInfo.ally_units:
+	for ally in BattlefieldInfo.ally_units.values():
 		ally.visible = true
 	
 	# Build path to the location

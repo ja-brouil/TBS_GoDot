@@ -3,8 +3,8 @@ extends Node2D
 # Map information
 export var map_height: int # cell size
 export var map_width: int # cell size
-var all_allies_location = [] # Holds all ally info
-var all_enemies_location = [] # holds all enemy info
+var all_allies_location = {} # Holds all ally info
+var all_enemies_location = {} # holds all enemy info
 var grid = [] # Holds all cell data
 var cell = preload("res://Scenes/GUI/Cell/Cell.tscn")
 
@@ -129,8 +129,11 @@ func _ready():
 		new_ally.UnitStats.boss_bonus = allyCellInfo.get_meta("BossBonus")
 		new_ally.UnitStats.thief_bonus = allyCellInfo.get_meta("ThiefBonus")
 		
+		# Identifier
+		new_ally.UnitStats.identifier = allyCellInfo.get_meta("Identifier")
+		
 		# Set Battlefield Info
-		all_allies_location.append(new_ally)
+		all_allies_location[new_ally.UnitStats.name] = new_ally
 		new_ally.UnitMovementStats.is_ally = true
 		new_ally.UnitMovementStats.currentTile = grid[new_ally.position.x / Cell.CELL_SIZE][new_ally.position.y / Cell.CELL_SIZE]
 		grid[new_ally.position.x / Cell.CELL_SIZE][new_ally.position.y / Cell.CELL_SIZE].occupyingUnit = new_ally
@@ -177,11 +180,14 @@ func _ready():
 		newEnemy.UnitStats.boss_bonus = enemy.get_meta("BossBonus")
 		newEnemy.UnitStats.thief_bonus = enemy.get_meta("ThiefBonus")
 		
+		# Identifier
+		newEnemy.UnitStats.identifier = enemy.get_meta("Identifier")
+		
 		# Set Battlefield Info
 		newEnemy.UnitMovementStats.is_ally = false
 		newEnemy.UnitMovementStats.currentTile = grid[newEnemy.position.x / Cell.CELL_SIZE][newEnemy.position.y / Cell.CELL_SIZE]
 		grid[newEnemy.position.x / Cell.CELL_SIZE][newEnemy.position.y / Cell.CELL_SIZE].occupyingUnit = newEnemy
-		all_enemies_location.append(newEnemy)
+		all_enemies_location[enemy.get_meta("Identifier")] = newEnemy
 	
 	
 	# Send cell and grid information to the battlefield main so it is easily accessible

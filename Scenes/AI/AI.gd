@@ -22,7 +22,7 @@ var current_state = NOTHING
 var player_unit_target
 
 func process_ai():
-	print("FROM AI SCRIPT: PROCESSING BANDIT NAME: ", get_parent().UnitStats.name)
+	print("FROM AI SCRIPT: PROCESSING BANDIT NAME: ", get_parent().UnitStats.identifier)
 	current_state = NOTHING
 	$Timer.start(0)
 	
@@ -227,9 +227,7 @@ func get_best_tile_to_go_to(allowed_tiles, weapon):
 func find_tile_to_move_to_no_enemies():
 	# Figure out in the queue until the tile you can move is part of the moveset that you can go to
 	var eirika_tile
-	for ally_unit in BattlefieldInfo.ally_units:
-		if ally_unit.UnitStats.name == "Eirika":
-			eirika_tile = ally_unit.UnitMovementStats.currentTile
+	eirika_tile = BattlefieldInfo.ally_units["Eirika"].UnitMovementStats.currentTile
 	
 	# Create the path to that tile
 	BattlefieldInfo.movement_calculator.get_path_to_destination_AI(get_parent(), eirika_tile, BattlefieldInfo.grid)

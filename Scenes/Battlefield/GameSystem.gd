@@ -39,14 +39,9 @@ var victory_text
 # Victory System
 var victory_system
 
-# Screens
-var GAMEOVER
-var WORLD_MAP
-var CHAPTER_BG
-
-#######################
-#BATTLEFIELD VARIABLES#
-#######################
+###########################
+#GLOBAL GAMEPLAY VARIABLES#
+###########################
 # Current Unit Selected
 var current_Unit_Selected: Node2D
 
@@ -68,6 +63,7 @@ var camera_limit_right
 # Battlefield Unit Info
 var ally_units = {}
 var enemy_units = {}
+var ally_units_y_sort_node
 
 # Spawn points
 var spawn_points = []
@@ -75,7 +71,7 @@ var spawn_points = []
 # Eirika for AI purposes
 var Eirika
 
-# Combat Unit
+# Combat Unit for combat screen
 var combat_player_unit
 var combat_ai_unit
 
@@ -85,7 +81,10 @@ var game_over = false
 # Victory
 var victory = false
 
-# Start battlefield game
+# Money
+var money = 0
+
+# Start Game Systems
 func _ready():
 	# Movement Calculator
 	movement_calculator = MovementCalculator.new(self)
@@ -126,10 +125,6 @@ func _ready():
 	victory_system = preload("res://Engine/Systems/Victory Checker.tscn").instance()
 	add_child(victory_system)
 	
-	# Scenes needed
-#	GAMEOVER = preload("res://Scenes/Game Over/Game Over Screen.tscn")
-#	CHAPTER_BG = preload("res://Scenes/Chapter/Chapter Background.tscn")
-#	WORLD_MAP = preload("res://Scenes/World Map/World Map Screen.tscn")
 
 # Run Systems
 func _process(delta):

@@ -16,8 +16,10 @@ var vanessa
 var dialogue = [
 	"Seth:\n\nThose bastards! Attacking innocent townsfolk!",
 	"Seth:\n\nThere are Almaryan soldiers that are helping them as well!",
-	"Eirika:\n\nThey have already destroyed a village!",
-	"Eirika:\n\nSeth! We have to stop them before they can do anymore damage to the other villages!"
+	"Eirika:\n\nSeth! They have already destroyed a village!",
+	"Eirika:\n\nWe have to stop them before they can do anymore damage to the other villages!",
+	"Seth:\n\nI will hold the front line. If you get injured, you are to fall back immediately.",
+	"Eirika:\n\nI understand. Let's go!",
 ]
 
 # Set Names for Debug
@@ -27,19 +29,14 @@ func _init():
 
 func start():
 	# Show allies
-	for ally in BattlefieldInfo.ally_units:
-		if ally.UnitStats.name == "Ewan":
-			ewan = ally
-		if ally.UnitStats.name == "Neimi":
-			neimi = ally
-		if ally.UnitStats.name == "Natasha":
-			natasha = ally
-		if ally.UnitStats.name == "Gilliam":
-			gilliam = ally
-		if ally.UnitStats.name == "Vanessa":
-			vanessa = ally
+	ewan = BattlefieldInfo.ally_units["Ewan"]
+	natasha = BattlefieldInfo.ally_units["Natasha"]
+	neimi = BattlefieldInfo.ally_units["Neimi"]
+	gilliam = BattlefieldInfo.ally_units["Gilliam"]
+	vanessa = BattlefieldInfo.ally_units["Vanessa"]
 	
-	for enemy in BattlefieldInfo.enemy_units:
+	
+	for enemy in BattlefieldInfo.enemy_units.values():
 		enemy.visible = true
 	
 	# Register to the dialogue system
@@ -57,7 +54,7 @@ func move_cursor():
 	event_complete()
 
 func move_actor():
-	for ally in BattlefieldInfo.ally_units:
+	for ally in BattlefieldInfo.ally_units.values():
 		ally.visible = true
 	
 	# Build path to the location

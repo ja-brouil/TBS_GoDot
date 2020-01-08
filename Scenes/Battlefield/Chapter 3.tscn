@@ -49,6 +49,7 @@ position = Vector2( 144, 64 )
 z_index = 5
 
 [node name="GameCamera" parent="." instance=ExtResource( 4 )]
+editor/display_folded = true
 position = Vector2( 48, 0 )
 zoom = Vector2( 1, 1 )
 

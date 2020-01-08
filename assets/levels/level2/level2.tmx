@@ -3553,7 +3553,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="Allies" visible="0">
+ <objectgroup name="Allies">
   <object id="2281" x="144" y="112" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
@@ -3567,6 +3567,7 @@
     <property name="Consti" type="int" value="11"/>
     <property name="Defense" type="int" value="11"/>
     <property name="Health" type="int" value="30"/>
+    <property name="Identifier" value="Seth"/>
     <property name="InstanceName" value="Seth"/>
     <property name="Level" type="int" value="1"/>
     <property name="Luck" type="int" value="13"/>
@@ -3613,6 +3614,7 @@
     <property name="Consti" type="int" value="5"/>
     <property name="Defense" type="int" value="3"/>
     <property name="Health" type="int" value="17"/>
+    <property name="Identifier" value="Eirika"/>
     <property name="InstanceName" value="Eirika"/>
     <property name="Level" type="int" value="1"/>
     <property name="Luck" type="int" value="6"/>
@@ -3659,6 +3661,7 @@
     <property name="Consti" type="int" value="9"/>
     <property name="Defense" type="int" value="2"/>
     <property name="Health" type="int" value="20"/>
+    <property name="Identifier" value="Natasha"/>
     <property name="InstanceName" value="Natasha"/>
     <property name="Level" type="int" value="1"/>
     <property name="Luck" type="int" value="1"/>
@@ -3705,6 +3708,7 @@
     <property name="Consti" type="int" value="5"/>
     <property name="Defense" type="int" value="2"/>
     <property name="Health" type="int" value="15"/>
+    <property name="Identifier" value="Move Me 1"/>
     <property name="InstanceName" value="Ephraim Soldier"/>
     <property name="Level" type="int" value="1"/>
     <property name="Luck" type="int" value="0"/>
@@ -3751,6 +3755,7 @@
     <property name="Consti" type="int" value="5"/>
     <property name="Defense" type="int" value="2"/>
     <property name="Health" type="int" value="15"/>
+    <property name="Identifier" value="Move Me 2"/>
     <property name="InstanceName" value="Ephraim Soldier"/>
     <property name="Level" type="int" value="1"/>
     <property name="Luck" type="int" value="0"/>
@@ -3797,6 +3802,7 @@
     <property name="Consti" type="int" value="5"/>
     <property name="Defense" type="int" value="2"/>
     <property name="Health" type="int" value="15"/>
+    <property name="Identifier" value="Move Me 3"/>
     <property name="InstanceName" value="Ephraim Soldier"/>
     <property name="Level" type="int" value="1"/>
     <property name="Luck" type="int" value="0"/>
@@ -3843,6 +3849,7 @@
     <property name="Consti" type="int" value="5"/>
     <property name="Defense" type="int" value="2"/>
     <property name="Health" type="int" value="15"/>
+    <property name="Identifier" value="Move Me 4"/>
     <property name="InstanceName" value="Ephraim Soldier"/>
     <property name="Level" type="int" value="1"/>
     <property name="Luck" type="int" value="0"/>
@@ -3889,6 +3896,7 @@
     <property name="Consti" type="int" value="5"/>
     <property name="Defense" type="int" value="2"/>
     <property name="Health" type="int" value="20"/>
+    <property name="Identifier" value="Ally 3"/>
     <property name="InstanceName" value="Ephraim Soldier"/>
     <property name="Level" type="int" value="1"/>
     <property name="Luck" type="int" value="0"/>
@@ -3935,13 +3943,14 @@
     <property name="Consti" type="int" value="5"/>
     <property name="Defense" type="int" value="2"/>
     <property name="Health" type="int" value="20"/>
+    <property name="Identifier" value="Dead Soldier"/>
     <property name="InstanceName" value="Ephraim Soldier"/>
     <property name="Level" type="int" value="1"/>
     <property name="Luck" type="int" value="0"/>
     <property name="Magic" type="int" value="0"/>
     <property name="MaxHealth" type="int" value="20"/>
     <property name="Move" type="int" value="2"/>
-    <property name="Name" value="Dead Soldier"/>
+    <property name="Name" value="Ephraim Soldier"/>
     <property name="Res" type="int" value="2"/>
     <property name="Skill" type="int" value="4"/>
     <property name="Speed" type="int" value="4"/>
@@ -3981,6 +3990,7 @@
     <property name="Consti" type="int" value="5"/>
     <property name="Defense" type="int" value="3"/>
     <property name="Health" type="int" value="18"/>
+    <property name="Identifier" value="Neimi"/>
     <property name="InstanceName" value="Ally Archer"/>
     <property name="Level" type="int" value="1"/>
     <property name="Luck" type="int" value="4"/>
@@ -4027,6 +4037,7 @@
     <property name="Consti" type="int" value="5"/>
     <property name="Defense" type="int" value="1"/>
     <property name="Health" type="int" value="18"/>
+    <property name="Identifier" value="Ewan"/>
     <property name="InstanceName" value="Ally Mage"/>
     <property name="Level" type="int" value="1"/>
     <property name="Luck" type="int" value="5"/>
@@ -4073,6 +4084,7 @@
     <property name="Consti" type="int" value="5"/>
     <property name="Defense" type="int" value="2"/>
     <property name="Health" type="int" value="20"/>
+    <property name="Identifier" value="Ally 2"/>
     <property name="InstanceName" value="Ephraim Soldier"/>
     <property name="Level" type="int" value="1"/>
     <property name="Luck" type="int" value="0"/>
@@ -4119,6 +4131,7 @@
     <property name="Consti" type="int" value="5"/>
     <property name="Defense" type="int" value="2"/>
     <property name="Health" type="int" value="20"/>
+    <property name="Identifier" value="Ally 1"/>
     <property name="InstanceName" value="Ephraim Soldier"/>
     <property name="Level" type="int" value="1"/>
     <property name="Luck" type="int" value="0"/>
@@ -4165,6 +4178,7 @@
     <property name="Consti" type="int" value="5"/>
     <property name="Defense" type="int" value="6"/>
     <property name="Health" type="int" value="17"/>
+    <property name="Identifier" value="Vanessa"/>
     <property name="InstanceName" value="Ally Pegasus Knight"/>
     <property name="Level" type="int" value="1"/>
     <property name="Luck" type="int" value="4"/>
@@ -4211,6 +4225,7 @@
     <property name="Consti" type="int" value="14"/>
     <property name="Defense" type="int" value="9"/>
     <property name="Health" type="int" value="25"/>
+    <property name="Identifier" value="Gilliam"/>
     <property name="InstanceName" value="Ally Knight"/>
     <property name="Level" type="int" value="4"/>
     <property name="Luck" type="int" value="3"/>
@@ -4245,7 +4260,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="Enemies">
+ <objectgroup name="Enemies" visible="0">
   <object id="2878" x="32" y="256" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
@@ -4259,6 +4274,7 @@
     <property name="Consti" type="int" value="7"/>
     <property name="Defense" type="int" value="4"/>
     <property name="Health" type="int" value="21"/>
+    <property name="Identifier" value="Enemy 5"/>
     <property name="InstanceName" value="Black Archer"/>
     <property name="Level" type="int" value="3"/>
     <property name="Luck" type="int" value="1"/>
@@ -4289,6 +4305,7 @@
     <property name="Consti" type="int" value="8"/>
     <property name="Defense" type="int" value="2"/>
     <property name="Health" type="int" value="21"/>
+    <property name="Identifier" value="Enemy 8"/>
     <property name="InstanceName" value="Bandit"/>
     <property name="Level" type="int" value="3"/>
     <property name="Luck" type="int" value="0"/>
@@ -4319,6 +4336,7 @@
     <property name="Consti" type="int" value="8"/>
     <property name="Defense" type="int" value="2"/>
     <property name="Health" type="int" value="21"/>
+    <property name="Identifier" value="Enemy 9"/>
     <property name="InstanceName" value="Bandit"/>
     <property name="Level" type="int" value="3"/>
     <property name="Luck" type="int" value="0"/>
@@ -4349,6 +4367,7 @@
     <property name="Consti" type="int" value="8"/>
     <property name="Defense" type="int" value="2"/>
     <property name="Health" type="int" value="21"/>
+    <property name="Identifier" value="Enemy 2"/>
     <property name="InstanceName" value="Enemy Soldier"/>
     <property name="Level" type="int" value="3"/>
     <property name="Luck" type="int" value="0"/>
@@ -4379,6 +4398,7 @@
     <property name="Consti" type="int" value="8"/>
     <property name="Defense" type="int" value="2"/>
     <property name="Health" type="int" value="21"/>
+    <property name="Identifier" value="Enemy 6"/>
     <property name="InstanceName" value="Enemy Soldier"/>
     <property name="Level" type="int" value="3"/>
     <property name="Luck" type="int" value="0"/>
@@ -4409,6 +4429,7 @@
     <property name="Consti" type="int" value="8"/>
     <property name="Defense" type="int" value="2"/>
     <property name="Health" type="int" value="21"/>
+    <property name="Identifier" value="Enemy 10"/>
     <property name="InstanceName" value="Bandit"/>
     <property name="Level" type="int" value="3"/>
     <property name="Luck" type="int" value="0"/>
@@ -4439,6 +4460,7 @@
     <property name="Consti" type="int" value="8"/>
     <property name="Defense" type="int" value="2"/>
     <property name="Health" type="int" value="21"/>
+    <property name="Identifier" value="Enemy 3"/>
     <property name="InstanceName" value="Enemy Soldier"/>
     <property name="Level" type="int" value="3"/>
     <property name="Luck" type="int" value="0"/>
@@ -4469,6 +4491,7 @@
     <property name="Consti" type="int" value="8"/>
     <property name="Defense" type="int" value="2"/>
     <property name="Health" type="int" value="21"/>
+    <property name="Identifier" value="Enemy 7"/>
     <property name="InstanceName" value="Enemy Soldier"/>
     <property name="Level" type="int" value="3"/>
     <property name="Luck" type="int" value="0"/>
@@ -4499,6 +4522,7 @@
     <property name="Consti" type="int" value="8"/>
     <property name="Defense" type="int" value="2"/>
     <property name="Health" type="int" value="21"/>
+    <property name="Identifier" value="Enemy 4"/>
     <property name="InstanceName" value="Enemy Soldier"/>
     <property name="Level" type="int" value="3"/>
     <property name="Luck" type="int" value="0"/>
@@ -4529,6 +4553,7 @@
     <property name="Consti" type="int" value="15"/>
     <property name="Defense" type="int" value="25"/>
     <property name="Health" type="int" value="50"/>
+    <property name="Identifier" value="Vezarius"/>
     <property name="InstanceName" value="Enemy General Black"/>
     <property name="Level" type="int" value="20"/>
     <property name="Luck" type="int" value="15"/>
@@ -4559,6 +4584,7 @@
     <property name="Consti" type="int" value="5"/>
     <property name="Defense" type="int" value="6"/>
     <property name="Health" type="int" value="17"/>
+    <property name="Identifier" value="Enemy 1"/>
     <property name="InstanceName" value="Enemy Pegasus Knight"/>
     <property name="Level" type="int" value="1"/>
     <property name="Luck" type="int" value="4"/>

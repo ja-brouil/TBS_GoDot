@@ -12,6 +12,13 @@ func _ready():
 	BattlefieldInfo.victory = false
 	BattlefieldInfo.victory_system.clear()
 	BattlefieldInfo.victory_system.victory_condition_state = Victory_Checker.SURVIVE
+	BattlefieldInfo.victory_system.turns_left_to_survive = 10
 	
 	# Start the level
 	$"Event System".start_events_queue()
+
+func check_loss():
+	return BattlefieldInfo.ally_units.has("Seth")
+
+func next_level():
+	pass

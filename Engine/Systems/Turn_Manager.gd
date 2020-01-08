@@ -21,6 +21,9 @@ signal play_transition
 # Check for end of turn
 signal check_end_turn
 
+# Game Over
+signal game_over
+
 # Mid Level events I am not sure where to place this so this will have to do for now
 var mid_level_events = []
 
@@ -29,23 +32,24 @@ func _init():
 
 func _ready():
 	connect("check_end_turn", self, "check_end_of_turn")
+	connect("game_over", self, "game_over_scene")
 
 # Ally
 func reset_allys():
-	for ally_unit in BattlefieldInfo.ally_units:
+	for ally_unit in BattlefieldInfo.ally_units.values():
 		ally_unit.UnitActionStatus.set_current_action(Unit_Action_Status.MOVE)
 
 # Enemy
 func reset_enemies():
-	for enemy_unit in BattlefieldInfo.enemy_units:
+	for enemy_unit in BattlefieldInfo.enemy_units.values():
 		enemy_unit.UnitActionStatus.set_current_action(Unit_Action_Status.MOVE)
 
 # Remove Greyscale
 func reset_greyscale():
-	for ally_unit in BattlefieldInfo.ally_units:
+	for ally_unit in BattlefieldInfo.ally_units.values():
 		ally_unit.turn_greyscale_off()
 	
-	for enemy_unit in BattlefieldInfo.enemy_units:
+	for enemy_unit in BattlefieldInfo.enemy_units.values():
 		enemy_unit.turn_greyscale_off()
 
 # Not really a fan of checking this every frame but it will do for now. Optimize this later.
@@ -55,6 +59,7 @@ func check_end_of_turn():
 	
 	# We have beaten this level, move on to the next one
 	if BattlefieldInfo.victory:
+		turn = WAIT
 		call_deferred("victory_next_level")
 		return
 	
@@ -66,7 +71,7 @@ func check_end_of_turn():
 	
 	match turn:
 		PLAYER_TURN:
-			for ally_unit in BattlefieldInfo.ally_units:
+			for ally_unit in BattlefieldInfo.ally_units.values():
 				if ally_unit.UnitActionStatus.get_current_action() != Unit_Action_Status.DONE:
 					return
 			# Increase the player turn amount by 1
@@ -78,7 +83,7 @@ func check_end_of_turn():
 			if mid_level_events.empty():
 				start_ally_transition()
 		ENEMY_TURN:
-			for enemy_unit in BattlefieldInfo.enemy_units:
+			for enemy_unit in BattlefieldInfo.enemy_units.values():
 				if enemy_unit.UnitActionStatus.get_current_action() != Unit_Action_Status.DONE:
 					turn = WAIT
 					BattlefieldInfo.next_ai(enemy_unit)

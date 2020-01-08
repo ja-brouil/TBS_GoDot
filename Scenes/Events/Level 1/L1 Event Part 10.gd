@@ -27,22 +27,15 @@ func start():
 	BattlefieldInfo.movement_system_cinematic.connect("unit_finished_moving_cinema", self, "enable_text_no_array")
 	
 	# Set up allies
-	for ally in BattlefieldInfo.ally_units:
-		if ally.UnitStats.name == "Seth" || ally.UnitStats.name == "Eirika":
-			if ally.UnitStats.name == "Seth":
-				seth = ally
-			if ally.UnitStats.name == "Eirika":
-				eirika = ally
-			ally.visible = true
-		else:
-			ally.visible = false
+	seth = BattlefieldInfo.ally_units["Seth"]
+	seth.visible = true
+	eirika = BattlefieldInfo.ally_units["Eirika"]
+	eirika.visible = true
 	
-	for enemy in BattlefieldInfo.enemy_units:
+	for enemy in BattlefieldInfo.enemy_units.values():
 		enemy.visible = false
 	
-	for enemy in BattlefieldInfo.enemy_units:
-		if enemy.UnitStats.name == "Marcus":
-			enemy.visible = true
+	BattlefieldInfo.enemy_units["Marcus"].visible = true
 	
 	# Turn on
 	BattlefieldInfo.battlefield_container.get_node("Anim").play("Fade")

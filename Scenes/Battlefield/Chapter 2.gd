@@ -1,9 +1,12 @@
 extends Node2D
 
+# Container for the entire level
+# Add extra functions that might be needed here
+
 var level_music = preload("res://assets/music/Fodlan Winds.ogg")
 
 func _ready():
-	#
+	# Container access
 	BattlefieldInfo.battlefield_container = self
 	
 	# Set Music for this level
@@ -17,9 +20,20 @@ func _ready():
 	# Start the level
 	$"Event System".start_events_queue()
 
+# Additional Loss
+# If Seth dies on this level you also lose
+func check_loss():
+	return BattlefieldInfo.ally_units.has("Seth")
+
 func next_level():
 	# stop input
 	BattlefieldInfo.cursor.disable_standard("hello world")
+	
+	# Save the current nodes only for allies
+	for child in get_node("Level/YSort").get_children():
+		if child.UnitMovementStats.is_ally:
+			child.UnitMovementStats.clear_arrays()
+			child.get_parent().remove_child(child)
 	
 	# stop music
 	BattlefieldInfo.music_player.get_node("AllyLevel").stop()

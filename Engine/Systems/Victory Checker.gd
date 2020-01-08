@@ -22,6 +22,10 @@ var tile_to_escort
 var unit_to_assassinate
 
 func check_victory_status():
+	# Don't process twice
+	if BattlefieldInfo.victory:
+		return
+	
 	match victory_condition_state:
 		ELIMINATE_ALL_ENEMIES:
 			if BattlefieldInfo.enemy_units.empty():

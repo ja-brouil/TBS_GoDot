@@ -31,18 +31,10 @@ func _init():
 
 func start():
 	# Find Vezarius
-	for enemy in BattlefieldInfo.enemy_units:
-		if enemy.UnitStats.name == "Vezarius":
-			Vezarius = enemy
-			break
+	Vezarius = BattlefieldInfo.enemy_units["Vezarius"]
 	
 	# Find Dead soldier
-	for ally in BattlefieldInfo.ally_units:
-		if ally.UnitStats.name == "Dead Soldier":
-			Dead_soldier = ally
-			Dead_soldier.UnitStats.name = "Ephraim Soldier"
-			ally.UnitStats.name = "Ephraim Soldier"
-			break
+	Dead_soldier = BattlefieldInfo.ally_units["Dead Soldier"]
 	
 	# Register to the dialogue system
 	BattlefieldInfo.message_system.connect("no_more_text", self, "move_actor")
@@ -72,19 +64,13 @@ func move_camera():
 	var new_position_for_camera = Vector2(48,0)
 	
 	# Turn off allies except for a few
-	for ally in BattlefieldInfo.ally_units:
+	for ally in BattlefieldInfo.ally_units.values():
 		ally.visible = false
-		if ally.UnitStats.name == "Move Me 1":
-			ally.visible = true
-		
-		if ally.UnitStats.name == "Move Me 2":
-			ally.visible = true
-		
-		if ally.UnitStats.name == "Seth":
-			ally.visible = true
-		
-		if ally.UnitStats.name == "Eirika":
-			ally.visible = true
+	
+	BattlefieldInfo.ally_units["Move Me 1"].visible = true
+	BattlefieldInfo.ally_units["Move Me 2"].visible = true
+	BattlefieldInfo.ally_units["Seth"].visible = true
+	BattlefieldInfo.ally_units["Eirika"].visible = true
 	
 	# Move Camera and Remove old camera
 	BattlefieldInfo.main_game_camera.get_node("Tween").connect("tween_all_completed", self, "event_complete")

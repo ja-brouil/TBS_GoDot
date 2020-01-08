@@ -48,3 +48,10 @@ func _init():
 	self.mountainPenalty = 0
 	self.ruinsPenalty = 0
 	is_ally = true
+
+# Clear the arrays
+func clear_arrays():
+	allowedMovement.clear()
+	allowedAttackRange.clear()
+	allowedHealRange.clear()
+	movement_queue.clear()
