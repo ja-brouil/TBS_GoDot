@@ -29,8 +29,11 @@ var unit_mugshot
 # Combat sprites
 var combat_node
 
-# Death sentence for allies
+# Death sentence for allies and enemies
 var death_sentence
+
+# Before battle sentence
+var before_battle_sentence = null
 
 func _ready():
 	# Movement Stats

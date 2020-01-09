@@ -56,7 +56,11 @@ func process_selection():
 		"Unit":
 			print("FROM END TURN: Units status selected")
 		"Status":
-			print("FROM END TURN: Show map/unit status")
+			# Head to the status screen
+			StatusScreen.start()
+			
+			# Turn this off
+			turn_off()
 		"Suspend":
 			print("FROM END TURN: Suspend")
 		"End":
@@ -74,8 +78,8 @@ func process_selection():
 # Cancel
 func go_back():
 	# Enable the cursor again
-	get_parent().get_node("Cursor").back_to_move()
-	get_parent().get_node("Cursor").emit_signal("turn_on_ui")
+	BattlefieldInfo.cursor.back_to_move()
+	BattlefieldInfo.cursor.emit_signal("turn_on_ui")
 	
 	# turn this off
 	turn_off()

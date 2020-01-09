@@ -316,11 +316,13 @@ func start_combat(current_combat_state):
 	next_combat_state = current_combat_state
 	
 	# Check if there is before battle text here
-	messaging_state = no_process
-	print("COMBAT SCREEN: PLACEHOLDER: Check for before battle text here")
-	
-	# Set states to start
-	$Pause.start(0)
+	if BattlefieldInfo.combat_ai_unit.before_battle_sentence != null:
+		yield(get_tree().create_timer(0.5), "timeout")
+		BattlefieldInfo.message_system.set_position(Messaging_System.BOTTOM)
+		BattlefieldInfo.message_system.start(BattlefieldInfo.combat_ai_unit.before_battle_sentence)
+		messaging_state = before_fight
+	else:
+		$Pause.start(0)
 
 # Get the appropriate art
 func place_combat_art():
@@ -702,7 +704,9 @@ func process_after_text():
 	match messaging_state:
 		before_fight:
 			# Start combat normally
-			pass
+			BattlefieldInfo.combat_ai_unit.before_battle_sentence = null
+			messaging_state = no_process
+			$Pause.start(0)
 		ally_death:
 			player_node_name.get_node("anim").play(str(BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped.weapon_string_name, " death"))
 			var anim_name2 = str(BattlefieldInfo.combat_player_unit.UnitInventory.current_item_equipped.weapon_string_name, " regular")
@@ -710,16 +714,27 @@ func process_after_text():
 			current_combat_state = wait
 			messaging_state = no_process
 		after_fight:
-			pass
+			enemy_node_name.get_node("anim").play(str(BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.weapon_string_name, " death"))
+			var anim_name2 = str(BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.weapon_string_name, " regular")
+			enemy_placeholder.get_node(anim_name2).visible = false
+			messaging_state = no_process
+			current_combat_state = wait
 		no_process:
 			pass
 
 func process_enemy_death():
-	enemy_node_name.get_node("anim").play(str(BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.weapon_string_name, " death"))
-	var anim_name2 = str(BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.weapon_string_name, " regular")
-	enemy_placeholder.get_node(anim_name2).visible = false
-	current_combat_state = wait
-	
+	# Do we have a death text
+	if BattlefieldInfo.combat_ai_unit.death_sentence != null:
+		BattlefieldInfo.message_system.set_position(Messaging_System.BOTTOM)
+		BattlefieldInfo.message_system.start(BattlefieldInfo.combat_ai_unit.death_sentence)
+		current_combat_state = wait
+		messaging_state = after_fight
+	else:
+		# No Death Text
+		enemy_node_name.get_node("anim").play(str(BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.weapon_string_name, " death"))
+		var anim_name2 = str(BattlefieldInfo.combat_ai_unit.UnitInventory.current_item_equipped.weapon_string_name, " regular")
+		enemy_placeholder.get_node(anim_name2).visible = false
+		current_combat_state = wait
 
 func on_enemy_death_complete():
 	# Remove unit from battlefield info

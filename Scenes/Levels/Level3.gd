@@ -183,6 +183,14 @@ func _ready():
 		# Identifier
 		newEnemy.UnitStats.identifier = enemy.get_meta("Identifier")
 		
+		# After text and before
+		if enemy.has_meta("Before_Battle"):
+			newEnemy.before_battle_sentence = []
+			newEnemy.before_battle_sentence.append(enemy.get_meta("Before_Battle"))
+			
+			newEnemy.death_sentence = []
+			newEnemy.death_sentence.append(enemy.get_meta("After_Battle"))
+		
 		# Set Battlefield Info
 		newEnemy.UnitMovementStats.is_ally = false
 		newEnemy.UnitMovementStats.currentTile = grid[newEnemy.position.x / Cell.CELL_SIZE][newEnemy.position.y / Cell.CELL_SIZE]

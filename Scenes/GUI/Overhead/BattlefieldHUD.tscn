@@ -101,12 +101,12 @@ font_data = ExtResource( 3 )
 texture = ExtResource( 8 )
 region_rect = Rect2( 0, 0, 44, 43 )
 
-[sub_resource type="DynamicFont" id=11]
+[sub_resource type="DynamicFont" id=10]
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 3 )
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=11]
 length = 0.75
 step = 0.25
 tracks/0/type = "value"
@@ -251,7 +251,7 @@ margin_top = 5.0
 margin_right = 180.0
 margin_bottom = 65.0
 rect_scale = Vector2( 0.25, 0.25 )
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 10 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Plains"
@@ -291,4 +291,4 @@ custom_fonts/font = ExtResource( 9 )
 text = "20"
 
 [node name="FadeAnimT" type="AnimationPlayer" parent="Battlefield HUD/Terrain Info"]
-anims/Fade = SubResource( 10 )
+anims/Fade = SubResource( 11 )

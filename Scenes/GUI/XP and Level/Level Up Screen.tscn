@@ -112,6 +112,7 @@ custom_fonts/font = ExtResource( 7 )
 text = "Paladin"
 align = 1
 valign = 1
+clip_text = true
 
 [node name="Level" type="Label" parent="Level Up Panel/Level Up Background"]
 margin_left = 446.667

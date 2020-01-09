@@ -27,7 +27,7 @@ func play_player_transition(turn_number):
 
 func start_mid(turn_number):
 	# Do not process if turn is not 2
-	if turn_number != 2:
+	if turn_number != 3:
 		BattlefieldInfo.turn_manager.start_enemy_transition()
 		return
 	
@@ -122,6 +122,7 @@ func spawn_enemies():
 			# Add Unit to the list of enemies
 			newEnemy.UnitMovementStats.is_ally = false
 			id_number += 1
+			newEnemy.UnitStats.identifier = str("Enemy ",id_number)
 			BattlefieldInfo.enemy_units[str("Enemy ",id_number)] = newEnemy
 	
 	# Remove this from the array

@@ -5,6 +5,8 @@ extends Node2D
 
 var level_music = preload("res://assets/music/Fodlan Winds.ogg")
 
+var chapter_title = "Chapter 1: Victims of War"
+
 func _ready():
 	# Container access
 	BattlefieldInfo.battlefield_container = self
@@ -16,6 +18,9 @@ func _ready():
 	BattlefieldInfo.victory = false
 	BattlefieldInfo.victory_system.clear()
 	BattlefieldInfo.victory_system.victory_condition_state = Victory_Checker.ELIMINATE_ALL_ENEMIES
+	
+	# Set enemy commander
+	BattlefieldInfo.enemy_commander = BattlefieldInfo.enemy_units["Marcus"]
 	
 	# Start the level
 	$"Event System".start_events_queue()

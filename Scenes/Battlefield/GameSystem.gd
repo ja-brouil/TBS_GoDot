@@ -71,6 +71,9 @@ var spawn_points = []
 # Eirika for AI purposes
 var Eirika
 
+# Enemy commander for status screen
+var enemy_commander
+
 # Combat Unit for combat screen
 var combat_player_unit
 var combat_ai_unit

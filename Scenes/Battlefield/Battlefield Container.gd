@@ -2,6 +2,8 @@ extends Node2D
 
 var level_music = preload("res://assets/music/Chasing Daybreak.ogg")
 
+var chapter_title = "Chapter 2: Fort Merceus"
+
 func _ready():
 	BattlefieldInfo.battlefield_container = self
 	
@@ -13,6 +15,9 @@ func _ready():
 	BattlefieldInfo.victory_system.clear()
 	BattlefieldInfo.victory_system.victory_condition_state = Victory_Checker.SURVIVE
 	BattlefieldInfo.victory_system.turns_left_to_survive = 10
+	
+	# Enemy Commander
+	BattlefieldInfo.enemy_commander = BattlefieldInfo.enemy_units["Vezarius"]
 	
 	# Start the level
 	$"Event System".start_events_queue()

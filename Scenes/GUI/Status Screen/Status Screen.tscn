@@ -1,3 +1,521 @@
-[gd_scene format=2]
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Scenes/GUI/Status Screen/Status Screen.gd" type="Script" id=1]
+[ext_resource path="res://assets/font/Action Selector Font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/UI/Panels/unitInfoBox.png" type="Texture" id=3]
+[ext_resource path="res://assets/font/Main Font.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/UI/Panels/emptyHealthBar.png" type="Texture" id=5]
+[ext_resource path="res://assets/UI/Panels/fullHealthBar.png" type="Texture" id=6]
+[ext_resource path="res://assets/units/eirika/eirikaPortrait.png" type="Texture" id=7]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 98, 44 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 20
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="Animation" id=3]
+length = 0.45
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.501961 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.45
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.501961 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("../..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_on_unit_box_fade"
+} ]
+}
+
+[sub_resource type="DynamicFont" id=5]
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="Animation" id=6]
+length = 0.45
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.501961 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.45
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.501961 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("../..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_on_unit_box_fade"
+} ]
+}
+
+[sub_resource type="DynamicFontData" id=8]
+font_path = "res://assets/font/Main Font.ttf"
+
+[sub_resource type="DynamicFont" id=9]
+size = 50
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = SubResource( 8 )
+
+[sub_resource type="Animation" id=10]
+resource_name = "Fade"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("UI:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="Status Screen" type="CanvasLayer"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 151.942 ],
+"_edit_vertical_guides_": [ 262.871 ]
+}
+
+[node name="UI" type="Control" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Background Color" type="ColorRect" parent="UI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -0.410461
+margin_right = -0.410461
+color = Color( 1, 0.909804, 0.827451, 0.756863 )
+
+[node name="Chapter Title" type="Label" parent="UI"]
+anchor_right = 1.0
+margin_right = 795.0
+margin_bottom = 91.0
+rect_scale = Vector2( 0.23239, 0.29381 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Chapter 1: Victims of War"
+align = 1
+valign = 1
+
+[node name="Eirika" type="Panel" parent="UI"]
+editor/display_folded = true
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 133.252
+margin_top = -120.629
+margin_right = 218.252
+margin_bottom = -80.6288
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Name" type="Label" parent="UI/Eirika"]
+margin_left = 41.0
+margin_top = 8.0
+margin_right = 216.0
+margin_bottom = 54.0
+rect_scale = Vector2( 0.25, 0.25 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "Name"
+align = 1
+valign = 1
+
+[node name="ColorRect" type="ColorRect" parent="UI/Eirika"]
+modulate = Color( 0.568627, 0.811765, 0.945098, 0.654902 )
+show_behind_parent = true
+margin_left = 5.0
+margin_top = 7.0
+margin_right = 85.0
+margin_bottom = 36.0
+
+[node name="FadeAnimU" type="AnimationPlayer" parent="UI/Eirika"]
+anims/Fade = SubResource( 3 )
+anims/FadeOut = SubResource( 4 )
+
+[node name="Health" type="Label" parent="UI/Eirika"]
+margin_left = 45.0
+margin_top = 22.0
+margin_right = 205.0
+margin_bottom = 40.0
+rect_scale = Vector2( 0.25, 0.25 )
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "20 / 20"
+align = 1
+valign = 1
+
+[node name="Empty HP" type="Sprite" parent="UI/Eirika"]
+position = Vector2( 44, 28 )
+scale = Vector2( 0.169, 0.237 )
+texture = ExtResource( 5 )
+centered = false
+
+[node name="Full HP" type="Sprite" parent="UI/Eirika"]
+position = Vector2( 44, 28 )
+scale = Vector2( 0.169, 0.237 )
+texture = ExtResource( 6 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 237, 17 )
+
+[node name="Portrait" type="TextureRect" parent="UI/Eirika"]
+margin_left = 10.0
+margin_top = 7.0
+margin_right = 35.0
+margin_bottom = 36.0
+rect_scale = Vector2( 1.2, 1 )
+texture = ExtResource( 7 )
+expand = true
+
+[node name="Enemy Commander" type="Panel" parent="UI"]
+editor/display_folded = true
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 133.804
+margin_top = -72.6101
+margin_right = 218.804
+margin_bottom = -32.6101
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Name" type="Label" parent="UI/Enemy Commander"]
+margin_left = 41.0
+margin_top = 8.0
+margin_right = 216.0
+margin_bottom = 54.0
+rect_scale = Vector2( 0.25, 0.25 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "Name"
+align = 1
+valign = 1
+
+[node name="ColorRect" type="ColorRect" parent="UI/Enemy Commander"]
+modulate = Color( 0.568627, 0.811765, 0.945098, 0.654902 )
+show_behind_parent = true
+margin_left = 5.0
+margin_top = 7.0
+margin_right = 85.0
+margin_bottom = 36.0
+
+[node name="FadeAnimU" type="AnimationPlayer" parent="UI/Enemy Commander"]
+anims/Fade = SubResource( 6 )
+anims/FadeOut = SubResource( 7 )
+
+[node name="Health" type="Label" parent="UI/Enemy Commander"]
+margin_left = 45.0
+margin_top = 22.0
+margin_right = 205.0
+margin_bottom = 40.0
+rect_scale = Vector2( 0.25, 0.25 )
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "20 / 20"
+align = 1
+valign = 1
+
+[node name="Empty HP" type="Sprite" parent="UI/Enemy Commander"]
+position = Vector2( 44, 28 )
+scale = Vector2( 0.169, 0.237 )
+texture = ExtResource( 5 )
+centered = false
+
+[node name="Full HP" type="Sprite" parent="UI/Enemy Commander"]
+position = Vector2( 44, 28 )
+scale = Vector2( 0.169, 0.237 )
+texture = ExtResource( 6 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 237, 17 )
+
+[node name="Portrait" type="TextureRect" parent="UI/Enemy Commander"]
+margin_left = 10.0
+margin_top = 7.0
+margin_right = 35.0
+margin_bottom = 36.0
+rect_scale = Vector2( 1.2, 1 )
+texture = ExtResource( 7 )
+expand = true
+
+[node name="Player Units" type="Control" parent="UI"]
+editor/display_folded = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ColorRect" type="ColorRect" parent="UI/Player Units"]
+margin_left = 65.3354
+margin_top = 49.2313
+margin_right = 119.335
+margin_bottom = 62.2313
+color = Color( 0.101961, 0.247059, 0.737255, 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Number" type="Label" parent="UI/Player Units/ColorRect"]
+margin_right = 269.0
+margin_bottom = 65.0
+rect_scale = Vector2( 0.2, 0.2 )
+custom_fonts/font = SubResource( 9 )
+text = "15"
+align = 1
+valign = 1
+
+[node name="Player Unit" type="Label" parent="UI/Player Units"]
+anchor_right = 1.0
+margin_left = 7.97842
+margin_top = 50.9665
+margin_right = 88.9784
+margin_bottom = 100.966
+rect_scale = Vector2( 0.15, 0.15 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Player Units"
+align = 1
+valign = 1
+
+[node name="Enemy" type="Control" parent="UI"]
+editor/display_folded = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ColorRect" type="ColorRect" parent="UI/Enemy"]
+margin_left = 65.2888
+margin_top = 74.4954
+margin_right = 119.289
+margin_bottom = 87.4954
+color = Color( 0.737255, 0.101961, 0.101961, 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Number" type="Label" parent="UI/Enemy/ColorRect"]
+margin_right = 269.0
+margin_bottom = 65.0
+rect_scale = Vector2( 0.2, 0.2 )
+custom_fonts/font = SubResource( 9 )
+text = "15"
+align = 1
+valign = 1
+
+[node name="Enemy Units" type="Label" parent="UI/Enemy"]
+anchor_right = 1.0
+margin_left = 8.2395
+margin_top = 76.4014
+margin_right = 89.2395
+margin_bottom = 126.401
+rect_scale = Vector2( 0.15, 0.15 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Enemy Units"
+align = 1
+valign = 1
+
+[node name="Objective" type="ColorRect" parent="UI"]
+margin_left = 9.97382
+margin_top = 93.7204
+margin_right = 120.974
+margin_bottom = 151.72
+color = Color( 0.666667, 0.839216, 0.960784, 1 )
+
+[node name="Objective Name" type="Label" parent="UI/Objective"]
+anchor_right = 1.0
+margin_left = 37.4399
+margin_top = 2.5379
+margin_right = 174.44
+margin_bottom = 52.5379
+rect_scale = Vector2( 0.15, 0.15 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Objective"
+align = 1
+valign = 1
+
+[node name="Objective Desc" type="Label" parent="UI/Objective"]
+anchor_right = 1.0
+margin_top = 13.0
+margin_right = 628.0
+margin_bottom = 63.0
+rect_scale = Vector2( 0.15, 0.15 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Defeat all enemies"
+align = 1
+valign = 1
+
+[node name="Turn" type="Label" parent="UI/Objective"]
+anchor_right = 1.0
+margin_left = 13.7993
+margin_top = 32.4677
+margin_right = 27.7993
+margin_bottom = 82.4677
+rect_scale = Vector2( 0.15, 0.15 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Turn"
+align = 1
+valign = 1
+
+[node name="Money" type="Label" parent="UI/Objective"]
+anchor_right = 1.0
+margin_left = 13.5839
+margin_top = 44.963
+margin_right = 27.5839
+margin_bottom = 94.963
+rect_scale = Vector2( 0.15, 0.15 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Gold"
+align = 1
+valign = 1
+
+[node name="Turn Number" type="Label" parent="UI/Objective"]
+anchor_right = 1.0
+margin_left = 80.9833
+margin_top = 31.796
+margin_right = 94.9833
+margin_bottom = 81.796
+rect_scale = Vector2( 0.15, 0.15 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "10"
+align = 1
+valign = 1
+
+[node name="Money Amt" type="Label" parent="UI/Objective"]
+anchor_right = 1.0
+margin_left = 80.7679
+margin_top = 43.645
+margin_right = 94.7679
+margin_bottom = 93.645
+rect_scale = Vector2( 0.15, 0.15 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "10"
+align = 1
+valign = 1
+
+[node name="Time Played" type="ColorRect" parent="UI"]
+margin_left = 129.407
+margin_top = 135.879
+margin_right = 233.407
+margin_bottom = 151.879
+color = Color( 0.666667, 0.839216, 0.960784, 1 )
+
+[node name="Time Elapsed" type="Label" parent="UI/Time Played"]
+anchor_right = 1.0
+margin_left = 2.67975
+margin_top = 4.35101
+margin_right = 320.68
+margin_bottom = 54.351
+rect_scale = Vector2( 0.15, 0.15 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Play Time:"
+align = 1
+valign = 1
+
+[node name="Time" type="Label" parent="UI/Time Played"]
+anchor_right = 1.0
+margin_left = 58.684
+margin_top = 4.0
+margin_right = 238.684
+margin_bottom = 54.0
+rect_scale = Vector2( 0.15, 0.15 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "10"
+align = 1
+valign = 1
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+anims/Fade = SubResource( 10 )

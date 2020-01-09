@@ -8,8 +8,8 @@ enum {PLAYER_TURN, ENEMY_TURN, ENEMY_COMBAT_TURN, WAIT}
 var turn
 
 # Turn number
-var player_turn_number = 0
-var enemy_turn_number = 0
+var player_turn_number = 1
+var enemy_turn_number = 1
 
 # Signal for events
 signal player_turn_increased
@@ -123,8 +123,8 @@ func _on_End_of_Enemy_timeout():
 	reset_greyscale()
 
 func reset():
-	player_turn_number = 0
-	enemy_turn_number = 0
+	player_turn_number = 1
+	enemy_turn_number = 1
 	for event in mid_level_events:
 		event.queue_free()
 	mid_level_events.clear()
