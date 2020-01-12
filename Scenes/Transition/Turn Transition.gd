@@ -13,10 +13,6 @@ func start_level():
 
 func start_transition(type):
 	if type == "Enemy":
-#		if BattlefieldInfo.enemy_units.size() <= 1:
-#			BattlefieldInfo.music_player.get_node("OneUnitLeft").stop()
-#		else:
-#			BattlefieldInfo.music_player.get_node("AllyLevel").stop()
 		$"Enemy Phase".visible = true
 		$"Animation_E".current_animation = "Move_Off"
 		get_parent().get_parent().get_node("BattlefieldHUD").turn_off_battlefield_ui()

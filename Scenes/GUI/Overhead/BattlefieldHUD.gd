@@ -38,6 +38,9 @@ func set_victory_text():
 	$"Battlefield HUD/Victory Info/V Name".text = BattlefieldInfo.victory_text
 
 func update_battlefield_ui(cursor_direction, cursor_position):
+	# Set Victory Text
+	set_victory_text()
+	
 	# Update Unit Box
 	update_unit_box()
 	

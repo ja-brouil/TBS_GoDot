@@ -30,4 +30,4 @@ func _ready():
 	UnitInventory.add_item(lance)
 	
 	# Set combat node
-	combat_node = preload("res://Scenes/Units/Enemy_Units/Black Soldier Combat.tscn")
+	combat_node = preload("res://Scenes/Units/Enemy_Units/Enemy Pegasus Knight Combat.tscn")

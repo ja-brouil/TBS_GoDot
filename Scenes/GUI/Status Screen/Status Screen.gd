@@ -76,6 +76,9 @@ func set_screen():
 	# Money
 	$"UI/Objective/Money Amt".text = str(BattlefieldInfo.money, " G")
 
+func set_screen_objective_desc(desc):
+	$"UI/Objective/Objective Desc".text = desc
+
 func calculate_health_values(unit, node_name):
 	# Set Health Text
 	node_name.get_node("Health").text = str(unit.UnitStats.current_health, " / ", unit.UnitStats.max_health)

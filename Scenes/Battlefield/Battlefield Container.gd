@@ -26,4 +26,4 @@ func check_loss():
 	return BattlefieldInfo.ally_units.has("Seth")
 
 func next_level():
-	pass
+	SceneTransition.change_scene("res://Scenes/Intro Screen/Intro Screen.tscn", 0.1)

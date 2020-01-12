@@ -79,6 +79,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scenes/Events/Level 2/L2 Event Mid 10.gd"
 }, {
+"base": "Event_Base",
+"class": "L2_Event_Mid_20",
+"language": "GDScript",
+"path": "res://Scenes/Events/Level 2/L2 Event Mid 20.gd"
+}, {
 "base": "Node2D",
 "class": "L2_Event_Part05",
 "language": "GDScript",
@@ -209,6 +214,7 @@ _global_script_class_icons={
 "L1_Event_Part_20": "",
 "L1_Event_Part_30": "",
 "L2_Event_Mid_10": "",
+"L2_Event_Mid_20": "",
 "L2_Event_Part05": "",
 "L2_Event_Part1": "",
 "L2_Event_Part2": "",

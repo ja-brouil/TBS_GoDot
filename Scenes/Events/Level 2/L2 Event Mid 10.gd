@@ -27,7 +27,7 @@ func play_player_transition(turn_number):
 
 func start_mid(turn_number):
 	# Do not process if turn is not 2
-	if turn_number != 3:
+	if turn_number != 4:
 		BattlefieldInfo.turn_manager.start_enemy_transition()
 		return
 	
@@ -85,45 +85,46 @@ func spawn_enemies():
 				newEnemy = b_soldier.instance()
 		
 		for adjCell in spawn_point.adjCells:
-			newEnemy.get_node("AI").ai_type = "Aggresive"
-			BattlefieldInfo.current_level.get_node("YSort").add_child(newEnemy)
-			
-			# Set Stats and position
-			newEnemy.position = adjCell.position
-			newEnemy.UnitStats.name = "Soldier"
-			newEnemy.UnitStats.strength = 5 + Calculators.get_random_number(0,2)
-			newEnemy.UnitStats.skill = 3 + Calculators.get_random_number(0,2)
-			newEnemy.UnitStats.speed = 2 + Calculators.get_random_number(0,2)
-			newEnemy.UnitStats.magic = 0
-			newEnemy.UnitStats.luck = 0 + Calculators.get_random_number(0,2)
-			newEnemy.UnitStats.def = 1 + Calculators.get_random_number(0,2) 
-			newEnemy.UnitStats.res = 0 + Calculators.get_random_number(0,2)
-			newEnemy.UnitStats.consti = 8
-			newEnemy.UnitStats.bonus_crit = 0
-			newEnemy.UnitStats.bonus_dodge = 0
-			newEnemy.UnitStats.bonus_hit = 0
-			newEnemy.UnitStats.level = 3 + Calculators.get_random_number(0,2)
-			newEnemy.UnitStats.class_type = "Soldier"
-			newEnemy.UnitStats.current_health = 21  + Calculators.get_random_number(0,2)
-			newEnemy.UnitStats.max_health = newEnemy.UnitStats.current_health
-			
-			
-			# XP Stats
-			newEnemy.UnitStats.class_power = 3
-			newEnemy.UnitStats.class_bonus_a = 0
-			newEnemy.UnitStats.class_bonus_b = 0
-			newEnemy.UnitStats.boss_bonus = 0
-			newEnemy.UnitStats.thief_bonus = 0
-			
-			# Set the current tile
-			newEnemy.UnitMovementStats.currentTile = adjCell
-			adjCell.occupyingUnit = newEnemy
-			
-			# Add Unit to the list of enemies
-			newEnemy.UnitMovementStats.is_ally = false
-			id_number += 1
-			newEnemy.UnitStats.identifier = str("Enemy ",id_number)
-			BattlefieldInfo.enemy_units[str("Enemy ",id_number)] = newEnemy
+			if adjCell.occupyingUnit == null:
+				newEnemy.get_node("AI").ai_type = "Aggresive"
+				BattlefieldInfo.current_level.get_node("YSort").add_child(newEnemy)
+				
+				# Set Stats and position
+				newEnemy.position = adjCell.position
+				newEnemy.UnitStats.name = "Soldier"
+				newEnemy.UnitStats.strength = 5 + Calculators.get_random_number(0,2)
+				newEnemy.UnitStats.skill = 3 + Calculators.get_random_number(0,2)
+				newEnemy.UnitStats.speed = 2 + Calculators.get_random_number(0,2)
+				newEnemy.UnitStats.magic = 0
+				newEnemy.UnitStats.luck = 0 + Calculators.get_random_number(0,2)
+				newEnemy.UnitStats.def = 1 + Calculators.get_random_number(0,2) 
+				newEnemy.UnitStats.res = 0 + Calculators.get_random_number(0,2)
+				newEnemy.UnitStats.consti = 8
+				newEnemy.UnitStats.bonus_crit = 0
+				newEnemy.UnitStats.bonus_dodge = 0
+				newEnemy.UnitStats.bonus_hit = 0
+				newEnemy.UnitStats.level = 3 + Calculators.get_random_number(0,2)
+				newEnemy.UnitStats.class_type = "Soldier"
+				newEnemy.UnitStats.current_health = 21  + Calculators.get_random_number(0,2)
+				newEnemy.UnitStats.max_health = newEnemy.UnitStats.current_health
+				
+				
+				# XP Stats
+				newEnemy.UnitStats.class_power = 3
+				newEnemy.UnitStats.class_bonus_a = 0
+				newEnemy.UnitStats.class_bonus_b = 0
+				newEnemy.UnitStats.boss_bonus = 0
+				newEnemy.UnitStats.thief_bonus = 0
+				
+				# Set the current tile
+				newEnemy.UnitMovementStats.currentTile = adjCell
+				adjCell.occupyingUnit = newEnemy
+				
+				# Add Unit to the list of enemies
+				newEnemy.UnitMovementStats.is_ally = false
+				id_number += 1
+				newEnemy.UnitStats.identifier = str("Enemy ",id_number)
+				BattlefieldInfo.enemy_units[str("Enemy ",id_number)] = newEnemy
 	
 	# Remove this from the array
 	BattlefieldInfo.turn_manager.mid_level_events.erase(self)

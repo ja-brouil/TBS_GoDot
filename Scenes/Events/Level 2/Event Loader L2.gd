@@ -15,6 +15,7 @@ func _ready():
 	
 	# Mid Level Events
 	BattlefieldInfo.turn_manager.mid_level_events.append(L2_Event_Mid_10.new())
+	BattlefieldInfo.turn_manager.mid_level_events.append(L2_Event_Mid_20.new())
 	
 	# Add to the tree to prevent a bug
 	for event in BattlefieldInfo.turn_manager.mid_level_events:
