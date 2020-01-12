@@ -8,8 +8,8 @@ signal cursorMoved
 signal turn_off_ui
 signal turn_on_ui
 
-# Holds current unit selected
-#var BattlefieldInfo.current_Unit_Selected
+# Unit cycle
+var all_ally_units = [] 
 
 # Which mode is the cursor in
 enum {MOVE, SELECT_MOVE_TILE, WAIT}
@@ -214,15 +214,31 @@ func cancel_Button() -> void:
 			emit_signal("turn_on_ui")
 
 # L Button -> Go to next unit that is available
-# Note this isn't working very well with a dictionnary so we'll need to find a new way of getting this function to work
 func l_button() ->  void:
-	for ally_unit in BattlefieldInfo.ally_units.values():
+	# Check if we have new units or any unit has died
+	if all_ally_units.size() != BattlefieldInfo.ally_units.size():
+		all_ally_units.clear()
+		# We units that were added or died
+		for ally_unit in BattlefieldInfo.ally_units.values():
+			all_ally_units.append(ally_unit)
+	for ally_unit in all_ally_units:
 		if ally_unit.UnitActionStatus.get_current_action() == Unit_Action_Status.MOVE:
-			BattlefieldInfo.main_game_camera.position = (ally_unit.position + Vector2(-112, -82))
+			# Remove first unit
+			var temp = all_ally_units.pop_front()
+			
+			# Set position
+			BattlefieldInfo.main_game_camera.position = (temp.position + Vector2(-112, -82))
 			BattlefieldInfo.main_game_camera.clampCameraPosition()
-			BattlefieldInfo.cursor.position = ally_unit.position
+			BattlefieldInfo.cursor.position = temp.position
+			
+			# Update UI
 			updateCursorData()
 			emit_signal("cursorMoved", "left", self.position)
+			
+			# Set to the back of the array
+			all_ally_units.append(temp)
+			
+			# Stop loop
 			break
 
 func r_button() -> void:
