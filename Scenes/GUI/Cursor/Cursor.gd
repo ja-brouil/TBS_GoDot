@@ -223,8 +223,9 @@ func l_button() ->  void:
 			all_ally_units.append(ally_unit)
 	for ally_unit in all_ally_units:
 		if ally_unit.UnitActionStatus.get_current_action() == Unit_Action_Status.MOVE:
-			# Remove first unit
-			var temp = all_ally_units.pop_front()
+			# Remove ally unit
+			var temp = ally_unit
+			all_ally_units.erase(ally_unit)
 			
 			# Set position
 			BattlefieldInfo.main_game_camera.position = (temp.position + Vector2(-112, -82))
