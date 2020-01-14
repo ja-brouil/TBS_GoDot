@@ -1,9 +1,41 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/levels/level3/level3.tmx" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Levels/Level3.gd" type="Script" id=2]
 
-[node name="Level 3" instance=ExtResource( 1 )]
+[sub_resource type="Animation" id=1]
+resource_name = "Fade"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Fade 0.5"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.5 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Level 3" index="0" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="YSort" type="YSort" parent="." index="0"]
@@ -11,8 +43,15 @@ script = ExtResource( 2 )
 [node name="Background" parent="." index="1"]
 modulate = Color( 0.996078, 0.819608, 0.745098, 1 )
 
+[node name="CellInfo" parent="." index="2"]
+visible = false
+
 [node name="57" parent="CellInfo" index="1"]
 editor/display_folded = false
 
-[node name="Allies" parent="." index="3"]
-visible = true
+[node name="Temp" parent="." index="5"]
+visible = false
+
+[node name="Anim" type="AnimationPlayer" parent="." index="6"]
+anims/Fade = SubResource( 1 )
+"anims/Fade 0.5" = SubResource( 2 )

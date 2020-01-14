@@ -69,6 +69,7 @@ expand = true
 stream = ExtResource( 3 )
 
 [node name="Options" type="Control" parent="."]
+editor/display_folded = true
 modulate = Color( 1, 1, 1, 0 )
 margin_right = 40.0
 margin_bottom = 40.0
@@ -119,3 +120,5 @@ margin_bottom = 101.146
 "anims/music fade out" = SubResource( 2 )
 
 [node name="Fog" parent="." instance=ExtResource( 6 )]
+position = Vector2( 119.829, 79.9534 )
+scale = Vector2( 3.75592, 2.49914 )

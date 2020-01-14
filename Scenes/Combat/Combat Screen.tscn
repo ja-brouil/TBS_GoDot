@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Scenes/Combat/Combat.gd" type="Script" id=1]
 [ext_resource path="res://assets/UI/combatUI/Plains.png" type="Texture" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Scenes/GUI/XP and Level/Level Up Screen.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Scenes/Combat/Item Broke Screen.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Scenes/Combat/Miss.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Scenes/Transition/Combat Transition.tscn" type="PackedScene" id=14]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 3 )
@@ -44,10 +45,27 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 4 )
 
+[sub_resource type="Animation" id=6]
+resource_name = "Fade"
+length = 0.75
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.75 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
 [node name="Combat Screen" type="Control"]
 script = ExtResource( 1 )
 
 [node name="Combat Control" type="Node2D" parent="."]
+editor/display_folded = true
 visible = false
 
 [node name="Background" type="Sprite" parent="Combat Control"]
@@ -324,5 +342,10 @@ z_index = 2
 [node name="Miss_Enemy" parent="." instance=ExtResource( 13 )]
 position = Vector2( 143.622, 80.7829 )
 z_index = 2
+
+[node name="Combat Trans" parent="." instance=ExtResource( 14 )]
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+anims/Fade = SubResource( 6 )
 [connection signal="timeout" from="Pause" to="." method="_on_Pause_timeout"]
 [connection signal="timeout" from="Return Pause" to="." method="_on_Return_Pause_timeout"]

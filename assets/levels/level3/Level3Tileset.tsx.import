@@ -2,12 +2,12 @@
 
 importer="vnen.tiled_tileset_importer"
 type="TileSet"
-path="res://.import/Level3Tileset.tsx-428df98df1715a2f12235f096dc0075d.res"
+path="res://.import/level3tileset.tsx-e4a8eaf91ce902a8ddb9165cdff1d033.res"
 
 [deps]
 
-source_file="res://assets/levels/level3/Level3Tileset.tsx"
-dest_files=[ "res://.import/Level3Tileset.tsx-428df98df1715a2f12235f096dc0075d.res" ]
+source_file="res://assets/levels/level3/level3tileset.tsx"
+dest_files=[ "res://.import/level3tileset.tsx-e4a8eaf91ce902a8ddb9165cdff1d033.res" ]
 
 [params]
 

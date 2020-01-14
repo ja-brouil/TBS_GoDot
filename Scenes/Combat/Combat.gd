@@ -287,16 +287,26 @@ func start_combat(current_combat_state):
 	enemy_hp_destination = 0
 	
 	# Turn off units and background
-	get_parent().get_parent().get_node("Level").set_modulate(Color(1,1,1,0.5))
+	BattlefieldInfo.current_level.get_node("Anim").play("Fade") #modulate = Color(1,1,1,0.5)
 	
 	# Set player and unit to done
 	if BattlefieldInfo.turn_manager.turn == Turn_Manager.ENEMY_COMBAT_TURN:
 		BattlefieldInfo.combat_ai_unit.UnitActionStatus.set_current_action(Unit_Action_Status.DONE)
 	
+	# Set the visible back
+	modulate = Color(1,1,1,1)
+	
+	# Play Transition
+	$"Combat Trans".play_transition_forward()
+	yield($"Combat Trans", "transition_done")
+	
+	# Set to 0.5 Modulate
+	BattlefieldInfo.current_level.modulate = Color(1,1,1,0.5)
+	
 	# Turn off Units
 	for ally_unit in BattlefieldInfo.ally_units.values():
 		ally_unit.visible = false
-	
+
 	for enemy_unit in BattlefieldInfo.enemy_units.values():
 		enemy_unit.visible = false
 	
@@ -311,6 +321,10 @@ func start_combat(current_combat_state):
 	
 	# Turn on
 	turn_on()
+	
+	# Play fade
+	$"Combat Trans".play_fade()
+	yield($"Combat Trans", "fade_done")
 	
 	# Set Next
 	next_combat_state = current_combat_state
@@ -834,7 +848,7 @@ func _on_Return_Pause_timeout():
 			# Cursor
 			# Set Cursor back to move
 			BattlefieldInfo.current_Unit_Selected = null
-			get_parent().get_parent().get_node("Cursor").enable_standard()
+			BattlefieldInfo.cursor.enable_standard()
 		
 		# AI
 		if BattlefieldInfo.turn_manager.turn == Turn_Manager.ENEMY_COMBAT_TURN:
@@ -865,7 +879,13 @@ func _on_Return_Pause_timeout():
 	
 	# Common to both
 	# Turn off modulate
-	get_parent().get_parent().get_node("Level").modulate = Color(1, 1, 1, 1)
+	BattlefieldInfo.current_level.get_node("Anim").play("Fade 0.5")
+	
+	# Fade away
+	$Anim.play("Fade")
+	yield($Anim, "animation_finished")
+	
+	
 	
 	# Disable arrows
 	$"Combat Control/Combat UI/Enemy/Enemy Up Arrow Combat".visible = false

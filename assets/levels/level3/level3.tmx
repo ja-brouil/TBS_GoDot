@@ -2346,7 +2346,7 @@
     <property name="isAlly" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="352" x="64" y="32" width="16" height="16">
+  <object id="352" x="64" y="48" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
     <property name="BonusDodge" type="int" value="0"/>
@@ -2408,7 +2408,7 @@
     <property name="isAlly" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="350" x="112" y="32" width="16" height="16">
+  <object id="350" x="112" y="48" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
     <property name="BonusDodge" type="int" value="0"/>

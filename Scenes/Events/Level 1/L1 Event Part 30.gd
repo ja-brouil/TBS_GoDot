@@ -14,12 +14,21 @@ var vanessa
 
 # Dialogue between the characters
 var dialogue = [
-	"Seth:\n\nThose bastards! Attacking innocent townsfolk!",
-	"Seth:\n\nThere are Almaryan soldiers that are helping them as well!",
-	"Eirika:\n\nSeth! They have already destroyed a village!",
-	"Eirika:\n\nWe have to stop them before they can do anymore damage to the other villages!",
-	"Seth:\n\nI will hold the front line. If you get injured, you are to fall back immediately.",
-	"Eirika:\n\nI understand. Let's go!",
+	# Japanese
+	"ゼト:\n\nやろう、市民を殺している！",
+	"ゼト:\n\nアルマイリやンの兵士がいる！なぜ山賊に手伝ってあげる？",
+	"エイリーカ:\n\nゼト騎士長！",
+	"エイリーカ:\n\n一つの村をもう崩されています！",
+	"エイリーカ:\n\n他の村を絶対に守ります！",
+	"ゼト:\n\nええ、そうだね。しかしお父さんに娘を守る約束だ。危なすぎる場合は、王女が逃げろ。わかりましたか？それは俺の命令だ。",
+	"エイリーカ:\n\nいいよ。みんな、行きましょう！"
+	# English
+#	"Seth:\n\nThose bastards! Attacking innocent townsfolk!",
+#	"Seth:\n\nThere are Almaryan soldiers that are helping them as well!",
+#	"Eirika:\n\nSeth! They have already destroyed a village!",
+#	"Eirika:\n\nWe have to stop them before they can do anymore damage to the other villages!",
+#	"Seth:\n\nI will hold the front line. If you get injured, you are to fall back immediately.",
+#	"Eirika:\n\nI understand. Let's go!",
 ]
 
 # Set Names for Debug

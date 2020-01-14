@@ -23,9 +23,6 @@ var _last_offset = Vector2(0, 0)
 signal camera_moved
 
 func _ready():
-	# Return to this camera when the unit is done moving
-#	BattlefieldInfo.unit_movement_system.connect("unit_finished_moving", self, "set_current_camera")
-	
 	# Access the main camera from anywhere
 	BattlefieldInfo.main_game_camera = self
 	
@@ -59,6 +56,7 @@ func _on_Cursor_cursorMoved(direction, cursor_position):
 				emit_signal("camera_moved", position)
 	# Clamp camera
 	clampCameraPosition()
+
 
 func _on_unit_moved(direction, unit_position):
 	match direction:
