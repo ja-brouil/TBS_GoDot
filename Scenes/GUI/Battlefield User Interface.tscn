@@ -1,0 +1,74 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://Scenes/GUI/Overhead/BattlefieldHUD.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/GUI/Overhead/BattlefieldHUD.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/GUI/Action Selector/Action Selector.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/GUI/Action Selector/Action Selector.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/GUI/End Turn/End Turn.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/GUI/End Turn/End Turn.gd" type="Script" id=6]
+[ext_resource path="res://Scenes/GUI/Weapon Select/Weapon Select.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/GUI/Weapon Select/Weapon Select.gd" type="Script" id=8]
+[ext_resource path="res://Scenes/GUI/Weapon Select/Healing Select.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/GUI/Weapon Select/Healing Select.gd" type="Script" id=10]
+[ext_resource path="res://Scenes/GUI/Damage Preview/Damage Preview.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scenes/GUI/Damage Preview/Damage Preview.gd" type="Script" id=12]
+[ext_resource path="res://Scenes/GUI/Damage Preview/Healing Preview.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Scenes/GUI/Damage Preview/Healing Preview.gd" type="Script" id=14]
+[ext_resource path="res://Scenes/Messaging/Message System.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Scenes/Messaging/Message System.gd" type="Script" id=16]
+[ext_resource path="res://Scenes/GUI/Item Screen/Item Screen.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Scenes/GUI/Item Screen/Item Screen.gd" type="Script" id=18]
+[ext_resource path="res://Scenes/GUI/Trade/Trade Screen.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Scenes/GUI/Trade/Trade Screen.gd" type="Script" id=20]
+[ext_resource path="res://Scenes/GUI/Unit Info/Unit Info Screen.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Scenes/GUI/Unit Info/Unit Info Screen.gd" type="Script" id=22]
+
+[node name="Battlefield User Interface" type="Node"]
+
+[node name="BattlefieldHUD" type="CanvasLayer" parent="." instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 134.613, 145.226, 122.236 ],
+"_edit_vertical_guides_": [ 45.0, -55.0, 62.2016 ]
+}
+
+[node name="Action Selector Screen" type="CanvasLayer" parent="." instance=ExtResource( 3 )]
+script = ExtResource( 4 )
+
+[node name="End Turn" type="CanvasLayer" parent="." instance=ExtResource( 5 )]
+script = ExtResource( 6 )
+
+[node name="Weapon Select" type="CanvasLayer" parent="." instance=ExtResource( 7 )]
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 7.23653, 27.5366 ],
+"_edit_vertical_guides_": [ -106.743, -12.543 ]
+}
+
+[node name="Healing Select" type="CanvasLayer" parent="." instance=ExtResource( 9 )]
+script = ExtResource( 10 )
+
+[node name="Damage Preview" type="CanvasLayer" parent="." instance=ExtResource( 11 )]
+script = ExtResource( 12 )
+
+[node name="Healing Preview" type="CanvasLayer" parent="." instance=ExtResource( 13 )]
+script = ExtResource( 14 )
+
+[node name="Message System" type="CanvasLayer" parent="." instance=ExtResource( 15 )]
+script = ExtResource( 16 )
+
+[node name="Item Screen" type="CanvasLayer" parent="." instance=ExtResource( 17 )]
+script = ExtResource( 18 )
+__meta__ = {
+"_edit_vertical_guides_": [  ]
+}
+
+[node name="Trade Screen" type="CanvasLayer" parent="." instance=ExtResource( 19 )]
+script = ExtResource( 20 )
+
+[node name="Unit Info Screen" type="CanvasLayer" parent="." instance=ExtResource( 21 )]
+script = ExtResource( 22 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 130.483, 117.374, 143.437, 155.522 ],
+"_edit_vertical_guides_": [ 130.787, 190.406 ]
+}

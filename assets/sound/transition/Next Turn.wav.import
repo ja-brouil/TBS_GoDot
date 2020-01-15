@@ -18,4 +18,4 @@ force/max_rate_hz=44100
 edit/trim=true
 edit/normalize=true
 edit/loop=false
-compress/mode=0
+compress/mode=1

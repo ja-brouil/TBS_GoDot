@@ -39,7 +39,3 @@ func enemy_animation_finished(anim_name):
 	
 	# Start AI
 	BattlefieldInfo.turn_manager.emit_signal("check_end_turn")
-
-# Initial phase
-func _on_Timer_timeout():
-	pass

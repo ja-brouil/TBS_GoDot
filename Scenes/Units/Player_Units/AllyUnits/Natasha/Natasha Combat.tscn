@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/Units/Player_Units/AllyUnits/Natasha/Natasha Combat.gd" type="Script" id=1]
 [ext_resource path="res://assets/units/cleric/Natasha Combat.png" type="Texture" id=2]
 [ext_resource path="res://assets/units/cleric/Heal Restore.png" type="Texture" id=3]
-[ext_resource path="res://assets/sound/battle sounds/Heal.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/battle_effects/Heal Star.png" type="Texture" id=4]
+[ext_resource path="res://assets/sound/battle sounds/Heal.wav" type="AudioStream" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "staff death"
@@ -73,6 +74,18 @@ tracks/4/keys = {
 "method": "death_anim_signal"
 } ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("heal star:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=2]
 length = 1.1
@@ -124,6 +137,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [ 5, 0 ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("heal star:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=3]
 length = 7.1
@@ -156,7 +181,7 @@ tracks/2/path = NodePath("Battle Effect:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/keys = {
 "times": PoolRealArray( 0, 1.5, 5.5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
@@ -168,7 +193,7 @@ tracks/3/path = NodePath("Battle Effect:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
-tracks/3/enabled = true
+tracks/3/enabled = false
 tracks/3/keys = {
 "times": PoolRealArray( 1.5 ),
 "transitions": PoolRealArray( 1 ),
@@ -180,7 +205,7 @@ tracks/4/path = NodePath("Battle Effect:region_rect")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
-tracks/4/enabled = true
+tracks/4/enabled = false
 tracks/4/keys = {
 "times": PoolRealArray( 1.5, 1.8, 2.2, 2.6, 3, 3.3, 3.6, 3.8, 4, 4.3, 4.7, 5, 5.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
@@ -197,7 +222,7 @@ tracks/5/keys = {
 "clips": [ {
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource( 4 )
+"stream": ExtResource( 5 )
 } ],
 "times": PoolRealArray( 1.5 )
 }
@@ -225,6 +250,42 @@ tracks/7/keys = {
 "update": 1,
 "values": [ 5, 0 ]
 }
+tracks/8/type = "value"
+tracks/8/path = NodePath("heal star:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 1.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -70, -41 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("heal star:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("heal star:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 1.5, 2.6, 3.5, 4.3, 5.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.545098 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
 
 [node name="Natasha Combat" type="Node2D"]
 script = ExtResource( 1 )
@@ -234,8 +295,8 @@ __meta__ = {
 }
 
 [node name="staff regular" type="Sprite" parent="."]
-visible = false
 modulate = Color( 1, 1, 1, 0.9 )
+position = Vector2( 0, -1.19209e-07 )
 scale = Vector2( 1.25, 1.25 )
 texture = ExtResource( 2 )
 region_enabled = true
@@ -249,6 +310,11 @@ texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 2, 2, 240, 160 )
 
+[node name="heal star" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( -70, -41 )
+texture = ExtResource( 4 )
+
 [node name="anim" type="AnimationPlayer" parent="."]
 playback_speed = 4.0
 "anims/staff death" = SubResource( 1 )
@@ -256,5 +322,5 @@ playback_speed = 4.0
 "anims/staff regular" = SubResource( 3 )
 
 [node name="Healing" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 4 )
+stream = ExtResource( 5 )
 volume_db = -12.0

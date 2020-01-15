@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Fierce as fire.wav-64fef41d9dedc116164ab4425d21ac16.sample"
+
+[deps]
+
+source_file="res://assets/music/Fierce as fire.wav"
+dest_files=[ "res://.import/Fierce as fire.wav-64fef41d9dedc116164ab4425d21ac16.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=true
+compress/mode=1

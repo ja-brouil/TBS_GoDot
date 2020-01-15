@@ -8,55 +8,53 @@
 [sub_resource type="Animation" id=1]
 resource_name = "Move_Off"
 length = 1.4
-tracks/0/type = "audio"
-tracks/0/path = NodePath("Transition_Sound")
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player Turn:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"clips": [ {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource( 4 )
-} ],
-"times": PoolRealArray( 0 )
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Player Turn:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
 "times": PoolRealArray( 0, 0.2, 0.8, 1.2 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 0, 0, 0, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 0 ) ]
 }
-tracks/2/type = "value"
-tracks/2/path = NodePath("Player Turn:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
+tracks/1/type = "value"
+tracks/1/path = NodePath("Player Turn:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
 "times": PoolRealArray( 0, 0.3, 0.9, 1.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1e-05 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1e-05 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Player Turn:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.9, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 120, 80 ), Vector2( 120, 80 ), Vector2( 360, 80 ) ]
+}
 tracks/3/type = "value"
-tracks/3/path = NodePath("Player Turn:position")
+tracks/3/path = NodePath("Transition:playing")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.9, 1.3 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 120, 80 ), Vector2( 120, 80 ), Vector2( 360, 80 ) ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -74,43 +72,41 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector2( 120, 80 ), Vector2( 120, 80 ), Vector2( 360, 80 ) ]
 }
-tracks/1/type = "audio"
-tracks/1/path = NodePath("Transition_Sound")
+tracks/1/type = "value"
+tracks/1/path = NodePath("Enemy Phase:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"clips": [ {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource( 4 )
-} ],
-"times": PoolRealArray( 0 )
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Enemy Phase:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 0, 0.2, 0.9, 1.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1e-05 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1e-05 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Enemy Phase:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3, 0.8, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
 tracks/3/type = "value"
-tracks/3/path = NodePath("Enemy Phase:modulate")
+tracks/3/path = NodePath("Transition:playing")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.3, 0.8, 1.2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [node name="Turn Transition" type="Node2D"]
@@ -118,22 +114,20 @@ z_index = 6
 script = ExtResource( 1 )
 
 [node name="Player Turn" type="Sprite" parent="."]
-visible = false
-modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 120, 80 )
+modulate = Color( 0, 0, 0, 0 )
+position = Vector2( 360, 80 )
 scale = Vector2( 1, 1e-05 )
 z_index = 2
 texture = ExtResource( 2 )
 
 [node name="Enemy Phase" type="Sprite" parent="."]
-visible = false
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 120, 80 )
 scale = Vector2( 1, 1e-05 )
 z_index = 2
 texture = ExtResource( 3 )
 
-[node name="Transition_Sound" type="AudioStreamPlayer" parent="."]
+[node name="Transition" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 
 [node name="Animation" type="AnimationPlayer" parent="."]

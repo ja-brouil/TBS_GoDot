@@ -1,0 +1,209 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Scenes/Preparation Screen/Preparation Screen.gd" type="Script" id=1]
+[ext_resource path="res://assets/Preparation/Preparation Screen.png" type="Texture" id=2]
+[ext_resource path="res://assets/font/Main Font.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Scenes/GUI/Hand Cursor/Hand Selector.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/music/Swift As Wind.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/music/Fierce as fire.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/sound/transition/Chapter Start.wav" type="AudioStream" id=7]
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
+outline_size = 1
+outline_color = Color( 0.411765, 0.321569, 0.321569, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 20
+outline_size = 1
+outline_color = Color( 0.411765, 0.321569, 0.321569, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+outline_color = Color( 0.239216, 0.180392, 0.180392, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "Fade"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Prep Screen Control:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Preparation Screen" type="CanvasLayer"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 124.407, 107.396 ]
+}
+
+[node name="Prep Screen Control" type="Control" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Background" type="TextureRect" parent="Prep Screen Control"]
+modulate = Color( 0.941176, 0.94902, 1, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 1.0
+margin_bottom = 1.0
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Victory Condition" type="Label" parent="Prep Screen Control"]
+margin_left = 137.965
+margin_top = 24.7414
+margin_right = 456.965
+margin_bottom = 71.7414
+rect_scale = Vector2( 0.3, 0.3 )
+custom_fonts/font = SubResource( 3 )
+text = "Defeat enemy commanders"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Side Panel" type="Control" parent="Prep Screen Control"]
+editor/display_folded = true
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Select Units" type="Label" parent="Prep Screen Control/Side Panel"]
+margin_left = 15.0
+margin_top = 57.0
+margin_right = 177.0
+margin_bottom = 98.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 2 )
+text = "Select Units"
+align = 1
+valign = 1
+
+[node name="Inventory" type="Label" parent="Prep Screen Control/Side Panel"]
+margin_left = 14.0
+margin_top = 74.0
+margin_right = 178.0
+margin_bottom = 116.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 2 )
+text = "Inventory"
+align = 1
+valign = 1
+
+[node name="View Map" type="Label" parent="Prep Screen Control/Side Panel"]
+margin_left = 15.0
+margin_top = 91.0
+margin_right = 177.0
+margin_bottom = 131.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 2 )
+text = "View Map"
+align = 1
+valign = 1
+
+[node name="Marketplace" type="Label" parent="Prep Screen Control/Side Panel"]
+margin_left = 15.0
+margin_top = 108.0
+margin_right = 176.0
+margin_bottom = 149.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 2 )
+text = "Marketplace"
+align = 1
+valign = 1
+
+[node name="Save" type="Label" parent="Prep Screen Control/Side Panel"]
+margin_left = 15.0
+margin_top = 125.0
+margin_right = 177.0
+margin_bottom = 156.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 2 )
+text = "Save"
+align = 1
+valign = 1
+
+[node name="Hand Selector" parent="Prep Screen Control" instance=ExtResource( 4 )]
+margin_left = 3.59115
+margin_top = 57.8357
+margin_right = 19.5912
+margin_bottom = 70.8357
+
+[node name="Side Panel Text" type="Label" parent="Prep Screen Control"]
+margin_left = 90.0
+margin_top = 58.0
+margin_right = 438.0
+margin_bottom = 245.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 2 )
+text = "Select which units to send in this battle. The amount of units you can pick is limited and differs by chapter."
+align = 3
+valign = 1
+autowrap = true
+
+[node name="Chapter Title Background" type="ColorRect" parent="Prep Screen Control"]
+margin_left = 160.0
+margin_top = 3.0
+margin_right = 235.0
+margin_bottom = 20.0
+
+[node name="Chapter Title" type="Label" parent="Prep Screen Control/Chapter Title Background"]
+margin_top = 2.0
+margin_right = 374.0
+margin_bottom = 72.0
+rect_scale = Vector2( 0.2, 0.2 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "Chapter 3
+The Scourge of the Sea"
+align = 1
+valign = 1
+
+[node name="Top" type="ColorRect" parent="Prep Screen Control/Chapter Title Background"]
+margin_right = 75.0
+margin_bottom = 2.0
+color = Color( 0.352941, 0.207843, 0.0313726, 1 )
+
+[node name="Bottom" type="ColorRect" parent="Prep Screen Control/Chapter Title Background"]
+margin_left = -0.0293427
+margin_top = 15.6744
+margin_right = 74.9707
+margin_bottom = 17.6744
+color = Color( 0.352941, 0.207843, 0.0313726, 1 )
+
+[node name="Prep Theme A" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[node name="Prep Theme B" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+autoplay = true
+
+[node name="Start Combat" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+anims/Fade = SubResource( 4 )

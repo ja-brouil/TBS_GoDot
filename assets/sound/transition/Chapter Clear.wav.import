@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Chapter Clear.wav-33da9499c3b789d4f783ccaf802dce22.sample"
+
+[deps]
+
+source_file="res://assets/sound/transition/Chapter Clear.wav"
+dest_files=[ "res://.import/Chapter Clear.wav-33da9499c3b789d4f783ccaf802dce22.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=1
