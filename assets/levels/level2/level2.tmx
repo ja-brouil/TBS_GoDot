@@ -4620,7 +4620,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="SpawnPoints" visible="0">
+ <objectgroup name="SpawnPoints">
   <object id="2931" name="Spawn Point" x="-16" y="288" width="16" height="16">
    <properties>
     <property name="adj_tile_x" type="int" value="0"/>

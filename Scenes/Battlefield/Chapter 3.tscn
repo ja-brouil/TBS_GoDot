@@ -22,8 +22,7 @@
 [ext_resource path="res://Engine/Systems/Event System.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Scenes/Events/Level 2/Event Loader L2.gd" type="Script" id=21]
 
-[sub_resource type="Animation" id=1]
-resource_name = "Fade"
+[sub_resource type="Animation" id=3]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
@@ -49,9 +48,7 @@ position = Vector2( 144, 64 )
 z_index = 5
 
 [node name="GameCamera" parent="." instance=ExtResource( 4 )]
-editor/display_folded = true
 position = Vector2( 48, 0 )
-zoom = Vector2( 1, 1 )
 
 [node name="Turn Transition" parent="GameCamera" instance=ExtResource( 5 )]
 
@@ -90,6 +87,6 @@ position = Vector2( 0.552368, 0 )
 script = ExtResource( 21 )
 
 [node name="Anim" type="AnimationPlayer" parent="."]
-anims/Fade = SubResource( 1 )
+anims/Fade = SubResource( 3 )
 [connection signal="mapInformationLoaded" from="Level" to="GameCamera" method="_on_Level_mapInformationLoaded"]
 [connection signal="cursorMoved" from="Cursor" to="GameCamera" method="_on_Cursor_cursorMoved"]

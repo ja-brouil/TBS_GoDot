@@ -1,0 +1,20 @@
+[remap]
+
+importer="vnen.tiled_tileset_importer"
+type="TileSet"
+path="res://.import/All Tiles.tsx-772226e2d2917d973e73a4256f83e9a9.res"
+
+[deps]
+
+source_file="res://assets/levels/level5/All Tiles.tsx"
+dest_files=[ "res://.import/All Tiles.tsx-772226e2d2917d973e73a4256f83e9a9.res" ]
+
+[params]
+
+custom_properties=true
+tile_metadata=false
+image_flags=7
+embed_internal_images=false
+save_tiled_properties=false
+apply_offset=false
+post_import_script=""

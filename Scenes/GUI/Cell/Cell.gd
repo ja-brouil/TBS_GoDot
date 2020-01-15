@@ -27,6 +27,9 @@ var adjCells = []
 var parentTile = null
 var isVisited = false
 
+# Spawn point
+var is_spawn_point = false
+
 # UI information
 var tileName = "DEFAULT"
 

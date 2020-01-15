@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/Textures/Rain Noise Texture.tres" type="Material" id=1]
+[ext_resource path="res://assets/levels/level2/level2.png" type="Texture" id=2]
+
+[node name="Rain" type="Sprite"]
+modulate = Color( 0.403922, 0.501961, 0.486275, 1 )
+material = ExtResource( 1 )
+texture = ExtResource( 2 )
+centered = false

@@ -123,7 +123,7 @@ func find_most_threatening_enemy():
 		threat_value -= ((ally_unit.UnitStats.luck + ally_unit.UnitStats.speed) / 2)
 		
 		# Check who is strong attack wise and go for them
-		threat_value += (ally_unit.UnitStats.strength + ally_unit.UnitStats.magic)
+		threat_value -= (ally_unit.UnitStats.strength + ally_unit.UnitStats.magic) / 2
 		
 		# Check if this new unit is worth more
 		if (threat_value > most_threat_value):
@@ -134,7 +134,7 @@ func find_most_threatening_enemy():
 	player_unit_target = attack_this_target
 	return attack_this_target
 
-# Find tile to move to | Melee  units
+# Find tile to move to
 func find_tile_to_move_to(Unit_To_Move_Toward):
 	# Get all adjencent tiles
 	var allowed_tiles = []
