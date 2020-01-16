@@ -115,13 +115,13 @@ randomness = 1.0
 process_material = ExtResource( 4 )
 
 [node name="Cursor" parent="." instance=ExtResource( 5 )]
-visible = false
 position = Vector2( 144, 64 )
 z_index = 5
 
 [node name="GameCamera" parent="." instance=ExtResource( 6 )]
 editor/display_folded = true
 position = Vector2( 144, 0 )
+current = false
 limit_right = 464
 limit_bottom = 400
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/Preparation Screen/Preparation Screen.gd" type="Script" id=1]
 [ext_resource path="res://assets/Preparation/Preparation Screen.png" type="Texture" id=2]
@@ -8,7 +8,7 @@
 [ext_resource path="res://assets/music/Fierce as fire.wav" type="AudioStream" id=6]
 [ext_resource path="res://assets/sound/transition/Chapter Start.wav" type="AudioStream" id=7]
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=1]
 size = 20
 outline_size = 1
 outline_color = Color( 0.411765, 0.321569, 0.321569, 1 )
@@ -24,7 +24,7 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=3]
 size = 20
 outline_color = Color( 0.239216, 0.180392, 0.180392, 1 )
 use_mipmaps = true
@@ -46,6 +46,22 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
+[sub_resource type="Animation" id=5]
+resource_name = "Invi"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Prep Screen Control:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
 [node name="Preparation Screen" type="CanvasLayer"]
 script = ExtResource( 1 )
 __meta__ = {
@@ -53,7 +69,7 @@ __meta__ = {
 }
 
 [node name="Prep Screen Control" type="Control" parent="."]
-modulate = Color( 0, 0, 0, 1 )
+modulate = Color( 1, 1, 1, 0.6 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -75,7 +91,7 @@ margin_top = 24.7414
 margin_right = 456.965
 margin_bottom = 71.7414
 rect_scale = Vector2( 0.3, 0.3 )
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 1 )
 text = "Defeat enemy commanders"
 align = 1
 valign = 1
@@ -175,7 +191,7 @@ margin_top = 2.0
 margin_right = 374.0
 margin_bottom = 72.0
 rect_scale = Vector2( 0.2, 0.2 )
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 text = "Chapter 3
@@ -197,13 +213,14 @@ color = Color( 0.352941, 0.207843, 0.0313726, 1 )
 
 [node name="Prep Theme A" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
+autoplay = true
 
 [node name="Prep Theme B" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
-autoplay = true
 
 [node name="Start Combat" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
 
 [node name="Anim" type="AnimationPlayer" parent="."]
 anims/Fade = SubResource( 4 )
+anims/Invi = SubResource( 5 )

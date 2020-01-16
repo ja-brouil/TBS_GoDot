@@ -13,7 +13,7 @@ func _ready():
 	
 	# Set Music for this level
 	BattlefieldInfo.music_player.get_node("AllyLevel").stream = level_music
-	BattlefieldInfo.music_player.get_node("AllyLevel").play(0)
+	# BattlefieldInfo.music_player.get_node("AllyLevel").play(0)
 	
 	# Set Victory condition
 	BattlefieldInfo.victory = false
@@ -24,7 +24,10 @@ func _ready():
 	BattlefieldInfo.enemy_commander = BattlefieldInfo.enemy_units["Marcus"]
 	
 	# Start the level
-	$"Event System".start_events_queue()
+	#$"Event System".start_events_queue()
+	
+	# Prep mode
+	preperation_mode()
 	
 	# Show Ally units
 	for ally_unit in BattlefieldInfo.ally_units.values():
@@ -58,3 +61,7 @@ func next_level():
 	WorldMapScreen.current_event = Level2_WM_Event_Part10.new()
 	WorldMapScreen.connect_to_scene_changer()
 	SceneTransition.change_scene_to(WorldMapScreen, 0.1)
+
+func preperation_mode():
+	# Turn off turn manager
+	BattlefieldInfo.turn_manager.turn = Turn_Manager.WAIT

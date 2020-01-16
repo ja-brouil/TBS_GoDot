@@ -15,7 +15,7 @@ var dialogue = [
 	"エイリーカ:\n\nありがとう、ゼト。",
 	"ゼト:\n\n王国の軍がアルマイリャンの軍と戦闘しているので, この地域が守ることができません。",
 	"ゼトh:\n\n報告によると、山賊が近い村を襲っていました。",
-	"エイリーカ:\n\n近い村を行きましょう。",
+	"エイリーカ:\n\n近い村へ行きましょう。",
 #	# English
 #	"Seth:\n\nYour highness, we have arrived.",
 #	"Eirika:\n\nThank you Seth.",

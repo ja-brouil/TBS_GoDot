@@ -18,13 +18,26 @@ var current_option_number = 0
 var hand_default_position = Vector2(3.5, 58.0)
 var hand_movement_vector= Vector2(0, 17)
 
+# Test Level
+var test_chapter = "res://Scenes/Battlefield/Chapter 4.tscn"
+
 func _ready():
 	set_process_input(false)
 	
 	# Test Debug mode
-	start("3\nScourge of the Sea", "Kill enemy commanders")
+	start("3\nScourge of the Sea", "Kill enemy commanders", test_chapter)
 
-func start(chapter_text, victory_text):
+func start(chapter_text, victory_text, path_to_next_level):
+	# Start level
+	var loaded_level = load(path_to_next_level)
+	var next_level = loaded_level.instance()
+	
+	next_level.set_name("Current Level")
+	next_level.visible = false
+	
+	# Add to tree
+	get_parent().call_deferred("add_child", next_level)
+	
 	# Set Text
 	$"Prep Screen Control/Chapter Title Background/Chapter Title".text = str("Chapter ", chapter_text)
 	$"Prep Screen Control/Victory Condition".text = victory_text
@@ -82,7 +95,7 @@ func _input(event):
 		# Fade backward just for testing
 		$Anim.play_backwards("Fade")
 		yield($Anim, "animation_finished")
-		start(" 4\nThe Grand Betrayal", "Escape the castle")
+		start(" 4\nThe Grand Betrayal", "Escape the castle", test_chapter)
 		play_song("A")
 
 func set_side_text():
@@ -99,7 +112,21 @@ func set_side_text():
 			$"Prep Screen Control/Side Panel Text".text = SAVE
 
 func process_selection():
-	pass
+	match current_option:
+		"Select":
+			$"Prep Screen Control/Side Panel Text".text = SELECT_UNITS_TEXT
+		"Inventory":
+			$"Prep Screen Control/Side Panel Text".text = INVENTORY_TEXT
+		"Map":
+			$Anim.play("Invi")
+			get_node("/root/Current Level").visible = true
+			turn_off()
+			BattlefieldInfo.main_game_camera.current = true
+			BattlefieldInfo.cursor.cursor_state = Cursor.MOVE
+		"Market":
+			$"Prep Screen Control/Side Panel Text".text = MARKETPLACE_TEXT
+		"Save":
+			$"Prep Screen Control/Side Panel Text".text = SAVE
 
 # Select song to play
 func play_song(song_name):
@@ -124,4 +151,4 @@ func turn_on():
 func turn_off():
 	set_process_input(false)
 	
-	stop_music()
+	# stop_music()
