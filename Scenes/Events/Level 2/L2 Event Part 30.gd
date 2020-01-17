@@ -14,7 +14,7 @@ class_name L2_Event_Part3
 var dialogue = [
 	"Seth:\n\nAlmaryan soldiers here?!?",
 	"Seth:\n\nAre they trying to tamper with the peace negotiations?",
-	"Ephraim Soldier:\n\nGet to the forward guard!Protect her highness! Move it!",
+	"Ephraim Soldier:\n\nGet to the forward guard! Protect her highness! Move it!",
 ]
 
 # Move these actors and combat

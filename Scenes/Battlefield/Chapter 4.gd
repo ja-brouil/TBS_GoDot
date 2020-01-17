@@ -15,8 +15,8 @@ func _ready():
 	BattlefieldInfo.music_player.get_node("AllyLevel").stream = level_music
 	
 	# Set Victory condition
-	BattlefieldInfo.victory = false
 	BattlefieldInfo.victory_system.clear()
+	BattlefieldInfo.victory = false
 	BattlefieldInfo.victory_system.victory_condition_state = Victory_Checker.ELIMINATE_ALL_ENEMIES
 	
 	# Set enemy commander

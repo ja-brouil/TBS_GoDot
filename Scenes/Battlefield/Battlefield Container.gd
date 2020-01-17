@@ -14,7 +14,7 @@ func _ready():
 	BattlefieldInfo.victory = false
 	BattlefieldInfo.victory_system.clear()
 	BattlefieldInfo.victory_system.victory_condition_state = Victory_Checker.SURVIVE
-	BattlefieldInfo.victory_system.turns_left_to_survive = 2
+	BattlefieldInfo.victory_system.turns_left_to_survive = 3
 	
 	# Enemy Commander
 	BattlefieldInfo.enemy_commander = BattlefieldInfo.enemy_units["Vezarius"]
