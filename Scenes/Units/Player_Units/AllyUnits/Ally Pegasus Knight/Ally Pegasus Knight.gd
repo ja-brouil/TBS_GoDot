@@ -14,10 +14,6 @@ func _ready():
 	# Unit Mugshot
 	unit_mugshot = unit_portrait_path
 	
-	# Additional Movement
-	UnitMovementStats.ruinsPenalty = -2
-	UnitMovementStats.buildingPenalty = -99
-	
 	# Lance
 	UnitInventory.usable_weapons.append(Item.WEAPON_TYPE.LANCE)
 	var lance = preload("res://Scenes/Items/Lance/Iron Lance.tscn").instance()

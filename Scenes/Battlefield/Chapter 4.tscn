@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Scenes/Battlefield/Chapter 4.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Levels/Level4-a.tscn" type="PackedScene" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://Scenes/GUI/Trade/Trade Screen.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Scenes/GUI/Unit Info/Unit Info Screen.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Engine/Systems/Event System.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Scenes/Preparation Screen/Preparation Screen.tscn" type="PackedScene" id=22]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -156,6 +157,8 @@ position = Vector2( 0.552368, 0 )
 [node name="Unit Info Screen" parent="." instance=ExtResource( 20 )]
 
 [node name="Event System" parent="." instance=ExtResource( 21 )]
+
+[node name="Preparation Screen" parent="." instance=ExtResource( 22 )]
 
 [node name="Anim" type="AnimationPlayer" parent="."]
 anims/Fade = SubResource( 3 )

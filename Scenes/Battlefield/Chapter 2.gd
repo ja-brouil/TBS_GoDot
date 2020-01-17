@@ -31,7 +31,7 @@ func check_loss():
 	return BattlefieldInfo.ally_units.has("Seth")
 
 func next_level():
-	# stop input
+	#stop input
 	BattlefieldInfo.cursor.disable_standard("hello world")
 	
 	# Save the current nodes only for allies
@@ -49,7 +49,7 @@ func next_level():
 	
 	# Move to next level
 	if !WorldMapScreen.is_inside_tree():
-			get_tree().get_root().add_child(WorldMapScreen)
+		get_tree().get_root().add_child(WorldMapScreen)
 	WorldMapScreen.current_event = Level2_WM_Event_Part10.new()
 	WorldMapScreen.connect_to_scene_changer()
 	SceneTransition.change_scene_to(WorldMapScreen, 0.1)

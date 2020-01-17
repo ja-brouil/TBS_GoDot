@@ -12,9 +12,9 @@ class_name L2_Event_Part3
 
 # Dialogue between the characters
 var dialogue = [
-	"Seth:\n\nWhat! How did they know we are here?",
-	"Seth:\n\nYou two! Reinforce the forward guard immediately!",
-	"Ephraim Soldier:\n\nYes sir! You heard the Knight Commander! Move it!",
+	"Seth:\n\nAlmaryan soldiers here?!?",
+	"Seth:\n\nAre they trying to tamper with the peace negotiations?",
+	"Ephraim Soldier:\n\nGet to the forward guard!Protect her highness! Move it!",
 ]
 
 # Move these actors and combat

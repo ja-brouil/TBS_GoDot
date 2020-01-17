@@ -159,14 +159,17 @@ tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0.1, 6, 12.5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0.1, 6, 6.1, 12.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "values": [ {
 "args": [  ],
 "method": "play_draw_sound"
 }, {
 "args": [  ],
 "method": "play_crit_sound"
+}, {
+"args": [  ],
+"method": "shake_camera_crit"
 }, {
 "args": [  ],
 "method": "put_away_attack_sound"
@@ -616,7 +619,7 @@ visible = false
 position = Vector2( 86, -1 )
 texture = ExtResource( 5 )
 region_enabled = true
-region_rect = Rect2( 15, 348, 169, 156 )
+region_rect = Rect2( 253, 853, 238, 143 )
 
 [node name="anim" type="AnimationPlayer" parent="."]
 playback_speed = 4.0

@@ -14,29 +14,46 @@ var all_options_array = ["Select", "Inventory", "Map", "Market", "Save"]
 var current_option = all_options_array[0]
 var current_option_number = 0
 
+# Level
+var level
+
 # Hand reset
 var hand_default_position = Vector2(3.5, 58.0)
 var hand_movement_vector= Vector2(0, 17)
 
-# Test Level
-var test_chapter = "res://Scenes/Battlefield/Chapter 4.tscn"
-
 func _ready():
 	set_process_input(false)
 	
-	# Test Debug mode
-	start("3\nScourge of the Sea", "Kill enemy commanders", test_chapter)
+	# Set self
+	BattlefieldInfo.preparation_screen = self
+	
+	# Set Stuff
+	start(get_parent().chapter_title, BattlefieldInfo.victory_text, "res://Scenes/Intro Screen/Intro Screen.tscn", get_parent().prep_music_choice)
 
-func start(chapter_text, victory_text, path_to_next_level):
-	# Start level
-	var loaded_level = load(path_to_next_level)
-	var next_level = loaded_level.instance()
+func start(chapter_text, victory_text, path_to_next_level, prep_song):
+	# Set the y tree to the new level and set the units to the new path
+	for ally_unit in BattlefieldInfo.ally_units.values():
+		if ally_unit == BattlefieldInfo.ally_units["Eirika"]:
+			continue
+		else:
+			ally_unit.UnitMovementStats.currentTile = null
 	
-	next_level.set_name("Current Level")
-	next_level.visible = false
+	for ally_unit in BattlefieldInfo.ally_units.values():
+		if ally_unit.UnitMovementStats.currentTile == null:
+			for swap_point in BattlefieldInfo.swap_points:
+				if swap_point.occupyingUnit == null:
+					ally_unit.position = swap_point.position
+					ally_unit.UnitMovementStats.currentTile = swap_point
+					swap_point.occupyingUnit = ally_unit
+					BattlefieldInfo.current_level.get_node("YSort").add_child(ally_unit)
+					break
 	
-	# Add to tree
-	get_parent().call_deferred("add_child", next_level)
+	# Heal Units
+	for ally_unit in BattlefieldInfo.ally_units.values():
+		ally_unit.UnitStats.current_health = ally_unit.UnitStats.max_health
+	
+	# Play Music
+	play_song(prep_song)
 	
 	# Set Text
 	$"Prep Screen Control/Chapter Title Background/Chapter Title".text = str("Chapter ", chapter_text)
@@ -81,23 +98,14 @@ func _input(event):
 			
 			# Set Text
 			set_side_text()
-	elif Input.is_action_just_pressed("ui_cancel"):
-		turn_off()
-		print("Heading to the map view!")
 	elif Input.is_action_just_pressed("ui_accept"):
 		process_selection()
 		$"Prep Screen Control/Hand Selector/Accept".play(0)
 		print("Selected process! Process: ", current_option)
 	elif Input.is_action_just_pressed("start_battle"):
 		$"Start Combat".play(0)
-		print("Battle started!")
-	elif Input.is_action_just_pressed("debug"):
-		# Fade backward just for testing
-		$Anim.play_backwards("Fade")
-		yield($Anim, "animation_finished")
-		start(" 4\nThe Grand Betrayal", "Escape the castle", test_chapter)
-		play_song("A")
-
+		start_battle()
+		
 func set_side_text():
 	match current_option:
 		"Select":
@@ -118,11 +126,21 @@ func process_selection():
 		"Inventory":
 			$"Prep Screen Control/Side Panel Text".text = INVENTORY_TEXT
 		"Map":
+			# Make this go invisible
 			$Anim.play("Invi")
-			get_node("/root/Current Level").visible = true
+			
+			# Turn this off
 			turn_off()
+			
+			# Set Camera
 			BattlefieldInfo.main_game_camera.current = true
-			BattlefieldInfo.cursor.cursor_state = Cursor.MOVE
+			
+			# Turn on the blue tiles
+			for blueTile in BattlefieldInfo.swap_points:
+				blueTile.get_node("MovementRangeRect").turnOn("Blue")
+			
+			# Allow movement of cursor
+			BattlefieldInfo.cursor.cursor_state = Cursor.PREP
 		"Market":
 			$"Prep Screen Control/Side Panel Text".text = MARKETPLACE_TEXT
 		"Save":
@@ -136,6 +154,22 @@ func play_song(song_name):
 	else:
 		$"Prep Theme B".play(0)
 
+func start_battle():
+	# Turn this off
+	turn_off()
+	
+	# Disable
+	BattlefieldInfo.cursor.emit_signal("turn_off_ui")
+	BattlefieldInfo.cursor.disable_standard("standard")
+	
+	# Turn off with sound as well
+	$Anim.play("Start Battle")
+	yield($Anim, "animation_finished")
+	stop_music()
+	
+	# Start level
+	get_parent().start_battle()
+
 # Stop music
 func stop_music():
 	if $"Prep Theme A".playing:
@@ -145,10 +179,15 @@ func stop_music():
 
 # Turn on this screen.
 func turn_on():
-	pass
+	# Remove invisibility
+	$Anim.play_backwards("Invi")
+	
+	# Wait until done
+	yield($Anim, "animation_finished")
+	
+	# Allow movement
+	set_process_input(true)
 
 # Turn off this screen -> Move to the next screen
 func turn_off():
 	set_process_input(false)
-	
-	# stop_music()

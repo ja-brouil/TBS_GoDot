@@ -199,11 +199,16 @@ func get_menu_items():
 			menu_items.append("Seize")
 	
 	# Cell Visit -> Armory/Arena/Village
-	if BattlefieldInfo.current_Unit_Selected.UnitMovementStats.currentTile.tileName == "Village" || \
-	   BattlefieldInfo.current_Unit_Selected.UnitMovementStats.currentTile.tileName == "Arena" || \
+	if BattlefieldInfo.current_Unit_Selected.UnitMovementStats.currentTile.tileName == "Arena" || \
 	   BattlefieldInfo.current_Unit_Selected.UnitMovementStats.currentTile.tileName == "Village Entrance":
 		if !menu_items.has("Visit"):
 			menu_items.append("Visit")
+	
+	# Shop option
+	if BattlefieldInfo.current_Unit_Selected.UnitMovementStats.currentTile.tileName == "Armory" || \
+	   BattlefieldInfo.current_Unit_Selected.UnitMovementStats.currentTile.tileName == "Item Shop":
+		if !menu_items.has("Shop"):
+			menu_items.append("Shop")
 	
 	# Always wait
 	var current_number_action = 0
@@ -234,6 +239,8 @@ func process_selection():
 			print("From Action Selector: Selected Visit! Go to the visit screen!")
 		"Seize":
 			print("From Action Selector: Selected Seize! You have won this level.")
+		"Shop":
+			print("From Action Selector: Going into the shop!")
 		"Wait":
 			# Turn this off
 			hide_action_menu()

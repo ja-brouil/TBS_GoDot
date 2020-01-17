@@ -13,10 +13,9 @@ class_name L2_Event_Part4
 # Dialogue between the characters
 var dialogue = [
 	"Seth:\n\nYour highness, please head inside! I cannot guarantee your safety out here.",
-	"Eirika:\n\nNo Seth! My place is here among my people. I will fight alongside them!",
-	"Seth:\n\nStubborn as always... heh. Very well my lady.",
-	"Seth:\n\nLet's go everyone!",
-	"Eirika:\n\nEveryone, I am by your side! Let us fight together!"
+	"Eirika:\n\nNo Seth! My place is here among my people here! I will fight alongside them!",
+	"Seth:\n\nVery well my lady.",
+	"Eirika:\n\nLet's go everyone! I am by your side! Let us fight together!"
 ]
 
 # Actors to move

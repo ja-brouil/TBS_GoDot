@@ -14,7 +14,7 @@ func _ready():
 	BattlefieldInfo.victory = false
 	BattlefieldInfo.victory_system.clear()
 	BattlefieldInfo.victory_system.victory_condition_state = Victory_Checker.SURVIVE
-	BattlefieldInfo.victory_system.turns_left_to_survive = 10
+	BattlefieldInfo.victory_system.turns_left_to_survive = 2
 	
 	# Enemy Commander
 	BattlefieldInfo.enemy_commander = BattlefieldInfo.enemy_units["Vezarius"]
@@ -26,4 +26,22 @@ func check_loss():
 	return BattlefieldInfo.ally_units.has("Seth")
 
 func next_level():
-	SceneTransition.change_scene("res://Scenes/Intro Screen/Intro Screen.tscn", 0.1)
+	#stop input
+	BattlefieldInfo.cursor.disable_standard("hello world")
+	
+	# Save the current nodes only for allies
+	for child in get_node("Level/YSort").get_children():
+		if child.UnitMovementStats.is_ally:
+			child.UnitMovementStats.clear_arrays()
+			child.get_parent().remove_child(child)
+	
+	# stop music
+	BattlefieldInfo.music_player.get_node("AllyLevel").stop()
+	
+	# Fade Away
+	$Anim.play_backwards("Fade")
+	yield($Anim, "animation_finished")
+	
+	# This should go to the world map normally but for testing purposes, let's just start chapter 4
+	var chapter4 = "res://Scenes/Battlefield/Chapter 4.tscn"
+	SceneTransition.change_scene("res://Scenes/Battlefield/Chapter 4.tscn", 0.1)

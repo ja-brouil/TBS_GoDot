@@ -11,5 +11,5 @@ bus/1/name = "Cursor"
 bus/1/solo = false
 bus/1/mute = false
 bus/1/bypass_fx = false
-bus/1/volume_db = -11.3
+bus/1/volume_db = -9.5
 bus/1/send = "Master"

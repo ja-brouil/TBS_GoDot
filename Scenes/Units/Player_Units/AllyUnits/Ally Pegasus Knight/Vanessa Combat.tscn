@@ -259,9 +259,12 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 1 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 1.1, 2.6 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
+"args": [  ],
+"method": "play_death_sound"
+}, {
 "args": [  ],
 "method": "death_anim_signal"
 } ]
@@ -557,6 +560,7 @@ tracks/10/keys = {
 }
 
 [node name="Vanessa Combat" type="Node2D"]
+z_index = 5
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 31.0, -120.0 ],

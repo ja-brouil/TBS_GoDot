@@ -14,8 +14,7 @@ var dialogue = [
 	"General Vezarius:\n\nAh, my dear Eirika.",
 	"General Vezarius:\n\nYour father thought it would have been safe to send you to Castle Merceus.",
 	"General Vezarius:\n\nThere is no escaping now!",
-	"General Vezarius:\n\nI will have your head and anyone else who stands in my way!",
-	"General Vezarius:\n\nFoward my men! Paint the land red with their blood!"
+	"General Vezarius:\n\nI have come to collect you and deliver to you to his majesty!"
 ]
 
 # Move these actors and combat

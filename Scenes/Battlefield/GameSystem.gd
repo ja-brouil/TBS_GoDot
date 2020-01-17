@@ -17,8 +17,11 @@ var event_system
 var movement_system_cinematic
 
 # Level
-var current_level
-var battlefield_container
+var current_level # Level from TMX Files
+var battlefield_container # Entire chapter
+
+# Prep screen
+var preparation_screen
 
 # Sound and music
 var music_player
@@ -67,6 +70,7 @@ var ally_units_y_sort_node
 
 # Spawn points
 var spawn_points = []
+var swap_points = []
 
 # Eirika for AI purposes
 var Eirika

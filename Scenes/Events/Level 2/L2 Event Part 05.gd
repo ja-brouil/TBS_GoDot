@@ -27,7 +27,6 @@ var move_actor_4
 func _init():
 	event_name = "Level 2 Seth gives order to the soldiers."
 	event_part = "Part 0.5"
-
 func start():
 	for ally in BattlefieldInfo.ally_units.values():
 		ally.visible = false

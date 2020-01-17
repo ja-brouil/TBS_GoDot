@@ -12,8 +12,12 @@ signal turn_on_ui
 var all_ally_units = [] 
 
 # Which mode is the cursor in
-enum {MOVE, SELECT_MOVE_TILE, WAIT}
+enum {MOVE, SELECT_MOVE_TILE, WAIT, PREP}
 var cursor_state
+
+# Swap Variables
+var ally_1
+var ally_2
 
 func _ready():
 	# Start cursor animation
@@ -106,14 +110,39 @@ func updateCursorData() -> void:
 				# Do we have a unit selected right now?
 				if BattlefieldInfo.current_Unit_Selected != null:
 					BattlefieldInfo.current_Unit_Selected.get_node("Animation").current_animation = "Idle"
-					BattlefieldInfo.current_Unit_Selected = null
 					
 					# Remove Global Unit
 					BattlefieldInfo.current_Unit_Selected = null
 					
 					# Start animation of the cursor again
 					set_animation_status(true)
-		
+		PREP:
+			# Set Animation status of unit if not null -> This is if you go from one cell to another and both are adj and occupied
+			if BattlefieldInfo.current_Unit_Selected != null:
+					set_animation_status(true)
+					# Remove Global Unit
+					BattlefieldInfo.current_Unit_Selected = null
+			
+			# check if the cell if occupied
+			if BattlefieldInfo.grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE].occupyingUnit != null:
+				BattlefieldInfo.current_Unit_Selected = BattlefieldInfo.grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE].occupyingUnit
+				
+				# Set Global Variable
+				BattlefieldInfo.current_Unit_Selected = BattlefieldInfo.grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE].occupyingUnit
+				
+				# Check if this unit is an ally
+				if BattlefieldInfo.current_Unit_Selected.UnitMovementStats.is_ally && BattlefieldInfo.current_Unit_Selected.UnitActionStatus.get_current_action() != Unit_Action_Status.DONE:
+					# Stop Cursor animation
+					set_animation_status(false)
+				
+			else:
+				# Do we have a unit selected right now?
+				if BattlefieldInfo.current_Unit_Selected != null:
+					# Remove Global Unit
+					BattlefieldInfo.current_Unit_Selected = null
+					
+					# Start animation of the cursor again
+					set_animation_status(true)
 
 # Accept Button
 func acceptButton() -> void:
@@ -195,7 +224,78 @@ func acceptButton() -> void:
 				
 			else:
 				$"InvalidSound".play()
+		PREP:
+			# Is this cell part of the swap? If no, we don't care
+			if BattlefieldInfo.swap_points.has(BattlefieldInfo.grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE]):
+				# Is the swap cell occupied?
+				if BattlefieldInfo.grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE].occupyingUnit != null:
+					# Do we have an ally in ally 1?
+					if ally_1 == null:
+						ally_1 = BattlefieldInfo.grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE].occupyingUnit
+						ally_1.get_node("Animation").current_animation = "Highlighted"
+						$AcceptSound.play(0)
+					else:
+						# Are we trying to place someone at the same cell?
+						if ally_1 == BattlefieldInfo.grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE].occupyingUnit:
+							$InvalidSound.play(0)
+						else:
+							# Cache
+							ally_2 = BattlefieldInfo.grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE].occupyingUnit
+							# Get old position
+							var original_position_of_ally_1 = ally_1.position
+							var original_position_of_ally_2 = ally_2.position
+	
+							# Remove Current Unit from both tiles
+							ally_1.UnitMovementStats.currentTile.occupyingUnit = null
+							ally_2.UnitMovementStats.currentTile.occupyingUnit = null
+	
+							# Move ally 1
+							ally_1.UnitMovementStats.currentTile = ally_2.UnitMovementStats.currentTile
+							ally_1.position = ally_2.position
+							BattlefieldInfo.grid[original_position_of_ally_2.x / Cell.CELL_SIZE][original_position_of_ally_2.y / Cell.CELL_SIZE].occupyingUnit = ally_1
+	
+							# Move ally 2 now
+							ally_2.UnitMovementStats.currentTile = BattlefieldInfo.grid[original_position_of_ally_1.x / Cell.CELL_SIZE][original_position_of_ally_1.y / Cell.CELL_SIZE]
+							ally_2.position = original_position_of_ally_1
+							BattlefieldInfo.grid[original_position_of_ally_1.x / Cell.CELL_SIZE][original_position_of_ally_1.y / Cell.CELL_SIZE].occupyingUnit = ally_2
+	
+							# Update cursor
+							updateCursorData()
+							emit_signal("cursorMoved", "left", self.position)
+	
+							# Play sound
+							$AcceptSound.play(0)
+	
+							# Set animation
+							ally_1.get_node("Animation").current_animation = "Idle"
+	
+							# Clear everything
+							ally_1 = null
+							ally_2 = null
+				else:
+					# Do we have someone in ally 1?
+					if ally_1 != null:
+						# Cache
+						var new_tile = BattlefieldInfo.grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE]
+						
+						# Remove the old tile info
+						ally_1.UnitMovementStats.currentTile.occupyingUnit = null
+						ally_1.UnitMovementStats.currentTile = null
+						
+						# Set new info
+						ally_1.UnitMovementStats.currentTile = new_tile
+						new_tile.occupyingUnit = ally_1
+						ally_1.position = new_tile.position
+						
+						# Play sound
+						$AcceptSound.play(0)
 
+						# Set animation
+						ally_1.get_node("Animation").current_animation = "Idle"
+
+						# Clear everything
+						ally_1 = null
+						ally_2 = null
 # Cancel Button
 func cancel_Button() -> void:
 	match cursor_state:
@@ -212,6 +312,23 @@ func cancel_Button() -> void:
 			
 			# Turn on the UI if not on
 			emit_signal("turn_on_ui")
+		PREP:
+			# Is ally 1 occupied?
+			if ally_1 != null:
+				$"BackSound".play()
+				ally_1.get_node("Animation").current_animation = "Idle"
+				ally_1 = null
+			else:
+				# Go back to prep screen
+				$"BackSound".play()
+				cursor_state = WAIT
+				
+				# Turn on prep screen
+				BattlefieldInfo.preparation_screen.turn_on()
+				
+				# Turn off blue squares
+				for blueTile in BattlefieldInfo.swap_points:
+					blueTile.get_node("MovementRangeRect").turnOff("Blue")
 
 # L Button -> Go to next unit that is available
 func l_button() ->  void:
@@ -243,7 +360,9 @@ func l_button() ->  void:
 			break
 
 func r_button() -> void:
-	if BattlefieldInfo.current_Unit_Selected != null && cursor_state == MOVE:
+	if BattlefieldInfo.current_Unit_Selected != null && (cursor_state == MOVE || cursor_state == PREP):
+		if cursor_state == PREP:
+			set_process_input(false)
 		emit_signal("turn_off_ui")
 		disable_standard("standard")
 		BattlefieldInfo.unit_info_screen.turn_on()
@@ -261,6 +380,8 @@ func set_animation_status(State: bool):
 func enable(status, next_cursor_state):
 	visible = status
 	cursor_state = next_cursor_state
+	if cursor_state == PREP:
+		set_process_input(true)
 	updateCursorData()
 
 # Standard enable
@@ -271,13 +392,15 @@ func enable_standard():
 
 func disable_standard(transition_type):
 	visible = false
-	cursor_state = WAIT
+	if cursor_state != PREP:
+		cursor_state = WAIT
 	emit_signal("turn_off_ui")
 
 func back_to_move():
-	if BattlefieldInfo.turn_manager.turn == Turn_Manager.PLAYER_TURN:
+	if cursor_state == PREP:
+		enable(true, PREP)
+	elif BattlefieldInfo.turn_manager.turn == Turn_Manager.PLAYER_TURN:
 		enable(true, MOVE)
-		is_inside_tree()
 
 func debug() -> void:
 	print(BattlefieldInfo.grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE].toString())

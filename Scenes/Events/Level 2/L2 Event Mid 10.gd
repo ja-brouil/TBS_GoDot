@@ -6,8 +6,7 @@ class_name L2_Event_Mid_10
 
 var dialogue = [
 		"Vezarius:\n\nHmph, I didn't expect them to put up this much of a fight.",
-		"Vezarius:\n\nHahahahaha. Wonderful!",
-		"Vezarius:\n\nCall in the reinforcements!"
+		"Vezarius:\n\nWe are going to reinforcements for this."
 ]
 
 # Actors

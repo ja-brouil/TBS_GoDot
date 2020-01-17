@@ -221,7 +221,7 @@ func process_player_combat():
 					print("FROM COMBAT CALC: NO DAMAGE DEALT FROM PLAYER SECOND")
 			else:
 				# Player missed
-				print("FROM COMBAT CALC: PLAYER MISSED FIRST")
+				print("FROM COMBAT CALC: PLAYER MISSED SECOND")
 				player_second_actual_damage = 0
 				player_missed_second_attack = true
 

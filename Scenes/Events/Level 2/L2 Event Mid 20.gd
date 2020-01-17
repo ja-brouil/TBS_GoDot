@@ -9,17 +9,15 @@ var dialogue = [
 		"Diagur:\n\nGeneral Vezarius!",
 		"Verarius:\n\nAh Diagur. I was wondering when you would show up.",
 		"Diagur:\n\nI have an important message for you. You are needed back at the base camp.",
-		"Vezarius:\n\nShut up! I am not not finished here!",
-		"Diagur:\n\nI come here with a direct order from the Empiror. I am to take over this operation.",
-		"Diagur:\n\nHis Majesty is not pleased with your little incursion. You are interfering with our plans.",
-		"Vezarius:\n\nHahaha!",
-		"Vezarius:\n\nDo you really think a lowly worm like you can take over here?!?",
-		"Diagur:\n\nThis was a direct order. Don't make me return to the emperor.",
-		"Vezarius:\n\nHahahaha! I always thought you were a spineless worm.",
-		"Vezarius:\n\nVery well... I will take my leave and leave this to you. But first...",
-		"Vezarius:\n\nHehehe, I have one more gift for you Eirika.",
-		"Vezarius:\n\nHahahahaha.....",
-		"Diagur:\n\nFinish them! Bring me their heads!",
+		"Vezarius:\n\nWhat! I just started here.",
+		"Diagur:\n\nI come here with a direct order from the Emperor. I am to take over this operation.",
+		"Diagur:\n\nHis Majesty has requested your presence immediately. You are needed for the next phase of the plan.",
+		"Vezarius:\n\nHmm...",
+		"Vezarius:\n\nVery well... I take my leave and leave this to you.",
+		"Vezarius:\n\nYou better not fail his majesty. You know what comes to those who fail their orders.",
+		"Diagur:\n\nI will succeed in capturing our troublesome princess!",
+		"Diagur:\n\nNow get out of here.",
+		"Diagur:\n\nCome forth my men! Bring me Eirika's head!"
 ]
 
 # Actors
@@ -212,9 +210,9 @@ func spawn_enemies():
 	BattlefieldInfo.current_Unit_Selected = null
 	
 	# Set new objective
-	StatusScreen.set_screen_objective_desc("Kill all Enemies")
-	BattlefieldInfo.victory_text = "Kill all Enemies"
-	BattlefieldInfo.victory_system.victory_condition_state = Victory_Checker.ELIMINATE_ALL_ENEMIES
+#	StatusScreen.set_screen_objective_desc("Kill all Enemies")
+#	BattlefieldInfo.victory_text = "Kill all Enemies"
+#	BattlefieldInfo.victory_system.victory_condition_state = Victory_Checker.ELIMINATE_ALL_ENEMIES
 	
 	# Remove this from the array
 	BattlefieldInfo.turn_manager.mid_level_events.erase(self)

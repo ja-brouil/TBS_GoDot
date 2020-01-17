@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.0" orientation="orthogonal" renderorder="right-down" width="29" height="25" tilewidth="16" tileheight="16" infinite="0" nextobjectid="890">
+<map version="1.0" tiledversion="1.1.0" orientation="orthogonal" renderorder="right-down" width="29" height="25" tilewidth="16" tileheight="16" infinite="0" nextobjectid="902">
  <properties>
   <property name="Enemies_to_defeat" type="int" value="15"/>
   <property name="Victory_Condition" value="Defeat All Enemies"/>
@@ -4790,23 +4790,16 @@
     <property name="TileType" value="Floor"/>
    </properties>
   </object>
-  <object id="742" x="240" y="16" width="16" height="16">
+  <object id="743" name="Swap" x="256" y="16" width="16" height="16">
    <properties>
     <property name="Avd" type="int" value="0"/>
     <property name="Def" type="int" value="0"/>
     <property name="MovementCost" type="int" value="1"/>
+    <property name="Swap" type="bool" value="true"/>
     <property name="TileType" value="Floor"/>
    </properties>
   </object>
-  <object id="743" x="256" y="16" width="16" height="16">
-   <properties>
-    <property name="Avd" type="int" value="0"/>
-    <property name="Def" type="int" value="0"/>
-    <property name="MovementCost" type="int" value="1"/>
-    <property name="TileType" value="Floor"/>
-   </properties>
-  </object>
-  <object id="744" x="256" y="0" width="16" height="16">
+  <object id="744" x="256" y="48" width="16" height="16">
    <properties>
     <property name="Avd" type="int" value="0"/>
     <property name="Def" type="int" value="0"/>
@@ -4822,46 +4815,6 @@
     <property name="TileType" value="Floor"/>
    </properties>
   </object>
-  <object id="746" x="272" y="16" width="16" height="16">
-   <properties>
-    <property name="Avd" type="int" value="0"/>
-    <property name="Def" type="int" value="0"/>
-    <property name="MovementCost" type="int" value="1"/>
-    <property name="TileType" value="Floor"/>
-   </properties>
-  </object>
-  <object id="747" x="288" y="16" width="16" height="16">
-   <properties>
-    <property name="Avd" type="int" value="0"/>
-    <property name="Def" type="int" value="0"/>
-    <property name="MovementCost" type="int" value="1"/>
-    <property name="TileType" value="Floor"/>
-   </properties>
-  </object>
-  <object id="748" x="288" y="32" width="16" height="16">
-   <properties>
-    <property name="Avd" type="int" value="0"/>
-    <property name="Def" type="int" value="0"/>
-    <property name="MovementCost" type="int" value="1"/>
-    <property name="TileType" value="Floor"/>
-   </properties>
-  </object>
-  <object id="749" x="272" y="32" width="16" height="16">
-   <properties>
-    <property name="Avd" type="int" value="0"/>
-    <property name="Def" type="int" value="0"/>
-    <property name="MovementCost" type="int" value="1"/>
-    <property name="TileType" value="Floor"/>
-   </properties>
-  </object>
-  <object id="750" x="256" y="32" width="16" height="16">
-   <properties>
-    <property name="Avd" type="int" value="0"/>
-    <property name="Def" type="int" value="0"/>
-    <property name="MovementCost" type="int" value="1"/>
-    <property name="TileType" value="Floor"/>
-   </properties>
-  </object>
   <object id="751" x="240" y="32" width="16" height="16">
    <properties>
     <property name="Avd" type="int" value="0"/>
@@ -4870,11 +4823,12 @@
     <property name="TileType" value="Floor"/>
    </properties>
   </object>
-  <object id="752" x="224" y="32" width="16" height="16">
+  <object id="752" name="Swap" x="224" y="32" width="16" height="16">
    <properties>
     <property name="Avd" type="int" value="0"/>
     <property name="Def" type="int" value="0"/>
     <property name="MovementCost" type="int" value="1"/>
+    <property name="Swap" type="bool" value="true"/>
     <property name="TileType" value="Floor"/>
    </properties>
   </object>
@@ -4886,11 +4840,12 @@
     <property name="TileType" value="Floor"/>
    </properties>
   </object>
-  <object id="754" x="208" y="48" width="16" height="16">
+  <object id="754" name="Swap" x="208" y="48" width="16" height="16">
    <properties>
     <property name="Avd" type="int" value="0"/>
     <property name="Def" type="int" value="0"/>
     <property name="MovementCost" type="int" value="1"/>
+    <property name="Swap" type="bool" value="true"/>
     <property name="TileType" value="Floor"/>
    </properties>
   </object>
@@ -4910,39 +4865,7 @@
     <property name="TileType" value="Floor"/>
    </properties>
   </object>
-  <object id="757" x="256" y="48" width="16" height="16">
-   <properties>
-    <property name="Avd" type="int" value="0"/>
-    <property name="Def" type="int" value="0"/>
-    <property name="MovementCost" type="int" value="1"/>
-    <property name="TileType" value="Floor"/>
-   </properties>
-  </object>
   <object id="758" x="272" y="48" width="16" height="16">
-   <properties>
-    <property name="Avd" type="int" value="0"/>
-    <property name="Def" type="int" value="0"/>
-    <property name="MovementCost" type="int" value="1"/>
-    <property name="TileType" value="Floor"/>
-   </properties>
-  </object>
-  <object id="759" x="288" y="48" width="16" height="16">
-   <properties>
-    <property name="Avd" type="int" value="0"/>
-    <property name="Def" type="int" value="0"/>
-    <property name="MovementCost" type="int" value="1"/>
-    <property name="TileType" value="Floor"/>
-   </properties>
-  </object>
-  <object id="760" x="272" y="64" width="16" height="16">
-   <properties>
-    <property name="Avd" type="int" value="0"/>
-    <property name="Def" type="int" value="0"/>
-    <property name="MovementCost" type="int" value="1"/>
-    <property name="TileType" value="Floor"/>
-   </properties>
-  </object>
-  <object id="761" x="224" y="64" width="16" height="16">
    <properties>
     <property name="Avd" type="int" value="0"/>
     <property name="Def" type="int" value="0"/>
@@ -5846,6 +5769,92 @@
     <property name="TileType" value="Mast"/>
    </properties>
   </object>
+  <object id="890" name="Swap" x="256" y="32" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="Swap" type="bool" value="true"/>
+    <property name="TileType" value="Floor"/>
+   </properties>
+  </object>
+  <object id="891" name="Swap" x="288" y="48" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="Swap" type="bool" value="true"/>
+    <property name="TileType" value="Floor"/>
+   </properties>
+  </object>
+  <object id="892" name="Swap" x="288" y="32" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="Swap" type="bool" value="true"/>
+    <property name="TileType" value="Floor"/>
+   </properties>
+  </object>
+  <object id="893" name="Swap" x="224" y="64" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="Swap" type="bool" value="true"/>
+    <property name="TileType" value="Floor"/>
+   </properties>
+  </object>
+  <object id="895" name="Swap" x="272" y="64" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="Swap" type="bool" value="true"/>
+    <property name="TileType" value="Floor"/>
+   </properties>
+  </object>
+  <object id="897" name="Swap" x="272" y="32" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="Swap" type="bool" value="true"/>
+    <property name="TileType" value="Floor"/>
+   </properties>
+  </object>
+  <object id="898" x="240" y="16" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Floor"/>
+   </properties>
+  </object>
+  <object id="899" x="256" y="0" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Floor"/>
+   </properties>
+  </object>
+  <object id="900" x="272" y="16" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Floor"/>
+   </properties>
+  </object>
+  <object id="901" x="288" y="16" width="16" height="16">
+   <properties>
+    <property name="Avd" type="int" value="0"/>
+    <property name="Def" type="int" value="0"/>
+    <property name="MovementCost" type="int" value="1"/>
+    <property name="TileType" value="Floor"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="Allies">
   <object id="876" name="Eirika" x="240" y="48" width="16" height="16">
@@ -5893,53 +5902,6 @@
     <property name="skillChance" type="int" value="70"/>
     <property name="speedChance" type="int" value="50"/>
     <property name="strChance" type="int" value="70"/>
-   </properties>
-  </object>
-  <object id="877" name="Vanessa" x="272" y="48" width="16" height="16">
-   <properties>
-    <property name="BonusCrit" type="int" value="0"/>
-    <property name="BonusDodge" type="int" value="0"/>
-    <property name="BonusHit" type="int" value="0"/>
-    <property name="BossBonus" type="int" value="0"/>
-    <property name="Class" value="Pegasus Knight"/>
-    <property name="ClassBonusA" type="int" value="0"/>
-    <property name="ClassBonusB" type="int" value="0"/>
-    <property name="ClassPower" type="int" value="3"/>
-    <property name="Consti" type="int" value="5"/>
-    <property name="Defense" type="int" value="6"/>
-    <property name="Health" type="int" value="17"/>
-    <property name="Identifier" value="Vanessa"/>
-    <property name="InstanceName" value="Ally Pegasus Knight"/>
-    <property name="Level" type="int" value="1"/>
-    <property name="Luck" type="int" value="4"/>
-    <property name="Magic" type="int" value="0"/>
-    <property name="MaxHealth" type="int" value="17"/>
-    <property name="Move" type="int" value="7"/>
-    <property name="Name" value="Vanessa"/>
-    <property name="Res" type="int" value="5"/>
-    <property name="Skill" type="int" value="7"/>
-    <property name="Speed" type="int" value="12"/>
-    <property name="Str" type="int" value="5"/>
-    <property name="ThiefBonus" type="int" value="0"/>
-    <property name="Weapon" value="Iron Lance"/>
-    <property name="buildingPenalty" type="int" value="0"/>
-    <property name="constiChance" type="int" value="0"/>
-    <property name="defChance" type="int" value="25"/>
-    <property name="defaultPenalty" type="int" value="0"/>
-    <property name="forestPenalty" type="int" value="-1"/>
-    <property name="fortressPenalty" type="int" value="-1"/>
-    <property name="hillPenalty" type="int" value="-2"/>
-    <property name="isAlly" type="bool" value="true"/>
-    <property name="luckChance" type="int" value="30"/>
-    <property name="magicChance" type="int" value="0"/>
-    <property name="maxHPChance" type="int" value="50"/>
-    <property name="mountainPenalty" type="int" value="-99"/>
-    <property name="resChance" type="int" value="60"/>
-    <property name="riverPenalty" type="int" value="0"/>
-    <property name="seaPenalty" type="int" value="-99"/>
-    <property name="skillChance" type="int" value="55"/>
-    <property name="speedChance" type="int" value="60"/>
-    <property name="strChance" type="int" value="40"/>
    </properties>
   </object>
  </objectgroup>

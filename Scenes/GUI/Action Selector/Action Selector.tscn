@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scenes/GUI/Action Selector/Action Selector.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/GUI/Action Selector/Actions/Top.tscn" type="PackedScene" id=2]
@@ -8,16 +8,16 @@
 [ext_resource path="res://Scenes/GUI/Action Selector/Actions/Heal.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/GUI/Action Selector/Actions/Item.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/GUI/Action Selector/Actions/Trade.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Scenes/GUI/Action Selector/Actions/Seize.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Scenes/GUI/Action Selector/Actions/Wait.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Scenes/GUI/Action Selector/Actions/Visit.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Scenes/GUI/Hand Cursor/Hand Selector.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenes/GUI/Action Selector/Actions/Shop.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/GUI/Action Selector/Actions/Seize.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/GUI/Action Selector/Actions/Wait.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scenes/GUI/Action Selector/Actions/Visit.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenes/GUI/Hand Cursor/Hand Selector.tscn" type="PackedScene" id=13]
 
 [node name="Action Selector Screen" type="CanvasLayer"]
 script = ExtResource( 1 )
 
 [node name="Action Menu" type="Control" parent="."]
-visible = false
 
 [node name="Top" parent="Action Menu" instance=ExtResource( 2 )]
 margin_left = -170.683
@@ -61,25 +61,31 @@ margin_top = 186.66
 margin_right = -180.66
 margin_bottom = 186.66
 
-[node name="Seize" parent="Action Menu" instance=ExtResource( 9 )]
+[node name="Shop" parent="Action Menu" instance=ExtResource( 9 )]
+margin_left = -165.011
+margin_top = 7.21621
+margin_right = -165.011
+margin_bottom = 7.21621
+
+[node name="Seize" parent="Action Menu" instance=ExtResource( 10 )]
 margin_left = -105.229
 margin_top = 43.2038
 margin_right = -105.229
 margin_bottom = 43.2038
 
-[node name="Wait" parent="Action Menu" instance=ExtResource( 10 )]
+[node name="Wait" parent="Action Menu" instance=ExtResource( 11 )]
 margin_left = -161.798
 margin_top = 115.364
 margin_right = -161.798
 margin_bottom = 115.364
 
-[node name="Visit" parent="Action Menu" instance=ExtResource( 11 )]
+[node name="Visit" parent="Action Menu" instance=ExtResource( 12 )]
 margin_left = -116.882
 margin_top = 93.1457
 margin_right = -116.882
 margin_bottom = 93.1457
 
-[node name="Hand Selector" parent="Action Menu" instance=ExtResource( 12 )]
+[node name="Hand Selector" parent="Action Menu" instance=ExtResource( 13 )]
 margin_left = -162.79
 margin_top = 59.6598
 margin_right = -147.79

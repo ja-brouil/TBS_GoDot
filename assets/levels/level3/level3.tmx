@@ -1905,17 +1905,17 @@
     <property name="constiChance" type="int" value="0"/>
     <property name="defChance" type="int" value="25"/>
     <property name="defaultPenalty" type="int" value="0"/>
-    <property name="forestPenalty" type="int" value="-1"/>
-    <property name="fortressPenalty" type="int" value="-1"/>
-    <property name="hillPenalty" type="int" value="-2"/>
+    <property name="forestPenalty" type="int" value="0"/>
+    <property name="fortressPenalty" type="int" value="0"/>
+    <property name="hillPenalty" type="int" value="0"/>
     <property name="isAlly" type="bool" value="true"/>
     <property name="luckChance" type="int" value="30"/>
     <property name="magicChance" type="int" value="0"/>
     <property name="maxHPChance" type="int" value="50"/>
-    <property name="mountainPenalty" type="int" value="-99"/>
+    <property name="mountainPenalty" type="int" value="0"/>
     <property name="resChance" type="int" value="60"/>
     <property name="riverPenalty" type="int" value="0"/>
-    <property name="seaPenalty" type="int" value="-99"/>
+    <property name="seaPenalty" type="int" value="0"/>
     <property name="skillChance" type="int" value="55"/>
     <property name="speedChance" type="int" value="60"/>
     <property name="strChance" type="int" value="40"/>
@@ -2346,7 +2346,7 @@
     <property name="isAlly" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="352" x="64" y="48" width="16" height="16">
+  <object id="352" x="64" y="32" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
     <property name="BonusDodge" type="int" value="0"/>
@@ -2408,7 +2408,7 @@
     <property name="isAlly" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="350" x="112" y="48" width="16" height="16">
+  <object id="350" x="112" y="32" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
     <property name="BonusDodge" type="int" value="0"/>

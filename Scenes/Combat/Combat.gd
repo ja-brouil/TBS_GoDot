@@ -885,8 +885,6 @@ func _on_Return_Pause_timeout():
 	$Anim.play("Fade")
 	yield($Anim, "animation_finished")
 	
-	
-	
 	# Disable arrows
 	$"Combat Control/Combat UI/Enemy/Enemy Up Arrow Combat".visible = false
 	$"Combat Control/Combat UI/Enemy/Enemy Down Arrow Combat".visible = false

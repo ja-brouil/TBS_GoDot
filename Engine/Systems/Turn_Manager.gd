@@ -111,6 +111,8 @@ func start_enemy_transition():
 	BattlefieldInfo.main_game_camera.position = (BattlefieldInfo.Eirika.position + Vector2(-112, -82))
 	BattlefieldInfo.main_game_camera.clampCameraPosition()
 	BattlefieldInfo.cursor.position = BattlefieldInfo.Eirika.position
+	BattlefieldInfo.cursor.updateCursorData()
+	BattlefieldInfo.cursor.emit_signal("cursorMoved", "left", BattlefieldInfo.cursor.position)
 	# Start Transition
 	$"End of Ally".start(0)
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scenes/Preparation Screen/Preparation Screen.gd" type="Script" id=1]
 [ext_resource path="res://assets/Preparation/Preparation Screen.png" type="Texture" id=2]
@@ -62,6 +62,46 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
+[sub_resource type="Animation" id=6]
+resource_name = "Start Battle"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Prep Screen Control:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Prep Theme B:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -80.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Prep Theme A:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -80.0 ]
+}
+
 [node name="Preparation Screen" type="CanvasLayer"]
 script = ExtResource( 1 )
 __meta__ = {
@@ -69,7 +109,6 @@ __meta__ = {
 }
 
 [node name="Prep Screen Control" type="Control" parent="."]
-modulate = Color( 1, 1, 1, 0.6 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -213,7 +252,6 @@ color = Color( 0.352941, 0.207843, 0.0313726, 1 )
 
 [node name="Prep Theme A" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
-autoplay = true
 
 [node name="Prep Theme B" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
@@ -224,3 +262,4 @@ stream = ExtResource( 7 )
 [node name="Anim" type="AnimationPlayer" parent="."]
 anims/Fade = SubResource( 4 )
 anims/Invi = SubResource( 5 )
+"anims/Start Battle" = SubResource( 6 )

@@ -46,6 +46,6 @@ modulate = Color( 0.355347, 0.364141, 0.554688, 1 )
 [node name="CellInfo" parent="." index="2"]
 visible = false
 
-[node name="Anim" type="AnimationPlayer" parent="." index="6"]
+[node name="Anim" type="AnimationPlayer" parent="." index="5"]
 anims/Fade = SubResource( 1 )
 "anims/Fade 0.5" = SubResource( 2 )

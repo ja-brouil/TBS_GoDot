@@ -163,7 +163,7 @@ func turn_off_battlefield_ui():
 
 # Turn on all UI elements of the battlefield
 func turn_on_battlefield_ui():
-	if BattlefieldInfo.turn_manager.turn == Turn_Manager.PLAYER_TURN:
+	if BattlefieldInfo.turn_manager.turn == Turn_Manager.PLAYER_TURN || BattlefieldInfo.cursor.cursor_state == Cursor.PREP:
 		$"Battlefield HUD".visible = true
 	update_battlefield_ui("up", get_parent().get_node("Cursor").position)
 	# Turn off unit frame

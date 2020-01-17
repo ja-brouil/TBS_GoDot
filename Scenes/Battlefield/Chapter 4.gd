@@ -5,15 +5,14 @@ extends Node2D
 
 var level_music = preload("res://assets/music/Fodlan Winds.ogg")
 
-var chapter_title = "Chapter 3: Scourge of the Sea"
-
+var chapter_title = "3\nScourge of the Sea"
+var prep_music_choice = "A"
 func _ready():
 	# Container access
 	BattlefieldInfo.battlefield_container = self
 	
 	# Set Music for this level
 	BattlefieldInfo.music_player.get_node("AllyLevel").stream = level_music
-	# BattlefieldInfo.music_player.get_node("AllyLevel").play(0)
 	
 	# Set Victory condition
 	BattlefieldInfo.victory = false
@@ -22,9 +21,6 @@ func _ready():
 	
 	# Set enemy commander
 	BattlefieldInfo.enemy_commander = BattlefieldInfo.enemy_units["Marcus"]
-	
-	# Start the level
-	#$"Event System".start_events_queue()
 	
 	# Prep mode
 	preperation_mode()
@@ -61,6 +57,14 @@ func next_level():
 	WorldMapScreen.current_event = Level2_WM_Event_Part10.new()
 	WorldMapScreen.connect_to_scene_changer()
 	SceneTransition.change_scene_to(WorldMapScreen, 0.1)
+
+func start_battle():
+	# Start the level
+	$"Event System".start_events_queue()
+	
+	# Wait half a second to finish
+	yield(get_tree().create_timer(1),"timeout")
+	BattlefieldInfo.music_player.get_node("AllyLevel").play(0)
 
 func preperation_mode():
 	# Turn off turn manager

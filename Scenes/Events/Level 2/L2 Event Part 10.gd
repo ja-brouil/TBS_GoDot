@@ -23,7 +23,8 @@ var dialogue = [
 	"Seth:\n\nIt is not very well known to the outside world and given it's remote location, this is the best place to be right now.",
 	"Seth:\n\nI should check in with the forward guard. Please head back inside your highness.",
 	"Eirika:\n\nI will. Thank you Seth.",
-	"Ephraim Soldier:\n\nHey, what the...",
+	"...",
+	"Ephraim Soldier:\n\nAlmyryan soldiers!"
 ]
 
 var eirika

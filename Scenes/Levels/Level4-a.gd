@@ -26,6 +26,10 @@ func _ready():
 	# Set Map victory condition
 	BattlefieldInfo.victory_text = self.get_meta("Victory_Condition")
 	
+	# Clear Battlefield arrays
+	BattlefieldInfo.spawn_points.clear()
+	BattlefieldInfo.swap_points.clear()
+	
 	# Start 2D Array
 	for i in map_width:
 		grid.append([])
@@ -48,9 +52,15 @@ func _ready():
 		# Check if it's a spawn point
 		if cellInfo.has_meta("Spawn"):
 			map_cell_info.is_spawn_point = true
+		BattlefieldInfo.spawn_points.append(map_cell_info)
+		
+		# Check for swap points for swap screen
+		if cellInfo.has_meta("Swap"):
+			BattlefieldInfo.swap_points.append(map_cell_info)
+		
+		# Add as child and set cell to grid
 		add_child(map_cell_info)
 		grid[cellInfo.position.x / Cell.CELL_SIZE][cellInfo.position.y / Cell.CELL_SIZE] = map_cell_info
-		
 	# Set Adj Cells
 	for cellArray in grid:
 		for cell in cellArray:

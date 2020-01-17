@@ -4,7 +4,6 @@ signal transition_done
 signal fade_done
 
 ## List of Transitions
-var circle = preload("res://assets/transition/circle.png")
 var diagonal = preload("res://assets/transition/diagonal.png")
 var left_right = preload("res://assets/transition/leftright.png")
 var shards = preload("res://assets/transition/shards.png")
@@ -13,7 +12,6 @@ var all_transitions = []
 
 # Set Random Seed Generator
 func _ready():
-	all_transitions.append(circle)
 	all_transitions.append(diagonal)
 	all_transitions.append(left_right)
 	all_transitions.append(shards)
