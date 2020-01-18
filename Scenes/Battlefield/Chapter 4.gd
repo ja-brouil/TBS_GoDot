@@ -43,6 +43,7 @@ func next_level():
 	for child in get_node("Level/YSort").get_children():
 		if child.UnitMovementStats.is_ally:
 			child.UnitMovementStats.clear_arrays()
+			child.UnitActionStatus.current_action_status = Unit_Action_Status.MOVE
 			child.get_parent().remove_child(child)
 	
 	# stop music

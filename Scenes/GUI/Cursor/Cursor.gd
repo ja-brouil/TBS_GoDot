@@ -35,6 +35,9 @@ func _ready():
 	# Cursor to battlefield
 	BattlefieldInfo.cursor = self
 	
+	# Clear the array
+	all_ally_units.clear()
+	
 func _input(event):
 	# Do not process if cursor is in wait mode
 	if cursor_state == WAIT:
