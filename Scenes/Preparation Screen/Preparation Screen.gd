@@ -162,6 +162,13 @@ func start_battle():
 	BattlefieldInfo.cursor.emit_signal("turn_off_ui")
 	BattlefieldInfo.cursor.disable_standard("standard")
 	
+	# Move Camera to where Eirika is
+	BattlefieldInfo.main_game_camera.position = (BattlefieldInfo.Eirika.position + Vector2(-112, -82))
+	BattlefieldInfo.main_game_camera.clampCameraPosition()
+	BattlefieldInfo.cursor.position = BattlefieldInfo.Eirika.position
+	BattlefieldInfo.cursor.updateCursorData()
+	BattlefieldInfo.cursor.emit_signal("cursorMoved", "left", BattlefieldInfo.cursor.position)
+	
 	# Turn off with sound as well
 	$Anim.play("Start Battle")
 	yield($Anim, "animation_finished")

@@ -160,6 +160,11 @@ _global_script_classes=[ {
 "path": "res://Scenes/Events/Special Events/Spawn Enemies.gd"
 }, {
 "base": "Node",
+"class": "TileUnitUpdater",
+"language": "GDScript",
+"path": "res://Engine/Systems/TileUnitUpdater.gd"
+}, {
+"base": "Node",
 "class": "Turn_Manager",
 "language": "GDScript",
 "path": "res://Engine/Systems/Turn_Manager.gd"
@@ -230,6 +235,7 @@ _global_script_class_icons={
 "Music_Player": "",
 "PriorityQueue": "",
 "Spawn_Event": "",
+"TileUnitUpdater": "",
 "Turn_Manager": "",
 "Unit_Action_Status": "",
 "Unit_Movement": "",

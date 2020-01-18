@@ -98,7 +98,6 @@ __meta__ = {
 [node name="Level" parent="." instance=ExtResource( 2 )]
 
 [node name="Fog" type="Sprite" parent="Level"]
-editor/display_folded = true
 modulate = Color( 0.960784, 0.968627, 0.933333, 1 )
 material = SubResource( 2 )
 position = Vector2( 231.448, 195.371 )
@@ -122,7 +121,6 @@ z_index = 5
 [node name="GameCamera" parent="." instance=ExtResource( 6 )]
 editor/display_folded = true
 position = Vector2( 144, 0 )
-current = false
 limit_right = 464
 limit_bottom = 400
 

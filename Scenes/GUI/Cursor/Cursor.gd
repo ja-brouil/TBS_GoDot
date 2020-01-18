@@ -35,7 +35,6 @@ func _ready():
 	# Cursor to battlefield
 	BattlefieldInfo.cursor = self
 	
-	
 func _input(event):
 	# Do not process if cursor is in wait mode
 	if cursor_state == WAIT:

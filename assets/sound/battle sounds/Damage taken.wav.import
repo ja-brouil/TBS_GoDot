@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Damage taken.wav-ff89ff84e0e0993c5114e53ae5feef43.sample"
+
+[deps]
+
+source_file="res://assets/sound/battle sounds/Damage taken.wav"
+dest_files=[ "res://.import/Damage taken.wav-ff89ff84e0e0993c5114e53ae5feef43.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=1

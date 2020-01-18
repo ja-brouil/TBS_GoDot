@@ -3,10 +3,11 @@ extends Node2D
 # Container for the entire level
 # Add extra functions that might be needed here
 
-var level_music = preload("res://assets/music/Fodlan Winds.ogg")
+# var level_music = preload("res://assets/music/Fodlan Winds.ogg")
+var level_music = preload("res://assets/music/The Long Road.ogg")
 
 var chapter_title = "3\nScourge of the Sea"
-var prep_music_choice = "A"
+var prep_music_choice = "B"
 func _ready():
 	# Container access
 	BattlefieldInfo.battlefield_container = self

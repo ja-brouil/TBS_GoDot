@@ -8,6 +8,7 @@ var unit_movement_system
 var movement_calculator
 var turn_manager
 var combat_screen
+var tile_unit_updater
 
 # Cinematic Systems
 var message_system
@@ -127,6 +128,8 @@ func _ready():
 	add_child(extra_sound_effects)
 	
 	# Map Updater
+	tile_unit_updater = preload("res://Engine/Systems/TileUnitUpdater.tscn").instance()
+	add_child(tile_unit_updater)
 	
 	# Victory Checker
 	victory_system = preload("res://Engine/Systems/Victory Checker.tscn").instance()

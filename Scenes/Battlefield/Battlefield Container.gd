@@ -26,7 +26,10 @@ func check_loss():
 	return BattlefieldInfo.ally_units.has("Seth")
 
 func next_level():
-	#stop input
+	# Set turn manager
+	BattlefieldInfo.turn_manager.turn = Turn_Manager.WAIT
+	
+	# Stop input
 	BattlefieldInfo.cursor.disable_standard("hello world")
 	
 	# Save the current nodes only for allies
