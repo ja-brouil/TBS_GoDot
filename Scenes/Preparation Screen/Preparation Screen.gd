@@ -66,6 +66,7 @@ func start(chapter_text, victory_text, path_to_next_level, prep_song):
 	current_option = all_options_array[current_option_number]
 	
 	# Fade and allow input
+	$"Prep Screen Control".visible = true
 	$Anim.play("Fade")
 	yield($Anim, "animation_finished")
 	set_process_input(true)

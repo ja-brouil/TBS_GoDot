@@ -41,7 +41,6 @@ func _ready():
 		ally_unit.visible = true
 	
 	# Remove other one
-	# Get rid of the other one
 	get_node("/root/Level/Chapter 3").queue_free()   
 
 func next_level():
@@ -52,6 +51,9 @@ func start_battle():
 	$"Event System".start_events_queue()
 
 func preperation_mode():
+	# Turn on prep
+	BattlefieldInfo.preparation_screen.start(chapter_title, BattlefieldInfo.victory_text, "res://Scenes/Intro Screen/Intro Screen.tscn", prep_music_choice)
+	
 	# Turn off turn manager
 	BattlefieldInfo.turn_manager.turn = Turn_Manager.WAIT
 	
