@@ -156,5 +156,10 @@ func _ready():
 	BattlefieldInfo.map_width = self.map_width
 	BattlefieldInfo.enemy_units = self.all_enemies_location
 	
+	# Remove extra stuff
+	$CellInfo.free()
+	$Allies.free()
+	$Enemies.free()
+	
 	# Load the information for the map into the camera
 	BattlefieldInfo.main_game_camera._on_Level_mapInformationLoaded()

@@ -175,7 +175,7 @@ func start_battle():
 	stop_music()
 	
 	# Start level
-	get_parent().start_battle()
+	BattlefieldInfo.level_container.start_battle()
 
 # Stop music
 func stop_music():

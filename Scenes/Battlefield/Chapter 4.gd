@@ -16,7 +16,7 @@ func _ready():
 	BattlefieldInfo.main_game_camera.position = Vector2(48, 0)
 	
 	# Set cursor
-	BattlefieldInfo.cursor.position = Vector2(144,80)
+	BattlefieldInfo.cursor.position = Vector2(48,0)
 	
 	# Set Music for this level
 	BattlefieldInfo.music_player.get_node("AllyLevel").stream = level_music
@@ -40,6 +40,9 @@ func _ready():
 	for ally_unit in BattlefieldInfo.ally_units.values():
 		ally_unit.visible = true
 	
+	# Remove dark from level
+	BattlefieldInfo.battlefield_container.modulate = Color(1,1,1,1)
+	
 	# Remove other one
 	get_node("/root/Level/Chapter 3").queue_free()   
 
@@ -48,11 +51,15 @@ func next_level():
 
 func start_battle():
 	# Start the level
-	$"Event System".start_events_queue()
+	BattlefieldInfo.event_system.start_events_queue()
+	BattlefieldInfo.music_player.get_node("AllyLevel").play(0)
 
 func preperation_mode():
 	# Turn on prep
 	BattlefieldInfo.preparation_screen.start(chapter_title, BattlefieldInfo.victory_text, "res://Scenes/Intro Screen/Intro Screen.tscn", prep_music_choice)
+	
+	# Show Cursor
+	BattlefieldInfo.cursor.visible = true
 	
 	# Turn off turn manager
 	BattlefieldInfo.turn_manager.turn = Turn_Manager.WAIT
