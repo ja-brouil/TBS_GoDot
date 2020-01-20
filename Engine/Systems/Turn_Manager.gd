@@ -61,12 +61,16 @@ func check_end_of_turn():
 	if BattlefieldInfo.victory:
 		turn = WAIT
 		call_deferred("victory_next_level")
+		BattlefieldInfo.victory = false
+		BattlefieldInfo.cursor.disable_standard("h")
 		return
 	
 	# If game over, exit this
 	if BattlefieldInfo.game_over:
 		turn = WAIT
 		call_deferred("game_over_scene")
+		BattlefieldInfo.game_over = false
+		BattlefieldInfo.cursor.disable_standard("h")
 		return
 	
 	match turn:
@@ -142,4 +146,4 @@ func game_over_scene():
 	SceneTransition.change_scene("res://Scenes/Game Over/Game Over Screen.tscn", 2)
 
 func victory_next_level():
-	BattlefieldInfo.battlefield_container.next_level()
+	BattlefieldInfo.level_container.next_level()

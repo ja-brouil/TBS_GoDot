@@ -43,9 +43,6 @@ script = ExtResource( 2 )
 [node name="Background" parent="." index="1"]
 modulate = Color( 0.996078, 0.819608, 0.745098, 1 )
 
-[node name="57" parent="CellInfo" index="1"]
-editor/display_folded = false
-
 [node name="Temp" parent="." index="5"]
 visible = false
 

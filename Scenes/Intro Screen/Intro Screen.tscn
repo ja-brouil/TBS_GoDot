@@ -69,7 +69,6 @@ expand = true
 stream = ExtResource( 3 )
 
 [node name="Options" type="Control" parent="."]
-editor/display_folded = true
 modulate = Color( 1, 1, 1, 0 )
 margin_right = 40.0
 margin_bottom = 40.0

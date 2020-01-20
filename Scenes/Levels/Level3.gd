@@ -78,7 +78,7 @@ func _ready():
 		var path = str("res://Scenes/Units/Player_Units/AllyUnits/", allyCellInfo.get_meta("InstanceName"),"/",allyCellInfo.get_meta("InstanceName"),".tscn")
 		var new_ally = load(path).instance()
 		new_ally.visible = false
-		$YSort.add_child(new_ally)
+		BattlefieldInfo.y_sort_player_party.add_child(new_ally)
 		
 		# Set Stats and position
 		new_ally.position.x = allyCellInfo.position.x
@@ -205,5 +205,11 @@ func _ready():
 	BattlefieldInfo.ally_units = self.all_allies_location
 	BattlefieldInfo.enemy_units = self.all_enemies_location
 	
+	# Clear All these cells
+	$CellInfo.free()
+	$Allies.free()
+	$Enemies.free()
+	$Temp.free()
+	
 	# Load the information for the map into the camera
-	emit_signal("mapInformationLoaded")
+	BattlefieldInfo.main_game_camera._on_Level_mapInformationLoaded()

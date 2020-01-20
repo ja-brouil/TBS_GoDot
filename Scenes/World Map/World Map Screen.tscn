@@ -533,6 +533,7 @@ tracks/0/keys = {
 }
 
 [node name="World Map" type="Node2D"]
+editor/display_folded = true
 modulate = Color( 0, 0, 0, 1 )
 script = ExtResource( 1 )
 
@@ -558,7 +559,7 @@ volume_db = 6.933
 [node name="Message System" parent="." instance=ExtResource( 4 )]
 
 [node name="Eirika" type="Node2D" parent="."]
-position = Vector2( -293.798, -127.095 )
+position = Vector2( -297.862, -132.514 )
 scale = Vector2( 0.5, 0.5 )
 z_index = 2
 

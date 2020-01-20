@@ -52,7 +52,7 @@ func _ready():
 		# Check if it's a spawn point
 		if cellInfo.has_meta("Spawn"):
 			map_cell_info.is_spawn_point = true
-		BattlefieldInfo.spawn_points.append(map_cell_info)
+			BattlefieldInfo.spawn_points.append(map_cell_info)
 		
 		# Check for swap points for swap screen
 		if cellInfo.has_meta("Swap"):
@@ -84,14 +84,6 @@ func _ready():
 	var allyInfoLayer = $"Allies"
 	var enemyInfoLayer = $"Enemies"
 	
-	# This should create all the player units -> For now, this will just move the one player unit that I have to the correct location
-	# All Strings available
-	#[height, type, visible, width, BonusCrit, BonusDodge, BonusHit, Class, 
-#	Consti, Defense, Health, Luck, Magic, MaxHealth, Move, Name, Res, Skill, 
-#	Speed, Str, Weapon, buildingPenalty, constiChance, defChance, defaultPenalty, forestPenalty, 
-#	fortressPenalty, hillPenalty, isAlly, luckChance, magicChance, maxHPChance, mountainPenalty, 
-#	resChance, riverPenalty, seaPenalty, skillChance, speedChance, strChance]
-	
 	for allyCellInfo in allyInfoLayer.get_children():
 		# Do we already have this ally?
 		var ally_name = allyCellInfo.get_meta("Identifier")
@@ -101,82 +93,16 @@ func _ready():
 			BattlefieldInfo.ally_units[ally_name].position.y = allyCellInfo.position.y
 			BattlefieldInfo.ally_units[ally_name].visible = false
 			BattlefieldInfo.ally_units[ally_name].modulate = Color(1,1,1,1)
-			$YSort.add_child(BattlefieldInfo.ally_units[ally_name])
+			BattlefieldInfo.ally_units[ally_name].UnitActionStatus.set_current_action(Unit_Action_Status.MOVE)
 			
 			# Grid info
 			BattlefieldInfo.ally_units[ally_name].UnitMovementStats.currentTile = grid[BattlefieldInfo.ally_units[ally_name].position.x / Cell.CELL_SIZE][BattlefieldInfo.ally_units[ally_name].position.y / Cell.CELL_SIZE]
 			grid[BattlefieldInfo.ally_units[ally_name].position.x / Cell.CELL_SIZE][BattlefieldInfo.ally_units[ally_name].position.y / Cell.CELL_SIZE].occupyingUnit = BattlefieldInfo.ally_units[ally_name]
-		else:
-			var path = str("res://Scenes/Units/Player_Units/AllyUnits/", allyCellInfo.get_meta("InstanceName"),"/",allyCellInfo.get_meta("InstanceName"),".tscn")
-			var new_ally = load(path).instance()
-			new_ally.visible = false
-			$YSort.add_child(new_ally)
-			
-			# Set Stats and position
-			new_ally.position.x = allyCellInfo.position.x
-			new_ally.position.y = allyCellInfo.position.y
-			new_ally.UnitStats.name = allyCellInfo.get_meta("Name")
-			new_ally.UnitStats.strength = allyCellInfo.get_meta("Str")
-			new_ally.UnitStats.skill = allyCellInfo.get_meta("Skill")
-			new_ally.UnitStats.speed = allyCellInfo.get_meta("Speed")
-			new_ally.UnitStats.magic = allyCellInfo.get_meta("Magic")
-			new_ally.UnitStats.luck = allyCellInfo.get_meta("Luck")
-			new_ally.UnitStats.def = allyCellInfo.get_meta("Defense")
-			new_ally.UnitStats.res = allyCellInfo.get_meta("Res")
-			new_ally.UnitStats.consti = allyCellInfo.get_meta("Consti")
-			new_ally.UnitStats.bonus_crit = allyCellInfo.get_meta("BonusCrit")
-			new_ally.UnitStats.bonus_dodge = allyCellInfo.get_meta("BonusDodge")
-			new_ally.UnitStats.bonus_hit = allyCellInfo.get_meta("BonusHit")
-			new_ally.UnitStats.level = allyCellInfo.get_meta("Level")
-			new_ally.UnitStats.class_type = allyCellInfo.get_meta("Class")
-			new_ally.UnitStats.current_health = allyCellInfo.get_meta("Health")
-			new_ally.UnitStats.max_health = allyCellInfo.get_meta("MaxHealth")
-	
-			# Movement
-			new_ally.UnitMovementStats.movementSteps = allyCellInfo.get_meta("Move")
-			new_ally.UnitMovementStats.defaultPenalty = allyCellInfo.get_meta("defaultPenalty")
-			new_ally.UnitMovementStats.forestPenalty = allyCellInfo.get_meta("forestPenalty")
-			new_ally.UnitMovementStats.fortressPenalty = allyCellInfo.get_meta("fortressPenalty")
-			new_ally.UnitMovementStats.hillPenalty = allyCellInfo.get_meta("hillPenalty")
-			new_ally.UnitMovementStats.riverPenalty = allyCellInfo.get_meta("riverPenalty")
-			new_ally.UnitMovementStats.seaPenalty = allyCellInfo.get_meta("seaPenalty")
-			new_ally.UnitMovementStats.mountainPenalty = allyCellInfo.get_meta("mountainPenalty")
-			
-			# Stat upgrades
-			new_ally.UnitStats.str_chance = allyCellInfo.get_meta("strChance")
-			new_ally.UnitStats.skill_chance = allyCellInfo.get_meta("skillChance")
-			new_ally.UnitStats.speed_chance = allyCellInfo.get_meta("speedChance")
-			new_ally.UnitStats.magic_chance = allyCellInfo.get_meta("magicChance")
-			new_ally.UnitStats.luck_chance = allyCellInfo.get_meta("luckChance")
-			new_ally.UnitStats.def_chance = allyCellInfo.get_meta("defChance")
-			new_ally.UnitStats.res_chance = allyCellInfo.get_meta("resChance")
-			new_ally.UnitStats.consti_chance = allyCellInfo.get_meta("constiChance")
-			new_ally.UnitStats.max_health_chance = allyCellInfo.get_meta("maxHPChance")
-			
-			# XP
-			new_ally.UnitStats.class_power = allyCellInfo.get_meta("ClassPower")
-			new_ally.UnitStats.class_bonus_a = allyCellInfo.get_meta("ClassBonusA")
-			new_ally.UnitStats.class_bonus_b = allyCellInfo.get_meta("ClassBonusB")
-			new_ally.UnitStats.boss_bonus = allyCellInfo.get_meta("BossBonus")
-			new_ally.UnitStats.thief_bonus = allyCellInfo.get_meta("ThiefBonus")
-			
-			# ID
-			new_ally.UnitStats.identifier = allyCellInfo.get_meta("Identifier")
-			
-			# Set Battlefield Info
-			BattlefieldInfo.ally_units[new_ally.UnitStats.identifier] = new_ally
-			new_ally.UnitMovementStats.is_ally = true
-			new_ally.UnitMovementStats.currentTile = grid[new_ally.position.x / Cell.CELL_SIZE][new_ally.position.y / Cell.CELL_SIZE]
-			grid[new_ally.position.x / Cell.CELL_SIZE][new_ally.position.y / Cell.CELL_SIZE].occupyingUnit = new_ally
-	
-	# Set Eirika
-	BattlefieldInfo.Eirika = BattlefieldInfo.ally_units["Eirika"]
 	
 	# Set HP Status back to max
 	for ally_unit_to_heal in BattlefieldInfo.ally_units.values():
 		ally_unit_to_heal.UnitStats.current_health = ally_unit_to_heal.UnitStats.max_health
-	
-	
+		
 	# Create Enemy Units
 	for enemy in enemyInfoLayer.get_children():
 		var path = str("res://Scenes/Units/Enemy_Units/", enemy.get_meta("InstanceName"),".tscn")
@@ -231,4 +157,4 @@ func _ready():
 	BattlefieldInfo.enemy_units = self.all_enemies_location
 	
 	# Load the information for the map into the camera
-	emit_signal("mapInformationLoaded")
+	BattlefieldInfo.main_game_camera._on_Level_mapInformationLoaded()

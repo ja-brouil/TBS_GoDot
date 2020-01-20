@@ -60,22 +60,12 @@ func process_selection():
 		"New Game":
 			$"Anim".play("music fade out")
 			set_process_input(false)
-			# Clear battlefield
-			BattlefieldInfo.clear()
 			
 			# Reset game over status
 			BattlefieldInfo.turn_manager.set_process(true)
 			BattlefieldInfo.game_over = false
 			
 			# Scene change
-			SceneTransition.connect("scene_changed", self, "clean_up")
-			if !WorldMapScreen.is_inside_tree():
-				get_tree().get_root().add_child(WorldMapScreen)
 			WorldMapScreen.current_event = Level1_WM_Event_Part10.new()
 			WorldMapScreen.connect_to_scene_changer()
 			SceneTransition.change_scene_to(WorldMapScreen, 0.1)
-
-func clean_up():
-	$"Intro Song".stop()
-	SceneTransition.disconnect("scene_changed", self, "clean_up")
-	queue_free()

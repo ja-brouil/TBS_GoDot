@@ -39,6 +39,10 @@ func _ready():
 	all_ally_units.clear()
 	
 func _input(event):
+	# Do not process if game is over or won
+	if BattlefieldInfo.victory || BattlefieldInfo.game_over || BattlefieldInfo.stop_end_of_turn:
+		return
+	
 	# Do not process if cursor is in wait mode
 	if cursor_state == WAIT:
 		return

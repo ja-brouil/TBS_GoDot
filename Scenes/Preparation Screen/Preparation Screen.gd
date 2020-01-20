@@ -28,7 +28,7 @@ func _ready():
 	BattlefieldInfo.preparation_screen = self
 	
 	# Set Stuff
-	start(get_parent().chapter_title, BattlefieldInfo.victory_text, "res://Scenes/Intro Screen/Intro Screen.tscn", get_parent().prep_music_choice)
+	#start(get_parent().chapter_title, BattlefieldInfo.victory_text, "res://Scenes/Intro Screen/Intro Screen.tscn", get_parent().prep_music_choice)
 
 func start(chapter_text, victory_text, path_to_next_level, prep_song):
 	# Set the y tree to the new level and set the units to the new path
@@ -45,7 +45,6 @@ func start(chapter_text, victory_text, path_to_next_level, prep_song):
 					ally_unit.position = swap_point.position
 					ally_unit.UnitMovementStats.currentTile = swap_point
 					swap_point.occupyingUnit = ally_unit
-					BattlefieldInfo.current_level.get_node("YSort").add_child(ally_unit)
 					break
 	
 	# Heal Units

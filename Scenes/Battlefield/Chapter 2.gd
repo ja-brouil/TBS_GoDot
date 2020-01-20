@@ -8,8 +8,8 @@ var level_music = preload("res://assets/music/Fodlan Winds.ogg")
 var chapter_title = "Chapter 1: Victims of War"
 
 func _ready():
-	# Container access
-	BattlefieldInfo.battlefield_container = self
+	# Container for this
+	BattlefieldInfo.level_container = self
 	
 	# Set Music for this level
 	BattlefieldInfo.music_player.get_node("AllyLevel").stream = level_music
@@ -22,8 +22,12 @@ func _ready():
 	# Set enemy commander
 	BattlefieldInfo.enemy_commander = BattlefieldInfo.enemy_units["Marcus"]
 	
-	# Start the level
-	$"Event System".start_events_queue()
+	# Load the events
+	BattlefieldInfo.event_system.add_event(L1_Event_Part_10.new())
+	BattlefieldInfo.event_system.add_event(L1_Event_Part_20.new())
+	BattlefieldInfo.event_system.add_event(L1_Event_Part_30.new())
+	
+	BattlefieldInfo.event_system.start_events_queue()
 
 # Additional Loss
 # If Seth dies on this level you also lose
@@ -31,25 +35,18 @@ func check_loss():
 	return BattlefieldInfo.ally_units.has("Seth")
 
 func next_level():
-	#stop input
+	# stop input
 	BattlefieldInfo.cursor.disable_standard("hello world")
-	
-	# Save the current nodes only for allies
-	for child in get_node("Level/YSort").get_children():
-		if child.UnitMovementStats.is_ally:
-			child.UnitMovementStats.clear_arrays()
-			child.get_parent().remove_child(child)
 	
 	# stop music
 	BattlefieldInfo.music_player.get_node("AllyLevel").stop()
 	
 	# Fade Away
-	$Anim.play_backwards("Fade")
-	yield($Anim, "animation_finished")
+	BattlefieldInfo.battlefield_container.get_node("Anim").play_backwards("Fade")
+	yield(BattlefieldInfo.battlefield_container.get_node("Anim"), "animation_finished")
 	
 	# Move to next level
-	if !WorldMapScreen.is_inside_tree():
-		get_tree().get_root().add_child(WorldMapScreen)
+	WorldMapScreen.visible = true
 	WorldMapScreen.current_event = Level2_WM_Event_Part10.new()
 	WorldMapScreen.connect_to_scene_changer()
 	SceneTransition.change_scene_to(WorldMapScreen, 0.1)

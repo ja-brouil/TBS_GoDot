@@ -16,6 +16,10 @@ func _ready():
 	# Current Level set
 	BattlefieldInfo.current_level = self
 	
+	# Clear allies movement stats
+	for ally in BattlefieldInfo.ally_units.values():
+		ally.UnitMovementStats.clear_arrays()
+	
 	# Set music volume
 	BattlefieldInfo.music_player.get_node("AllyLevel").volume_db = 0
 	
@@ -83,7 +87,6 @@ func _ready():
 			BattlefieldInfo.ally_units[ally_name].position.y = allyCellInfo.position.y
 			BattlefieldInfo.ally_units[ally_name].visible = false
 			BattlefieldInfo.ally_units[ally_name].modulate = Color(1,1,1,1)
-			$YSort.add_child(BattlefieldInfo.ally_units[ally_name])
 			
 			# Grid info
 			BattlefieldInfo.ally_units[ally_name].UnitMovementStats.currentTile = grid[BattlefieldInfo.ally_units[ally_name].position.x / Cell.CELL_SIZE][BattlefieldInfo.ally_units[ally_name].position.y / Cell.CELL_SIZE]
@@ -92,7 +95,7 @@ func _ready():
 			var path = str("res://Scenes/Units/Player_Units/AllyUnits/", allyCellInfo.get_meta("InstanceName"),"/",allyCellInfo.get_meta("InstanceName"),".tscn")
 			var new_ally = load(path).instance()
 			new_ally.visible = false
-			$YSort.add_child(new_ally)
+			BattlefieldInfo.y_sort_player_party.add_child(new_ally)
 			
 			# Set Stats and position
 			new_ally.position.x = allyCellInfo.position.x
@@ -222,6 +225,11 @@ func _ready():
 		add_child(spawn_point_cell)
 	
 	$SpawnPoints.free()
+	$CellInfo.free()
+	$Allies.free()
+	$Enemies.free()
+	$"temp Ally".free()
+	$"Temp enemy".free()
 	
 	# Send cell and grid information to the battlefield main so it is easily accessible
 	BattlefieldInfo.grid = self.grid
@@ -230,4 +238,4 @@ func _ready():
 	BattlefieldInfo.enemy_units = self.all_enemies_location
 	
 	# Load the information for the map into the camera
-	emit_signal("mapInformationLoaded")
+	BattlefieldInfo.main_game_camera._on_Level_mapInformationLoaded()

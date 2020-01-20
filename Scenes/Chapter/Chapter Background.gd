@@ -15,10 +15,23 @@ func start(chapter_number, chapter_name, next_chapter_path, delay):
 	
 	# Wait 2 seconds then move on
 	yield(get_tree().create_timer(2.0), "timeout")
-	get_tree().get_root().remove_child(WorldMapScreen)
+	
+	# Remove World Map
+	get_node("/root/WorldMapScreen").visible = false
+	
+	# Fade Back
 	$Container/Anim.play_backwards("Fade ")
 	yield($Container/Anim,"animation_finished")
-	SceneTransition.change_scene(next_chapter_path, 0.1)
+	
+	# Set Camera
+	BattlefieldInfo.main_game_camera.current = true
+	
+	# Change Scene
+	var unzip_scene = load(next_chapter_path)
+	var new_level = unzip_scene.instance()
+	
+	get_node("/root/Level").add_child(new_level)
+	queue_free()
 
 func set_fog_color(color):
 	$Container/Fog.modulate = color

@@ -109,6 +109,8 @@ __meta__ = {
 }
 
 [node name="Prep Screen Control" type="Control" parent="."]
+editor/display_folded = true
+visible = false
 modulate = Color( 0, 0, 0, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0

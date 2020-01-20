@@ -697,7 +697,7 @@ func on_ally_death_complete():
 	BattlefieldInfo.combat_player_unit.UnitMovementStats.currentTile.occupyingUnit = null
 	
 	# Remove the ally units
-	BattlefieldInfo.battlefield_container.get_node("Level/YSort").remove_child(BattlefieldInfo.combat_player_unit)
+	BattlefieldInfo.y_sort_player_party.remove_child(BattlefieldInfo.combat_player_unit)
 	
 	# Did Eirika die? Game over ->
 	if BattlefieldInfo.combat_player_unit.UnitStats.name == "Eirika":
@@ -758,7 +758,7 @@ func on_enemy_death_complete():
 	BattlefieldInfo.combat_ai_unit.UnitMovementStats.currentTile.occupyingUnit = null
 	
 	# Remove the node from the YSort
-	BattlefieldInfo.battlefield_container.get_node("Level/YSort").remove_child(BattlefieldInfo.combat_ai_unit)
+	BattlefieldInfo.current_level.get_node("YSort").remove_child(BattlefieldInfo.combat_ai_unit)
 	
 	# Process XP stuff here
 	process_death_xp()

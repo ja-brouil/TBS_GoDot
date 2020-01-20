@@ -22,7 +22,7 @@ var tile_to_escort
 var unit_to_assassinate
 
 func check_victory_status():
-	# Don't process twice
+	# Don't process twice 
 	if BattlefieldInfo.victory:
 		return
 	

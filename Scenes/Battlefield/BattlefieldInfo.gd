@@ -20,9 +20,7 @@ var movement_system_cinematic
 # Level
 var current_level # Level from TMX Files
 var battlefield_container # Entire chapter
-
-# Prep screen
-var preparation_screen
+var level_container # Container for level
 
 # Sound and music
 var music_player
@@ -30,15 +28,8 @@ var battle_sounds
 var weapon_sounds
 var extra_sound_effects
 
-# Cursor
-var cursor
-var battlefield_ui
-
-# Unit Info Screen
-var unit_info_screen
-
 # Victory Condition
-var victory_text
+var victory_text = "Defeat all enemies"
 
 # Victory System
 var victory_system
@@ -60,14 +51,9 @@ var grid = []
 var map_height
 var map_width
 
-# Camera Values
-var camera_limit_bottom
-var camera_limit_right
-
 # Battlefield Unit Info
 var ally_units = {}
 var enemy_units = {}
-var ally_units_y_sort_node
 
 # Spawn points
 var spawn_points = []
@@ -83,14 +69,45 @@ var enemy_commander
 var combat_player_unit
 var combat_ai_unit
 
+# Player units
+onready var y_sort_player_party
+
 # Game Over
 var game_over = false
 
 # Victory
 var victory = false
 
+# Prevent end of turn
+var stop_end_of_turn = false
+
 # Money
 var money = 0
+
+##################
+# ALL UI SCREENS #
+##################
+
+# Cursor
+var cursor
+var battlefield_ui
+
+# End turn
+var end_turn
+
+# Weapon and healing select
+var weapon_select
+var healing_select
+
+# Damage and healing preview
+var damage_preview
+var healing_preview
+
+# Unit Info Screen
+var unit_info_screen
+
+# Prep screen
+var preparation_screen
 
 # Start Game Systems
 func _ready():
@@ -135,6 +152,8 @@ func _ready():
 	victory_system = preload("res://Engine/Systems/Victory Checker.tscn").instance()
 	add_child(victory_system)
 	
+	# Player sort
+	y_sort_player_party = $YSort
 
 # Run Systems
 func _process(delta):
@@ -148,18 +167,31 @@ func _input(event):
 
 # Clear for starting
 func clear():
+	combat_screen = null
+	message_system = null
 	current_level = null
-	victory_text = null
+	battlefield_container = null
+	victory_text = ""
 	cursor = null
 	battlefield_ui = null
 	current_Unit_Selected = null
 	combat_ai_unit = null
 	combat_player_unit = null
 	grid = null
-	map_height = null
-	map_width = null
-	ally_units = null
+	map_height = 0
+	map_width = 0
 	enemy_units = null
+	game_over = false
+	victory = false
+	enemy_commander = null
+	turn_transition = null
+	unit_info_screen = null
+	event_system = null
+	stop_end_of_turn = false
+
+	# Reset turn manager
+	turn_manager.player_turn_number = 1
+	turn_manager.enemy_turn_number = 1
 
 # Start the level
 func start_level():

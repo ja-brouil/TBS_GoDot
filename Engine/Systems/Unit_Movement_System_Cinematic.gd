@@ -71,6 +71,5 @@ func process_movement(delta):
 			
 	# All Units have moved, check if empty
 	if unit_to_move_same_time.empty():
-		BattlefieldInfo.main_game_camera.current = true
 		is_moving = false
 		emit_signal("unit_finished_moving_cinema")

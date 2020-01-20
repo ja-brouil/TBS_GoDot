@@ -26,11 +26,8 @@ func _ready():
 	# Access the main camera from anywhere
 	BattlefieldInfo.main_game_camera = self
 	
-	# Camera Info Needed
-	limit_bottom = (BattlefieldInfo.map_height * Cell.CELL_SIZE)
-	limit_right = (BattlefieldInfo.map_width * Cell.CELL_SIZE)
-	RIGHT_CLAMP_MAX = (BattlefieldInfo.map_width * Cell.CELL_SIZE) - CAMERA_WIDTH
-	BOTTOM_CLAMP_MAX = (BattlefieldInfo.map_height * Cell.CELL_SIZE) - CAMERA_HEIGTH
+	# Check if connected -> No idea why my two levels are bugged and the rest are okay.
+	BattlefieldInfo.cursor.connect("cursorMoved", self, "_on_Cursor_cursorMoved")
 	
 	# Camera Shake for battle effect
 	set_process(true)
@@ -79,15 +76,13 @@ func _on_unit_moved(direction, unit_position):
 	# Clamp camera
 	clampCameraPosition()
 
-
 # Sets the parameters for the maximum camera movement once the level is loaded
 func _on_Level_mapInformationLoaded():
 	limit_bottom = (BattlefieldInfo.map_height * Cell.CELL_SIZE)
 	limit_right = (BattlefieldInfo.map_width * Cell.CELL_SIZE)
 	RIGHT_CLAMP_MAX = (BattlefieldInfo.map_width * Cell.CELL_SIZE) - CAMERA_WIDTH
 	BOTTOM_CLAMP_MAX = (BattlefieldInfo.map_height * Cell.CELL_SIZE) - CAMERA_HEIGTH
-	
-	
+
 # Prevent out of bounds for the camera
 func clampCameraPosition():
 	# Clamp

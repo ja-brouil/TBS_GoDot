@@ -6,6 +6,8 @@ signal scene_loaded
 onready var black_transition = $"Scene Changer/Black"
 onready var animation_player = $"Scene Changer/Animation"
 
+var current_scene
+
 # Call when you want to change the level
 # Path = file location for the next scene
 # Delay = time between each scene
@@ -51,27 +53,33 @@ func change_scene_to(path, delay = 0.1):
 	
 	emit_signal("scene_changed")
 
-func manual_swap_scene(current_node, next_node_path, delay):
-	# Delay timeout for the scene 
-	yield(get_tree().create_timer(delay), "timeout")
-	
-	# Play fade animation
+func manual_swap(path):
+	call_deferred("deferred_next_level", path)
+
+func deferred_next_level(path):
+	# Anim
 	animation_player.play("fade")
 	
-	# Wait for animation to finish
+	# Yield for anim
 	yield(animation_player, "animation_finished")
 	
-	# Hide current node
-	current_node.free()
+	# Load new scene
+	var new_level = ResourceLoader.load(path)
 	
-	# Set next node
-	var loader = ResourceLoader.load(next_node_path)
-	current_node = loader.instance()
-	get_tree().get_root().add_child(current_node)
+	# Instance new scene
+	current_scene = new_level.instance()
 	
-	# Play animation
+	# Set to active scene
+	get_tree().get_root().add_child(current_scene)
+	
+	# Fade backwards
 	animation_player.play_backwards("fade")
 	
-	# Wait until animation is finished
+	# Wait until done
 	yield(animation_player, "animation_finished")
+	
+	# Signal
 	emit_signal("scene_changed")
+	
+	# Set current scene
+	get_tree().set_current_scene(current_scene)

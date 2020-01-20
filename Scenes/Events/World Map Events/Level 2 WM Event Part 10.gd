@@ -55,4 +55,4 @@ func after_text():
 	WorldMapScreen.exit()
 	yield(SceneTransition, "scene_changed")
 	SceneTransition.get_tree().current_scene.start("2", "Fort Merceus", level3, 2)
-	free()
+	queue_free()

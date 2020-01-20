@@ -13,7 +13,7 @@ const ACTION_SIZE_Y = 10
 const original_hand_place = Vector2(15,40)
 
 func _ready():
-	pass
+	BattlefieldInfo.end_turn = self
 
 # Handle input
 func _input(event):

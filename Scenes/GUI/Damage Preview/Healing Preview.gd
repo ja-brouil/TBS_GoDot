@@ -116,7 +116,7 @@ func process_selection():
 	turn_off()
 	
 	# Start combat phase
-	get_parent().get_node("GameCamera/Combat Screen").start_combat(Combat_Screen.player_healing)
+	BattlefieldInfo.combat_screen.start_combat(Combat_Screen.player_healing)
 
 # Update preview boxes
 func update_preview_box():

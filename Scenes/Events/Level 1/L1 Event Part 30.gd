@@ -72,14 +72,14 @@ func move_actor():
 	BattlefieldInfo.movement_calculator.get_path_to_destination_AI(neimi, BattlefieldInfo.grid[2][13], BattlefieldInfo.grid)
 	BattlefieldInfo.movement_calculator.get_path_to_destination_AI(gilliam, BattlefieldInfo.grid[5][13], BattlefieldInfo.grid)
 	BattlefieldInfo.movement_calculator.get_path_to_destination_AI(vanessa, BattlefieldInfo.grid[2][12], BattlefieldInfo.grid)
-	
+
 	# Remove original tile
 	natasha.UnitMovementStats.currentTile.occupyingUnit = null
 	ewan.UnitMovementStats.currentTile.occupyingUnit = null
 	neimi.UnitMovementStats.currentTile.occupyingUnit = null
 	gilliam.UnitMovementStats.currentTile.occupyingUnit = null
 	vanessa.UnitMovementStats.currentTile.occupyingUnit = null
-	
+
 	# Add actors to movement
 	BattlefieldInfo.movement_system_cinematic.unit_to_move_same_time.append(natasha)
 	BattlefieldInfo.movement_system_cinematic.unit_to_move_same_time.append(neimi)

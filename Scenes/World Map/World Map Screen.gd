@@ -24,6 +24,11 @@ func _ready():
 
 # Start this map
 func start():
+	# Set Map settings
+	visible = true
+	modulate = Color(0,0,0,1)
+	
+	# Set World map
 	current_event.world_map = self
 	
 	# Add child

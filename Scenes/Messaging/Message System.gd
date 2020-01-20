@@ -26,7 +26,7 @@ signal no_more_text
 
 func _ready():
 	BattlefieldInfo.message_system = self
-	# test():
+
 
 func start(text_queue):
 	self.text_queue = text_queue

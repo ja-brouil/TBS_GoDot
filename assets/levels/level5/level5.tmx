@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.0" orientation="orthogonal" renderorder="right-down" width="29" height="25" tilewidth="16" tileheight="16" infinite="0" nextobjectid="902">
+<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="29" height="25" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="902">
  <properties>
   <property name="Enemies_to_defeat" type="int" value="15"/>
   <property name="Victory_Condition" value="Defeat All Enemies"/>
  </properties>
  <tileset firstgid="1" source="All Tiles.tsx"/>
  <tileset firstgid="1001" source="Boat Level.tsx"/>
- <layer name="Background" width="29" height="25">
+ <layer id="1" name="Background" width="29" height="25">
   <data encoding="csv">
 1001,1001,2147484650,2147484649,2147484650,2147484649,1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011,1012,1013,1014,1015,1016,1017,1018,1019,1016,1016,1017,2147484692,
 1001,1020,2147484669,2147484668,2147484669,2147484668,1020,1021,1022,1023,1024,1025,1026,1027,1028,1029,1030,1031,1032,1033,1034,1035,1036,1037,1038,2147484686,2147484685,2147484684,2147484711,
@@ -35,7 +35,7 @@
 1339,1339,1397,1398,1399,1385,1397,1398,1399,1339,1339,1339,1159,1160,1066,1067,1068,1069,1070,1223,2147484787,1396,1395,1396,1396,1395,1395,1395,1396
 </data>
  </layer>
- <objectgroup name="CellInfo">
+ <objectgroup id="2" name="CellInfo">
   <object id="127" x="0" y="0" width="16" height="16">
    <properties>
     <property name="Avd" type="int" value="10"/>
@@ -5856,7 +5856,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="Allies">
+ <objectgroup id="3" name="Allies">
   <object id="876" name="Eirika" x="240" y="48" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="15"/>
@@ -5905,7 +5905,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="Enemies">
+ <objectgroup id="4" name="Enemies">
   <object id="880" x="256" y="384" width="16" height="16">
    <properties>
     <property name="After_Battle" value="まさか。。。俺は倒された。。。"/>
@@ -5921,14 +5921,14 @@
     <property name="Consti" type="int" value="8"/>
     <property name="Defense" type="int" value="2"/>
     <property name="Health" type="int" value="25"/>
-    <property name="Identifier" value="Marcus"/>
+    <property name="Identifier" value="Rolod"/>
     <property name="InstanceName" value="Bandit"/>
     <property name="Level" type="int" value="3"/>
     <property name="Luck" type="int" value="0"/>
     <property name="Magic" type="int" value="3"/>
     <property name="MaxHealth" type="int" value="25"/>
     <property name="Move" type="int" value="4"/>
-    <property name="Name" value="Marcus"/>
+    <property name="Name" value="Rolod"/>
     <property name="Res" type="int" value="1"/>
     <property name="Skill" type="int" value="3"/>
     <property name="Speed" type="int" value="2"/>

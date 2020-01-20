@@ -130,6 +130,7 @@ __meta__ = {
 }
 
 [node name="Battlefield HUD" type="Control" parent="."]
+visible = false
 margin_left = 0.0654756
 margin_top = -0.0882874
 margin_right = 240.066

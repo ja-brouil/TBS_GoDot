@@ -1,10 +1,10 @@
 extends Control
 
 var bf = BattlefieldInfo
-var next = "res://Engine/Tests/Script Test Scene 2.tscn"
+var next = "res://Engine/Tests/Script Test Scene.tscn"
 
 func _ready():
-	# BattlefieldInfo.clear()
+	#BattlefieldInfo.clear()
 	
 	BattlefieldInfo.battlefield_container = self
 
@@ -13,4 +13,4 @@ func _input(event):
 		print(bf)
 	
 	if Input.is_action_just_pressed("L button"):
-		SceneTransition.change_scene(next, 0.1)
+		SceneTransition.change_scene_to(WorldMapScreen, 0.1)

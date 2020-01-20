@@ -52,4 +52,3 @@ func check_player_input():
 # Call this to end this event
 func event_complete():
 	emit_signal("event_done")
-	self.queue_free()
