@@ -13,10 +13,10 @@ func _ready():
 	BattlefieldInfo.level_container = self
 	
 	# Set Camera to new spot
-	BattlefieldInfo.main_game_camera.position = Vector2(48, 0)
+	BattlefieldInfo.main_game_camera.position = Vector2(128, 0)
 	
 	# Set cursor
-	BattlefieldInfo.cursor.position = Vector2(48,0)
+	BattlefieldInfo.cursor.position = Vector2(240,32)
 	
 	# Set Music for this level
 	BattlefieldInfo.music_player.get_node("AllyLevel").stream = level_music
@@ -32,6 +32,8 @@ func _ready():
 	# Add Events and reset manager
 	BattlefieldInfo.event_system.current_state = Event_System.starting_events
 	BattlefieldInfo.event_system.add_event(L3_Event_Part10.new())
+	BattlefieldInfo.event_system.add_event(L3_Event_Part20.new())
+	BattlefieldInfo.event_system.add_event(L3_Event_Part30.new())
 	
 	# Prep mode
 	preperation_mode()
@@ -60,6 +62,9 @@ func preperation_mode():
 	
 	# Show Cursor
 	BattlefieldInfo.cursor.visible = true
+	
+	# Show UI
+	BattlefieldInfo.battlefield_ui.get_node("Battlefield HUD").visible = true
 	
 	# Turn off turn manager
 	BattlefieldInfo.turn_manager.turn = Turn_Manager.WAIT
