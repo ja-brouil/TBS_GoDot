@@ -13,7 +13,8 @@ class_name L2_Event_Part3
 # Dialogue between the characters
 var dialogue = [
 	"Seth:\n\nAlmaryan soldiers here?!?",
-	"Seth:\n\nAre they trying to tamper with the peace negotiations?",
+	"Seth:\n\nThat is General Vezarius, the right hand man of the Emperor.",
+	"Seth:\n\nYour father was right Lady Eirika. Something is amiss here.",
 	"Ephraim Soldier:\n\nGet to the forward guard! Protect her highness! Move it!",
 ]
 

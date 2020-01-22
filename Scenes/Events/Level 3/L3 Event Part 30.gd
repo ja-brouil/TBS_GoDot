@@ -4,8 +4,8 @@ class_name L3_Event_Part30
 
 # Dialogue between the characters
 var dialogue = [
-	"Mage:\n\nShut up you dumb pirates! Don't order us what to do.",
-	"Mage:\n\nRemember we are paying you. We need her alive!"
+	"Mage:\n\nShut up you dumb pirates!",
+	"Mage:\n\nYou better capture her alive!"
 ]
 
 func _init():

@@ -129,6 +129,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scenes/Events/Level 3/L3 Event Part 30.gd"
 }, {
+"base": "Node2D",
+"class": "L4_Event_Part10",
+"language": "GDScript",
+"path": "res://Scenes/Events/Level 4/L4 Event Part 10.gd"
+}, {
 "base": "World_Map_Event",
 "class": "Level1_WM_Event_Part10",
 "language": "GDScript",
@@ -143,6 +148,11 @@ _global_script_classes=[ {
 "class": "Level3_WM_Event_Part10",
 "language": "GDScript",
 "path": "res://Scenes/Events/World Map Events/Level 3 WM Event Part 10.gd"
+}, {
+"base": "World_Map_Event",
+"class": "Level4_WM_Event_Part10",
+"language": "GDScript",
+"path": "res://Scenes/Events/World Map Events/Level 4 WM Event Part 10.gd"
 }, {
 "base": "Camera2D",
 "class": "MainCamera",
@@ -249,9 +259,11 @@ _global_script_class_icons={
 "L3_Event_Part10": "",
 "L3_Event_Part20": "",
 "L3_Event_Part30": "",
+"L4_Event_Part10": "",
 "Level1_WM_Event_Part10": "",
 "Level2_WM_Event_Part10": "",
 "Level3_WM_Event_Part10": "",
+"Level4_WM_Event_Part10": "",
 "MainCamera": "",
 "Messaging_System": "",
 "MovementCalculator": "",

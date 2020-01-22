@@ -47,9 +47,11 @@ func start(chapter_text, victory_text, path_to_next_level, prep_song):
 					swap_point.occupyingUnit = ally_unit
 					break
 	
-	# Heal Units
+	# Heal Units and reset
 	for ally_unit in BattlefieldInfo.ally_units.values():
 		ally_unit.UnitStats.current_health = ally_unit.UnitStats.max_health
+		ally_unit.UnitActionStatus.set_current_action(Unit_Action_Status.MOVE)
+		ally_unit.turn_greyscale_off()
 	
 	# Play Music
 	play_song(prep_song)
@@ -150,8 +152,10 @@ func process_selection():
 func play_song(song_name):
 	stop_music()
 	if song_name == "A":
+		$"Prep Theme A".volume_db = 0
 		$"Prep Theme A".play(0)
 	else:
+		$"Prep Theme B".volume_db = 0
 		$"Prep Theme B".play(0)
 
 func start_battle():

@@ -533,7 +533,6 @@ tracks/0/keys = {
 }
 
 [node name="World Map" type="Node2D"]
-editor/display_folded = true
 modulate = Color( 0, 0, 0, 1 )
 script = ExtResource( 1 )
 
@@ -551,6 +550,7 @@ limit_bottom = 160
 [node name="Cam Tween" type="Tween" parent="World Map Cam"]
 
 [node name="World Map Music 1" type="AudioStreamPlayer" parent="."]
+editor/display_folded = true
 stream = ExtResource( 3 )
 volume_db = 6.933
 
@@ -559,7 +559,7 @@ volume_db = 6.933
 [node name="Message System" parent="." instance=ExtResource( 4 )]
 
 [node name="Eirika" type="Node2D" parent="."]
-position = Vector2( -297.862, -132.514 )
+position = Vector2( -301.514, -132.125 )
 scale = Vector2( 0.5, 0.5 )
 z_index = 2
 

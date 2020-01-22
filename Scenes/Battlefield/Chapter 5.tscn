@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Scenes/Battlefield/Chapter 4.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/Levels/Level4a.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Battlefield/Chapter 5.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Levels/Level5.tscn" type="PackedScene" id=2]
 
 [node name="Chapter 5" type="Node2D"]
 show_behind_parent = true
 script = ExtResource( 1 )
 
-[node name="Level4-a" parent="." instance=ExtResource( 2 )]
+[node name="Level5" parent="." instance=ExtResource( 2 )]

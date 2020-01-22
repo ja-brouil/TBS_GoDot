@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.0" orientation="orthogonal" renderorder="right-down" width="20" height="22" tilewidth="16" tileheight="16" infinite="0" nextobjectid="2949">
+<map version="1.0" tiledversion="1.1.0" orientation="orthogonal" renderorder="right-down" width="20" height="22" tilewidth="16" tileheight="16" infinite="0" nextobjectid="2950">
  <properties>
   <property name="Enemies_to_defeat" type="int" value="15"/>
   <property name="Victory_Condition" value="Survive for 10 turns"/>
@@ -3553,7 +3553,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="Allies">
+ <objectgroup name="Allies" visible="0">
   <object id="2281" x="144" y="112" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
@@ -4260,8 +4260,8 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="temp Ally"/>
- <objectgroup name="Enemies">
+ <objectgroup name="temp Ally" visible="0"/>
+ <objectgroup name="Enemies" visible="0">
   <object id="2909" name="Vezarius" x="0" y="272" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
@@ -4621,8 +4621,8 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="Temp enemy"/>
- <objectgroup name="SpawnPoints">
+ <objectgroup name="Temp enemy" visible="0"/>
+ <objectgroup name="SpawnPoints" visible="0">
   <object id="2931" name="Spawn Point" x="-16" y="288" width="16" height="16">
    <properties>
     <property name="adj_tile_x" type="int" value="0"/>

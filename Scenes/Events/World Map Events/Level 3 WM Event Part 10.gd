@@ -13,7 +13,7 @@ func _init():
 	# Text
 	text_array = [
 		"Realizing they cannot hold forever, Eirika and her companions decide to escape Fort Merceus by the sea.",
-		"They attempt to return to the capital city to warn her father that the Almyryans have no intention of holding the bargain",
+		"They attempt to return to the capital city to warn her father that the Almyryans have no intention of holding the treaty.",
 		"On the way there, the nothern winds cause a dense fog to wrap the misty sea..."
 	]
 	
@@ -27,6 +27,7 @@ func _init():
 	# Place Fort and Castle
 	castle_waypoints_array.append(Vector2(-164, -94))
 	fort_waypoints_array.append(Vector2(-159, -129))
+	village_waypoints_array.append(Vector2(-118, -35))
 
 func run():
 	# Set Eirika's initial position

@@ -3,9 +3,9 @@ extends Node2D
 # Container for the entire level
 # Add extra functions that might be needed here
 
-var level_music = preload("res://assets/music/The Long Road.ogg")
+var level_music = preload("res://assets/music/Fodlan Winds.ogg")
 
-var chapter_title = "3\nScourge of the Sea"
+var chapter_title = "4\nThe Great Fortress Line"
 var prep_music_choice = "B"
 
 func _ready():
@@ -13,10 +13,10 @@ func _ready():
 	BattlefieldInfo.level_container = self
 	
 	# Set Camera to new spot
-	BattlefieldInfo.main_game_camera.position = Vector2(128, 0)
+	BattlefieldInfo.main_game_camera.position = Vector2(0, 0)
 	
 	# Set cursor
-	BattlefieldInfo.cursor.position = Vector2(240,32)
+	BattlefieldInfo.cursor.position = Vector2(0,0)
 	
 	# Set Music for this level
 	BattlefieldInfo.music_player.get_node("AllyLevel").stream = level_music
@@ -24,17 +24,14 @@ func _ready():
 	# Set Victory condition
 	BattlefieldInfo.victory = false
 	BattlefieldInfo.victory_system.clear()
-	BattlefieldInfo.victory_system.victory_condition_state = Victory_Checker.ELIMINATE_ALL_ENEMIES
+	BattlefieldInfo.victory_system.victory_condition_state = Victory_Checker.SEIZE
 	
 	# Set enemy commander
-	BattlefieldInfo.enemy_commander = BattlefieldInfo.enemy_units["Rolod"]
+	BattlefieldInfo.enemy_commander = BattlefieldInfo.enemy_units["Byzantine"]
 	
-	# Add Events and reset manager
+	# Reset Events and manager
 	BattlefieldInfo.event_system.clear()
-	BattlefieldInfo.event_system.current_state = Event_System.starting_events
-	BattlefieldInfo.event_system.add_event(L3_Event_Part10.new())
-	BattlefieldInfo.event_system.add_event(L3_Event_Part20.new())
-	BattlefieldInfo.event_system.add_event(L3_Event_Part30.new())
+	BattlefieldInfo.event_system.add_event(L4_Event_Part10.new())
 	
 	# Prep mode
 	preperation_mode()
@@ -47,23 +44,10 @@ func _ready():
 	BattlefieldInfo.battlefield_container.modulate = Color(1,1,1,1)
 	
 	# Remove other one
-	get_node("/root/Level/Chapter 3").queue_free()   
+	get_node("/root/Level/Chapter 4").queue_free()   
 
 func next_level():
-		#stop input
-	BattlefieldInfo.cursor.disable_standard("hello world")
-	
-	# stop music
-	BattlefieldInfo.music_player.get_node("AllyLevel").stop()
-	
-	# Fade Away
-	BattlefieldInfo.battlefield_container.get_node("Anim").play_backwards("Fade")
-	yield(BattlefieldInfo.battlefield_container.get_node("Anim"), "animation_finished")
-	
-	# Move to next level 
-	WorldMapScreen.current_event = Level4_WM_Event_Part10.new()
-	WorldMapScreen.connect_to_scene_changer()
-	SceneTransition.change_scene_to(WorldMapScreen, 0.1)
+	pass
 
 func start_battle():
 	# Start the level

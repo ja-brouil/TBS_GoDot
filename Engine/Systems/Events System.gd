@@ -73,6 +73,11 @@ func start_level():
 	BattlefieldInfo.start_level()
 	current_state = middle_events
 
+func clear():
+	current_state = starting_events
+	queue_of_events.clear()
+	mid_level_events.clear()
+
 # Ends the level and goes to the next level
 func end_level():
 	pass

@@ -51,7 +51,7 @@ func _input(event):
 # Set the appropriate graphics and text
 func set_screen():
 	# Set Title chapter
-	$"UI/Chapter Title".text = BattlefieldInfo.battlefield_container.chapter_title
+	$"UI/Chapter Title".text = BattlefieldInfo.level_container.chapter_title
 	
 	# Set Eirika
 	$UI/Eirika/Name.text = BattlefieldInfo.Eirika.UnitStats.name

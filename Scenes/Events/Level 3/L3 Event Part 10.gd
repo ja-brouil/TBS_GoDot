@@ -4,10 +4,9 @@ class_name L3_Event_Part10
 
 # Dialogue between the characters
 var dialogue = [
-	"Seth:\n\nDamn it! These Almaryans hired these pirates to intercept us.",
-	"Seth:\n\nOn top of that some of their mages are on their ship as well.",
-	"Seth:\n\nLet's get rid of them as move on! We can't afford to lose time.",
-	"Eirika:\n\nWe need to hurry and reach the capital city quickly to warn my father!."
+	"Seth:\n\nDamn it! These Almaryans knew the only escape route as by the Northern Sea.",
+	"Eirika:\n\nWe can't afford to waste time here. Let's get rid of them and hurry on the capital city.",
+	"Eirika:\n\nEveryone, watch out for their dark mages!"
 ]
 
 func _init():

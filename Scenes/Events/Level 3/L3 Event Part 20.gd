@@ -5,7 +5,7 @@ class_name L3_Event_Part20
 # Dialogue between the characters
 var dialogue = [
 	"Rolod:\n\nHahaha! We've got you now Eirika!",
-	"Rolod:\n\nThe Almaryans promised us tons of treasure for your capture!",
+	"Rolod:\n\nThat sweet bounty on your head will be ours!",
 	"Rolod:\n\nGet her boys!",
 ]
 

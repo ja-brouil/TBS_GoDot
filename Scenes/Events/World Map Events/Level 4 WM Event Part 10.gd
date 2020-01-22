@@ -1,21 +1,20 @@
 extends World_Map_Event
 
-class_name Level2_WM_Event_Part10
+class_name Level4_WM_Event_Part10
 
 # New Game start
-var level3 = "res://Scenes/Battlefield/Chapter 3.tscn"
+var level4 = "res://Scenes/Battlefield/Chapter 5.tscn"
 
 # Eirika Start and move
-var eirika_final = Vector2(-162, -134)
-var eirika_initial = Vector2(-168, - 93)
+var eirika_initial = Vector2(-178, -154)
+var eirika_final = Vector2(-167, -100)
 
 func _init():
 	# Text
 	text_array = [
-		"After giving the report on the situation at the village borders, King Terenas invites the Almaryan envoy to discuss the terms of peace",
-		"With these historial peace negotiations about to start, Eirika's father, King Terenas\nsends his daughter to Fort Merceus with Knight Commander Seth.",
-		"Accompanied by her friends and closest allies, they set out for Fort Merceus.",
-		"That night, a terrible storm blankets the region..."
+		"Princess Eirika and her companions defeat the pirates and Almaryan mages and are able to finally reach the shore.",
+		"The fastest way to the capital city is by the main road by the Great Fortress Line.",
+		"As they hurry toward the capital, they approach the Great Fortress Line..."
 	]
 	
 	# Signals needed
@@ -55,5 +54,5 @@ func after_text():
 	SceneTransition.change_scene("res://Scenes/Chapter/Chapter Background.tscn", 0.1)
 	WorldMapScreen.exit()
 	yield(SceneTransition, "scene_changed")
-	SceneTransition.get_tree().current_scene.start("2", "Fort Merceus", level3, 2)
+	SceneTransition.get_tree().current_scene.start("5", "The Great Fortress Line", level4, 2)
 	queue_free()
