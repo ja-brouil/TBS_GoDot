@@ -464,16 +464,16 @@ tracks/2/keys = {
 z_index = 4
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_horizontal_guides_": [ 9.0 ],
+"_edit_horizontal_guides_": [ 9.0, 17.2355 ],
 "_edit_vertical_guides_": [ 8.0 ]
 }
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, -4 )
+position = Vector2( -5, -4 )
 texture = SubResource( 1 )
 centered = false
 region_enabled = true
-region_rect = Rect2( 8, 77, 16, 21 )
+region_rect = Rect2( 69, 38, 26, 25 )
 
 [node name="Flying Sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
