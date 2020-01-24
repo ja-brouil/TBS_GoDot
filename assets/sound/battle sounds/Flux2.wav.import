@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Flux2.wav-ad1bf71f9182a5c0e41d1a88bac83fbd.sample"
+
+[deps]
+
+source_file="res://assets/sound/battle sounds/Flux2.wav"
+dest_files=[ "res://.import/Flux2.wav-ad1bf71f9182a5c0e41d1a88bac83fbd.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

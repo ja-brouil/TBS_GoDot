@@ -20,6 +20,12 @@ func _ready():
 	yield($AnimationPlayer, "animation_finished")
 	SceneTransition.connect("scene_changed", self, "clean_up")
 	is_active = true
+	
+	# Remove current camera
+	$"/root/Level/GameCamera".current = false
+	
+	# Remove Extra
+	BattlefieldInfo.level_container.queue_free()
 
 func _input(event):
 	if !is_active:

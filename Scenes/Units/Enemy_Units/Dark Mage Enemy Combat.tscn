@@ -1,0 +1,690 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Scenes/Units/Enemy_Units/Dark Mage Enemy Combat.gd" type="Script" id=1]
+[ext_resource path="res://assets/units/darkmage/Dark Mage Combat.png" type="Texture" id=2]
+[ext_resource path="res://assets/transition/white flash.png" type="Texture" id=3]
+[ext_resource path="res://assets/battle_effects/flux.png" type="Texture" id=4]
+[ext_resource path="res://assets/sound/battle sounds/Flux1.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/sound/battle sounds/Flux2.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/sound/battle sounds/Flux3.wav" type="AudioStream" id=7]
+
+[sub_resource type="Animation" id=1]
+resource_name = "flux critical"
+length = 40.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("flux regular:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("flux regular:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7, 3, 3.3, 3.6, 3.9, 4.2, 4.5, 4.8, 5.1, 5.4, 5.7, 6, 6.3, 6.6, 6.9, 7.2, 7.5, 7.8, 8.1, 8.4, 8.7, 9, 9.3, 9.6, 9.9, 10.2, 10.5, 10.8, 11.1, 11.4, 11.7, 12, 12.3, 12.6, 12.9, 13.2, 13.5, 13.8, 14.1, 14.4, 14.7, 15, 15.3, 15.6, 15.9, 16.2, 16.5, 16.8, 17.1, 17.4, 17.7, 18, 18.3, 18.6, 18.9, 19.2, 19.5, 19.8, 20.1, 20.4, 20.7, 21, 21.3, 21.6, 21.9, 22.2, 22.5, 22.8, 23.1, 23.4, 23.7, 24, 24.3, 24.6, 24.9, 25.2, 25.5, 25.8, 26.1, 26.4, 26.7, 27, 27.3, 27.6, 27.9, 28.2, 28.5, 28.8, 29.1, 29.4, 29.7, 30, 30.3, 30.6, 30.9, 31.2, 31.5, 31.8, 32.1, 32.4, 32.7, 33, 33.3, 33.6, 33.9, 34.2, 34.5, 34.8, 35.1, 35.4, 35.7, 36, 36.3, 36.6, 36.9, 37.2, 37.5, 37.8, 38.1, 38.4, 38.7, 39, 39.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 10, 34, 25, 35 ), Rect2( 68, 34, 24, 35 ), Rect2( 124, 34, 26, 35 ), Rect2( 181, 33, 27, 36 ), Rect2( 238, 33, 27, 36 ), Rect2( 294, 33, 29, 36 ), Rect2( 351, 33, 29, 36 ), Rect2( 408, 33, 29, 36 ), Rect2( 465, 33, 29, 36 ), Rect2( 522, 33, 29, 36 ), Rect2( 9, 114, 29, 36 ), Rect2( 66, 114, 29, 36 ), Rect2( 123, 114, 29, 36 ), Rect2( 180, 114, 29, 36 ), Rect2( 235, 114, 32, 36 ), Rect2( 292, 114, 32, 36 ), Rect2( 351, 114, 29, 36 ), Rect2( 406, 114, 32, 36 ), Rect2( 463, 114, 32, 36 ), Rect2( 519, 114, 35, 36 ), Rect2( 6, 195, 35, 36 ), Rect2( 63, 195, 35, 36 ), Rect2( 121, 195, 37, 36 ), Rect2( 178, 195, 37, 36 ), Rect2( 235, 195, 37, 36 ), Rect2( 292, 195, 37, 36 ), Rect2( 344, 195, 46, 36 ), Rect2( 401, 195, 46, 36 ), Rect2( 459, 193, 47, 38 ), Rect2( 516, 193, 47, 38 ), Rect2( 4, 271, 50, 41 ), Rect2( 61, 271, 50, 41 ), Rect2( 118, 270, 48, 42 ), Rect2( 175, 270, 48, 42 ), Rect2( 232, 270, 49, 42 ), Rect2( 289, 270, 49, 42 ), Rect2( 346, 271, 50, 41 ), Rect2( 403, 271, 50, 41 ), Rect2( 460, 270, 48, 42 ), Rect2( 517, 270, 48, 42 ), Rect2( 4, 351, 49, 42 ), Rect2( 61, 351, 49, 42 ), Rect2( 118, 352, 50, 41 ), Rect2( 175, 352, 50, 41 ), Rect2( 232, 351, 48, 42 ), Rect2( 289, 351, 48, 42 ), Rect2( 346, 351, 49, 42 ), Rect2( 403, 351, 49, 42 ), Rect2( 460, 352, 50, 41 ), Rect2( 517, 352, 50, 41 ), Rect2( 4, 432, 48, 42 ), Rect2( 61, 432, 48, 42 ), Rect2( 118, 432, 49, 42 ), Rect2( 175, 432, 49, 42 ), Rect2( 232, 433, 50, 41 ), Rect2( 289, 433, 50, 41 ), Rect2( 346, 432, 48, 42 ), Rect2( 403, 432, 49, 42 ), Rect2( 460, 422, 49, 52 ), Rect2( 517, 419, 50, 55 ), Rect2( 4, 498, 50, 57 ), Rect2( 61, 496, 48, 59 ), Rect2( 118, 495, 48, 60 ), Rect2( 175, 493, 48, 62 ), Rect2( 232, 488, 49, 67 ), Rect2( 346, 486, 50, 69 ), Rect2( 403, 488, 50, 67 ), Rect2( 460, 487, 48, 68 ), Rect2( 517, 486, 49, 69 ), Rect2( 4, 569, 49, 75 ), Rect2( 61, 574, 50, 70 ), Rect2( 118, 571, 50, 74 ), Rect2( 175, 574, 48, 71 ), Rect2( 232, 594, 48, 52 ), Rect2( 289, 594, 49, 52 ), Rect2( 346, 594, 49, 52 ), Rect2( 403, 595, 50, 52 ), Rect2( 460, 594, 48, 53 ), Rect2( 517, 594, 48, 54 ), Rect2( 4, 675, 48, 53 ), Rect2( 61, 675, 49, 53 ), Rect2( 118, 675, 49, 52 ), Rect2( 175, 675, 49, 53 ), Rect2( 232, 676, 50, 52 ), Rect2( 289, 676, 50, 41 ), Rect2( 346, 675, 48, 42 ), Rect2( 403, 675, 49, 42 ), Rect2( 460, 675, 49, 42 ), Rect2( 517, 675, 49, 42 ), Rect2( 4, 756, 49, 42 ), Rect2( 61, 756, 49, 42 ), Rect2( 118, 756, 49, 42 ), Rect2( 175, 757, 50, 41 ), Rect2( 232, 757, 50, 41 ), Rect2( 289, 757, 50, 41 ), Rect2( 346, 757, 50, 41 ), Rect2( 403, 757, 50, 41 ), Rect2( 460, 756, 48, 42 ), Rect2( 517, 756, 48, 42 ), Rect2( 4, 837, 48, 42 ), Rect2( 61, 837, 49, 42 ), Rect2( 118, 837, 49, 42 ), Rect2( 175, 837, 49, 42 ), Rect2( 232, 837, 49, 42 ), Rect2( 289, 837, 49, 42 ), Rect2( 346, 837, 49, 42 ), Rect2( 403, 838, 50, 41 ), Rect2( 460, 837, 48, 42 ), Rect2( 517, 837, 49, 42 ), Rect2( 4, 919, 50, 41 ), Rect2( 61, 918, 48, 42 ), Rect2( 118, 918, 49, 42 ), Rect2( 175, 919, 50, 41 ), Rect2( 232, 918, 48, 42 ), Rect2( 289, 918, 49, 42 ), Rect2( 346, 919, 50, 41 ), Rect2( 403, 918, 48, 42 ), Rect2( 460, 918, 49, 42 ), Rect2( 517, 919, 50, 41 ), Rect2( 4, 999, 48, 42 ), Rect2( 61, 999, 49, 42 ), Rect2( 118, 1000, 50, 41 ), Rect2( 175, 999, 48, 42 ), Rect2( 232, 999, 49, 42 ), Rect2( 289, 1000, 50, 41 ), Rect2( 346, 999, 48, 42 ), Rect2( 403, 999, 49, 42 ), Rect2( 460, 1000, 50, 41 ), Rect2( 519, 1006, 44, 35 ), Rect2( 7, 1087, 37, 35 ), Rect2( 65, 1087, 31, 35 ), Rect2( 124, 1087, 25, 35 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("flux regular:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3, 0.9, 6.6, 8.4, 9, 9.6, 10.8, 11.4, 12.6, 13.2, 14.4, 15, 16.2, 16.8, 17.4, 17.7, 18, 18.3, 18.6, 18.9, 19.2, 19.5, 19.8, 20.1, 20.7, 21, 21.3, 21.6, 21.9, 22.8, 23.1, 24.3, 24.6, 24.9, 25.2, 25.5, 27.6, 29.1, 31.8, 32.1, 32.7, 33, 33.6, 33.9, 34.5, 34.8, 35.4, 35.7, 36.3, 36.6, 37.2, 37.5, 38.1, 38.4, 38.7, 39, 39.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( -1, 0 ), Vector2( -1, -1 ), Vector2( -3, -1 ), Vector2( -4, -2 ), Vector2( -7, -3 ), Vector2( -6, -4 ), Vector2( -7, -3 ), Vector2( -6, -4 ), Vector2( -7, -3 ), Vector2( -6, -4 ), Vector2( -7, -3 ), Vector2( -6, -4 ), Vector2( -7, -3 ), Vector2( -6, -4 ), Vector2( -6, -9 ), Vector2( -7, -10 ), Vector2( -7, -11 ), Vector2( -6, -12 ), Vector2( -6, -13 ), Vector2( -6, -14 ), Vector2( -6, -16 ), Vector2( -7, -17 ), Vector2( -7, -16 ), Vector2( -6, -17 ), Vector2( -6, -12 ), Vector2( -7, -10 ), Vector2( -7, -11 ), Vector2( -6, -9 ), Vector2( -6, 1 ), Vector2( -7, 2 ), Vector2( -6, 2 ), Vector2( -6, 1 ), Vector2( -6, 2 ), Vector2( -7, 2 ), Vector2( -7, -3 ), Vector2( -6, -4 ), Vector2( -7, -3 ), Vector2( -6, -4 ), Vector2( -7, -3 ), Vector2( -6, -4 ), Vector2( -7, -3 ), Vector2( -6, -4 ), Vector2( -7, -3 ), Vector2( -6, -4 ), Vector2( -7, -3 ), Vector2( -6, -4 ), Vector2( -7, -3 ), Vector2( -6, -4 ), Vector2( -7, -3 ), Vector2( -6, -4 ), Vector2( -7, -3 ), Vector2( -6, -4 ), Vector2( -7, -3 ), Vector2( -6, 0 ), Vector2( -3, 0 ), Vector2( -1, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Ground Circle:region_rect")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 24.2, 26.1, 26.3, 26.5, 26.7, 26.9, 27.1, 27.3, 27.5, 27.7, 27.9, 28.1, 28.3, 28.5, 28.7, 28.9, 29.1, 29.3, 29.5, 29.7, 29.9, 30.1, 30.3, 30.5, 30.7, 30.9, 31.1, 31.3, 31.5, 31.7, 31.9, 32.1, 32.3, 32.5, 32.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 4, 187, 67, 35 ), Rect2( 84, 182, 67, 42 ), Rect2( 163, 164, 67, 48 ), Rect2( 327, 162, 61, 52 ), Rect2( 413, 159, 62, 56 ), Rect2( 10, 235, 59, 54 ), Rect2( 78, 239, 56, 55 ), Rect2( 145, 232, 54, 56 ), Rect2( 213, 233, 51, 50 ), Rect2( 280, 235, 47, 48 ), Rect2( 336, 236, 45, 46 ), Rect2( 395, 241, 33, 34 ), Rect2( 450, 244, 29, 30 ), Rect2( 232, 118, 28, 24 ), Rect2( 187, 113, 35, 35 ), Rect2( 135, 111, 41, 44 ), Rect2( 80, 119, 47, 53 ), Rect2( 5, 107, 59, 70 ), Rect2( 441, 26, 57, 70 ), Rect2( 372, 27, 59, 70 ), Rect2( 296, 26, 62, 70 ), Rect2( 218, 24, 63, 72 ), Rect2( 145, 23, 63, 71 ), Rect2( 73, 24, 63, 71 ), Rect2( 3, 23, 63, 71 ), Rect2( 162, 376, 64, 71 ), Rect2( 78, 379, 64, 70 ), Rect2( 2, 355, 64, 70 ), Rect2( 417, 295, 63, 72 ), Rect2( 340, 294, 61, 70 ), Rect2( 269, 292, 59, 70 ), Rect2( 201, 296, 57, 70 ), Rect2( 128, 300, 58, 70 ), Rect2( 67, 306, 47, 53 ), Rect2( 13, 303, 41, 44 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Ground Circle:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 24.1, 32.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Ground Circle:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 25.8, 26.1, 26.3, 26.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 77, 0 ), Vector2( 78, -4 ), Vector2( 79, -6 ), Vector2( 79, -10 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Ground Circle:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 25.6, 26 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Flux 1:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 3.4 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Flux 2:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 14.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Flux 3:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 25.6 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("flash:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 28.2, 28.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/11/type = "method"
+tracks/11/path = NodePath(".")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 28.8, 29 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_crit_sound"
+}, {
+"args": [  ],
+"method": "shake_camera_crit"
+} ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath(".:z_index")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 39.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 5, 0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "flux death"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("flash:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1.1, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_death_sound"
+}, {
+"args": [  ],
+"method": "death_anim_signal"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("flux regular:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("flux regular:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("flux regular:region_rect")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Rect2( 10, 34, 25, 35 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("flux regular:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 2.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "flux dodge"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("flash:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Ground Circle:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("flux regular:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( -1, -1 ), Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("flux regular:region_rect")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 10, 34, 25, 35 ), Rect2( 235, 114, 32, 36 ), Rect2( 10, 34, 25, 35 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("flux regular:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "flux miss"
+length = 40.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("flux regular:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("flux regular:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7, 3, 3.3, 3.6, 3.9, 4.2, 4.5, 4.8, 5.1, 5.4, 5.7, 6, 6.3, 6.6, 6.9, 7.2, 7.5, 7.8, 8.1, 8.4, 8.7, 9, 9.3, 9.6, 9.9, 10.2, 10.5, 10.8, 11.1, 11.4, 11.7, 12, 12.3, 12.6, 12.9, 13.2, 13.5, 13.8, 14.1, 14.4, 14.7, 15, 15.3, 15.6, 15.9, 16.2, 16.5, 16.8, 17.1, 17.4, 17.7, 18, 18.3, 18.6, 18.9, 19.2, 19.5, 19.8, 20.1, 20.4, 20.7, 21, 21.3, 21.6, 21.9, 22.2, 22.5, 22.8, 23.1, 23.4, 23.7, 24, 24.3, 24.6, 24.9, 25.2, 25.5, 25.8, 26.1, 26.4, 26.7, 27, 27.3, 27.6, 27.9, 28.2, 28.5, 28.8, 29.1, 29.4, 29.7, 30, 30.3, 30.6, 30.9, 31.2, 31.5, 31.8, 32.1, 32.4, 32.7, 33, 33.3, 33.6, 33.9, 34.2, 34.5, 34.8, 35.1, 35.4, 35.7, 36, 36.3, 36.6, 36.9, 37.2, 37.5, 37.8, 38.1, 38.4, 38.7, 39, 39.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 10, 34, 25, 35 ), Rect2( 68, 34, 24, 35 ), Rect2( 124, 34, 26, 35 ), Rect2( 181, 33, 27, 36 ), Rect2( 238, 33, 27, 36 ), Rect2( 294, 33, 29, 36 ), Rect2( 351, 33, 29, 36 ), Rect2( 408, 33, 29, 36 ), Rect2( 465, 33, 29, 36 ), Rect2( 522, 33, 29, 36 ), Rect2( 9, 114, 29, 36 ), Rect2( 66, 114, 29, 36 ), Rect2( 123, 114, 29, 36 ), Rect2( 180, 114, 29, 36 ), Rect2( 235, 114, 32, 36 ), Rect2( 292, 114, 32, 36 ), Rect2( 351, 114, 29, 36 ), Rect2( 406, 114, 32, 36 ), Rect2( 463, 114, 32, 36 ), Rect2( 519, 114, 35, 36 ), Rect2( 6, 195, 35, 36 ), Rect2( 63, 195, 35, 36 ), Rect2( 121, 195, 37, 36 ), Rect2( 178, 195, 37, 36 ), Rect2( 235, 195, 37, 36 ), Rect2( 292, 195, 37, 36 ), Rect2( 344, 195, 46, 36 ), Rect2( 401, 195, 46, 36 ), Rect2( 459, 193, 47, 38 ), Rect2( 516, 193, 47, 38 ), Rect2( 4, 271, 50, 41 ), Rect2( 61, 271, 50, 41 ), Rect2( 118, 270, 48, 42 ), Rect2( 175, 270, 48, 42 ), Rect2( 232, 270, 49, 42 ), Rect2( 289, 270, 49, 42 ), Rect2( 346, 271, 50, 41 ), Rect2( 403, 271, 50, 41 ), Rect2( 460, 270, 48, 42 ), Rect2( 517, 270, 48, 42 ), Rect2( 4, 351, 49, 42 ), Rect2( 61, 351, 49, 42 ), Rect2( 118, 352, 50, 41 ), Rect2( 175, 352, 50, 41 ), Rect2( 232, 351, 48, 42 ), Rect2( 289, 351, 48, 42 ), Rect2( 346, 351, 49, 42 ), Rect2( 403, 351, 49, 42 ), Rect2( 460, 352, 50, 41 ), Rect2( 517, 352, 50, 41 ), Rect2( 4, 432, 48, 42 ), Rect2( 61, 432, 48, 42 ), Rect2( 118, 432, 49, 42 ), Rect2( 175, 432, 49, 42 ), Rect2( 232, 433, 50, 41 ), Rect2( 289, 433, 50, 41 ), Rect2( 346, 432, 48, 42 ), Rect2( 403, 432, 49, 42 ), Rect2( 460, 422, 49, 52 ), Rect2( 517, 419, 50, 55 ), Rect2( 4, 498, 50, 57 ), Rect2( 61, 496, 48, 59 ), Rect2( 118, 495, 48, 60 ), Rect2( 175, 493, 48, 62 ), Rect2( 232, 488, 49, 67 ), Rect2( 346, 486, 50, 69 ), Rect2( 403, 488, 50, 67 ), Rect2( 460, 487, 48, 68 ), Rect2( 517, 486, 49, 69 ), Rect2( 4, 569, 49, 75 ), Rect2( 61, 574, 50, 70 ), Rect2( 118, 571, 50, 74 ), Rect2( 175, 574, 48, 71 ), Rect2( 232, 594, 48, 52 ), Rect2( 289, 594, 49, 52 ), Rect2( 346, 594, 49, 52 ), Rect2( 403, 595, 50, 52 ), Rect2( 460, 594, 48, 53 ), Rect2( 517, 594, 48, 54 ), Rect2( 4, 675, 48, 53 ), Rect2( 61, 675, 49, 53 ), Rect2( 118, 675, 49, 52 ), Rect2( 175, 675, 49, 53 ), Rect2( 232, 676, 50, 52 ), Rect2( 289, 676, 50, 41 ), Rect2( 346, 675, 48, 42 ), Rect2( 403, 675, 49, 42 ), Rect2( 460, 675, 49, 42 ), Rect2( 517, 675, 49, 42 ), Rect2( 4, 756, 49, 42 ), Rect2( 61, 756, 49, 42 ), Rect2( 118, 756, 49, 42 ), Rect2( 175, 757, 50, 41 ), Rect2( 232, 757, 50, 41 ), Rect2( 289, 757, 50, 41 ), Rect2( 346, 757, 50, 41 ), Rect2( 403, 757, 50, 41 ), Rect2( 460, 756, 48, 42 ), Rect2( 517, 756, 48, 42 ), Rect2( 4, 837, 48, 42 ), Rect2( 61, 837, 49, 42 ), Rect2( 118, 837, 49, 42 ), Rect2( 175, 837, 49, 42 ), Rect2( 232, 837, 49, 42 ), Rect2( 289, 837, 49, 42 ), Rect2( 346, 837, 49, 42 ), Rect2( 403, 838, 50, 41 ), Rect2( 460, 837, 48, 42 ), Rect2( 517, 837, 49, 42 ), Rect2( 4, 919, 50, 41 ), Rect2( 61, 918, 48, 42 ), Rect2( 118, 918, 49, 42 ), Rect2( 175, 919, 50, 41 ), Rect2( 232, 918, 48, 42 ), Rect2( 289, 918, 49, 42 ), Rect2( 346, 919, 50, 41 ), Rect2( 403, 918, 48, 42 ), Rect2( 460, 918, 49, 42 ), Rect2( 517, 919, 50, 41 ), Rect2( 4, 999, 48, 42 ), Rect2( 61, 999, 49, 42 ), Rect2( 118, 1000, 50, 41 ), Rect2( 175, 999, 48, 42 ), Rect2( 232, 999, 49, 42 ), Rect2( 289, 1000, 50, 41 ), Rect2( 346, 999, 48, 42 ), Rect2( 403, 999, 49, 42 ), Rect2( 460, 1000, 50, 41 ), Rect2( 519, 1006, 44, 35 ), Rect2( 7, 1087, 37, 35 ), Rect2( 65, 1087, 31, 35 ), Rect2( 124, 1087, 25, 35 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("flux regular:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3, 0.9, 6.6, 8.4, 9, 9.6, 10.8, 11.4, 12.6, 13.2, 14.4, 15, 16.2, 16.8, 17.4, 17.7, 18, 18.3, 18.6, 18.9, 19.2, 19.5, 19.8, 20.1, 20.7, 21, 21.3, 21.6, 21.9, 22.8, 23.1, 24.3, 24.6, 24.9, 25.2, 25.5, 27.6, 29.1, 31.8, 32.1, 32.7, 33, 33.6, 33.9, 34.5, 34.8, 35.4, 35.7, 36.3, 36.6, 37.2, 37.5, 38.1, 38.4, 38.7, 39, 39.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( -1, 0 ), Vector2( -1, -1 ), Vector2( -3, -1 ), Vector2( -4, -2 ), Vector2( -7, -3 ), Vector2( -6, -4 ), Vector2( -7, -3 ), Vector2( -6, -4 ), Vector2( -7, -3 ), Vector2( -6, -4 ), Vector2( -7, -3 ), Vector2( -6, -4 ), Vector2( -7, -3 ), Vector2( -6, -4 ), Vector2( -6, -9 ), Vector2( -7, -10 ), Vector2( -7, -11 ), Vector2( -6, -12 ), Vector2( -6, -13 ), Vector2( -6, -14 ), Vector2( -6, -16 ), Vector2( -7, -17 ), Vector2( -7, -16 ), Vector2( -6, -17 ), Vector2( -6, -12 ), Vector2( -7, -10 ), Vector2( -7, -11 ), Vector2( -6, -9 ), Vector2( -6, 1 ), Vector2( -7, 2 ), Vector2( -6, 2 ), Vector2( -6, 1 ), Vector2( -6, 2 ), Vector2( -7, 2 ), Vector2( -7, -3 ), Vector2( -6, -4 ), Vector2( -7, -3 ), Vector2( -6, -4 ), Vector2( -7, -3 ), Vector2( -6, -4 ), Vector2( -7, -3 ), Vector2( -6, -4 ), Vector2( -7, -3 ), Vector2( -6, -4 ), Vector2( -7, -3 ), Vector2( -6, -4 ), Vector2( -7, -3 ), Vector2( -6, -4 ), Vector2( -7, -3 ), Vector2( -6, -4 ), Vector2( -7, -3 ), Vector2( -6, -4 ), Vector2( -7, -3 ), Vector2( -6, 0 ), Vector2( -3, 0 ), Vector2( -1, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Ground Circle:region_rect")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 24.2, 26.1, 26.3, 26.5, 26.7, 26.9, 27.1, 27.3, 27.5, 27.7, 27.9, 28.1, 28.3, 28.5, 28.7, 28.9, 29.1, 29.3, 29.5, 29.7, 29.9, 30.1, 30.3, 30.5, 30.7, 30.9, 31.1, 31.3, 31.5, 31.7, 31.9, 32.1, 32.3, 32.5, 32.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 4, 187, 67, 35 ), Rect2( 84, 182, 67, 42 ), Rect2( 163, 164, 67, 48 ), Rect2( 327, 162, 61, 52 ), Rect2( 413, 159, 62, 56 ), Rect2( 10, 235, 59, 54 ), Rect2( 78, 239, 56, 55 ), Rect2( 145, 232, 54, 56 ), Rect2( 213, 233, 51, 50 ), Rect2( 280, 235, 47, 48 ), Rect2( 336, 236, 45, 46 ), Rect2( 395, 241, 33, 34 ), Rect2( 450, 244, 29, 30 ), Rect2( 232, 118, 28, 24 ), Rect2( 187, 113, 35, 35 ), Rect2( 135, 111, 41, 44 ), Rect2( 80, 119, 47, 53 ), Rect2( 5, 107, 59, 70 ), Rect2( 441, 26, 57, 70 ), Rect2( 372, 27, 59, 70 ), Rect2( 296, 26, 62, 70 ), Rect2( 218, 24, 63, 72 ), Rect2( 145, 23, 63, 71 ), Rect2( 73, 24, 63, 71 ), Rect2( 3, 23, 63, 71 ), Rect2( 162, 376, 64, 71 ), Rect2( 78, 379, 64, 70 ), Rect2( 2, 355, 64, 70 ), Rect2( 417, 295, 63, 72 ), Rect2( 340, 294, 61, 70 ), Rect2( 269, 292, 59, 70 ), Rect2( 201, 296, 57, 70 ), Rect2( 128, 300, 58, 70 ), Rect2( 67, 306, 47, 53 ), Rect2( 13, 303, 41, 44 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Ground Circle:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 24.1, 32.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Ground Circle:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 25.8, 26.1, 26.3, 26.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 77, 0 ), Vector2( 78, -4 ), Vector2( 79, -6 ), Vector2( 79, -10 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Ground Circle:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 25.6, 26 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Flux 1:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 3.4 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Flux 2:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 14.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Flux 3:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 25.6 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("flash:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/11/type = "method"
+tracks/11/path = NodePath(".")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 28.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_miss_sound"
+} ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath(".:z_index")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 40 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 4, 0 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "flux regular"
+length = 40.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("flux regular:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("flux regular:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7, 3, 3.3, 3.6, 3.9, 4.2, 4.5, 4.8, 5.1, 5.4, 5.7, 6, 6.3, 6.6, 6.9, 7.2, 7.5, 7.8, 8.1, 8.4, 8.7, 9, 9.3, 9.6, 9.9, 10.2, 10.5, 10.8, 11.1, 11.4, 11.7, 12, 12.3, 12.6, 12.9, 13.2, 13.5, 13.8, 14.1, 14.4, 14.7, 15, 15.3, 15.6, 15.9, 16.2, 16.5, 16.8, 17.1, 17.4, 17.7, 18, 18.3, 18.6, 18.9, 19.2, 19.5, 19.8, 20.1, 20.4, 20.7, 21, 21.3, 21.6, 21.9, 22.2, 22.5, 22.8, 23.1, 23.4, 23.7, 24, 24.3, 24.6, 24.9, 25.2, 25.5, 25.8, 26.1, 26.4, 26.7, 27, 27.3, 27.6, 27.9, 28.2, 28.5, 28.8, 29.1, 29.4, 29.7, 30, 30.3, 30.6, 30.9, 31.2, 31.5, 31.8, 32.1, 32.4, 32.7, 33, 33.3, 33.6, 33.9, 34.2, 34.5, 34.8, 35.1, 35.4, 35.7, 36, 36.3, 36.6, 36.9, 37.2, 37.5, 37.8, 38.1, 38.4, 38.7, 39, 39.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 10, 34, 25, 35 ), Rect2( 68, 34, 24, 35 ), Rect2( 124, 34, 26, 35 ), Rect2( 181, 33, 27, 36 ), Rect2( 238, 33, 27, 36 ), Rect2( 294, 33, 29, 36 ), Rect2( 351, 33, 29, 36 ), Rect2( 408, 33, 29, 36 ), Rect2( 465, 33, 29, 36 ), Rect2( 522, 33, 29, 36 ), Rect2( 9, 114, 29, 36 ), Rect2( 66, 114, 29, 36 ), Rect2( 123, 114, 29, 36 ), Rect2( 180, 114, 29, 36 ), Rect2( 235, 114, 32, 36 ), Rect2( 292, 114, 32, 36 ), Rect2( 351, 114, 29, 36 ), Rect2( 406, 114, 32, 36 ), Rect2( 463, 114, 32, 36 ), Rect2( 519, 114, 35, 36 ), Rect2( 6, 195, 35, 36 ), Rect2( 63, 195, 35, 36 ), Rect2( 121, 195, 37, 36 ), Rect2( 178, 195, 37, 36 ), Rect2( 235, 195, 37, 36 ), Rect2( 292, 195, 37, 36 ), Rect2( 344, 195, 46, 36 ), Rect2( 401, 195, 46, 36 ), Rect2( 459, 193, 47, 38 ), Rect2( 516, 193, 47, 38 ), Rect2( 4, 271, 50, 41 ), Rect2( 61, 271, 50, 41 ), Rect2( 118, 270, 48, 42 ), Rect2( 175, 270, 48, 42 ), Rect2( 232, 270, 49, 42 ), Rect2( 289, 270, 49, 42 ), Rect2( 346, 271, 50, 41 ), Rect2( 403, 271, 50, 41 ), Rect2( 460, 270, 48, 42 ), Rect2( 517, 270, 48, 42 ), Rect2( 4, 351, 49, 42 ), Rect2( 61, 351, 49, 42 ), Rect2( 118, 352, 50, 41 ), Rect2( 175, 352, 50, 41 ), Rect2( 232, 351, 48, 42 ), Rect2( 289, 351, 48, 42 ), Rect2( 346, 351, 49, 42 ), Rect2( 403, 351, 49, 42 ), Rect2( 460, 352, 50, 41 ), Rect2( 517, 352, 50, 41 ), Rect2( 4, 432, 48, 42 ), Rect2( 61, 432, 48, 42 ), Rect2( 118, 432, 49, 42 ), Rect2( 175, 432, 49, 42 ), Rect2( 232, 433, 50, 41 ), Rect2( 289, 433, 50, 41 ), Rect2( 346, 432, 48, 42 ), Rect2( 403, 432, 49, 42 ), Rect2( 460, 422, 49, 52 ), Rect2( 517, 419, 50, 55 ), Rect2( 4, 498, 50, 57 ), Rect2( 61, 496, 48, 59 ), Rect2( 118, 495, 48, 60 ), Rect2( 175, 493, 48, 62 ), Rect2( 232, 488, 49, 67 ), Rect2( 346, 486, 50, 69 ), Rect2( 403, 488, 50, 67 ), Rect2( 460, 487, 48, 68 ), Rect2( 517, 486, 49, 69 ), Rect2( 4, 569, 49, 75 ), Rect2( 61, 574, 50, 70 ), Rect2( 118, 571, 50, 74 ), Rect2( 175, 574, 48, 71 ), Rect2( 232, 594, 48, 52 ), Rect2( 289, 594, 49, 52 ), Rect2( 346, 594, 49, 52 ), Rect2( 403, 595, 50, 52 ), Rect2( 460, 594, 48, 53 ), Rect2( 517, 594, 48, 54 ), Rect2( 4, 675, 48, 53 ), Rect2( 61, 675, 49, 53 ), Rect2( 118, 675, 49, 52 ), Rect2( 175, 675, 49, 53 ), Rect2( 232, 676, 50, 52 ), Rect2( 289, 676, 50, 41 ), Rect2( 346, 675, 48, 42 ), Rect2( 403, 675, 49, 42 ), Rect2( 460, 675, 49, 42 ), Rect2( 517, 675, 49, 42 ), Rect2( 4, 756, 49, 42 ), Rect2( 61, 756, 49, 42 ), Rect2( 118, 756, 49, 42 ), Rect2( 175, 757, 50, 41 ), Rect2( 232, 757, 50, 41 ), Rect2( 289, 757, 50, 41 ), Rect2( 346, 757, 50, 41 ), Rect2( 403, 757, 50, 41 ), Rect2( 460, 756, 48, 42 ), Rect2( 517, 756, 48, 42 ), Rect2( 4, 837, 48, 42 ), Rect2( 61, 837, 49, 42 ), Rect2( 118, 837, 49, 42 ), Rect2( 175, 837, 49, 42 ), Rect2( 232, 837, 49, 42 ), Rect2( 289, 837, 49, 42 ), Rect2( 346, 837, 49, 42 ), Rect2( 403, 838, 50, 41 ), Rect2( 460, 837, 48, 42 ), Rect2( 517, 837, 49, 42 ), Rect2( 4, 919, 50, 41 ), Rect2( 61, 918, 48, 42 ), Rect2( 118, 918, 49, 42 ), Rect2( 175, 919, 50, 41 ), Rect2( 232, 918, 48, 42 ), Rect2( 289, 918, 49, 42 ), Rect2( 346, 919, 50, 41 ), Rect2( 403, 918, 48, 42 ), Rect2( 460, 918, 49, 42 ), Rect2( 517, 919, 50, 41 ), Rect2( 4, 999, 48, 42 ), Rect2( 61, 999, 49, 42 ), Rect2( 118, 1000, 50, 41 ), Rect2( 175, 999, 48, 42 ), Rect2( 232, 999, 49, 42 ), Rect2( 289, 1000, 50, 41 ), Rect2( 346, 999, 48, 42 ), Rect2( 403, 999, 49, 42 ), Rect2( 460, 1000, 50, 41 ), Rect2( 519, 1006, 44, 35 ), Rect2( 7, 1087, 37, 35 ), Rect2( 65, 1087, 31, 35 ), Rect2( 124, 1087, 25, 35 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("flux regular:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3, 0.9, 6.6, 8.4, 9, 9.6, 10.8, 11.4, 12.6, 13.2, 14.4, 15, 16.2, 16.8, 17.4, 17.7, 18, 18.3, 18.6, 18.9, 19.2, 19.5, 19.8, 20.1, 20.7, 21, 21.3, 21.6, 21.9, 22.8, 23.1, 24.3, 24.6, 24.9, 25.2, 25.5, 27.6, 29.1, 31.8, 32.1, 32.7, 33, 33.6, 33.9, 34.5, 34.8, 35.4, 35.7, 36.3, 36.6, 37.2, 37.5, 38.1, 38.4, 38.7, 39, 39.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( -1, 0 ), Vector2( -1, -1 ), Vector2( -3, -1 ), Vector2( -4, -2 ), Vector2( -7, -3 ), Vector2( -6, -4 ), Vector2( -7, -3 ), Vector2( -6, -4 ), Vector2( -7, -3 ), Vector2( -6, -4 ), Vector2( -7, -3 ), Vector2( -6, -4 ), Vector2( -7, -3 ), Vector2( -6, -4 ), Vector2( -6, -9 ), Vector2( -7, -10 ), Vector2( -7, -11 ), Vector2( -6, -12 ), Vector2( -6, -13 ), Vector2( -6, -14 ), Vector2( -6, -16 ), Vector2( -7, -17 ), Vector2( -7, -16 ), Vector2( -6, -17 ), Vector2( -6, -12 ), Vector2( -7, -10 ), Vector2( -7, -11 ), Vector2( -6, -9 ), Vector2( -6, 1 ), Vector2( -7, 2 ), Vector2( -6, 2 ), Vector2( -6, 1 ), Vector2( -6, 2 ), Vector2( -7, 2 ), Vector2( -7, -3 ), Vector2( -6, -4 ), Vector2( -7, -3 ), Vector2( -6, -4 ), Vector2( -7, -3 ), Vector2( -6, -4 ), Vector2( -7, -3 ), Vector2( -6, -4 ), Vector2( -7, -3 ), Vector2( -6, -4 ), Vector2( -7, -3 ), Vector2( -6, -4 ), Vector2( -7, -3 ), Vector2( -6, -4 ), Vector2( -7, -3 ), Vector2( -6, -4 ), Vector2( -7, -3 ), Vector2( -6, -4 ), Vector2( -7, -3 ), Vector2( -6, 0 ), Vector2( -3, 0 ), Vector2( -1, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Ground Circle:region_rect")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 24.2, 26.1, 26.3, 26.5, 26.7, 26.9, 27.1, 27.3, 27.5, 27.7, 27.9, 28.1, 28.3, 28.5, 28.7, 28.9, 29.1, 29.3, 29.5, 29.7, 29.9, 30.1, 30.3, 30.5, 30.7, 30.9, 31.1, 31.3, 31.5, 31.7, 31.9, 32.1, 32.3, 32.5, 32.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 4, 187, 67, 35 ), Rect2( 84, 182, 67, 42 ), Rect2( 163, 164, 67, 48 ), Rect2( 327, 162, 61, 52 ), Rect2( 413, 159, 62, 56 ), Rect2( 10, 235, 59, 54 ), Rect2( 78, 239, 56, 55 ), Rect2( 145, 232, 54, 56 ), Rect2( 213, 233, 51, 50 ), Rect2( 280, 235, 47, 48 ), Rect2( 336, 236, 45, 46 ), Rect2( 395, 241, 33, 34 ), Rect2( 450, 244, 29, 30 ), Rect2( 232, 118, 28, 24 ), Rect2( 187, 113, 35, 35 ), Rect2( 135, 111, 41, 44 ), Rect2( 80, 119, 47, 53 ), Rect2( 5, 107, 59, 70 ), Rect2( 441, 26, 57, 70 ), Rect2( 372, 27, 59, 70 ), Rect2( 296, 26, 62, 70 ), Rect2( 218, 24, 63, 72 ), Rect2( 145, 23, 63, 71 ), Rect2( 73, 24, 63, 71 ), Rect2( 3, 23, 63, 71 ), Rect2( 162, 376, 64, 71 ), Rect2( 78, 379, 64, 70 ), Rect2( 2, 355, 64, 70 ), Rect2( 417, 295, 63, 72 ), Rect2( 340, 294, 61, 70 ), Rect2( 269, 292, 59, 70 ), Rect2( 201, 296, 57, 70 ), Rect2( 128, 300, 58, 70 ), Rect2( 67, 306, 47, 53 ), Rect2( 13, 303, 41, 44 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Ground Circle:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 24.1, 32.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Ground Circle:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 25.8, 26.1, 26.3, 26.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 77, 0 ), Vector2( 78, -4 ), Vector2( 79, -6 ), Vector2( 79, -10 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Ground Circle:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 25.6, 26 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Flux 1:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 3.4 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Flux 2:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 14.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Flux 3:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 25.6 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("flash:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 28.2, 28.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/11/type = "method"
+tracks/11/path = NodePath(".")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 28.2, 28.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_hit_sound"
+}, {
+"args": [  ],
+"method": "shake_camera_regular"
+} ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath(".:z_index")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 39.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 5, 0 ]
+}
+
+[node name="Dark Mage Enemy Combat" type="Node2D"]
+z_index = 5
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 17.0 ],
+"_edit_vertical_guides_": [ -6.0, 77.0 ]
+}
+
+[node name="anim" type="AnimationPlayer" parent="."]
+playback_speed = 6.0
+"anims/flux critical" = SubResource( 1 )
+"anims/flux death" = SubResource( 2 )
+"anims/flux dodge" = SubResource( 3 )
+"anims/flux miss" = SubResource( 4 )
+"anims/flux regular" = SubResource( 5 )
+
+[node name="flux regular" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+flip_h = true
+region_enabled = true
+region_rect = Rect2( 10, 34, 25, 35 )
+
+[node name="flash" type="Sprite" parent="."]
+visible = false
+position = Vector2( 59.5, 9.00002 )
+scale = Vector2( 4.57917, 4.5375 )
+texture = ExtResource( 3 )
+
+[node name="Ground Circle" type="Sprite" parent="."]
+visible = false
+position = Vector2( 79, -10 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 187, 113, 35, 35 )
+
+[node name="Flux 1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[node name="Flux 2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[node name="Flux 3" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )

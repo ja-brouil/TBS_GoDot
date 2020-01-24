@@ -2158,7 +2158,7 @@
   </object>
  </objectgroup>
  <objectgroup name="Enemies">
-  <object id="358" x="193.209" y="47.2747" width="16" height="16">
+  <object id="358" x="192" y="48" width="16" height="16">
    <properties>
     <property name="After_Battle" value="まさか。。。俺は倒された。。。"/>
     <property name="Before_Battle" value="お前はもう死んでいる！"/>
