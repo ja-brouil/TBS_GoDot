@@ -296,19 +296,19 @@ func start_combat(current_combat_state):
 	# Set the visible back
 	modulate = Color(1,1,1,1)
 	
+		# Turn off Units
+	for ally_unit in BattlefieldInfo.ally_units.values():
+		ally_unit.visible = false
+
+	for enemy_unit in BattlefieldInfo.enemy_units.values():
+		enemy_unit.visible = false
+	
 	# Play Transition
 	$"Combat Trans".play_transition_forward()
 	yield($"Combat Trans", "transition_done")
 	
 	# Set to 0.5 Modulate
 	BattlefieldInfo.current_level.modulate = Color(1,1,1,0.5)
-	
-	# Turn off Units
-	for ally_unit in BattlefieldInfo.ally_units.values():
-		ally_unit.visible = false
-
-	for enemy_unit in BattlefieldInfo.enemy_units.values():
-		enemy_unit.visible = false
 	
 	# Place appropriate combat art
 	place_combat_art()

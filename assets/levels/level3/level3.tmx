@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.0" orientation="orthogonal" renderorder="right-down" width="15" height="15" tilewidth="16" tileheight="16" infinite="0" nextobjectid="360">
+<map version="1.0" tiledversion="1.1.0" orientation="orthogonal" renderorder="right-down" width="15" height="15" tilewidth="16" tileheight="16" infinite="0" nextobjectid="362">
  <properties>
   <property name="Enemies_to_defeat" type="int" value="15"/>
   <property name="Victory_Condition" value="Defeat All Enemies"/>
@@ -1826,7 +1826,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="Allies" visible="0">
+ <objectgroup name="Allies">
   <object id="251" x="0" y="224" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
@@ -2154,6 +2154,53 @@
     <property name="skillChance" type="int" value="50"/>
     <property name="speedChance" type="int" value="65"/>
     <property name="strChance" type="int" value="55"/>
+   </properties>
+  </object>
+  <object id="361" x="48" y="192" width="16" height="16">
+   <properties>
+    <property name="BonusCrit" type="int" value="0"/>
+    <property name="BonusDodge" type="int" value="0"/>
+    <property name="BonusHit" type="int" value="0"/>
+    <property name="BossBonus" type="int" value="0"/>
+    <property name="Class" value="Thief"/>
+    <property name="ClassBonusA" type="int" value="0"/>
+    <property name="ClassBonusB" type="int" value="0"/>
+    <property name="ClassPower" type="int" value="3"/>
+    <property name="Consti" type="int" value="5"/>
+    <property name="Defense" type="int" value="3"/>
+    <property name="Health" type="int" value="18"/>
+    <property name="Identifier" value="Colm"/>
+    <property name="InstanceName" value="Ally Thief"/>
+    <property name="Level" type="int" value="1"/>
+    <property name="Luck" type="int" value="8"/>
+    <property name="Magic" type="int" value="0"/>
+    <property name="MaxHealth" type="int" value="18"/>
+    <property name="Move" type="int" value="6"/>
+    <property name="Name" value="Colm"/>
+    <property name="Res" type="int" value="1"/>
+    <property name="Skill" type="int" value="4"/>
+    <property name="Speed" type="int" value="10"/>
+    <property name="Str" type="int" value="4"/>
+    <property name="ThiefBonus" type="int" value="0"/>
+    <property name="Weapon" value="Iron Sword"/>
+    <property name="buildingPenalty" type="int" value="0"/>
+    <property name="constiChance" type="int" value="0"/>
+    <property name="defChance" type="int" value="20"/>
+    <property name="defaultPenalty" type="int" value="0"/>
+    <property name="forestPenalty" type="int" value="0"/>
+    <property name="fortressPenalty" type="int" value="0"/>
+    <property name="hillPenalty" type="int" value="0"/>
+    <property name="isAlly" type="bool" value="true"/>
+    <property name="luckChance" type="int" value="50"/>
+    <property name="magicChance" type="int" value="0"/>
+    <property name="maxHPChance" type="int" value="75"/>
+    <property name="mountainPenalty" type="int" value="0"/>
+    <property name="resChance" type="int" value="20"/>
+    <property name="riverPenalty" type="int" value="0"/>
+    <property name="seaPenalty" type="int" value="0"/>
+    <property name="skillChance" type="int" value="40"/>
+    <property name="speedChance" type="int" value="65"/>
+    <property name="strChance" type="int" value="50"/>
    </properties>
   </object>
  </objectgroup>
