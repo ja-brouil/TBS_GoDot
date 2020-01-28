@@ -1,0 +1,105 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scenes/Units/Player_Units/AllyUnits/Ally Thief/Colm Combat.gd" type="Script" id=1]
+[ext_resource path="res://assets/units/thief/colm regular.png" type="Texture" id=2]
+[ext_resource path="res://assets/transition/white flash.png" type="Texture" id=3]
+[ext_resource path="res://assets/battle_effects/Physical Effects.png" type="Texture" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "sword critical"
+
+[sub_resource type="Animation" id=2]
+resource_name = "sword death"
+
+[sub_resource type="Animation" id=3]
+resource_name = "sword dodge"
+
+[sub_resource type="Animation" id=4]
+resource_name = "sword miss"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("sword regular:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 63, 9, 18, 35 ), Rect2( 151, 10, 18, 34 ), Rect2( 239, 10, 21, 34 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("sword regular:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( 2, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("sword regular:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("sword crit:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "sword regular"
+
+[node name="Colm Combat" type="Node2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 16.996 ],
+"_edit_vertical_guides_": [ -75.0512, 9.02773 ]
+}
+
+[node name="sword regular" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 63, 9, 18, 35 )
+
+[node name="sword crit" type="Sprite" parent="."]
+visible = false
+
+[node name="Flash" type="Sprite" parent="."]
+visible = false
+position = Vector2( 13.0917, 2.28204 )
+scale = Vector2( 1.91382, 2.13051 )
+texture = ExtResource( 3 )
+
+[node name="Battle Effect" type="Sprite" parent="."]
+visible = false
+position = Vector2( -85.9954, -0.930359 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 15, 348, 169, 156 )
+
+[node name="anim" type="AnimationPlayer" parent="."]
+"anims/sword critical" = SubResource( 1 )
+"anims/sword death" = SubResource( 2 )
+"anims/sword dodge" = SubResource( 3 )
+"anims/sword miss" = SubResource( 4 )
+"anims/sword regular" = SubResource( 5 )
