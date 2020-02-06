@@ -18,7 +18,7 @@ func _ready():
 	UnitInventory.add_item(preload("res://Scenes/Items/Swords/Iron Sword.tscn").instance())
 	
 	# Set combat node
-	combat_node = preload("res://Scenes/Units/Player_Units/AllyUnits/Eirika/Eirika Combat.tscn")
+	combat_node = preload("res://Scenes/Units/Player_Units/AllyUnits/Ally Thief/Colm Combat.tscn")
 	
 	# Death sentence
 	death_sentence = []

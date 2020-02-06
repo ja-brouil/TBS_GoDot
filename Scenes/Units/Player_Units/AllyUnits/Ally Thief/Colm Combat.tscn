@@ -68,6 +68,141 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id=5]
 resource_name = "sword regular"
+length = 6.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("sword regular:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2, 1.5, 2.1, 2.4, 2.7, 3, 3.3, 3.6, 3.9, 4.2, 4.5, 4.8, 5.1, 5.4, 5.7, 6, 6.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 63, 9, 18, 35 ), Rect2( 151, 10, 18, 34 ), Rect2( 239, 10, 21, 34 ), Rect2( 412, 15, 27, 29 ), Rect2( 8, 46, 67, 43 ), Rect2( 89, 55, 42, 34 ), Rect2( 183, 56, 40, 33 ), Rect2( 271, 55, 40, 34 ), Rect2( 361, 52, 40, 39 ), Rect2( 18, 102, 40, 32 ), Rect2( 106, 104, 40, 30 ), Rect2( 283, 110, 32, 24 ), Rect2( 374, 110, 27, 24 ), Rect2( 26, 152, 23, 27 ), Rect2( 127, 148, 27, 32 ), Rect2( 231, 145, 23, 34 ), Rect2( 324, 145, 19, 34 ), Rect2( 416, 149, 18, 30 ), Rect2( 63, 190, 21, 34 ), Rect2( 151, 189, 18, 35 ), Rect2( 239, 189, 18, 35 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("sword regular:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6, 0.9, 1.2, 1.5, 2.7, 3, 3.3, 3.6, 3.9, 4.2, 4.5, 4.8, 5.1, 5.4, 5.7, 6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( 2, 0 ), Vector2( 2, 3 ), Vector2( -25, -5 ), Vector2( -58, 0 ), Vector2( -39, 0 ), Vector2( -29, 1 ), Vector2( -27, 2 ), Vector2( -27, 5 ), Vector2( -26, 5 ), Vector2( -22, 4 ), Vector2( -18, 2 ), Vector2( -9, 0 ), Vector2( -1, 0 ), Vector2( 0, 2 ), Vector2( 2, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("sword regular:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("sword crit:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:z_index")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 6.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 5, 0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Battle Effect:region_rect")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 1.5, 1.6, 1.7, 1.8, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 310.827, 75.3462, 56.7227, 50.0494 ), Rect2( 528, 49, 110, 103 ), Rect2( 256, 186, 166, 154 ), Rect2( 503.601, 183.036, 162.625, 158.966 ), Rect2( 15, 348, 169, 156 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Battle Effect:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 1.5, 1.6, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( -85.9954, -0.405655 ), Vector2( -85.9954, -0.930359 ), Vector2( -85.9954, -0.930359 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Battle Effect:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( -0.01, 1.5, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/8/type = "method"
+tracks/8/path = NodePath(".")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.01, 2.3, 2.5, 2.6, 6.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_draw_sound"
+}, {
+"args": [  ],
+"method": "play_attack_sound"
+}, {
+"args": [  ],
+"method": "shake_camera_regular"
+}, {
+"args": [  ],
+"method": "play_hit_sound"
+}, {
+"args": [  ],
+"method": "put_away_attack_sound"
+} ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Flash:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 1.3, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
 
 [node name="Colm Combat" type="Node2D"]
 script = ExtResource( 1 )
@@ -77,9 +212,10 @@ __meta__ = {
 }
 
 [node name="sword regular" type="Sprite" parent="."]
+visible = false
 texture = ExtResource( 2 )
 region_enabled = true
-region_rect = Rect2( 63, 9, 18, 35 )
+region_rect = Rect2( 239, 189, 18, 35 )
 
 [node name="sword crit" type="Sprite" parent="."]
 visible = false
@@ -98,6 +234,7 @@ region_enabled = true
 region_rect = Rect2( 15, 348, 169, 156 )
 
 [node name="anim" type="AnimationPlayer" parent="."]
+playback_speed = 5.0
 "anims/sword critical" = SubResource( 1 )
 "anims/sword death" = SubResource( 2 )
 "anims/sword dodge" = SubResource( 3 )

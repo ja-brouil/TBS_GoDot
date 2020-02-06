@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/sound/unitMovement/Light Foot Steps 1.wav" type="AudioStream" id=3]
 [ext_resource path="res://Scenes/GUI/Damage Preview/Cursor Select.tscn" type="PackedScene" id=4]
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=1]
 resource_name = "Down"
 length = 2.0
 loop = true
@@ -61,7 +61,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=2]
 resource_name = "Down no sound"
 length = 2.0
 loop = true
@@ -103,13 +103,48 @@ tracks/2/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=3]
 resource_name = "Highlighted"
 length = 2.0
 step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( -2, -1 ), Vector2( -1, -2 ), Vector2( -2, -2 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 74, 16, 18, 16 ), Rect2( 75, 48, 17, 17 ), Rect2( 74, 81, 17, 17 ), Rect2( 74, 114, 17, 17 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
-[sub_resource type="Animation" id=1]
-resource_name = "Idle"
+[sub_resource type="Animation" id=4]
 length = 2.0
 loop = true
 step = 0.5
@@ -150,8 +185,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "Left"
+[sub_resource type="Animation" id=5]
 length = 2.0
 loop = true
 step = 0.5
@@ -206,8 +240,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "Left no sound"
+[sub_resource type="Animation" id=6]
 length = 2.0
 loop = true
 step = 0.5
@@ -487,6 +520,7 @@ tracks/2/keys = {
 }
 
 [node name="Ally Thief" type="Node2D"]
+z_index = 4
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 15.0707 ],
@@ -494,23 +528,23 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, -2 )
+position = Vector2( -2, -2 )
 texture = ExtResource( 2 )
 centered = false
 region_enabled = true
-region_rect = Rect2( 140, 81, 15, 17 )
+region_rect = Rect2( 10, 50, 14, 15 )
 
 [node name="FootSteps" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 
 [node name="Animation" type="AnimationPlayer" parent="."]
 playback_speed = 2.0
-anims/Down = SubResource( 4 )
-"anims/Down no sound" = SubResource( 5 )
-anims/Highlighted = SubResource( 6 )
-anims/Idle = SubResource( 1 )
-anims/Left = SubResource( 2 )
-"anims/Left no sound" = SubResource( 3 )
+anims/Down = SubResource( 1 )
+"anims/Down no sound" = SubResource( 2 )
+anims/Highlighted = SubResource( 3 )
+anims/Idle = SubResource( 4 )
+anims/Left = SubResource( 5 )
+"anims/Left no sound" = SubResource( 6 )
 anims/Right = SubResource( 7 )
 "anims/Right no sound" = SubResource( 8 )
 anims/Selected = SubResource( 9 )

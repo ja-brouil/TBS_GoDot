@@ -560,7 +560,6 @@ tracks/10/keys = {
 }
 
 [node name="Vanessa Combat" type="Node2D"]
-z_index = 5
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 31.0, -120.0 ],
