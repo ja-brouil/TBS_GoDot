@@ -560,6 +560,7 @@ tracks/10/keys = {
 }
 
 [node name="Vanessa Combat" type="Node2D"]
+z_index = 5
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 31.0, -120.0 ],
@@ -575,7 +576,7 @@ region_rect = Rect2( 60, 21, 67, 83 )
 
 [node name="lance crit" type="Sprite" parent="."]
 visible = false
-position = Vector2( 5, -10 )
+position = Vector2( 0, -10 )
 texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 60, 21, 67, 83 )
@@ -591,10 +592,10 @@ texture = ExtResource( 5 )
 
 [node name="Battle Effect" type="Sprite" parent="."]
 visible = false
-position = Vector2( -85.9954, -0.930359 )
+position = Vector2( -86, -1 )
 texture = ExtResource( 6 )
 region_enabled = true
-region_rect = Rect2( 15, 348, 169, 156 )
+region_rect = Rect2( 253, 853, 238, 143 )
 
 [node name="anim" type="AnimationPlayer" parent="."]
 playback_speed = 4.0

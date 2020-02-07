@@ -8,18 +8,18 @@ class_name L1_Event_Part_20
 # Dialogue between the characters
 var dialogue = [
 	# Japanese
-	"マークス:\n\nおい、誰だ？",
-	"マークス:\n\n俺たちはこの村を支配してる！出ろ！",
-	"マークス:\n\n待って。。。",
-	"マークス:\n\nお前は王女のエイリーカだ！",
-	"マークス:\n\nアルマイリやンはお前の首を多く払う！",
-	"マークス:\n\nエイリーカの首を持って来てくれ！行け！"
+#	"マークス:\n\nおい、誰だ？",
+#	"マークス:\n\n俺たちはこの村を支配してる！出ろ！",
+#	"マークス:\n\n待って。。。",
+#	"マークス:\n\nお前は王女のエイリーカだ！",
+#	"マークス:\n\nアルマイリやンはお前の首を多く払う！",
+#	"マークス:\n\nエイリーカの首を持って来てくれ！行け！"
 	
 	# English
-#	"Bandit Leader:\n\nWhat do we have here?!?",
-#	"Bandit Leader:\n\nA princess and her knight!",
-#	"Bandit Leader:\n\nThe Almaryans will pay me handsomely for your head!",
-#	"Bandit Leader:\n\nGet her boys! 20 extra silver to whoever brings me her head, 40 if alive!"
+	"Bandit Leader:\n\nWhat do we have here?!?",
+	"Bandit Leader:\n\nA princess and her knight!",
+	"Bandit Leader:\n\nThe Almaryans will pay me handsomely for your head!",
+	"Bandit Leader:\n\nGet her boys! 20 extra silver to whoever brings me her head, 40 if alive!"
 ]
 
 # Set Names for Debug

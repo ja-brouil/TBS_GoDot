@@ -53,6 +53,9 @@ tracks/0/keys = {
 
 [node name="Intro Screen" type="Control"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Black Background" type="ColorRect" parent="."]
 anchor_right = 1.0

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Thief Ally.png-b883878171d62ab02f81e6124f44c370.stex"
+path="res://.import/colm crit.png-9c0b06eb97971514f4cb3b2bc85fc4be.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/units/thief/Thief Ally.png"
-dest_files=[ "res://.import/Thief Ally.png-b883878171d62ab02f81e6124f44c370.stex" ]
+source_file="res://assets/units/thief/colm crit.png"
+dest_files=[ "res://.import/colm crit.png-9c0b06eb97971514f4cb3b2bc85fc4be.stex" ]
 
 [params]
 

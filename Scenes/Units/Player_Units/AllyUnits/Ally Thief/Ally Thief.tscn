@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scenes/Units/Player_Units/AllyUnits/Ally Thief/Ally Thief.gd" type="Script" id=1]
-[ext_resource path="res://assets/units/thief/Thief Ally.png" type="Texture" id=2]
+[ext_resource path="res://assets/units/thief/Thief Blue Ally.png" type="Texture" id=2]
 [ext_resource path="res://assets/sound/unitMovement/Light Foot Steps 1.wav" type="AudioStream" id=3]
 [ext_resource path="res://Scenes/GUI/Damage Preview/Cursor Select.tscn" type="PackedScene" id=4]
 
@@ -183,6 +183,18 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -528,7 +540,6 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -2, -2 )
 texture = ExtResource( 2 )
 centered = false
 region_enabled = true

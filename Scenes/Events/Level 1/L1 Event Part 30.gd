@@ -11,24 +11,25 @@ var natasha
 var neimi
 var gilliam
 var vanessa
+var colm
 
 # Dialogue between the characters
 var dialogue = [
 	# Japanese
-	"ゼト:\n\n山賊だ！市民を攻撃している！",
-	"ゼト:\n\nアルマイリやンの兵士がいる！なぜ山賊に手伝ってあげる？",
-	"エイリーカ:\n\nゼト騎士長！",
-	"エイリーカ:\n\n一つの村をもう崩されているんです！",
-	"エイリーカ:\n\n他の村を絶対に守ります！",
-	"ゼト:\n\nエイリーカの父親に娘を守るのを約束致しました。危なすぎる場合は、逃げて。その命令は私のだけです。",
-	"エイリーカ:\n\nわかりました。皆、行きましょう！"
+#	"ゼト:\n\n山賊だ！市民を攻撃している！",
+#	"ゼト:\n\nアルマイリやンの兵士がいる！なぜ山賊に手伝ってあげる？",
+#	"エイリーカ:\n\nゼト騎士長！",
+#	"エイリーカ:\n\n一つの村をもう崩されているんです！",
+#	"エイリーカ:\n\n他の村を絶対に守ります！",
+#	"ゼト:\n\nエイリーカの父親に娘を守るのを約束致しました。危なすぎる場合は、逃げて。その命令は私のだけです。",
+#	"エイリーカ:\n\nわかりました。皆、行きましょう！"
 	# English
-#	"Seth:\n\nThose bastards! Attacking innocent townsfolk!",
-#	"Seth:\n\nThere are Almaryan soldiers that are helping them as well!",
-#	"Eirika:\n\nSeth! They have already destroyed a village!",
-#	"Eirika:\n\nWe have to stop them before they can do anymore damage to the other villages!",
-#	"Seth:\n\nI will hold the front line. If you get injured, you are to fall back immediately.",
-#	"Eirika:\n\nI understand. Let's go!",
+	"Seth:\n\nThose bastards! Attacking innocent townsfolk!",
+	"Seth:\n\nThere are Almaryan soldiers that are helping them as well!",
+	"Eirika:\n\nSeth! They have already destroyed a village!",
+	"Eirika:\n\nWe have to stop them before they can do anymore damage to the other villages!",
+	"Seth:\n\nI will hold the front line. If you get injured, you are to fall back immediately.",
+	"Eirika:\n\nI understand. Let's go!",
 ]
 
 # Set Names for Debug
@@ -43,6 +44,7 @@ func start():
 	neimi = BattlefieldInfo.ally_units["Neimi"]
 	gilliam = BattlefieldInfo.ally_units["Gilliam"]
 	vanessa = BattlefieldInfo.ally_units["Vanessa"]
+	colm = BattlefieldInfo.ally_units["Colm"]
 	
 	
 	for enemy in BattlefieldInfo.enemy_units.values():
@@ -72,6 +74,7 @@ func move_actor():
 	BattlefieldInfo.movement_calculator.get_path_to_destination_AI(neimi, BattlefieldInfo.grid[2][13], BattlefieldInfo.grid)
 	BattlefieldInfo.movement_calculator.get_path_to_destination_AI(gilliam, BattlefieldInfo.grid[5][13], BattlefieldInfo.grid)
 	BattlefieldInfo.movement_calculator.get_path_to_destination_AI(vanessa, BattlefieldInfo.grid[2][12], BattlefieldInfo.grid)
+	BattlefieldInfo.movement_calculator.get_path_to_destination_AI(colm, BattlefieldInfo.grid[3][12], BattlefieldInfo.grid)
 
 	# Remove original tile
 	natasha.UnitMovementStats.currentTile.occupyingUnit = null
@@ -79,6 +82,7 @@ func move_actor():
 	neimi.UnitMovementStats.currentTile.occupyingUnit = null
 	gilliam.UnitMovementStats.currentTile.occupyingUnit = null
 	vanessa.UnitMovementStats.currentTile.occupyingUnit = null
+	colm.UnitMovementStats.currentTile.occupyingUnit = null
 
 	# Add actors to movement
 	BattlefieldInfo.movement_system_cinematic.unit_to_move_same_time.append(natasha)
@@ -86,6 +90,7 @@ func move_actor():
 	BattlefieldInfo.movement_system_cinematic.unit_to_move_same_time.append(ewan)
 	BattlefieldInfo.movement_system_cinematic.unit_to_move_same_time.append(gilliam)
 	BattlefieldInfo.movement_system_cinematic.unit_to_move_same_time.append(vanessa)
+	BattlefieldInfo.movement_system_cinematic.unit_to_move_same_time.append(colm)
 	
 	# Start the cinematic movement
 	BattlefieldInfo.movement_system_cinematic.is_moving = true

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/Items/Swords/Killing Edge.gd" type="Script" id=1]
+
+[node name="Killing Edge" type="Sprite"]
+script = ExtResource( 1 )

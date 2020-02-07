@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.0" orientation="orthogonal" renderorder="right-down" width="20" height="22" tilewidth="16" tileheight="16" infinite="0" nextobjectid="2950">
+<map version="1.0" tiledversion="1.1.0" orientation="orthogonal" renderorder="right-down" width="20" height="22" tilewidth="16" tileheight="16" infinite="0" nextobjectid="2951">
  <properties>
   <property name="Enemies_to_defeat" type="int" value="15"/>
   <property name="Victory_Condition" value="Survive for 10 turns"/>
@@ -31,7 +31,7 @@
 421,422,423,424,425,426,427,428,429,430,431,432,433,434,435,436,437,438,439,440
 </data>
  </layer>
- <objectgroup name="CellInfo">
+ <objectgroup name="CellInfo" visible="0">
   <object id="1794" x="0" y="256" width="16" height="16">
    <properties>
     <property name="Avd" type="int" value="0"/>
@@ -3553,7 +3553,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="Allies" visible="0">
+ <objectgroup name="Allies">
   <object id="2281" x="144" y="112" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
@@ -4118,7 +4118,7 @@
     <property name="strChance" type="int" value="45"/>
    </properties>
   </object>
-  <object id="2928" x="112" y="256" width="16" height="16">
+  <object id="2928" x="128" y="256" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
     <property name="BonusDodge" type="int" value="0"/>
@@ -4212,7 +4212,7 @@
     <property name="strChance" type="int" value="0"/>
    </properties>
   </object>
-  <object id="2929" x="112" y="288" width="16" height="16">
+  <object id="2929" x="128" y="288" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
     <property name="BonusDodge" type="int" value="0"/>
@@ -4257,6 +4257,53 @@
     <property name="skillChance" type="int" value="0"/>
     <property name="speedChance" type="int" value="0"/>
     <property name="strChance" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="2950" x="144" y="64" width="16" height="16">
+   <properties>
+    <property name="BonusCrit" type="int" value="0"/>
+    <property name="BonusDodge" type="int" value="0"/>
+    <property name="BonusHit" type="int" value="0"/>
+    <property name="BossBonus" type="int" value="0"/>
+    <property name="Class" value="Thief"/>
+    <property name="ClassBonusA" type="int" value="0"/>
+    <property name="ClassBonusB" type="int" value="0"/>
+    <property name="ClassPower" type="int" value="3"/>
+    <property name="Consti" type="int" value="5"/>
+    <property name="Defense" type="int" value="3"/>
+    <property name="Health" type="int" value="18"/>
+    <property name="Identifier" value="Colm"/>
+    <property name="InstanceName" value="Ally Thief"/>
+    <property name="Level" type="int" value="1"/>
+    <property name="Luck" type="int" value="8"/>
+    <property name="Magic" type="int" value="0"/>
+    <property name="MaxHealth" type="int" value="18"/>
+    <property name="Move" type="int" value="6"/>
+    <property name="Name" value="Colm"/>
+    <property name="Res" type="int" value="1"/>
+    <property name="Skill" type="int" value="4"/>
+    <property name="Speed" type="int" value="10"/>
+    <property name="Str" type="int" value="4"/>
+    <property name="ThiefBonus" type="int" value="0"/>
+    <property name="Weapon" value="Iron Sword"/>
+    <property name="buildingPenalty" type="int" value="0"/>
+    <property name="constiChance" type="int" value="0"/>
+    <property name="defChance" type="int" value="20"/>
+    <property name="defaultPenalty" type="int" value="0"/>
+    <property name="forestPenalty" type="int" value="0"/>
+    <property name="fortressPenalty" type="int" value="0"/>
+    <property name="hillPenalty" type="int" value="0"/>
+    <property name="isAlly" type="bool" value="true"/>
+    <property name="luckChance" type="int" value="50"/>
+    <property name="magicChance" type="int" value="0"/>
+    <property name="maxHPChance" type="int" value="75"/>
+    <property name="mountainPenalty" type="int" value="0"/>
+    <property name="resChance" type="int" value="20"/>
+    <property name="riverPenalty" type="int" value="0"/>
+    <property name="seaPenalty" type="int" value="0"/>
+    <property name="skillChance" type="int" value="40"/>
+    <property name="speedChance" type="int" value="65"/>
+    <property name="strChance" type="int" value="50"/>
    </properties>
   </object>
  </objectgroup>

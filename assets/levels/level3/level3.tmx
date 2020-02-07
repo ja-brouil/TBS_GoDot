@@ -2156,7 +2156,7 @@
     <property name="strChance" type="int" value="55"/>
    </properties>
   </object>
-  <object id="361" x="48" y="192" width="16" height="16">
+  <object id="361" x="0" y="224" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
     <property name="BonusDodge" type="int" value="0"/>
@@ -2393,7 +2393,7 @@
     <property name="isAlly" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="356" x="96" y="64" width="16" height="16">
+  <object id="356" x="112" y="64" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
     <property name="BonusDodge" type="int" value="0"/>

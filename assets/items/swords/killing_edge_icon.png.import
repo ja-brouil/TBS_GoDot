@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/malcolm portrait.png-63dea9e2cbde7439667347dd1b8a90e3.stex"
+path="res://.import/killing_edge_icon.png-d13fccec7bfb629de13137c8f1ba0df0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/units/thief/malcolm portrait.png"
-dest_files=[ "res://.import/malcolm portrait.png-63dea9e2cbde7439667347dd1b8a90e3.stex" ]
+source_file="res://assets/items/swords/killing_edge_icon.png"
+dest_files=[ "res://.import/killing_edge_icon.png-d13fccec7bfb629de13137c8f1ba0df0.stex" ]
 
 [params]
 

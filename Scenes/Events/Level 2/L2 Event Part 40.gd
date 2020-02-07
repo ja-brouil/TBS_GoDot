@@ -24,6 +24,7 @@ var natasha
 var neimi
 var gilliam
 var vanessa
+var colm
 
 func _init():
 	event_name = "Level 2 Before Battle Event"
@@ -42,6 +43,7 @@ func start():
 	neimi = BattlefieldInfo.ally_units["Neimi"]
 	gilliam = BattlefieldInfo.ally_units["Gilliam"]
 	vanessa = BattlefieldInfo.ally_units["Vanessa"]
+	colm = BattlefieldInfo.ally_units["Colm"]
 	
 	# Start Text
 	enable_text(dialogue)
@@ -56,6 +58,7 @@ func move_actors():
 	BattlefieldInfo.movement_calculator.get_path_to_destination_AI(neimi, BattlefieldInfo.grid[7][6], BattlefieldInfo.grid)
 	BattlefieldInfo.movement_calculator.get_path_to_destination_AI(gilliam, BattlefieldInfo.grid[8][8], BattlefieldInfo.grid)
 	BattlefieldInfo.movement_calculator.get_path_to_destination_AI(vanessa, BattlefieldInfo.grid[11][6], BattlefieldInfo.grid)
+	BattlefieldInfo.movement_calculator.get_path_to_destination_AI(colm, BattlefieldInfo.grid[11][4], BattlefieldInfo.grid)
 	
 	# Remove original tile
 	natasha.UnitMovementStats.currentTile.occupyingUnit = null
@@ -63,6 +66,7 @@ func move_actors():
 	neimi.UnitMovementStats.currentTile.occupyingUnit = null
 	gilliam.UnitMovementStats.currentTile.occupyingUnit = null
 	vanessa.UnitMovementStats.currentTile.occupyingUnit = null
+	colm.UnitMovementStats.currentTile.occupyingUnit = null
 	
 	# Add actors to movement
 	BattlefieldInfo.movement_system_cinematic.unit_to_move_same_time.append(natasha)
@@ -70,6 +74,7 @@ func move_actors():
 	BattlefieldInfo.movement_system_cinematic.unit_to_move_same_time.append(ewan)
 	BattlefieldInfo.movement_system_cinematic.unit_to_move_same_time.append(gilliam)
 	BattlefieldInfo.movement_system_cinematic.unit_to_move_same_time.append(vanessa)
+	BattlefieldInfo.movement_system_cinematic.unit_to_move_same_time.append(colm)
 	
 	# Start the cinematic movement
 	BattlefieldInfo.movement_system_cinematic.is_moving = true

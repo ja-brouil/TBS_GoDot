@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.0" orientation="orthogonal" renderorder="right-down" width="29" height="25" tilewidth="16" tileheight="16" infinite="0" nextobjectid="917">
+<map version="1.0" tiledversion="1.1.0" orientation="orthogonal" renderorder="right-down" width="29" height="25" tilewidth="16" tileheight="16" infinite="0" nextobjectid="918">
  <properties>
   <property name="Enemies_to_defeat" type="int" value="15"/>
   <property name="Victory_Condition" value="Defeat All Enemies"/>
@@ -6274,6 +6274,37 @@
     <property name="Skill" type="int" value="3"/>
     <property name="Speed" type="int" value="2"/>
     <property name="Str" type="int" value="6"/>
+    <property name="ThiefBonus" type="int" value="0"/>
+    <property name="Weapon" value="Iron Axe"/>
+    <property name="aiType" value="Aggresive"/>
+    <property name="isAlly" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="917" x="288" y="336" width="16" height="16">
+   <properties>
+    <property name="BonusCrit" type="int" value="0"/>
+    <property name="BonusDodge" type="int" value="0"/>
+    <property name="BonusHit" type="int" value="0"/>
+    <property name="BossBonus" type="int" value="0"/>
+    <property name="Class" value="Dark Mage"/>
+    <property name="ClassBonusA" type="int" value="0"/>
+    <property name="ClassBonusB" type="int" value="0"/>
+    <property name="ClassPower" type="int" value="3"/>
+    <property name="Consti" type="int" value="8"/>
+    <property name="Defense" type="int" value="2"/>
+    <property name="Health" type="int" value="15"/>
+    <property name="Identifier" value="Enemy 6"/>
+    <property name="InstanceName" value="Dark Mage Enemy"/>
+    <property name="Level" type="int" value="3"/>
+    <property name="Luck" type="int" value="0"/>
+    <property name="Magic" type="int" value="5"/>
+    <property name="MaxHealth" type="int" value="15"/>
+    <property name="Move" type="int" value="4"/>
+    <property name="Name" value="Dark Mage"/>
+    <property name="Res" type="int" value="1"/>
+    <property name="Skill" type="int" value="3"/>
+    <property name="Speed" type="int" value="2"/>
+    <property name="Str" type="int" value="0"/>
     <property name="ThiefBonus" type="int" value="0"/>
     <property name="Weapon" value="Iron Axe"/>
     <property name="aiType" value="Aggresive"/>

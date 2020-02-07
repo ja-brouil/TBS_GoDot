@@ -11,17 +11,17 @@ var eirika
 # Dialogue between the characters
 var dialogue = [
 	# Japanese
-	"ゼト:\n\nお嬢様、私たちはお着きしました。",
-	"エイリーカ:\n\nありがとう、ゼト。",
-	"ゼト:\n\n王国の軍がアルマイリャンの軍と戦闘しているので, この地域が守ることができません。",
-	"ゼト:\n\n報告によると、山賊が近い村を襲っていました。",
-	"エイリーカ:\n\n近い村へ行きましょう。",
+#	"ゼト:\n\nお嬢様、私たちはお着きしました。",
+#	"エイリーカ:\n\nありがとう、ゼト。",
+#	"ゼト:\n\n王国の軍がアルマイリャンの軍と戦闘しているので, この地域が守ることができません。",
+#	"ゼト:\n\n報告によると、山賊が近い村を襲っていました。",
+#	"エイリーカ:\n\n近い村へ行きましょう。",
 	# English
-#	"Seth:\n\nYour highness, we have arrived.",
-#	"Eirika:\n\nThank you Seth.",
-#	"Seth:\n\nWith most of the army engaged with the Almaryans, this areas has largely been left on it's own.",
-#	"Seth:\n\nThere are reports of bandits that are pillaging the area with impunity.",
-#	"Eirika:\n\nLet's check in on the nearby villages.",
+	"Seth:\n\nYour highness, we have arrived.",
+	"Eirika:\n\nThank you Seth.",
+	"Seth:\n\nWith most of the army engaged with the Almaryans, this areas has largely been left on it's own.",
+	"Seth:\n\nThere are reports of bandits that are pillaging the area with impunity.",
+	"Eirika:\n\nLet's check in on the nearby villages.",
 ]
 
 # Set Names for Debug

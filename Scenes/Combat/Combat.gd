@@ -907,6 +907,15 @@ func _on_Return_Pause_timeout():
 	ally_placeholder.queue_free()
 	enemy_placeholder.queue_free()
 	
+	# Remove the orphan nodes
+	# Enemy
+	if BattlefieldInfo.combat_ai_unit.UnitStats.current_health <= 0:
+		BattlefieldInfo.combat_ai_unit.queue_free()
+	
+	# Ally
+	if BattlefieldInfo.combat_player_unit.UnitStats.current_health <= 0:
+		BattlefieldInfo.combat_player_unit.queue_free()
+	
 	# Reset Messaging State and Combat State
 	current_combat_state = wait
 	previous_combat_state = wait
