@@ -200,7 +200,7 @@ func spawn_enemies():
 	
 	# Remove the enemies
 	BattlefieldInfo.enemy_units["Vezarius"].UnitMovementStats.currentTile.occupyingUnit = null
-	BattlefieldInfo.enemy_units["Vezarius"].free()
+	BattlefieldInfo.enemy_units["Vezarius"].queue_free()
 	BattlefieldInfo.enemy_units.erase("Vezarius")
 	
 	# Set new Commander

@@ -3620,7 +3620,7 @@
     <property name="Luck" type="int" value="6"/>
     <property name="Magic" type="int" value="0"/>
     <property name="MaxHealth" type="int" value="17"/>
-    <property name="Move" type="int" value="16"/>
+    <property name="Move" type="int" value="5"/>
     <property name="Name" value="Eirika"/>
     <property name="Res" type="int" value="2"/>
     <property name="Skill" type="int" value="9"/>

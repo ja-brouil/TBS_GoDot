@@ -55,7 +55,7 @@ func processTile(initialTile, unit_movement, moveSteps, unit):
 		# Add tile to allowed movement and set visited status to true
 		unit_movement.allowedMovement.append(tile_to_check[1])
 		tile_to_check[1].isVisited = true
-	
+		
 		# Get the next cost
 		for adjTile in tile_to_check[1].adjCells:
 			var next_cost = tile_to_check[0] - adjTile.movementCost - getPenaltyCost(unit, unit_movement, adjTile)
