@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Scenes/GUI/Hand Cursor/Hand Selector.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/UI/shop/shop bg 2.jpg" type="Texture" id=2]
@@ -6,11 +6,48 @@
 [ext_resource path="res://assets/UI/shop/Anna portrait.png" type="Texture" id=4]
 [ext_resource path="res://assets/UI/shop/Shop Background.png" type="Texture" id=5]
 [ext_resource path="res://assets/font/Action Selector Font.tres" type="DynamicFont" id=6]
+[ext_resource path="res://assets/font/Main Font.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://assets/items/swords/iron_Sword.png" type="Texture" id=8]
+[ext_resource path="res://assets/items/bows/iron bow.png" type="Texture" id=9]
+[ext_resource path="res://assets/items/axes/ironAxe.png" type="Texture" id=10]
+[ext_resource path="res://assets/items/lances/iron_lance_icon.png" type="Texture" id=11]
+[ext_resource path="res://assets/items/staves/heal.png" type="Texture" id=12]
+[ext_resource path="res://assets/items/lances/silverLance.png" type="Texture" id=13]
+[ext_resource path="res://assets/items/tomes/fire.png" type="Texture" id=14]
+[ext_resource path="res://assets/voice/Shop Entrance Greeting.wav" type="AudioStream" id=15]
+[ext_resource path="res://assets/music/Fire Emblem Awakening OST -  44 Merchant Theme.ogg" type="AudioStream" id=16]
+[ext_resource path="res://assets/voice/Come Again.ogg" type="AudioStream" id=17]
+[ext_resource path="res://assets/items/swords/killing_edge_icon.png" type="Texture" id=18]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 7 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Fade"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Shop UI:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0.929412, 0.929412, 0.929412, 1 ) ]
+}
 
 [node name="Shop" type="CanvasLayer"]
 script = ExtResource( 3 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 76.1915, 87.9362 ]
+}
 
 [node name="Shop UI" type="Control" parent="."]
+modulate = Color( 0, 0, 0, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 0.172318
@@ -49,9 +86,12 @@ margin_right = 424.0
 margin_bottom = 115.0
 rect_scale = Vector2( 0.2, 0.2 )
 custom_fonts/font = ExtResource( 6 )
-text = "9999999"
+text = "5000"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Shop Keeper Text Info" type="Label" parent="Shop UI"]
 margin_left = 67.0
@@ -67,8 +107,39 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Shop Greeting" type="AudioStreamPlayer" parent="Shop UI"]
+stream = ExtResource( 15 )
+
+[node name="Shop Music" type="AudioStreamPlayer" parent="Shop UI"]
+stream = ExtResource( 16 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Shop Exit" type="AudioStreamPlayer" parent="Shop UI"]
+stream = ExtResource( 17 )
+
+[node name="ShopList" type="ItemList" parent="Shop UI"]
+margin_left = 61.0
+margin_top = 74.0
+margin_right = 328.0
+margin_bottom = 227.0
+rect_scale = Vector2( 0.5, 0.5 )
+mouse_filter = 2
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+items = [ "Iron Sword  400G", ExtResource( 8 ), false, "Iron Bow  500G", ExtResource( 9 ), false, "Iron Axe  350G", ExtResource( 10 ), false, "Silver Lance  1500G", ExtResource( 13 ), false, "Iron Lance  450G", ExtResource( 11 ), false, "Fire Tome  300G", ExtResource( 14 ), false, "Heal Staff  150G", ExtResource( 12 ), false, "Killing Edge 2000G", ExtResource( 18 ), false ]
+fixed_icon_size = Vector2( 20, 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Hand Selector" parent="." instance=ExtResource( 1 )]
-margin_left = 61.8944
-margin_top = 77.9757
-margin_right = 77.8944
-margin_bottom = 90.9757
+margin_left = 42.0
+margin_top = 75.0
+margin_right = 58.0
+margin_bottom = 88.0
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+anims/Fade = SubResource( 2 )
+[connection signal="item_selected" from="Shop UI/ShopList" to="." method="_on_ShopList_item_selected"]

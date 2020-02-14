@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Shop Entrance Greeting.wav-bf3e0e29e8f64298b41a3b27bcd75cbb.sample"
+
+[deps]
+
+source_file="res://assets/voice/Shop Entrance Greeting.wav"
+dest_files=[ "res://.import/Shop Entrance Greeting.wav-bf3e0e29e8f64298b41a3b27bcd75cbb.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=true
+edit/loop=false
+compress/mode=0
