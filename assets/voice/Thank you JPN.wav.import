@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Thank you JPN.wav-bfafba081b0c606484d13e46131a8a53.sample"
+
+[deps]
+
+source_file="res://assets/voice/Thank you JPN.wav"
+dest_files=[ "res://.import/Thank you JPN.wav-bfafba081b0c606484d13e46131a8a53.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

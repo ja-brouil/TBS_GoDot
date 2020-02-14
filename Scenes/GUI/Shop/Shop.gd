@@ -46,7 +46,8 @@ func _ready():
 	yield($Anim, "animation_finished")
 	
 	# Play Welcome!
-	$"Shop UI/Shop Greeting".play()
+	$"Shop UI/Shop Greeting JPN".play()
+	# $"Shop UI/Shop Greeting".play()
 	
 	# Start
 	start(SHOP_STATE.BUY)
@@ -92,7 +93,8 @@ func _input(event):
 	
 	# Test for exit
 	if Input.is_action_just_pressed("debug"):
-		$"Shop UI/Shop Exit".play()
+		#$"Shop UI/Shop Exit".play()
+		$"Shop UI/Shop Exit JPN Patronage".play()
 		shop_list.grab_focus()
 
 # Whenever an item is selected
