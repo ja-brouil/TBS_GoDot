@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Come again jpn.wav-b9058c2a1aee3bf3a83394e238d54a59.sample"
+
+[deps]
+
+source_file="res://assets/voice/Come again jpn.wav"
+dest_files=[ "res://.import/Come again jpn.wav-b9058c2a1aee3bf3a83394e238d54a59.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/That's dissapointing.wav-65151c0122a65c47d3688eb4f8fe834b.sample"
+
+[deps]
+
+source_file="res://assets/voice/That's dissapointing.wav"
+dest_files=[ "res://.import/That's dissapointing.wav-65151c0122a65c47d3688eb4f8fe834b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

@@ -82,7 +82,7 @@ var victory = false
 var stop_end_of_turn = false
 
 # Money
-var money = 0
+var money = 4000
 
 ##################
 # ALL UI SCREENS #

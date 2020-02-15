@@ -1,0 +1,235 @@
+[gd_scene load_steps=30 format=2]
+
+[ext_resource path="res://assets/font/Main Font.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/font/Action Selector Font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/items/swords/iron_Sword.png" type="Texture" id=3]
+[ext_resource path="res://assets/items/axes/ironAxe.png" type="Texture" id=4]
+[ext_resource path="res://assets/items/staves/heal.png" type="Texture" id=5]
+[ext_resource path="res://assets/items/lances/silverLance.png" type="Texture" id=6]
+[ext_resource path="res://assets/music/Fire Emblem Awakening OST -  44 Merchant Theme.ogg" type="AudioStream" id=7]
+[ext_resource path="res://assets/voice/Shop Entrance Greeting.wav" type="AudioStream" id=8]
+[ext_resource path="res://assets/items/tomes/fire.png" type="Texture" id=9]
+[ext_resource path="res://assets/voice/Welcome JPN.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/voice/Come again jpn.wav" type="AudioStream" id=11]
+[ext_resource path="res://assets/items/bows/iron bow.png" type="Texture" id=12]
+[ext_resource path="res://assets/UI/shop/shop bg 2.jpg" type="Texture" id=13]
+[ext_resource path="res://assets/voice/Thanks for patronage.wav" type="AudioStream" id=14]
+[ext_resource path="res://assets/items/swords/killing_edge_icon.png" type="Texture" id=15]
+[ext_resource path="res://assets/items/lances/iron_lance_icon.png" type="Texture" id=16]
+[ext_resource path="res://Scenes/GUI/Shop/Shop UI.gd" type="Script" id=17]
+[ext_resource path="res://assets/UI/shop/Anna portrait.png" type="Texture" id=18]
+[ext_resource path="res://Scenes/GUI/Hand Cursor/Hand Selector.tscn" type="PackedScene" id=19]
+[ext_resource path="res://assets/voice/Let's go.wav" type="AudioStream" id=20]
+[ext_resource path="res://assets/UI/shop/Shop Background.png" type="Texture" id=21]
+[ext_resource path="res://assets/voice/Choose your weapon.wav" type="AudioStream" id=22]
+[ext_resource path="res://assets/voice/take your time.wav" type="AudioStream" id=23]
+[ext_resource path="res://assets/voice/Can't do that.wav" type="AudioStream" id=24]
+[ext_resource path="res://assets/voice/Not enough money.wav" type="AudioStream" id=25]
+[ext_resource path="res://assets/voice/That's dissapointing.wav" type="AudioStream" id=26]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Fade"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Shop UI:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0.929412, 0.929412, 0.929412, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Text Anim"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Shop UI/Shop Keeper Text Info:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[node name="Shop" type="CanvasLayer"]
+script = ExtResource( 17 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 76.1915, 87.9362 ]
+}
+
+[node name="Shop UI" type="Control" parent="."]
+modulate = Color( 0.929412, 0.929412, 0.929412, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.172318
+margin_right = 0.172318
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Shop Background 2" type="TextureRect" parent="Shop UI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.31493
+margin_top = -0.0495148
+margin_right = 0.314957
+margin_bottom = -0.0495148
+texture = ExtResource( 13 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text Background" type="ColorRect" parent="Shop UI"]
+margin_top = 14.0
+margin_right = 241.0
+margin_bottom = 45.0
+color = Color( 0.682353, 0.564706, 0.482353, 0.286275 )
+
+[node name="Shop Background" type="TextureRect" parent="Shop UI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.31493
+margin_top = -0.0495148
+margin_right = 0.314957
+margin_bottom = -0.0495148
+texture = ExtResource( 21 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Anna BG" type="Sprite" parent="Shop UI"]
+position = Vector2( 32.1354, 32.0645 )
+scale = Vector2( 0.0175747, 0.027647 )
+texture = ExtResource( 13 )
+
+[node name="Anna portrait" type="Sprite" parent="Shop UI"]
+position = Vector2( 32.2636, 32.0759 )
+scale = Vector2( 0.119961, 0.0799835 )
+texture = ExtResource( 18 )
+
+[node name="Money" type="Label" parent="Shop UI"]
+margin_left = 174.0
+margin_top = 51.0
+margin_right = 424.0
+margin_bottom = 115.0
+rect_scale = Vector2( 0.2, 0.2 )
+custom_fonts/font = ExtResource( 2 )
+text = "4000"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Shop Keeper Text Info" type="Label" parent="Shop UI"]
+margin_left = 67.0
+margin_top = 11.0
+margin_right = 929.0
+margin_bottom = 185.0
+rect_scale = Vector2( 0.2, 0.2 )
+custom_fonts/font = ExtResource( 2 )
+text = "いらっしゃいませ！
+Welcome!"
+valign = 1
+percent_visible = 0.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Shop Can\'t do that" type="AudioStreamPlayer" parent="Shop UI"]
+stream = ExtResource( 24 )
+
+[node name="Shop Not enough money" type="AudioStreamPlayer" parent="Shop UI"]
+stream = ExtResource( 25 )
+
+[node name="Shop Greeting" type="AudioStreamPlayer" parent="Shop UI"]
+stream = ExtResource( 8 )
+
+[node name="Shop Select your weapon" type="AudioStreamPlayer" parent="Shop UI"]
+stream = ExtResource( 22 )
+
+[node name="Shop Music" type="AudioStreamPlayer" parent="Shop UI"]
+stream = ExtResource( 7 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Shop Exit" type="AudioStreamPlayer" parent="Shop UI"]
+stream = ExtResource( 11 )
+
+[node name="Shop Greeting JPN" type="AudioStreamPlayer" parent="Shop UI"]
+stream = ExtResource( 10 )
+
+[node name="Shop Exit JPN Patronage" type="AudioStreamPlayer" parent="Shop UI"]
+stream = ExtResource( 14 )
+
+[node name="Shop take your time" type="AudioStreamPlayer" parent="Shop UI"]
+stream = ExtResource( 23 )
+
+[node name="Shop dissapointed" type="AudioStreamPlayer" parent="Shop UI"]
+stream = ExtResource( 26 )
+
+[node name="Shop let\'s go" type="AudioStreamPlayer" parent="Shop UI"]
+stream = ExtResource( 20 )
+
+[node name="ShopList" type="ItemList" parent="Shop UI"]
+margin_left = 61.0
+margin_top = 74.0
+margin_right = 251.0
+margin_bottom = 227.0
+rect_scale = Vector2( 0.5, 0.5 )
+mouse_filter = 2
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+items = [ "Iron Sword", ExtResource( 3 ), false, "Iron Bow", ExtResource( 12 ), false, "Iron Axe", ExtResource( 4 ), false, "Silver Lance ", ExtResource( 6 ), false, "Iron Lance", ExtResource( 16 ), false, "Fire Tome ", ExtResource( 9 ), false, "Heal Staff ", ExtResource( 5 ), false, "Killing Edge", ExtResource( 15 ), false ]
+fixed_icon_size = Vector2( 20, 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShopListPrice" type="ItemList" parent="Shop UI"]
+margin_left = 153.699
+margin_top = 74.0
+margin_right = 246.699
+margin_bottom = 227.0
+rect_scale = Vector2( 0.5, 0.5 )
+mouse_filter = 2
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+items = [ "400G", null, false, "500G", null, false, "350G", null, false, "1500G", null, false, "450G", null, false, "300G", null, false, "150G", null, false, "2000G", null, false ]
+fixed_icon_size = Vector2( 20, 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Hand Confirm" parent="Shop UI" instance=ExtResource( 19 )]
+margin_left = -300.0
+margin_top = -300.0
+margin_right = -284.0
+margin_bottom = -287.0
+
+[node name="Hand Selector" parent="." instance=ExtResource( 19 )]
+margin_left = 42.0
+margin_top = 75.0
+margin_right = 58.0
+margin_bottom = 88.0
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+anims/Fade = SubResource( 2 )
+"anims/Text Anim" = SubResource( 3 )
+[connection signal="item_selected" from="Shop UI/ShopList" to="." method="_on_ShopList_item_selected"]
+[connection signal="item_selected" from="Shop UI/ShopListPrice" to="." method="_on_ShopList_item_selected"]

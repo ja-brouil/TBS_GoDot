@@ -285,8 +285,11 @@ _global_script_class_icons={
 [application]
 
 config/name="Fire Emblem"
+config/description="Fire Emblem Rebuilt with Godot!"
 run/main_scene="res://Scenes/Intro Screen/Intro Screen.tscn"
 config/icon="res://FE Icon.jpg"
+config/auto_accept_quit=50
+config/allowed_rebind=false
 
 [autoload]
 
