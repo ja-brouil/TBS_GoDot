@@ -3,3 +3,12 @@ http://www.feplanet.net/sprites-archive-battle-animations/8/2726
 
 Battle backgrounds
 http://www.feplanet.net/sprites-archive-battle-backgrounds
+
+# For messaging purposes
+Seth@assets/units/cavalier/seth mugshot.png@
+Marcus@assets/units/bandit/bandit mugshot.png@
+Eirika@assets/units/eirika/eirika mugshot.png@
+enemy red sold: assets/units/enemyPortrait/red soldier portrait.png
+Vezarius@assets/units/enemyPortrait/Main Villain MugShot.png@
+Diagur@assets/units/enemyPortrait/Diagur Portrait.png@
+Ephraim Soldiers@assets/units/soldier/soldier_blue_portrait.png@
