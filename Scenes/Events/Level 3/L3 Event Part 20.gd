@@ -4,9 +4,9 @@ class_name L3_Event_Part20
 
 # Dialogue between the characters
 var dialogue = [
-	"Rolod:\n\nHahaha! We've got you now Eirika!",
-	"Rolod:\n\nThat sweet bounty on your head will be ours!",
-	"Rolod:\n\nGet her boys!",
+	"Rolod@assets/units/bandit/bandit mugshot.png@Hahaha! We've got you now Eirika!",
+	"Rolod@assets/units/bandit/bandit mugshot.png@That sweet bounty on your head will be ours!",
+	"Rolod@assets/units/bandit/bandit mugshot.png@Get her boys!",
 ]
 
 func _init():

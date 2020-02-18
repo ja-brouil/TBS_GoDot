@@ -4,8 +4,8 @@ class_name L3_Event_Part30
 
 # Dialogue between the characters
 var dialogue = [
-	"Mage:\n\nShut up you dumb pirates!",
-	"Mage:\n\nYou better capture her alive!"
+	"Mage@assets/units/enemyPortrait/red soldier portrait.png@Shut up you dumb pirates!",
+	"Mage@assets/units/enemyPortrait/red soldier portrait.png@You better capture her alive!"
 ]
 
 func _init():

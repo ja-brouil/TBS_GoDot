@@ -12,19 +12,18 @@ class_name L2_Event_Part1
 
 # Dialogue between the characters
 var dialogue = [
-	"Seth:\n\nYour highness, you shouldn't be outside right now.",
-	"Seth:\n\nI can't guarantee your safety out here. Please head back inside.",
-	"Eirika:\n\nI will be alright Seth. The soldiers are my people after all.",
-	"Eirika:\n\nDo you think father will be able to convince them to finally lay down their arms?",
-	"Seth:\n\nIn all fairness, I truly don't know. His highness is a great king and I trust him to do the right decision.",
-	"Eirika:\n\nYes... I think so too.",
-	"Eirika:\n\nHowever, I can't shake the feeling that we shouldn't be here right now.",
-	"Seth:\n\nMerceus is the safest place we can be right now. It is surrounded by water and high mountains.",
-	"Seth:\n\nIt is not very well known to the outside world and given it's remote location, this is the best place to be right now.",
-	"Seth:\n\nI should check in with the forward guard. Please head back inside your highness.",
-	"Eirika:\n\nI will. Thank you Seth.",
-	"...",
-	"Ephraim Soldier:\n\nAlmyryan soldiers!"
+	"Seth@assets/units/cavalier/seth mugshot.png@Your highness, you shouldn't be outside right now.",
+	"Seth@assets/units/cavalier/seth mugshot.png@I can't guarantee your safety out here. Please head back inside.",
+	"Eirika@assets/units/eirika/eirika mugshot.png@I will be alright Seth. The soldiers are my people after all.",
+	"Eirika@assets/units/eirika/eirika mugshot.png@Do you think father will be able to convince them to finally lay down their arms?",
+	"Seth@assets/units/cavalier/seth mugshot.png@In all fairness, I truly don't know. His highness is a great king and I trust him to do the right decision.",
+	"Eirika@assets/units/eirika/eirika mugshot.png@Yes... I think so too.",
+	"Eirika@assets/units/eirika/eirika mugshot.png@However, I can't shake the feeling that we shouldn't be here right now.",
+	"Seth@assets/units/cavalier/seth mugshot.png@Merceus is the safest place we can be right now. It is surrounded by water and high mountains.",
+	"Seth@assets/units/cavalier/seth mugshot.png@It is not very well known to the outside world and given it's remote location, this is the best place to be right now.",
+	"Seth@assets/units/cavalier/seth mugshot.png@I should check in with the forward guard. Please head back inside your highness.",
+	"Eirika@assets/units/eirika/eirika mugshot.png@I will. Thank you Seth.",
+	"Ephraim Soldiers@assets/units/soldier/soldier_blue_portrait.png@Almyryan soldiers!"
 ]
 
 var eirika

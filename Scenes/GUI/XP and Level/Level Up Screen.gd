@@ -22,6 +22,9 @@ var break_time = 0
 var magic_panel = preload("res://assets/UI/XP and Level/Level Up Panel Mag.png")
 var str_panel = preload("res://assets/UI/XP and Level/Level Up Panel.png")
 
+# Prevent 0 upgrades
+var number_of_upgrades = 0
+
 # Prepare random function
 func _ready():
 	randomize()
@@ -130,6 +133,7 @@ func start():
 	def_up = 0
 	res_up = 0
 	consti_up = 0
+	number_of_upgrades = 0
 
 	break_time = 0
 	
@@ -174,8 +178,8 @@ func play_sound_and_graphic():
 func get_stat_upgrades():
 	var unit_stat = BattlefieldInfo.combat_player_unit.UnitStats
 	level_up = 1
+	
 	str_up = int(hit_occured(unit_stat.str_chance))
-
 	skill_up = int(hit_occured(unit_stat.skill_chance))
 	speed_up = int(hit_occured(unit_stat.speed_chance))
 	magic_up = int(hit_occured(unit_stat.magic_chance))
@@ -183,6 +187,13 @@ func get_stat_upgrades():
 	def_up = int(hit_occured(unit_stat.def_chance))
 	consti_up = int(hit_occured(unit_stat.consti_chance))
 	max_health_up = int(hit_occured(unit_stat.max_health_chance))
+	
+	# Check if we have any upgrades
+	number_of_upgrades = str_up + skill_up + speed_up + magic_up + luck_up + def_up + consti_up + max_health_up
+	
+	# Do we have nothing? Always give HP if 0
+	if number_of_upgrades == 0:
+		max_health_up = 1
 
 func hit_occured(chance):
 	if chance <= 0:

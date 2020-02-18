@@ -4,9 +4,9 @@ class_name L3_Event_Part10
 
 # Dialogue between the characters
 var dialogue = [
-	"Seth:\n\nDamn it! These Almaryans knew the only escape route as by the Northern Sea.",
-	"Eirika:\n\nWe can't afford to waste time here. Let's get rid of them and hurry on the capital city.",
-	"Eirika:\n\nEveryone, watch out for their dark mages!"
+	"Seth@assets/units/cavalier/seth mugshot.png@Damn it! These Almaryans knew the only escape route as by the Northern Sea.",
+	"Eirika@assets/units/eirika/eirika mugshot.png@We can't afford to waste time here. Let's get rid of them and hurry on the capital city.",
+	"Eirika@assets/units/eirika/eirika mugshot.png@Everyone, watch out for their dark mages!"
 ]
 
 func _init():

@@ -16,10 +16,10 @@ var dialogue = [
 #	"マークス:\n\nエイリーカの首を持って来てくれ！行け！"
 	
 	# English
-	"Bandit Leader:\n\nWhat do we have here?!?",
-	"Bandit Leader:\n\nA princess and her knight!",
-	"Bandit Leader:\n\nThe Almaryans will pay me handsomely for your head!",
-	"Bandit Leader:\n\nGet her boys! 20 extra silver to whoever brings me her head, 40 if alive!"
+	"Marcus@assets/units/bandit/bandit mugshot.png@What do we have here?!?",
+	"Marcus@assets/units/bandit/bandit mugshot.png@A princess and her knight!",
+	"Marcus@assets/units/bandit/bandit mugshot.png@The Almaryans will pay me handsomely for your head!",
+	"Marcus@assets/units/bandit/bandit mugshot.png@Get her boys! 20 extra silver to whoever brings me her head, 40 if alive!"
 ]
 
 # Set Names for Debug

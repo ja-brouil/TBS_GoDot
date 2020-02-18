@@ -6,18 +6,18 @@ class_name L2_Event_Mid_20
 signal messenger_spawned
 
 var dialogue = [
-		"Diagur:\n\nGeneral Vezarius!",
-		"Verarius:\n\nAh Diagur. I was wondering when you would show up.",
-		"Diagur:\n\nI have an important message for you. You are needed back at the base camp.",
-		"Vezarius:\n\nWhat! I just started here.",
-		"Diagur:\n\nI come here with a direct order from the Emperor. I am to take over this operation.",
-		"Diagur:\n\nHis Majesty has requested your presence immediately. You are needed for the next phase of the plan.",
-		"Vezarius:\n\nHmm...",
-		"Vezarius:\n\nVery well... I take my leave and leave this to you.",
-		"Vezarius:\n\nYou better not fail his majesty. You know what comes to those who fail their orders.",
-		"Diagur:\n\nI will succeed in capturing our troublesome princess!",
-		"Diagur:\n\nNow get out of here.",
-		"Diagur:\n\nCome forth my men! Bring me Eirika's head!"
+		"Diagur@assets/units/enemyPortrait/Diagur Portrait.png@General Vezarius!",
+		"Vezarius@assets/units/enemyPortrait/Main Villain MugShot.png@Ah Diagur. I was wondering when you would show up.",
+		"Diagur@assets/units/enemyPortrait/Diagur Portrait.png@I have an important message for you. You are needed back at the base camp.",
+		"Vezarius@assets/units/enemyPortrait/Main Villain MugShot.png@What! I just started here.",
+		"Diagur@assets/units/enemyPortrait/Diagur Portrait.png@I come here with a direct order from the Emperor. I am to take over this operation.",
+		"Diagur@assets/units/enemyPortrait/Diagur Portrait.png@His Majesty has requested your presence immediately. You are needed for the next phase of the plan.",
+		"Vezarius@assets/units/enemyPortrait/Main Villain MugShot.png@Hmm...",
+		"Vezarius@assets/units/enemyPortrait/Main Villain MugShot.png@Very well... I take my leave and leave this to you.",
+		"Vezarius@assets/units/enemyPortrait/Main Villain MugShot.png@You better not fail his majesty. You know what comes to those who fail their orders.",
+		"Diagur@assets/units/enemyPortrait/Diagur Portrait.png@I will succeed in capturing our troublesome princess!",
+		"Diagur@assets/units/enemyPortrait/Diagur Portrait.png@Now get out of here.",
+		"Diagur@assets/units/enemyPortrait/Diagur Portrait.png@Come forth my men! Bring me Eirika's head!"
 ]
 
 # Actors

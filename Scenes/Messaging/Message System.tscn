@@ -1,11 +1,11 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/Messaging/Message System.gd" type="Script" id=1]
-[ext_resource path="res://assets/Dialogue/dialogueBox.png" type="Texture" id=2]
-[ext_resource path="res://assets/Dialogue/arrowDialogue.png" type="Texture" id=3]
+[ext_resource path="res://assets/Dialogue/dialogue Box 3H.png" type="Texture" id=2]
+[ext_resource path="res://assets/Dialogue/arrow 2.png" type="Texture" id=3]
 [ext_resource path="res://assets/font/Main Font.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://assets/sound/message/Message.wav" type="AudioStream" id=5]
-[ext_resource path="res://assets/sound/cursor/accept.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/units/eirika/eirika mugshot.png" type="Texture" id=7]
+[ext_resource path="res://assets/font/Font_Resource.tres" type="DynamicFont" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Up and Down"
@@ -20,17 +20,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 70, 20 ), Vector2( 70, 18.433 ) ]
+"values": [ Vector2( 411.755, 74.0046 ), Vector2( 411.755, 80.2358 ) ]
 }
 
-[sub_resource type="DynamicFont" id=2]
-size = 50
-outline_color = Color( 0, 0, 0, 1 )
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 4 )
-
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "Scroll"
 length = 2.2
 tracks/0/type = "value"
@@ -46,19 +39,35 @@ tracks/0/keys = {
 "values": [ 0.062, 1.0 ]
 }
 
+[sub_resource type="DynamicFont" id=3]
+size = 50
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+extra_spacing_top = 1
+extra_spacing_bottom = 1
+extra_spacing_char = 2
+font_data = ExtResource( 4 )
+
 [node name="Message System" type="CanvasLayer"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 103.002, 151.243 ],
+"_edit_vertical_guides_": [ 33.9794, 210.249 ]
+}
 
 [node name="Dialogue Box Texture" type="Sprite" parent="."]
 visible = false
-position = Vector2( 122, 127 )
+position = Vector2( 121.773, 123.833 )
+scale = Vector2( 0.153739, 0.243225 )
 texture = ExtResource( 2 )
 __meta__ = {
-"_edit_group_": true
+"_edit_lock_": true
 }
 
 [node name="Arrow Texture" type="Sprite" parent="Dialogue Box Texture"]
-position = Vector2( 70, 18.9949 )
+position = Vector2( 411.755, 75.2871 )
+scale = Vector2( 1.12519, 0.686091 )
 texture = ExtResource( 3 )
 
 [node name="Anim" type="AnimationPlayer" parent="Dialogue Box Texture"]
@@ -66,27 +75,47 @@ playback_speed = 1.25
 "anims/Up and Down" = SubResource( 1 )
 
 [node name="Dialogue Text" type="Label" parent="Dialogue Box Texture"]
-margin_left = -81.0
-margin_top = -20.0
-margin_right = 1175.0
-margin_bottom = 291.0
-rect_scale = Vector2( 0.13, 0.13 )
-custom_fonts/font = SubResource( 2 )
+margin_left = -442.0
+margin_top = -34.0
+margin_right = 463.0
+margin_bottom = 98.0
+custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.0823529, 0.0705882, 0.0705882, 1 )
-text = "Eirika:
-
-This is a test of what this will look like. Remember that this will automatically wrap as needed. The max amount of characters is this."
+text = "This is a test of what this will look like. Remember that this will automatically wrap as needed. The max amount of characters is this."
+valign = 1
 autowrap = true
-percent_visible = 0.062
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Dialogue Scroll" type="AnimationPlayer" parent="Dialogue Box Texture/Dialogue Text"]
 playback_speed = 1.75
-anims/Scroll = SubResource( 3 )
+anims/Scroll = SubResource( 2 )
 
-[node name="Dialogue Sound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 5 )
-volume_db = -11.954
+[node name="Character Name" type="Label" parent="Dialogue Box Texture"]
+margin_left = -511.0
+margin_top = -83.0
+margin_right = -43.0
+margin_bottom = -28.0
+rect_scale = Vector2( 0.6, 0.6 )
+custom_fonts/font = SubResource( 3 )
+text = "Eirika"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Accept" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 6 )
+[node name="Portrait" type="TextureRect" parent="Dialogue Box Texture"]
+visible = false
+margin_left = -494.849
+margin_top = -244.716
+margin_right = -244.849
+margin_bottom = -88.7156
+texture = ExtResource( 7 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="animation_finished" from="Dialogue Box Texture/Dialogue Text/Dialogue Scroll" to="." method="_on_Dialogue_Scroll_animation_finished"]

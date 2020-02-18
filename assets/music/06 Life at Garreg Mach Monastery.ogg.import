@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/06 Life at Garreg Mach Monastery.ogg-bed21e65e17c7938dea80044f5af438a.oggstr"
+
+[deps]
+
+source_file="res://assets/music/06 Life at Garreg Mach Monastery.ogg"
+dest_files=[ "res://.import/06 Life at Garreg Mach Monastery.ogg-bed21e65e17c7938dea80044f5af438a.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

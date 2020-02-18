@@ -5,8 +5,8 @@ class_name L2_Event_Mid_10
 # Move Vez back to original position and start spawning reinforcements
 
 var dialogue = [
-		"Vezarius:\n\nHmph, I didn't expect them to put up this much of a fight.",
-		"Vezarius:\n\nWe are going to reinforcements for this."
+		"Vezarius@assets/units/enemyPortrait/Main Villain MugShot.png@Hmph, I didn't expect them to put up this much of a fight.",
+		"Vezarius@assets/units/enemyPortrait/Main Villain MugShot.png@We are going to reinforcements for this."
 ]
 
 # Actors

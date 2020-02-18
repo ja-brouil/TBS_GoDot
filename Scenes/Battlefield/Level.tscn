@@ -69,9 +69,9 @@ position = Vector2( 0.552368, 0 )
 
 [node name="Damage Preview" parent="." instance=ExtResource( 12 )]
 
-[node name="Healing Preview" parent="." instance=ExtResource( 13 )]
-
 [node name="Message System" parent="." instance=ExtResource( 14 )]
+
+[node name="Healing Preview" parent="." instance=ExtResource( 13 )]
 
 [node name="Item Screen" parent="." instance=ExtResource( 15 )]
 

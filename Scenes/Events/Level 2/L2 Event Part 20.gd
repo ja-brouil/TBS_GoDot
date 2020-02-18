@@ -11,10 +11,10 @@ class_name L2_Event_Part2
 
 # Dialogue between the characters
 var dialogue = [
-	"General Vezarius:\n\nAh, my dear Eirika.",
-	"General Vezarius:\n\nYour father thought it would have been safe to send you to Castle Merceus.",
-	"General Vezarius:\n\nThere is no escaping now!",
-	"General Vezarius:\n\nI have come to collect you and deliver to you to the Emperor!"
+	"Vezarius@assets/units/enemyPortrait/Main Villain MugShot.png@Ah, my dear Eirika.",
+	"Vezarius@assets/units/enemyPortrait/Main Villain MugShot.png@Your father thought it would have been safe to send you to Castle Merceus.",
+	"Vezarius@assets/units/enemyPortrait/Main Villain MugShot.png@There is no escaping now!",
+	"Vezarius@assets/units/enemyPortrait/Main Villain MugShot.png@I have come to collect you and deliver to you to the Emperor!"
 ]
 
 # Move these actors and combat

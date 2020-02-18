@@ -12,12 +12,12 @@ class_name L2_Event_Part05
 
 # Dialogue between the characters
 var dialogue = [
-	"Seth:\n\nHead down south across the river and do a reconnaissance report. Keep an eye out for any suspicious activity.",
-	"Seth:\n\nThe weather is terrible tonight and our visibility from here is not great.",
-	"Seth:\n\nWe should be secure in this location while the negotiations are on-going however...",
-	"Seth:\n\nI am not taking any chances. Are we clear?",
-	"Ephraim Soldiers:\n\nYes knight commander!",
-	"Seth:\n\nDismissed."
+	"Seth@assets/units/cavalier/seth mugshot.png@Head down south across the river and do a reconnaissance report. Keep an eye out for any suspicious activity.",
+	"Seth@assets/units/cavalier/seth mugshot.png@The weather is terrible tonight and our visibility from here is not great.",
+	"Seth@assets/units/cavalier/seth mugshot.png@We should be secure in this location while the negotiations are on-going however...",
+	"Seth@assets/units/cavalier/seth mugshot.png@I am not taking any chances. Are we clear?",
+	"Ephraim Soldiers@assets/units/soldier/soldier_blue_portrait.png@Yes knight commander!",
+	"Seth@assets/units/cavalier/seth mugshot.png@Dismissed."
 ]
 
 var move_actor_3

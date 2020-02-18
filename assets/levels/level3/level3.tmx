@@ -2207,8 +2207,8 @@
  <objectgroup name="Enemies">
   <object id="358" x="192" y="48" width="16" height="16">
    <properties>
-    <property name="After_Battle" value="まさか。。。俺は倒された。。。"/>
-    <property name="Before_Battle" value="お前はもう死んでいる！"/>
+    <property name="After_Battle" value="Marcus@assets/units/bandit/bandit mugshot.png@まさか。。。俺は倒された。。。"/>
+    <property name="Before_Battle" value="Marcus@assets/units/bandit/bandit mugshot.png@お前はもう死んでいる！"/>
     <property name="BonusCrit" type="int" value="10"/>
     <property name="BonusDodge" type="int" value="5"/>
     <property name="BonusHit" type="int" value="5"/>

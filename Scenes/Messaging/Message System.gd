@@ -3,13 +3,10 @@ extends CanvasLayer
 class_name Messaging_System
 # This is for in game cinematics ONLY Use the other one for portraits
 
-
-# Final position for the arrow
-const ARROW_FINAL_POSITION = Vector2(70,19)
-
 # Top/Bottom position
 const BOTTOM = Vector2(122,127)
-const TOP = Vector2(122,28)
+# const TOP = Vector2(122,28)
+const TOP = Vector2(122,127)
 
 # Max letters per dialogue | Use Calculator function to get the length of a text
 const MAX_LETTERS = 147
@@ -24,18 +21,18 @@ var text_queue = []
 # We are done processing text
 signal no_more_text
 
+# Node access
+onready var portrait = $"Dialogue Box Texture/Portrait"
+onready var char_name = $"Dialogue Box Texture/Character Name"
+
 func _ready():
 	BattlefieldInfo.message_system = self
 
-
 func start(text_queue):
-	self.text_queue = text_queue
+	self.text_queue = parse(text_queue)
 	
 	# Grab first one and scroll and set to input
-	$"Dialogue Box Texture/Dialogue Text".percent_visible = 0
-	$"Dialogue Box Texture/Dialogue Text".text = text_queue.pop_front()
-	$"Dialogue Box Texture/Dialogue Text/Dialogue Scroll".play("Scroll")
-	$"Dialogue Box Texture/Anim".play("Up and Down")
+	next_line(self.text_queue.pop_front())
 	
 	# Turn on
 	turn_on()
@@ -52,7 +49,6 @@ func _input(event):
 				# Stop moving the arrow and set the new position
 				if text_queue.size() == 0:
 					$"Dialogue Box Texture/Anim".stop(true)
-					$"Dialogue Box Texture/Arrow Texture".position = ARROW_FINAL_POSITION
 				
 				# Stop the scroll and set it to max visiblity
 				if $"Dialogue Box Texture/Dialogue Text/Dialogue Scroll".is_playing():
@@ -72,9 +68,7 @@ func _input(event):
 					
 				else:
 					# Grab first one and scroll and set to input
-					$"Dialogue Box Texture/Dialogue Text".percent_visible = 0
-					$"Dialogue Box Texture/Dialogue Text".text = text_queue.pop_front()
-					$"Dialogue Box Texture/Dialogue Text/Dialogue Scroll".play("Scroll")
+					next_line(text_queue.pop_front())
 					
 					# Back to input
 					current_state = input
@@ -93,12 +87,51 @@ func turn_off():
 func set_position(new_position):
 	$"Dialogue Box Texture".position = new_position
 
+# Parse the text and store into an array
+func parse(text_line):
+	var parsed_array = []
+	for text_string in text_line:
+		var array_line = text_string.split("@")
+		parsed_array.append(array_line)
+	return parsed_array
+
+func next_line(text_line):
+	# Only 1 line = narrator
+	if text_line.size() == 1:
+		# Set Text
+		$"Dialogue Box Texture/Dialogue Text".text = text_line[0]
+		
+		# Disable the portrait
+		portrait.visible = false
+		
+		# Set name to some default
+		char_name.text = " "
+	else:
+		# Set Text
+		$"Dialogue Box Texture/Dialogue Text".text = text_line[2]
+		
+		# Set portrait
+		var n_portrait = load(str("res://",text_line[1]))
+		portrait.texture = n_portrait
+		portrait.visible = true
+		
+		# Set name
+		char_name.text = text_line[0]
+	
+	# Always  happens
+	$"Dialogue Box Texture/Dialogue Text".percent_visible = 0
+	$"Dialogue Box Texture/Dialogue Text/Dialogue Scroll".play("Scroll")
+	$"Dialogue Box Texture/Anim".play("Up and Down")
+
 ### Test ####
 func test():
 	# Test
-	var test_queue = [ "Eirika:\nThis is a test of what this will look like. Remember that this will automatically wrap as needed. The max amount of characters is this.",  
-	"Eirika:\nThis is a test of what this will look like. Remember that this will automatically wrap as needed. The max amount of characters is this.",  \
-	"Eirika:\nThis is a test of what this will look like. Remember that this will automatically wrap as needed. The max amount of characters is this.",  \
-	"Eirika:\nThis is a test of what this will look like. Remember that this will automatically wrap as needed. The max amount of characters is this."]
+	var test_queue = [ "Eirika @assets/units/eirika/eirika mugshot.png@This is a test of what this will look like. Remember that this will automatically wrap as needed. The max amount of characters is this.",  
+	"Anna @assets/UI/shop/Anna portrait.png@Oh hello there! I'm Anna!",
+	"Anna @assets/UI/shop/Anna portrait.png@Let's suppose you have the same portrait twice in a row. Does this leak memory?",
+	"Okay well, now you have no portrait and no name. Did this crash the game?",
+	"Seth @assets/units/cavalier/seth mugshot.png@Hello, we now have a portrait again and a new name!",
+	"Seth @assets/units/cavalier/seth mugshot.png@Isn't James the best programmer in the world?"
+	]
 	
 	start(test_queue)

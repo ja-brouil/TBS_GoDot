@@ -24,12 +24,12 @@ var dialogue = [
 #	"ゼト:\n\nエイリーカの父親に娘を守るのを約束致しました。危なすぎる場合は、逃げて。その命令は私のだけです。",
 #	"エイリーカ:\n\nわかりました。皆、行きましょう！"
 	# English
-	"Seth:\n\nThose bastards! Attacking innocent townsfolk!",
-	"Seth:\n\nThere are Almaryan soldiers that are helping them as well!",
-	"Eirika:\n\nSeth! They have already destroyed a village!",
-	"Eirika:\n\nWe have to stop them before they can do anymore damage to the other villages!",
-	"Seth:\n\nI will hold the front line. If you get injured, you are to fall back immediately.",
-	"Eirika:\n\nI understand. Let's go!",
+	"Seth@assets/units/cavalier/seth mugshot.png@Those bastards! Attacking innocent townsfolk!",
+	"Seth@assets/units/cavalier/seth mugshot.png@There are Almaryan soldiers that are helping them as well!",
+	"Eirika@assets/units/eirika/eirika mugshot.png@Seth! They have already destroyed a village!",
+	"Eirika@assets/units/eirika/eirika mugshot.png@We have to stop them before they can do anymore damage to the other villages!",
+	"Seth@assets/units/cavalier/seth mugshot.png@I will hold the front line. If you get injured, you are to fall back immediately.",
+	"Eirika@assets/units/eirika/eirika mugshot.png@I understand. Let's go!",
 ]
 
 # Set Names for Debug
