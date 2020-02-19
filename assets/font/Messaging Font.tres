@@ -1,0 +1,11 @@
+[gd_resource type="DynamicFont" load_steps=2 format=2]
+
+[sub_resource type="DynamicFontData" id=4]
+font_path = "res://assets/font/Main Font.ttf"
+
+[resource]
+size = 50
+use_mipmaps = true
+use_filter = true
+extra_spacing_char = 1
+font_data = SubResource( 4 )

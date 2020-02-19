@@ -99,7 +99,7 @@ func next_line(text_line):
 	# Only 1 line = narrator
 	if text_line.size() == 1:
 		# Set Text
-		$"Dialogue Box Texture/Dialogue Text".text = text_line[0]
+		$"Dialogue Box Texture/Dialogue Text".bbcode_text = text_line[0]
 		
 		# Disable the portrait
 		portrait.visible = false
@@ -108,7 +108,7 @@ func next_line(text_line):
 		char_name.text = " "
 	else:
 		# Set Text
-		$"Dialogue Box Texture/Dialogue Text".text = text_line[2]
+		$"Dialogue Box Texture/Dialogue Text".bbcode_text = text_line[2]
 		
 		# Set portrait
 		var n_portrait = load(str("res://",text_line[1]))
@@ -127,8 +127,8 @@ func next_line(text_line):
 func test():
 	# Test
 	var test_queue = [ "Eirika @assets/units/eirika/eirika mugshot.png@This is a test of what this will look like. Remember that this will automatically wrap as needed. The max amount of characters is this.",  
-	"Anna @assets/UI/shop/Anna portrait.png@Oh hello there! I'm Anna!",
-	"Anna @assets/UI/shop/Anna portrait.png@Let's suppose you have the same portrait twice in a row. Does this leak memory?",
+	"Anna @assets/UI/shop/Anna portrait.png@Oh hello there! I'm [b]Anna[/b]!",
+	"Anna @assets/UI/shop/Anna portrait.png@Let's suppose you have the same portrait twice in a row. [wave amp=15 freq=20]Does this leak memory?[/wave]",
 	"Okay well, now you have no portrait and no name. Did this crash the game?",
 	"Seth @assets/units/cavalier/seth mugshot.png@Hello, we now have a portrait again and a new name!",
 	"Seth @assets/units/cavalier/seth mugshot.png@Isn't James the best programmer in the world?"
