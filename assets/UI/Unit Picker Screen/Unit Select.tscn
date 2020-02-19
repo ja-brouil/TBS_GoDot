@@ -54,10 +54,12 @@ margin_bottom = 160.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color_selected = Color( 0.117647, 0.823529, 0.0784314, 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-items = [ "Eirika", ExtResource( 1 ), true, "Seth", ExtResource( 4 ), false, "Ephranim Soldier", ExtResource( 1 ), false, "Item 3", ExtResource( 1 ), false, "Item 4", ExtResource( 4 ), false, "Item 5", ExtResource( 1 ), false, "Item 6", ExtResource( 4 ), false, "Item 7", ExtResource( 1 ), false, "Item 8", ExtResource( 4 ), false, "Item 9", ExtResource( 1 ), false ]
+items = [ "Eirika", ExtResource( 1 ), false, "Seth", ExtResource( 4 ), false, "Ephranim Soldier", ExtResource( 1 ), false, "Item 3", ExtResource( 1 ), false, "Item 4", ExtResource( 4 ), false, "Item 5", ExtResource( 1 ), false, "Item 6", ExtResource( 4 ), false, "Item 7", ExtResource( 1 ), false, "Item 8", ExtResource( 4 ), false, "Item 9", ExtResource( 1 ), false ]
+select_mode = 1
 max_columns = 2
 same_column_width = true
 fixed_icon_size = Vector2( 15, 15 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="item_selected" from="Unit List" to="." method="_on_Unit_List_item_selected"]
