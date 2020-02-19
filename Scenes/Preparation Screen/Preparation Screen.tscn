@@ -7,16 +7,9 @@
 [ext_resource path="res://assets/music/Swift As Wind.wav" type="AudioStream" id=5]
 [ext_resource path="res://assets/music/Fierce as fire.wav" type="AudioStream" id=6]
 [ext_resource path="res://assets/sound/transition/Chapter Start.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/font/Preparation Screen Item List Font.tres" type="DynamicFont" id=8]
 
 [sub_resource type="DynamicFont" id=1]
-size = 20
-outline_size = 1
-outline_color = Color( 0.411765, 0.321569, 0.321569, 1 )
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 3 )
-
-[sub_resource type="DynamicFont" id=2]
 size = 20
 outline_size = 1
 outline_color = Color( 0.411765, 0.321569, 0.321569, 1 )
@@ -105,15 +98,17 @@ tracks/2/keys = {
 [node name="Preparation Screen" type="CanvasLayer"]
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_horizontal_guides_": [ 124.407, 107.396 ]
+"_edit_horizontal_guides_": [ 124.407, 107.396, 55.1034, 137.465 ],
+"_edit_vertical_guides_": [ 86.5171, 227.965 ]
 }
 
 [node name="Prep Screen Control" type="Control" parent="."]
-editor/display_folded = true
 visible = false
-modulate = Color( 0, 0, 0, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Background" type="TextureRect" parent="Prep Screen Control"]
 modulate = Color( 0.941176, 0.94902, 1, 1 )
@@ -142,7 +137,6 @@ __meta__ = {
 }
 
 [node name="Side Panel" type="Control" parent="Prep Screen Control"]
-editor/display_folded = true
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
@@ -155,7 +149,7 @@ margin_top = 57.0
 margin_right = 177.0
 margin_bottom = 98.0
 rect_scale = Vector2( 0.4, 0.4 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = ExtResource( 8 )
 text = "Select Units"
 align = 1
 valign = 1
@@ -166,7 +160,7 @@ margin_top = 74.0
 margin_right = 178.0
 margin_bottom = 116.0
 rect_scale = Vector2( 0.4, 0.4 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = ExtResource( 8 )
 text = "Inventory"
 align = 1
 valign = 1
@@ -177,7 +171,7 @@ margin_top = 91.0
 margin_right = 177.0
 margin_bottom = 131.0
 rect_scale = Vector2( 0.4, 0.4 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = ExtResource( 8 )
 text = "View Map"
 align = 1
 valign = 1
@@ -188,7 +182,7 @@ margin_top = 108.0
 margin_right = 176.0
 margin_bottom = 149.0
 rect_scale = Vector2( 0.4, 0.4 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = ExtResource( 8 )
 text = "Marketplace"
 align = 1
 valign = 1
@@ -199,7 +193,7 @@ margin_top = 125.0
 margin_right = 177.0
 margin_bottom = 156.0
 rect_scale = Vector2( 0.4, 0.4 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = ExtResource( 8 )
 text = "Save"
 align = 1
 valign = 1
@@ -213,14 +207,17 @@ margin_bottom = 70.8357
 [node name="Side Panel Text" type="Label" parent="Prep Screen Control"]
 margin_left = 90.0
 margin_top = 58.0
-margin_right = 438.0
-margin_bottom = 245.0
+margin_right = 430.0
+margin_bottom = 249.0
 rect_scale = Vector2( 0.4, 0.4 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = ExtResource( 8 )
 text = "Select which units to send in this battle. The amount of units you can pick is limited and differs by chapter."
 align = 3
 valign = 1
 autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Chapter Title Background" type="ColorRect" parent="Prep Screen Control"]
 margin_left = 160.0

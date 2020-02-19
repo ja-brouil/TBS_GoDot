@@ -85,6 +85,12 @@ var stop_end_of_turn = false
 var money = 4000
 
 ##################
+# DATABASES #
+##################
+
+var item_database
+
+##################
 # ALL UI SCREENS #
 ##################
 
@@ -154,6 +160,9 @@ func _ready():
 	
 	# Player sort
 	y_sort_player_party = $YSort
+	
+	# Databases
+	item_database = ALL_ITEMS_REF.new()
 
 # Run Systems
 func _process(delta):

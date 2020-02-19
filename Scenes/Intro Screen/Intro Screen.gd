@@ -10,6 +10,7 @@ var options = ["New Game", "Load Game", "Options Screen"]
 var current_option
 var current_option_number = 0
 
+
 func _ready():
 	# Start music
 	$"Intro Song".play(0)

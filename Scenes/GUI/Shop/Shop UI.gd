@@ -46,12 +46,16 @@ const browsing = "Anything you like?\nお手伝いしましょうか？"
 const not_enough_money = "You don't have enough money!\n足りないみたいです。"
 const inventory_full = "Your inventory is full!\nインベントリーが一杯ですね"
 const thank_you = "Thank you for your patronage!\n毎度ありがとうございました！"
+const thanks_for_coming = "Come back soon!また来てちょうだいね！"
 
 # Debug Test variables
 var unit_inventory_space = 5
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	# Disable input
+	set_process_input(false)
+	
 	# Set selected item to the first one in the list
 	current_index = 0
 	shop_list.select(current_index)
@@ -72,27 +76,14 @@ func _ready():
 	# Set Hand
 	hand_selector.rect_position = STARTING_HAND_POSITION
 	
-	# Play Fade in
-	$"Shop UI/Shop Music".play()
-	$Anim.play("Fade")
-	yield($Anim, "animation_finished")
-	
-	# Play Welcome!
-	$"Shop UI/Shop Greeting JPN".play()
-	# $"Shop UI/Shop Greeting".play()
-	
-	# Set text anim
-	shop_text.percent_visible = 0
-	anim.play("Text Anim")
-	
-	# Start
+	# Test start
 	start(SHOP_STATE.BUY)
 
 func sell_item():
 	# Remove item from the unit's inventory
 	
 	# Increase gold amount by item's worth
-	pass
+	pass 
 
 func buy_item(index):
 	# Set confirm buy back to 0
@@ -178,10 +169,28 @@ func start(shop_state):
 	
 	# Set money
 	$"Shop UI/Money".text = str(BattlefieldInfo.money)
+	
+	# Play Fade in
+	$"Shop UI/Shop Music".play()
+	$Anim.play("Fade")
+	yield($Anim, "animation_finished")
+	
+	# Play Welcome!
+	$"Shop UI/Shop Greeting JPN".play()
+	# $"Shop UI/Shop Greeting".play()
+	
+	# Set text anim
+	shop_text.percent_visible = 0
+	anim.play("Text Anim")
+	
+	# Allow input
+	set_process_input(true)
 
 func exit():
-	# Play Goodbye
-	pass
+	# Disallow input
+	set_process_input(false)
+	
+	#　Play goodbye
 
 func _input(event):
 	# Get State
@@ -190,7 +199,7 @@ func _input(event):
 			# Accept button
 			if Input.is_action_just_pressed("ui_accept"):
 				# Play are you sure?
-				$"Shop UI/Shop Select your weapon".play()
+				$"Shop UI/Shop is that okay".play()
 				# Set new text
 				set_process_input(false)
 				shop_text.percent_visible = 0
@@ -245,7 +254,7 @@ func _input(event):
 			if Input.is_action_just_pressed("ui_cancel"):
 				hand_confirm.get_node("Cancel").play()
 				# Cancel and go back
-				$"Shop UI/Shop take your time".play()
+				$"Shop UI/Shop Select your weapon".play()
 				# Send the hand back
 				hand_confirm.rect_position = Vector2(-300,-300)
 				# back to the Buy state

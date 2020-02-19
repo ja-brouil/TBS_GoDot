@@ -22,10 +22,10 @@
 [ext_resource path="res://assets/voice/Let's go.wav" type="AudioStream" id=20]
 [ext_resource path="res://assets/UI/shop/Shop Background.png" type="Texture" id=21]
 [ext_resource path="res://assets/voice/Choose your weapon.wav" type="AudioStream" id=22]
-[ext_resource path="res://assets/voice/take your time.wav" type="AudioStream" id=23]
 [ext_resource path="res://assets/voice/Can't do that.wav" type="AudioStream" id=24]
 [ext_resource path="res://assets/voice/Not enough money.wav" type="AudioStream" id=25]
 [ext_resource path="res://assets/voice/That's dissapointing.wav" type="AudioStream" id=26]
+[ext_resource path="res://assets/voice/is that okay.wav" type="AudioStream" id=27]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -177,14 +177,14 @@ stream = ExtResource( 10 )
 [node name="Shop Exit JPN Patronage" type="AudioStreamPlayer" parent="Shop UI"]
 stream = ExtResource( 14 )
 
-[node name="Shop take your time" type="AudioStreamPlayer" parent="Shop UI"]
-stream = ExtResource( 23 )
-
 [node name="Shop dissapointed" type="AudioStreamPlayer" parent="Shop UI"]
 stream = ExtResource( 26 )
 
 [node name="Shop let\'s go" type="AudioStreamPlayer" parent="Shop UI"]
 stream = ExtResource( 20 )
+
+[node name="Shop is that okay" type="AudioStreamPlayer" parent="Shop UI"]
+stream = ExtResource( 27 )
 
 [node name="ShopList" type="ItemList" parent="Shop UI"]
 margin_left = 61.0

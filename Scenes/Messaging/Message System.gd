@@ -27,6 +27,7 @@ onready var char_name = $"Dialogue Box Texture/Character Name"
 
 func _ready():
 	BattlefieldInfo.message_system = self
+	# test()
 
 func start(text_queue):
 	self.text_queue = parse(text_queue)
@@ -131,7 +132,7 @@ func test():
 	"Anna @assets/UI/shop/Anna portrait.png@Let's suppose you have the same portrait twice in a row. [wave amp=15 freq=20]Does this leak memory?[/wave]",
 	"Okay well, now you have no portrait and no name. Did this crash the game?",
 	"Seth @assets/units/cavalier/seth mugshot.png@Hello, we now have a portrait again and a new name!",
-	"Seth @assets/units/cavalier/seth mugshot.png@Isn't James the best programmer in the world?"
+	"Seth @assets/units/cavalier/seth mugshot.png@Isn't [color=red]James[/color] the [s]worst[/s][u]best programmer in the world?[/u]"
 	]
 	
 	start(test_queue)

@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://FE Icon.jpg" type="Texture" id=1]
+[ext_resource path="res://assets/font/Main Font.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/font/Preparation Screen Item List Font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://icon.png" type="Texture" id=4]
+[ext_resource path="res://assets/UI/Unit Picker Screen/Unit Select.gd" type="Script" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 10
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+
+[node name="Unit Select" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 53.4295 ],
+"_edit_use_anchors_": false,
+"_edit_vertical_guides_": [ 120.001, 11.7925 ]
+}
+
+[node name="Background Color" type="ColorRect" parent="."]
+margin_left = 12.0
+margin_top = 43.0
+margin_right = 232.0
+margin_bottom = 160.0
+color = Color( 0.172549, 0.164706, 0.196078, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Instructions" type="Label" parent="."]
+margin_left = 12.0
+margin_top = 43.0
+margin_right = 452.0
+margin_bottom = 64.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = ExtResource( 3 )
+text = "Select Unit to Enter"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Unit List" type="ItemList" parent="."]
+margin_left = 12.0
+margin_top = 55.0
+margin_right = 232.0
+margin_bottom = 160.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_selected = Color( 0.117647, 0.823529, 0.0784314, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+items = [ "Eirika", ExtResource( 1 ), true, "Seth", ExtResource( 4 ), false, "Ephranim Soldier", ExtResource( 1 ), false, "Item 3", ExtResource( 1 ), false, "Item 4", ExtResource( 4 ), false, "Item 5", ExtResource( 1 ), false, "Item 6", ExtResource( 4 ), false, "Item 7", ExtResource( 1 ), false, "Item 8", ExtResource( 4 ), false, "Item 9", ExtResource( 1 ), false ]
+max_columns = 2
+same_column_width = true
+fixed_icon_size = Vector2( 15, 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
