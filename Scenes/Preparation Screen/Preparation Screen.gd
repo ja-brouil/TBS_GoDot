@@ -125,6 +125,12 @@ func process_selection():
 	match current_option:
 		"Select":
 			$"Prep Screen Control/Side Panel Text".text = SELECT_UNITS_TEXT
+			$"Prep Screen Control/Unit Select".start(ItemList.SELECT_MULTI)
+			$"Prep Screen Control/Unit Select".visible = true
+			
+			# Temp Disable this
+			$"Prep Screen Control/Hand Selector".visible = false
+			set_process_input(false)
 		"Inventory":
 			$"Prep Screen Control/Side Panel Text".text = INVENTORY_TEXT
 		"Map":

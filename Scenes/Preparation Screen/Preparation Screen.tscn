@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scenes/Preparation Screen/Preparation Screen.gd" type="Script" id=1]
 [ext_resource path="res://assets/Preparation/Preparation Screen.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/music/Fierce as fire.wav" type="AudioStream" id=6]
 [ext_resource path="res://assets/sound/transition/Chapter Start.wav" type="AudioStream" id=7]
 [ext_resource path="res://assets/font/Preparation Screen Item List Font.tres" type="DynamicFont" id=8]
+[ext_resource path="res://assets/UI/Unit Picker Screen/Unit Select.tscn" type="PackedScene" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -17,14 +18,14 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 size = 20
 outline_color = Color( 0.239216, 0.180392, 0.180392, 1 )
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 3 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "Fade"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Prep Screen Control:modulate")
@@ -39,7 +40,7 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "Invi"
 length = 0.4
 tracks/0/type = "value"
@@ -55,7 +56,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 resource_name = "Start Battle"
 length = 1.5
 tracks/0/type = "value"
@@ -230,7 +231,7 @@ margin_top = 2.0
 margin_right = 374.0
 margin_bottom = 72.0
 rect_scale = Vector2( 0.2, 0.2 )
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 text = "Chapter 3
@@ -250,6 +251,8 @@ margin_right = 74.9707
 margin_bottom = 17.6744
 color = Color( 0.352941, 0.207843, 0.0313726, 1 )
 
+[node name="Unit Select" parent="Prep Screen Control" instance=ExtResource( 9 )]
+
 [node name="Prep Theme A" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 
@@ -260,6 +263,6 @@ stream = ExtResource( 6 )
 stream = ExtResource( 7 )
 
 [node name="Anim" type="AnimationPlayer" parent="."]
-anims/Fade = SubResource( 4 )
-anims/Invi = SubResource( 5 )
-"anims/Start Battle" = SubResource( 6 )
+anims/Fade = SubResource( 3 )
+anims/Invi = SubResource( 4 )
+"anims/Start Battle" = SubResource( 5 )

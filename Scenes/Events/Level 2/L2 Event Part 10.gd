@@ -23,7 +23,7 @@ var dialogue = [
 	"Seth@assets/units/cavalier/seth mugshot.png@It is not very well known to the outside world and given it's remote location, this is the best place to be right now.",
 	"Seth@assets/units/cavalier/seth mugshot.png@I should check in with the forward guard. Please head back inside your highness.",
 	"Eirika@assets/units/eirika/eirika mugshot.png@I will. Thank you Seth.",
-	"Ephraim Soldiers@assets/units/soldier/soldier_blue_portrait.png@Almyryan soldiers!"
+	"Soldiers@assets/units/soldier/soldier_blue_portrait.png@Almyryan soldiers!"
 ]
 
 var eirika

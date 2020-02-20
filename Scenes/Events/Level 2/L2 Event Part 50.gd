@@ -12,9 +12,9 @@ class_name L2_Event_Part5
 
 # Dialogue between the characters
 var dialogue = [
-	"Ephraim Soldiers@assets/units/soldier/soldier_blue_portrait.png@Protect Lady Eirika with your lives!",
-	"Ephraim Soldiers@assets/units/soldier/soldier_blue_portrait.png@Don't let a single one of those bastards get through!",
-	"Ephraim Soldiers@assets/units/soldier/soldier_blue_portrait.png@For Ephraim!"
+	"Soldiers@assets/units/soldier/soldier_blue_portrait.png@Protect Lady Eirika with your lives!",
+	"Soldiers@assets/units/soldier/soldier_blue_portrait.png@Don't let a single one of those bastards get through!",
+	"Soldiers@assets/units/soldier/soldier_blue_portrait.png@For Ephraim!"
 ]
 
 func _init():

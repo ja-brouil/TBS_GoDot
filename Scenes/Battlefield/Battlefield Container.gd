@@ -48,7 +48,7 @@ func _ready():
 	BattlefieldInfo.event_system.start_events_queue()
 	
 	# Get rid of the other one
-	get_node("/root/Level/Chapter 2").queue_free()           
+	get_node("/root/Level/Chapter 2").queue_free()
 
 func check_loss():
 	return BattlefieldInfo.ally_units.has("Seth")

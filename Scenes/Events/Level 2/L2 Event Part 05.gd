@@ -16,7 +16,7 @@ var dialogue = [
 	"Seth@assets/units/cavalier/seth mugshot.png@The weather is terrible tonight and our visibility from here is not great.",
 	"Seth@assets/units/cavalier/seth mugshot.png@We should be secure in this location while the negotiations are on-going however...",
 	"Seth@assets/units/cavalier/seth mugshot.png@I am not taking any chances. Are we clear?",
-	"Ephraim Soldiers@assets/units/soldier/soldier_blue_portrait.png@Yes knight commander!",
+	"Soldier@assets/units/soldier/soldier_blue_portrait.png@Yes knight commander!",
 	"Seth@assets/units/cavalier/seth mugshot.png@Dismissed."
 ]
 
