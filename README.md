@@ -36,6 +36,9 @@ Take a look at any of the bugs below or anything in the to do list. If you wish 
 5. UI Bugs -> A few things are misaligned and other polish can be done.
 6. Memory Leak -> Need to check if the game is running away with ram. None so far with the editor but I feel like cleanup on exit could be done better.
 
+## Live Demo
+https://godot-tbs-fe.herokuapp.com/
+This is out of date but will be updated once I have some progress done.
 
 ## Screenshots
 
