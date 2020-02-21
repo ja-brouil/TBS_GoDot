@@ -53,6 +53,7 @@ var map_width
 
 # Battlefield Unit Info
 var ally_units = {}
+var ally_units_not_in_battle = {}
 var enemy_units = {}
 
 # Spawn points

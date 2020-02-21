@@ -75,7 +75,11 @@ func start_level():
 
 func clear():
 	current_state = starting_events
+	for event in queue_of_events:
+		event.queue_free()
 	queue_of_events.clear()
+	for event in mid_level_events:
+		mid_level_events.queue_free()
 	mid_level_events.clear()
 
 # Ends the level and goes to the next level

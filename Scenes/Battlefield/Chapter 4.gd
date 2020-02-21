@@ -64,6 +64,9 @@ func next_level():
 	WorldMapScreen.current_event = Level4_WM_Event_Part10.new()
 	WorldMapScreen.connect_to_scene_changer()
 	SceneTransition.change_scene_to(WorldMapScreen, 0.1)
+	
+	# Clear the events system
+	BattlefieldInfo.event_system.clear()
 
 func start_battle():
 	# Start the level

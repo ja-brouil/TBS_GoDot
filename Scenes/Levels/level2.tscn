@@ -65,11 +65,7 @@ script = ExtResource( 2 )
 z_index = 1
 
 [node name="Background" parent="." index="1"]
-editor/display_folded = false
 material = SubResource( 2 )
-
-[node name="2149" parent="CellInfo" index="35"]
-editor/display_folded = false
 
 [node name="Rain" parent="." index="5" instance=ExtResource( 3 )]
 

@@ -17,6 +17,9 @@ var current_option_number = 0
 # Level
 var level
 
+# Current song
+var current_song
+
 # Hand reset
 var hand_default_position = Vector2(3.5, 58.0)
 var hand_movement_vector= Vector2(0, 17)
@@ -28,7 +31,7 @@ func _ready():
 	BattlefieldInfo.preparation_screen = self
 	
 	# Set Stuff
-	#start(get_parent().chapter_title, BattlefieldInfo.victory_text, "res://Scenes/Intro Screen/Intro Screen.tscn", get_parent().prep_music_choice)
+	start("Test Title Chapter", BattlefieldInfo.victory_text, "res://Scenes/Intro Screen/Intro Screen.tscn", "A")
 
 func start(chapter_text, victory_text, path_to_next_level, prep_song):
 	# Set the y tree to the new level and set the units to the new path
@@ -54,6 +57,7 @@ func start(chapter_text, victory_text, path_to_next_level, prep_song):
 		ally_unit.turn_greyscale_off()
 	
 	# Play Music
+	current_song = prep_song
 	play_song(prep_song)
 	
 	# Set Text
@@ -66,6 +70,9 @@ func start(chapter_text, victory_text, path_to_next_level, prep_song):
 	# Reset option
 	current_option_number = 0
 	current_option = all_options_array[current_option_number]
+	
+	# Set turn number back to 1
+	# TO DO
 	
 	# Fade and allow input
 	$"Prep Screen Control".visible = true
@@ -129,8 +136,7 @@ func process_selection():
 			$"Prep Screen Control/Unit Select".visible = true
 			
 			# Temp Disable this
-			$"Prep Screen Control/Hand Selector".visible = false
-			set_process_input(false)
+			temp_disable()
 		"Inventory":
 			$"Prep Screen Control/Side Panel Text".text = INVENTORY_TEXT
 		"Map":
@@ -150,7 +156,19 @@ func process_selection():
 			# Allow movement of cursor
 			BattlefieldInfo.cursor.cursor_state = Cursor.PREP
 		"Market":
+			# Go to the shop
 			$"Prep Screen Control/Side Panel Text".text = MARKETPLACE_TEXT
+			$Shop.start(Shop_UI.SHOP_STATE.BUY)
+			
+			# Hide this
+			$Anim.play("Invi")
+			yield($Anim, "animation_finished")
+			
+			# Pause music
+			stop_music()
+			
+			# Temp Disable this
+			temp_disable()
 		"Save":
 			$"Prep Screen Control/Side Panel Text".text = SAVE
 
@@ -199,11 +217,22 @@ func turn_on():
 	# Remove invisibility
 	$Anim.play_backwards("Invi")
 	
+	$"Prep Screen Control/Hand Selector".visible = true
+	
 	# Wait until done
 	yield($Anim, "animation_finished")
 	
 	# Allow movement
 	set_process_input(true)
+
+func temp_disable():
+	$"Prep Screen Control/Hand Selector".visible = false
+	set_process_input(false)
+
+func turn_on_without_anim():
+	set_process_input(true)
+	
+	$"Prep Screen Control/Hand Selector".visible = true
 
 # Turn off this screen -> Move to the next screen
 func turn_off():

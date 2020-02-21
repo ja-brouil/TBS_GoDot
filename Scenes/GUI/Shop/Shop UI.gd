@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+class_name Shop_UI
+
 # Shop UI
 # Inventory for the shop
 const item_shop = {}
@@ -11,7 +13,7 @@ var current_index = 0
 var previous_scroll_value = 0
 
 # State machine for the shop
-enum SHOP_STATE {BUY, SELL, CONFIRM_BUY, CONFIRM_SELL}
+enum SHOP_STATE {BUY, SELL, CONFIRM_BUY, CONFIRM_SELL, OFF}
 var current_state = null
 
 # Default starting position for the hand
@@ -40,13 +42,13 @@ onready var anim = $Anim
 onready var hand_confirm = $"Shop UI/Hand Confirm"
 
 # Shop text strings
-const welcome_msg = "いらっしゃいませ！/nWelcome!"
+const welcome_msg = "Welcome!\nいらっしゃいませ！"
 const confirm = "Is that the one?こちらいいですか？\n        Yes/はい     No/いいえ"
 const browsing = "Anything you like?\nお手伝いしましょうか？"
 const not_enough_money = "You don't have enough money!\n足りないみたいです。"
 const inventory_full = "Your inventory is full!\nインベントリーが一杯ですね"
 const thank_you = "Thank you for your patronage!\n毎度ありがとうございました！"
-const thanks_for_coming = "Come back soon!また来てちょうだいね！"
+const thanks_for_coming = "Come back soon!\nまた来てちょうだいね！"
 
 # Debug Test variables
 var unit_inventory_space = 5
@@ -55,12 +57,6 @@ var unit_inventory_space = 5
 func _ready():
 	# Disable input
 	set_process_input(false)
-	
-	# Set selected item to the first one in the list
-	current_index = 0
-	shop_list.select(current_index)
-	shop_list_price.select(current_index)
-	shop_list.grab_focus()
 	
 	# Reset all other variables
 	reset()
@@ -75,9 +71,7 @@ func _ready():
 	
 	# Set Hand
 	hand_selector.rect_position = STARTING_HAND_POSITION
-	
-	# Test start
-	start(SHOP_STATE.BUY)
+
 
 func sell_item():
 	# Remove item from the unit's inventory
@@ -161,6 +155,9 @@ func buy_item(index):
 		back_to_browing()
 
 func start(shop_state):
+	# Reset
+	reset()
+	
 	# Set shop State
 	current_state = shop_state
 	
@@ -170,6 +167,9 @@ func start(shop_state):
 	# Set money
 	$"Shop UI/Money".text = str(BattlefieldInfo.money)
 	
+	# Set Greeting
+	shop_text.text = welcome_msg
+	
 	# Play Fade in
 	$"Shop UI/Shop Music".play()
 	$Anim.play("Fade")
@@ -177,20 +177,65 @@ func start(shop_state):
 	
 	# Play Welcome!
 	$"Shop UI/Shop Greeting JPN".play()
-	# $"Shop UI/Shop Greeting".play()
+	
+	# Reset the hand
+	hand_selector.rect_position = STARTING_HAND_POSITION
 	
 	# Set text anim
 	shop_text.percent_visible = 0
 	anim.play("Text Anim")
+	yield(anim,"animation_finished")
 	
 	# Allow input
 	set_process_input(true)
+	
+	# Set selected item to the first one in the list
+	current_index = 0
+	shop_list.select(current_index)
+	shop_list_price.select(current_index)
+	shop_list.grab_focus()
+	
+	# Shop hand
+	$"Hand Selector".visible = true
 
 func exit():
 	# Disallow input
+	shop_list.unselect_all()
+	shop_list.release_focus()
+	shop_list_price.unselect_all()
 	set_process_input(false)
 	
 	#　Play goodbye
+	$"Shop UI/Shop Exit".play()
+	
+	# Put hand away
+	$"Hand Selector".visible = false
+	
+	# Set goodbye text
+	shop_text.percent_visible = 0
+	shop_text.text = thanks_for_coming
+	anim.play("Text Anim")
+	yield(anim,"animation_finished")
+	
+	# Wait 1 second
+	yield(get_tree().create_timer(1),"timeout")
+	
+	# Shop music
+	$"Shop UI/Shop Music".stop()
+	anim.play_backwards("Fade")
+	yield(anim, "animation_finished")
+	
+	$"Shop UI".visible = false
+	
+	# Remove the shop text
+	shop_text.percent_visible = 0
+	shop_text.text = ""
+	
+	# Start Prep screen again
+	BattlefieldInfo.preparation_screen.turn_on()
+	
+	# Start Music
+	BattlefieldInfo.preparation_screen.play_song(BattlefieldInfo.preparation_screen.current_song)
 
 func _input(event):
 	# Get State
@@ -217,6 +262,10 @@ func _input(event):
 				
 				# Set new state
 				current_state = SHOP_STATE.CONFIRM_BUY
+			elif Input.is_action_just_pressed("ui_cancel"):
+				set_process_input(false)
+				current_state = SHOP_STATE.OFF
+				exit()
 		SHOP_STATE.SELL:
 			pass
 		SHOP_STATE.CONFIRM_BUY:
@@ -263,12 +312,10 @@ func _input(event):
 				back_to_browing()
 		SHOP_STATE.CONFIRM_SELL:
 			pass
-	
-	# Test for exit
-	if Input.is_action_just_pressed("debug"):
-		#$"Shop UI/Shop Exit".play()
-		$"Shop UI/Shop Exit".play()
-		shop_list.grab_focus()
+
+# Create the item and send it to the unit's inventory
+func create_item(item_name):
+	pass
 
 # Back to browsing
 func back_to_browing():
@@ -332,3 +379,7 @@ func reset():
 	confirm_buy_index = 0
 	confirm_sell_index = 0
 	current_index = 0
+	
+	# Set the value back to for the scroll value
+	scroll_bar.value = 0
+	scroll_bar2.value = 0

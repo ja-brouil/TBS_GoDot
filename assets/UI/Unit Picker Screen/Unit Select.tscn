@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
+[ext_resource path="res://Scenes/GUI/Hand Cursor/Hand Selector.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/font/Main Font.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/font/Preparation Screen Item List Font.tres" type="DynamicFont" id=3]
 [ext_resource path="res://assets/UI/Unit Picker Screen/Unit Select.gd" type="Script" id=5]
@@ -10,10 +11,50 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 2 )
 
+[sub_resource type="Animation" id=2]
+resource_name = "Fade"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="DynamicFont" id=3]
+size = 14
+outline_size = 1
+outline_color = Color( 0.411765, 0.321569, 0.321569, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+
 [node name="Unit Select" type="Control"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 0.122543
+margin_top = 0.0484085
+margin_right = 0.122543
+margin_bottom = 0.0484009
+mouse_filter = 2
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 53.4295 ],
@@ -34,11 +75,11 @@ __meta__ = {
 [node name="Instructions" type="Label" parent="."]
 margin_left = 12.0
 margin_top = 43.0
-margin_right = 282.0
-margin_bottom = 69.0
+margin_right = 281.0
+margin_bottom = 68.0
 rect_scale = Vector2( 0.4, 0.4 )
 custom_fonts/font = ExtResource( 3 )
-text = "Select Unit to Enter"
+text = "Select Units"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -70,6 +111,115 @@ max_columns = 2
 same_column_width = true
 fixed_column_width = 95
 fixed_icon_size = Vector2( 15, 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+anims/Fade = SubResource( 2 )
+
+[node name="Yes No" type="Control" parent="."]
+margin_left = -300.0
+margin_top = -300.0
+margin_right = -177.0
+margin_bottom = -216.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Warning Message Background Color" type="ColorRect" parent="Yes No"]
+margin_left = 4.48779
+margin_top = 20.7561
+margin_right = 114.488
+margin_bottom = 77.7561
+color = Color( 0.113725, 0.109804, 0.121569, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Warning Message" type="Label" parent="Yes No"]
+margin_left = 5.0
+margin_top = 21.0
+margin_right = 277.0
+margin_bottom = 97.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 3 )
+text = "You have selected x units out of y. Proceed with this?"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Yes" type="Label" parent="Yes No"]
+margin_left = 4.0
+margin_top = 46.0
+margin_right = 174.0
+margin_bottom = 125.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 3 )
+text = "Yes"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="No" type="Label" parent="Yes No"]
+margin_left = 44.0
+margin_top = 46.0
+margin_right = 219.0
+margin_bottom = 125.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 3 )
+text = "No"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Hand Selector" parent="Yes No" instance=ExtResource( 1 )]
+margin_left = 58.259
+margin_top = 56.0
+margin_right = 74.259
+margin_bottom = 69.0
+
+[node name="Too Many Units" type="Control" parent="."]
+margin_left = -300.0
+margin_top = -300.0
+margin_right = -177.0
+margin_bottom = -216.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Warning Message Background Color" type="ColorRect" parent="Too Many Units"]
+margin_left = 4.48779
+margin_top = 20.7561
+margin_right = 114.488
+margin_bottom = 77.7561
+color = Color( 0.113725, 0.109804, 0.121569, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Warning Message" type="Label" parent="Too Many Units"]
+margin_left = 5.0
+margin_top = 21.0
+margin_right = 277.0
+margin_bottom = 162.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 3 )
+text = "You have selected too many units. Please deselect a few in order to proceed."
+align = 1
+valign = 1
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

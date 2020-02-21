@@ -47,6 +47,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 0, 0, 0, 1 ), Color( 0.929412, 0.929412, 0.929412, 1 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Shop UI:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "Text Anim"
@@ -70,7 +82,7 @@ __meta__ = {
 }
 
 [node name="Shop UI" type="Control" parent="."]
-modulate = Color( 0.929412, 0.929412, 0.929412, 1 )
+modulate = Color( 0, 0, 0, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 0.172318

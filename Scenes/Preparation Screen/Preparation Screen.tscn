@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scenes/Preparation Screen/Preparation Screen.gd" type="Script" id=1]
 [ext_resource path="res://assets/Preparation/Preparation Screen.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/sound/transition/Chapter Start.wav" type="AudioStream" id=7]
 [ext_resource path="res://assets/font/Preparation Screen Item List Font.tres" type="DynamicFont" id=8]
 [ext_resource path="res://assets/UI/Unit Picker Screen/Unit Select.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/GUI/Shop/Shop UI.tscn" type="PackedScene" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -225,6 +226,9 @@ margin_left = 160.0
 margin_top = 3.0
 margin_right = 235.0
 margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Chapter Title" type="Label" parent="Prep Screen Control/Chapter Title Background"]
 margin_top = 2.0
@@ -252,6 +256,9 @@ margin_bottom = 17.6744
 color = Color( 0.352941, 0.207843, 0.0313726, 1 )
 
 [node name="Unit Select" parent="Prep Screen Control" instance=ExtResource( 9 )]
+visible = false
+
+[node name="Shop" parent="." instance=ExtResource( 10 )]
 
 [node name="Prep Theme A" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
