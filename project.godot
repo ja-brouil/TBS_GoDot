@@ -214,6 +214,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scenes/Units/Unit_Scripts/Unit_Action_Status.gd"
 }, {
+"base": "Node2D",
+"class": "Unit_Inventory",
+"language": "GDScript",
+"path": "res://Scenes/Units/Unit_Scripts/Inventory.gd"
+}, {
 "base": "Node",
 "class": "Unit_Movement",
 "language": "GDScript",
@@ -286,6 +291,7 @@ _global_script_class_icons={
 "TileUnitUpdater": "",
 "Turn_Manager": "",
 "Unit_Action_Status": "",
+"Unit_Inventory": "",
 "Unit_Movement": "",
 "Unit_Movement_System": "",
 "Unit_Movement_System_Cinematic": "",

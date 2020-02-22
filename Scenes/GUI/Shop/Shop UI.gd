@@ -13,7 +13,7 @@ var current_index = 0
 var previous_scroll_value = 0
 
 # State machine for the shop
-enum SHOP_STATE {BUY, SELL, CONFIRM_BUY, CONFIRM_SELL, OFF}
+enum SHOP_STATE {BUY, SELL, CONFIRM_BUY, CONFIRM_SELL, SELECT_UNIT, OFF}
 var current_state = null
 
 # Default starting position for the hand
@@ -31,6 +31,12 @@ var confirm_buy_index = 0
 # Confirm sell variables
 var confirm_sell_index = 0
 
+# Price
+var current_price = 0
+
+# Unit solo picker signal
+signal inventory_full
+
 # Various Nodes
 onready var shop_list = $"Shop UI/ShopList"
 onready var shop_list_price = $"Shop UI/ShopListPrice"
@@ -40,14 +46,15 @@ onready var scroll_bar2 = $"Shop UI/ShopListPrice".get_v_scroll()
 onready var shop_text = $"Shop UI/Shop Keeper Text Info"
 onready var anim = $Anim
 onready var hand_confirm = $"Shop UI/Hand Confirm"
+onready var unit_picker = $"Unit Picker Solo"
 
 # Shop text strings
 const welcome_msg = "Welcome!\nいらっしゃいませ！"
 const confirm = "Is that the one?こちらいいですか？\n        Yes/はい     No/いいえ"
 const browsing = "Anything you like?\nお手伝いしましょうか？"
 const not_enough_money = "You don't have enough money!\n足りないみたいです。"
-const inventory_full = "Your inventory is full!\nインベントリーが一杯ですね"
-const thank_you = "Thank you for your patronage!\n毎度ありがとうございました！"
+const inventory_full = "Your inventory is full!\nインベントリーが一杯ですよ"
+const thank_you = "Thank you for your patronage!\n毎度ありがとうございましす！"
 const thanks_for_coming = "Come back soon!\nまた来てちょうだいね！"
 
 # Debug Test variables
@@ -72,7 +79,6 @@ func _ready():
 	# Set Hand
 	hand_selector.rect_position = STARTING_HAND_POSITION
 
-
 func sell_item():
 	# Remove item from the unit's inventory
 	
@@ -84,57 +90,20 @@ func buy_item(index):
 	confirm_buy_index = 0
 	
 	# Check if there is enough money
-	var price = int(shop_list_price.get_item_text(current_index).substr(0, shop_list_price.get_item_text(current_index).length() - 1))
-	if BattlefieldInfo.money >= price:
-		# Check if we have inventory space
-		if unit_inventory_space > 0:
-			# Remove inventory space
-			unit_inventory_space -= 1
-			
-			# Create the item and add it to the unit inventory
-			print("Created this item: ", shop_list.get_item_text(current_index))
-			
-			# Remove amount
-			BattlefieldInfo.money -= price
-			
-			# Move Hand off
-			hand_confirm.rect_position = OFF_SCREEN
-			
-			# Update amount left
-			$"Shop UI/Money".text = str(BattlefieldInfo.money)
-			
-			# Thanks for buying!
-			$"Shop UI/Shop Exit JPN Patronage".play()
-			
-			# Set Text
-			shop_text.percent_visible = 0
-			shop_text.text = thank_you
-			anim.play("Text Anim")
-			
-			# Wait two seconds then back to buy
-			set_process_input(false)
-			yield(get_tree().create_timer(2),"timeout")
-			
-			# Back to browsing
-			back_to_browing()
-		else:
-			# Play can't do that
-			$"Shop UI/Shop Can't do that".play()
-			
-			# Move Hand off
-			hand_confirm.rect_position = OFF_SCREEN
-			
-			# Show text
-			shop_text.percent_visible = 0
-			shop_text.text = inventory_full
-			anim.play("Text Anim")
-			
-			# Wait two seconds then back to buy
-			set_process_input(false)
-			yield(get_tree().create_timer(2),"timeout")
-			
-			# Back to browsing
-			back_to_browing()
+	current_price = int(shop_list_price.get_item_text(current_index).substr(0, shop_list_price.get_item_text(current_index).length() - 1))
+	if BattlefieldInfo.money >= current_price:
+		# Pick the unit to send this
+		# Set current state to unit pick
+		current_state = SHOP_STATE.SELECT_UNIT
+		
+		# Start the other screen
+		unit_picker.start()
+		
+		# Disable the store
+		shop_list.unselect_all()
+		shop_list.release_focus()
+		shop_list_price.unselect_all()
+		# set_process_input(false)
 	else:
 		# Cancel here
 		$"Shop UI/Shop Not enough money".play()
@@ -172,6 +141,7 @@ func start(shop_state):
 	
 	# Play Fade in
 	$"Shop UI/Shop Music".play()
+	$"Shop UI".visible = true
 	$Anim.play("Fade")
 	yield($Anim, "animation_finished")
 	
@@ -224,7 +194,6 @@ func exit():
 	$"Shop UI/Shop Music".stop()
 	anim.play_backwards("Fade")
 	yield(anim, "animation_finished")
-	
 	$"Shop UI".visible = false
 	
 	# Remove the shop text
@@ -232,7 +201,7 @@ func exit():
 	shop_text.text = ""
 	
 	# Start Prep screen again
-	BattlefieldInfo.preparation_screen.turn_on()
+	BattlefieldInfo.preparation_screen.turn_on_fade()
 	
 	# Start Music
 	BattlefieldInfo.preparation_screen.play_song(BattlefieldInfo.preparation_screen.current_song)
@@ -243,6 +212,11 @@ func _input(event):
 		SHOP_STATE.BUY:
 			# Accept button
 			if Input.is_action_just_pressed("ui_accept"):
+				# Remove Focus
+				shop_list.unselect_all()
+				shop_list_price.unselect_all()
+				shop_list.release_focus()
+				
 				# Play are you sure?
 				$"Shop UI/Shop is that okay".play()
 				# Set new text
@@ -254,14 +228,15 @@ func _input(event):
 				# Allow Movement again
 				yield(anim, "animation_finished")
 				
-				# Remove Focus
-				shop_list.release_focus()
 				# Move hand to where it should be
 				hand_confirm.rect_position = YES_POSITION
 				set_process_input(true)
 				
 				# Set new state
 				current_state = SHOP_STATE.CONFIRM_BUY
+				
+
+				
 			elif Input.is_action_just_pressed("ui_cancel"):
 				set_process_input(false)
 				current_state = SHOP_STATE.OFF
@@ -297,6 +272,7 @@ func _input(event):
 					# Back to browsing
 					back_to_browing()
 				else:
+					current_state = SHOP_STATE.OFF
 					buy_item(current_index)
 			
 			# Return button
@@ -312,10 +288,28 @@ func _input(event):
 				back_to_browing()
 		SHOP_STATE.CONFIRM_SELL:
 			pass
-
-# Create the item and send it to the unit's inventory
-func create_item(item_name):
-	pass
+		SHOP_STATE.SELECT_UNIT:
+			# Cancel the purchase
+			if Input.is_action_just_pressed("ui_cancel"):
+				# Move Hand off
+				hand_confirm.rect_position = OFF_SCREEN
+				# Update amount left
+				$"Shop UI/Money".text = str(BattlefieldInfo.money)
+				
+				# Hide the unit picker
+				unit_picker.exit()
+				
+				$"Shop UI/Shop dissapointed".play()
+				# Disable input
+				set_process_input(false)
+				
+				# Send the hand back
+				hand_confirm.rect_position = Vector2(-300,-300)
+				# back to the Buy state
+				current_state = SHOP_STATE.BUY
+				# Back to browsing
+				back_to_browing()
+				
 
 # Back to browsing
 func back_to_browing():
@@ -342,6 +336,9 @@ func back_to_browing():
 	
 	# Allow input again
 	set_process_input(true)
+	# Set selection back
+	shop_list.select(current_index)
+	shop_list_price.select(current_index)
 
 # Whenever an item is selected
 func _on_ShopList_item_selected(index):
@@ -383,3 +380,52 @@ func reset():
 	# Set the value back to for the scroll value
 	scroll_bar.value = 0
 	scroll_bar2.value = 0
+
+func check_unit_inventory_space(unit):
+	if unit.UnitInventory.inventory.size() == Unit_Inventory.MAX_INVENTORY:
+		return false
+	return true
+
+func _on_Unit_Picker_Solo_unit_picked(unit):
+	# Check if we have inventory space
+		if check_unit_inventory_space(unit):
+			# Hide the unit picker
+			unit_picker.exit()
+			# Remove amount
+			BattlefieldInfo.money -= current_price
+			
+			# Create the item
+			unit.UnitInventory.add_item(BattlefieldInfo.item_database.create_item(ALL_ITEMS_REF.all_items[shop_list.get_item_text(current_index)]))
+			
+			# Move Hand off
+			hand_confirm.rect_position = OFF_SCREEN
+			# Update amount left
+			$"Shop UI/Money".text = str(BattlefieldInfo.money)
+			# Thanks for buying!
+			$"Shop UI/Shop Exit JPN Patronage".play()
+			# Set Text
+			shop_text.percent_visible = 0
+			shop_text.text = thank_you
+			anim.play("Text Anim")
+			# Wait two seconds then back to buy
+			set_process_input(false)
+			yield(get_tree().create_timer(2),"timeout")
+			
+			# Back to browsing
+			back_to_browing()
+			
+			# Set back to select
+			shop_list.select(current_index)
+			shop_list_price.select(current_index)
+			
+		else:
+			# Play can't do that
+			$"Shop UI/Shop Can't do that".play()
+			# Move Hand off
+			hand_confirm.rect_position = OFF_SCREEN
+			# Show text
+			shop_text.percent_visible = 0
+			shop_text.text = inventory_full
+			anim.play("Text Anim")
+			
+			yield(get_tree().create_timer(2),"timeout")

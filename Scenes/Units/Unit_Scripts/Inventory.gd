@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name Unit_Inventory
+
 # Unit's inventory
 var inventory = []
 const MAX_INVENTORY = 6

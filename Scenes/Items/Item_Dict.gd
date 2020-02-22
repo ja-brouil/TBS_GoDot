@@ -4,7 +4,7 @@ class_name ALL_ITEMS_REF
 
 # Dictionary container all the items with their position
 # Default items
-var all_items = {
+const all_items = {
 	"Iron Sword" : "res://Scenes/Items/Swords/Iron Sword.tscn",
 	"Iron Bow" : "res://Scenes/Items/Bows/Iron Bow.tscn",
 	"Iron Axe" : "res://Scenes/Items/Axes/Iron Axe.tscn",
@@ -36,3 +36,9 @@ func get_item(item_id):
 		return all_items[item_id]
 	else:
 		print("Error Item Ref: No such item exists.")
+
+# Create an item
+func create_item(item_id):
+	var item = load(item_id)
+	var new_item = item.instance()
+	return new_item

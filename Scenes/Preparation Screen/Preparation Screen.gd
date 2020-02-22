@@ -30,8 +30,8 @@ func _ready():
 	# Set self
 	BattlefieldInfo.preparation_screen = self
 	
-	# Set Stuff
-	start("Test Title Chapter", BattlefieldInfo.victory_text, "res://Scenes/Intro Screen/Intro Screen.tscn", "A")
+	# Test
+	# start("Test Title Chapter", BattlefieldInfo.victory_text, "res://Scenes/Intro Screen/Intro Screen.tscn", "A")
 
 func start(chapter_text, victory_text, path_to_next_level, prep_song):
 	# Set the y tree to the new level and set the units to the new path
@@ -143,8 +143,14 @@ func process_selection():
 			# Make this go invisible
 			$Anim.play("Invi")
 			
+			# Prevent clicks right away
+			yield($Anim,"animation_finished")
+			
 			# Turn this off
 			turn_off()
+			
+			# Turn on UI
+			BattlefieldInfo.battlefield_ui.get_node("Battlefield HUD").visible = true
 			
 			# Set Camera
 			BattlefieldInfo.main_game_camera.current = true
@@ -158,11 +164,15 @@ func process_selection():
 		"Market":
 			# Go to the shop
 			$"Prep Screen Control/Side Panel Text".text = MARKETPLACE_TEXT
-			$Shop.start(Shop_UI.SHOP_STATE.BUY)
 			
 			# Hide this
-			$Anim.play("Invi")
+			$Anim.play_backwards("Fade Fast")
 			yield($Anim, "animation_finished")
+			$Shop.start(Shop_UI.SHOP_STATE.BUY)
+			$"Prep Screen Control".visible = false
+			
+			# Hide Battlefield info UI
+			BattlefieldInfo.battlefield_ui.get_node("Battlefield HUD").visible = false
 			
 			# Pause music
 			stop_music()
@@ -221,6 +231,18 @@ func turn_on():
 	
 	# Wait until done
 	yield($Anim, "animation_finished")
+	
+	# Allow movement
+	set_process_input(true)
+
+func turn_on_fade():
+	$Anim.play("Fade Fast")
+	$"Prep Screen Control/Hand Selector".visible = true
+	$"Prep Screen Control".visible = true
+	
+	# Wait until done
+	yield($Anim, "animation_finished")
+	
 	
 	# Allow movement
 	set_process_input(true)

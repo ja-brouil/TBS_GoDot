@@ -1,0 +1,90 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/font/Main Font.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/font/Preparation Screen Item List Font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Scenes/GUI/Unit Selectors/Unit Picker Solo.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/GUI/Hand Cursor/Hand Selector.tscn" type="PackedScene" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 10
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Fade"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Unit Picker Solo" type="Control"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background Color" type="ColorRect" parent="."]
+margin_left = 12.0
+margin_top = 43.0
+margin_right = 232.0
+margin_bottom = 160.0
+color = Color( 0.160784, 0.152941, 0.180392, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Unit List" type="ItemList" parent="."]
+margin_left = 12.0
+margin_top = 55.0
+margin_right = 232.0
+margin_bottom = 160.0
+mouse_filter = 2
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_selected = Color( 0.117647, 0.823529, 0.0784314, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+items = [ "Item 0", null, false, "Item 1", null, false, "Item 2", null, false, "Item 3", null, false, "Item 4", null, false, "Item 5", null, false ]
+max_columns = 2
+same_column_width = true
+fixed_column_width = 95
+fixed_icon_size = Vector2( 15, 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Instructions" type="Label" parent="."]
+margin_left = 12.0
+margin_top = 43.0
+margin_right = 562.0
+margin_bottom = 73.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = ExtResource( 2 )
+text = "Select Unit"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+anims/Fade = SubResource( 2 )
+
+[node name="Hand Selector" parent="." instance=ExtResource( 4 )]
+visible = false
+margin_left = -273.639
+margin_top = -138.613
+margin_right = -257.639
+margin_bottom = -125.613
+[connection signal="item_selected" from="Unit List" to="." method="_on_Unit_List_item_selected"]

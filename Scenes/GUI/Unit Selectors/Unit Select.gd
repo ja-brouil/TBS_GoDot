@@ -66,6 +66,9 @@ func _input(event):
 					# Back to select
 					current_state = UNIT_SELECTION_STATE.SELECT
 					
+					# Wait half a second to prevent some weird selection bug
+					yield(get_tree().create_timer(0.3),"timeout")
+					
 					# Allow movement again
 					unit_list.set_process_input(true)
 					unit_list.focus_mode = Control.FOCUS_ALL
@@ -80,6 +83,9 @@ func _input(event):
 				# Move the not allowed
 				hand_selector.get_node("Invalid").play()
 				$"Too Many Units".rect_position = OFF_SITE
+				
+				# Wait half a second to prevent some weird selection bug
+				yield(get_tree().create_timer(0.3),"timeout")
 				
 				# Allow movement again
 				unit_list.set_process_input(true)
@@ -142,6 +148,7 @@ func exit_check():
 	else:
 		exit()
 
+# Place the allies on the map
 func place_allies():
 	# Max amount
 	var current_amount_placed = 1

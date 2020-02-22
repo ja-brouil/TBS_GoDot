@@ -4212,7 +4212,7 @@
     <property name="strChance" type="int" value="50"/>
    </properties>
   </object>
-  <object id="2929" x="128" y="288" width="16" height="16">
+  <object id="2929" x="112" y="288" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
     <property name="BonusDodge" type="int" value="0"/>
@@ -4259,7 +4259,7 @@
     <property name="strChance" type="int" value="0"/>
    </properties>
   </object>
-  <object id="2928" x="128" y="256" width="16" height="16">
+  <object id="2928" x="112" y="256" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
     <property name="BonusDodge" type="int" value="0"/>

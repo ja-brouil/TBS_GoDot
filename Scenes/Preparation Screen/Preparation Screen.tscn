@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scenes/Preparation Screen/Preparation Screen.gd" type="Script" id=1]
 [ext_resource path="res://assets/Preparation/Preparation Screen.png" type="Texture" id=2]
@@ -8,7 +8,7 @@
 [ext_resource path="res://assets/music/Fierce as fire.wav" type="AudioStream" id=6]
 [ext_resource path="res://assets/sound/transition/Chapter Start.wav" type="AudioStream" id=7]
 [ext_resource path="res://assets/font/Preparation Screen Item List Font.tres" type="DynamicFont" id=8]
-[ext_resource path="res://assets/UI/Unit Picker Screen/Unit Select.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/GUI/Unit Selectors/Unit Select.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/GUI/Shop/Shop UI.tscn" type="PackedScene" id=10]
 
 [sub_resource type="DynamicFont" id=1]
@@ -36,6 +36,22 @@ tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Fade Fast"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Prep Screen Control:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
@@ -106,6 +122,7 @@ __meta__ = {
 
 [node name="Prep Screen Control" type="Control" parent="."]
 visible = false
+modulate = Color( 0.6, 0.6, 0.6, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -271,5 +288,6 @@ stream = ExtResource( 7 )
 
 [node name="Anim" type="AnimationPlayer" parent="."]
 anims/Fade = SubResource( 3 )
+"anims/Fade Fast" = SubResource( 6 )
 anims/Invi = SubResource( 4 )
 "anims/Start Battle" = SubResource( 5 )
