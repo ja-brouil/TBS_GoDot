@@ -41,7 +41,7 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=4]
 resource_name = "Fade Fast"
 length = 0.5
 tracks/0/type = "value"
@@ -57,8 +57,7 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "Invi"
+[sub_resource type="Animation" id=5]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("Prep Screen Control:modulate")
@@ -73,8 +72,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "Start Battle"
+[sub_resource type="Animation" id=6]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Prep Screen Control:modulate")
@@ -288,6 +286,6 @@ stream = ExtResource( 7 )
 
 [node name="Anim" type="AnimationPlayer" parent="."]
 anims/Fade = SubResource( 3 )
-"anims/Fade Fast" = SubResource( 6 )
-anims/Invi = SubResource( 4 )
-"anims/Start Battle" = SubResource( 5 )
+"anims/Fade Fast" = SubResource( 4 )
+anims/Invi = SubResource( 5 )
+"anims/Start Battle" = SubResource( 6 )

@@ -72,7 +72,8 @@ func start(chapter_text, victory_text, path_to_next_level, prep_song):
 	current_option = all_options_array[current_option_number]
 	
 	# Set turn number back to 1
-	# TO DO
+	BattlefieldInfo.turn_manager.player_turn_number = 1
+	BattlefieldInfo.turn_manager.enemy_turn_number = 1
 	
 	# Fade and allow input
 	$"Prep Screen Control".visible = true

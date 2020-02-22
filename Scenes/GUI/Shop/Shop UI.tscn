@@ -197,7 +197,7 @@ rect_scale = Vector2( 0.5, 0.5 )
 mouse_filter = 2
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-items = [ "Iron Sword", ExtResource( 3 ), false, "Iron Bow", ExtResource( 12 ), false, "Iron Axe", ExtResource( 4 ), false, "Silver Lance ", ExtResource( 6 ), false, "Iron Lance", ExtResource( 16 ), false, "Fire Tome ", ExtResource( 9 ), false, "Heal Staff ", ExtResource( 5 ), false, "Killing Edge", ExtResource( 15 ), false ]
+items = [ "Iron Sword", ExtResource( 3 ), false, "Iron Bow", ExtResource( 12 ), false, "Iron Axe", ExtResource( 4 ), false, "Silver Lance", ExtResource( 6 ), false, "Iron Lance", ExtResource( 16 ), false, "Fire Tome", ExtResource( 9 ), false, "Heal Staff", ExtResource( 5 ), false, "Killing Edge", ExtResource( 15 ), false ]
 fixed_icon_size = Vector2( 20, 20 )
 __meta__ = {
 "_edit_use_anchors_": false

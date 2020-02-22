@@ -81,8 +81,8 @@
  <objectgroup name="Enemies">
   <object id="1213" x="176" y="288" width="16" height="16">
    <properties>
-    <property name="After_Battle" value="This wasn't...how it was supposed to end...You are too late..."/>
-    <property name="Before_Battle" value="Enough! You will not interfer with our plans!"/>
+    <property name="After_Battle" value="Byzantine@assets/units/bandit/bandit mugshot.png@This wasn't...how it was supposed to end...You are too late..."/>
+    <property name="Before_Battle" value="Byzantine@assets/units/bandit/bandit mugshot.png@Enough! You will not interfer with our plans!"/>
     <property name="BonusCrit" type="int" value="10"/>
     <property name="BonusDodge" type="int" value="5"/>
     <property name="BonusHit" type="int" value="5"/>
@@ -621,14 +621,14 @@
     <property name="Consti" type="int" value="8"/>
     <property name="Defense" type="int" value="2"/>
     <property name="Health" type="int" value="15"/>
-    <property name="Identifier" value="Enemy 50"/>
+    <property name="Identifier" value="Enemy 51"/>
     <property name="InstanceName" value="Dark Mage Enemy"/>
     <property name="Level" type="int" value="3"/>
     <property name="Luck" type="int" value="0"/>
     <property name="Magic" type="int" value="5"/>
     <property name="MaxHealth" type="int" value="15"/>
     <property name="Move" type="int" value="4"/>
-    <property name="Name" value="Evil Dark Wizard"/>
+    <property name="Name" value="Dark Mage"/>
     <property name="Res" type="int" value="1"/>
     <property name="Skill" type="int" value="3"/>
     <property name="Speed" type="int" value="2"/>
@@ -659,7 +659,7 @@
     <property name="Magic" type="int" value="5"/>
     <property name="MaxHealth" type="int" value="15"/>
     <property name="Move" type="int" value="4"/>
-    <property name="Name" value="Evil Dark Wizard"/>
+    <property name="Name" value="Dark Mage"/>
     <property name="Res" type="int" value="1"/>
     <property name="Skill" type="int" value="3"/>
     <property name="Speed" type="int" value="2"/>
@@ -683,14 +683,14 @@
     <property name="Consti" type="int" value="8"/>
     <property name="Defense" type="int" value="2"/>
     <property name="Health" type="int" value="15"/>
-    <property name="Identifier" value="Enemy 50"/>
+    <property name="Identifier" value="Enemy 56"/>
     <property name="InstanceName" value="Dark Mage Enemy"/>
     <property name="Level" type="int" value="3"/>
     <property name="Luck" type="int" value="0"/>
     <property name="Magic" type="int" value="5"/>
     <property name="MaxHealth" type="int" value="15"/>
     <property name="Move" type="int" value="4"/>
-    <property name="Name" value="Evil Dark Wizard"/>
+    <property name="Name" value="Dark Mage"/>
     <property name="Res" type="int" value="1"/>
     <property name="Skill" type="int" value="3"/>
     <property name="Speed" type="int" value="2"/>
@@ -714,14 +714,14 @@
     <property name="Consti" type="int" value="8"/>
     <property name="Defense" type="int" value="2"/>
     <property name="Health" type="int" value="15"/>
-    <property name="Identifier" value="Enemy 50"/>
+    <property name="Identifier" value="Enemy 57"/>
     <property name="InstanceName" value="Dark Mage Enemy"/>
     <property name="Level" type="int" value="3"/>
     <property name="Luck" type="int" value="0"/>
     <property name="Magic" type="int" value="5"/>
     <property name="MaxHealth" type="int" value="15"/>
     <property name="Move" type="int" value="4"/>
-    <property name="Name" value="Evil Dark Wizard"/>
+    <property name="Name" value="Dark Mage"/>
     <property name="Res" type="int" value="1"/>
     <property name="Skill" type="int" value="3"/>
     <property name="Speed" type="int" value="2"/>
@@ -745,14 +745,14 @@
     <property name="Consti" type="int" value="8"/>
     <property name="Defense" type="int" value="2"/>
     <property name="Health" type="int" value="15"/>
-    <property name="Identifier" value="Enemy 50"/>
+    <property name="Identifier" value="Enemy 53"/>
     <property name="InstanceName" value="Dark Mage Enemy"/>
     <property name="Level" type="int" value="3"/>
     <property name="Luck" type="int" value="0"/>
     <property name="Magic" type="int" value="5"/>
     <property name="MaxHealth" type="int" value="15"/>
     <property name="Move" type="int" value="4"/>
-    <property name="Name" value="Evil Dark Wizard"/>
+    <property name="Name" value="Dark Mage"/>
     <property name="Res" type="int" value="1"/>
     <property name="Skill" type="int" value="3"/>
     <property name="Speed" type="int" value="2"/>

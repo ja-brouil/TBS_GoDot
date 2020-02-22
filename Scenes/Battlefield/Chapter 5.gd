@@ -7,6 +7,7 @@ var level_music = preload("res://assets/music/Fodlan Winds.ogg")
 
 var chapter_title = "4\nThe Great Fortress Line"
 var prep_music_choice = "B"
+var money_to_add = 1500
 
 func _ready():
 	# Container for this
@@ -33,10 +34,13 @@ func _ready():
 	BattlefieldInfo.event_system.clear()
 	BattlefieldInfo.event_system.add_event(L4_Event_Part10.new())
 	
+	# Add money
+	BattlefieldInfo.money += money_to_add
+	
 	# Prep mode
 	preperation_mode()
 	
-#	# Show Ally units
+	# Show Ally units
 	for ally_unit in BattlefieldInfo.ally_units.values():
 		ally_unit.visible = true
 	

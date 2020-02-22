@@ -7,6 +7,7 @@ var level_music = preload("res://assets/music/The Long Road.ogg")
 
 var chapter_title = "3\nScourge of the Sea"
 var prep_music_choice = "B"
+var money_to_add = 1500
 
 func _ready():
 	# Container for this
@@ -35,6 +36,9 @@ func _ready():
 	BattlefieldInfo.event_system.add_event(L3_Event_Part10.new())
 	BattlefieldInfo.event_system.add_event(L3_Event_Part20.new())
 	BattlefieldInfo.event_system.add_event(L3_Event_Part30.new())
+	
+	# Add money
+	BattlefieldInfo.money += money_to_add
 	
 	# Prep mode
 	preperation_mode()
