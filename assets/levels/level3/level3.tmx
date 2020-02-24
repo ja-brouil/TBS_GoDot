@@ -2047,7 +2047,7 @@
     <property name="defChance" type="int" value="60"/>
     <property name="defaultPenalty" type="int" value="0"/>
     <property name="forestPenalty" type="int" value="1"/>
-    <property name="fortressPenalty" type="int" value="1"/>
+    <property name="fortressPenalty" type="int" value="0"/>
     <property name="hillPenalty" type="int" value="3"/>
     <property name="isAlly" type="bool" value="true"/>
     <property name="luckChance" type="int" value="70"/>

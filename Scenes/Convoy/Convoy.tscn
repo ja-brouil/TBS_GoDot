@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/Convoy/Convoy.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Convoy/Item_List_Scene.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/GUI/Hand Cursor/Hand Selector.tscn" type="PackedScene" id=4]
+
+[node name="Convoy" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.07408
+margin_top = -0.214813
+margin_right = 1.07408
+margin_bottom = -0.214813
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Hand Selector" parent="." instance=ExtResource( 4 )]
+visible = false
+margin_left = -300.0
+margin_top = -300.0
+margin_right = -284.0
+margin_bottom = -287.0
+
+[node name="Sword" parent="." instance=ExtResource( 2 )]
+visible = true
+
+[node name="Lance" parent="." instance=ExtResource( 2 )]
+
+[node name="Axe" parent="." instance=ExtResource( 2 )]

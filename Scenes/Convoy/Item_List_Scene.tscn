@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/font/Weapon Name.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scenes/Convoy/Item_List_Scene.gd" type="Script" id=2]
+
+[node name="Background Color" type="ColorRect"]
+visible = false
+margin_left = 128.0
+margin_top = 6.0
+margin_right = 221.0
+margin_bottom = 54.0
+color = Color( 0.172549, 0.164706, 0.196078, 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Item Label" type="Label" parent="."]
+margin_right = 186.0
+margin_bottom = 26.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = ExtResource( 1 )
+text = "Swords"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Item List" type="ItemList" parent="."]
+margin_top = 14.0
+margin_right = 93.0
+margin_bottom = 146.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Item Tree" type="Node" parent="."]

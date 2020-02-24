@@ -41,4 +41,5 @@ func get_item(item_id):
 func create_item(item_id):
 	var item = load(item_id)
 	var new_item = item.instance()
+	
 	return new_item
