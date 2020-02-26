@@ -18,14 +18,15 @@ func _ready():
 	disable_input()
 
 func add_item(item):
+	# Attach to tree
+	item_tree_node.add_child(item)
+	
 	# Add to the array
 	item_list.append(item)
 	
 	# Grab the name of the item and icon and add it as an item
 	item_list_node.add_item(item.item_name, item.icon)
-	
-	# Attach to tree
-	item_tree_node.add_child(item)
+
 
 func remove_item(index):
 	# Remove from the array

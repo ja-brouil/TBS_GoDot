@@ -23,4 +23,4 @@ func _ready():
 	
 	# Death sentence
 	death_sentence = []
-	death_sentence.append("Eirika:\n\nFather, everyone... I've failed you all... I'm sorry everyone...")
+	death_sentence.append("Eirika@assets/units/eirika/eirika mugshot.png@Father, everyone... I've failed you all... I'm sorry everyone...")
