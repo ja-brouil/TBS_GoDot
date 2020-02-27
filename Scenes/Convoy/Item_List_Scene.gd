@@ -5,6 +5,7 @@ var item_list = []
 
 # Item Selected
 var item_selected = null
+var item_index = 0
 
 # Node access
 onready var label = $"Item Label"
@@ -26,7 +27,8 @@ func start():
 	
 	# Set text for the new item
 	if item_list.size() != 0:
-		item_selected = item_list[0]
+		item_index = 0
+		item_selected = item_list[item_index]
 		get_parent().item_stats_label.text = str("Item Stats\n", item_selected.get_stats_stringify())
 	else:
 		get_parent().item_text_reset()
@@ -48,23 +50,39 @@ func add_item(item):
 func set_text(text):
 	label.text = text
 
-func remove_item(index):
-	# Remove from the array
-	var item_to_return = item_list[index]
-	item_tree_node.remove_child(item_to_return)
-	item_list.remove(index)
+func get_item_selected():
+	return item_list[item_index]
+
+func delete_item():
+	# Get the item from the array
+	var item_to_delete = item_list[item_index]
 	
-	# Remove from the item list
-	item_list_node.remove_item(index)
+	# Delete the item from the array
+	item_list.erase(item_to_delete)
 	
-	# Return the item
-	return item_to_return
+	# Remove the item from the List Node
+	item_list_node.remove_item(item_index)
+	
+	# Is the array now empty?
+	if item_list.size() == 0:
+		disable_input()
+		return
+	
+	# Array is not empty, set new index
+	if item_index > item_list.size() - 1:
+		_on_Item_List_item_selected(item_list.size() - 1)
+		allow_input()
+	else:
+		_on_Item_List_item_selected(item_index)
+		allow_input()
+
 
 func allow_input():
+	item_list_node.focus_mode = Control.FOCUS_ALL
 	item_list_node.grab_focus()
 	item_list_node.set_process_input(true)
 	if item_list.size() != 0:
-		item_list_node.select(0)
+		item_list_node.select(item_index)
 
 func disable_input():
 	item_list_node.set_process_input(false)
@@ -74,6 +92,7 @@ func disable_input():
 
 func _on_Item_List_item_selected(index):
 	$"Hand Selector/Move".play(0)
+	item_index = index
 	item_selected = item_list[index]
 	
 	# Set parent label

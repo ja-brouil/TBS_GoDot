@@ -47,13 +47,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Hand Selector" parent="." instance=ExtResource( 2 )]
-visible = false
-margin_left = -300.0
-margin_top = -300.0
-margin_right = -284.0
-margin_bottom = -287.0
-
 [node name="Sword" parent="." instance=ExtResource( 3 )]
 
 [node name="Lance" parent="." instance=ExtResource( 3 )]
@@ -63,6 +56,13 @@ margin_bottom = -287.0
 [node name="Tome" parent="." instance=ExtResource( 3 )]
 
 [node name="Heal" parent="." instance=ExtResource( 3 )]
+
+[node name="Hand Selector" parent="." instance=ExtResource( 2 )]
+visible = false
+margin_left = -300.0
+margin_top = -300.0
+margin_right = -284.0
+margin_bottom = -287.0
 
 [node name="Convoy Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )

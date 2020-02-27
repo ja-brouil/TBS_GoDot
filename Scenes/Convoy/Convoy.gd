@@ -85,8 +85,11 @@ func _input(event):
 		pass
 	
 	if Input.is_action_just_pressed("debug"):
-		# Test print
-		print()
+		if all_lists_array[current_list_selected_index].item_list.size() == 0:
+			item_text_reset()
+			return
+		print(all_lists_array[current_list_selected_index].get_item_selected())
+		all_lists_array[current_list_selected_index].delete_item()
 
 func start():
 	# TEST LOAD ITEMS
@@ -168,15 +171,6 @@ func test():
 	tome_list.add_item(load(ALL_ITEMS_REF.all_items["Flux Tome"]).instance())
 	tome_list.add_item(load(ALL_ITEMS_REF.all_items["Fire Tome"]).instance())
 	tome_list.add_item(load(ALL_ITEMS_REF.all_items["Fire Tome"]).instance())
-	tome_list.add_item(load(ALL_ITEMS_REF.all_items["Flux Tome"]).instance())
-	tome_list.add_item(load(ALL_ITEMS_REF.all_items["Fire Tome"]).instance())
-	tome_list.add_item(load(ALL_ITEMS_REF.all_items["Flux Tome"]).instance())
-	tome_list.add_item(load(ALL_ITEMS_REF.all_items["Flux Tome"]).instance())
-	tome_list.add_item(load(ALL_ITEMS_REF.all_items["Fire Tome"]).instance())
-	tome_list.add_item(load(ALL_ITEMS_REF.all_items["Fire Tome"]).instance())
-	tome_list.add_item(load(ALL_ITEMS_REF.all_items["Flux Tome"]).instance())
-	tome_list.add_item(load(ALL_ITEMS_REF.all_items["Fire Tome"]).instance())
-	tome_list.add_item(load(ALL_ITEMS_REF.all_items["Flux Tome"]).instance())
 	tome_list.add_item(load(ALL_ITEMS_REF.all_items["Flux Tome"]).instance())
 	tome_list.add_item(load(ALL_ITEMS_REF.all_items["Fire Tome"]).instance())
 	
