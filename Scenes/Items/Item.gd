@@ -47,4 +47,29 @@ func can_be_consumed():
 func use_consumable():
 	pass
 
+## Debug functions ##
+func get_stats_stringify():
+	return str("Name: ", item_name,"\n",
+		"Uses: ", uses,"\n",
+		"Might: ", might, "\n",
+		"Weight: ", weight, "\n",
+		"Hit: ", hit, "\n",
+		"Crit: ", crit, "\n",
+		"Min Range: ", min_range, "\n",
+		"Max Range: ", max_range, "\n",
+		"Item Desc: ", item_description, "\n")
+
+func print_stats():
+	print(
+		"Name: ", item_name,"\n",
+		"Uses: ", uses,"\n",
+		"Might: ", might, "\n",
+		"Weight: ", weight, "\n",
+		"Hit: ", hit, "\n",
+		"Crit: ", crit, "\n",
+		"Min Range: ", min_range, "\n",
+		"Max Range: ", max_range, "\n",
+		"Item Desc: ", item_description, "\n"
+	)
+
 # Special abilities should be added here in the extended item slot

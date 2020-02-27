@@ -1,0 +1,91 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Scenes/Convoy/Convoy.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/GUI/Hand Cursor/Hand Selector.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Convoy/Item_List_Scene.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/music/Swift As Wind.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/backgrounds/FE BG 4.jpg" type="Texture" id=5]
+[ext_resource path="res://assets/font/Main Font.ttf" type="DynamicFontData" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 6 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Fade"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[node name="Convoy UI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Hand Selector" parent="." instance=ExtResource( 2 )]
+visible = false
+margin_left = -300.0
+margin_top = -300.0
+margin_right = -284.0
+margin_bottom = -287.0
+
+[node name="Sword" parent="." instance=ExtResource( 3 )]
+
+[node name="Lance" parent="." instance=ExtResource( 3 )]
+
+[node name="Axe" parent="." instance=ExtResource( 3 )]
+
+[node name="Tome" parent="." instance=ExtResource( 3 )]
+
+[node name="Heal" parent="." instance=ExtResource( 3 )]
+
+[node name="Convoy Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="Item Stats" type="Label" parent="."]
+margin_left = 8.215
+margin_top = 6.0
+margin_right = 390.215
+margin_bottom = 499.0
+rect_scale = Vector2( 0.3, 0.3 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0.290196, 0.290196, 0.290196, 1 )
+text = "\"Item Stats\""
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Fade = SubResource( 2 )
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

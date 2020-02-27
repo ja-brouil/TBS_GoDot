@@ -12,6 +12,7 @@ const all_items = {
 	"Iron Lance": "res://Scenes/Items/Lance/Iron Lance.tscn",
 	"Fire Tome" : "res://Scenes/Items/Tomes/Fire.tscn",
 	"Heal Staff" : "res://Scenes/Items/Staves/Heal.tscn",
+	"Flux Tome" : "res://Scenes/Items/Tomes/Flux.tscn",
 	"Killing Edge" : "res://Scenes/Items/Swords/Killing Edge.tscn"
 }
 
