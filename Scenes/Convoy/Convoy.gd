@@ -4,6 +4,9 @@ extends Control
 # Item selected
 var current_item_selected_index = 0
 
+# Unit selected
+var current_unit_selected = null
+
 # Current list selected
 var previous_list_selected_index = 0
 var current_list_selected_index = 0
@@ -15,8 +18,10 @@ const LIST_POSITION = Vector2(128, 6)
 onready var sword_list = $Sword
 onready var lance_list = $Lance
 onready var axe_list = $"Axe"
+onready var bow_list = $Bow
 onready var tome_list = $Tome
 onready var heal_list = $Heal
+onready var consumable_list = $Consumable
 onready var item_stats_label = $"Item Stats"
 
 # Store all the nodes into this array for controlled access
@@ -37,8 +42,10 @@ func _ready():
 	sword_list.set_text("Swords")
 	lance_list.set_text("Lances")
 	axe_list.set_text("Axes")
+	bow_list.set_text("Bow")
 	tome_list.set_text("Tomes")
 	heal_list.set_text("Healing Staves")
+	consumable_list.set_text("Consumables")
 	
 	start()
 
@@ -85,11 +92,13 @@ func _input(event):
 		pass
 	
 	if Input.is_action_just_pressed("debug"):
-		if all_lists_array[current_list_selected_index].item_list.size() == 0:
-			item_text_reset()
-			return
-		print(all_lists_array[current_list_selected_index].get_item_selected())
-		all_lists_array[current_list_selected_index].delete_item()
+		# Add new tome
+		add_item_to_convoy(load(ALL_ITEMS_REF.all_items["Silver Lance"]).instance())
+#		if all_lists_array[current_list_selected_index].item_list.size() == 0:
+#			item_text_reset()
+#			return
+#		print(all_lists_array[current_list_selected_index].get_item_selected())
+#		all_lists_array[current_list_selected_index].delete_item()
 
 func start():
 	# TEST LOAD ITEMS
@@ -105,15 +114,41 @@ func start():
 	all_lists_array.append(sword_list)
 	all_lists_array.append(lance_list)
 	all_lists_array.append(axe_list)
+	all_lists_array.append(bow_list)
 	all_lists_array.append(tome_list)
 	all_lists_array.append(heal_list)
+	all_lists_array.append(consumable_list)
 	
 	# Start first list
 	deactivate_all_lists()
 	activate_list(all_lists_array[current_list_selected_index])
 
+
+func start_with_unit_selected(unit):
+	current_unit_selected = unit
+	start()
+
+# Add an item to the convoy
 func add_item_to_convoy(item):
-	pass
+	item._ready()
+	# If the item is a consumable, put it in the consumable list
+	if item.item_class == Item.ITEM_CLASS.CONSUMABLE:
+		consumable_list.add_item(item)
+	else:
+		# Place weapon in correct location
+		match item.weapon_type:
+			Item.WEAPON_TYPE.SWORD:
+				sword_list.add_item(item)
+			Item.WEAPON_TYPE.AXE:
+				axe_list.add_item(item)
+			Item.WEAPON_TYPE.LANCE:
+				lance_list.add_item(item)
+			Item.WEAPON_TYPE.BOW:
+				bow_list.add_item(item)
+			Item.WEAPON_TYPE.LIGHT, Item.WEAPON_TYPE.DARK, Item.WEAPON_TYPE.ELEMENTAL:
+				tome_list.add_item(item)
+			Item.WEAPON_TYPE.HEALING:
+				heal_list.add_item(item)
 
 func next_list(previous_list, next_list):
 	deactivate_list(previous_list)
@@ -134,7 +169,8 @@ func deactivate_all_lists():
 		deactivate_list(list)
 
 func exit():
-	pass
+	# Remove the unit
+	current_unit_selected = null
 
 func test():
 	# Swords

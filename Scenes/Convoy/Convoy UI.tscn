@@ -53,9 +53,13 @@ __meta__ = {
 
 [node name="Axe" parent="." instance=ExtResource( 3 )]
 
+[node name="Bow" parent="." instance=ExtResource( 3 )]
+
 [node name="Tome" parent="." instance=ExtResource( 3 )]
 
 [node name="Heal" parent="." instance=ExtResource( 3 )]
+
+[node name="Consumable" parent="." instance=ExtResource( 3 )]
 
 [node name="Hand Selector" parent="." instance=ExtResource( 2 )]
 visible = false
