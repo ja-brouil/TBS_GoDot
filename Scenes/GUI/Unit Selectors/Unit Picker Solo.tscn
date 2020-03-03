@@ -87,4 +87,6 @@ margin_left = -273.639
 margin_top = -138.613
 margin_right = -257.639
 margin_bottom = -125.613
+
+[node name="TEST NODE" type="Node" parent="."]
 [connection signal="item_selected" from="Unit List" to="." method="_on_Unit_List_item_selected"]

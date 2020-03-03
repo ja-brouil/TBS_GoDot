@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/Convoy/Convoy.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/GUI/Hand Cursor/Hand Selector.tscn" type="PackedScene" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://assets/music/Swift As Wind.wav" type="AudioStream" id=4]
 [ext_resource path="res://assets/backgrounds/FE BG 4.jpg" type="Texture" id=5]
 [ext_resource path="res://assets/font/Main Font.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Scenes/GUI/Unit Selectors/Unit Picker Solo.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/font/Action Selector Font.tres" type="DynamicFont" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -47,19 +49,45 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sword" parent="." instance=ExtResource( 3 )]
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 240.0
+margin_bottom = 11.0
+color = Color( 0.172549, 0.164706, 0.196078, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Lance" parent="." instance=ExtResource( 3 )]
+[node name="Convoy Label" type="Label" parent="ColorRect"]
+margin_right = 1199.0
+margin_bottom = 55.0
+rect_scale = Vector2( 0.2, 0.2 )
+custom_fonts/font = ExtResource( 8 )
+text = "Convoy"
+align = 1
+valign = 1
 
-[node name="Axe" parent="." instance=ExtResource( 3 )]
+[node name="All Lists" type="Control" parent="."]
+margin_left = 9.72192
+margin_top = 7.93105
+margin_right = 49.7219
+margin_bottom = 47.931
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Bow" parent="." instance=ExtResource( 3 )]
+[node name="Sword" parent="All Lists" instance=ExtResource( 3 )]
 
-[node name="Tome" parent="." instance=ExtResource( 3 )]
+[node name="Lance" parent="All Lists" instance=ExtResource( 3 )]
 
-[node name="Heal" parent="." instance=ExtResource( 3 )]
+[node name="Axe" parent="All Lists" instance=ExtResource( 3 )]
 
-[node name="Consumable" parent="." instance=ExtResource( 3 )]
+[node name="Bow" parent="All Lists" instance=ExtResource( 3 )]
+
+[node name="Tome" parent="All Lists" instance=ExtResource( 3 )]
+
+[node name="Heal" parent="All Lists" instance=ExtResource( 3 )]
+
+[node name="Consumable" parent="All Lists" instance=ExtResource( 3 )]
 
 [node name="Hand Selector" parent="." instance=ExtResource( 2 )]
 visible = false
@@ -72,10 +100,10 @@ margin_bottom = -287.0
 stream = ExtResource( 4 )
 
 [node name="Item Stats" type="Label" parent="."]
-margin_left = 8.215
-margin_top = 6.0
-margin_right = 390.215
-margin_bottom = 499.0
+margin_left = 3.61224
+margin_top = 11.882
+margin_right = 385.612
+margin_bottom = 504.882
 rect_scale = Vector2( 0.3, 0.3 )
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
@@ -85,6 +113,8 @@ autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Unit Picker Solo" parent="." instance=ExtResource( 7 )]
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 10.0

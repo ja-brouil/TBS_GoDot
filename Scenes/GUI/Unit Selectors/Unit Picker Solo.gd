@@ -22,6 +22,26 @@ func _ready():
 	unit_list.get_v_scroll().mouse_filter = Control.MOUSE_FILTER_IGNORE
 	unit_list.get_v_scroll().modulate = Color(1,1,1,0)
 	
+	
+	# Test adding units
+	# Eirika Test
+	var eririka_path = load("res://Scenes/Units/Player_Units/AllyUnits/Eirika/Eirika.tscn")
+	var eirika_t = eririka_path.instance()
+	$"TEST NODE".add_child(eirika_t)
+	eirika_t.UnitStats.identifier = "Eirika"
+	
+	# Seth test
+	var seth_path = load("res://Scenes/Units/Player_Units/AllyUnits/Seth/Seth.tscn")
+	var seth_t = seth_path.instance()
+	$"TEST NODE".add_child(seth_t)
+	seth_t.UnitStats.identifier = "Seth"
+	seth_t.UnitStats.name = "Seth"
+	
+	BattlefieldInfo.ally_units["Eirika"] = eirika_t
+	BattlefieldInfo.ally_units["Seth"] = seth_t
+	
+	for child in $"TEST NODE".get_children():
+		child.position = Vector2(-100, -100)
 
 func _input(event):
 	if Input.is_action_just_pressed("ui_accept"):
@@ -92,6 +112,9 @@ func populate_array_with_units():
 # Get the unit wanted
 func get_unit(index):
 	return all_units_available[unit_list.get_item_text(index)]
+
+func set_new_text_instructions(instructions):
+	$Instructions.text = instructions
 
 func _on_Unit_List_item_selected(index):
 	unit_selected = get_unit(index)

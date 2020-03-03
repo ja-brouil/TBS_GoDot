@@ -14,15 +14,20 @@ var current_list_selected_index = 0
 # Positioning
 const LIST_POSITION = Vector2(128, 6)
 
+# UI Status
+enum CONVOY_STATUS {SELECT_UNIT, SELECT_ITEM, OFF}
+var current_convoy_status
+
 # Node access
-onready var sword_list = $Sword
-onready var lance_list = $Lance
-onready var axe_list = $"Axe"
-onready var bow_list = $Bow
-onready var tome_list = $Tome
-onready var heal_list = $Heal
-onready var consumable_list = $Consumable
+onready var sword_list = $"All Lists/Sword"
+onready var lance_list = $"All Lists/Lance"
+onready var axe_list = $"All Lists/Axe"
+onready var bow_list = $"All Lists/Bow"
+onready var tome_list = $"All Lists/Tome"
+onready var heal_list = $"All Lists/Heal"
+onready var consumable_list = $"All Lists/Consumable"
 onready var item_stats_label = $"Item Stats"
+onready var unit_picker = $"Unit Picker Solo"
 
 # Store all the nodes into this array for controlled access
 var all_lists_array = []
@@ -55,6 +60,9 @@ func _input(event):
 	elif Input.is_action_just_pressed("ui_down"):
 		pass
 	elif Input.is_action_just_pressed("ui_left"):
+		# Do not process if not in item select mode
+		if current_convoy_status == CONVOY_STATUS.SELECT_UNIT:
+			return
 		
 		# Do nothing if goes underneath 0
 		if current_list_selected_index - 1 < 0:
@@ -71,6 +79,9 @@ func _input(event):
 		$"Hand Selector/Move2".play(0)
 		
 	elif Input.is_action_just_pressed("ui_right"):
+		# Do not process if not in item select mode
+		if current_convoy_status == CONVOY_STATUS.SELECT_UNIT:
+			return
 		
 		# Do nothing if goes above the size of the array
 		if current_list_selected_index + 1 > all_lists_array.size() - 1:
@@ -87,9 +98,9 @@ func _input(event):
 		$"Hand Selector/Move2".play(0)
 		
 	elif Input.is_action_just_pressed("ui_accept"):
-		pass
+		process_accept()
 	elif Input.is_action_just_pressed("ui_cancel"):
-		pass
+		process_cancel()
 	
 	if Input.is_action_just_pressed("debug"):
 		# Add new tome
@@ -122,7 +133,12 @@ func start():
 	# Start first list
 	deactivate_all_lists()
 	activate_list(all_lists_array[current_list_selected_index])
-
+	
+	# Set new text
+	unit_picker.set_new_text_instructions("Select a unit to receive this item.")
+	
+	# Set to select item
+	current_convoy_status = CONVOY_STATUS.SELECT_ITEM
 
 func start_with_unit_selected(unit):
 	current_unit_selected = unit
@@ -155,14 +171,15 @@ func next_list(previous_list, next_list):
 	activate_list(next_list)
 
 func activate_list(list):
-	list.start()
+	list.start(self)
 
-func deactivate_list(list):
+func deactivate_list(list, var reset_index = true):
 	# Stop process
 	list.exit()
 	
 	# Set new index
-	current_item_selected_index = 0
+	if (reset_index):
+		current_item_selected_index = 0
 
 func deactivate_all_lists():
 	for list in all_lists_array:
@@ -214,6 +231,86 @@ func test():
 
 func item_text_reset():
 	item_stats_label.text = "Item Stats"
+
+func process_accept():
+	match current_convoy_status:
+		CONVOY_STATUS.SELECT_ITEM:
+			# Is the current list empty
+			if all_lists_array[current_list_selected_index].item_list.size() == 0:
+				return
+			
+			# Set new state
+			current_convoy_status = CONVOY_STATUS.SELECT_UNIT
+			
+			# Play hand sound
+			$"Hand Selector/Accept".play(0)
+			
+			# Hide item stats
+			item_stats_label.hide()
+			
+			# Start unit picker
+			unit_picker.start()
+			print(all_lists_array[current_list_selected_index].get_item_selected().name)
+			
+			# Stop input on the main input
+			deactivate_list(all_lists_array[current_list_selected_index], false)
+			# set_process_input(false)
+		CONVOY_STATUS.SELECT_UNIT:
+			# Pass the unit the new unit
+			# Check if there is space in the inventory.
+			if unit_picker.unit_selected.UnitInventory.inventory.size() == Unit_Inventory.MAX_INVENTORY:
+				# Display new message and turn off accept for a minute
+				unit_picker.set_new_text_instructions("This unit's inventory is full!")
+				
+				# Play can't sound
+				$"All Lists/Axe/Hand Selector/Invalid".play(0)
+				
+				# Wait 0.4 seconds
+				yield(get_tree().create_timer(1), "timeout")
+				
+				# Set text back
+				unit_picker.set_new_text_instructions("Select a unit to receive this item.")
+			else:
+				# Set text
+				unit_picker.set_new_text_instructions("Select a unit to receive this item.")
+				
+				# We have space in the inventory so send this item to the player
+				# Get the item to transfer
+				var item_to_transfer = all_lists_array[current_list_selected_index].transfer_item()
+				
+				# Move the item to the unit's inventory
+				unit_picker.unit_selected.UnitInventory.add_item(item_to_transfer)
+				
+				# Back to convoy
+				current_convoy_status = CONVOY_STATUS.SELECT_ITEM
+				
+				# Show Item stats
+				item_stats_label.show()
+				
+				# Hide unit picker
+				unit_picker.exit()
+				
+				# Activate the current list
+				activate_list(all_lists_array[current_list_selected_index])
+
+func process_cancel():
+	match current_convoy_status:
+		CONVOY_STATUS.SELECT_UNIT:
+			# Previous state
+			current_convoy_status = CONVOY_STATUS.SELECT_ITEM
+			
+			# Play cancel sound
+			$"Hand Selector/Cancel".play(0)
+			
+			# Show item stats
+			item_stats_label.show()
+			
+			# Hide unit picker
+			unit_picker.exit()
+			
+			# Activate the current list
+			activate_list(all_lists_array[current_list_selected_index])
+			# set_process_input(true)
 
 func _on_Timer_timeout():
 	# Increase the index

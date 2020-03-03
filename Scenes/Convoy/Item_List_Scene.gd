@@ -12,6 +12,9 @@ onready var label = $"Item Label"
 onready var item_list_node = $"Item List" 
 onready var item_tree_node = $"Item Tree"
 
+# Convoy access
+var convoy
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Disable the Item List Stuff
@@ -21,7 +24,8 @@ func _ready():
 	# Disable input
 	disable_input()
 
-func start():
+func start(convoy):
+	self.convoy = convoy
 	visible = true
 	allow_input()
 	
@@ -29,9 +33,9 @@ func start():
 	if item_list.size() != 0:
 		item_index = 0
 		item_selected = item_list[item_index]
-		get_parent().item_stats_label.text = str("Item Stats\n", item_selected.get_stats_stringify())
+		convoy.item_stats_label.text = str("Item Stats\n", item_selected.get_stats_stringify())
 	else:
-		get_parent().item_text_reset()
+		convoy.item_text_reset()
 
 func exit():
 	visible = false
@@ -52,6 +56,30 @@ func set_text(text):
 
 func get_item_selected():
 	return item_list[item_index]
+
+func transfer_item():
+	# Get the item from the array
+	var item_to_delete = item_list[item_index]
+	
+	# Remove it from the array
+	item_list.erase(item_to_delete)
+	
+	# Remove it from the list node
+	item_list_node.remove_item(item_index)
+	
+	# Remove child
+	item_tree_node.remove_child(item_to_delete)
+	
+	# Array is not empty, set new index
+	if item_index > item_list.size() - 1:
+		_on_Item_List_item_selected(item_list.size() - 1)
+		allow_input()
+	else:
+		_on_Item_List_item_selected(item_index)
+		allow_input()
+		
+	# Return the item
+	return item_to_delete
 
 func delete_item():
 	# Get the item from the array
@@ -91,9 +119,11 @@ func disable_input():
 	
 
 func _on_Item_List_item_selected(index):
+	if index < 0:
+		return
 	$"Hand Selector/Move".play(0)
 	item_index = index
 	item_selected = item_list[index]
 	
 	# Set parent label
-	get_parent().item_stats_label.text = str("Item Stats\n", item_selected.get_stats_stringify())
+	convoy.item_stats_label.text = str("Item Stats\n", item_selected.get_stats_stringify())
