@@ -38,11 +38,13 @@ var before_battle_sentence = null
 func _ready():
 	# Movement Stats
 	UnitMovementStats = Unit_Movement.new()
-	add_child(UnitMovementStats)
+	UnitMovementStats.name = "UnitMovementStats"
+	add_child(UnitMovementStats, true)
 
 	# Unit Action state
 	UnitActionStatus = Unit_Action_Status.new()
-	add_child(UnitActionStatus)
+	UnitActionStatus.name = "UnitActionStatus"
+	add_child(UnitActionStatus, true)
 	
 	# Inventory
 	UnitInventory = preload("res://Scenes/Units/Unit_Scripts/Inventory.tscn").instance()
@@ -53,10 +55,10 @@ func _ready():
 
 # Greyscale options
 func turn_greyscale_on():
-	self.modulate = Color(0.33, 0.34, 0.37, 1)
+	get_node("Sprite").modulate = Color(0.33, 0.34, 0.37, 1)
 
 func turn_greyscale_off():
-	self.modulate = Color(1, 1, 1, 1)
+	get_node("Sprite").modulate = Color(1, 1, 1, 1)
 
 # Get Direction to face
 # Returns the direction that the unit should be facing
@@ -76,3 +78,73 @@ func get_direction_to_face(starting_cell, destination_cell) -> String:
 	# Fail safe
 	else:
 		return "Idle"
+
+# Save the unit
+func save():
+	var save_dict = {
+		# File and parent
+		"filename" : get_filename(),
+		"parent": get_parent().get_path(),
+		
+		# Position
+		"pos_x": position.x,
+		"pos_y": position.y,
+		
+		# Inventory
+		"current_inventory" : get_node("Inventory").inventory,
+		
+		# Unit Movement Stats
+		"movementSteps" : UnitMovementStats.movementSteps,
+		"is_ally" : UnitMovementStats.is_ally,
+		"default_penalty" : UnitMovementStats.defaultPenalty,
+		"mountain_penalty" : UnitMovementStats.mountainPenalty,
+		"hill_penalty" : UnitMovementStats.hillPenalty,
+		"forest_penalty" : UnitMovementStats.forestPenalty,
+		"fortress_penalty" : UnitMovementStats.fortressPenalty,
+		"building_penalty" : UnitMovementStats.buildingPenalty,
+		"river_penalty" : UnitMovementStats.riverPenalty,
+		"sea_penalty" : UnitMovementStats.seaPenalty,
+		
+		# Action Status
+		"current_action_status": UnitActionStatus.current_action_status,
+		
+		# Unit Stats
+		"unit_identifier": UnitStats.identifier,
+		"unit_name": UnitStats.name,
+		"unit_level" : UnitStats.level,
+		"current_xp" : UnitStats.current_xp,
+		"skill" : UnitStats.skill,
+		"current_health": UnitStats.current_health,
+		"max_health": UnitStats.max_health,
+		"pegasus": UnitStats.pegasus,
+		"bonus_crit" : UnitStats.bonus_crit,
+		"luck": UnitStats.luck,
+		"class_bonus_b": UnitStats.class_bonus_b,
+		"class_bonus_a": UnitStats.class_bonus_a,
+		"class_power": UnitStats.class_power,
+		"class_type": UnitStats.class_type,
+		"str_chance" : UnitStats.str_chance,
+		"skill_chance" : UnitStats.skill_chance,
+		"speed_chance" : UnitStats.speed_chance,
+		"magic_chance" : UnitStats.magic_chance,
+		"luck_chance" : UnitStats.luck_chance,
+		"def_chance" : UnitStats.def_chance,
+		"res_chance" : UnitStats.res_chance,
+		"consti_chance" : UnitStats.consti_chance,
+		"max_health_chance": UnitStats.max_health_chance,
+		"horse": UnitStats.horse,
+		"armor" : UnitStats.armor,
+		"speed": UnitStats.speed,
+		"strength": UnitStats.strength,
+		"defence": UnitStats.def,
+		"magic" : UnitStats.magic,
+		"consti" : UnitStats.consti,
+		"bonus_hit": UnitStats.bonus_hit,
+		"name": UnitStats.name,
+		"resistance": UnitStats.res
+	}
+	return save_dict
+
+# Load the unit
+func load():
+	pass

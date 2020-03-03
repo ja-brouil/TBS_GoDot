@@ -121,6 +121,7 @@ func disable_input():
 func _on_Item_List_item_selected(index):
 	if index < 0:
 		return
+	
 	$"Hand Selector/Move".play(0)
 	item_index = index
 	item_selected = item_list[index]

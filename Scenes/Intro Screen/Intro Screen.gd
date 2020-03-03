@@ -21,6 +21,7 @@ func _ready():
 	
 	# Anim signal
 	$"Anim".connect("animation_finished", self, "allow_selection")
+	
 
 func _input(event):
 	match current_state:
