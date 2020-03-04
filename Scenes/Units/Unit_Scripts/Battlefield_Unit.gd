@@ -141,8 +141,19 @@ func save():
 		"consti" : UnitStats.consti,
 		"bonus_hit": UnitStats.bonus_hit,
 		"name": UnitStats.name,
-		"resistance": UnitStats.res
+		"resistance": UnitStats.res,
+		"boss_bonus": UnitStats.boss_bonus,
+		"bonus_dodge": UnitStats.bonus_dodge,
+		"thief_bonus" : UnitStats.thief_bonus
 	}
+	
+	# Does the unit have an AI
+	if has_node("AI"):
+		save_dict["AI"] = {
+			"filename" : get_node("AI").filename,
+			"parent" : get_node("AI").get_parent().get_path(),
+			"ai_type" : get_node("AI").ai_type
+		}
 	return save_dict
 
 # Load the unit

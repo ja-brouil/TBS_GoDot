@@ -39,7 +39,7 @@ margin_top = 59.3452
 margin_right = 66.6911
 margin_bottom = 69.3453
 
-[node name="Suspend End Turn2" parent="End Turn" instance=ExtResource( 6 )]
+[node name="End Turn" parent="End Turn" instance=ExtResource( 6 )]
 margin_left = 22.6266
 margin_top = 68.2377
 margin_right = 66.6266

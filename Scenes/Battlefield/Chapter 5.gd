@@ -48,7 +48,8 @@ func _ready():
 	BattlefieldInfo.battlefield_container.modulate = Color(1,1,1,1)
 	
 	# Remove other one
-	get_node("/root/Level/Chapter 4").queue_free()   
+	if has_node("root/Level/Chapter 4"):
+		get_node("/root/Level/Chapter 4").queue_free()
 
 func next_level():
 	pass

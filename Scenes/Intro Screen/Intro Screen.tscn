@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/Intro Screen/Intro Screen.gd" type="Script" id=1]
 [ext_resource path="res://assets/intro screen/intro background.jpg" type="Texture" id=2]
@@ -6,6 +6,21 @@
 [ext_resource path="res://assets/font/Action Selector Font.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Scenes/GUI/Hand Cursor/Hand Selector.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Particles/Fog.tscn" type="PackedScene" id=6]
+
+[sub_resource type="Animation" id=3]
+resource_name = "Fade "
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ) ]
+}
 
 [sub_resource type="Animation" id=1]
 resource_name = "Options Fade In"
@@ -121,6 +136,7 @@ margin_right = 146.824
 margin_bottom = 101.146
 
 [node name="Anim" type="AnimationPlayer" parent="."]
+"anims/Fade " = SubResource( 3 )
 "anims/Options Fade In" = SubResource( 1 )
 "anims/music fade out" = SubResource( 2 )
 

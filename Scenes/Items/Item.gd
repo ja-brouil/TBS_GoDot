@@ -73,3 +73,5 @@ func print_stats():
 	)
 
 # Special abilities should be added here in the extended item slot
+func save():
+	pass

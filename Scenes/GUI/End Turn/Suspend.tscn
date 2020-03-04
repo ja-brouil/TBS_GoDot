@@ -16,6 +16,9 @@ centered = false
 margin_right = 440.0
 margin_bottom = 97.0
 custom_fonts/font = ExtResource( 2 )
-text = "Suspend"
+text = "Save"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -36,6 +36,9 @@ func _ready():
 
 # Ally
 func reset_allys():
+	if BattlefieldInfo.save_load_system.is_loading_level:
+		return
+	
 	for ally_unit in BattlefieldInfo.ally_units.values():
 		ally_unit.UnitActionStatus.set_current_action(Unit_Action_Status.MOVE)
 
@@ -46,8 +49,9 @@ func reset_enemies():
 
 # Remove Greyscale
 func reset_greyscale():
-	for ally_unit in BattlefieldInfo.ally_units.values():
-		ally_unit.turn_greyscale_off()
+	if !BattlefieldInfo.save_load_system.is_loading_level:
+		for ally_unit in BattlefieldInfo.ally_units.values():
+			ally_unit.turn_greyscale_off()
 	
 	for enemy_unit in BattlefieldInfo.enemy_units.values():
 		enemy_unit.turn_greyscale_off()
@@ -112,11 +116,7 @@ func start_ally_transition():
 
 func start_enemy_transition():
 	# Set Camera back on Eirika and cursor
-	BattlefieldInfo.main_game_camera.position = (BattlefieldInfo.Eirika.position + Vector2(-112, -82))
-	BattlefieldInfo.main_game_camera.clampCameraPosition()
-	BattlefieldInfo.cursor.position = BattlefieldInfo.Eirika.position
-	BattlefieldInfo.cursor.updateCursorData()
-	BattlefieldInfo.cursor.emit_signal("cursorMoved", "left", BattlefieldInfo.cursor.position)
+	move_camera_to_Eirika()
 	# Start Transition
 	$"End of Ally".start(0)
 
@@ -147,3 +147,10 @@ func game_over_scene():
 
 func victory_next_level():
 	BattlefieldInfo.level_container.next_level()
+
+func move_camera_to_Eirika():
+	BattlefieldInfo.main_game_camera.position = (BattlefieldInfo.Eirika.position + Vector2(-112, -82))
+	BattlefieldInfo.main_game_camera.clampCameraPosition()
+	BattlefieldInfo.cursor.position = BattlefieldInfo.Eirika.position
+	BattlefieldInfo.cursor.updateCursorData()
+	BattlefieldInfo.cursor.emit_signal("cursorMoved", "left", BattlefieldInfo.cursor.position)

@@ -62,7 +62,8 @@ func process_selection():
 			# Turn this off
 			turn_off()
 		"Suspend":
-			print("FROM END TURN: Suspend")
+			BattlefieldInfo.save_load_system.save_game()
+			yield(BattlefieldInfo.save_load_system, "saving_complete")
 		"End":
 			# Get all ally units and put it to end
 			for ally_unit in BattlefieldInfo.ally_units.values():

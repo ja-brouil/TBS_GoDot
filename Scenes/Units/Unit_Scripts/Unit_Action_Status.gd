@@ -20,3 +20,16 @@ func get_current_action():
 
 func set_current_action(action):
 	current_action_status = action
+
+func set_current_action_index(index):
+	match index:
+		0:
+			set_current_action(MOVE)
+		1:
+			set_current_action(ACTION)
+		2:
+			set_current_action(TRADE)
+		3:
+			set_current_action(DONE)
+		_:
+			set_current_action(MOVE)

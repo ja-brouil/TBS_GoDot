@@ -71,3 +71,17 @@ func process_selection():
 			WorldMapScreen.current_event = Level1_WM_Event_Part10.new()
 			WorldMapScreen.connect_to_scene_changer()
 			SceneTransition.change_scene_to(WorldMapScreen, 0.1)
+		"Load Game":
+			# Stop song and fade to black
+			$"Anim".play("music fade out")
+			set_process_input(false)
+			yield($Anim,"animation_finished")
+			$"Intro Song".stop()
+			
+			# Make screen go dark
+			$Anim.play("Fade ")
+			yield($Anim, "animation_finished")
+			
+			# Load the game
+			BattlefieldInfo.save_load_system.is_loading_level = true
+			BattlefieldInfo.save_load_system.load_game()

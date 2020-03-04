@@ -28,7 +28,9 @@ func _ready():
 	BattlefieldInfo.event_system.add_event(L1_Event_Part_20.new())
 	BattlefieldInfo.event_system.add_event(L1_Event_Part_30.new())
 	
-	BattlefieldInfo.event_system.start_events_queue()
+	# Only auto start if level loaded is not set to loaded
+	if !BattlefieldInfo.save_load_system.is_loading_level:
+		BattlefieldInfo.event_system.start_events_queue()
 
 # Additional Loss
 # If Seth dies on this level you also lose

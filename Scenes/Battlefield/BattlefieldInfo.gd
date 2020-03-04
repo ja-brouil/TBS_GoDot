@@ -34,9 +34,12 @@ var victory_text = "Defeat all enemies"
 # Victory System
 var victory_system
 
-###########################
-#GLOBAL GAMEPLAY VARIABLES#
-###########################
+# Save/Load System
+var save_load_system
+
+#############################
+# GLOBAL GAMEPLAY VARIABLES #
+#############################
 # Current Unit Selected
 var current_Unit_Selected: Node2D
 
@@ -164,6 +167,11 @@ func _ready():
 	
 	# Databases
 	item_database = ALL_ITEMS_REF.new()
+	
+	# Save load
+	save_load_system = SaveLoadSystem.new()
+	save_load_system.name = "Save Load System"
+	add_child(save_load_system)
 
 # Run Systems
 func _process(delta):
@@ -175,9 +183,6 @@ func _input(event):
 	if Input.is_action_just_pressed("exit_game"):
 		get_tree().quit()
 	
-	# Test for saving
-	if Input.is_action_just_pressed("debug"):
-		save_game()
 
 # Clear for starting
 func clear():
@@ -209,7 +214,28 @@ func clear():
 
 # Start the level
 func start_level():
-	turn_transition.start_level()
+	if save_load_system.is_loading_level:
+		# Remove intro screen if it's still there
+		if get_tree().get_root().has_node("Intro Screen"):
+			get_tree().get_root().get_node("Intro Screen").queue_free()
+		
+		# Set main camera
+		main_game_camera.current = true
+		
+		# Set Transition
+		turn_manager.move_camera_to_Eirika()
+		
+		# Clear Fade
+		battlefield_container.get_node("Anim").play("Fade")
+		yield(battlefield_container.get_node("Anim"), "animation_finished")
+		
+		# Start level
+		turn_transition.start_level()
+		
+		# Play Music
+		music_player.get_node("AllyLevel").play(0)
+	else:
+		turn_transition.start_level()
 
 # AI Functions
 func next_ai(enemy_unit):
@@ -221,36 +247,4 @@ func start_ai_combat():
 	
 	# Start Combat screen
 	combat_screen.start_combat(Combat_Screen.enemy_first_turn)
-
-#################
-# SAVE AND LOAD #
-#################
-func save_game():
-	print("Starting to save...")
-	# Save the units
-	var save_game_file = File.new()
-	save_game_file.open("res://Save/save_game_file.save", File.WRITE)
-	# Player units
-	for player_unit in $YSort.get_children():
-		# Make sure node is an instanced scene
-		if player_unit.filename.empty():
-			print("Persistent node '%s' is not an instanced scene, skipped." % player_unit.name)
-			continue
-		
-		# Check if there is a save function
-		if !player_unit.has_method("save"):
-			print("Persistent node '%s' is missing save() function, skipped." % player_unit.name)
-			continue
-		
-		# Call the node's save function
-		var unit_data = player_unit.save()
-		
-		# Save Data
-		save_game_file.store_line(to_json(unit_data))
-		
-	# Close File stream
-	save_game_file.close()
-	print("Complete!")
-
-func load_game():
-	pass
+	

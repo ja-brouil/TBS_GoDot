@@ -550,7 +550,6 @@ limit_bottom = 160
 [node name="Cam Tween" type="Tween" parent="World Map Cam"]
 
 [node name="World Map Music 1" type="AudioStreamPlayer" parent="."]
-editor/display_folded = true
 stream = ExtResource( 3 )
 volume_db = 6.933
 

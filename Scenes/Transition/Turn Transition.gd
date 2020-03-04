@@ -42,6 +42,11 @@ func finish_turn_transition(type):
 		# Activate UI and Cursor again
 		get_parent().get_parent().get_node("BattlefieldHUD").turn_on_battlefield_ui()
 		BattlefieldInfo.cursor.back_to_move()
+		
+		# Stop loading level
+		if BattlefieldInfo.save_load_system.is_loading_level:
+			BattlefieldInfo.save_load_system.is_loading_level = false
+		
 	else:
 		# Set to enemy turn
 		BattlefieldInfo.turn_manager.turn = Turn_Manager.ENEMY_TURN

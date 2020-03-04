@@ -10,12 +10,13 @@ var damaged
 
 # This system will update each unit on tiles. Add what you need here
 func ally_turn_update():
-	for ally_unit in BattlefieldInfo.ally_units.values():
-		damage(ally_unit, ally_unit.UnitMovementStats.currentTile)
-		heal(ally_unit, ally_unit.UnitMovementStats.currentTile)
-		
-		if healed || damaged:
-			yield(get_tree().create_timer(1), "timeout")
+	if !BattlefieldInfo.save_load_system.is_loading_level:
+		for ally_unit in BattlefieldInfo.ally_units.values():
+			damage(ally_unit, ally_unit.UnitMovementStats.currentTile)
+			heal(ally_unit, ally_unit.UnitMovementStats.currentTile)
+			
+			if healed || damaged:
+				yield(get_tree().create_timer(1), "timeout")
 	emit_signal("update_done", "Ally")
 
 func enemy_turn_update():

@@ -189,6 +189,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Engine/Data_Structures/PriorityQueue.gd"
 }, {
+"base": "Node",
+"class": "SaveLoadSystem",
+"language": "GDScript",
+"path": "res://Engine/Save System/SaveLoadSystem.gd"
+}, {
 "base": "CanvasLayer",
 "class": "Shop_UI",
 "language": "GDScript",
@@ -286,6 +291,7 @@ _global_script_class_icons={
 "MovementRangeRect": "",
 "Music_Player": "",
 "PriorityQueue": "",
+"SaveLoadSystem": "",
 "Shop_UI": "",
 "Spawn_Event": "",
 "TileUnitUpdater": "",
