@@ -140,7 +140,7 @@ func load_game():
 				player_object.UnitStats.set(unit_stat_key, unit_stats_data[unit_stat_key])
 		
 		# Set current tile
-		if player_object.UnitMovementStats.currentTile:
+		if player_object.UnitMovementStats.currentTile == null:
 			player_object.UnitMovementStats.currentTile = BattlefieldInfo.grid[player_object.position.x / Cell.CELL_SIZE][player_object.position.y / Cell.CELL_SIZE]
 			BattlefieldInfo.grid[player_object.position.x / Cell.CELL_SIZE][player_object.position.y / Cell.CELL_SIZE].occupyingUnit = player_object
 		
@@ -199,6 +199,7 @@ func load_game():
 	# Load events
 	data = saved_data[4]
 	BattlefieldInfo.event_system.clear()
+	
 	# Starting events
 	for s_event in data["starting_events"]:
 		var event_object = load(s_event["filename"]).new()

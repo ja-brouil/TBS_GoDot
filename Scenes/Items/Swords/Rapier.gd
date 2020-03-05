@@ -23,6 +23,7 @@ func _ready():
 	
 	# Animation String name
 	weapon_string_name = "sword"
+	
 
 
 # Special ability -> Modify this later
