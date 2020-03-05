@@ -6,6 +6,9 @@ const full_bar_width = 237
 # Play Time
 var time_start = 0
 var time_now = 0
+var saved_time = 0
+var elapsed = 0
+var current_play_session = 0
 
 func _ready():
 	set_process_input(false)
@@ -17,7 +20,8 @@ func _ready():
 func _process(delta):
 	# Time Played
 	time_now = OS.get_unix_time()
-	var elapsed = time_now - time_start
+	current_play_session = time_now - time_start
+	elapsed = (time_now - time_start) + saved_time
 	var minutes = elapsed / 60
 	var seconds = elapsed % 60
 	var str_elapsed =  "%02d : %02d" % [minutes, seconds]

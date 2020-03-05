@@ -9,6 +9,8 @@ var chapter_title = "4\nThe Great Fortress Line"
 var prep_music_choice = "B"
 var money_to_add = 1500
 
+var enemy_commander_name = "Byzantine"
+
 func _ready():
 	# Container for this
 	BattlefieldInfo.level_container = self
@@ -28,14 +30,20 @@ func _ready():
 	BattlefieldInfo.victory_system.victory_condition_state = Victory_Checker.SEIZE
 	
 	# Set enemy commander
-	BattlefieldInfo.enemy_commander = BattlefieldInfo.enemy_units["Byzantine"]
+	BattlefieldInfo.enemy_commander = BattlefieldInfo.enemy_units[enemy_commander_name]
 	
 	# Reset Events and manager
 	BattlefieldInfo.event_system.clear()
 	BattlefieldInfo.event_system.add_event(L4_Event_Part10.new())
 	
 	# Add money
-	BattlefieldInfo.money += money_to_add
+	if !BattlefieldInfo.save_load_system.is_loading_level:
+		BattlefieldInfo.money += money_to_add
+	
+	# Add the players from the y sort to the battle field y sort
+	for player_unit in BattlefieldInfo.y_sort_player_party.get_children():
+		BattlefieldInfo.y_sort_player_party.remove_child(player_unit)
+		BattlefieldInfo.current_level.get_node("YSort").add_child(player_unit)
 	
 	# Prep mode
 	preperation_mode()
@@ -52,7 +60,11 @@ func _ready():
 		get_node("/root/Level/Chapter 4").queue_free()
 
 func next_level():
-	pass
+	# Remove any ally units that are still alive
+	for unit in BattlefieldInfo.current_level.get_node("YSort").get_children():
+		if unit.UnitMovementStats.is_ally:
+			BattlefieldInfo.current_level.get_node("YSort").remove_child(unit)
+			BattlefieldInfo.y_sort_player_party.add_child(unit)
 
 func start_battle():
 	# Start the level

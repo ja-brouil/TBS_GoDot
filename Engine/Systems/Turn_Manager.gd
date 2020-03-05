@@ -24,9 +24,6 @@ signal check_end_turn
 # Game Over
 signal game_over
 
-# Mid Level events I am not sure where to place this so this will have to do for now
-var mid_level_events = []
-
 func _init():
 	turn = WAIT
 
@@ -88,7 +85,7 @@ func check_end_of_turn():
 			emit_signal("player_turn_increased", player_turn_number)
 			
 			# Run mid level events
-			if mid_level_events.empty():
+			if BattlefieldInfo.event_system.mid_level_events.empty():
 				start_ally_transition()
 		ENEMY_TURN:
 			for enemy_unit in BattlefieldInfo.enemy_units.values():
@@ -105,7 +102,7 @@ func check_end_of_turn():
 			emit_signal("enemy_turn_increased", enemy_turn_number)
 			
 			# Start enemy transition
-			if mid_level_events.empty():
+			if BattlefieldInfo.event_system.mid_level_events.empty():
 				start_enemy_transition()
 		WAIT:
 			pass
@@ -131,9 +128,6 @@ func _on_End_of_Enemy_timeout():
 func reset():
 	player_turn_number = 1
 	enemy_turn_number = 1
-	for event in mid_level_events:
-		event.queue_free()
-	mid_level_events.clear()
 
 func game_over_scene():
 	# Reset

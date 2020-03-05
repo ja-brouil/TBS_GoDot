@@ -31,6 +31,8 @@ func _init():
 	# Register to the turn numbers
 	BattlefieldInfo.turn_manager.connect("enemy_turn_increased", self, "start_mid")
 	BattlefieldInfo.turn_manager.connect("player_turn_increased", self, "play_player_transition")
+	
+	path = "res://Scenes/Events/Level 2/L2 Event Mid 20.gd"
 
 func play_player_transition(turn_number):
 	BattlefieldInfo.turn_manager.start_ally_transition()
@@ -205,6 +207,7 @@ func spawn_enemies():
 	
 	# Set new Commander
 	BattlefieldInfo.enemy_commander = BattlefieldInfo.enemy_units["Remove Me"]
+	BattlefieldInfo.level_container.enemy_commander_name = "Remove Me"
 	
 	# Clear
 	BattlefieldInfo.current_Unit_Selected = null
@@ -215,6 +218,6 @@ func spawn_enemies():
 #	BattlefieldInfo.victory_system.victory_condition_state = Victory_Checker.ELIMINATE_ALL_ENEMIES
 	
 	# Remove this from the array
-	BattlefieldInfo.turn_manager.mid_level_events.erase(self)
+	BattlefieldInfo.event_system.mid_level_events.erase(self)
 	BattlefieldInfo.turn_manager.start_enemy_transition()
 	queue_free()

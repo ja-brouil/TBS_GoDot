@@ -83,69 +83,87 @@ func get_direction_to_face(starting_cell, destination_cell) -> String:
 func save():
 	var save_dict = {
 		# File and parent
-		"filename" : get_filename(),
-		"parent": get_parent().get_path(),
+		"node_info" : {
+			"filename" : get_filename(),
+			"parent": get_parent().get_path(),
+		},
 		
 		# Position
-		"pos_x": position.x,
-		"pos_y": position.y,
-		
-		# Inventory
-		"current_inventory" : get_node("Inventory").inventory,
+		"vector2" : {
+			"pos_x": position.x,
+			"pos_y": position.y,
+		},
 		
 		# Unit Movement Stats
-		"movementSteps" : UnitMovementStats.movementSteps,
-		"is_ally" : UnitMovementStats.is_ally,
-		"default_penalty" : UnitMovementStats.defaultPenalty,
-		"mountain_penalty" : UnitMovementStats.mountainPenalty,
-		"hill_penalty" : UnitMovementStats.hillPenalty,
-		"forest_penalty" : UnitMovementStats.forestPenalty,
-		"fortress_penalty" : UnitMovementStats.fortressPenalty,
-		"building_penalty" : UnitMovementStats.buildingPenalty,
-		"river_penalty" : UnitMovementStats.riverPenalty,
-		"sea_penalty" : UnitMovementStats.seaPenalty,
+		"unit_movement_stats": {
+			"movementSteps" : UnitMovementStats.movementSteps,
+			"is_ally" : UnitMovementStats.is_ally,
+			"defaultPenalty" : UnitMovementStats.defaultPenalty,
+			"mountainPenalty" : UnitMovementStats.mountainPenalty,
+			"hillPenalty" : UnitMovementStats.hillPenalty,
+			"forestPenalty" : UnitMovementStats.forestPenalty,
+			"fortressPenalty" : UnitMovementStats.fortressPenalty,
+			"buildingPenalty" : UnitMovementStats.buildingPenalty,
+			"riverPenalty" : UnitMovementStats.riverPenalty,
+			"sea_penalty" : UnitMovementStats.seaPenalty,
+		},
 		
 		# Action Status
-		"current_action_status": UnitActionStatus.current_action_status,
+		"action_status": {
+			"current_action_status": UnitActionStatus.current_action_status,
+		},
 		
 		# Unit Stats
-		"unit_identifier": UnitStats.identifier,
-		"unit_name": UnitStats.name,
-		"unit_level" : UnitStats.level,
-		"current_xp" : UnitStats.current_xp,
-		"skill" : UnitStats.skill,
-		"current_health": UnitStats.current_health,
-		"max_health": UnitStats.max_health,
-		"pegasus": UnitStats.pegasus,
-		"bonus_crit" : UnitStats.bonus_crit,
-		"luck": UnitStats.luck,
-		"class_bonus_b": UnitStats.class_bonus_b,
-		"class_bonus_a": UnitStats.class_bonus_a,
-		"class_power": UnitStats.class_power,
-		"class_type": UnitStats.class_type,
-		"str_chance" : UnitStats.str_chance,
-		"skill_chance" : UnitStats.skill_chance,
-		"speed_chance" : UnitStats.speed_chance,
-		"magic_chance" : UnitStats.magic_chance,
-		"luck_chance" : UnitStats.luck_chance,
-		"def_chance" : UnitStats.def_chance,
-		"res_chance" : UnitStats.res_chance,
-		"consti_chance" : UnitStats.consti_chance,
-		"max_health_chance": UnitStats.max_health_chance,
-		"horse": UnitStats.horse,
-		"armor" : UnitStats.armor,
-		"speed": UnitStats.speed,
-		"strength": UnitStats.strength,
-		"defence": UnitStats.def,
-		"magic" : UnitStats.magic,
-		"consti" : UnitStats.consti,
-		"bonus_hit": UnitStats.bonus_hit,
-		"name": UnitStats.name,
-		"resistance": UnitStats.res,
-		"boss_bonus": UnitStats.boss_bonus,
-		"bonus_dodge": UnitStats.bonus_dodge,
-		"thief_bonus" : UnitStats.thief_bonus
+		"unit_stats" : {
+			"identifier": UnitStats.identifier,
+			"name": UnitStats.name,
+			"level" : UnitStats.level,
+			"current_xp" : UnitStats.current_xp,
+			"skill" : UnitStats.skill,
+			"current_health": UnitStats.current_health,
+			"max_health": UnitStats.max_health,
+			"pegasus": UnitStats.pegasus,
+			"bonus_crit" : UnitStats.bonus_crit,
+			"luck": UnitStats.luck,
+			"class_bonus_b": UnitStats.class_bonus_b,
+			"class_bonus_a": UnitStats.class_bonus_a,
+			"class_power": UnitStats.class_power,
+			"class_type": UnitStats.class_type,
+			"str_chance" : UnitStats.str_chance,
+			"skill_chance" : UnitStats.skill_chance,
+			"speed_chance" : UnitStats.speed_chance,
+			"magic_chance" : UnitStats.magic_chance,
+			"luck_chance" : UnitStats.luck_chance,
+			"def_chance" : UnitStats.def_chance,
+			"res_chance" : UnitStats.res_chance,
+			"consti_chance" : UnitStats.consti_chance,
+			"max_health_chance": UnitStats.max_health_chance,
+			"horse": UnitStats.horse,
+			"armor" : UnitStats.armor,
+			"speed": UnitStats.speed,
+			"strength": UnitStats.strength,
+			"def": UnitStats.def,
+			"magic" : UnitStats.magic,
+			"consti" : UnitStats.consti,
+			"bonus_hit": UnitStats.bonus_hit,
+			"res": UnitStats.res,
+			"boss_bonus": UnitStats.boss_bonus,
+			"bonus_dodge": UnitStats.bonus_dodge,
+			"thief_bonus" : UnitStats.thief_bonus
+		},
+		"battle_quotes":{
+			"death_sentence": death_sentence,
+			"before_battle_sentence": before_battle_sentence
+		}
 	}
+	
+	# Save Inventory
+	# Inventory
+	var item_list_data = []
+	for item in get_node("Inventory").inventory:
+		var item_data = item.save()
+		item_list_data.append(item_data)
+	save_dict["inventory_data"] = item_list_data
 	
 	# Does the unit have an AI
 	if has_node("AI"):

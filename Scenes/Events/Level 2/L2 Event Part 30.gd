@@ -25,6 +25,7 @@ var move_actor_2
 func _init():
 	event_name = "Level 2 Before Battle Event"
 	event_part = "Part 3"
+	path = "res://Scenes/Events/Level 2/L2 Event Part 30.gd"
 
 func start():
 	# Find Move Soldier

@@ -473,11 +473,10 @@ tracks/2/keys = {
 }
 
 [node name="Eirika" type="Node2D"]
-z_index = 2
+z_index = 4
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-z_index = 2
 texture = ExtResource( 2 )
 centered = false
 region_enabled = true

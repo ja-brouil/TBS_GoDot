@@ -32,6 +32,8 @@ var eirika
 func _init():
 	event_name = "Level 2 Event Eirika and allies talk, camera moves"
 	event_part = "Part 1"
+	
+	path = "res://Scenes/Events/Level 2/L2 Event Part 10.gd"
 
 func start():
 	# Play intro song

@@ -55,6 +55,7 @@ func add_event(event: Event_Base):
 
 func add_mid_event(event: Event_Base):
 	mid_level_events.append(event)
+	add_child(event)
 
 # Remove an event from the queue
 func remove_event(event: Event_Base):
@@ -79,9 +80,27 @@ func clear():
 		event.queue_free()
 	queue_of_events.clear()
 	for event in mid_level_events:
-		mid_level_events.queue_free()
+		event.queue_free()
 	mid_level_events.clear()
 
 # Ends the level and goes to the next level
 func end_level():
 	pass
+
+# Save the events
+func save():
+	var starting_events_data = []
+	var mid_events_data = []
+	var save_dict = {}
+	
+	# Starting events
+	for starting_event in queue_of_events:
+		starting_events_data.append(starting_event.save())
+	save_dict["starting_events"] = starting_events_data
+	
+	# Mid Level Events
+	for mid_level_event in mid_level_events:
+		mid_events_data.append(mid_level_event.save())
+	save_dict["mid_events"] = mid_events_data
+	
+	return save_dict

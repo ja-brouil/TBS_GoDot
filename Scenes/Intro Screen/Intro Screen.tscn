@@ -7,7 +7,7 @@
 [ext_resource path="res://Scenes/GUI/Hand Cursor/Hand Selector.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Particles/Fog.tscn" type="PackedScene" id=6]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=1]
 resource_name = "Fade "
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -22,8 +22,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ) ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "Options Fade In"
+[sub_resource type="Animation" id=2]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Options:visible")
@@ -50,8 +49,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "music fade out"
+[sub_resource type="Animation" id=3]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Intro Song:volume_db")
@@ -136,9 +134,9 @@ margin_right = 146.824
 margin_bottom = 101.146
 
 [node name="Anim" type="AnimationPlayer" parent="."]
-"anims/Fade " = SubResource( 3 )
-"anims/Options Fade In" = SubResource( 1 )
-"anims/music fade out" = SubResource( 2 )
+"anims/Fade " = SubResource( 1 )
+"anims/Options Fade In" = SubResource( 2 )
+"anims/music fade out" = SubResource( 3 )
 
 [node name="Fog" parent="." instance=ExtResource( 6 )]
 position = Vector2( 119.829, 79.9534 )

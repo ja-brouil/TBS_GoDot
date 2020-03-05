@@ -4,6 +4,8 @@ var level_music = preload("res://assets/music/Chasing Daybreak.ogg")
 
 var chapter_title = "Chapter 2: Fort Merceus"
 
+var enemy_commander_name = "Vezarius"
+
 func _ready():
 	# Container for this
 	BattlefieldInfo.level_container = self
@@ -27,7 +29,7 @@ func _ready():
 	BattlefieldInfo.victory_system.turns_left_to_survive = 10
 	
 	# Enemy Commander
-	BattlefieldInfo.enemy_commander = BattlefieldInfo.enemy_units["Vezarius"]
+	BattlefieldInfo.enemy_commander = BattlefieldInfo.enemy_units[enemy_commander_name]
 	
 	# Load events for this level
 	BattlefieldInfo.event_system.add_event(L2_Event_Part05.new())
@@ -38,14 +40,20 @@ func _ready():
 	BattlefieldInfo.event_system.add_event(L2_Event_Part5.new())
 	
 	# Mid Level Events
-	BattlefieldInfo.turn_manager.mid_level_events.append(L2_Event_Mid_10.new())
-	BattlefieldInfo.turn_manager.mid_level_events.append(L2_Event_Mid_20.new())
+	BattlefieldInfo.event_system.add_mid_event(L2_Event_Mid_10.new())
+	BattlefieldInfo.event_system.add_mid_event(L2_Event_Mid_20.new())
 	
 	# Reset event manager
 	BattlefieldInfo.event_system.current_state = Event_System.starting_events
 	
+	# Add the players from the y sort to the battle field y sort
+	for player_unit in BattlefieldInfo.y_sort_player_party.get_children():
+		BattlefieldInfo.y_sort_player_party.remove_child(player_unit)
+		BattlefieldInfo.current_level.get_node("YSort").add_child(player_unit)
+	
 	# Start the level
-	BattlefieldInfo.event_system.start_events_queue()
+	if !BattlefieldInfo.save_load_system.is_loading_level:
+		BattlefieldInfo.event_system.start_events_queue()
 	
 	# Get rid of the other one
 	if has_node("/root/Level/Chapter 2"):
@@ -55,6 +63,12 @@ func check_loss():
 	return BattlefieldInfo.ally_units.has("Seth")
 
 func next_level():
+	# Remove any ally units that are still alive
+	for unit in BattlefieldInfo.current_level.get_node("YSort").get_children():
+		if unit.UnitMovementStats.is_ally:
+			BattlefieldInfo.current_level.get_node("YSort").remove_child(unit)
+			BattlefieldInfo.y_sort_player_party.add_child(unit)
+	
 	#stop input
 	BattlefieldInfo.cursor.disable_standard("hello world")
 	

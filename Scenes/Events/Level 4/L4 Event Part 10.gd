@@ -14,6 +14,7 @@ var dialogue = [
 func _init():
 	event_name = "Level 3 Before Battle Event"
 	event_part = "Part 1"
+	path = "res://Scenes/Events/Level 4/L4 Event Part 10.gd"
 
 func start():
 	# Register to the dialogue system

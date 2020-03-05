@@ -40,10 +40,6 @@ func draw_attack_sound():
 func put_away_attack_sound():
 	pass
 
-# Consumable functions
-func can_be_consumed():
-	return true
-
 func use_consumable():
 	pass
 
@@ -74,4 +70,29 @@ func print_stats():
 
 # Special abilities should be added here in the extended item slot
 func save():
-	pass
+	var save_dict = {
+		# Node info
+		"filename" : get_filename(),
+		"parent": get_parent().get_path(),
+		
+		# Item stats
+		"item_stats": {
+			"uses" : uses,
+			"might" : might,
+			"weight" : weight,
+			"hit" : hit,
+			"crit" : crit,
+			"max_range" : max_range,
+			"min_range" : min_range,
+			"item_description": item_description,
+			"item_name": item_name
+		}
+	}
+	return save_dict
+
+func load_item(stat_data):
+	for key in stat_data.keys():
+		if key == "item_description" || key == "item_name":
+			set(key, stat_data[key])
+		else:
+			set(key, int(stat_data[key]))

@@ -132,5 +132,19 @@ func remove_do_not_delete_item(item):
 		if current_item_equipped == null:
 			current_item_equipped = $Unarmed
 
+# Use this when loading units
+func clear_inventory():
+	# Reset stats
+	current_item_equipped = null
+	MAX_ATTACK_RANGE = 0
+	MAX_HEAL_RANGE = 0
+	
+	for child in get_children():
+		if child.name != "Unarmed":
+			child.free()
+	
+	inventory.clear()
+
+
 func set_unarmed():
 	current_item_equipped = $Unarmed

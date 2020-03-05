@@ -27,6 +27,7 @@ var movement_camera
 func _init():
 	event_name = "Level 2 Event Enemies talk, camera moves, gameplay starts"
 	event_part = "Part 2"
+	path = "res://Scenes/Events/Level 2/L2 Event Part 20.gd"
 
 func start():
 	# Find Vezarius

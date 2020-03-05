@@ -15,6 +15,9 @@ signal move_actor_done
 signal enable_text_done
 signal enable_combat_done
 
+# Path for serialization
+var path
+
 # Debug purpuses
 var event_name
 var event_part
@@ -52,3 +55,10 @@ func check_player_input():
 # Call this to end this event
 func event_complete():
 	emit_signal("event_done")
+
+# Save the current event
+func save():
+	var save_dict = {
+		"filename": path
+	}
+	return save_dict

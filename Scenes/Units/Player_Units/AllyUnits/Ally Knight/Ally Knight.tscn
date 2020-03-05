@@ -520,7 +520,7 @@ tracks/2/keys = {
 }
 
 [node name="Ally Knight" type="Node2D"]
-z_index = 3
+z_index = 4
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 15.0 ],
@@ -528,7 +528,6 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="."]
-z_index = 3
 texture = ExtResource( 2 )
 centered = false
 region_enabled = true

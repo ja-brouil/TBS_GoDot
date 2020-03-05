@@ -29,6 +29,7 @@ var colm
 func _init():
 	event_name = "Level 2 Before Battle Event"
 	event_part = "Part 3"
+	path = "res://Scenes/Events/Level 2/L2 Event Part 40.gd"
 
 func start():
 	# Register to the dialogue system

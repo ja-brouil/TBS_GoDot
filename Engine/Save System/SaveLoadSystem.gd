@@ -27,11 +27,8 @@ func save_game():
 	# Save turn number
 	save_turn_number(save_game_file)
 	
-	# Player units
+	# Save units
 	save_player_units(save_game_file)
-	
-	# Save enemy units
-	save_enemy_units(save_game_file)
 	
 	# Save current events left
 	save_current_events(save_game_file)
@@ -60,7 +57,7 @@ func load_game():
 	# Load file
 	saved_game.open("res://Save/save_game_file.save", File.READ)
 	
-	# Set money of the game
+	# Load all data from the file
 	while saved_game.get_position() < saved_game.get_len():
 		var node_data = parse_json(saved_game.get_line())
 		saved_data.append(node_data)
@@ -76,6 +73,9 @@ func load_game():
 	var level_object = load(data["filename"]).instance()
 	get_node(data["parent"]).add_child(level_object)
 	
+	# Set new commander name
+	BattlefieldInfo.level_container.enemy_commander_name = data["enemy_commander_name"]
+	
 	# Clear all the events
 	BattlefieldInfo.event_system.clear()
 	
@@ -84,201 +84,145 @@ func load_game():
 	BattlefieldInfo.turn_manager.player_turn_number = data["player_turn"]
 	BattlefieldInfo.turn_manager.enemy_turn_number = data["enemy_turn"]
 	
-	# Load player units
+	# Load Units
+	# Clear Allies
 	for ally_unit in BattlefieldInfo.ally_units.values():
 		# Clear the cell they are on
 		ally_unit.UnitMovementStats.currentTile.occupyingUnit = null
 		ally_unit.free()
 	BattlefieldInfo.ally_units.clear()
 	
-	data = saved_data[3]
-	for ally_unit in data["player_units"]:
-		# Create ally
-		var player_object = load(ally_unit["filename"]).instance()
-		player_object.name = ally_unit["unit_identifier"]
-		
-		# Attach back to the y sort
-		get_node(ally_unit["parent"]).add_child(player_object)
-		
-		# Set position and cell data
-		player_object.position = Vector2(ally_unit["pos_x"], ally_unit["pos_y"])
-		
-		# Do inventory here
-		
-		# Unit Stats
-		player_object.UnitStats.level = ally_unit["unit_level"]
-		player_object.UnitStats.current_health = ally_unit["current_health"]
-		player_object.UnitStats.max_health = ally_unit["max_health"]
-		player_object.UnitStats.pegasus = ally_unit["pegasus"]
-		player_object.UnitStats.skill = ally_unit["skill"]
-		player_object.UnitStats.bonus_crit = ally_unit["bonus_crit"]
-		player_object.UnitStats.luck = ally_unit["luck"]
-		player_object.UnitStats.def = ally_unit["defence"]
-		player_object.UnitStats.magic = ally_unit["magic"]
-		player_object.UnitStats.consti = ally_unit["consti"]
-		player_object.UnitStats.bonus_hit = ally_unit["bonus_hit"]
-		player_object.UnitStats.bonus_dodge = ally_unit["bonus_dodge"]
-		player_object.UnitStats.current_xp = ally_unit["current_xp"]
-		player_object.UnitStats.class_bonus_a = ally_unit["class_bonus_a"]
-		player_object.UnitStats.class_power = ally_unit["class_power"]
-		player_object.UnitStats.class_bonus_b = ally_unit["class_bonus_b"]
-		player_object.UnitStats.class_type = ally_unit["class_type"]
-		player_object.UnitStats.boss_bonus = ally_unit["boss_bonus"]
-		player_object.UnitStats.identifier = ally_unit["unit_identifier"]
-		player_object.UnitStats.thief_bonus = ally_unit["thief_bonus"]
-		player_object.UnitStats.str_chance = ally_unit["str_chance"]
-		player_object.UnitStats.skill_chance = ally_unit["skill_chance"]
-		player_object.UnitStats.speed_chance = ally_unit["speed_chance"]
-		player_object.UnitStats.magic_chance = ally_unit["magic_chance"]
-		player_object.UnitStats.luck_chance = ally_unit["luck_chance"]
-		player_object.UnitStats.def_chance = ally_unit["def_chance"]
-		player_object.UnitStats.res_chance = ally_unit["res_chance"]
-		player_object.UnitStats.consti_chance = ally_unit["consti_chance"]
-		player_object.UnitStats.max_health_chance = ally_unit["max_health_chance"]
-		player_object.UnitStats.horse = ally_unit["horse"]
-		player_object.UnitStats.armor = ally_unit["armor"]
-		player_object.UnitStats.name = ally_unit["name"]
-		player_object.UnitStats.res = ally_unit["resistance"]
-		player_object.UnitStats.speed = ally_unit["speed"]
-		player_object.UnitStats.strength = ally_unit["strength"]
-		
-		# Movement stats
-		# Set current tile
-		player_object.UnitMovementStats.currentTile = BattlefieldInfo.grid[player_object.position.x / Cell.CELL_SIZE][player_object.position.y / Cell.CELL_SIZE]
-		BattlefieldInfo.grid[player_object.position.x / Cell.CELL_SIZE][player_object.position.y / Cell.CELL_SIZE].occupyingUnit = player_object
-		player_object.UnitMovementStats.movementSteps = ally_unit["movementSteps"]
-		player_object.UnitMovementStats.is_ally = ally_unit["is_ally"]
-		player_object.UnitMovementStats.defaultPenalty = ally_unit["default_penalty"]
-		player_object.UnitMovementStats.mountainPenalty = ally_unit["mountain_penalty"]
-		player_object.UnitMovementStats.hillPenalty = ally_unit["hill_penalty"]
-		player_object.UnitMovementStats.forestPenalty = ally_unit["forest_penalty"]
-		player_object.UnitMovementStats.fortressPenalty = ally_unit["fortress_penalty"]
-		player_object.UnitMovementStats.buildingPenalty = ally_unit["building_penalty"]
-		player_object.UnitMovementStats.riverPenalty = ally_unit["river_penalty"]
-		player_object.UnitMovementStats.seaPenalty = ally_unit["sea_penalty"]
-		
-		# Unit action status
-		player_object.UnitActionStatus.set_current_action_index(int(ally_unit["current_action_status"]))
-		if player_object.UnitActionStatus.current_action_status == Unit_Action_Status.DONE:
-			player_object.turn_greyscale_on()
-		
-		# Add to the array
-		BattlefieldInfo.ally_units[player_object.UnitStats.identifier] = player_object
-	
-	# Set new eirika
-	BattlefieldInfo.Eirika = BattlefieldInfo.ally_units["Eirika"]
-	
-	# Load Enemy Units
+	# Clear Enemies
 	for enemy_unit in BattlefieldInfo.enemy_units.values():
-		# Clear the cell they are on
+		# Clear cell they are on
 		enemy_unit.UnitMovementStats.currentTile.occupyingUnit = null
 		enemy_unit.free()
 	BattlefieldInfo.enemy_units.clear()
 	
-	data = saved_data[4]
-	for enemy_unit in data["enemy_units"]:
-		# Create enemy
-		var enemy_object = load(enemy_unit["filename"]).instance()
-		enemy_object.name = enemy_unit["unit_identifier"]
+	data = saved_data[3]
+	for ally_unit in data["player_units"]:
+		# Data objects needed
+		var node_data = ally_unit["node_info"]
+		var vector2_data = ally_unit["vector2"]
+		var unit_movement_data = ally_unit["unit_movement_stats"]
+		var action_status_data = ally_unit["action_status"]
+		var unit_stats_data = ally_unit["unit_stats"]
+		var unit_inventory_data = ally_unit["inventory_data"]
+		
+		# Create ally
+		var player_object = load(node_data["filename"]).instance()
+		player_object.name = unit_stats_data["identifier"]
 		
 		# Attach back to the y sort
-		get_node(enemy_unit["parent"]).add_child(enemy_object)
+		get_node(node_data["parent"]).add_child(player_object)
+		
 		
 		# Set position and cell data
-		enemy_object.position = Vector2(enemy_unit["pos_x"], enemy_unit["pos_y"])
+		player_object.position = Vector2(vector2_data["pos_x"], vector2_data["pos_y"])
 		
-		# Do inventory here
+		# Inventory
+		# Clear the current inventory
+		player_object.UnitInventory.clear_inventory()
+		
+		# Create new inventory objects
+		for item_data in unit_inventory_data:
+			var item_object = load(item_data["filename"]).instance()
+			player_object.UnitInventory.add_item(item_object)
+			item_object.load_item(item_data["item_stats"])
 		
 		# Unit Stats
-		enemy_object.UnitStats.level = enemy_unit["unit_level"]
-		enemy_object.UnitStats.current_health = enemy_unit["current_health"]
-		enemy_object.UnitStats.max_health = enemy_unit["max_health"]
-		enemy_object.UnitStats.pegasus = enemy_unit["pegasus"]
-		enemy_object.UnitStats.skill = enemy_unit["skill"]
-		enemy_object.UnitStats.bonus_crit = enemy_unit["bonus_crit"]
-		enemy_object.UnitStats.luck = enemy_unit["luck"]
-		enemy_object.UnitStats.def = enemy_unit["defence"]
-		enemy_object.UnitStats.magic = enemy_unit["magic"]
-		enemy_object.UnitStats.consti = enemy_unit["consti"]
-		enemy_object.UnitStats.bonus_hit = enemy_unit["bonus_hit"]
-		enemy_object.UnitStats.bonus_dodge = enemy_unit["bonus_dodge"]
-		enemy_object.UnitStats.current_xp = enemy_unit["current_xp"]
-		enemy_object.UnitStats.class_bonus_a = enemy_unit["class_bonus_a"]
-		enemy_object.UnitStats.class_power = enemy_unit["class_power"]
-		enemy_object.UnitStats.class_bonus_b = enemy_unit["class_bonus_b"]
-		enemy_object.UnitStats.class_type = enemy_unit["class_type"]
-		enemy_object.UnitStats.boss_bonus = enemy_unit["boss_bonus"]
-		enemy_object.UnitStats.identifier = enemy_unit["unit_identifier"]
-		enemy_object.UnitStats.thief_bonus = enemy_unit["thief_bonus"]
-		enemy_object.UnitStats.str_chance = enemy_unit["str_chance"]
-		enemy_object.UnitStats.skill_chance = enemy_unit["skill_chance"]
-		enemy_object.UnitStats.speed_chance = enemy_unit["speed_chance"]
-		enemy_object.UnitStats.magic_chance = enemy_unit["magic_chance"]
-		enemy_object.UnitStats.luck_chance = enemy_unit["luck_chance"]
-		enemy_object.UnitStats.def_chance = enemy_unit["def_chance"]
-		enemy_object.UnitStats.res_chance = enemy_unit["res_chance"]
-		enemy_object.UnitStats.consti_chance = enemy_unit["consti_chance"]
-		enemy_object.UnitStats.max_health_chance = enemy_unit["max_health_chance"]
-		enemy_object.UnitStats.horse = enemy_unit["horse"]
-		enemy_object.UnitStats.armor = enemy_unit["armor"]
-		enemy_object.UnitStats.name = enemy_unit["name"]
-		enemy_object.UnitStats.res = enemy_unit["resistance"]
-		enemy_object.UnitStats.speed = enemy_unit["speed"]
-		enemy_object.UnitStats.strength = enemy_unit["strength"]
+		for unit_stat_key in unit_stats_data.keys():
+			if typeof(unit_stats_data[unit_stat_key]) == TYPE_REAL:
+				player_object.UnitStats.set(unit_stat_key, int(unit_stats_data[unit_stat_key]))
+			else:
+				player_object.UnitStats.set(unit_stat_key, unit_stats_data[unit_stat_key])
 		
-		# Movement stats
 		# Set current tile
-		enemy_object.UnitMovementStats.currentTile = BattlefieldInfo.grid[enemy_object.position.x / Cell.CELL_SIZE][enemy_object.position.y / Cell.CELL_SIZE]
-		BattlefieldInfo.grid[enemy_object.position.x / Cell.CELL_SIZE][enemy_object.position.y / Cell.CELL_SIZE].occupyingUnit = enemy_object
-		enemy_object.UnitMovementStats.movementSteps = enemy_unit["movementSteps"]
-		enemy_object.UnitMovementStats.is_ally = enemy_unit["is_ally"]
-		enemy_object.UnitMovementStats.defaultPenalty = enemy_unit["default_penalty"]
-		enemy_object.UnitMovementStats.mountainPenalty = enemy_unit["mountain_penalty"]
-		enemy_object.UnitMovementStats.hillPenalty = enemy_unit["hill_penalty"]
-		enemy_object.UnitMovementStats.forestPenalty = enemy_unit["forest_penalty"]
-		enemy_object.UnitMovementStats.fortressPenalty = enemy_unit["fortress_penalty"]
-		enemy_object.UnitMovementStats.buildingPenalty = enemy_unit["building_penalty"]
-		enemy_object.UnitMovementStats.riverPenalty = enemy_unit["river_penalty"]
-		enemy_object.UnitMovementStats.seaPenalty = enemy_unit["sea_penalty"]
+		player_object.UnitMovementStats.currentTile = BattlefieldInfo.grid[player_object.position.x / Cell.CELL_SIZE][player_object.position.y / Cell.CELL_SIZE]
+		BattlefieldInfo.grid[player_object.position.x / Cell.CELL_SIZE][player_object.position.y / Cell.CELL_SIZE].occupyingUnit = player_object
+		
+		# Movement Stats
+		for unit_movement_stat_key in unit_movement_data.keys():
+			if unit_movement_stat_key == "is_ally":
+				player_object.UnitMovementStats.set(unit_movement_stat_key, unit_movement_data[unit_movement_stat_key])
+			else:
+				player_object.UnitMovementStats.set(unit_movement_stat_key, int(unit_movement_data[unit_movement_stat_key]))
 		
 		# Unit action status
-		enemy_object.UnitActionStatus.set_current_action_index(int(enemy_unit["current_action_status"]))
-		if enemy_object.UnitActionStatus.current_action_status == Unit_Action_Status.DONE:
-			enemy_object.turn_greyscale_on()
+		player_object.UnitActionStatus.set_current_action_index(int(action_status_data["current_action_status"]))
+		if player_object.UnitActionStatus.current_action_status == Unit_Action_Status.DONE:
+			player_object.turn_greyscale_on()
 		
-		# Set AI
-		# Remove the old AI
-		enemy_object.get_node("AI").free()
+		# Set Death and battle quotes
+		var battle_quotes_data = ally_unit["battle_quotes"]
+		if battle_quotes_data["before_battle_sentence"] != null:
+			player_object.before_battle_sentence = battle_quotes_data["before_battle_sentence"]
 		
-		# Create AI object
-		var ai_data = enemy_unit["AI"]
-		var ai_object = load(ai_data["filename"]).instance()
-		ai_object.name = "AI"
+		if battle_quotes_data["death_sentence"] != null:
+			player_object.death_sentence = battle_quotes_data["death_sentence"]
 		
-		# Set AI Type
-		ai_object.ai_type = ai_data["ai_type"]
-		
-		# Add AI
-		enemy_object.add_child(ai_object)
-		
-		# Add to enemy array
-		BattlefieldInfo.enemy_units[enemy_object.UnitStats.identifier] = enemy_object
-		
-	# load the convoy here
+		# Check if it's an enemy or ally
+		if !player_object.UnitMovementStats.is_ally:
+			# Set AI
+			# Remove the old AI
+			player_object.get_node("AI").free()
+			
+			# Create AI object
+			var ai_data = ally_unit["AI"]
+			var ai_object = load(ai_data["filename"]).instance()
+			ai_object.name = "AI"
+			
+			# Set AI Type
+			ai_object.ai_type = ai_data["ai_type"]
+			
+			# Add AI
+			player_object.add_child(ai_object)
+			
+			# Add to the enemy array
+			BattlefieldInfo.enemy_units[player_object.UnitStats.identifier] = player_object
+			
+		else:
+			# Add to the array
+			BattlefieldInfo.ally_units[player_object.UnitStats.identifier] = player_object
 	
-	# load events
+	# Set new eirika
+	BattlefieldInfo.Eirika = BattlefieldInfo.ally_units["Eirika"]
 	
-	# Start music
+	# Set new enemy commander
+	BattlefieldInfo.enemy_commander = BattlefieldInfo.enemy_units[BattlefieldInfo.level_container.enemy_commander_name]
 	
+	# Load the convoy here
+	
+	# Load events
+	data = saved_data[4]
+	BattlefieldInfo.event_system.clear()
+	# Starting events
+	for s_event in data["starting_events"]:
+		var event_object = load(s_event["filename"]).new()
+		BattlefieldInfo.event_system.add_event(event_object)
+	
+	# Mid Event
+	for m_event in data["mid_events"]:
+		var event_object = load(m_event["filename"]).new()
+		BattlefieldInfo.event_system.add_mid_event(event_object)
+	
+	# Load elapsed time
+	data = saved_data[5]
+	StatusScreen.saved_time = int(data)
+	
+	# Start game
 	BattlefieldInfo.event_system.start_events_queue()
+	
+	# Signal game is loaded
+	emit_signal("loading_complete")
 
 func save_player_units(save_game_file):
 	print("Saving player units...")
 	
 	var player_array = {"player_units" : []}
 	
-	# Player units
-	for player_unit in BattlefieldInfo.get_node("YSort").get_children():
+	# Units in the current level units
+	for player_unit in BattlefieldInfo.current_level.get_node("YSort").get_children():
 		# Make sure node is an instanced scene
 		if player_unit.filename.empty():
 			print("Persistent node '%s' is not an instanced scene, skipped." % player_unit.name)
@@ -293,41 +237,36 @@ func save_player_units(save_game_file):
 		var unit_data = player_unit.save()
 		
 		player_array["player_units"].append(unit_data)
-		
-	# Save Data
-	save_game_file.store_line(to_json(player_array))
-		
-
-func save_enemy_units(save_game_file):
-	print("Saving enemy units...")
 	
-	var enemy_array = {"enemy_units" : []}
-	
-	# Enemy Units
-	for enemy_unit in BattlefieldInfo.current_level.get_node("YSort").get_children():
+	# Units in the y sort of the battlefield
+	for player_unit in BattlefieldInfo.y_sort_player_party.get_children():
 		# Make sure node is an instanced scene
-		if enemy_unit.filename.empty():
-			print("Persistent node '%s' is not an instanced scene, skipped." % enemy_unit.name)
+		if player_unit.filename.empty():
+			print("Persistent node '%s' is not an instanced scene, skipped." % player_unit.name)
 			continue
 		
 		# Check if there is a save function
-		if !enemy_unit.has_method("save"):
-			print("Persistent node '%s' is missing save() function, skipped." % enemy_unit.name)
+		if !player_unit.has_method("save"):
+			print("Persistent node '%s' is missing save() function, skipped." % player_unit.name)
 			continue
 		
 		# Call the node's save function
-		var unit_data = enemy_unit.save()
+		var unit_data = player_unit.save()
 		
-		enemy_array["enemy_units"].append(unit_data)
-		
+		player_array["player_units"].append(unit_data)
+	
 	# Save Data
-	save_game_file.store_line(to_json(enemy_array))
+	save_game_file.store_line(to_json(player_array))
+	
 
 func save_current_events(save_game_file):
 	print("Saving current events...")
+	save_game_file.store_line(to_json(BattlefieldInfo.event_system.save()))
+	
 
 func save_convoy(save_game_file):
 	print("Saving convoy...")
+	save_game_file.store_line(to_json("CONVOY INFO HERE"))
 
 func save_money(save_game_file):
 	print("Saving money...")
@@ -336,6 +275,8 @@ func save_money(save_game_file):
 
 func save_current_play_time(save_game_file):
 	print("Saving current play time...")
+	var total_elapsed_time = StatusScreen.current_play_session + StatusScreen.saved_time
+	save_game_file.store_line(to_json(total_elapsed_time))
 
 func save_turn_number(save_game_file):
 	print("Saving current turn manager")
@@ -350,5 +291,6 @@ func save_current_level(save_game_file):
 	var current_level = {
 		"filename" : BattlefieldInfo.level_container.get_filename(),
 		"parent": BattlefieldInfo.level_container.get_parent().get_path(),
+		"enemy_commander_name": BattlefieldInfo.level_container.enemy_commander_name
 	}
 	save_game_file.store_line(to_json(current_level))

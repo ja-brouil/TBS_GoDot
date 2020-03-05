@@ -173,7 +173,6 @@ align = 1
 valign = 1
 
 [node name="Eirika" type="Panel" parent="UI"]
-editor/display_folded = true
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = 133.252
@@ -247,7 +246,6 @@ texture = ExtResource( 7 )
 expand = true
 
 [node name="Enemy Commander" type="Panel" parent="UI"]
-editor/display_folded = true
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = 133.804
@@ -321,7 +319,6 @@ texture = ExtResource( 7 )
 expand = true
 
 [node name="Player Units" type="Control" parent="UI"]
-editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -361,7 +358,6 @@ align = 1
 valign = 1
 
 [node name="Enemy" type="Control" parent="UI"]
-editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -503,6 +499,9 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Play Time:"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Time" type="Label" parent="UI/Time Played"]
 anchor_right = 1.0

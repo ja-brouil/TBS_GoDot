@@ -20,6 +20,8 @@ func _init():
 	# Register to the turn numbers
 	BattlefieldInfo.turn_manager.connect("enemy_turn_increased", self, "start_mid")
 	BattlefieldInfo.turn_manager.connect("player_turn_increased", self, "play_player_transition")
+	
+	path = "res://Scenes/Events/Level 2/L2 Event Mid 10.gd"
 
 func play_player_transition(turn_number):
 	BattlefieldInfo.turn_manager.start_ally_transition()
@@ -126,6 +128,6 @@ func spawn_enemies():
 				BattlefieldInfo.enemy_units[str("Enemy ",id_number)] = newEnemy
 	
 	# Remove this from the array
-	BattlefieldInfo.turn_manager.mid_level_events.erase(self)
+	BattlefieldInfo.event_system.mid_level_events.erase(self)
 	BattlefieldInfo.turn_manager.start_enemy_transition()
 	queue_free()
