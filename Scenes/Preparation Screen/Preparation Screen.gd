@@ -33,7 +33,11 @@ func _ready():
 	# Test
 	# start("Test Title Chapter", BattlefieldInfo.victory_text, "res://Scenes/Intro Screen/Intro Screen.tscn", "A")
 
-func start(chapter_text, victory_text, path_to_next_level, prep_song):
+func start(chapter_text, victory_text, path_to_next_level, prep_song):\
+	# Remove intro screen if it's still there
+	if get_tree().get_root().has_node("Intro Screen"):
+		get_tree().get_root().get_node("Intro Screen").queue_free()
+	
 	# Set the y tree to the new level and set the units to the new path
 	for ally_unit in BattlefieldInfo.ally_units.values():
 		if ally_unit == BattlefieldInfo.ally_units["Eirika"]:
@@ -181,7 +185,11 @@ func process_selection():
 			# Temp Disable this
 			temp_disable()
 		"Save":
+			$"Prep Screen Control/Side Panel Text".text = "Game Saved!"
+			yield(get_tree().create_timer(0.5), "timeout")
 			$"Prep Screen Control/Side Panel Text".text = SAVE
+			BattlefieldInfo.save_load_system.save_game()
+			
 
 # Select song to play
 func play_song(song_name):

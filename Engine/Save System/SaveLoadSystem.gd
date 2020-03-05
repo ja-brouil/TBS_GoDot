@@ -88,14 +88,16 @@ func load_game():
 	# Clear Allies
 	for ally_unit in BattlefieldInfo.ally_units.values():
 		# Clear the cell they are on
-		ally_unit.UnitMovementStats.currentTile.occupyingUnit = null
+		if ally_unit.UnitMovementStats.currentTile != null:
+			ally_unit.UnitMovementStats.currentTile.occupyingUnit = null
 		ally_unit.free()
 	BattlefieldInfo.ally_units.clear()
 	
 	# Clear Enemies
 	for enemy_unit in BattlefieldInfo.enemy_units.values():
 		# Clear cell they are on
-		enemy_unit.UnitMovementStats.currentTile.occupyingUnit = null
+		if enemy_unit.UnitMovementStats.currentTile != null:
+			enemy_unit.UnitMovementStats.currentTile.occupyingUnit = null
 		enemy_unit.free()
 	BattlefieldInfo.enemy_units.clear()
 	
@@ -138,8 +140,9 @@ func load_game():
 				player_object.UnitStats.set(unit_stat_key, unit_stats_data[unit_stat_key])
 		
 		# Set current tile
-		player_object.UnitMovementStats.currentTile = BattlefieldInfo.grid[player_object.position.x / Cell.CELL_SIZE][player_object.position.y / Cell.CELL_SIZE]
-		BattlefieldInfo.grid[player_object.position.x / Cell.CELL_SIZE][player_object.position.y / Cell.CELL_SIZE].occupyingUnit = player_object
+		if player_object.UnitMovementStats.currentTile:
+			player_object.UnitMovementStats.currentTile = BattlefieldInfo.grid[player_object.position.x / Cell.CELL_SIZE][player_object.position.y / Cell.CELL_SIZE]
+			BattlefieldInfo.grid[player_object.position.x / Cell.CELL_SIZE][player_object.position.y / Cell.CELL_SIZE].occupyingUnit = player_object
 		
 		# Movement Stats
 		for unit_movement_stat_key in unit_movement_data.keys():
@@ -211,7 +214,11 @@ func load_game():
 	StatusScreen.saved_time = int(data)
 	
 	# Start game
-	BattlefieldInfo.event_system.start_events_queue()
+	# Is there a prep mode?
+	if BattlefieldInfo.event_system.queue_of_events.size() == 0:
+		BattlefieldInfo.event_system.start_events_queue()
+	else:
+		BattlefieldInfo.level_container.preperation_mode()
 	
 	# Signal game is loaded
 	emit_signal("loading_complete")

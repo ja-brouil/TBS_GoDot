@@ -47,9 +47,9 @@ func _ready():
 	# Add money
 	if !BattlefieldInfo.save_load_system.is_loading_level:
 		BattlefieldInfo.money += money_to_add
-	
-	# Prep mode
-	preperation_mode()
+		
+		# Prep mode
+		preperation_mode()
 	
 #	# Show Ally units
 	for ally_unit in BattlefieldInfo.ally_units.values():
