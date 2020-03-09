@@ -185,10 +185,11 @@ func process_selection():
 			# Temp Disable this
 			temp_disable()
 		"Save":
-			$"Prep Screen Control/Side Panel Text".text = "Game Saved!"
-			yield(get_tree().create_timer(0.5), "timeout")
-			$"Prep Screen Control/Side Panel Text".text = SAVE
 			BattlefieldInfo.save_load_system.save_game()
+			yield(BattlefieldInfo.save_load_system, "saving_complete")
+			$"Prep Screen Control/Side Panel Text".text = "Game Saved!"
+			yield(get_tree().create_timer(1), "timeout")
+			$"Prep Screen Control/Side Panel Text".text = SAVE
 			
 
 # Select song to play
