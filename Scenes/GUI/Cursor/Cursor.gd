@@ -96,6 +96,7 @@ func updateCursorData() -> void:
 			if BattlefieldInfo.current_Unit_Selected != null:
 					BattlefieldInfo.current_Unit_Selected.get_node("Animation").current_animation = "Idle"
 					set_animation_status(true)
+					
 					# Remove Global Unit
 					BattlefieldInfo.current_Unit_Selected = null
 			
@@ -105,6 +106,10 @@ func updateCursorData() -> void:
 				
 				# Set Global Variable
 				BattlefieldInfo.current_Unit_Selected = BattlefieldInfo.grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE].occupyingUnit
+				
+				# Show possible moves
+				# Highlight ranges
+				BattlefieldInfo.movement_calculator.calculatePossibleMoves(BattlefieldInfo.grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE].occupyingUnit, BattlefieldInfo.grid)
 				
 				# Check if this unit is an ally
 				if BattlefieldInfo.current_Unit_Selected.UnitMovementStats.is_ally && BattlefieldInfo.current_Unit_Selected.UnitActionStatus.get_current_action() != Unit_Action_Status.DONE:
@@ -116,6 +121,9 @@ func updateCursorData() -> void:
 				# Do we have a unit selected right now?
 				if BattlefieldInfo.current_Unit_Selected != null:
 					BattlefieldInfo.current_Unit_Selected.get_node("Animation").current_animation = "Idle"
+					
+					# Turn off the cells
+					BattlefieldInfo.movement_calculator.turn_off_all_tiles(BattlefieldInfo.current_Unit_Selected, BattlefieldInfo.grid)
 					
 					# Remove Global Unit
 					BattlefieldInfo.current_Unit_Selected = null
@@ -131,8 +139,6 @@ func updateCursorData() -> void:
 			
 			# check if the cell if occupied
 			if BattlefieldInfo.grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE].occupyingUnit != null:
-				BattlefieldInfo.current_Unit_Selected = BattlefieldInfo.grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE].occupyingUnit
-				
 				# Set Global Variable
 				BattlefieldInfo.current_Unit_Selected = BattlefieldInfo.grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE].occupyingUnit
 				
@@ -332,9 +338,13 @@ func cancel_Button() -> void:
 				# Turn on prep screen
 				BattlefieldInfo.preparation_screen.turn_on()
 				
-				# Turn off blue squares
+				# Turn off blue squares and save the current info on these units
 				for blueTile in BattlefieldInfo.swap_points:
 					blueTile.get_node("MovementRangeRect").turnOff("Blue")
+					
+					BattlefieldInfo.preparation_screen.previous_units_selection.clear()
+					if blueTile.occupyingUnit != null:
+						BattlefieldInfo.preparation_screen.previous_units_selection.append = blueTile.occupyingUnit
 
 # L Button -> Go to next unit that is available
 func l_button() ->  void:

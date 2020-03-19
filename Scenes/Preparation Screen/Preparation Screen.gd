@@ -24,6 +24,9 @@ var current_song
 var hand_default_position = Vector2(3.5, 58.0)
 var hand_movement_vector= Vector2(0, 17)
 
+# Current units selected
+var previous_units_selection = []
+
 func _ready():
 	set_process_input(false)
 	

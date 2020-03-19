@@ -141,8 +141,9 @@ func load_game():
 		
 		# Set current tile
 		if player_object.UnitMovementStats.currentTile == null:
-			player_object.UnitMovementStats.currentTile = BattlefieldInfo.grid[player_object.position.x / Cell.CELL_SIZE][player_object.position.y / Cell.CELL_SIZE]
-			BattlefieldInfo.grid[player_object.position.x / Cell.CELL_SIZE][player_object.position.y / Cell.CELL_SIZE].occupyingUnit = player_object
+			if player_object.position.x >= 0 && player_object.position.y >= 0:
+				player_object.UnitMovementStats.currentTile = BattlefieldInfo.grid[player_object.position.x / Cell.CELL_SIZE][player_object.position.y / Cell.CELL_SIZE]
+				BattlefieldInfo.grid[player_object.position.x / Cell.CELL_SIZE][player_object.position.y / Cell.CELL_SIZE].occupyingUnit = player_object
 		
 		# Movement Stats
 		for unit_movement_stat_key in unit_movement_data.keys():

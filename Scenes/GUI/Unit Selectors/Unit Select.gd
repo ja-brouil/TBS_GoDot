@@ -2,6 +2,7 @@ extends Control
 
 # Allows you to select units for battle
 const max_units_select_possible = 8
+var max_units_currently_number = 8
 
 # Array for all units selected
 var units_selected = {}
@@ -175,7 +176,7 @@ func place_allies():
 	
 	# Place new positions
 	for ally_unit in units_selected.values():
-		if current_amount_placed <= max_units_select_possible:
+		if current_amount_placed <= max_units_currently_number:
 			if BattlefieldInfo.ally_units[ally_unit].UnitMovementStats.currentTile == null:
 				for swap_point in BattlefieldInfo.swap_points:
 					if swap_point.occupyingUnit == null:
@@ -275,6 +276,9 @@ func reset():
 	
 	# Yes no choice
 	current_yes_no_option = 0
+	
+	# Reset the max amount
+	max_units_currently_number = 8
 	
 	# Current State
 	current_state = UNIT_SELECTION_STATE.SELECT
