@@ -15,6 +15,9 @@ var all_ally_units = []
 enum {MOVE, SELECT_MOVE_TILE, WAIT, PREP}
 var cursor_state
 
+# Show enemy positions
+var enemy_position_state = false
+
 # Swap Variables
 var ally_1
 var ally_2
@@ -79,6 +82,9 @@ func _input(event):
 	elif Input.is_action_just_pressed("R button"):
 		updateCursorData()
 		r_button()
+	elif Input.is_action_just_pressed("highlight_enemy"):
+		highlight_enemy_positions()
+	
 	
 	if Input.is_action_just_pressed("debug"):
 		debug()
@@ -96,6 +102,10 @@ func updateCursorData() -> void:
 			if BattlefieldInfo.current_Unit_Selected != null:
 					BattlefieldInfo.current_Unit_Selected.get_node("Animation").current_animation = "Idle"
 					set_animation_status(true)
+					
+					# Turn tiles off
+					#if !BattlefieldInfo.current_Unit_Selected.UnitMovementStats.is_ally && enemy_position_state
+					BattlefieldInfo.movement_calculator.turn_off_all_tiles(BattlefieldInfo.current_Unit_Selected, BattlefieldInfo.grid)
 					
 					# Remove Global Unit
 					BattlefieldInfo.current_Unit_Selected = null
@@ -399,6 +409,16 @@ func enable(status, next_cursor_state):
 	if cursor_state == PREP:
 		set_process_input(true)
 	updateCursorData()
+
+# Highlight enemy positions
+func highlight_enemy_positions():
+	enemy_position_state = !enemy_position_state
+	if enemy_position_state:
+		for enemy in BattlefieldInfo.enemy_units.values():
+			BattlefieldInfo.movement_calculator.calculatePossibleMoves(enemy, BattlefieldInfo.grid)
+	else:
+		for enemy in BattlefieldInfo.enemy_units.values():
+			BattlefieldInfo.movement_calculator.turn_off_all_tiles(enemy, BattlefieldInfo.grid)
 
 # Standard enable
 func enable_standard():
