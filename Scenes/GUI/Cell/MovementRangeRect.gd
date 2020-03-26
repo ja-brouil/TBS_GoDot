@@ -9,11 +9,14 @@ func _ready():
 
 func turnOn(colorName):
 	if colorName == "Red":
-		$"Red".visible = true
+		if !$"Red".visible:
+			$"Red".visible = true
 	elif colorName == "Blue":
-		$"Blue".visible = true
+		if !$"Blue".visible:
+			$"Blue".visible = true
 	elif colorName == "Green":
-		$"Green".visible = true
+		if !$"Green".visible:
+			$"Green".visible = true
 
 func turnOff(colorName):
 	if colorName == "Red":

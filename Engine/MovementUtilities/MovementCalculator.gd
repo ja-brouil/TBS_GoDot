@@ -24,6 +24,7 @@ func calculatePossibleMoves(Unit, AllTiles) -> void:
 	
 	# Reset Grid values
 	reset_grid_values()
+	reset_parent_tile_values()
 	
 	# Process Move Tiles
 	processTile(Unit.UnitMovementStats.currentTile, Unit.UnitMovementStats, Unit.UnitMovementStats.movementSteps, Unit)
@@ -34,16 +35,15 @@ func calculatePossibleMoves(Unit, AllTiles) -> void:
 	# Process Heal Tiles -> Find better way of optimizaing this
 	processHealingTile(Unit)
 	
-	# Light all the blue tiles -> Change this later to check if the unit has a healing ability and turn on green tiles
-	for blueTile in Unit.UnitMovementStats.allowedMovement:
-		AllTiles[blueTile.getPosition().x][blueTile.getPosition().y].get_node("MovementRangeRect").turnOn("Blue")
-	for redTile in Unit.UnitMovementStats.allowedAttackRange:
-		AllTiles[redTile.getPosition().x][redTile.getPosition().y].get_node("MovementRangeRect").turnOn("Red")
-	for greenTile in Unit.UnitMovementStats.allowedHealRange:
-		AllTiles[greenTile.getPosition().x][greenTile.getPosition().y].get_node("MovementRangeRect").turnOn("Green")
+	# Turn on the tiles
+	turn_on_all_tiles(Unit, AllTiles)
+
 
 # Process all the tiles to find what is movable to
 func processTile(initialTile, unit_movement, moveSteps, unit):
+	# Set parent tile
+	initialTile.parentTile = initialTile
+	
 	# Add first tile to the queue
 	queue.append([moveSteps, initialTile])
 	
@@ -63,10 +63,12 @@ func processTile(initialTile, unit_movement, moveSteps, unit):
 			if next_cost >= 0 && !adjTile.isVisited:
 				# Is the tile occupied? -> Tile is not occupied, process right away
 				if adjTile.occupyingUnit == null:
+					adjTile.parentTile = tile_to_check[1]
 					queue.append([next_cost, adjTile])
 				else:
 					# Tile is occupied -> Check if it's an ally (or enemy for enemy)
 					if adjTile.occupyingUnit.UnitMovementStats.is_ally == unit_movement.is_ally:
+						adjTile.parentTile = tile_to_check[1]
 						queue.append([next_cost, adjTile])
 
 # Process Attackable Range
@@ -167,7 +169,17 @@ func getPenaltyCost(Unit, Unit_Movement, cell) -> int:
 			# fall through
 			return 0
 
-# Turn on or off all tiles
+# Turn on all tiles
+func turn_on_all_tiles(Unit, AllTiles) -> void:
+	# Light all the blue tiles -> Change this later to check if the unit has a healing ability and turn on green tiles
+	for blueTile in Unit.UnitMovementStats.allowedMovement:
+		AllTiles[blueTile.getPosition().x][blueTile.getPosition().y].get_node("MovementRangeRect").turnOn("Blue")
+	for redTile in Unit.UnitMovementStats.allowedAttackRange:
+		AllTiles[redTile.getPosition().x][redTile.getPosition().y].get_node("MovementRangeRect").turnOn("Red")
+	for greenTile in Unit.UnitMovementStats.allowedHealRange:
+		AllTiles[greenTile.getPosition().x][greenTile.getPosition().y].get_node("MovementRangeRect").turnOn("Green")
+
+# Turn off all tiles
 func turn_off_all_tiles(Unit, AllTiles) -> void:
 	# Turn off blue
 	for blueTile in Unit.UnitMovementStats.allowedMovement:
@@ -179,65 +191,70 @@ func turn_off_all_tiles(Unit, AllTiles) -> void:
 	for greenTile in Unit.UnitMovementStats.allowedHealRange:
 		AllTiles[greenTile.getPosition().x][greenTile.getPosition().y].get_node("MovementRangeRect").turnOff("Green")
 
-# Find the shortest path to the target destination | This uses the A* algorithm | Player Version
+# Find the shortest path to the target destination | No A* algorithm | Player version only
 func get_path_to_destination(Unit, target_destination, AllTiles):
-	# Clear Tile statistics first
-	for tile_array in AllTiles:
-		for tile in tile_array:
-			tile.parentTile = null
-			tile.hCost = 0
-			tile.gCost = 0
-			tile.fCost = 0
-	
-	# Clear Queue for the unit
-	Unit.UnitMovementStats.movement_queue.clear()
-	
-	# Hashset and Priority Queue to hold all the tiles needed
-	var closed_list = HashSet.new()
-	var open_list = PriorityQueue.new()
-	
-	# Get Current Tile
-	var current_tile = Unit.UnitMovementStats.currentTile
-	
-	# Add the current cell we are starting on to this list
-	open_list.add_first(Unit.UnitMovementStats.currentTile)
-	
-	# Process Tiles until the open list is empty
-	while !open_list.is_empty():
-		# Remove the first tile in the list and add it to the closed list
-		current_tile = open_list.pop_front()
-		closed_list.add(current_tile)
-
-		# Check if we have reached our destination
-		if current_tile == target_destination:
-			break
-		
-		# Process Adj Tiles
-		for adjCell in current_tile.adjCells:
-			# Do not process unwalkable tiles or we can't go there
-			if adjCell.movementCost >= 101 || closed_list.contains(adjCell) || !Unit.UnitMovementStats.allowedMovement.has(adjCell):
-				continue
-				
-			# Calculate Heuristic costs
-			var movement_cost_to_neighbor = current_tile.gCost + adjCell.movementCost + getPenaltyCost(Unit, Unit.UnitMovementStats, adjCell)
-			if movement_cost_to_neighbor < adjCell.gCost || !open_list.contains(adjCell):
-				adjCell.gCost = movement_cost_to_neighbor
-				adjCell.hCost = calculate_hCost(adjCell, target_destination, Unit, AllTiles)
-				adjCell.parentTile = current_tile
-				
-				# Add to the open List
-				if !open_list.contains(adjCell):
-					open_list.add_first(adjCell)
-
-	# Create the Pathfinding Queue
+	# Create the pathfinding queue directly?
 	create_pathfinding_queue(target_destination, Unit)
+
+## Find the shortest path to the target destination | This uses the A* algorithm | Player Version
+#func get_path_to_destination(Unit, target_destination, AllTiles):
+#	# Clear Tile statistics first
+#	for tile_array in AllTiles:
+#		for tile in tile_array:
+#			tile.parentTile = null
+#			tile.hCost = 0
+#			tile.gCost = 0
+#			tile.fCost = 0
+#
+#	# Clear Queue for the unit
+#	Unit.UnitMovementStats.movement_queue.clear()
+#
+#	# Hashset and Priority Queue to hold all the tiles needed
+#	var closed_list = HashSet.new()
+#	var open_list = PriorityQueue.new()
+#
+#	# Get Current Tile
+#	var current_tile = Unit.UnitMovementStats.currentTile
+#
+#	# Add the current cell we are starting on to this list
+#	open_list.add_first(Unit.UnitMovementStats.currentTile)
+#
+#	# Process Tiles until the open list is empty
+#	while !open_list.is_empty():
+#		# Remove the first tile in the list and add it to the closed list
+#		current_tile = open_list.pop_front()
+#		closed_list.add(current_tile)
+#
+#		# Check if we have reached our destination
+#		if current_tile == target_destination:
+#			break
+#
+#		# Process Adj Tiles
+#		for adjCell in current_tile.adjCells:
+#			# Do not process unwalkable tiles or we can't go there
+#			if adjCell.movementCost >= 101 || closed_list.contains(adjCell) || !Unit.UnitMovementStats.allowedMovement.has(adjCell):
+#				continue
+#
+#			# Calculate Heuristic costs
+#			var movement_cost_to_neighbor = current_tile.gCost + adjCell.movementCost + getPenaltyCost(Unit, Unit.UnitMovementStats, adjCell)
+#			if movement_cost_to_neighbor < adjCell.gCost || !open_list.contains(adjCell):
+#				adjCell.gCost = movement_cost_to_neighbor
+#				adjCell.hCost = calculate_hCost(adjCell, target_destination, Unit, AllTiles)
+#				adjCell.parentTile = current_tile
+#
+#				# Add to the open List
+#				if !open_list.contains(adjCell):
+#					open_list.add_first(adjCell)
+#
+#	# Create the Pathfinding Queue
+#	create_pathfinding_queue(target_destination, Unit)
 
 # Find the shortest path to the target destination | AI Version | Use this for cinematic purposes too
 func get_path_to_destination_AI(Unit, target_destination, AllTiles):
 	# Clear Tile statistics first
 	for tile_array in AllTiles:
 		for tile in tile_array:
-			tile.parentTile = null
+			# tile.parentTile = null
 			tile.hCost = 0
 			tile.gCost = 0
 	
@@ -284,6 +301,7 @@ func get_path_to_destination_AI(Unit, target_destination, AllTiles):
 				# Add to the open List
 				if !open_list.contains(adjCell):
 					open_list.add_first(adjCell)
+	
 	# Create the Pathfinding Queue
 	create_pathfinding_queue(target_destination, Unit)
 
@@ -354,5 +372,13 @@ func reset_grid_values():
 	# Reset the Grid Values
 	for tile_array in battlefield.grid:
 		for tile in tile_array:
-			tile.parentTile = null
+			#tile.parentTile = null
 			tile.isVisited = false
+
+# Reset Parent tiles
+func reset_parent_tile_values():
+		# Reset the Grid Values
+	for tile_array in battlefield.grid:
+		for tile in tile_array:
+			tile.parentTile = null
+			#tile.isVisited = false

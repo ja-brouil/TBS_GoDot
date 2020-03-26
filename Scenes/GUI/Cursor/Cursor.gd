@@ -354,7 +354,7 @@ func cancel_Button() -> void:
 					
 					BattlefieldInfo.preparation_screen.previous_units_selection.clear()
 					if blueTile.occupyingUnit != null:
-						BattlefieldInfo.preparation_screen.previous_units_selection.append = blueTile.occupyingUnit
+						BattlefieldInfo.preparation_screen.previous_units_selection.append(blueTile.occupyingUnit)
 
 # L Button -> Go to next unit that is available
 func l_button() ->  void:
