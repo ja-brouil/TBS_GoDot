@@ -233,16 +233,20 @@ func find_tile_to_move_to_no_enemies():
 	BattlefieldInfo.movement_calculator.get_path_to_destination_AI(get_parent(), eirika_tile, BattlefieldInfo.grid)
 	
 	# Work backwards until we have a tile that is part of the system
+	var test_tile
 	while !get_parent().UnitMovementStats.movement_queue.empty():
-		var test_tile = get_parent().UnitMovementStats.movement_queue.back()
+		test_tile = get_parent().UnitMovementStats.movement_queue.pop_back()
 		if get_parent().UnitMovementStats.allowedMovement.has(test_tile) && test_tile.occupyingUnit == null:
-			get_parent().UnitMovementStats.allowedMovement.append(test_tile)
+			# The tile we want to go to is the test tile
 			break
-		get_parent().UnitMovementStats.movement_queue.pop_back()
+	
 	
 	# Prevent null errors if you can't go anywhere for some reason
 	if get_parent().UnitMovementStats.movement_queue.empty():
 		get_parent().UnitMovementStats.movement_queue.append(get_parent().UnitMovementStats.currentTile)
+	else:
+		get_parent().UnitMovementStats.movement_queue.clear()
+		BattlefieldInfo.movement_calculator.get_path_to_destination(get_parent(), test_tile, BattlefieldInfo.grid)
 	
 	# Move to the target
 	# Remove the unit's occupied status on the grid
