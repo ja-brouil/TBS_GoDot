@@ -53,6 +53,9 @@ signal combat_screen_done
 # Game Over
 var game_over = false
 
+# Show highlight positions
+var highlight_positions = false
+
 # Ready
 func _ready():
 	$"Combat Control/Combat UI/XP Screen".connect("done_adding_xp", self, "back_to_battlefield")
@@ -295,6 +298,14 @@ func start_combat(current_combat_state):
 	
 	# Set the visible back
 	modulate = Color(1,1,1,1)
+	
+	# Turn off the highlight squares and set back to false for the value
+	for enemy in BattlefieldInfo.enemy_units.values():
+			BattlefieldInfo.movement_calculator.turn_off_purple(enemy, BattlefieldInfo.grid)
+	# Save the value so that we can turn it back on later
+	if BattlefieldInfo.cursor.enemy_position_state:
+		highlight_positions = true
+	BattlefieldInfo.cursor.enemy_position_state = false
 	
 		# Turn off Units
 	for ally_unit in BattlefieldInfo.ally_units.values():
@@ -821,6 +832,14 @@ func turn_off():
 		cinematic_branch = false
 		
 		emit_signal("combat_screen_done")
+	
+	# Turn on the highlights again
+	if highlight_positions:
+		for enemy in BattlefieldInfo.enemy_units.values():
+				BattlefieldInfo.movement_calculator.highlight_enemy_movement_range(enemy, BattlefieldInfo.grid)
+		BattlefieldInfo.cursor.enemy_position_state = false
+	highlight_positions = false
+	
 	
 	# If this is a game over
 	if game_over:

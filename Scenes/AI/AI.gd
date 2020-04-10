@@ -1,7 +1,7 @@
 extends Node2D
 
 # Type of AI | Default is passive
-# Strings AGGRESIVE, PASSIVE, PATROL, HEAL, RANGED, RANDOM | -> Make sure its all lowercase
+# Strings AGGRESIVE, PASSIVE, PATROL, HEAL, RANDOM | -> Make sure its all lowercase
 var ai_type = "Aggresive"
 
 # Holds all attackable enemies
@@ -148,7 +148,6 @@ func find_tile_to_move_to(Unit_To_Move_Toward):
 		# Check if the tile is NOT occupied
 		if check_tile[1].occupyingUnit == null:
 			# Is the tile part of the blue tiles we can go to
-			
 			if Calculators.get_distance_between_two_tiles(check_tile[1], Unit_To_Move_Toward.UnitMovementStats.currentTile) >= weapon.MIN_ATTACK_RANGE && get_parent().UnitMovementStats.allowedMovement.has(check_tile[1]):
 				# Add Possible Tile
 				if !allowed_tiles.has(check_tile[1]):
@@ -171,21 +170,21 @@ func find_tile_to_move_to(Unit_To_Move_Toward):
 	get_best_tile_to_go_to(allowed_tiles, weapon)
 
 func get_best_tile_to_go_to(allowed_tiles, weapon):
-# Calculate the best tile to go to
+	# Calculate the best tile to go to
 	var best_tile = allowed_tiles.front()
 	var best_tile_value = 0
 	
 	for tile_check in allowed_tiles:
 		var tile_value = 0
 		
-		tile_value = (tile_check.avoidanceBonus + tile_check.defenseBonus)
+		tile_value = (tile_check.avoidanceBonus + tile_check.defenseBonus) + ((Calculators.get_distance_between_two_tiles(player_unit_target.UnitMovementStats.currentTile, tile_check) * 100))
 		 
 		if tile_value > best_tile_value:
 			best_tile = tile_check
 			best_tile_value = tile_value
 	
 	# Set the best weapon to use
-	var distance_between_tile_target_and_enemy_to_attack = Calculators.get_distance_between_two_tiles(get_parent().UnitMovementStats.currentTile, best_tile)
+	var distance_between_tile_target_and_enemy_to_attack = Calculators.get_distance_between_two_tiles(player_unit_target.UnitMovementStats.currentTile, best_tile)
 	var highest_might = 0
 	var best_item = null
 	for item_weapon in weapon.inventory:

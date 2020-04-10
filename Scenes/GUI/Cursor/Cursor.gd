@@ -311,13 +311,14 @@ func acceptButton() -> void:
 						
 						# Play sound
 						$AcceptSound.play(0)
-
+						
 						# Set animation
 						ally_1.get_node("Animation").current_animation = "Idle"
-
+						
 						# Clear everything
 						ally_1 = null
 						ally_2 = null
+
 # Cancel Button
 func cancel_Button() -> void:
 	match cursor_state:
@@ -358,32 +359,33 @@ func cancel_Button() -> void:
 
 # L Button -> Go to next unit that is available
 func l_button() ->  void:
-	# Check if we have new units or any unit has died
-	if all_ally_units.size() != BattlefieldInfo.ally_units.size():
-		all_ally_units.clear()
-		# We units that were added or died
-		for ally_unit in BattlefieldInfo.ally_units.values():
-			all_ally_units.append(ally_unit)
-	for ally_unit in all_ally_units:
-		if ally_unit.UnitActionStatus.get_current_action() == Unit_Action_Status.MOVE:
-			# Remove ally unit
-			var temp = ally_unit
-			all_ally_units.erase(ally_unit)
-			
-			# Set position
-			BattlefieldInfo.main_game_camera.position = (temp.position + Vector2(-112, -82))
-			BattlefieldInfo.main_game_camera.clampCameraPosition()
-			BattlefieldInfo.cursor.position = temp.position
-			
-			# Update UI
-			updateCursorData()
-			emit_signal("cursorMoved", "left", self.position)
-			
-			# Set to the back of the array
-			all_ally_units.append(temp)
-			
-			# Stop loop
-			break
+	if (cursor_state == MOVE || cursor_state == PREP):
+		# Check if we have new units or any unit has died
+		if all_ally_units.size() != BattlefieldInfo.ally_units.size():
+			all_ally_units.clear()
+			# We units that were added or died
+			for ally_unit in BattlefieldInfo.ally_units.values():
+				all_ally_units.append(ally_unit)
+		for ally_unit in all_ally_units:
+			if ally_unit.UnitActionStatus.get_current_action() == Unit_Action_Status.MOVE:
+				# Remove ally unit
+				var temp = ally_unit
+				all_ally_units.erase(ally_unit)
+				
+				# Set position
+				BattlefieldInfo.main_game_camera.position = (temp.position + Vector2(-112, -82))
+				BattlefieldInfo.main_game_camera.clampCameraPosition()
+				BattlefieldInfo.cursor.position = temp.position
+				
+				# Update UI
+				updateCursorData()
+				emit_signal("cursorMoved", "left", self.position)
+				
+				# Set to the back of the array
+				all_ally_units.append(temp)
+				
+				# Stop loop
+				break
 
 func r_button() -> void:
 	if BattlefieldInfo.current_Unit_Selected != null && (cursor_state == MOVE || cursor_state == PREP):
@@ -412,13 +414,17 @@ func enable(status, next_cursor_state):
 
 # Highlight enemy positions
 func highlight_enemy_positions():
-	enemy_position_state = !enemy_position_state
-	if enemy_position_state:
-		for enemy in BattlefieldInfo.enemy_units.values():
-			BattlefieldInfo.movement_calculator.calculatePossibleMoves(enemy, BattlefieldInfo.grid)
-	else:
-		for enemy in BattlefieldInfo.enemy_units.values():
-			BattlefieldInfo.movement_calculator.turn_off_all_tiles(enemy, BattlefieldInfo.grid)
+	# Do not process if we are not in move or prep state
+	if (cursor_state == MOVE || cursor_state == PREP):
+		# Highlight all the ranges that the enemy can move with the purple color
+		enemy_position_state = !enemy_position_state
+		$"Enemy Range Highlight".play(0)
+		if enemy_position_state:
+			for enemy in BattlefieldInfo.enemy_units.values():
+				BattlefieldInfo.movement_calculator.highlight_enemy_movement_range(enemy, BattlefieldInfo.grid)
+		else:
+			for enemy in BattlefieldInfo.enemy_units.values():
+				BattlefieldInfo.movement_calculator.turn_off_purple(enemy, BattlefieldInfo.grid)
 
 # Standard enable
 func enable_standard():

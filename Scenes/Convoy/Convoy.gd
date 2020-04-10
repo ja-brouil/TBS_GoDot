@@ -111,6 +111,7 @@ func _input(event):
 #		print(all_lists_array[current_list_selected_index].get_item_selected())
 #		all_lists_array[current_list_selected_index].delete_item()
 
+# Start the convoy
 func start():
 	# TEST LOAD ITEMS
 	test()

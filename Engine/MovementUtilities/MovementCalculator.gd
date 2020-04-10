@@ -38,6 +38,21 @@ func calculatePossibleMoves(Unit, AllTiles) -> void:
 	# Turn on the tiles
 	turn_on_all_tiles(Unit, AllTiles)
 
+# Turn on tiles for enemies only
+func highlight_enemy_movement_range(Unit, AllTiles) -> void:
+	# Calculate the move
+	calculatePossibleMoves(Unit, AllTiles)
+	
+	# Turn off the tiles
+	turn_off_all_tiles(Unit, AllTiles)
+	
+	# Light all the blue tiles -> Change this later to check if the unit has a healing ability and turn on green tiles
+	for blueTile in Unit.UnitMovementStats.allowedMovement:
+		AllTiles[blueTile.getPosition().x][blueTile.getPosition().y].get_node("MovementRangeRect").turnOn("Purple")
+	for redTile in Unit.UnitMovementStats.allowedAttackRange:
+		AllTiles[redTile.getPosition().x][redTile.getPosition().y].get_node("MovementRangeRect").turnOn("Purple")
+	for greenTile in Unit.UnitMovementStats.allowedHealRange:
+		AllTiles[greenTile.getPosition().x][greenTile.getPosition().y].get_node("MovementRangeRect").turnOn("Purple")
 
 # Process all the tiles to find what is movable to
 func processTile(initialTile, unit_movement, moveSteps, unit):
@@ -190,6 +205,18 @@ func turn_off_all_tiles(Unit, AllTiles) -> void:
 	# Turn off Green -> TO DO
 	for greenTile in Unit.UnitMovementStats.allowedHealRange:
 		AllTiles[greenTile.getPosition().x][greenTile.getPosition().y].get_node("MovementRangeRect").turnOff("Green")
+
+# Turn off only purple
+func turn_off_purple(Unit, AllTiles) -> void:
+		# Turn off blue
+	for blueTile in Unit.UnitMovementStats.allowedMovement:
+		AllTiles[blueTile.getPosition().x][blueTile.getPosition().y].get_node("MovementRangeRect").turnOff("Purple")
+	# Turn off Red -> TO DO
+	for redTile in Unit.UnitMovementStats.allowedAttackRange:
+		AllTiles[redTile.getPosition().x][redTile.getPosition().y].get_node("MovementRangeRect").turnOff("Purple")
+	# Turn off Green -> TO DO
+	for greenTile in Unit.UnitMovementStats.allowedHealRange:
+		AllTiles[greenTile.getPosition().x][greenTile.getPosition().y].get_node("MovementRangeRect").turnOff("Purple")
 
 # Find the shortest path to the target destination | No A* algorithm | Player version only
 func get_path_to_destination(Unit, target_destination, AllTiles):

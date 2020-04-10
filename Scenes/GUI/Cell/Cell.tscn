@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/GUI/Cell/Cell.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/GUI/CellColors/MovementRangeRect.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/font/Main Font.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+outline_size = 1
+outline_color = Color( 0.239216, 0.180392, 0.180392, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
 
 [node name="Cell" type="Node2D"]
 z_index = 2
@@ -9,3 +18,14 @@ script = ExtResource( 1 )
 
 [node name="MovementRangeRect" parent="." instance=ExtResource( 2 )]
 z_index = 0
+
+[node name="Label" type="Label" parent="."]
+visible = false
+margin_right = 65.0
+margin_bottom = 30.0
+rect_scale = Vector2( 0.2, 0.2 )
+custom_fonts/font = SubResource( 1 )
+text = "20,20"
+__meta__ = {
+"_edit_use_anchors_": false
+}

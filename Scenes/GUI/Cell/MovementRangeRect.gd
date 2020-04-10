@@ -6,17 +6,20 @@ func _ready():
 	$"Blue/Blue Player".play("Wave")
 	$"Red/Red Player".play("Wave")
 	$"Green/Green Player".play("Wave")
+	$"Purple/Red Player".play("Wave")
 
 func turnOn(colorName):
 	if colorName == "Red":
-		if !$"Red".visible:
+		if !$"Green".visible && !$"Red".visible && !$"Blue".visible:
 			$"Red".visible = true
 	elif colorName == "Blue":
-		if !$"Blue".visible:
+		if !$"Green".visible && !$"Red".visible && !$"Blue".visible:
 			$"Blue".visible = true
 	elif colorName == "Green":
-		if !$"Green".visible:
+		if !$"Green".visible && !$"Red".visible && !$"Blue".visible:
 			$"Green".visible = true
+	elif colorName == "Purple":
+		$"Purple".visible = true
 
 func turnOff(colorName):
 	if colorName == "Red":
@@ -25,8 +28,11 @@ func turnOff(colorName):
 		$"Blue".visible = false
 	elif colorName == "Green":
 		$"Green".visible = false
+	elif colorName == "Purple":
+		$"Purple".visible = false
 
 func turnEverythingOff():
 	$"Red".visible = false
 	$"Blue".visible = false
 	$"Green".visible = false
+	$"Purple".visible = false

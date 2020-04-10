@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.0" orientation="orthogonal" renderorder="right-down" width="15" height="15" tilewidth="16" tileheight="16" infinite="0" nextobjectid="363">
+<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="15" height="15" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="363">
  <properties>
   <property name="Enemies_to_defeat" type="int" value="15"/>
   <property name="Victory_Condition" value="Defeat All Enemies"/>
  </properties>
  <tileset firstgid="1" source="level3tileset.tsx"/>
- <layer name="Background" width="15" height="15">
+ <layer id="1" name="Background" width="15" height="15">
   <data encoding="csv">
 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,
 16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,
@@ -24,7 +24,7 @@
 211,212,213,214,215,216,217,218,219,220,221,222,223,224,225
 </data>
  </layer>
- <objectgroup name="CellInfo" visible="0">
+ <objectgroup id="2" name="CellInfo" visible="0">
   <object id="1" x="176" y="208" width="16" height="16">
    <properties>
     <property name="Avd" type="int" value="20"/>
@@ -1826,7 +1826,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="Allies">
+ <objectgroup id="3" name="Allies">
   <object id="251" x="0" y="224" width="16" height="16">
    <properties>
     <property name="BonusCrit" type="int" value="0"/>
@@ -2204,7 +2204,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="Enemies">
+ <objectgroup id="4" name="Enemies">
   <object id="358" x="192" y="48" width="16" height="16">
    <properties>
     <property name="After_Battle" value="Marcus@assets/units/bandit/bandit mugshot.png@まさか。。。俺は倒された。。。"/>
@@ -2580,5 +2580,5 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="Temp"/>
+ <objectgroup id="5" name="Temp"/>
 </map>

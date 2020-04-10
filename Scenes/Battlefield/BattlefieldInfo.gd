@@ -241,6 +241,7 @@ func start_level():
 func next_ai(enemy_unit):
 	enemy_unit.get_node("AI").process_ai()
 	
+
 func start_ai_combat():
 	# Calculate damage
 	Combat_Calculator.calculate_damage()

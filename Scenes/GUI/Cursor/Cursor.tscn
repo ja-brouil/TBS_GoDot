@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scenes/GUI/Cursor/Cursor.gd" type="Script" id=1]
 [ext_resource path="res://assets/UI/Damage Preview/Cursor/cursor.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/sound/cursor/selectUnit.wav" type="AudioStream" id=7]
 [ext_resource path="res://assets/sound/cursor/Not Allowed.wav" type="AudioStream" id=8]
 [ext_resource path="res://assets/sound/cursor/backSound.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/sound/misc/move sound 2.wav" type="AudioStream" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4.40652, 13.0471 )
@@ -59,6 +60,9 @@ bus = "Cursor"
 [node name="BackSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
 bus = "Cursor"
+
+[node name="Enemy Range Highlight" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
 
 [node name="Cursor Bounds" type="KinematicBody2D" parent="."]
 visible = false

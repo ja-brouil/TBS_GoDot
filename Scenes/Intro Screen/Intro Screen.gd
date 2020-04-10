@@ -22,6 +22,8 @@ func _ready():
 	# Anim signal
 	$"Anim".connect("animation_finished", self, "allow_selection")
 	
+	# No 3 houses
+	$"Intro Background".texture = no_text_background
 
 func _input(event):
 	match current_state:
@@ -29,7 +31,6 @@ func _input(event):
 			# Any key
 			if event is InputEventKey and event.is_pressed():
 				$"Anim".play("Options Fade In")
-				$"Intro Background".texture = no_text_background
 				current_state = WAIT
 		GAME_SELECT:
 			if Input.is_action_just_pressed("ui_up"):

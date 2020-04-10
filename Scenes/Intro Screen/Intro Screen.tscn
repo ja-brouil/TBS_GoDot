@@ -83,6 +83,9 @@ margin_right = 240.0
 margin_bottom = 160.0
 texture = ExtResource( 2 )
 expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Intro Song" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )

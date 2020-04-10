@@ -1,0 +1,154 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/backgrounds/FE BG 5.jpg" type="Texture" id=1]
+[ext_resource path="res://Engine/Systems/Game Settings.gd" type="Script" id=2]
+[ext_resource path="res://assets/music/Destiny - Fire Emblem Awakening.ogg" type="AudioStream" id=3]
+[ext_resource path="res://assets/font/Main Font.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 15
+outline_size = 1
+outline_color = Color( 0.239216, 0.180392, 0.180392, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+outline_size = 1
+outline_color = Color( 0.239216, 0.180392, 0.180392, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 4 )
+
+[node name="Game Settings" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.362137
+margin_top = 0.362122
+margin_right = 0.362137
+margin_bottom = 0.362122
+rect_scale = Vector2( 1.00127, 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sound Settings" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -0.176823
+margin_right = -0.176819
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Music Volume" type="HScrollBar" parent="Sound Settings"]
+margin_left = 130.128
+margin_top = 41.6652
+margin_right = 192.128
+margin_bottom = 53.6652
+step = 1.0
+value = 100.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Music Volume Label" type="Label" parent="Sound Settings/Music Volume"]
+margin_left = -99.6135
+margin_top = -0.877445
+margin_right = 10.3865
+margin_bottom = 15.1226
+rect_scale = Vector2( 0.7, 0.7 )
+custom_fonts/font = SubResource( 1 )
+text = "Music Volume"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Volume Level" type="Label" parent="Sound Settings/Music Volume"]
+margin_left = 71.8018
+margin_top = 0.308144
+margin_right = 104.802
+margin_bottom = 16.3081
+rect_scale = Vector2( 0.7, 0.7 )
+custom_fonts/font = SubResource( 1 )
+text = "100"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sound Volume" type="HScrollBar" parent="Sound Settings"]
+margin_left = 129.702
+margin_top = 61.2897
+margin_right = 191.702
+margin_bottom = 73.2897
+step = 1.0
+value = 100.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sound Volume" type="Label" parent="Sound Settings/Sound Volume"]
+margin_left = -99.6135
+margin_top = -0.877445
+margin_right = 10.3865
+margin_bottom = 15.1226
+rect_scale = Vector2( 0.7, 0.7 )
+custom_fonts/font = SubResource( 1 )
+text = "Sound Volume"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Volume Level" type="Label" parent="Sound Settings/Sound Volume"]
+margin_left = 72.775
+margin_top = -0.386692
+margin_right = 105.775
+margin_bottom = 15.6133
+rect_scale = Vector2( 0.7, 0.7 )
+custom_fonts/font = SubResource( 1 )
+text = "100"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Keybindings" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Settings Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="Setting" type="ColorRect" parent="."]
+margin_left = 1.0
+margin_right = 239.0
+margin_bottom = 25.0
+color = Color( 0.156863, 0.580392, 0.772549, 0.458824 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Settings Label" type="Label" parent="Setting"]
+margin_left = 44.1
+margin_right = 271.1
+margin_bottom = 31.0
+rect_scale = Vector2( 0.7, 0.7 )
+custom_fonts/font = SubResource( 2 )
+text = "Game Settings"
+__meta__ = {
+"_edit_use_anchors_": false
+}

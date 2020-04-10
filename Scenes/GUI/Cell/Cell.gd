@@ -49,6 +49,13 @@ func init(cellPosition, avoidanceBonus, defenseBonus, movementCost, tileName) ->
 	self.cellPosition.x = cellPosition.x
 	self.cellPosition.y = cellPosition.y
 	
+	# DEBUG
+	$Label.text = str(cellPosition.x, "," , cellPosition.y)
+	
+func _input(event):
+	# DEBUG
+	if Input.is_action_just_pressed("show_coord_debug"):
+		$Label.visible = !$Label.visible
 
 # Heuristic costs
 func get_fCost() -> int:
