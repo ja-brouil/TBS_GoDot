@@ -37,6 +37,9 @@ var current_price = 0
 # Unit solo picker signal
 signal inventory_full
 
+# Test for walkable map
+var came_from_walkable_map = false
+
 # Various Nodes
 onready var shop_list = $"Shop UI/ShopList"
 onready var shop_list_price = $"Shop UI/ShopListPrice"
@@ -200,11 +203,22 @@ func exit():
 	shop_text.percent_visible = 0
 	shop_text.text = ""
 	
-	# Start Prep screen again
-	BattlefieldInfo.preparation_screen.turn_on_fade()
-	
-	# Start Music
-	BattlefieldInfo.preparation_screen.play_song(BattlefieldInfo.preparation_screen.current_song)
+	# Go to walkable map if we came from there
+	if came_from_walkable_map:
+		# Set to false
+		came_from_walkable_map = false
+		
+		# Eirika can move again
+		BattlefieldInfo.walkable_map.eirika_walk._back_to_walk()
+		
+		# Play Music
+		BattlefieldInfo.walkable_map.music.play(0)
+	else:
+		# Start Prep screen again
+		BattlefieldInfo.preparation_screen.turn_on_fade()
+		
+		# Start Music
+		BattlefieldInfo.preparation_screen.play_song(BattlefieldInfo.preparation_screen.current_song)
 
 func _input(event):
 	# Get State

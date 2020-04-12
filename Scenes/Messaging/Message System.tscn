@@ -97,6 +97,8 @@ custom_fonts/bold_font = SubResource( 3 )
 custom_fonts/normal_font = ExtResource( 5 )
 custom_colors/default_color = Color( 0.0588235, 0.133333, 0.27451, 1 )
 bbcode_enabled = true
+visible_characters = 0
+percent_visible = 0.0
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false

@@ -43,6 +43,15 @@ script = ExtResource( 2 )
 [node name="Background" parent="." index="1"]
 modulate = Color( 0.996078, 0.819608, 0.745098, 1 )
 
+[node name="CellInfo" parent="." index="2"]
+visible = true
+
+[node name="Allies" parent="." index="3"]
+visible = false
+
+[node name="Enemies" parent="." index="4"]
+visible = false
+
 [node name="Temp" parent="." index="5"]
 visible = false
 

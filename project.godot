@@ -39,6 +39,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scenes/GUI/Cursor/Cursor.gd"
 }, {
+"base": "KinematicBody2D",
+"class": "Eirka_Walk",
+"language": "GDScript",
+"path": "res://Scenes/Walkable/Eirika Walk.gd"
+}, {
 "base": "Node2D",
 "class": "Event_Base",
 "language": "GDScript",
@@ -204,6 +209,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scenes/Events/Special Events/Spawn Enemies.gd"
 }, {
+"base": "Node2D",
+"class": "Test_Walk_Map",
+"language": "GDScript",
+"path": "res://Scenes/Walkable/Test Walk Map.gd"
+}, {
 "base": "Node",
 "class": "TileUnitUpdater",
 "language": "GDScript",
@@ -261,6 +271,7 @@ _global_script_class_icons={
 "Combat_Screen": "",
 "Combat_Unit": "",
 "Cursor": "",
+"Eirka_Walk": "",
 "Event_Base": "",
 "Event_System": "",
 "Group_Name": "",
@@ -294,6 +305,7 @@ _global_script_class_icons={
 "SaveLoadSystem": "",
 "Shop_UI": "",
 "Spawn_Event": "",
+"Test_Walk_Map": "",
 "TileUnitUpdater": "",
 "Turn_Manager": "",
 "Unit_Action_Status": "",

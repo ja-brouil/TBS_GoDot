@@ -1,0 +1,22 @@
+[remap]
+
+importer="vnen.tiled_importer"
+type="PackedScene"
+path="res://.import/Test_Wwalk.tmx-852932224db593f0aba4492747832f4e.scn"
+
+[deps]
+
+source_file="res://assets/walkable maps/Test_Wwalk.tmx"
+dest_files=[ "res://.import/Test_Wwalk.tmx-852932224db593f0aba4492747832f4e.scn" ]
+
+[params]
+
+custom_properties=true
+tile_metadata=true
+uv_clip=true
+image_flags=7
+collision_layer=1
+embed_internal_images=false
+save_tiled_properties=true
+add_background=true
+post_import_script=""

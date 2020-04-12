@@ -119,6 +119,9 @@ var unit_info_screen
 # Prep screen
 var preparation_screen
 
+# Walkable map
+var walkable_map
+
 # Start Game Systems
 func _ready():
 	# Movement Calculator
