@@ -1,8 +1,9 @@
 [gd_scene load_steps=17 format=2]
 
-[ext_resource path="res://Naomi Walk.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Walkable/Naomi Walk.gd" type="Script" id=1]
 [ext_resource path="res://assets/units/archer/archer ally.png" type="Texture" id=2]
 [ext_resource path="res://assets/sound/unitMovement/Light Foot Steps 1.wav" type="AudioStream" id=3]
+
 
 [sub_resource type="Animation" id=14]
 length = 2.0

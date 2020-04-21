@@ -54,6 +54,10 @@ func _input(event):
 			if Input.is_action_just_pressed("ui_accept"):
 				$"Options/Hand Selector/Accept".play(0)
 				process_selection()
+				
+
+func _process(delta):
+	pass
 
 func allow_selection(anim_name):
 	current_state = GAME_SELECT

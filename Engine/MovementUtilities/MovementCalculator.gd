@@ -64,6 +64,7 @@ func processTile(initialTile, unit_movement, moveSteps, unit):
 	
 	# Process queue until it is empty
 	while !queue.empty():
+		
 		# Pop the first tile
 		var tile_to_check = queue.pop_front()
 	
@@ -74,6 +75,7 @@ func processTile(initialTile, unit_movement, moveSteps, unit):
 		# Get the next cost
 		for adjTile in tile_to_check[1].adjCells:
 			var next_cost = tile_to_check[0] - adjTile.movementCost - getPenaltyCost(unit, unit_movement, adjTile)
+			
 			# Do not process tiles that we have already seen or if we cannot get there
 			if next_cost >= 0 && !adjTile.isVisited:
 				# Is the tile occupied? -> Tile is not occupied, process right away
