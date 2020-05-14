@@ -67,26 +67,28 @@ func processTile(initialTile, unit_movement, moveSteps, unit):
 		
 		# Pop the first tile
 		var tile_to_check = queue.pop_front()
-	
+		
 		# Add tile to allowed movement and set visited status to true
 		unit_movement.allowedMovement.append(tile_to_check[1])
-		tile_to_check[1].isVisited = true
+#		tile_to_check[1].isVisited = true
 		
 		# Get the next cost
 		for adjTile in tile_to_check[1].adjCells:
 			var next_cost = tile_to_check[0] - adjTile.movementCost - getPenaltyCost(unit, unit_movement, adjTile)
 			
-			# Do not process tiles that we have already seen or if we cannot get there
 			if next_cost >= 0 && !adjTile.isVisited:
 				# Is the tile occupied? -> Tile is not occupied, process right away
 				if adjTile.occupyingUnit == null:
 					adjTile.parentTile = tile_to_check[1]
+					adjTile.isVisited = true
 					queue.append([next_cost, adjTile])
 				else:
 					# Tile is occupied -> Check if it's an ally (or enemy for enemy)
 					if adjTile.occupyingUnit.UnitMovementStats.is_ally == unit_movement.is_ally:
 						adjTile.parentTile = tile_to_check[1]
+						adjTile.isVisited = true
 						queue.append([next_cost, adjTile])
+
 
 # Process Attackable Range
 func processAttackTile(Unit):

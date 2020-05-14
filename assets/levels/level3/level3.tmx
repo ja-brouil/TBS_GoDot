@@ -1893,7 +1893,7 @@
     <property name="Luck" type="int" value="4"/>
     <property name="Magic" type="int" value="0"/>
     <property name="MaxHealth" type="int" value="17"/>
-    <property name="Move" type="int" value="14"/>
+    <property name="Move" type="int" value="7"/>
     <property name="Name" value="Vanessa"/>
     <property name="Res" type="int" value="9"/>
     <property name="Skill" type="int" value="7"/>

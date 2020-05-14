@@ -52,3 +52,5 @@ position = Vector2( 46.8815, 291.081 )
 
 [node name="Colm Walk" parent="YSort" instance=ExtResource( 9 )]
 position = Vector2( 87.6423, 244.038 )
+
+[node name="Node2D" type="Node2D" parent="."]
