@@ -61,7 +61,6 @@ scale = Vector2( 1.125, 1.125 )
 texture = ExtResource( 3 )
 
 [node name="Inventory 1" type="Control" parent="Unit Controlled by Player"]
-editor/display_folded = true
 margin_right = 40.0
 margin_bottom = 40.0
 

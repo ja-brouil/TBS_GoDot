@@ -1,5 +1,5 @@
 extends Node
-# Various calculators
+# Various calculators and global functions
 
 # This is for helpful code to calculate certain math problems
 # Get the distance between two tiles
@@ -24,3 +24,19 @@ func is_string_longer_than_max_constant(string_to_test):
 # Get a random number between a certain value
 func get_random_number(lower_bound, upper_bound):
 	return randi() % upper_bound + lower_bound
+
+# Turn on all units
+func turn_on_all_units():
+	for ally_unit in BattlefieldInfo.ally_units.values():
+		ally_unit.visible = true
+
+	for enemy_unit in BattlefieldInfo.enemy_units.values():
+		enemy_unit.visible = true
+
+# Turn off all units
+func turn_off_all_units():
+	for ally_unit in BattlefieldInfo.ally_units.values():
+		ally_unit.visible = false
+	
+	for enemy_unit in BattlefieldInfo.enemy_units.values():
+		enemy_unit.visible = false

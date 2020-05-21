@@ -1,0 +1,101 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/font/Main Font.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/font/Preparation Screen Item List Font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Scenes/GUI/Item Screen/Yes No Box.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/GUI/Hand Cursor/Hand Selector.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/GUI/Unit Inventory Display/Unit Inventory Display.gd" type="Script" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 10
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Fade"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Unit Inventory Display" type="Control"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Background Color" type="ColorRect" parent="."]
+margin_left = 11.7627
+margin_top = 86.6779
+margin_right = 230.763
+margin_bottom = 156.678
+color = Color( 0.160784, 0.152941, 0.180392, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Inventory List" type="ItemList" parent="Background Color"]
+margin_left = -0.474594
+margin_top = 11.7627
+margin_right = 218.525
+margin_bottom = 68.7627
+mouse_filter = 2
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_selected = Color( 0.117647, 0.823529, 0.0784314, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+items = [ "Item 0", null, false, "Item 1", null, false, "Item 2", null, false, "Item 3", null, false, "Item 4", null, false, "Item 5", null, false ]
+max_columns = 2
+same_column_width = true
+fixed_column_width = 95
+fixed_icon_size = Vector2( 15, 15 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Unit Name" type="Label" parent="Background Color"]
+margin_right = 550.0
+margin_bottom = 30.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = ExtResource( 2 )
+text = "Inventory"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+anims/Fade = SubResource( 2 )
+
+[node name="Hand Selector" parent="." instance=ExtResource( 4 )]
+visible = false
+margin_left = -273.639
+margin_top = -138.613
+margin_right = -257.639
+margin_bottom = -125.613
+
+[node name="TEST NODE" type="Node" parent="."]
+
+[node name="Yes No Box" parent="." instance=ExtResource( 3 )]
+visible = false
+margin_left = 189.68
+margin_top = 72.8267
+margin_right = 189.68
+margin_bottom = 72.8267
+[connection signal="item_selected" from="Background Color/Inventory List" to="." method="_on_Inventory_List_item_selected"]

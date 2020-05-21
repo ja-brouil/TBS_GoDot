@@ -100,7 +100,7 @@ func buy_item(index):
 		current_state = SHOP_STATE.SELECT_UNIT
 		
 		# Start the other screen
-		unit_picker.start()
+		unit_picker.start_with_convoy()
 		
 		# Disable the store
 		shop_list.unselect_all()
@@ -401,6 +401,37 @@ func check_unit_inventory_space(unit):
 	return true
 
 func _on_Unit_Picker_Solo_unit_picked(unit):
+	if unit == Convoy:
+	# Hide the unit picker
+		unit_picker.exit()
+		# Remove amount
+		BattlefieldInfo.money -= current_price
+		
+		# Create the item
+		Convoy.add_item_to_convoy(BattlefieldInfo.item_database.create_item(ALL_ITEMS_REF.all_items[shop_list.get_item_text(current_index)]))
+		
+		# Move Hand off
+		hand_confirm.rect_position = OFF_SCREEN
+		# Update amount left
+		$"Shop UI/Money".text = str(BattlefieldInfo.money)
+		# Thanks for buying!
+		$"Shop UI/Shop Exit JPN Patronage".play()
+		# Set Text
+		shop_text.percent_visible = 0
+		shop_text.text = thank_you
+		anim.play("Text Anim")
+		# Wait two seconds then back to buy
+		set_process_input(false)
+		yield(get_tree().create_timer(2),"timeout")
+		
+		# Back to browsing
+		back_to_browing()
+		
+		# Set back to select
+		shop_list.select(current_index)
+		shop_list_price.select(current_index)
+	
+	else:
 	# Check if we have inventory space
 		if check_unit_inventory_space(unit):
 			# Hide the unit picker

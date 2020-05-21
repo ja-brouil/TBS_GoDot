@@ -337,6 +337,7 @@ WorldMapScreen="*res://Scenes/World Map/World Map Screen.tscn"
 StatusScreen="*res://Scenes/GUI/Status Screen/Status Screen.tscn"
 GroupNames="*res://Engine/Systems/Group Names.gd"
 Level="*res://Scenes/Battlefield/Level.tscn"
+Convoy="*res://Scenes/Convoy/Convoy UI.tscn"
 
 [debug]
 

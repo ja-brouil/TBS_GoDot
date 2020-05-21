@@ -13,6 +13,9 @@ signal unit_picked
 onready var unit_list = $"Unit List"
 onready var anim = $"Anim"
 
+# Convoy info
+const CONVOY_ID = "Convoy"
+
 func _ready():
 	set_process_input(false)
 	unit_list.unselect_all()
@@ -22,26 +25,23 @@ func _ready():
 	unit_list.get_v_scroll().mouse_filter = Control.MOUSE_FILTER_IGNORE
 	unit_list.get_v_scroll().modulate = Color(1,1,1,0)
 	
-	
 	# Test adding units
 	# Eirika Test
-	var eririka_path = load("res://Scenes/Units/Player_Units/AllyUnits/Eirika/Eirika.tscn")
-	var eirika_t = eririka_path.instance()
-	$"TEST NODE".add_child(eirika_t)
-	eirika_t.UnitStats.identifier = "Eirika"
-	
-	# Seth test
-	var seth_path = load("res://Scenes/Units/Player_Units/AllyUnits/Seth/Seth.tscn")
-	var seth_t = seth_path.instance()
-	$"TEST NODE".add_child(seth_t)
-	seth_t.UnitStats.identifier = "Seth"
-	seth_t.UnitStats.name = "Seth"
-	
-	BattlefieldInfo.ally_units["Eirika"] = eirika_t
-	BattlefieldInfo.ally_units["Seth"] = seth_t
-	
-	for child in $"TEST NODE".get_children():
-		child.position = Vector2(-100, -100)
+#	var eririka_path = load("res://Scenes/Units/Player_Units/AllyUnits/Eirika/Eirika.tscn")
+#	var eirika_t = eririka_path.instance()
+#	$"TEST NODE".add_child(eirika_t)
+#	eirika_t.UnitStats.identifier = "Eirika"
+#
+#	# Seth test
+#	var seth_path = load("res://Scenes/Units/Player_Units/AllyUnits/Seth/Seth.tscn")
+#	var seth_t = seth_path.instance()
+#	$"TEST NODE".add_child(seth_t)
+#	seth_t.UnitStats.identifier = "Seth"
+#	seth_t.UnitStats.name = "Seth"
+#
+#	BattlefieldInfo.ally_units["Eirika"] = eirika_t
+#	BattlefieldInfo.ally_units["Seth"] = seth_t
+
 
 func _input(event):
 	if Input.is_action_just_pressed("ui_accept"):
@@ -61,6 +61,14 @@ func start():
 	unit_list.grab_focus()
 	unit_list.select(0)
 	set_process_input(true)
+
+func start_with_convoy():
+	# Start the unit list
+	start()
+	
+	# Add the convoy to the list
+	all_units_available[CONVOY_ID] = Convoy
+	unit_list.add_item(CONVOY_ID, Convoy.icon, true)
 
 func exit():
 	# Stop input

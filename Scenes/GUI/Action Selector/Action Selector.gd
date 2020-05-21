@@ -224,7 +224,11 @@ func process_selection():
 			# Turn off
 			hide_action_menu()
 		"Convoy":
-			print("From Action Selector: Selected Convoy! Go to the convoy screen!")
+			# Start the convoy screen with current unit selected
+			Convoy.start_with_unit_selected(BattlefieldInfo.current_Unit_Selected)
+			
+			# Turn off
+			hide_action_menu()
 		"Heal":
 			get_parent().get_node("Healing Select").start()
 			# Turn off
