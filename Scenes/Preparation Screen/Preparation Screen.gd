@@ -176,7 +176,7 @@ func process_selection():
 			# Hide this
 			$Anim.play_backwards("Fade Fast")
 			yield($Anim, "animation_finished")
-			$Shop.start(Shop_UI.SHOP_STATE.BUY)
+			$Shop.start()
 			$"Prep Screen Control".visible = false
 			
 			# Hide Battlefield info UI

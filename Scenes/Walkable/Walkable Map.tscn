@@ -48,7 +48,7 @@ position = Vector2( 254.708, 247.91 )
 position = Vector2( 416.454, 226.231 )
 
 [node name="Anna Walk" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 46.8815, 291.081 )
+position = Vector2( 47.4989, 290.772 )
 
 [node name="Colm Walk" parent="YSort" instance=ExtResource( 9 )]
 position = Vector2( 87.6423, 244.038 )

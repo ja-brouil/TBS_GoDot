@@ -27,20 +27,22 @@ func _ready():
 	
 	# Test adding units
 	# Eirika Test
-#	var eririka_path = load("res://Scenes/Units/Player_Units/AllyUnits/Eirika/Eirika.tscn")
-#	var eirika_t = eririka_path.instance()
-#	$"TEST NODE".add_child(eirika_t)
-#	eirika_t.UnitStats.identifier = "Eirika"
-#
-#	# Seth test
-#	var seth_path = load("res://Scenes/Units/Player_Units/AllyUnits/Seth/Seth.tscn")
-#	var seth_t = seth_path.instance()
-#	$"TEST NODE".add_child(seth_t)
-#	seth_t.UnitStats.identifier = "Seth"
-#	seth_t.UnitStats.name = "Seth"
-#
-#	BattlefieldInfo.ally_units["Eirika"] = eirika_t
-#	BattlefieldInfo.ally_units["Seth"] = seth_t
+	var eririka_path = load("res://Scenes/Units/Player_Units/AllyUnits/Eirika/Eirika.tscn")
+	var eirika_t = eririka_path.instance()
+	$"TEST NODE".add_child(eirika_t)
+	eirika_t.visible = false
+	eirika_t.UnitStats.identifier = "Eirika"
+
+	# Seth test
+	var seth_path = load("res://Scenes/Units/Player_Units/AllyUnits/Seth/Seth.tscn")
+	var seth_t = seth_path.instance()
+	$"TEST NODE".add_child(seth_t)
+	seth_t.visible = false
+	seth_t.UnitStats.identifier = "Seth"
+	seth_t.UnitStats.name = "Seth"
+
+	BattlefieldInfo.ally_units["Eirika"] = eirika_t
+	BattlefieldInfo.ally_units["Seth"] = seth_t
 
 
 func _input(event):
@@ -68,7 +70,7 @@ func start_with_convoy():
 	
 	# Add the convoy to the list
 	all_units_available[CONVOY_ID] = Convoy
-	unit_list.add_item(CONVOY_ID, Convoy.icon, true)
+	unit_list.add_item(CONVOY_ID, Convoy.get_node("Convoy UI").icon, true)
 
 func exit():
 	# Stop input

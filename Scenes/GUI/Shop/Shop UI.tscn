@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://assets/font/Main Font.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/font/Action Selector Font.tres" type="DynamicFont" id=2]
@@ -27,6 +27,7 @@
 [ext_resource path="res://assets/voice/Not enough money.wav" type="AudioStream" id=25]
 [ext_resource path="res://assets/voice/That's dissapointing.wav" type="AudioStream" id=26]
 [ext_resource path="res://assets/voice/is that okay.wav" type="AudioStream" id=27]
+[ext_resource path="res://Scenes/GUI/Unit Inventory Display/Unit Inventory Display.tscn" type="PackedScene" id=28]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -72,7 +73,7 @@ __meta__ = {
 
 [node name="Shop UI" type="Control" parent="."]
 visible = false
-modulate = Color( 0, 0, 0, 1 )
+modulate = Color( 0.929412, 0.929412, 0.929412, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 0.172318
@@ -233,9 +234,27 @@ margin_bottom = 88.0
 
 [node name="Unit Picker Solo" parent="." instance=ExtResource( 23 )]
 
+[node name="Unit Inventory Display" parent="." instance=ExtResource( 28 )]
+margin_left = 1.30899
+margin_top = -10.1447
+margin_right = 1.30899
+margin_bottom = -10.1447
+
+[node name="Backround Inventory Rect" type="ColorRect" parent="Unit Inventory Display"]
+show_behind_parent = true
+margin_left = -1.0
+margin_top = 76.0
+margin_right = 239.0
+margin_bottom = 170.0
+color = Color( 0.172549, 0.164706, 0.196078, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Anim" type="AnimationPlayer" parent="."]
 anims/Fade = SubResource( 2 )
 "anims/Text Anim" = SubResource( 3 )
 [connection signal="item_selected" from="Shop UI/ShopList" to="." method="_on_ShopList_item_selected"]
 [connection signal="item_selected" from="Shop UI/ShopListPrice" to="." method="_on_ShopList_item_selected"]
 [connection signal="unit_picked" from="Unit Picker Solo" to="." method="_on_Unit_Picker_Solo_unit_picked"]
+[connection signal="item_selected" from="Unit Inventory Display" to="." method="_on_Unit_Inventory_Display_item_selected"]

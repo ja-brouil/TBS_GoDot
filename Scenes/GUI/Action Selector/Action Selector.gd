@@ -225,7 +225,7 @@ func process_selection():
 			hide_action_menu()
 		"Convoy":
 			# Start the convoy screen with current unit selected
-			Convoy.start_with_unit_selected(BattlefieldInfo.current_Unit_Selected)
+			Convoy.get_node("Convoy UI").start_with_unit_selected(BattlefieldInfo.current_Unit_Selected)
 			
 			# Turn off
 			hide_action_menu()

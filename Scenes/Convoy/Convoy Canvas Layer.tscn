@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/Convoy/Convoy UI.tscn" type="PackedScene" id=1]
+
+[node name="Convoy Canvas Layer" type="CanvasLayer"]
+
+[node name="Convoy UI" parent="." instance=ExtResource( 1 )]

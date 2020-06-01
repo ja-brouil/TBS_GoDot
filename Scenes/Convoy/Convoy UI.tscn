@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/Convoy/Convoy.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/GUI/Hand Cursor/Hand Selector.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Scenes/GUI/Unit Selectors/Unit Picker Solo.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/font/Action Selector Font.tres" type="DynamicFont" id=8]
 [ext_resource path="res://Scenes/GUI/Unit Inventory Display/Unit Inventory Display.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/GUI/Item Screen/Yes No Box Generic.tscn" type="PackedScene" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -34,18 +35,19 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[node name="Convoy UI" type="Control"]
+[node name="Convoy UI" type="Node2D"]
 visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
+modulate = Color( 1, 1, 1, 0 )
+z_index = 10
+z_as_relative = false
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Background" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = 11.0
+margin_right = 240.0
+margin_bottom = 159.0
 texture = ExtResource( 5 )
 expand = true
 __meta__ = {
@@ -79,6 +81,7 @@ __meta__ = {
 }
 
 [node name="Sword" parent="All Lists" instance=ExtResource( 3 )]
+visible = false
 
 [node name="Lance" parent="All Lists" instance=ExtResource( 3 )]
 
@@ -103,10 +106,10 @@ margin_bottom = -287.0
 stream = ExtResource( 4 )
 
 [node name="Item Stats" type="Label" parent="."]
-margin_left = 3.61224
-margin_top = 11.882
-margin_right = 385.612
-margin_bottom = 504.882
+margin_left = 1.0
+margin_top = 12.0
+margin_right = 383.0
+margin_bottom = 466.0
 rect_scale = Vector2( 0.3, 0.3 )
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
@@ -120,15 +123,23 @@ __meta__ = {
 [node name="Unit Picker Solo" parent="." instance=ExtResource( 7 )]
 
 [node name="Unit Inventory Display" parent="." instance=ExtResource( 9 )]
+visible = false
 margin_left = 36.9093
 margin_top = 26.4426
 margin_right = 36.9093
 margin_bottom = 26.4426
 rect_scale = Vector2( 0.8, 0.8 )
 
+[node name="Yes No Box Generic" parent="." instance=ExtResource( 10 )]
+margin_left = 104.645
+margin_top = 25.4561
+margin_right = 104.645
+margin_bottom = 25.4561
+
 [node name="Timer" type="Timer" parent="."]
 wait_time = 10.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Fade = SubResource( 2 )
+[connection signal="option_selected" from="Yes No Box Generic" to="." method="_on_Yes_No_Box_Generic_option_selected"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

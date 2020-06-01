@@ -8,3 +8,4 @@ func _ready():
 	
 	# Add to battlefield info
 	BattlefieldInfo.walkable_map = self
+	

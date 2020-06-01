@@ -37,6 +37,7 @@ func start(convoy):
 	else:
 		convoy.item_text_reset()
 
+
 func exit():
 	visible = false
 	disable_input()
@@ -113,6 +114,7 @@ func allow_input():
 		item_list_node.select(item_index)
 
 func disable_input():
+	item_list_node.focus_mode = Control.FOCUS_NONE
 	item_list_node.set_process_input(false)
 	item_list_node.unselect_all()
 	item_list_node.release_focus()

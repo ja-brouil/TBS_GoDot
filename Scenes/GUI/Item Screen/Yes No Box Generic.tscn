@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Scenes/GUI/Item Screen/Yes No Box.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/GUI/Item Screen/Yes No Box Generic.gd" type="Script" id=1]
 [ext_resource path="res://assets/UI/Inventory/equip discard box.png" type="Texture" id=2]
 [ext_resource path="res://assets/font/Main Font.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://assets/font/Weapon Name.tres" type="DynamicFont" id=4]
@@ -12,7 +12,8 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 3 )
 
-[node name="Yes No Box" type="Control"]
+[node name="Yes No Box Generic" type="Control"]
+visible = false
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false

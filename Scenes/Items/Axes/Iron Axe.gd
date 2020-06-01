@@ -4,12 +4,14 @@ extends "res://Scenes/Items/Item.gd"
 func _ready():
 	# Iron Axe stats
 	uses = 45
+	max_uses = 45
 	might = 8
 	weight = 10
 	hit = 75
 	crit = 0
 	max_range = 1
 	min_range = 1
+	worth = 270
 	
 	# Set type
 	weapon_type = Item.WEAPON_TYPE.AXE

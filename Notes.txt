@@ -20,6 +20,4 @@ Convoy:
 - Add Depositing items
 - Add confirmation when you are using the convoy in the battlefield
 - Add a switch/keystroke to go between the inventory and the convoy lists
-
-Shop:
-- Add sell function
+- Save load function for the convoy

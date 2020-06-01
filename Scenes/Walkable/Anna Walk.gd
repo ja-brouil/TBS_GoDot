@@ -9,5 +9,5 @@ func start_dialogue():
 	BattlefieldInfo.preparation_screen.get_node("Shop").came_from_walkable_map = true
 	BattlefieldInfo.walkable_map.music.stop()
 	BattlefieldInfo.walkable_map.eirika_walk.current_status = Eirka_Walk.STATUS.UI
-	BattlefieldInfo.preparation_screen.get_node("Shop").start(Shop_UI.SHOP_STATE.BUY)
+	BattlefieldInfo.preparation_screen.get_node("Shop").start()
 	

@@ -13,6 +13,7 @@ var strong_against
 
 # Item Stats
 var uses      # Remaining times this can be used
+var max_uses  # Max amount of uses
 var might     # Damage effectivness
 var weight    # Affects chance to dodge and attack speed
 var hit       # Base chance to hit
@@ -26,6 +27,9 @@ var item_name
 
 # Icon
 var icon
+
+# Cost 
+var worth = 100
 
 # Animation String
 var weapon_string_name
@@ -43,6 +47,13 @@ func put_away_attack_sound():
 func use_consumable():
 	pass
 
+# Get the selling cost
+func get_selling_cost() -> int:
+	var selling_worth = int((worth * 0.85) *  (uses / max_uses))
+	if selling_worth == 0:
+		return 1
+	return selling_worth
+
 ## Debug functions ##
 func get_stats_stringify():
 	return str("Name: ", item_name,"\n",
@@ -53,7 +64,9 @@ func get_stats_stringify():
 		"Crit: ", crit, "\n",
 		"Min Range: ", min_range, "\n",
 		"Max Range: ", max_range, "\n",
-		"Item Desc: ", item_description, "\n")
+		"Value: ", str(get_selling_cost()), "\n",
+		"Item Desc: ", item_description, "\n"
+		)
 
 func print_stats():
 	print(
@@ -78,6 +91,7 @@ func save():
 		# Item stats
 		"item_stats": {
 			"uses" : uses,
+			"max_uses": max_uses,
 			"might" : might,
 			"weight" : weight,
 			"hit" : hit,
@@ -85,7 +99,8 @@ func save():
 			"max_range" : max_range,
 			"min_range" : min_range,
 			"item_description": item_description,
-			"item_name": item_name
+			"item_name": item_name,
+			"worth": worth
 		}
 	}
 	return save_dict

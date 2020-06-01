@@ -1,4 +1,4 @@
-extends Control
+extends Node2D
 
 # Convoy is the inventory system for storing extra items
 # Item selected
@@ -15,7 +15,7 @@ var current_list_selected_index = 0
 const LIST_POSITION = Vector2(128, 6)
 
 # UI Status
-enum CONVOY_STATUS {SELECT_UNIT, PASS_ITEM_TO_UNIT, SELECT_ITEM, OFF}
+enum CONVOY_STATUS {SELECT_UNIT, PASS_ITEM_TO_UNIT, SELECT_ITEM, OFF, SELL_ITEM, CONFIRM_SELL, ASK, DEPOSIT, CONFIRM_DEPOSIT}
 var current_convoy_status
 
 # Icon for unit picker -> Change later for real icon
@@ -59,8 +59,8 @@ func _ready():
 	# Disable input
 	set_process_input(false)
 	
-	# Debug test
-#	start()
+	# DEBUG
+	test()
 
 func _input(event):
 	if Input.is_action_just_pressed("ui_up"):
@@ -109,22 +109,9 @@ func _input(event):
 		process_accept()
 	elif Input.is_action_just_pressed("ui_cancel"):
 		process_cancel()
-	
-#	if Input.is_action_just_pressed("debug"):
-#		# Add new tome
-#		add_item_to_convoy(load(ALL_ITEMS_REF.all_items["Silver Lance"]).instance())
-#		if all_lists_array[current_list_selected_index].item_list.size() == 0:
-#			item_text_reset()
-#			return
-#		print(all_lists_array[current_list_selected_index].get_item_selected())
-#		all_lists_array[current_list_selected_index].delete_item()
 
 # Start the convoy
 func start():
-#	TEST LOAD ITEMS
-	# Test start
-	test()
-	
 	# Set to swords
 	current_list_selected_index = 0
 	
@@ -146,12 +133,10 @@ func start():
 	
 	# Set new text
 	unit_picker.set_new_text_instructions("Select a unit to receive this item.")
+	change_text("Convy")
 	
 	# Set to select item
 	current_convoy_status = CONVOY_STATUS.SELECT_ITEM
-	
-	# Set Position to camera
-	$"/root/Convoy".rect_position = BattlefieldInfo.main_game_camera.position
 	
 	# Turn off all units
 	Calculators.turn_off_all_units()
@@ -165,6 +150,12 @@ func start():
 	
 	# Allow movement
 	set_process_input(true)
+
+func start_on_sell():
+	start()
+	current_convoy_status = CONVOY_STATUS.SELL_ITEM
+	change_text("Select Item to Sell")
+	
 
 func start_with_unit_selected(unit):
 	# Set unit selected
@@ -205,6 +196,13 @@ func next_list(previous_list, next_list):
 func activate_list(list):
 	list.start(self)
 
+func deactivate_list_no_hide(list, var reset_index = true):
+	list.disable_input()
+	
+	# Set new index
+	if (reset_index):
+		current_item_selected_index = 0
+
 func deactivate_list(list, var reset_index = true):
 	# Stop process
 	list.exit()
@@ -223,7 +221,6 @@ func exit():
 	
 	# Turn off
 	set_process_input(false)
-
 	
 	# Go back
 	# If Unit is not null, then we know we are in the battlefield
@@ -270,16 +267,7 @@ func test():
 	tome_list.add_item(load(ALL_ITEMS_REF.all_items["Flux Tome"]).instance())
 	tome_list.add_item(load(ALL_ITEMS_REF.all_items["Fire Tome"]).instance())
 	tome_list.add_item(load(ALL_ITEMS_REF.all_items["Fire Tome"]).instance())
-	tome_list.add_item(load(ALL_ITEMS_REF.all_items["Flux Tome"]).instance())
-	tome_list.add_item(load(ALL_ITEMS_REF.all_items["Fire Tome"]).instance())
-	tome_list.add_item(load(ALL_ITEMS_REF.all_items["Flux Tome"]).instance())
-	tome_list.add_item(load(ALL_ITEMS_REF.all_items["Flux Tome"]).instance())
-	tome_list.add_item(load(ALL_ITEMS_REF.all_items["Fire Tome"]).instance())
-	tome_list.add_item(load(ALL_ITEMS_REF.all_items["Fire Tome"]).instance())
-	tome_list.add_item(load(ALL_ITEMS_REF.all_items["Flux Tome"]).instance())
-	tome_list.add_item(load(ALL_ITEMS_REF.all_items["Fire Tome"]).instance())
 	
-#	 $"Convoy Music".play(0)
 
 func item_text_reset():
 	item_stats_label.text = "Item Stats"
@@ -307,7 +295,6 @@ func process_accept():
 				
 				# Start the unit picker
 				unit_picker.start()
-				print(all_lists_array[current_list_selected_index].get_item_selected().name)
 				
 				# Stop input on the main input
 				deactivate_list(all_lists_array[current_list_selected_index], false)
@@ -365,6 +352,31 @@ func process_accept():
 				
 				# Set status back
 				current_convoy_status = CONVOY_STATUS.SELECT_ITEM
+		CONVOY_STATUS.SELL_ITEM:
+			# Is the current list empty
+			if all_lists_array[current_list_selected_index].item_list.size() == 0:
+				return
+			
+			# Play hand sound
+			$"Hand Selector/Accept".play(0)
+			
+			# Hide item stats
+			item_stats_label.hide()
+			
+			# Set convoy status to confirm
+			current_convoy_status = CONVOY_STATUS.CONFIRM_SELL
+			
+			# Deactivate the lists first
+			deactivate_list_no_hide(all_lists_array[current_list_selected_index], false)
+			
+			# Change Text
+			change_text(str("Sell ", all_lists_array[current_list_selected_index].get_item_selected().item_name ,"?"))
+			
+			# Show yes/no box
+			$"Yes No Box Generic".start()
+			
+			# Stop input
+			set_process_input(false)
 
 func process_cancel():
 	match current_convoy_status:
@@ -388,6 +400,12 @@ func process_cancel():
 		CONVOY_STATUS.SELECT_ITEM:
 			# Exit
 			exit()
+		# If here, we are selling from the convoy in a shop
+		CONVOY_STATUS.SELL_ITEM:
+			# Exit and go back to the shop
+			BattlefieldInfo.preparation_screen.get_node("Shop/Unit Picker Solo").start_with_convoy()
+			exit()
+			BattlefieldInfo.preparation_screen.get_node("Shop").set_input_timer(true)
 
 # Send item to unit
 func send_item_to_unit(unit_to_receive_item):
@@ -421,6 +439,10 @@ func send_item_to_unit(unit_to_receive_item):
 	# Activate the current list
 	activate_list(all_lists_array[current_list_selected_index])
 
+# Change the text at the top
+func change_text(new_text):
+	$"ColorRect/Convoy Label".text = new_text
+
 func _on_Timer_timeout():
 	# Increase the index
 	if background_index + 1 > all_backgrounds.size() - 1:
@@ -437,6 +459,32 @@ func _on_Timer_timeout():
 	
 	# Fade backwards
 	$AnimationPlayer.play_backwards("Fade")
+
+func _on_Yes_No_Box_Generic_option_selected(yes_no_option):
+	# If yes -> true
+	if yes_no_option == true:
+		# Increase the money amount
+		BattlefieldInfo.money += all_lists_array[current_list_selected_index].get_item_selected().get_selling_cost()
+		
+		# Delete the item
+		all_lists_array[current_list_selected_index].delete_item()
+		
+		# Sleep 0.5 seconds
+		yield(get_tree().create_timer(0.5), "timeout")
+		
+		# Back to the select item
+		current_convoy_status = CONVOY_STATUS.SELL_ITEM
+		change_text("Select Item to Sell")
+		item_stats_label.show()
+		activate_list(all_lists_array[current_list_selected_index])
+		set_process_input(true)
+	else:
+		# Back to the select item
+		current_convoy_status = CONVOY_STATUS.SELL_ITEM
+		change_text("Select Item to Sell")
+		item_stats_label.show()
+		activate_list(all_lists_array[current_list_selected_index])
+		set_process_input(true)
 
 # Save current status of the convoy
 func save():

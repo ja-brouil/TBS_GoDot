@@ -6,12 +6,14 @@ extends "res://Scenes/Items/Item.gd"
 func _ready():
 	# Healing Staff Stats
 	uses = 40
+	max_uses = 40
 	might = 10
 	weight = 0
 	hit = 100
 	crit = 0
 	max_range = 1
 	min_range = 1
+	worth = 600
 	
 	# Set strong against and weak against
 	strong_against = Item.WEAPON_TYPE.HEALING

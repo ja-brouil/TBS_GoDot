@@ -6,6 +6,13 @@ onready var unit_name = $"Background Color/Unit Name"
 
 # Array that holds all the items from said unit
 var unit_inventory = []
+var current_item_selected
+
+# Signal to know when something is picked
+signal item_selected
+
+# Keep track of last index
+var last_index = 0
 
 # UI State
 enum Unit_Inventory_Status {SELECT_ITEM, CONFIRM_ITEM}
@@ -21,40 +28,53 @@ func _ready():
 	# Hide Scroll bar
 	inventory_list.get_v_scroll().mouse_filter = Control.MOUSE_FILTER_IGNORE
 	inventory_list.get_v_scroll().modulate = Color(1,1,1,0)
-	
-	# Test unit
-#	var seth_path = load("res://Scenes/Units/Player_Units/AllyUnits/Seth/Seth.tscn")
-#	var seth_t = seth_path.instance()
-#	$"TEST NODE".add_child(seth_t)
-#	seth_t.UnitStats.identifier = "Seth"
-#	seth_t.UnitStats.name = "Seth"
 
-	# Start TEST
-	#start(seth_t)
 
 func _input(event):
 	if Input.is_action_just_pressed("ui_accept"):
 		process_accept()
 
 func process_accept():
-	print("The Selected item is ")
+	# Add null crash prevent here because if you spam the accept button too fast it will crash
+	# and I have no idea how to fix this because fuck threads and async functions
+	if current_item_selected != null:
+		emit_signal("item_selected")
 
 func start(unit):
-	# Show the UI
-	visible = true
-	
+	set_process_input(false)
 	# Populate the list
 	populate_list_of_items(unit)
 	
+	# Show the UI
+	visible = true
+	
+	$Anim.play("Fade")
+	yield($Anim,"animation_finished")
+	
 	# Set the name of inventory box
 	unit_name.text = str(unit.UnitStats.name, "'s Inventory")
+	
+	# Set to first item
+	current_item_selected = unit_inventory[0]
+	
+
+func start_with_input(unit):
+	start(unit)
+	allow_input()
 
 func allow_input():
 	# Allow input
-	set_process_input(true)
 	inventory_list.focus_mode = Control.FOCUS_ALL
 	inventory_list.grab_focus()
 	inventory_list.select(0)
+	set_process_input(true)
+
+func allow_input_last_pick():
+	# Allow input
+	inventory_list.focus_mode = Control.FOCUS_ALL
+	inventory_list.grab_focus()
+	inventory_list.select(last_index)
+	set_process_input(true)
 
 # Get the name of each item, the icon and create a line item with them
 func populate_list_of_items(unit):
@@ -68,19 +88,34 @@ func populate_list_of_items(unit):
 		inventory_list.add_item(item.item_name, item.icon, true)
 		unit_inventory.append(item)
 
-func exit():
-	# Hide the UI
-	visible = true
-	
+# Disallow input
+func disallow_input():
 	# Disallow input
 	set_process_input(false)
 	inventory_list.focus_mode = Control.FOCUS_NONE
 	inventory_list.release_focus()
 	inventory_list.unselect_all()
 	
-	# Clear unit array
-	unit_inventory.clear()
 
+func exit():
+	# Fade
+	$Anim.play_backwards("Fade")
+	yield($Anim,"animation_finished")
+	
+	# Hide the UI
+	visible = false
+	
+	# Disallow input
+	disallow_input()
+	
+	# Clear unit a
+	reset()
+
+func reset():
+	unit_inventory.clear()
+	last_index = 0
+	current_item_selected = null
 
 func _on_Inventory_List_item_selected(index):
-	print(inventory_list.get_item_text(index), " ", index)
+	current_item_selected = unit_inventory[index]
+	last_index = index

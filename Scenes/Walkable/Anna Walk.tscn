@@ -4,13 +4,13 @@
 [ext_resource path="res://assets/sound/unitMovement/Light Foot Steps 1.wav" type="AudioStream" id=2]
 [ext_resource path="res://Scenes/Walkable/Anna Walk.gd" type="Script" id=3]
 
-[sub_resource type="RectangleShape2D" id=13]
-extents = Vector2( 15.6435, 15.1186 )
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 22.7336, 23.2462 )
 
-[sub_resource type="RectangleShape2D" id=12]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 8.77939, 9.29578 )
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=3]
 length = 2.0
 loop = true
 step = 0.5
@@ -65,7 +65,7 @@ tracks/3/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=4]
 resource_name = "Down no sound"
 length = 2.0
 loop = true
@@ -107,7 +107,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=5]
 resource_name = "Highlighted"
 length = 2.0
 loop = true
@@ -149,7 +149,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=6]
 resource_name = "Idle"
 length = 2.0
 loop = true
@@ -191,7 +191,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=7]
 length = 2.0
 loop = true
 step = 0.5
@@ -246,7 +246,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=8]
 resource_name = "Left no sound"
 length = 2.0
 loop = true
@@ -288,7 +288,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=9]
 length = 2.0
 loop = true
 step = 0.5
@@ -343,7 +343,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=21]
+[sub_resource type="Animation" id=10]
 resource_name = "Right no sound"
 length = 2.0
 loop = true
@@ -385,7 +385,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=22]
+[sub_resource type="Animation" id=11]
 length = 2.0
 loop = true
 step = 0.5
@@ -426,7 +426,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=23]
+[sub_resource type="Animation" id=12]
 length = 2.0
 loop = true
 step = 0.5
@@ -481,7 +481,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=24]
+[sub_resource type="Animation" id=13]
 resource_name = "Up no sound"
 length = 2.0
 loop = true
@@ -534,27 +534,26 @@ region_enabled = true
 region_rect = Rect2( 72, 9, 20, 17 )
 
 [node name="Area2D" type="Area2D" parent="."]
-visible = false
 
 [node name="Talk Box" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 5.67385, 7.17626 )
-shape = SubResource( 13 )
+shape = SubResource( 1 )
 
 [node name="HitBox" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( 6.05574, 7.11717 )
-shape = SubResource( 12 )
+shape = SubResource( 2 )
 
 [node name="Animation" type="AnimationPlayer" parent="."]
 playback_speed = 2.0
-anims/Down = SubResource( 14 )
-"anims/Down no sound" = SubResource( 15 )
-anims/Highlighted = SubResource( 16 )
-anims/Idle = SubResource( 17 )
-anims/Left = SubResource( 18 )
-"anims/Left no sound" = SubResource( 19 )
-anims/Right = SubResource( 20 )
-"anims/Right no sound" = SubResource( 21 )
-anims/Selected = SubResource( 22 )
-anims/Up = SubResource( 23 )
-"anims/Up no sound" = SubResource( 24 )
+anims/Down = SubResource( 3 )
+"anims/Down no sound" = SubResource( 4 )
+anims/Highlighted = SubResource( 5 )
+anims/Idle = SubResource( 6 )
+anims/Left = SubResource( 7 )
+"anims/Left no sound" = SubResource( 8 )
+anims/Right = SubResource( 9 )
+"anims/Right no sound" = SubResource( 10 )
+anims/Selected = SubResource( 11 )
+anims/Up = SubResource( 12 )
+"anims/Up no sound" = SubResource( 13 )

@@ -4,12 +4,14 @@ extends "res://Scenes/Items/Item.gd"
 func _ready():
 	# Iron Sword stats
 	uses = 30
+	max_uses = 30
 	might = 9
 	weight = 7
 	hit = 70
 	crit = 30
 	max_range = 1
 	min_range = 1
+	worth = 1300
 	
 	# Set strong against and weak against
 	strong_against = Item.WEAPON_TYPE.AXE
