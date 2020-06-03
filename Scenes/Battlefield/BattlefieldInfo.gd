@@ -183,6 +183,11 @@ func _process(delta):
 
 # Global Hotkeys
 func _input(event):
+	
+	# Debug for orphan nodes
+	if Input.is_action_just_pressed("debug"):
+		print_stray_nodes()
+	
 	if Input.is_action_just_pressed("exit_game"):
 		get_tree().quit()
 	
