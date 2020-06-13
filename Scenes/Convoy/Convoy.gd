@@ -69,7 +69,7 @@ func _input(event):
 		pass
 	elif Input.is_action_just_pressed("ui_left"):
 		# Do not process if not in item select mode
-		if current_convoy_status == CONVOY_STATUS.SELECT_UNIT:
+		if current_convoy_status == CONVOY_STATUS.SELECT_UNIT || current_convoy_status == CONVOY_STATUS.DEPOSIT:
 			return
 		
 		# Do nothing if goes underneath 0
@@ -88,7 +88,7 @@ func _input(event):
 		
 	elif Input.is_action_just_pressed("ui_right"):
 		# Do not process if not in item select mode
-		if current_convoy_status == CONVOY_STATUS.SELECT_UNIT:
+		if current_convoy_status == CONVOY_STATUS.SELECT_UNIT || current_convoy_status == CONVOY_STATUS.DEPOSIT:
 			return
 		
 		# Do nothing if goes above the size of the array
@@ -109,6 +109,8 @@ func _input(event):
 		process_accept()
 	elif Input.is_action_just_pressed("ui_cancel"):
 		process_cancel()
+	elif Input.is_action_just_pressed("R button"):
+		swap_btn_current_unit_and_convoy()
 
 # Start the convoy
 func start():
@@ -133,7 +135,7 @@ func start():
 	
 	# Set new text
 	unit_picker.set_new_text_instructions("Select a unit to receive this item.")
-	change_text("Convy")
+	change_text("Convoy")
 	
 	# Set to select item
 	current_convoy_status = CONVOY_STATUS.SELECT_ITEM
@@ -215,6 +217,10 @@ func deactivate_all_lists():
 	for list in all_lists_array:
 		deactivate_list(list)
 
+func deactivate_all_lists_no_hide():
+	for list in all_lists_array:
+		deactivate_list_no_hide(list)
+
 func exit():
 	# Deactivate all list
 	deactivate_all_lists()
@@ -289,6 +295,11 @@ func process_accept():
 			if current_unit_selected != null:
 				current_convoy_status = CONVOY_STATUS.PASS_ITEM_TO_UNIT
 				
+				# Start the yes no box
+				$"Yes No Box Generic".start()
+				$"ColorRect/Convoy Label".text = "Send this item?"
+				deactivate_list_no_hide(all_lists_array[current_list_selected_index])
+				set_process_input(false)
 			else:
 				# Set new state
 				current_convoy_status = CONVOY_STATUS.SELECT_UNIT
@@ -298,8 +309,6 @@ func process_accept():
 				
 				# Stop input on the main input
 				deactivate_list(all_lists_array[current_list_selected_index], false)
-				# set_process_input(false)
-			
 		# We are in the preparation screen
 		CONVOY_STATUS.SELECT_UNIT:
 			# Pass the unit the new unit
@@ -328,30 +337,7 @@ func process_accept():
 				
 		# On the battlefield and we only want to pass to one unit
 		CONVOY_STATUS.PASS_ITEM_TO_UNIT:
-			# Check if the inventory of the unit is full
-			if current_unit_selected.UnitInventory.inventory.size() == Unit_Inventory.MAX_INVENTORY:
-				# Set text of convoy label
-				$"ColorRect/Convoy Label".text = "This unit's inventory is full!"
-				
-				# Play can't sound
-				$"All Lists/Axe/Hand Selector/Invalid".play(0)
-				
-				# Wait 1 second
-				yield(get_tree().create_timer(1), "timeout")
-				
-				# Set text of convoy label
-				$"ColorRect/Convoy Label".text = "Convoy"
-			
-			# Send item to the unit
-			else:
-				# Send item to unit
-				send_item_to_unit(current_unit_selected)
-				
-				# Refresh the Unit Inventory Display
-				unit_inventory.populate_list_of_items(current_unit_selected)
-				
-				# Set status back
-				current_convoy_status = CONVOY_STATUS.SELECT_ITEM
+			pass
 		CONVOY_STATUS.SELL_ITEM:
 			# Is the current list empty
 			if all_lists_array[current_list_selected_index].item_list.size() == 0:
@@ -374,6 +360,17 @@ func process_accept():
 			
 			# Show yes/no box
 			$"Yes No Box Generic".start()
+			
+			# Stop input
+			set_process_input(false)
+		CONVOY_STATUS.DEPOSIT:
+			change_text("Deposit this item?")
+			
+			# Show yes/no box
+			$"Yes No Box Generic".start()
+			
+			# Set new state
+			current_convoy_status = CONVOY_STATUS.CONFIRM_DEPOSIT
 			
 			# Stop input
 			set_process_input(false)
@@ -406,6 +403,16 @@ func process_cancel():
 			BattlefieldInfo.preparation_screen.get_node("Shop/Unit Picker Solo").start_with_convoy()
 			exit()
 			BattlefieldInfo.preparation_screen.get_node("Shop").set_input_timer(true)
+		CONVOY_STATUS.DEPOSIT:
+			# Deactivate Unit Inventory display
+			$"Unit Inventory Display".disallow_input()
+			
+			# Activate list again
+			activate_list(all_lists_array[current_list_selected_index])
+			
+			# Set new status
+			current_convoy_status = CONVOY_STATUS.SELECT_ITEM
+			set_process_input(true)
 
 # Send item to unit
 func send_item_to_unit(unit_to_receive_item):
@@ -443,6 +450,40 @@ func send_item_to_unit(unit_to_receive_item):
 func change_text(new_text):
 	$"ColorRect/Convoy Label".text = new_text
 
+# Swap between the current unit selected and the convoy
+func swap_btn_current_unit_and_convoy():
+	# Make sure the current unit selected is not empty
+	if current_unit_selected == null:
+		return
+	
+	# Do not allow if unit inventory is empty
+	if current_unit_selected.UnitInventory.inventory.size() == 0:
+		return
+	
+	# Check what state we are in right now
+	match current_convoy_status:
+		CONVOY_STATUS.SELECT_ITEM:
+			# Activate Unit Inventory Display
+			$"Unit Inventory Display".allow_input_last_pick()
+			
+			# Set new convoy status
+			current_convoy_status = CONVOY_STATUS.DEPOSIT
+			
+			# Deactive current lists
+			deactivate_list_no_hide(all_lists_array[current_list_selected_index], false)
+			
+		CONVOY_STATUS.DEPOSIT:
+			set_process_input(true)
+			# Deactivate Unit Inventory display
+			$"Unit Inventory Display".disallow_input()
+			
+			# Activate list again
+			activate_list(all_lists_array[current_list_selected_index])
+			
+			# Set new status
+			current_convoy_status = CONVOY_STATUS.SELECT_ITEM
+			
+			
 func _on_Timer_timeout():
 	# Increase the index
 	if background_index + 1 > all_backgrounds.size() - 1:
@@ -461,30 +502,123 @@ func _on_Timer_timeout():
 	$AnimationPlayer.play_backwards("Fade")
 
 func _on_Yes_No_Box_Generic_option_selected(yes_no_option):
-	# If yes -> true
-	if yes_no_option == true:
-		# Increase the money amount
-		BattlefieldInfo.money += all_lists_array[current_list_selected_index].get_item_selected().get_selling_cost()
-		
-		# Delete the item
-		all_lists_array[current_list_selected_index].delete_item()
-		
-		# Sleep 0.5 seconds
-		yield(get_tree().create_timer(0.5), "timeout")
-		
-		# Back to the select item
-		current_convoy_status = CONVOY_STATUS.SELL_ITEM
-		change_text("Select Item to Sell")
-		item_stats_label.show()
-		activate_list(all_lists_array[current_list_selected_index])
-		set_process_input(true)
-	else:
-		# Back to the select item
-		current_convoy_status = CONVOY_STATUS.SELL_ITEM
-		change_text("Select Item to Sell")
-		item_stats_label.show()
-		activate_list(all_lists_array[current_list_selected_index])
-		set_process_input(true)
+	match current_convoy_status:
+		CONVOY_STATUS.PASS_ITEM_TO_UNIT:
+			if yes_no_option == true:
+				# Check if the inventory of the unit is full
+					if current_unit_selected.UnitInventory.inventory.size() == Unit_Inventory.MAX_INVENTORY:
+						# Set text of convoy label
+						change_text("This unit's inventory is full!")
+						
+						# Play can't sound
+						$"All Lists/Axe/Hand Selector/Invalid".play(0)
+						
+						# Wait 1 second
+						yield(get_tree().create_timer(1), "timeout")
+						
+						# Set text of convoy label
+						change_text("Send this item?")
+						
+					else:
+						# Send item to unit
+						send_item_to_unit(current_unit_selected)
+						
+						# Refresh the Unit Inventory Display
+						unit_inventory.populate_list_of_items(current_unit_selected)
+						
+						# Set status back
+						current_convoy_status = CONVOY_STATUS.SELECT_ITEM
+						
+						# Allow Input again
+						set_process_input(true)
+						change_text("Convoy")
+			else:
+				# Activate list again
+				activate_list(all_lists_array[current_list_selected_index])
+			
+				# Set new status
+				current_convoy_status = CONVOY_STATUS.SELECT_ITEM
+				
+				# Activate item stats
+				$"Item Stats".show()
+				change_text("Convoy")
+				
+				# Activate Input again
+				set_process_input(true)
+		CONVOY_STATUS.CONFIRM_SELL:
+			if yes_no_option == true:
+				# Increase the money amount
+				BattlefieldInfo.money += all_lists_array[current_list_selected_index].get_item_selected().get_selling_cost()
+				
+				# Delete the item
+				all_lists_array[current_list_selected_index].delete_item()
+				
+				# Sleep 0.5 seconds
+				yield(get_tree().create_timer(0.5), "timeout")
+				
+				# Back to the select item
+				current_convoy_status = CONVOY_STATUS.SELL_ITEM
+				change_text("Select Item to Sell")
+				item_stats_label.show()
+				activate_list(all_lists_array[current_list_selected_index])
+				set_process_input(true)
+				
+			else:
+				# Back to the select item
+				current_convoy_status = CONVOY_STATUS.SELL_ITEM
+				change_text("Select Item to Sell")
+				item_stats_label.show()
+				activate_list(all_lists_array[current_list_selected_index])
+				set_process_input(true)
+		CONVOY_STATUS.CONFIRM_DEPOSIT:
+			if yes_no_option == true:
+				# Get the item from the inventory of the unit
+				var item_to_transfer = $"Unit Inventory Display".current_item_selected
+				
+				# Remove from the unit's inventory
+				current_unit_selected.UnitInventory.remove_do_not_delete_item(item_to_transfer)
+				
+				# Add the item to the convoy
+				add_item_to_convoy(item_to_transfer)
+				
+				# Refresh the inventory display
+				unit_inventory.populate_list_of_items(current_unit_selected)
+				
+				# Wait 0.5 second
+				yield(get_tree().create_timer(0.5), "timeout")
+				
+				# Check if the unit's inventory is empty
+				if all_lists_array[current_list_selected_index].item_list.size() == 0:
+					# Disable the box and go straight back to the item selection
+					$"Yes No Box Generic".go_back()
+					
+					# Allow input
+					activate_list(all_lists_array[current_list_selected_index])
+					current_convoy_status = CONVOY_STATUS.SELECT_ITEM
+					set_process_input(true)
+					
+				else:
+					# Set text
+					change_text("Select Item to Deposit")
+					
+					# Allow input on the unit inventory display
+					$"Unit Inventory Display".allow_input()
+					set_process_input(true)
+					
+					# Set back to deposit state
+					current_convoy_status = CONVOY_STATUS.DEPOSIT
+			else:
+				# Set text
+				change_text("Select Item to Deposit")
+				
+				# Hide and disable the yes no box
+				$"Yes No Box Generic".go_back()
+				
+				# Start inventory again
+				$"Unit Inventory Display".allow_input_last_pick()
+				
+				# Set state again
+				current_convoy_status = CONVOY_STATUS.DEPOSIT
 
 # Save current status of the convoy
 func save():

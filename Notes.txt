@@ -17,7 +17,14 @@ Ephraim Soldiers@assets/units/soldier/soldier_blue_portrait.png@
 # To do list on the convoy and shop
 
 Convoy:
-- Add Depositing items
-- Add confirmation when you are using the convoy in the battlefield
-- Add a switch/keystroke to go between the inventory and the convoy lists
+- Fix lists not being in focus when you hit the swap button again
 - Save load function for the convoy
+
+AI Improvements
+- Add AI Improvements
+
+Event System Rewrite
+- Turn the Event system into a parsing system instead of being hardcoded
+
+Item Display for units
+- Add box showing stats of the item below the unit portrait

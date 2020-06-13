@@ -115,9 +115,9 @@ func allow_input():
 
 func disable_input():
 	item_list_node.focus_mode = Control.FOCUS_NONE
-	item_list_node.set_process_input(false)
 	item_list_node.unselect_all()
 	item_list_node.release_focus()
+	item_list_node.set_process_input(false)
 	
 
 func _on_Item_List_item_selected(index):

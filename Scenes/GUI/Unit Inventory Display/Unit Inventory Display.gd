@@ -36,7 +36,6 @@ func _input(event):
 
 func process_accept():
 	# Add null crash prevent here because if you spam the accept button too fast it will crash
-	# and I have no idea how to fix this because fuck threads and async functions
 	if current_item_selected != null:
 		emit_signal("item_selected")
 
