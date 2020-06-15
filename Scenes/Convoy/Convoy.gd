@@ -288,11 +288,25 @@ func process_accept():
 			# Play hand sound
 			$"Hand Selector/Accept".play(0)
 			
-			# Hide item stats
-			item_stats_label.hide()
-			
 			# Are we in the preparation mode or are we on the battlefield?
 			if current_unit_selected != null:
+				# Check if the inventory is full and reject if it is
+				if current_unit_selected.UnitInventory.inventory.size() == Unit_Inventory.MAX_INVENTORY:
+					# Set text of convoy label
+					change_text("This unit's inventory is full!")
+					
+					# Play can't sound
+					$"All Lists/Axe/Hand Selector/Invalid".play(0)
+					set_process_input(false)
+					
+					# Wait 1 second
+					yield(get_tree().create_timer(1), "timeout")
+					set_process_input(true)
+					change_text("Select Item or Deposit")
+					return
+				
+				item_stats_label.hide()
+				
 				current_convoy_status = CONVOY_STATUS.PASS_ITEM_TO_UNIT
 				
 				# Start the yes no box
@@ -303,6 +317,8 @@ func process_accept():
 			else:
 				# Set new state
 				current_convoy_status = CONVOY_STATUS.SELECT_UNIT
+				
+				item_stats_label.hide()
 				
 				# Start the unit picker
 				unit_picker.start()
@@ -517,7 +533,12 @@ func _on_Yes_No_Box_Generic_option_selected(yes_no_option):
 						yield(get_tree().create_timer(1), "timeout")
 						
 						# Set text of convoy label
-						change_text("Send this item?")
+						change_text("Convoy")
+						
+						# Activate the last list
+						activate_list(all_lists_array[current_list_selected_index])
+						item_stats_label.show()
+						set_process_input(true)
 						
 					else:
 						# Send item to unit
