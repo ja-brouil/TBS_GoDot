@@ -34,9 +34,11 @@ func start(convoy):
 		item_index = 0
 		item_selected = item_list[item_index]
 		convoy.item_stats_label.text = str("Item Stats\n", item_selected.get_stats_stringify())
+		
+		# Set the value to 0 for the scroll bar
+		$"Item List".get_v_scroll().value = 0
 	else:
 		convoy.item_text_reset()
-
 
 func exit():
 	visible = false
@@ -105,13 +107,12 @@ func delete_item():
 		_on_Item_List_item_selected(item_index)
 		allow_input()
 
-
 func allow_input():
 	item_list_node.focus_mode = Control.FOCUS_ALL
 	item_list_node.grab_focus()
-	item_list_node.set_process_input(true)
 	if item_list.size() != 0:
 		item_list_node.select(item_index)
+	item_list_node.set_process_input(true)
 
 func disable_input():
 	item_list_node.focus_mode = Control.FOCUS_NONE
@@ -119,6 +120,7 @@ func disable_input():
 	item_list_node.release_focus()
 	item_list_node.set_process_input(false)
 	
+
 
 func _on_Item_List_item_selected(index):
 	if index < 0:

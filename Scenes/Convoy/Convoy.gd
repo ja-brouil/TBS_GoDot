@@ -36,6 +36,7 @@ onready var unit_inventory = $"Unit Inventory Display"
 # Store all the nodes into this array for controlled access
 var all_lists_array = []
 
+
 # Background list
 var background_index = 0
 var all_backgrounds = [
@@ -59,8 +60,11 @@ func _ready():
 	# Disable input
 	set_process_input(false)
 	
+	# Set convoy
+	BattlefieldInfo.convoy = self
+	
 	# DEBUG
-	test()
+	# test()
 
 func _input(event):
 	if Input.is_action_just_pressed("ui_up"):
@@ -388,6 +392,9 @@ func process_accept():
 			# Set new state
 			current_convoy_status = CONVOY_STATUS.CONFIRM_DEPOSIT
 			
+			# Stop the input in the unit inventory
+			$"Unit Inventory Display".disallow_input()
+			
 			# Stop input
 			set_process_input(false)
 
@@ -420,11 +427,15 @@ func process_cancel():
 			exit()
 			BattlefieldInfo.preparation_screen.get_node("Shop").set_input_timer(true)
 		CONVOY_STATUS.DEPOSIT:
+			set_process_input(true)
 			# Deactivate Unit Inventory display
 			$"Unit Inventory Display".disallow_input()
 			
 			# Activate list again
 			activate_list(all_lists_array[current_list_selected_index])
+			
+			# Set new text
+			change_text("Select Item to withdraw")
 			
 			# Set new status
 			current_convoy_status = CONVOY_STATUS.SELECT_ITEM
@@ -482,6 +493,9 @@ func swap_btn_current_unit_and_convoy():
 			# Activate Unit Inventory Display
 			$"Unit Inventory Display".allow_input_last_pick()
 			
+			# Set text
+			change_text("Select Item to Deposit")
+			
 			# Set new convoy status
 			current_convoy_status = CONVOY_STATUS.DEPOSIT
 			
@@ -489,17 +503,20 @@ func swap_btn_current_unit_and_convoy():
 			deactivate_list_no_hide(all_lists_array[current_list_selected_index], false)
 			
 		CONVOY_STATUS.DEPOSIT:
-			set_process_input(true)
 			# Deactivate Unit Inventory display
 			$"Unit Inventory Display".disallow_input()
-			
+
+			change_text("Select Item to Withdraw")
+
 			# Activate list again
 			activate_list(all_lists_array[current_list_selected_index])
-			
+			all_lists_array[current_list_selected_index].item_list_node.select(0)
+
 			# Set new status
 			current_convoy_status = CONVOY_STATUS.SELECT_ITEM
-			
-			
+
+			set_process_input(true)
+
 func _on_Timer_timeout():
 	# Increase the index
 	if background_index + 1 > all_backgrounds.size() - 1:
@@ -546,6 +563,8 @@ func _on_Yes_No_Box_Generic_option_selected(yes_no_option):
 						
 						# Refresh the Unit Inventory Display
 						unit_inventory.populate_list_of_items(current_unit_selected)
+						
+						yield(get_tree().create_timer(1), "timeout")
 						
 						# Set status back
 						current_convoy_status = CONVOY_STATUS.SELECT_ITEM
@@ -609,9 +628,15 @@ func _on_Yes_No_Box_Generic_option_selected(yes_no_option):
 				yield(get_tree().create_timer(0.5), "timeout")
 				
 				# Check if the unit's inventory is empty
-				if all_lists_array[current_list_selected_index].item_list.size() == 0:
+				if current_unit_selected.UnitInventory.inventory.size() == 0:
 					# Disable the box and go straight back to the item selection
-					$"Yes No Box Generic".go_back()
+					$"Yes No Box Generic".exit()
+					
+					# Stop the item selection
+					$"Unit Inventory Display".disallow_input()
+					
+					# Change text
+					change_text("Select Item to withdraw")
 					
 					# Allow input
 					activate_list(all_lists_array[current_list_selected_index])
@@ -641,10 +666,72 @@ func _on_Yes_No_Box_Generic_option_selected(yes_no_option):
 				# Set state again
 				current_convoy_status = CONVOY_STATUS.DEPOSIT
 
+func _on_no_selected_from_generic():
+	if current_convoy_status == CONVOY_STATUS.CONFIRM_DEPOSIT:
+		# Set text
+		change_text("Select Item to Deposit")
+		
+		# Hide and disable the yes no box
+		$"Yes No Box Generic".exit()
+		
+		# Start inventory again
+		$"Unit Inventory Display".allow_input_last_pick()
+		
+		# Set state again
+		current_convoy_status = CONVOY_STATUS.DEPOSIT
+		
+		# Allow input again
+		set_process_input(true)
+
 # Save current status of the convoy
 func save():
-	pass
+	var save_dict = {
+		"Sword" : [],
+		"Lance" : [],
+		"Axe" : [], 
+		"Bow" : [],
+		"Tome" : [],
+		"Heal" : [],
+		"Consumable" : []
+	}
+	
+	# Save each list with the items in them
+	# Swords
+	for sword in $"All Lists/Sword".item_tree_node.get_children():
+		save_dict["Sword"].append(sword.save())
+	
+	# Lance
+	for lance in $"All Lists/Lance".item_tree_node.get_children():
+		save_dict["Lance"].append(lance.save())
+	
+	# Axe
+	for axe in $"All Lists/Axe".item_tree_node.get_children():
+		save_dict["Axe"].append(axe.save())
+	
+	# Bow
+	for bow in $"All Lists/Bow".item_tree_node.get_children():
+		save_dict["Bow"].append(bow.save())
+	
+	# Tome
+	for tome in $"All Lists/Tome".item_tree_node.get_children():
+		save_dict["Tome"].append(tome.save())
+	
+	# Heal
+	for heal in $"All Lists/Heal".item_tree_node.get_children():
+		save_dict["Heal"].append(heal.save())
+	
+	# Consumable
+	for consumable in $"All Lists/Consumable".item_tree_node.get_children():
+		save_dict["Consumable"].append(consumable.save())
+	
+	return save_dict
 
 # Load the convoy
-func load_convoy():
-	pass
+func load_convoy(json_convoy_data):
+	var all_items_name = ["Sword", "Lance", "Axe", "Bow", "Tome", "Heal", "Consumable"]
+	
+	for item_name in all_items_name:
+		for json_item_name in json_convoy_data[item_name]:
+			var item_object = load(json_item_name["filename"]).instance()
+			add_item_to_convoy(item_object)
+			item_object.load_item(json_item_name["item_stats"])

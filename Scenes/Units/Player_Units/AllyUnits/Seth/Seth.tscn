@@ -526,11 +526,11 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0.191, -4.50606 )
+position = Vector2( 0.129936, -3.63805 )
 texture = ExtResource( 2 )
 centered = false
 region_enabled = true
-region_rect = Rect2( 4, 77, 15, 19 )
+region_rect = Rect2( 4, 105, 18, 23 )
 
 [node name="Animation" type="AnimationPlayer" parent="."]
 playback_speed = 2.0

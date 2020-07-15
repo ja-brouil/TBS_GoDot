@@ -11,6 +11,7 @@ var current_option_number = 0
 
 # Signals
 signal option_selected
+signal no_inputted
 
 func start():
 	turn_on()
@@ -63,16 +64,21 @@ func process_selection():
 	match current_option_selected:
 		"Yes":
 			# $"Hand Selector/Accept".play(0)
-			go_back()
+			exit()
 			emit_signal("option_selected", true)
 			
 		"No":
 			# $"Hand Selector/Cancel".play(0)
-			go_back()
+			exit()
 			emit_signal("option_selected", false)
 			
 
 func go_back():
+	emit_signal("no_inputted")
+	is_active = false
+	visible = false
+
+func exit():
 	is_active = false
 	visible = false
 

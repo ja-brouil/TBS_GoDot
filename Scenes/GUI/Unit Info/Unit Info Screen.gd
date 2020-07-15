@@ -48,6 +48,7 @@ func build_info_sheet():
 	set_items(current_unit)
 	
 	# Activate
+	$"Unit Info Container/Anim".play("Fade")
 	$Timer.start(0)
 
 func _input(event):
@@ -80,10 +81,14 @@ func turn_on():
 
 func turn_off():
 	BattlefieldInfo.music_player.get_node("AllyLevel").volume_db = 0
-	$"Unit Info Container".visible = false
 	input_is_active = false
+	$"Unit Info Container/Anim".play_backwards("Fade")
+	yield($"Unit Info Container/Anim","animation_finished")
+	$"Unit Info Container".visible = false
+	
 	BattlefieldInfo.cursor.back_to_move()
 	BattlefieldInfo.cursor.emit_signal("turn_on_ui")
+	
 
 func _on_Timer_timeout():
 	input_is_active = true

@@ -76,8 +76,6 @@ func _input(event):
 					# Wait for 0.2 seconds
 					yield(get_tree().create_timer(0.2), "timeout")
 
-
-
 # Physics Movements
 func _physics_process(delta):
 	move_and_slide(move_dir.normalized() * SPEED)

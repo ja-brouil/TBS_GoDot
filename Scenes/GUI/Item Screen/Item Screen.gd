@@ -71,6 +71,7 @@ func movement(direction):
 				$"Item Menu/Hand Selector".rect_position.y -= ACTION_SIZE_Y - 1
 				$"Item Menu/Hand Selector/Move".play(0)
 			current_option_selected = current_items[current_number_action]
+			set_item_stats(current_items[current_number_action])
 		"down":
 			current_number_action += 1
 			if current_number_action > current_items.size() - 1:
@@ -79,6 +80,7 @@ func movement(direction):
 				$"Item Menu/Hand Selector".rect_position.y += ACTION_SIZE_Y - 1
 				$"Item Menu/Hand Selector/Move".play(0)
 			current_option_selected = current_items[current_number_action]
+			set_item_stats(current_items[current_number_action])
 
 func add_item_back_to_array():
 	current_items.clear()
@@ -133,6 +135,9 @@ func build_menu():
 	$"Item Menu/Hand Selector".rect_position = first_item.position + HAND_OFF_SET
 	current_number_action = 0
 	current_option_selected = current_items[current_number_action]
+	
+	# Set item stats
+	set_item_stats(current_items[0])
 
 func go_back():
 	# Turn off input
@@ -143,6 +148,24 @@ func go_back():
 	
 	# Go back to action selector
 	BattlefieldInfo.unit_movement_system.emit_signal("action_selector_screen")
+
+func set_item_stats(item):
+	# Set the stats for the selected item
+	$"Item Menu/Mugshot/Item Stats/Background/Weapon Name".text = item.item_name
+	$"Item Menu/Mugshot/Item Stats/Background/Uses Amount".text = str(item.uses)
+	$"Item Menu/Mugshot/Item Stats/Background/Power Amt".text = str(item.might)
+	$"Item Menu/Mugshot/Item Stats/Background/Crit Amt".text = str(item.crit)
+	$"Item Menu/Mugshot/Item Stats/Background/Hit Amt".text = str(item.hit)
+	
+	# Set icon
+	$"Item Menu/Mugshot/Item Stats/Background/TextureRect2".texture = item.icon
+	
+	# Green color
+	if BattlefieldInfo.current_Unit_Selected.UnitInventory.current_item_equipped == item:
+		$"Item Menu/Mugshot/Item Stats/Background/anim".play("equipped")
+	else:
+		$"Item Menu/Mugshot/Item Stats/Background/anim".stop(true)
+		$"Item Menu/Mugshot/Item Stats/Background/Weapon Name".set("custom_colors/font_color", Color(1.0, 1.0, 1.0))
 
 func _on_Timer_timeout():
 	# Active Input

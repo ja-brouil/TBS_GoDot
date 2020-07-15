@@ -141,5 +141,6 @@ wait_time = 10.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Fade = SubResource( 2 )
+[connection signal="no_inputted" from="Yes No Box Generic" to="." method="_on_no_selected_from_generic"]
 [connection signal="option_selected" from="Yes No Box Generic" to="." method="_on_Yes_No_Box_Generic_option_selected"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

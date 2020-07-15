@@ -140,6 +140,7 @@ func update_preview_box():
 
 
 # Set position of menu -> This needs to be fixed later
+# Need to find a better solution to this because this is kinda hacky and works like 85% of the time
 func set_menu_position(new_position):
 	if new_position == "left":
 		$Preview.rect_position = LEFT_SIDE

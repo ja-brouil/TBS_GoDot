@@ -44,10 +44,13 @@ margin_right = 423.0
 margin_bottom = 54.0
 rect_scale = Vector2( 1, 1.1 )
 custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 0.156863, 0.864053, 0.130719, 1 )
 text = "Killing Edge"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Uses" type="Label" parent="Background"]
 margin_left = 427.302

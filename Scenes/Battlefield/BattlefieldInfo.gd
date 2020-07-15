@@ -85,6 +85,9 @@ var victory = false
 # Prevent end of turn
 var stop_end_of_turn = false
 
+# Convoy
+var convoy
+
 # Money
 var money = 4000
 

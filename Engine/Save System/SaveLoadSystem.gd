@@ -118,7 +118,6 @@ func load_game():
 		# Attach back to the y sort
 		get_node(node_data["parent"]).add_child(player_object)
 		
-		
 		# Set position and cell data
 		player_object.position = Vector2(vector2_data["pos_x"], vector2_data["pos_y"])
 		
@@ -195,8 +194,6 @@ func load_game():
 	# Set new enemy commander
 	BattlefieldInfo.enemy_commander = BattlefieldInfo.enemy_units[BattlefieldInfo.level_container.enemy_commander_name]
 	
-	# Load the convoy here
-	
 	# Load events
 	data = saved_data[4]
 	BattlefieldInfo.event_system.clear()
@@ -214,6 +211,10 @@ func load_game():
 	# Load elapsed time
 	data = saved_data[5]
 	StatusScreen.saved_time = int(data)
+	
+	# Load Convoy
+	data = saved_data[6]
+	BattlefieldInfo.convoy.load_convoy(data)
 	
 	# Start game
 	# Is there a prep mode?
@@ -275,7 +276,8 @@ func save_current_events(save_game_file):
 
 func save_convoy(save_game_file):
 	print("Saving convoy...")
-	save_game_file.store_line(to_json("CONVOY INFO HERE"))
+	var convoy_save_data = BattlefieldInfo.convoy.save()
+	save_game_file.store_line(to_json(convoy_save_data))
 
 func save_money(save_game_file):
 	print("Saving money...")

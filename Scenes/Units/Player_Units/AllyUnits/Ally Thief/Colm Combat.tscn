@@ -124,7 +124,7 @@ tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0, 4.2, 4.4, 8.7 ),
+"times": PoolRealArray( 0, 4.2, 4.3, 8.7 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "values": [ {
 "args": [  ],
@@ -492,15 +492,16 @@ __meta__ = {
 }
 
 [node name="sword regular" type="Sprite" parent="."]
+visible = false
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 239, 189, 18, 35 )
 
 [node name="sword crit" type="Sprite" parent="."]
-visible = false
+position = Vector2( 0, -1 )
 texture = ExtResource( 3 )
 region_enabled = true
-region_rect = Rect2( 59, 2, 18, 35 )
+region_rect = Rect2( 407, 207, 18, 35 )
 
 [node name="Flash" type="Sprite" parent="."]
 visible = false
@@ -510,10 +511,10 @@ texture = ExtResource( 4 )
 
 [node name="Battle Effect" type="Sprite" parent="."]
 visible = false
-position = Vector2( -85.9954, -0.930359 )
+position = Vector2( -86, -1 )
 texture = ExtResource( 5 )
 region_enabled = true
-region_rect = Rect2( 15, 348, 169, 156 )
+region_rect = Rect2( 253, 853, 238, 143 )
 
 [node name="anim" type="AnimationPlayer" parent="."]
 playback_speed = 5.0

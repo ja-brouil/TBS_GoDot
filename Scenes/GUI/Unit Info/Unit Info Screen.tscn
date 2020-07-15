@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/GUI/Unit Info/Unit Info Screen.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -14,6 +14,22 @@ outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
 use_filter = true
 font_data = SubResource( 1 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "Fade"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="Unit Info Screen" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -198,7 +214,6 @@ position = Vector2( 9.92471, 84.7094 )
 scale = Vector2( 1.25, 1.25 )
 
 [node name="Stats" type="Control" parent="Unit Info Container/Inventory"]
-editor/display_folded = true
 margin_left = 0.250916
 margin_top = -8.53099
 margin_right = 40.2509
@@ -391,7 +406,10 @@ text = "Luck"
 align = 1
 valign = 1
 
+[node name="Anim" type="AnimationPlayer" parent="Unit Info Container"]
+anims/Fade = SubResource( 3 )
+
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.3
+wait_time = 0.5
 one_shot = true
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

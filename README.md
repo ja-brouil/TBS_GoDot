@@ -19,13 +19,13 @@ Take a look at any of the bugs below or anything in the to do list. If you wish 
 8. ~~Unit UI stats screen~~ Done, just need it to be nicer but this can be polished
 9. ~~Inventory -> Started, add swaping of position, Need to add enabling of weapons allowed~~
 10. ~~Trade function Completed, all units can trade with each other~~
-11. Convoy Function
-12. Dialogue System -> 90% done, need some tweeks, would like to parse 
+11. ~~Convoy Function~~ -> Complete
+12. ~~Dialogue System -> 90% done, need some tweeks, would like to parse  ~~ -> All done
 13. ~~Level up and stats system~~
 14. Items database -> Items template built, added more weapons, added magic and ranged weapons, added bows doing triple damage to flyers.
 15. End turn menu -> Menu built, end turn option added, rest needs to be build up Update -> added status screen
-16. Save/Load function
-17. Action Select Function -> Menu built, options need to be built, wait has been added, Added trade and heal
+16. ~~Save/Load function~~ -> Complete Add to save/load as needed
+17. ~~Action Select Function -> Menu built, options need to be built, wait has been added, Added trade and heal~~ All done
 18. ~~Add Game over and Intro Screen -> Complete and tested. Just add options and loading to this next~~
 
 ## Bugs to fix

@@ -53,8 +53,9 @@ func start(unit):
 	# Set the name of inventory box
 	unit_name.text = str(unit.UnitStats.name, "'s Inventory")
 	
-	# Set to first item
-	current_item_selected = unit_inventory[0]
+	# Set to first item | Do not select if the inventory is empty
+	if unit.UnitInventory.inventory.size() > 0:
+		current_item_selected = unit_inventory[0]
 	
 
 func start_with_input(unit):
@@ -65,14 +66,18 @@ func allow_input():
 	# Allow input
 	inventory_list.focus_mode = Control.FOCUS_ALL
 	inventory_list.grab_focus()
-	inventory_list.select(0)
+	if inventory_list.items.size() != 0:
+		inventory_list.select(0)
+		_on_Inventory_List_item_selected(0)
 	set_process_input(true)
 
 func allow_input_last_pick():
 	# Allow input
 	inventory_list.focus_mode = Control.FOCUS_ALL
 	inventory_list.grab_focus()
-	inventory_list.select(last_index)
+	if inventory_list.items.size() != 0:
+		inventory_list.select(last_index)
+		_on_Inventory_List_item_selected(last_index)
 	set_process_input(true)
 
 # Get the name of each item, the icon and create a line item with them

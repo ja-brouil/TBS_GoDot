@@ -135,12 +135,13 @@ func movement(direction):
 				$"Hand Selector/Move".play(0)
 			current_selected_option = item_list_menu[current_selected_number]
 	update_item_box()
+	
 
 # Change the item box window whenever the cursor moves
 func update_item_box():
 	# Set selected item
 	current_selected_option = item_list_menu[current_selected_number]
-	
+	set_item_stats(current_selected_option)
 
 # Cancel option
 func go_back():
@@ -149,6 +150,24 @@ func go_back():
 	
 	# Go back to action selector
 	BattlefieldInfo.unit_movement_system.emit_signal("action_selector_screen")
+
+func set_item_stats(item):
+	# Set the stats for the selected item
+	$"Weapon Select/Unit Mugshot/Item Stats/Background/Weapon Name".text = item.item_name
+	$"Weapon Select/Unit Mugshot/Item Stats/Background/Uses Amount".text = str(item.uses)
+	$"Weapon Select/Unit Mugshot/Item Stats/Background/Power Amt".text = str(item.might)
+	$"Weapon Select/Unit Mugshot/Item Stats/Background/Crit Amt".text = str(item.crit)
+	$"Weapon Select/Unit Mugshot/Item Stats/Background/Hit Amt".text = str(item.hit)
+	
+	# Set icon
+	$"Weapon Select/Unit Mugshot/Item Stats/Background/TextureRect2".texture = item.icon
+	
+	# Green color
+	if BattlefieldInfo.current_Unit_Selected.UnitInventory.current_item_equipped == item:
+		$"Weapon Select/Unit Mugshot/Item Stats/Background/anim".play("equipped")
+	else:
+		$"Weapon Select/Unit Mugshot/Item Stats/Background/anim".stop(true)
+		$"Weapon Select/Unit Mugshot/Item Stats/Background/Weapon Name".set("custom_colors/font_color", Color(1.0, 1.0, 1.0))
 
 # Go to unit selection
 func process_selection():

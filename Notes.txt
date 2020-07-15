@@ -14,11 +14,13 @@ Diagur@assets/units/enemyPortrait/Diagur Portrait.png@
 Ephraim Soldiers@assets/units/soldier/soldier_blue_portrait.png@
 
 
-# To do list on the convoy and shop
+# To do
 
 Convoy:
 - Fix lists not being in focus when you hit the swap button again
-- Save load function for the convoy
+
+Combat Screen:
+- Add check when the unit has no items and is trying to defend
 
 AI Improvements
 - Add AI Improvements

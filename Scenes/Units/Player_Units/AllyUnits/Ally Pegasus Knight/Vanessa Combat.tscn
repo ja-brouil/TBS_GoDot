@@ -295,7 +295,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, -10 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("lance regular:visible")
@@ -568,7 +568,6 @@ __meta__ = {
 }
 
 [node name="lance regular" type="Sprite" parent="."]
-visible = false
 position = Vector2( 0, -10 )
 texture = ExtResource( 2 )
 region_enabled = true
