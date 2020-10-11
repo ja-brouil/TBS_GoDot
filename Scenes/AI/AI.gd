@@ -104,6 +104,7 @@ func find_most_threatening_enemy():
 		# Small incentive to attack Eirika
 		if ally_unit.UnitStats.name == "Eirika":
 			threat_value += 5
+
 		
 		# Check HP Amount -> Lower percentage enemies = higher threat
 		threat_value += (100 - ((ally_unit.UnitStats.current_health / ally_unit.UnitStats.max_health) * 100))

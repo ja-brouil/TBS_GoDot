@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/Units/Player_Units/AllyUnits/SwordMaster Female/Lyn.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/GUI/Damage Preview/Cursor Select.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/units/Swordmaster female/Lyn Swordman.png" type="Texture" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Idle"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 43, 16, 17, 16 ), Rect2( 43, 48, 17, 17 ), Rect2( 43, 82, 17, 16 ), Rect2( 42, 114, 18, 17 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 2 ), Vector2( 0, 0 ) ]
+}
+
+[node name="Lyn" type="Node2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 8.2905 ]
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 114.218, 66.417 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 42, 114, 18, 17 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="Cursor Select" parent="." instance=ExtResource( 2 )]
+visible = false
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+playback_speed = 2.0
+anims/Idle = SubResource( 1 )

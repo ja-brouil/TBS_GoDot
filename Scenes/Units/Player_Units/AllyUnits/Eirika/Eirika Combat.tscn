@@ -475,7 +475,6 @@ tracks/8/keys = {
 }
 
 [node name="Eirika Combat" type="Node2D"]
-z_index = 5
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 22.0, 6.0 ],

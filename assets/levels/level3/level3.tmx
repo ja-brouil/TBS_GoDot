@@ -2281,13 +2281,13 @@
     <property name="ClassPower" type="int" value="3"/>
     <property name="Consti" type="int" value="8"/>
     <property name="Defense" type="int" value="2"/>
-    <property name="Health" type="int" value="999"/>
+    <property name="Health" type="int" value="18"/>
     <property name="Identifier" value="Enemy 4"/>
     <property name="InstanceName" value="Enemy Soldier"/>
     <property name="Level" type="int" value="3"/>
     <property name="Luck" type="int" value="0"/>
     <property name="Magic" type="int" value="3"/>
-    <property name="MaxHealth" type="int" value="999"/>
+    <property name="MaxHealth" type="int" value="18"/>
     <property name="Move" type="int" value="5"/>
     <property name="Name" value="Soldier"/>
     <property name="Res" type="int" value="1"/>

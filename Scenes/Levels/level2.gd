@@ -45,7 +45,7 @@ func _ready():
 		cellInfo.get_meta("Avd"), cellInfo.get_meta("Def"), cellInfo.get_meta("MovementCost"), cellInfo.get_meta(("TileType")))
 		map_cell_info.set_name("map_cell")
 		add_child(map_cell_info)
-		grid[cellInfo.position.x / Cell.CELL_SIZE][cellInfo.position.y / Cell.CELL_SIZE] = map_cell_info
+		grid	[cellInfo.position.x / Cell.CELL_SIZE][cellInfo.position.y / Cell.CELL_SIZE] = map_cell_info
 		
 	# Set Adj Cells
 	for cellArray in grid:
