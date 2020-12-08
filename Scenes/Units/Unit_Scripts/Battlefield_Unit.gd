@@ -170,7 +170,11 @@ func save():
 		save_dict["AI"] = {
 			"filename" : get_node("AI").filename,
 			"parent" : get_node("AI").get_parent().get_path(),
-			"ai_type" : get_node("AI").ai_type
+			"ai_type" : get_node("AI").ai_type,
+			"cell_a_x": get_node("AI").tile_to_walk_A.cellPosition.x,
+			"cell_a_y": get_node("AI").tile_to_walk_A.cellPosition.y,
+			"cell_b_x": get_node("AI").tile_to_walk_B.cellPosition.x,
+			"cell_b_y": get_node("AI").tile_to_walk_B.cellPosition.y
 		}
 	return save_dict
 

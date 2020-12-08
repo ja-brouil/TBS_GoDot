@@ -146,10 +146,17 @@ func _ready():
 	for enemy in enemyInfoLayer.get_children():
 		var path = str("res://Scenes/Units/Enemy_Units/", enemy.get_meta("InstanceName"),".tscn")
 		var newEnemy = load(path).instance()
+		$YSort.add_child(newEnemy)
 		
 		# Set AI Type
-		newEnemy.get_node("AI").ai_type = enemy.get_meta("aiType")
-		$YSort.add_child(newEnemy)
+		var patrol_cell_a = grid[0][0]
+		var patrol_cell_b = grid[0][0]
+		if enemy.has_meta("A_Tile_X"):
+			print(enemy.get_meta("A_Tile_X"), enemy.get_meta("A_Tile_Y"))
+			patrol_cell_a = grid[enemy.get_meta("A_Tile_X")][enemy.get_meta("A_Tile_Y")]
+			patrol_cell_b = grid[enemy.get_meta("B_Tile_X")][enemy.get_meta("B_Tile_Y")]
+		newEnemy.get_node("AI").set_ai(enemy.get_meta("aiType"), patrol_cell_a, patrol_cell_b) 
+		
 		
 		# Set Stats
 		newEnemy.position = Vector2(enemy.position.x, enemy.position.y)

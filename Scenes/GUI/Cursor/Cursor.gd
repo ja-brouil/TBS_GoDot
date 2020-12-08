@@ -42,52 +42,52 @@ func _ready():
 	all_ally_units.clear()
 	
 func _input(event):
-	# Do not process if game is over or won
-	if BattlefieldInfo.victory || BattlefieldInfo.game_over || BattlefieldInfo.stop_end_of_turn:
+	# Do not process if game is over or won or the cursor is in wait mode
+	if BattlefieldInfo.victory || BattlefieldInfo.game_over || BattlefieldInfo.stop_end_of_turn || cursor_state == WAIT:
 		return
 	
-	# Do not process if cursor is in wait mode
-	if cursor_state == WAIT:
-		return
-	
-	# Move Cursor by x pixels
-	if Input.is_action_pressed("ui_left"):
-		self.position.x -= Cell.CELL_SIZE
-		updateCursorData()
-		$"MoveSound".play()
-		emit_signal("cursorMoved", "left", self.position)
-	elif Input.is_action_pressed("ui_right"):
-		self.position.x += Cell.CELL_SIZE
-		updateCursorData()
-		$"MoveSound".play()
-		emit_signal("cursorMoved", "right", self.position)
-	elif Input.is_action_pressed("ui_down"):
-		self.position.y += Cell.CELL_SIZE
-		updateCursorData()
-		$"MoveSound".play()
-		emit_signal("cursorMoved", "down", self.position)
-	elif Input.is_action_pressed("ui_up"):
-		self.position.y -= Cell.CELL_SIZE
-		updateCursorData()
-		$"MoveSound".play()
-		emit_signal("cursorMoved", "up", self.position)
-	elif Input.is_action_just_pressed("ui_accept"):
-		updateCursorData()
-		acceptButton()
-	elif Input.is_action_just_pressed("ui_cancel"):
-		cancel_Button()
-	elif Input.is_action_just_pressed("L button"):
-		updateCursorData()
-		l_button()
-	elif Input.is_action_just_pressed("R button"):
-		updateCursorData()
-		r_button()
-	elif Input.is_action_just_pressed("highlight_enemy"):
-		highlight_enemy_positions()
-	
-	
-	if Input.is_action_just_pressed("debug"):
-		debug()
+	# Do not process if movement is mouse based
+	if event is InputEventMouseMotion || event is InputEventMouseButton:
+		return 
+	# Process Keyboard
+	elif event is InputEventKey:
+		# Move Cursor by x pixels
+		if Input.is_action_pressed("ui_left"):
+			self.position.x -= Cell.CELL_SIZE
+			updateCursorData()
+			$"MoveSound".play()
+			emit_signal("cursorMoved", "left", self.position)
+		elif Input.is_action_pressed("ui_right"):
+			self.position.x += Cell.CELL_SIZE
+			updateCursorData()
+			$"MoveSound".play()
+			emit_signal("cursorMoved", "right", self.position)
+		elif Input.is_action_pressed("ui_down"):
+			self.position.y += Cell.CELL_SIZE
+			updateCursorData()
+			$"MoveSound".play()
+			emit_signal("cursorMoved", "down", self.position)
+		elif Input.is_action_pressed("ui_up"):
+			self.position.y -= Cell.CELL_SIZE
+			updateCursorData()
+			$"MoveSound".play()
+			emit_signal("cursorMoved", "up", self.position)
+		elif Input.is_action_just_pressed("ui_accept"):
+			updateCursorData()
+			acceptButton()
+		elif Input.is_action_just_pressed("ui_cancel"):
+			cancel_Button()
+		elif Input.is_action_just_pressed("L button"):
+			updateCursorData()
+			l_button()
+		elif Input.is_action_just_pressed("R button"):
+			updateCursorData()
+			r_button()
+		elif Input.is_action_just_pressed("highlight_enemy"):
+			highlight_enemy_positions()
+		
+		if Input.is_action_just_pressed("debug"):
+			debug()
 
 # Update cursor
 func updateCursorData() -> void:

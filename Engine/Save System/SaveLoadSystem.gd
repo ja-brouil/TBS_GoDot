@@ -176,7 +176,14 @@ func load_game():
 			ai_object.name = "AI"
 			
 			# Set AI Type
-			ai_object.ai_type = ai_data["ai_type"]
+#			"ai_type" : get_node("AI").ai_type,
+#			"cell_a_x": get_node("AI").tile_to_walk_A.cellPosition.x,
+#			"cell_a_y": get_node("AI").tile_to_walk_A.cellPosition.y,
+#			"cell_b_x": get_node("AI").tile_to_walk_B.cellPosition.x,
+#			"cell_b_y": get_node("AI").tile_to_walk_B.cellPosition.y
+#			ai_object.set_ai(ai_data["ai_type"], BattlefieldInfo.grid[ai_data["cell_a_x"]][ai_data["cell_a_y"]], BattlefieldInfo[ai_data["cell_b_x"]][ai_data["cell_b_y"]])
+			
+			ai_object.set_ai(ai_data["ai_type"], BattlefieldInfo.grid[ai_data["cell_a_x"]][ai_data["cell_a_y"]], BattlefieldInfo.grid[ai_data["cell_b_x"]][ai_data["cell_b_y"]])
 			
 			# Add AI
 			player_object.add_child(ai_object)

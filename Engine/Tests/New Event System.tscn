@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Engine/Tests/New Event System.gd" type="Script" id=1]
+
+[node name="Test Event System Queue" type="Node2D"]
+script = ExtResource( 1 )

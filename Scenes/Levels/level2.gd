@@ -168,7 +168,12 @@ func _ready():
 		var newEnemy = load(path).instance()
 		
 		# Set AI Type
-		newEnemy.get_node("AI").ai_type = enemy.get_meta("aiType")
+		var patrol_cell_a
+		var patrol_cell_b
+		if enemy.has_meta("A_Tile_X"):
+			patrol_cell_a = grid[enemy.get_meta("A_Tile_X")][enemy.get_meta("A_Tile_Y")]
+			patrol_cell_b = grid[enemy.get_meta("B_Tile_X")][enemy.get_meta("B_Tile_Y")]
+		newEnemy.get_node("AI").set_ai(enemy.get_meta("aiType"), patrol_cell_a, patrol_cell_b) 
 		$YSort.add_child(newEnemy)
 		
 		# Set Stats

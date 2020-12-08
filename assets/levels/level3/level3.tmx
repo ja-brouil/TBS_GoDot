@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="15" height="15" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="363">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="15" height="15" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="363">
  <properties>
   <property name="Enemies_to_defeat" type="int" value="15"/>
   <property name="Victory_Condition" value="Defeat All Enemies"/>
@@ -2517,8 +2517,12 @@
     <property name="isAlly" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="359" x="0" y="16" width="16" height="16">
+  <object id="359" x="32" y="48" width="16" height="16">
    <properties>
+    <property name="A_Tile_X" type="int" value="0"/>
+    <property name="A_Tile_Y" type="int" value="0"/>
+    <property name="B_Tile_X" type="int" value="5"/>
+    <property name="B_Tile_Y" type="int" value="3"/>
     <property name="BonusCrit" type="int" value="0"/>
     <property name="BonusDodge" type="int" value="0"/>
     <property name="BonusHit" type="int" value="0"/>
@@ -2544,7 +2548,7 @@
     <property name="Str" type="int" value="0"/>
     <property name="ThiefBonus" type="int" value="0"/>
     <property name="Weapon" value="Iron Axe"/>
-    <property name="aiType" value="Aggresive"/>
+    <property name="aiType" value="Patrol"/>
     <property name="isAlly" type="bool" value="false"/>
    </properties>
   </object>

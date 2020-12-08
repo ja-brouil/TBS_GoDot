@@ -2,7 +2,7 @@ extends Node2D
 
 # Type of AI | Default is passive
 # Strings AGGRESIVE, PASSIVE, PATROL, HEAL, RANDOM | -> Make sure its all lowercase
-var ai_type = "Aggresive"
+var ai_type
 
 # Holds all attackable enemies
 var all_attackable_enemies = []
@@ -11,8 +11,9 @@ var all_attackable_enemies = []
 var all_healable_enemies = []
 
 # Patrol type of AI
-var tile_to_walk_to
-var tile_to_walk_from
+var tile_to_walk_A
+var tile_to_walk_B
+var tile_target
 
 # State
 enum {ATTACK, HEAL, MOVE, NOTHING}
@@ -25,7 +26,13 @@ func process_ai():
 	print("FROM AI SCRIPT: PROCESSING BANDIT NAME: ", get_parent().UnitStats.identifier)
 	current_state = NOTHING
 	$Timer.start(0)
-	
+
+func set_ai(ai_type, a_tile, b_tile):
+	self.ai_type = ai_type
+	tile_to_walk_A = a_tile
+	tile_to_walk_B = b_tile
+	tile_target = a_tile
+
 # Helper Functions
 # Calculate Movesets
 func calculate_move_sets():
@@ -224,20 +231,44 @@ func get_best_tile_to_go_to(allowed_tiles, weapon):
 		BattlefieldInfo.main_game_camera.position = (BattlefieldInfo.current_Unit_Selected.position + Vector2(-112, -82))
 
 # Find best tile to move to if there is nothing to attack within range
-func find_tile_to_move_to_no_enemies():
-	# Figure out in the queue until the tile you can move is part of the moveset that you can go to
-	var eirika_tile = BattlefieldInfo.ally_units["Eirika"].UnitMovementStats.currentTile
+func find_tile_to_move_to_no_enemies(eirika_tile: Cell = BattlefieldInfo.ally_units["Eirika"].UnitMovementStats.currentTile):
+	# Default for this is Eirika
 	
 	# Create the path to that tile
 	BattlefieldInfo.movement_calculator.get_path_to_destination_AI(get_parent(), eirika_tile, BattlefieldInfo.grid)
 	
+	
+	# Update this part to make the AI more fluid
+	# 1. Check if the test tile is occupied, then we know the "next" tile will be good.
+	# 2. Check the adj tile from the new test tile
+	# 3. If only ONE side can go there, go to that tile
+	# 4. If both tiles are good, randomly pick one and go there.
 	# Work backwards until we have a tile that is part of the system
 	var test_tile
+	var previous_tile = null
+	var adj_tiles_allowed = []
+	
 	while !get_parent().UnitMovementStats.movement_queue.empty():
 		test_tile = get_parent().UnitMovementStats.movement_queue.pop_back()
+		
 		if get_parent().UnitMovementStats.allowedMovement.has(test_tile) && test_tile.occupyingUnit == null:
-			# The tile we want to go to is the test tile
+			# More fluid movement
+			if previous_tile != null && previous_tile.occupyingUnit != null:
+				# Check the adj tiles of the test tile
+				for adj_tile in test_tile.adjCells:
+					if get_parent().UnitMovementStats.allowedMovement.has(adj_tile) && adj_tile.occupyingUnit == null:
+						adj_tiles_allowed.append(adj_tile)
+			# Change the test tile to the adj_tile 
+			if adj_tiles_allowed.size() != 0:
+				randomize()
+				adj_tiles_allowed.shuffle()
+				test_tile = adj_tiles_allowed[0]
+			
+			# Exit out of the function
 			break
+		
+		# If we get here that means the tile we are checking is the previous one
+		previous_tile = test_tile
 	
 	
 	# Prevent null errors if you can't go anywhere for some reason
@@ -280,6 +311,44 @@ func next_step():
 		HEAL:
 			pass # Process heal here
 
+# Passive Sript
+func passive():
+# Check if there are any enemies within range that we can attack
+	if all_attackable_enemies.empty():
+		get_parent().UnitActionStatus.set_current_action(Unit_Action_Status.DONE)
+		BattlefieldInfo.movement_calculator.turn_off_all_tiles(get_parent(), BattlefieldInfo.grid)
+		# Move to the next enemy
+		BattlefieldInfo.turn_manager.turn = Turn_Manager.ENEMY_TURN
+		BattlefieldInfo.turn_manager.emit_signal("check_end_turn")
+	else:
+		# Find unit to attack
+		find_tile_to_move_to(find_most_threatening_enemy())
+
+# Aggressive Script
+func aggressive():
+	# Move toward Eirika if there are no enemies to attack
+	if all_attackable_enemies.empty():
+		find_tile_to_move_to_no_enemies()
+	else:
+		# Find unit to attack
+		find_tile_to_move_to(find_most_threatening_enemy())
+
+# Patrol Script
+func patrol():
+	# Check if there are any enemies within range that we can attack
+	if all_attackable_enemies.empty():
+		# Check if we have reached the Tile target
+		if get_parent().UnitMovementStats.currentTile == tile_target:
+			if tile_target == tile_to_walk_A:
+				tile_target = tile_to_walk_B
+			else:
+				tile_target = tile_to_walk_A
+		# Move to the tile target
+		find_tile_to_move_to_no_enemies(tile_target)
+		
+	else:
+		find_tile_to_move_to(find_most_threatening_enemy())
+
 # AI Script
 func _on_Timer_timeout():
 	# If we have no weapons left to use, we surrender
@@ -293,32 +362,13 @@ func _on_Timer_timeout():
 	calculate_move_sets()
 	find_all_enemies_within_range()
 	# Match the type of enemy
-	
 	match ai_type:
 		"Aggresive":
-			# Move toward Eirika if there are no enemies to attack
-			if all_attackable_enemies.empty():
-				find_tile_to_move_to_no_enemies()
-			else:
-				# Find unit to attack
-				find_tile_to_move_to(find_most_threatening_enemy())
+			aggressive()
 		"Passive":
-			# Check if there are any enemies within range that we can attack
-			if all_attackable_enemies.empty():
-				get_parent().UnitActionStatus.set_current_action(Unit_Action_Status.DONE)
-				BattlefieldInfo.movement_calculator.turn_off_all_tiles(get_parent(), BattlefieldInfo.grid)
-				# Move to the next enemy
-				BattlefieldInfo.turn_manager.turn = Turn_Manager.ENEMY_TURN
-				BattlefieldInfo.turn_manager.emit_signal("check_end_turn")
-			else:
-				# Find unit to attack
-				find_tile_to_move_to(find_most_threatening_enemy())
+			passive()
 		"Patrol":
-			# Check if there are any enemies within range that we can attack
-			if all_attackable_enemies.empty():
-				print("Moving to other destination")
-			else:
-				print("finding enemy to attack")
+			patrol()
 		"Heal":
 			# If unit to heal -> set to heal state
 			# If nothing to heal -> find enemy that is injured and move toward them
