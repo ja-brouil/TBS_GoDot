@@ -83,6 +83,7 @@ void fragment(){
 	// Set back to transparent
 	COLOR.a *= tex.a;
 }"
+custom_defines = ""
 
 [resource]
 shader = SubResource( 1 )
