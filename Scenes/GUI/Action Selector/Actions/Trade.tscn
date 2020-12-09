@@ -4,6 +4,9 @@
 [ext_resource path="res://assets/font/Action Selector Font.tres" type="DynamicFont" id=2]
 
 [node name="Trade" type="Control"]
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TextureRect" type="Sprite" parent="."]
 scale = Vector2( 0.1, 0.1 )

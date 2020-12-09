@@ -237,12 +237,7 @@ func find_tile_to_move_to_no_enemies(eirika_tile: Cell = BattlefieldInfo.ally_un
 	# Create the path to that tile
 	BattlefieldInfo.movement_calculator.get_path_to_destination_AI(get_parent(), eirika_tile, BattlefieldInfo.grid)
 	
-	
-	# Update this part to make the AI more fluid
-	# 1. Check if the test tile is occupied, then we know the "next" tile will be good.
-	# 2. Check the adj tile from the new test tile
-	# 3. If only ONE side can go there, go to that tile
-	# 4. If both tiles are good, randomly pick one and go there.
+	# This part makes the AI more fluid. It will choose tiles based on how many people are around it now.
 	# Work backwards until we have a tile that is part of the system
 	var test_tile
 	var previous_tile = null
@@ -252,7 +247,7 @@ func find_tile_to_move_to_no_enemies(eirika_tile: Cell = BattlefieldInfo.ally_un
 		test_tile = get_parent().UnitMovementStats.movement_queue.pop_back()
 		
 		if get_parent().UnitMovementStats.allowedMovement.has(test_tile) && test_tile.occupyingUnit == null:
-			# More fluid movement
+			# More fluid movement -> This might cause some bug where if the the unit in front is yourself, they don't move.
 			if previous_tile != null && previous_tile.occupyingUnit != null:
 				# Check the adj tiles of the test tile
 				for adj_tile in test_tile.adjCells:
@@ -270,6 +265,41 @@ func find_tile_to_move_to_no_enemies(eirika_tile: Cell = BattlefieldInfo.ally_un
 		# If we get here that means the tile we are checking is the previous one
 		previous_tile = test_tile
 	
+	# Prevent null errors if you can't go anywhere for some reason
+	if get_parent().UnitMovementStats.movement_queue.empty():
+		get_parent().UnitMovementStats.movement_queue.append(get_parent().UnitMovementStats.currentTile)
+	else:
+		get_parent().UnitMovementStats.movement_queue.clear()
+		BattlefieldInfo.movement_calculator.get_path_to_destination(get_parent(), test_tile, BattlefieldInfo.grid)
+	
+	# Move to the target
+	# Remove the unit's occupied status on the grid
+	get_parent().UnitMovementStats.currentTile.occupyingUnit = null
+	
+	# Start moving the unit
+	BattlefieldInfo.unit_movement_system.is_moving = true
+	
+	# Set Camera on unit
+	BattlefieldInfo.current_Unit_Selected = get_parent()
+	BattlefieldInfo.main_game_camera.position = (BattlefieldInfo.current_Unit_Selected.position + Vector2(-112, -82))
+	
+	# Set to move
+	current_state = MOVE
+
+# Find best tile to move to without fluid movement
+func find_tile_to_move_to_no_enemies_no_fluid(tile_to_move_to):
+	# Create the path to that tile
+	BattlefieldInfo.movement_calculator.get_path_to_destination_AI(get_parent(), tile_to_move_to, BattlefieldInfo.grid)
+	
+	# This part makes the AI more fluid. It will choose tiles based on how many people are around it now.
+	# Work backwards until we have a tile that is part of the system
+	var test_tile
+	
+	while !get_parent().UnitMovementStats.movement_queue.empty():
+		test_tile = get_parent().UnitMovementStats.movement_queue.pop_back()
+		
+		if get_parent().UnitMovementStats.allowedMovement.has(test_tile) && test_tile.occupyingUnit == null:
+			break
 	
 	# Prevent null errors if you can't go anywhere for some reason
 	if get_parent().UnitMovementStats.movement_queue.empty():
@@ -344,7 +374,7 @@ func patrol():
 			else:
 				tile_target = tile_to_walk_A
 		# Move to the tile target
-		find_tile_to_move_to_no_enemies(tile_target)
+		find_tile_to_move_to_no_enemies_no_fluid(tile_target)
 		
 	else:
 		find_tile_to_move_to(find_most_threatening_enemy())

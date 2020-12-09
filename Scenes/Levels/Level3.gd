@@ -152,7 +152,6 @@ func _ready():
 		var patrol_cell_a = grid[0][0]
 		var patrol_cell_b = grid[0][0]
 		if enemy.has_meta("A_Tile_X"):
-			print(enemy.get_meta("A_Tile_X"), enemy.get_meta("A_Tile_Y"))
 			patrol_cell_a = grid[enemy.get_meta("A_Tile_X")][enemy.get_meta("A_Tile_Y")]
 			patrol_cell_b = grid[enemy.get_meta("B_Tile_X")][enemy.get_meta("B_Tile_Y")]
 		newEnemy.get_node("AI").set_ai(enemy.get_meta("aiType"), patrol_cell_a, patrol_cell_b) 

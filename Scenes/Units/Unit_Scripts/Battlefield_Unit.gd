@@ -5,7 +5,7 @@ class_name Battlefield_Unit
 
 # Graphics
 export(String) var sprite_dir = "Idle"
-export(int) var animation_movement_speed = 5
+export(int) var animation_movement_speed = 10
 
 # Movement -> Ally status is in here
 var UnitMovementStats

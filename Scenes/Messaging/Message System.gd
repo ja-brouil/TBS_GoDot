@@ -43,6 +43,10 @@ func start(text_queue):
 
 # Process Skip
 func _input(event):
+	# Do not process mouse buttons
+	if event is InputEventMouse:
+		return
+	
 	# Skip to end of text is A is pressed
 	match current_state:
 		input:

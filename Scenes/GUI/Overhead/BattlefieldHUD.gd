@@ -83,15 +83,19 @@ func update_terrain_box(cursor_position):
 # Determine which quandrant of the screen the cursor is in
 func bottom_left(body) -> void:
 	cursor_quadrant = BOTTOM_LEFT
+	move_gui_boxes()
 
 func bottom_right(body) -> void:
 	cursor_quadrant = BOTTOM_RIGHT
+	move_gui_boxes()
 
 func top_left(body) -> void:
 	cursor_quadrant = TOP_LEFT
+	move_gui_boxes()
 
 func top_right(body) -> void:
 	cursor_quadrant = TOP_RIGHT
+	move_gui_boxes()
 
 # Moves all the boxes to the correct spot -> Fix box detection
 func move_gui_boxes():
