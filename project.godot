@@ -185,6 +185,11 @@ _global_script_classes=[ {
 "path": "res://Scenes/GUI/Cell/MovementRangeRect.gd"
 }, {
 "base": "Node",
+"class": "Movement_Arrow",
+"language": "GDScript",
+"path": "res://Engine/MovementUtilities/Movement Arrow.gd"
+}, {
+"base": "Node",
 "class": "Music_Player",
 "language": "GDScript",
 "path": "res://Scenes/Audio/MusicPlayer.gd"
@@ -300,6 +305,7 @@ _global_script_class_icons={
 "Messaging_System": "",
 "MovementCalculator": "",
 "MovementRangeRect": "",
+"Movement_Arrow": "",
 "Music_Player": "",
 "PriorityQueue": "",
 "SaveLoadSystem": "",

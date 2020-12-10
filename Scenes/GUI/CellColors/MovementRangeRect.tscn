@@ -1,7 +1,25 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/GUI/Cell/MovementRangeRect.gd" type="Script" id=1]
 [ext_resource path="res://assets/UI/Square Selectors/Animated Selectors.png" type="Texture" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Wave"
+length = 7.6
+loop = true
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 0, 0, 15, 15 ), Rect2( 16, 0, 15, 15 ), Rect2( 32, 0, 15, 15 ), Rect2( 48, 0, 15, 15 ), Rect2( 64, 0, 15, 15 ), Rect2( 80, 0, 15, 15 ), Rect2( 96, 0, 15, 15 ), Rect2( 112, 0, 15, 15 ), Rect2( 128, 0, 15, 15 ), Rect2( 144, 0, 15, 15 ), Rect2( 160, 0, 15, 15 ), Rect2( 176, 0, 15, 15 ), Rect2( 192, 0, 15, 15 ), Rect2( 208, 0, 15, 15 ), Rect2( 224, 0, 15, 15 ), Rect2( 240, 0, 15, 15 ) ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "Wave"
@@ -89,6 +107,20 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 15, 15 )
 
 [node name="Blue Player" type="AnimationPlayer" parent="Blue"]
+playback_speed = 4.0
+anims/Wave = SubResource( 1 )
+
+[node name="Marked" type="Sprite" parent="."]
+visible = false
+modulate = Color( 1, 0.0823529, 0.984314, 1 )
+position = Vector2( 1, 1 )
+z_index = 3
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 15, 15 )
+
+[node name="Blue Player" type="AnimationPlayer" parent="Marked"]
 playback_speed = 4.0
 anims/Wave = SubResource( 2 )
 

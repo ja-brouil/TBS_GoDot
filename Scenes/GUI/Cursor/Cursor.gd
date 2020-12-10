@@ -8,6 +8,10 @@ signal cursorMoved
 signal turn_off_ui
 signal turn_on_ui
 
+# Movement Arrow Test
+var movement_arrow = Movement_Arrow.new()
+
+
 # Unit cycle
 var all_ally_units = [] 
 
@@ -40,6 +44,9 @@ func _ready():
 	
 	# Clear the array
 	all_ally_units.clear()
+	
+	# Movement Arrow
+	add_child(movement_arrow)
 	
 func _input(event):
 	# Do not process if game is over or won or the cursor is in wait mode
@@ -140,6 +147,9 @@ func updateCursorData() -> void:
 					
 					# Start animation of the cursor again
 					set_animation_status(true)
+		SELECT_MOVE_TILE:
+			# Add to the color
+			movement_arrow.add_to_queue(BattlefieldInfo.grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE])
 		PREP:
 			# Set Animation status of unit if not null -> This is if you go from one cell to another and both are adj and occupied
 			if BattlefieldInfo.current_Unit_Selected != null:

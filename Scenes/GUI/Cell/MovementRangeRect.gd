@@ -7,6 +7,7 @@ func _ready():
 	$"Red/Red Player".play("Wave")
 	$"Green/Green Player".play("Wave")
 	$"Purple/Red Player".play("Wave")
+	$"Marked/Blue Player".play("Wave")
 
 func turnOn(colorName):
 	if colorName == "Red":
