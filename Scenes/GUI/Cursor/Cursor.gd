@@ -149,7 +149,7 @@ func updateCursorData() -> void:
 					set_animation_status(true)
 		SELECT_MOVE_TILE:
 			# Add to the color
-			movement_arrow.add_to_queue(BattlefieldInfo.grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE])
+			movement_arrow.check_for_queue(BattlefieldInfo.grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE])
 		PREP:
 			# Set Animation status of unit if not null -> This is if you go from one cell to another and both are adj and occupied
 			if BattlefieldInfo.current_Unit_Selected != null:
