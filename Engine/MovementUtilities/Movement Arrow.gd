@@ -11,43 +11,35 @@ var previous_cell
 func _ready():
 	pass # Replace with function body.
 
-# Queue Interaction
+# Queue Interaction -> Current cell is where the cursor is
 func check_for_queue(current_cell: Cell):
 	# Set Max Movement
 	max_movement = BattlefieldInfo.current_Unit_Selected.UnitMovementStats.movementSteps
 	
-	var combo = []
-	previous_cell = current_cell
-	combo.push_back(current_cell)
-	combo.push_back(previous_cell)
+	# Clear current movement queue is not cleared
+	BattlefieldInfo.current_Unit_Selected.UnitMovementStats.movement_queue.clear()
 	
 	# Do not add if not part of the current allowed tiles
-	if BattlefieldInfo.current_Unit_Selected.UnitMovementStats.allowedMovement.has(combo[0]):
-		# Removes the last element if there are more 10 elements | This needs to be changed to create the movement queue
+	if BattlefieldInfo.current_Unit_Selected.UnitMovementStats.allowedMovement.has(current_cell):
+		
+		# Are we more than the allowed movement range?
 		if last_movements.size() > max_movement:
 			BattlefieldInfo.movement_calculator.get_path_to_destination(BattlefieldInfo.current_Unit_Selected, BattlefieldInfo.grid[BattlefieldInfo.cursor.position.x / Cell.CELL_SIZE][BattlefieldInfo.cursor.position.y / Cell.CELL_SIZE], BattlefieldInfo.grid)
 			
-			# Clear the queue
-			clear_queue()
-			
-			previous_cell = BattlefieldInfo.current_Unit_Selected.UnitMovementStats.movement_queue.front()
-			
-			# Add them all
-			for cell in BattlefieldInfo.current_Unit_Selected.UnitMovementStats.movement_queue:
-				var new_combo = [current_cell, previous_cell]
-				add_to_queue(new_combo)
-				previous_cell = cell
-				
+			for c_cell in BattlefieldInfo.current_Unit_Selected.UnitMovementStats.movement_queue:
+				add_to_queue(c_cell)
 		else:
-			add_to_queue(combo)
+			current_cell.parentTile = previous_cell
+			add_to_queue(current_cell)
+			previous_cell = current_cell
 
 func add_to_queue(both_cells):
-	both_cells[0].get_node("MovementRangeRect/Marked").visible = true
+	# Do not add cells that we already have
+	both_cells.get_node("MovementRangeRect/Marked").visible = true
 	last_movements.push_front(both_cells)
 
 func clear_queue():
-	# Remove all items and remove all the markers
-	for cell in last_movements:
-		cell[0].get_node("MovementRangeRect/Marked").visible = false
+	for cell in BattlefieldInfo.current_Unit_Selected.UnitMovementStats.allowedMovement:
+		cell.get_node("MovementRangeRect/Marked").visible = false
 	
 	last_movements.clear()

@@ -228,6 +228,9 @@ func acceptButton() -> void:
 			
 			# Validate if tile is in the list
 			if BattlefieldInfo.movement_calculator.check_if_move_is_valid(BattlefieldInfo.grid[self.position.x / Cell.CELL_SIZE][self.position.y / Cell.CELL_SIZE], BattlefieldInfo.current_Unit_Selected):
+				# Clear Queue
+				BattlefieldInfo.current_Unit_Selected.UnitMovementStats.movement_queue.clear()
+				
 				# Set the old position so that we can go back if needed
 				BattlefieldInfo.previous_position = BattlefieldInfo.current_Unit_Selected.UnitMovementStats.currentTile.position
 				
